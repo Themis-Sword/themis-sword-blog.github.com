@@ -5,7 +5,7 @@ date: 2014-02-13 21:32:44 +0800
 comments: true
 categories: 
 ---
-{% img /images/parchment.jpg %}  
+  
 1. 安裝Ruby  
 2. 安裝Octopress  
 1) 確保安裝了git，在終端輸入git --version可以看到計算機中的git版本。  
