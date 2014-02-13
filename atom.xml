@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-02-13T22:59:13+08:00</updated>
+  <updated>2014-02-13T23:07:37+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -18,7 +18,7 @@
     <link href="http://www.aprilzephyr.com/blog/2014/02/13/blogging-with-octopress/"/>
     <updated>2014-02-13T21:32:44+08:00</updated>
     <id>http://www.aprilzephyr.com/blog/2014/02/13/blogging-with-octopress</id>
-    <content type="html"><![CDATA[<p><img src="http://mineisjesus.files.wordpress.com/2012/03/time.jpg" alt="Time" /><br/>
+    <content type="html"><![CDATA[<p><img src="http://d.hiphotos.bdimg.com/album/s%3D1000%3Bq%3D90/sign=183a9dfd8e5494ee83220b191dc5db8f/8601a18b87d6277f75cb2e7a2a381f30e824fc93.jpg" alt="Time" /><br/>
 1. 安裝Ruby<br/>
 2. 安裝Octopress<br/>
 1) 確保安裝了git，在終端輸入git &mdash;version可以看到計算機中的git版本。<br/>
@@ -30,7 +30,7 @@ $ ruby &mdash;version<br/>
 $ sudo gem install bundler #需要輸入root密碼<br/>
 $ bundle install<br/>
 安裝默認的Octopress主題：<br/>
-$ rake install  &lt;!-more->
+$ rake install  <!--more-->
 3. 配置Octopress<br/>
 $ vim ./<em>config.yml<br/>
 4. 將Blog部署到GitHub上<br/>
