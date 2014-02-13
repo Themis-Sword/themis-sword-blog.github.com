@@ -5,7 +5,7 @@ date: 2014-02-13 21:32:44 +0800
 comments: true
 categories: 
 ---
-![image](http://d.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=58f8ae73a38b87d65442ab1a37335905/8601a18b87d6277f75cb2e7a2a381f30e824fc93.jpg?referer=cb406f510bf79052b608730e3c71&x=.jpg)  
+![Time](http://mineisjesus.files.wordpress.com/2012/03/time.jpg)  
 1. 安裝Ruby  
 2. 安裝Octopress  
 1) 確保安裝了git，在終端輸入git --version可以看到計算機中的git版本。  
@@ -17,7 +17,7 @@ $ ruby --version
 $ sudo gem install bundler #需要輸入root密碼  
 $ bundle install  
 安裝默認的Octopress主題：  
-$ rake install  
+$ rake install  <!-more->
 3. 配置Octopress  
 $ vim ./_config.yml  
 4. 將Blog部署到GitHub上  
