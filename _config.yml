@@ -72,9 +72,9 @@ github_skip_forks: true
 twitter_user:
 twitter_tweet_button: true
 
-# Google +1
-google_plus_one: false
-google_plus_one_size: medium
+# Google +
+googleplus: true
+#google_plus_one_size: medium
 
 # Google Plus Profile
 # Hidden: No visible button, just add author information to search results
@@ -100,4 +100,4 @@ google_analytics_tracking_id:
 facebook_like: true
 
 #Sina weibo
-#weibo_share: true
+tsina: true
