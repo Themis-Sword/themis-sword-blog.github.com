@@ -28,10 +28,10 @@ $ rake setuo_github_pages
 完成上面的命令之後，我們就可以生成Blog並真正部署到倉庫中了。執行如下命令：  
 $ rake generate  
 $ rake deploy  
-上面的命令首先生成Blog文件，並將生成的Blog文件拷貝到_deploy目錄下，然後將這些內容添加到git中，並commit和push到倉庫的master分支。  
+上面的命令首先生成Blog文件，並將生成的Blog文件拷貝到 _deploy 目錄下，然後將這些內容添加到git中，並commit和push到倉庫的master分支。  
 現在可以訪問http://username.github.com了。注意，由於會發生延時，要等大約10分鐘才能打開。至此，我們已經基本完成對Blog的部署，不過Blog的source要單獨提交。  
 5. 開始寫Blog  
-Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲在source/_posts目錄下，並且需要按照Jekyll的命名規範對文章進行命名：YYYY-MM-DD-post-title.markdown。文章的名字會被當作url的一部分，而其中的日期用於對博文的區分和排序。創建博文命令爲：  
+Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲在source/ _posts 目錄下，並且需要按照Jekyll的命名規範對文章進行命名：YYYY-MM-DD-post-title.markdown。文章的名字會被當作url的一部分，而其中的日期用於對博文的區分和排序。創建博文命令爲：  
 $ rake new_post["title"]  
 然後在source/_posts/YY-MM-DD-post-title.markdown中寫博文。  
 之後，按照如下命令部署：  
