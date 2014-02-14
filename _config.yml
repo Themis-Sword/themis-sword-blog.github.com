@@ -68,6 +68,9 @@ github_repo_count: 0
 github_show_profile_link: true
 github_skip_forks: true
 
+# Post License
+post_license: true
+
 # Twitter
 twitter_user:
 twitter_tweet_button: true
