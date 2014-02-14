@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-02-14T21:16:23+08:00</updated>
+  <updated>2014-02-14T23:31:17+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -59,6 +59,20 @@ $ bundle install<br/>
 $ rake install  <!--more--></li>
 <li>配置Octopress<br/>
 $ vim ./_config.yml</li>
+<li>在本機創建ssh<br/>
+$ cd ~/.ssh<br/>
+$ ssh-keygen -t rsa -C 你註冊github時的email<br/>
+彈出Enter file in which to save the key (/Users/twer/.ssh/id_rsa): 直接按空格<br/>
+彈出Enter passphrase(empty for no passphrase):輸入你GitHub帳號的密碼。Enter same passphrase again: 再次輸入你的密碼。<br/>
+打開~/.ssh下的id_rsa.pub文件複製裡面的所有內容。<br/>
+登錄GitHub，選擇Account Settings&mdash;>SSH Public Keys添加ssh，把剪貼板的內容複製到key輸入框內直接保存。<br/>
+測試ssh：<br/>
+$ ssh git@github.com<br/>
+輸出：<br/>
+PTY allocation request failed on channel 0<br/>
+Hi username! You&rsquo;ve successfully authenticated, but GitHub does not provide shell access.<br/>
+Connection to github.com closed.<br/>
+代表成功。</li>
 <li>將Blog部署到GitHub上<br/>
 在GitHub上創建一個倉庫，命名為username.github.com。等全部配置完後，可以通過在瀏覽器中輸入<a href="http://username.github.com">http://username.github.com</a>來訪問。一般來說，將Blog的源碼放在source分支，把生成的內容提交到master分支。<br/>
 創建好倉庫之後，需要利用octopress的一個配置rake任務來自動配置上面創建的倉庫：<br/>
