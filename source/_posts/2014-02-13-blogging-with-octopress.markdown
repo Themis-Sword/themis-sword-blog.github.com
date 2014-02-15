@@ -82,25 +82,25 @@ Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲
 常用第三方模板有：  
 [3rd Party Octopress Themes](http://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes)  
 進入選擇好的模板鏈接，根據說明進行安裝。(本Blog使用的模板爲：[CleanPress](https://github.com/macjasp/cleanpress))  
-首先在source/_includes/post目錄下添加license.html文件，內容如下：  
-`<!-- Copyright Info BEGIN -->`  
-`{% if site.post_license %}`  
-`<b>`  
-`<div class="entry-content"> <a rel="license"   href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" ></a>版權聲明：非商用-非衍生-保持署名    
-<br />`  
-`<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">Creative Commons BY-NC-ND 3.0 </a>  
-</div>`  
-`</b>`  
-`{% endif %}`  
-`<!-- Copyright Info END -->`   
+首先在source/\_includes/post目錄下添加license.html文件，內容如下：  
+		`<!-- Copyright Info BEGIN -->`  
+		`{% if site.post_license %}`  
+		`<b>`  
+		`<div class="entry-content"> <a rel="license"   href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" ></a>版權聲明：非商用-非衍生-保持署名`    
+		`<br />`  
+		`<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">Creative Commons BY-NC-ND 3.0 </a>`  
+		`</div>`  
+		`</b>`  
+		`{% endif %}`  
+		`<!-- Copyright Info END -->`  
 11. Octopress添加Google Analytics統計與SEO  
 1) 在各搜索引擎中提交本博客的地址：  
 [免费收录网站搜索引擎登录口大全](http://urlc.cn/tool/addurl.html)  
-爲網站、文章添加描述信息*description*、關鍵字*keywords*、標簽*tags*，以此幫助用戶準確的搜索到本博客。描述信息和關鍵字是指網頁head部分的元標簽*meta*，是給搜索引擎看的。  
+爲網站、文章添加描述信息(description)、關鍵字(keywords)、標簽(tags)，以此幫助用戶準確的搜索到本博客。描述信息和關鍵字是指網頁head部分的元標簽(meta)，是給搜索引擎看的。  
 爲每一篇文章都添加描述，可以在Octopress模板中修改source/\_includes/head.html中的代碼  
-`{% capture description %}{% if page.description %}{{ page.description }}{% else %}{{ content | raw_content }}{% endif %}{% endcapture %}`  
-`  <meta name="description" content="{{ description | strip_html | condense_spaces | truncate:150 }}">`  
-`{% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}">{% endif %}`  
+		`{% capture description %}{% if page.description %}{{ page.description }}{% else %}{{ content | raw_content }}{% endif %}{% endcapture %}`  
+		`<meta name="description" content="{{ description | strip_html | condense_spaces | truncate:150 }}">`  
+		`{% if page.keywords %}<meta name="keywords"` 		`content="{{ page.keywords }}">{% endif %}`  
 2) 添加Google Analytics  
 註冊[Google Analytics](http://www.google.com/analytics/)獲得一個google_analytics_tracking_id，添加到\_config.yml中對應位置，並對網站進行驗證即可。然後通過Google Analytics分析網站流量。而且可以通過[Google站長工具](https://www.google.com/webmasters/tools/home?hl=zh-CN)，對網站進行更全面的分析和SEO。  
 對自己的網站進行驗證，只需將Google Analytics提供的用於驗證的代碼添加到source/\_includes/head.html的<head>標簽之間，網站部署到網上之後，過幾分鐘即可驗證通過，其他需要驗證的也同樣操作。  
