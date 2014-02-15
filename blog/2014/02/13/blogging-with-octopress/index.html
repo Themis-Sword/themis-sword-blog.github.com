@@ -190,15 +190,7 @@ Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲
 <a href="http://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a><br/>
 進入選擇好的模板鏈接，根據說明進行安裝。(本Blog使用的模板爲：<a href="https://github.com/macjasp/cleanpress">CleanPress</a>)<br/>
 首先在source/_includes/post目錄下添加license.html文件，內容如下：<br/>
-    <!-- Copyright Info BEGIN --><br/>
-    { % if site.post_license % }<br/>
-    <b><br/>
-    <div class="entry-content"> <a rel="license"   href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" ></a>版權聲明：非商用-非衍生-保持署名<br/>
-    <br /><br/>
-    <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">Creative Commons BY-NC-ND 3.0<br/>
-    </a></div></b><br/>
-    { % endif % }<br/>
-    <!-- Copyright Info END --></li>
+{ % gist 109e965 %}</li>
 <li>Octopress添加Google Analytics統計與SEO<br/>
 1) 在各搜索引擎中提交本博客的地址：<br/>
 <a href="http://urlc.cn/tool/addurl.html">免费收录网站搜索引擎登录口大全</a><br/>
