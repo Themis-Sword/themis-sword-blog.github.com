@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-02-15T16:24:26+08:00</updated>
+  <updated>2014-02-15T16:32:38+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -114,7 +114,7 @@ Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲
 當rake generate正常之後，就可以rake deploy到GitHub上了。</li>
 <li>獨立域名<br/>
 1) 在域名管理中，建立一個CNAME指向，將你的域名指向username.github.com<br/>
-2) 見一個名為CNAME的文件在source目錄下，然後將自己的域名輸入進去。<br/>
+2) 建一個名為CNAME的文件在source目錄下，然後將自己的域名輸入進去。<br/>
 3) 將內容push到GitHub後，第一次生效大概需要一個小時，之後就可以用自己的域名進行訪問了。</li>
 <li>安裝模板<br/>
 常用第三方模板有：<br/>
@@ -179,7 +179,7 @@ Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲
 <a href="http://blog.csdn.net/lcliliil/article/details/13727927">Octopress添加统计与SEO</a></p>
 
 <p><strong>PS:</strong><br/>
-受限於格式要求，本文代碼中<strong>{</strong>或<strong>}</strong>與旁邊<strong>%</strong>之間的空格請刪去；<strong><strong>之間的</strong>\</strong>請刪去。</p>
+受限於格式要求，本文代碼中<strong>{</strong>或<strong>}</strong>與旁邊<strong>%</strong>之間的空格請刪去；兩個<strong>{</strong>或者兩個<strong>}</strong>之間的<strong>\</strong>請刪去。</p>
 ]]></content>
   </entry>
   
