@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-02-15T18:15:41+08:00</updated>
+  <updated>2014-02-15T18:21:29+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -85,7 +85,7 @@
 <li>方法一相對方法二來說，有更多的額外操作如：排序、賦值。因爲在Python中，變量是不可變的，每迭代出一个元素比較不相等後的操作都是新建立一个局部變量、賦值並丟棄原變量，這需要消耗更多的内存!同時因爲排序操作，破壞了相對位置。</li>
 <li>方法二建立一个臨時列表進行操作，而列表是可變的，每次追加元素都只是在原列表上增加一个索引及值,因而相對方法一來說效率會更高!</li>
 <li>方法三无疑是效率最好的(無論是代碼的簡潔還是運行效率)。set()是內置的數據類型“集合類型”，它是無序的且值是唯一的！所以set()執行的结果就是轉為集合且直接去除了重複的元素，list()則將集合轉回列表類型。<br/>
-但是，set()會破壞排列順序，如果要保留排序，list(set(lists))可改為sorted(set(lists),key=lists.index)</li>
+但是，set()會破壞排列順序，如果要保留排序，list(set(lists))可改為sorted(set(lists), key=lists.index)</li>
 </ol>
 
 ]]></content>
