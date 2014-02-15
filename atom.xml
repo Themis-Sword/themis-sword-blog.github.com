@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-02-15T15:32:31+08:00</updated>
+  <updated>2014-02-15T15:38:10+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -120,21 +120,48 @@ Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲
 常用第三方模板有：<br/>
 <a href="http://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a><br/>
 進入選擇好的模板鏈接，根據說明進行安裝。(本Blog使用的模板爲：<a href="https://github.com/macjasp/cleanpress">CleanPress</a>)<br/>
-首先在source/_includes/post目錄下添加license.html文件，內容如下：<br/>
-{ % gist 9015532 %}</li>
-<li>Octopress添加Google Analytics統計與SEO<br/>
+首先在source/_includes/post目錄下添加license.html文件，內容如下：</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="c">&lt;!-- Copyright Info BEGIN --&gt;</span>
+</span><span class='line'>{ % if site.post_license % }
+</span><span class='line'><span class="nt">&lt;b&gt;</span>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;entry-content&quot;</span><span class="nt">&gt;</span> <span class="nt">&lt;a</span> <span class="na">rel=</span><span class="s">&quot;license&quot;</span>   <span class="na">href=</span><span class="s">&quot;http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh&quot;</span> <span class="nt">&gt;&lt;/a&gt;</span>版權聲明：非商用-非衍生-保持署名
+</span><span class='line'><span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;a</span> <span class="na">rel=</span><span class="s">&quot;license&quot;</span> <span class="na">href=</span><span class="s">&quot;http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh&quot;</span><span class="nt">&gt;</span>Creative Commons BY-NC-ND 3.0
+</span><span class='line'><span class="nt">&lt;/a&gt;&lt;/div&gt;&lt;/b&gt;</span>
+</span><span class='line'>{ % endif % }
+</span><span class='line'><span class="c">&lt;!-- Copyright Info END --&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+11. Octopress添加Google Analytics統計與SEO<br/>
 1) 在各搜索引擎中提交本博客的地址：<br/>
 <a href="http://urlc.cn/tool/addurl.html">免费收录网站搜索引擎登录口大全</a><br/>
 爲網站、文章添加描述信息(description)、關鍵字(keywords)、標簽(tags)，以此幫助用戶準確的搜索到本博客。描述信息和關鍵字是指網頁head部分的元標簽(meta)，是給搜索引擎看的。<br/>
-爲每一篇文章都添加描述，可以在Octopress模板中修改source/_includes/head.html中的代碼<br/>
-    { % capture description % }{ % if page.description % }{ % else % }{ % endif % }{ % endcapture % }<br/>
-    <meta name="description" content=""><br/>
-    { % if page.keywords % }<meta name="keywords"
-    content="">{ % endif % } &#8220;`<br/>
-2) 添加Google Analytics<br/>
+爲每一篇文章都添加描述，可以在Octopress模板中修改source/_includes/head.html中的代碼</p>
+
+<pre><code>    { % capture description % }{ % if page.description % }{ % else % }{ % endif % }{ % endcapture % }  
+    &lt;meta name="description" content=""&gt;  
+    { % if page.keywords % }&lt;meta name="keywords"  
+    content=""&gt;{ % endif % } ```  
+</code></pre>
+
+<p>2) 添加Google Analytics<br/>
 註冊<a href="http://www.google.com/analytics/">Google Analytics</a>獲得一個google_analytics_tracking_id，添加到_config.yml中對應位置，並對網站進行驗證即可。然後通過Google Analytics分析網站流量。而且可以通過<a href="https://www.google.com/webmasters/tools/home?hl=zh-CN">Google站長工具</a>，對網站進行更全面的分析和SEO。<br/>
-對自己的網站進行驗證，只需將Google Analytics提供的用於驗證的代碼添加到source/_includes/head.html的<head>標簽之間，網站部署到網上之後，過幾分鐘即可驗證通過，其他需要驗證的也同樣操作。</li>
-<li>參考<br/>
+對自己的網站進行驗證，只需將Google Analytics提供的用於驗證的代碼添加到source/_includes/head.html的<head>標簽之間，網站部署到網上之後，過幾分鐘即可驗證通過，其他需要驗證的也同樣操作。<br/>
+12. 參考<br/>
 <a href="http://octopress.org/help/">Octopress Help</a><br/>
 <a href="http://justcoding.iteye.com/blog/1954645">利用Octopress搭建一個GitHub博客</a><br/>
 <a href="http://blog.devtang.com/blog/2012/02/10/setup-blog-based-on-github/">象写程序一样写博客：搭建基于github的博客</a><br/>
@@ -143,9 +170,7 @@ Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲
 <a href="http://www.yanjiuyanjiu.com/blog/20130402/">我的Octopress配置</a><br/>
 <a href="http://blog.csdn.net/lcliliil/article/details/13725895">Octopress侧边栏及评论系统定制</a><br/>
 <a href="https://github.com/nswbmw/N-blog/wiki/_pages">N-blog</a><br/>
-<a href="http://blog.csdn.net/lcliliil/article/details/13727927">Octopress添加统计与SEO</a></li>
-</ol>
-
+<a href="http://blog.csdn.net/lcliliil/article/details/13727927">Octopress添加统计与SEO</a></p>
 ]]></content>
   </entry>
   
