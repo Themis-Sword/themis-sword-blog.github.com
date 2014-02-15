@@ -118,3 +118,6 @@ content="{{ page.keywords }}">{ % endif % }
 [Octopress侧边栏及评论系统定制](http://blog.csdn.net/lcliliil/article/details/13725895)  
 [N-blog](https://github.com/nswbmw/N-blog/wiki/_pages)  
 [Octopress添加统计与SEO](http://blog.csdn.net/lcliliil/article/details/13727927)  
+  
+**PS:**  
+受限於格式要求，本文代碼中**{**或**}**與旁邊**%**之間的空格請刪去。
