@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-02-15T16:01:49+08:00</updated>
+  <updated>2014-02-15T16:12:02+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -179,7 +179,7 @@ Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲
 <a href="http://blog.csdn.net/lcliliil/article/details/13727927">Octopress添加统计与SEO</a></p>
 
 <p><strong>PS:</strong><br/>
-受限於格式要求，本文代碼中<strong>{</strong>或<strong>}</strong>與旁邊<strong>%</strong>之間的空格請刪去。</p>
+受限於格式要求，本文代碼中<strong>{</strong>或<strong>}</strong>與旁邊<strong>%</strong>之間的空格請刪去；<strong><strong>之間的</strong>\</strong>請刪去。</p>
 ]]></content>
   </entry>
   
