@@ -100,10 +100,10 @@ Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲
 爲網站、文章添加描述信息(description)、關鍵字(keywords)、標簽(tags)，以此幫助用戶準確的搜索到本博客。描述信息和關鍵字是指網頁head部分的元標簽(meta)，是給搜索引擎看的。  
 爲每一篇文章都添加描述，可以在Octopress模板中修改source/\_includes/head.html中的代碼  
 ``` html
-{ % capture description % }{ % if page.description % }{{ page.description }}{ % else % }{{ content | raw_content }}{ % endif % }{ % endcapture % }  
-<meta name="description" content="{{ description | strip_html | condense_spaces | truncate:150 }}">  
+{ % capture description % }{ % if page.description % }{\{ page.description }\}{ % else % }{\{ content | raw_content }\}{ % endif % }{ % endcapture % }  
+<meta name="description" content="{\{ description | strip_html | condense_spaces | truncate:150 }\}">  
 { % if page.keywords % }<meta name="keywords"  
-content="{{ page.keywords }}">{ % endif % }  
+content="{\{ page.keywords }\}">{ % endif % }  
 ```  
 2) 添加Google Analytics  
 註冊[Google Analytics](http://www.google.com/analytics/)獲得一個google_analytics_tracking_id，添加到\_config.yml中對應位置，並對網站進行驗證即可。然後通過Google Analytics分析網站流量。而且可以通過[Google站長工具](https://www.google.com/webmasters/tools/home?hl=zh-CN)，對網站進行更全面的分析和SEO。  
