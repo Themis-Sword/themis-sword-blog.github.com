@@ -9,8 +9,8 @@ categories:
   
 ###1. 安裝Ruby  
 ###2. 安裝Octopress  
-1) 確保安裝了git，在終端輸入git --version可以看到計算機中的git版本。  
-2) 利用命令將octopress從github上clone到本機：  
+確保安裝了git，在終端輸入git --version可以看到計算機中的git版本。  
+利用命令將octopress從github上clone到本機：  
 `$ git clone git://github.com/imathis/octopress.git octopress`  
 `$ cd octopress`  
 `$ ruby --version`  
@@ -75,9 +75,9 @@ Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲
 重要的是，我們需要在首頁將這個頁面的鏈接顯示出來，此時需要編輯source/\_includes/custom/navigation.html，仿照已有的內容添加一個新行，指向新創建的目錄即可。  
 當rake generate正常之後，就可以rake deploy到GitHub上了。  
 ###9. 獨立域名  
-1) 在域名管理中，建立一個CNAME指向，將你的域名指向username.github.com  
-2) 建一個名為CNAME的文件在source目錄下，然後將自己的域名輸入進去。  
-3) 將內容push到GitHub後，第一次生效大概需要一個小時，之後就可以用自己的域名進行訪問了。  
+在域名管理中，建立一個CNAME指向，將你的域名指向username.github.com  
+建一個名為CNAME的文件在source目錄下，然後將自己的域名輸入進去。  
+將內容push到GitHub後，第一次生效大概需要一個小時，之後就可以用自己的域名進行訪問了。  
 ###10. 安裝模板  
 常用第三方模板有：  
 [3rd Party Octopress Themes](http://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes)  
