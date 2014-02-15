@@ -195,7 +195,8 @@ Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲
     <b><br/>
     <div class="entry-content"> <a rel="license"   href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" ></a>版權聲明：非商用-非衍生-保持署名<br/>
     <br /><br/>
-    <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">Creative Commons BY-NC-ND 3.0 </a></div></b><br/>
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">Creative Commons BY-NC-ND 3.0<br/>
+    </a></div></b><br/>
     { % endif % }<br/>
     <!-- Copyright Info END --></li>
 <li>Octopress添加Google Analytics統計與SEO<br/>
@@ -206,7 +207,7 @@ Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲
     { % capture description % }{ % if page.description % }{ % else % }{ % endif % }{ % endcapture % }<br/>
     <meta name="description" content=""><br/>
     { % if page.keywords % }<meta name="keywords"
-    content="">{ % endif % }<br/>
+    content="">{ % endif % } &#8220;`<br/>
 2) 添加Google Analytics<br/>
 註冊<a href="http://www.google.com/analytics/">Google Analytics</a>獲得一個google_analytics_tracking_id，添加到_config.yml中對應位置，並對網站進行驗證即可。然後通過Google Analytics分析網站流量。而且可以通過<a href="https://www.google.com/webmasters/tools/home?hl=zh-CN">Google站長工具</a>，對網站進行更全面的分析和SEO。<br/>
 對自己的網站進行驗證，只需將Google Analytics提供的用於驗證的代碼添加到source/_includes/head.html的<head>標簽之間，網站部署到網上之後，過幾分鐘即可驗證通過，其他需要驗證的也同樣操作。</li>
