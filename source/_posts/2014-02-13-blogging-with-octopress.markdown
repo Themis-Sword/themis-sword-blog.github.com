@@ -76,7 +76,7 @@ Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲
 當rake generate正常之後，就可以rake deploy到GitHub上了。  
 9. 獨立域名  
 1) 在域名管理中，建立一個CNAME指向，將你的域名指向username.github.com  
-2) 見一個名為CNAME的文件在source目錄下，然後將自己的域名輸入進去。  
+2) 建一個名為CNAME的文件在source目錄下，然後將自己的域名輸入進去。  
 3) 將內容push到GitHub後，第一次生效大概需要一個小時，之後就可以用自己的域名進行訪問了。  
 10. 安裝模板  
 常用第三方模板有：  
@@ -120,4 +120,4 @@ content="{\{ page.keywords }\}">{ % endif % }
 [Octopress添加统计与SEO](http://blog.csdn.net/lcliliil/article/details/13727927)  
   
 **PS:**  
-受限於格式要求，本文代碼中**{**或**}**與旁邊**%**之間的空格請刪去；**{{**或者**}}**之間的**\\**請刪去。
+受限於格式要求，本文代碼中**{**或**}**與旁邊**%**之間的空格請刪去；兩個**{**或者兩個**}**之間的**\\**請刪去。
