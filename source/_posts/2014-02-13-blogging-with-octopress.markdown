@@ -120,4 +120,4 @@ content="{\{ page.keywords }\}">{ % endif % }
 [Octopress添加统计与SEO](http://blog.csdn.net/lcliliil/article/details/13727927)  
   
 **PS:**  
-受限於格式要求，本文代碼中**{**或**}**與旁邊**%**之間的空格請刪去。
+受限於格式要求，本文代碼中**{**或**}**與旁邊**%**之間的空格請刪去；**{{**或者**}}**之間的**\\**請刪去。
