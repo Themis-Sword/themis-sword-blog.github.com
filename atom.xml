@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-02-15T14:18:06+08:00</updated>
+  <updated>2014-02-15T14:25:15+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -116,35 +116,32 @@ Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲
 1) 在域名管理中，建立一個CNAME指向，將你的域名指向username.github.com<br/>
 2) 見一個名為CNAME的文件在source目錄下，然後將自己的域名輸入進去。<br/>
 3) 將內容push到GitHub後，第一次生效大概需要一個小時，之後就可以用自己的域名進行訪問了。</li>
-<li><p>安裝模板<br/>
+<li>安裝模板<br/>
 常用第三方模板有：<br/>
 <a href="http://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a><br/>
 進入選擇好的模板鏈接，根據說明進行安裝。(本Blog使用的模板爲：<a href="https://github.com/macjasp/cleanpress">CleanPress</a>)<br/>
 首先在source/_includes/post目錄下添加license.html文件，內容如下：<br/>
-<code>&lt;!-- Copyright Info BEGIN --&gt;</code></p>
-
-<pre><code>  &lt;b&gt;  
-  &lt;div class="entry-content"&gt; &lt;a rel="license"   href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" &gt;&lt;/a&gt;版權聲明：非商用-非衍生-保持署名  
-  &lt;br /&gt;  
-  &lt;a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh"&gt;Creative Commons BY-NC-ND 3.0 &lt;/a&gt;&lt;/div&gt;&lt;/b&gt;  
-</code></pre></li>
-</ol>
-
-
-<p><code>&lt;!-- Copyright Info END --&gt;</code><br/>
-11. Octopress添加Google Analytics統計與SEO<br/>
+    <!-- Copyright Info BEGIN --><br/>
+    { % if site.post_license % }<br/>
+    <b><br/>
+    <div class="entry-content"> <a rel="license"   href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" ></a>版權聲明：非商用-非衍生-保持署名<br/>
+    <br /><br/>
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">Creative Commons BY-NC-ND 3.0 </a></div></b><br/>
+    { % endif % }<br/>
+    <!-- Copyright Info END --></li>
+<li>Octopress添加Google Analytics統計與SEO<br/>
 1) 在各搜索引擎中提交本博客的地址：<br/>
 <a href="http://urlc.cn/tool/addurl.html">免费收录网站搜索引擎登录口大全</a><br/>
 爲網站、文章添加描述信息(description)、關鍵字(keywords)、標簽(tags)，以此幫助用戶準確的搜索到本博客。描述信息和關鍵字是指網頁head部分的元標簽(meta)，是給搜索引擎看的。<br/>
-爲每一篇文章都添加描述，可以在Octopress模板中修改source/_includes/head.html中的代碼</p>
-
-<pre><code>    &lt;meta name="description" content=""&gt;  
-</code></pre>
-
-<p>2) 添加Google Analytics<br/>
+爲每一篇文章都添加描述，可以在Octopress模板中修改source/_includes/head.html中的代碼<br/>
+    { % capture description % }{ % if page.description % }{ % else % }{ % endif % }{ % endcapture % }<br/>
+    <meta name="description" content=""><br/>
+    { % if page.keywords % }<meta name="keywords"
+    content="">{ % endif % }<br/>
+2) 添加Google Analytics<br/>
 註冊<a href="http://www.google.com/analytics/">Google Analytics</a>獲得一個google_analytics_tracking_id，添加到_config.yml中對應位置，並對網站進行驗證即可。然後通過Google Analytics分析網站流量。而且可以通過<a href="https://www.google.com/webmasters/tools/home?hl=zh-CN">Google站長工具</a>，對網站進行更全面的分析和SEO。<br/>
-對自己的網站進行驗證，只需將Google Analytics提供的用於驗證的代碼添加到source/_includes/head.html的<head>標簽之間，網站部署到網上之後，過幾分鐘即可驗證通過，其他需要驗證的也同樣操作。<br/>
-12. 參考<br/>
+對自己的網站進行驗證，只需將Google Analytics提供的用於驗證的代碼添加到source/_includes/head.html的<head>標簽之間，網站部署到網上之後，過幾分鐘即可驗證通過，其他需要驗證的也同樣操作。</li>
+<li>參考<br/>
 <a href="http://octopress.org/help/">Octopress Help</a><br/>
 <a href="http://justcoding.iteye.com/blog/1954645">利用Octopress搭建一個GitHub博客</a><br/>
 <a href="http://blog.devtang.com/blog/2012/02/10/setup-blog-based-on-github/">象写程序一样写博客：搭建基于github的博客</a><br/>
@@ -153,7 +150,12 @@ Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲
 <a href="http://www.yanjiuyanjiu.com/blog/20130402/">我的Octopress配置</a><br/>
 <a href="http://blog.csdn.net/lcliliil/article/details/13725895">Octopress侧边栏及评论系统定制</a><br/>
 <a href="https://github.com/nswbmw/N-blog/wiki/_pages">N-blog</a><br/>
-<a href="http://blog.csdn.net/lcliliil/article/details/13727927">Octopress添加统计与SEO</a></p>
+<a href="http://blog.csdn.net/lcliliil/article/details/13727927">Octopress添加统计与SEO</a></li>
+</ol>
+
+
+<p><strong>PS:</strong><br/>
+受限於格式要求，本文代碼中<strong>{</strong>或<strong>}</strong>與<strong>%</strong>之間的空格請刪掉。</p>
 ]]></content>
   </entry>
   
