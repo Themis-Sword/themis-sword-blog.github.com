@@ -18,7 +18,7 @@ def methodONE(list):
      else:
       lastItem = list[i]
     return list
-```    
+```    <!--more-->
 ####方法二：  
 定義一個臨時列表，循環迭代出的元素如果不在循環列表中，則加入，最後返回列表。  
 ``` python
