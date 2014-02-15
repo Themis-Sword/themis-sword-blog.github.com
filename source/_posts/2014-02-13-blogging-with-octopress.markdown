@@ -83,7 +83,7 @@ Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲
 [3rd Party Octopress Themes](http://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes)  
 進入選擇好的模板鏈接，根據說明進行安裝。(本Blog使用的模板爲：[CleanPress](https://github.com/macjasp/cleanpress))  
 首先在source/\_includes/post目錄下添加license.html文件，內容如下：  
-{ % gist 01e6ddf %}  
+{ % gist 9015532 [license info] %}  
 11. Octopress添加Google Analytics統計與SEO  
 1) 在各搜索引擎中提交本博客的地址：  
 [免费收录网站搜索引擎登录口大全](http://urlc.cn/tool/addurl.html)  
@@ -106,6 +106,3 @@ Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲
 [Octopress侧边栏及评论系统定制](http://blog.csdn.net/lcliliil/article/details/13725895)  
 [N-blog](https://github.com/nswbmw/N-blog/wiki/_pages)  
 [Octopress添加统计与SEO](http://blog.csdn.net/lcliliil/article/details/13727927)  
-
-**PS:**  
-受限於格式要求，本文代碼中**{**或**}**與**%**之間的空格請刪掉。
