@@ -1,19 +1,15 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
-@import "footnote";
+//@import "footnote";
 
 html {
-        background: #555555 url("/images/zhi.jpg");
-        //background: #555555;
+        background: url("/images/zhi.jpg");
 }
 
 body > div {
-        background-image: #555555 url("/images/zhi.jpg");
-        //background: #555555;
+        background-image: url("/images/zhi.jpg");
 } //侧边栏
 
 body > div > div { //文章内容
-        background-image: ＃555555 url("/images/zhi.jpg");
-        //background: #555555; 
-        //background: url("/images/zhi.jpg");
+        background-image: url("/images/zhi.jpg");
 }
