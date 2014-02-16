@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: python | Themis_Sword's Blog]]></title>
+  <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://www.aprilzephyr.com/"/>
+  <updated>2014-02-16T21:20:54+08:00</updated>
+  <id>http://www.aprilzephyr.com/</id>
+  <author>
+    <name><![CDATA[Themis_Sword]]></name>
+    <email><![CDATA[licong0419@outlook.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Python列表刪除重複元素的三種方法及效率分析(轉)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/2014/02/15/pythonlie-biao-shan-chu-zhong-fu-yuan-su-de-san-zhong-fang-fa-ji-xiao-lu-fen-xi-zhuan/"/>
+    <updated>2014-02-15T17:53:01+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/2014/02/15/pythonlie-biao-shan-chu-zhong-fu-yuan-su-de-san-zhong-fang-fa-ji-xiao-lu-fen-xi-zhuan</id>
+    <content type="html"><![CDATA[<h4>方法一：</h4>
+
+<p>使用列表對象的sort()方法對列表進行排序，從最後一個元素開始循環迭代列表，判斷相鄰的兩個元素是否相同。<br/>
+``` python
+def methodONE(list):</p>
+
+<pre><code>list.sort()
+lenList = len(list)
+lastItem = list[lenList-1]
+for i in range(lenList-2,-1,-1):
+ if list[i] == lastItem:
+  list.remove(list[i])
+ else:
+  lastItem = list[i]
+return list
+</code></pre>
+
+<p>```    <!--more--></p>
+
+<h4>方法二：</h4>
+
+<p>定義一個臨時列表，循環迭代出的元素如果不在循環列表中，則加入，最後返回列表。<br/>
+``` python
+def methodTWO(list):</p>
+
+<pre><code>templist = []
+for i in list:
+ if not i in temp list:
+  templist.addend(i)
+return templist
+</code></pre>
+
+<p>```</p>
+
+<h4>方法三：</h4>
+
+<p><code>python
+list = [20,12,34,12,24,34,55,27]
+print list(set(lists))
+</code></p>
+
+<h4>分析：</h4>
+
+<ol>
+<li>方法一相對方法二來說，有更多的額外操作如：排序、賦值。因爲在Python中，變量是不可變的，每迭代出一个元素比較不相等後的操作都是新建立一个局部變量、賦值並丟棄原變量，這需要消耗更多的内存!同時因爲排序操作，破壞了相對位置。</li>
+<li>方法二建立一个臨時列表進行操作，而列表是可變的，每次追加元素都只是在原列表上增加一个索引及值,因而相對方法一來說效率會更高!</li>
+<li>方法三无疑是效率最好的(無論是代碼的簡潔還是運行效率)。set()是內置的數據類型“集合類型”，它是無序的且值是唯一的！所以set()執行的结果就是轉為集合且直接去除了重複的元素，list()則將集合轉回列表類型。<br/>
+但是，set()會破壞排列順序，如果要保留排序，list(set(lists))可改為sorted(set(lists), key=lists.index)</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>
