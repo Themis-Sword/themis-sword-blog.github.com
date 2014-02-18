@@ -122,14 +122,52 @@ $(document).ready(
 	<div class="entry-content">
 		<ol>
 <li><p>平衡點問題<br/>
-平衡點：比如int[] numbers = {1,3,5,7,8,25,4,20}; 25前面的總和爲24，25後面的總和也是24，25這個點就是平衡點；假如一個數組中的元素，其前面的部分等於後面的部分，那麼這個點的位序就是平衡點 <br/>
+平衡點：比如int[] numbers = {1,3,5,7,8,25,4,20}; 25前面的總和爲24，25後面的總和也是24，25這個點就是平衡點；假如一個數組中的元素，其前面的部分等於後面的部分，那麼這個點的位序就是平衡點。 <br/>
 要求：返回任何一個平衡點</p></li>
 <li><p>支配點問題<br/>
-支配數：數組中某個元素出現的次數大於數組總數的一半時就成爲支配數，其所在位序成為支配點；比如int[] a = {3,3,1,2,3};3爲支配數，0，1，4分别爲支配點；
+支配數：數組中某個元素出現的次數大於數組總數的一半時就成爲支配數，其所在位序成為支配點；比如int[] a = {3,3,1,2,3};3爲支配數，0，1，4分别爲支配點。<br/>
 要求：返回任何一個支配點<br/>
-<a href="http://www.iteye.com/topic/600079">Origin</a></p></li>
+《編程之美》中有答案，就是尋找水王那篇。<br/>
+具體方法是：將序列排序，取中位數——注意，如果一個數出現次數大於整體的一半，那麼排序之後支配數一定在中間，然後驗證是否正確。</p></li>
 </ol>
 
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+</span><span class='line'><span class="c">#calculate  </span>
+</span><span class='line'><span class="n">numbers</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</span><span class='line'><span class="n">lens</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</span><span class='line'><span class="n">candidate</span><span class="o">=</span><span class="n">numbers</span><span class="p">[</span><span class="n">lens</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>
+</span><span class='line'><span class="c">#validate  </span>
+</span><span class='line'><span class="n">N</span><span class="o">=</span><span class="mi">0</span>
+</span><span class='line'><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">number</span><span class="o">==</span><span class="n">candidate</span><span class="p">:</span>
+</span><span class='line'>       <span class="n">N</span><span class="o">+=</span><span class="mi">1</span>
+</span><span class='line'><span class="c">#print answer  </span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">N</span><span class="o">&gt;=</span><span class="n">lens</span><span class="o">/</span><span class="mi">2</span><span class="p">):</span>
+</span><span class='line'>     <span class="k">print</span> <span class="n">numbers</span><span class="p">[</span><span class="n">lens</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>
+</span><span class='line'><span class="k">else</span> <span class="p">:</span>
+</span><span class='line'>   <span class="k">print</span> <span class="s">&#39;not found&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+<a href="http://hi.baidu.com/ruclin/item/f2706f26b1d2db140975086b">Origin</a>
+<a href="http://www.iteye.com/topic/600079">Reference</a></p>
 
 		
 		
