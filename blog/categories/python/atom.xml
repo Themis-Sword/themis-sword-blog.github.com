@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-02-18T22:29:42+08:00</updated>
+  <updated>2014-02-18T22:31:39+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -24,7 +24,7 @@
 要求：返回任何一個平衡點</p></li>
 <li><p>支配點問題<br/>
 支配數：數組中某個元素出現的次數大於數組總數的一半時就成爲支配數，其所在位序成為支配點；比如int[] a = {3,3,1,2,3};3爲支配數，0，1，4分别爲支配點。<br/>
-要求：返回任何一個支配點<br/>
+要求：返回任何一個支配點<!--more--><br/>
 《編程之美》中有答案，就是尋找水王那篇。<br/>
 具體方法是：將序列排序，取中位數——注意，如果一個數出現次數大於整體的一半，那麼排序之後支配數一定在中間，然後驗證是否正確。<br/>
 ``` python<br/>
