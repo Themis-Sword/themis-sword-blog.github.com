@@ -142,75 +142,9 @@ $(document).ready(
 <tr><td>hex(x) </td><td>將一個整數轉換為一個十六進制字符串</td></tr>
 <tr><td>oct(x) </td><td>將一個整數轉換為一個八進制字符串</td></tr>
 <tbody>
-</table></p></li>
-<li><p>range()函數的用法<br/>
-<strong>range(start, stop[, step])</strong><br/>
-Example:</p></li>
-</ol>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</span><span class='line'><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
-</span><span class='line'><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-</span><span class='line'><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</span><span class='line'><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">]</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</span><span class='line'><span class="p">[]</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</span><span class='line'><span class="p">[]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<ol>
-<li><p>生成隨機數<br/>
-1) <strong>random.random</strong><br/>
-用於生成一個0到1的隨機浮點數：0&lt;=n&lt;1.0。<br/>
-2) <strong>random.uniform</strong><br/>
-原型爲randon.uniform(a,b)，用於生成一個制定範圍內的隨機浮點數，兩個參數分別爲上下限：如果a>b，生成的浮點數：b&lt;=n&lt;a；如果a&lt;b，生成的浮點數：a&lt;=n&lt;b。<br/>
-3) <strong>random.randint</strong><br/>
-原型爲random.randint(a,b)，用於生成一個制定範圍內的整數。參數a爲下限，b爲上限，生成的隨機數：a&lt;=n&lt;=b。<br/>
-4) <strong>random.randrange</strong><br/>
-原型爲random.randrange([start], stop[, step])，從指定範圍內，按指定基數递增的集合中獲取一個隨機數。如：random.randrange(10, 100, 2)，结果相當於從[10, 12, 14, 16, &hellip; 96, 98]序列中獲取一個隨機數。random.randrange(10, 100, 2)在結果上於 random.choice(range(10, 100, 2)等效。<br/>
-5) <strong>random.choice</strong><br/>
-原型爲random.choice(sequence)。參數sequence表示一個有序類型，其不是一種特定的類型，而是泛指一系列的類型，如list，tuple，string等。<br/>
-6) <strong>random.shuffle</strong><br/>
-原型爲random.shufle(x[, random])，用於將一個列表中的元素打亂後輸出。<br/>
-7) <strong>random.sample</strong><br/>
-原型爲random.sample(sequence, k)，從指定序列中隨機獲取制定長度的片段，sample函數不會修改原有序列。</p></li>
-<li><p>如何查詢和替換一個文本字符串。<br/>
-1) sub()<br/>
-格式為sub(replacement, string[,count=0])<br/>
-replacement是被替換成的文本；<br/>
-string是需要被替換的文本；<br/>
-count是一個可選參數，指最大被替換的數量。<br/>
-2) subn()
-執行的效果跟sub()一样，不過它會返回一個二維數組，包括替換後的新的字符串和總共替換的數量。</p></li>
-</ol>
-
-
+</table> 
 		
-		
+		<a href="/blog/2014/02/18/notes-of-python/" class="more-link">Read on &rarr;</a>
 	</div>
 
 
