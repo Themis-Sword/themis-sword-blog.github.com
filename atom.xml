@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-02-18T10:07:48+08:00</updated>
+  <updated>2014-02-18T14:30:54+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Notes of Python]]></title>
+    <link href="http://www.aprilzephyr.com/blog/2014/02/18/notes-of-python/"/>
+    <updated>2014-02-18T14:09:05+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/2014/02/18/notes-of-python</id>
+    <content type="html"><![CDATA[<ol>
+<li>Python 是怎樣進行類型轉換的？<br/>
+1) Python是動態類型，是强類型的編程語言。<br/>
+2) Python內建函數的實現類型轉換：<br/>
+     <table>
+<tbody>
+<tr><td><em> 函數 </em></td><td><em> 描述 </em></td></tr><br/>
+<tr><td>int(x [,base ]) </td><td>將x轉換為一個整數</td></tr>
+<tr><td>long(x [,base ]) </td><td>將x轉換為一個長整數</td></tr>
+<tr><td>float(x) </td><td>將x轉換為一個浮點數</td></tr>
+<tr><td>complax(real [, img ]) </td><td>創建一個複數</td></tr>
+<tr><td>str(x) </td><td>將對象x轉換為字符串</td></tr>
+<tr><td>repr(x) </td><td>將對象x轉換為表達式字符串</td></tr>
+<tr><td>eval(str) </td><td>計算在字符串中的有效python表達式，並返回一個對象</td></tr>
+<tr><td>tuple(s) </td><td>將序列s轉換為一個元組</td></tr>
+<tr><td>list(s) </td><td>將序列s轉換為一個列表</td></tr>
+<tr><td>chr(x) </td><td>將一個整數轉換為一個字符</td></tr>
+<tr><td>unichr(x) </td><td>將一個整數轉換為一個Unicode字符</td></tr>
+<tr><td>ord(x) </td><td>將一個字符轉換為它的整數值</td></tr>
+<tr><td>hex(x) </td><td>將一個整數轉換為一個十六進制字符串</td></tr>
+<tr><td>oct(x) </td><td>將一個整數轉換為一個八進制字符串</td></tr>
+<tbody>
+</table></li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Destiny]]></title>
