@@ -26,7 +26,7 @@ categories: Python
 <tr><td>hex(x) </td><td>將一個整數轉換為一個十六進制字符串</td></tr>
 <tr><td>oct(x) </td><td>將一個整數轉換為一個八進制字符串</td></tr>
 <tbody>
-</table>  
+</table> <!--more-->  
   
 2. range()函數的用法  
 **range(start, stop[, step])**  
@@ -46,7 +46,7 @@ Example:
 []  
 >>> range(1, 0)  
 []  
-```  
+```
   
 3. 生成隨機數  
 1) **random.random**  
@@ -71,4 +71,61 @@ replacement是被替換成的文本；
 string是需要被替換的文本；  
 count是一個可選參數，指最大被替換的數量。  
 2) subn()
-執行的效果跟sub()一样，不過它會返回一個二維數組，包括替換後的新的字符串和總共替換的數量。
+執行的效果跟sub()一样，不過它會返回一個二維數組，包括替換後的新的字符串和總共替換的數量。  
+  
+5. 兩個序列的和的差最小  
+有两個序列a,b，大小都爲n,序列元素的值任意整数，無序；  
+要求：通過交換a,b 中的元素，使[序列a 元素的和]与[序列b 元素的和]之間的差最小。  
+例如:  
+var a=[100,99,98,1,2,3];  
+var b=[1,2,3,4,5,40];  
+**分析：**  
+當數組a和b的和之差爲A = sum(a) - sum(b)，a的第i個元素和b的第j個元素交換後，a和b的和之差爲：  
+A' = sum(a) - a[i] + b[j] - (sum(b) - b[j] + a[i])  
+   = sum(a) - sum(b) - 2 (a[i] - b[j])  
+   = A - 2 (a[i] - b[j])  
+設 x = a[i] - b[j]  
+|A| - |A'| = |A| - |A - 2x|  
+假設A > 0，  
+當x在(0, A)之間時，做這樣的交換才能使得交換後的a和b的和之差變小，x越接近A/2效果越好，如果找不到在(0, A)之间的x，則當前的a和b就是答案。  
+所以大概算法如下：在a和b中尋找使得x在(0, A)之間，並且最接近A/2的i和j，交換相應的i和j元素，重新計算A後，重複前面的步骤直到找不到(0, A)之間的x為止。  
+``` python
+def mean(a, b):  
+    if sum(a) < sum(b):  
+        array = a  
+        a = b  
+        b = array  
+    diff_sum = sum(a) - sum(b)  
+    loop = True  
+    while loop:  
+        loop = False  
+        md = diff_sum / 2  
+        for i in range(0, len(a)):  
+            for j in range(0, len(b)):  
+                x = a[i] - b[j]  
+                if x < diff_sum and x > 0:  
+                    loop = True  
+                    if abs(x - diff_sum / 2) < md:  
+                        md = abs (x - diff_sum / 2)  
+                        mi = i  
+                        mj = j  
+        if loop:  
+            tmp = a[mi]  
+            a[mi] = b[mj]  
+            b[mj] = tmp  
+            diff_sum = diff_sum - 2 * (b[mj] - a[mi])  
+            if diff_sum < 0:  
+                array = a  
+                a = b  
+                b = array  
+                diff_sum = - diff_sum  
+def main():  
+    a = [7, 9, 10]  
+    b = [6, 2, 8]  
+    mean(a, b)  
+    print (a)  
+    print (b)  
+if __name__ == '__main__':  
+    main()  
+```
+[Origin](http://www.smallqiao.com/31.html)
