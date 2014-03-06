@@ -17,7 +17,7 @@ def fib(n):
  while(n):
   x,y,n=y,x+y,n-1
  return x
- ```
+```  
 3) 尾遞歸(SICP)：  
 ``` python
 def fib(n):
