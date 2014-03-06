@@ -25,9 +25,9 @@ def fib(n):
   if n==0 : return x
   else : return fib_iter(n-1,y,x+y)
  return fib_iter(n,0,1)
- ```  
+```  
 [Origin](http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html)<!--more-->  
-</br>
+  
 2. 九九乘法表  
 ``` python
 for i in range(1,10):
@@ -35,16 +35,16 @@ for i in range(1,10):
 　　　　print(" %d*%d=%d" % (j,i,i*j)),
 　　print '\n'
 ```  
-</br>
+  
 3. 求素數  
 ``` python
-lis = []    #装非素数的容器
+lis = []
 for obj in range(1,10):
     if obj>2:
         for x in range(2,obj):
             if obj % x == 0:
                 lis.append(obj)
-lis = list(set(lis))    #去重
-sushu = [obj for obj in range(1,10) if obj not in lis]  #去包含
+lis = list(set(lis))
+sushu = [obj for obj in range(1,10) if obj not in lis]
 print sushu
-```
+```  
