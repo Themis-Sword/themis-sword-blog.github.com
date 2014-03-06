@@ -115,6 +115,125 @@ $(document).ready(
     <article class="post">
 	<h3 class="title">
 		
+		<a href="/blog/2014/03/06/notes-of-python-02/">
+		
+			Notes of Python 02</a>
+	</h3>
+	<div class="entry-content">
+		<ol>
+<li>不同算法實現Fibonacci數列<br/>
+1) 遞歸：</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">fib</span><span class="o">=</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span><span class="mi">1</span> <span class="k">if</span> <span class="n">n</span><span class="o">&lt;=</span><span class="mi">2</span> <span class="k">else</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+2) 迭代：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
+</span><span class='line'> <span class="k">while</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>  <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+</span><span class='line'> <span class="k">return</span> <span class="n">x</span>
+</span><span class='line'> <span class="sb">``</span><span class="err">`</span>
+</span><span class='line'><span class="mi">3</span><span class="p">)</span> <span class="err">尾遞歸</span><span class="p">(</span><span class="n">SICP</span><span class="p">)</span><span class="err">：</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p> python
+def fib(n):
+ def fib_iter(n,x,y):
+  if n==0 : return x
+  else : return fib_iter(n-1,y,x+y)
+ return fib_iter(n,0,1)
+ &#8220;`<br/>
+<a href="http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html">Origin</a><br/>
+</br>
+2. 九九乘法表</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+</span><span class='line'><span class="err">　　</span><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+</span><span class='line'><span class="err">　　　　</span><span class="k">print</span><span class="p">(</span><span class="s">&quot; </span><span class="si">%d</span><span class="s">*</span><span class="si">%d</span><span class="s">=</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">)),</span>
+</span><span class='line'><span class="err">　　</span><span class="k">print</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+</br>
+3. 求素數</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">lis</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c">#装非素数的容器</span>
+</span><span class='line'><span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">obj</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">obj</span><span class="p">):</span>
+</span><span class='line'>            <span class="k">if</span> <span class="n">obj</span> <span class="o">%</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>                <span class="n">lis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+</span><span class='line'><span class="n">lis</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">lis</span><span class="p">))</span>    <span class="c">#去重</span>
+</span><span class='line'><span class="n">sushu</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">obj</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lis</span><span class="p">]</span>  <span class="c">#去包含</span>
+</span><span class='line'><span class="k">print</span> <span class="n">sushu</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-06T17:07:25+08:00" pubdate data-updated="true">Mar 6<span>th</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/python/'>Python</a>
+
+</div>
+
+
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h3 class="title">
+		
 		<a href="/blog/2014/03/06/pythonshi-xian-pai-xu-suan-fa/">
 		
 			Python實現排序算法</a>
@@ -464,7 +583,7 @@ $(document).ready(
 		
 		<a href="/blog/2014/02/18/notes-of-python/">
 		
-			Notes of Python</a>
+			Notes of Python 01</a>
 	</h3>
 	<div class="entry-content">
 		<ol>
@@ -629,52 +748,6 @@ $(document).ready(
 <div class="tags">
 
 	<a class='category' href='/blog/categories/python/'>Python</a>
-
-</div>
-
-
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/2014/02/14/blabla/">
-		
-			Blabla</a>
-	</h3>
-	<div class="entry-content">
-		<p><img src="/images/time/jpg"></p>
-
-<p><strong>It becomes a torture which the state between-jobs&#8217; lasting more than four months.</strong></p>
-
-<p>Retrospecting my travel itinerary last year from Thai to South Korea, nearly 50 days across eight countries and districts, I know, traveling is indispensable in my life notwithstanding being not the life itself.
-		
-		<a href="/blog/2014/02/14/blabla/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-14T12:37:02+08:00" pubdate data-updated="true">Feb 14<span>th</span>, 2014</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/mood/'>Mood</a>
 
 </div>
 

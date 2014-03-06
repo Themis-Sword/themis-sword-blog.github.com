@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-03-06T16:24:10+08:00</updated>
+  <updated>2014-03-06T17:19:53+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,60 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Notes of Python 02]]></title>
+    <link href="http://www.aprilzephyr.com/blog/2014/03/06/notes-of-python-02/"/>
+    <updated>2014-03-06T17:07:25+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/2014/03/06/notes-of-python-02</id>
+    <content type="html"><![CDATA[<ol>
+<li>不同算法實現Fibonacci數列<br/>
+1) 遞歸：<br/>
+<code>python
+fib=lambda n:1 if n&lt;=2 else fib(n-1)+fib(n-2)
+</code><br/>
+2) 迭代：<br/>
+<code>python
+def fib(n):
+x,y=0,1
+while(n):
+x,y,n=y,x+y,n-1
+return x
+</code>
+3) 尾遞歸(SICP)：<br/>
+<code>python
+def fib(n):
+def fib_iter(n,x,y):
+if n==0 : return x
+else : return fib_iter(n-1,y,x+y)
+return fib_iter(n,0,1)
+</code><br/>
+<a href="http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html">Origin</a><br/>
+</br></li>
+<li>九九乘法表<br/>
+<code>python
+for i in range(1,10):
+　　for j in range(1,i+1):
+　　　　print(" %d*%d=%d" % (j,i,i*j)),
+　　print '\n'
+</code><br/>
+</br></li>
+<li>求素數<br/>
+<code>python
+lis = []    #装非素数的容器
+for obj in range(1,10):
+ if obj&gt;2:
+     for x in range(2,obj):
+         if obj % x == 0:
+             lis.append(obj)
+lis = list(set(lis))    #去重
+sushu = [obj for obj in range(1,10) if obj not in lis]  #去包含
+print sushu
+</code></li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python實現排序算法]]></title>
@@ -88,7 +142,14 @@ def quick(x,low,high):
     quick(x,low,p-1)
     quick(x,p+1,high)
  return x
-</code></li>
+</code><br/>
+</br></li>
+<li>利用函數排序<br/>
+1) cmp()<br/>
+Compare the two objects x and y and return an integer according to the outcome. The return value is negative if x &lt; y, zero if x == y and strictly positive if x > y.<br/>
+2) reversed()<br/>
+3) sort()<br/>
+4) sorted()</li>
 </ol>
 
 ]]></content>
@@ -166,7 +227,7 @@ print &lsquo;not found'<br/>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Notes of Python]]></title>
+    <title type="html"><![CDATA[Notes of Python 01]]></title>
     <link href="http://www.aprilzephyr.com/blog/2014/02/18/notes-of-python/"/>
     <updated>2014-02-18T14:09:05+08:00</updated>
     <id>http://www.aprilzephyr.com/blog/2014/02/18/notes-of-python</id>

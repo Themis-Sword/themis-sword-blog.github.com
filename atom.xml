@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-03-06T16:24:10+08:00</updated>
+  <updated>2014-03-06T17:19:53+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,91 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Notes of Python 02]]></title>
+    <link href="http://www.aprilzephyr.com/blog/2014/03/06/notes-of-python-02/"/>
+    <updated>2014-03-06T17:07:25+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/2014/03/06/notes-of-python-02</id>
+    <content type="html"><![CDATA[<ol>
+<li>不同算法實現Fibonacci數列<br/>
+1) 遞歸：</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">fib</span><span class="o">=</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span><span class="mi">1</span> <span class="k">if</span> <span class="n">n</span><span class="o">&lt;=</span><span class="mi">2</span> <span class="k">else</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+2) 迭代：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
+</span><span class='line'> <span class="k">while</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>  <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+</span><span class='line'> <span class="k">return</span> <span class="n">x</span>
+</span><span class='line'> <span class="sb">``</span><span class="err">`</span>
+</span><span class='line'><span class="mi">3</span><span class="p">)</span> <span class="err">尾遞歸</span><span class="p">(</span><span class="n">SICP</span><span class="p">)</span><span class="err">：</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p> python
+def fib(n):
+ def fib_iter(n,x,y):
+  if n==0 : return x
+  else : return fib_iter(n-1,y,x+y)
+ return fib_iter(n,0,1)
+ &#8220;`<br/>
+<a href="http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html">Origin</a><br/>
+</br>
+2. 九九乘法表</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+</span><span class='line'><span class="err">　　</span><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+</span><span class='line'><span class="err">　　　　</span><span class="k">print</span><span class="p">(</span><span class="s">&quot; </span><span class="si">%d</span><span class="s">*</span><span class="si">%d</span><span class="s">=</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">)),</span>
+</span><span class='line'><span class="err">　　</span><span class="k">print</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+</br>
+3. 求素數</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">lis</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c">#装非素数的容器</span>
+</span><span class='line'><span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">obj</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">obj</span><span class="p">):</span>
+</span><span class='line'>            <span class="k">if</span> <span class="n">obj</span> <span class="o">%</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>                <span class="n">lis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+</span><span class='line'><span class="n">lis</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">lis</span><span class="p">))</span>    <span class="c">#去重</span>
+</span><span class='line'><span class="n">sushu</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">obj</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lis</span><span class="p">]</span>  <span class="c">#去包含</span>
+</span><span class='line'><span class="k">print</span> <span class="n">sushu</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python實現排序算法]]></title>
@@ -156,6 +241,15 @@
 </span><span class='line'>    <span class="k">return</span> <span class="n">x</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p>
+</br>
+5. 利用函數排序<br/>
+1) cmp()<br/>
+Compare the two objects x and y and return an integer according to the outcome. The return value is negative if x &lt; y, zero if x == y and strictly positive if x > y.<br/>
+2) reversed()<br/>
+3) sort()<br/>
+4) sorted()</p>
 ]]></content>
   </entry>
   
@@ -591,7 +685,7 @@ It is difficult, and in some cases impossible, to develop direct measures of the
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Notes of Python]]></title>
+    <title type="html"><![CDATA[Notes of Python 01]]></title>
     <link href="http://www.aprilzephyr.com/blog/2014/02/18/notes-of-python/"/>
     <updated>2014-02-18T14:09:05+08:00</updated>
     <id>http://www.aprilzephyr.com/blog/2014/02/18/notes-of-python</id>
