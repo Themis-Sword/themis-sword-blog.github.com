@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-03-06T17:30:24+08:00</updated>
+  <updated>2014-03-06T17:32:20+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -63,7 +63,7 @@
 </span><span class='line'>  <span class="k">else</span> <span class="p">:</span> <span class="k">return</span> <span class="n">fib_iter</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
 </span><span class='line'> <span class="k">return</span> <span class="n">fib_iter</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 </span><span class='line'> <span class="sb">``</span><span class="err">`</span>
-</span><span class='line'><span class="p">[</span><span class="n">Origin</span><span class="p">](</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">cnblogs</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">figure9</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="mi">2010</span><span class="o">/</span><span class="mi">08</span><span class="o">/</span><span class="mi">30</span><span class="o">/</span><span class="mf">1812927.</span><span class="n">html</span><span class="p">)</span>
+</span><span class='line'><span class="p">[</span><span class="n">Origin</span><span class="p">](</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">cnblogs</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">figure9</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="mi">2010</span><span class="o">/</span><span class="mi">08</span><span class="o">/</span><span class="mi">30</span><span class="o">/</span><span class="mf">1812927.</span><span class="n">html</span><span class="p">)</span><span class="o">&lt;</span><span class="err">!</span><span class="o">--</span><span class="n">more</span><span class="o">--&gt;</span>
 </span><span class='line'><span class="o">&lt;/</span><span class="n">br</span><span class="o">&gt;</span>
 </span><span class='line'><span class="mf">2.</span> <span class="err">九九乘法表</span>
 </span></code></pre></td></tr></table></div></figure>

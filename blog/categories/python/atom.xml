@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-03-06T17:30:24+08:00</updated>
+  <updated>2014-03-06T17:32:20+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -40,7 +40,7 @@ if n==0 : return x
 else : return fib_iter(n-1,y,x+y)
 return fib_iter(n,0,1)
 </code><br/>
-<a href="http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html">Origin</a><br/>
+<a href="http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html">Origin</a><!--more--><br/>
 </br></li>
 <li>九九乘法表<br/>
 <code>python
