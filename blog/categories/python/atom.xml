@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-03-06T17:32:20+08:00</updated>
+  <updated>2014-03-06T20:47:04+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -19,7 +19,7 @@
     <updated>2014-03-06T17:07:25+08:00</updated>
     <id>http://www.aprilzephyr.com/blog/2014/03/06/notes-of-python-02</id>
     <content type="html"><![CDATA[<ol>
-<li>不同算法實現Fibonacci數列<br/>
+<li><p>不同算法實現Fibonacci數列<br/>
 1) 遞歸：<br/>
 <code>python
 fib=lambda n:1 if n&lt;=2 else fib(n-1)+fib(n-2)
@@ -40,28 +40,26 @@ if n==0 : return x
 else : return fib_iter(n-1,y,x+y)
 return fib_iter(n,0,1)
 </code><br/>
-<a href="http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html">Origin</a><!--more--><br/>
-</br></li>
-<li>九九乘法表<br/>
+<a href="http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html">Origin</a><!--more--></p></li>
+<li><p>九九乘法表<br/>
 <code>python
 for i in range(1,10):
 　　for j in range(1,i+1):
 　　　　print(" %d*%d=%d" % (j,i,i*j)),
 　　print '\n'
-</code><br/>
-</br></li>
-<li>求素數<br/>
+</code></p></li>
+<li><p>求素數<br/>
 <code>python
-lis = []    #装非素数的容器
+lis = []
 for obj in range(1,10):
  if obj&gt;2:
      for x in range(2,obj):
          if obj % x == 0:
              lis.append(obj)
-lis = list(set(lis))    #去重
-sushu = [obj for obj in range(1,10) if obj not in lis]  #去包含
+lis = list(set(lis))
+sushu = [obj for obj in range(1,10) if obj not in lis]
 print sushu
-</code></li>
+</code></p></li>
 </ol>
 
 ]]></content>
