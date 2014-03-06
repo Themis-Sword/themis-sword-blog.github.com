@@ -6,7 +6,7 @@ comments: true
 categories: Mood
 ---
 
-![Time](http://d.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=58f8ae73a38b87d65442ab1a37335905/8601a18b87d6277f75cb2e7a2a381f30e824fc93.jpg?referer=cb406f510bf79052b608730e3c71&x=.jpg)  
+{% img /images/time/jpg %} 
   
 **It becomes a torture which the state between-jobs' lasting more than four months.**  
   
