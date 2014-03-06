@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Notes of Python"
+title: "Notes of Python 01"
 date: 2014-02-18 14:09:05 +0800
 comments: true
 categories: Python

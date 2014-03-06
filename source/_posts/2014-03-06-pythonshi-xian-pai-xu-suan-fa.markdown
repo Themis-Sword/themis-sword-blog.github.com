@@ -74,4 +74,11 @@ def quick(x,low,high):
        quick(x,low,p-1)
        quick(x,p+1,high)
     return x
-```
+```  
+</br>
+5. 利用函數排序  
+1) cmp()  
+Compare the two objects x and y and return an integer according to the outcome. The return value is negative if x < y, zero if x == y and strictly positive if x > y.  
+2) reversed()  
+3) sort()  
+4) sorted()  
