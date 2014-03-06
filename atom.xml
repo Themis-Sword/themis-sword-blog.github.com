@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-03-06T17:19:53+08:00</updated>
+  <updated>2014-03-06T17:25:07+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -37,43 +37,16 @@
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
 </span><span class='line'> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
 </span><span class='line'> <span class="k">while</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
 </span><span class='line'>  <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
 </span><span class='line'> <span class="k">return</span> <span class="n">x</span>
-</span><span class='line'> <span class="sb">``</span><span class="err">`</span>
-</span><span class='line'><span class="mi">3</span><span class="p">)</span> <span class="err">尾遞歸</span><span class="p">(</span><span class="n">SICP</span><span class="p">)</span><span class="err">：</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p> python
-def fib(n):
- def fib_iter(n,x,y):
-  if n==0 : return x
-  else : return fib_iter(n-1,y,x+y)
- return fib_iter(n,0,1)
- &#8220;`<br/>
-<a href="http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html">Origin</a><br/>
-</br>
-2. 九九乘法表</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
-</span><span class='line'><span class="err">　　</span><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-</span><span class='line'><span class="err">　　　　</span><span class="k">print</span><span class="p">(</span><span class="s">&quot; </span><span class="si">%d</span><span class="s">*</span><span class="si">%d</span><span class="s">=</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="p">)),</span>
-</span><span class='line'><span class="err">　　</span><span class="k">print</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p>
-</br>
-3. 求素數</p>
+3) 尾遞歸(SICP)：</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -84,17 +57,45 @@ def fib(n):
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">lis</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c">#装非素数的容器</span>
-</span><span class='line'><span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
-</span><span class='line'>    <span class="k">if</span> <span class="n">obj</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">:</span>
-</span><span class='line'>        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">obj</span><span class="p">):</span>
-</span><span class='line'>            <span class="k">if</span> <span class="n">obj</span> <span class="o">%</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-</span><span class='line'>                <span class="n">lis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
-</span><span class='line'><span class="n">lis</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">lis</span><span class="p">))</span>    <span class="c">#去重</span>
-</span><span class='line'><span class="n">sushu</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">obj</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lis</span><span class="p">]</span>  <span class="c">#去包含</span>
-</span><span class='line'><span class="k">print</span> <span class="n">sushu</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'> <span class="k">def</span> <span class="nf">fib_iter</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span> <span class="p">:</span> <span class="k">return</span> <span class="n">x</span>
+</span><span class='line'>  <span class="k">else</span> <span class="p">:</span> <span class="k">return</span> <span class="n">fib_iter</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+</span><span class='line'> <span class="k">return</span> <span class="n">fib_iter</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'> <span class="sb">``</span><span class="err">`</span>
+</span><span class='line'><span class="p">[</span><span class="n">Origin</span><span class="p">](</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">cnblogs</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">figure9</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="mi">2010</span><span class="o">/</span><span class="mi">08</span><span class="o">/</span><span class="mi">30</span><span class="o">/</span><span class="mf">1812927.</span><span class="n">html</span><span class="p">)</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">br</span><span class="o">&gt;</span>
+</span><span class='line'><span class="mf">2.</span> <span class="err">九九乘法表</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p> python
+for i in range(1,10):
+　　for j in range(1,i+1):
+　　　　print(&ldquo; %d<em>%d=%d&rdquo; % (j,i,i</em>j)),
+　　print &lsquo;\n&rsquo;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&lt;/</span><span class="n">br</span><span class="o">&gt;</span>
+</span><span class='line'><span class="mf">3.</span> <span class="err">求素數</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p> python
+lis = []    #装非素数的容器
+for obj in range(1,10):</p>
+
+<pre><code>if obj&gt;2:
+    for x in range(2,obj):
+        if obj % x == 0:
+            lis.append(obj)
+</code></pre>
+
+<p>lis = list(set(lis))    #去重
+sushu = [obj for obj in range(1,10) if obj not in lis]  #去包含
+print sushu
+&#8220;`</p>
 ]]></content>
   </entry>
   
