@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-02-28T00:32:43+08:00</updated>
+  <updated>2014-03-06T16:24:10+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,87 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python實現排序算法]]></title>
+    <link href="http://www.aprilzephyr.com/blog/2014/03/06/pythonshi-xian-pai-xu-suan-fa/"/>
+    <updated>2014-03-06T15:53:21+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/2014/03/06/pythonshi-xian-pai-xu-suan-fa</id>
+    <content type="html"><![CDATA[<ol>
+<li>冒泡排序<br/>
+<code>python   
+def bubble(x,n):  
+\冒泡排序，x是列表，n是列表長度  
+for i in range(n):  
+for j in range(n-1):  
+if x[j]&gt;x[j+1]:  
+t = x[j]  
+x[j] = x[j+1]  
+x[j+1] = t  
+return x                  
+print bubble([1,10,2,5,41,25,3,48], 8)    
+</code><br/>
+</br><!--more--></li>
+<li>插入排序<br/>
+<code>python  
+def insert(x,n):
+  i = 1
+  while i&lt;n-1:
+      key = x[i]
+      j = i-1
+      while j&gt;=0 and key&lt;x[j]:
+          x[j+1]= x[j]
+          j -= 1
+      x[j+1] = key
+      i += 1
+  return x
+print insert([1,10,2,5,41,25,3,48],8)
+</code><br/>
+</br></li>
+<li>選擇排序<br/>
+<code>python
+def select(x,n):
+ for i in range(n-1):
+     key = i
+     for j in range(i+1,n):
+         if x[j] &lt; x[key]:
+              key = j
+     if key!=i:
+         t = x[i]
+         x[i] = x[key]
+         x[key] = t
+ return x
+print select([1,10,2,5,41,25,3,48],8)
+</code><br/>
+</br></li>
+<li>快速排序
+<code>python
+def partition(x,low,high):
+ key = x[low]
+ while low&lt;high:
+     while low&lt;high and x[high]&gt;=key:
+         high -= 1
+     if low &lt; high:
+         x[low]= x[high]
+         low += 1
+     while low &lt;high and x[low]&lt;=key:
+         low += 1
+     if low &lt; high:
+         x[high] = x[low]
+         high -= 1
+ x[low] = key
+ return low
+def quick(x,low,high):
+ if low &lt; high:
+    p = partition(x,low,high)
+    quick(x,low,p-1)
+    quick(x,p+1,high)
+ return x
+</code></li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[平衡點問題和支配點問題之Python求解(轉)]]></title>
