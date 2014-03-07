@@ -6,7 +6,7 @@ comments: true
 categories: Mood
 ---
 
-{% img /images/time/jpg %} 
+{% img /images/time.jpg %} 
   
 **It becomes a torture which the state between-jobs' lasting more than four months.**  
   
