@@ -24,4 +24,6 @@ Just one moment, passing-aways are insulated from fresh lives. It's so quick bey
   
 We are not the hero in that movie who could travel in time, we could not change even a flash of time.  
   
-Please, living in the present, there would be even no opportunity for regretting.
+Please, living in the present, there would be even no opportunity for regretting.  
+  
+**PS:** Let's pray, for the best of those lost brothers and sisters.
