@@ -6,6 +6,7 @@ comments: true
 categories: Mood
 ---
 {% img /images/mourning_angel.jpg %}
+
 <embed src="http://www.xiami.com/widget/34027985_1772642616/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></embed>
 
 The distance between life and death, maybe far beyond the real boundary from life to death.<!--more-->  
