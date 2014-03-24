@@ -9,7 +9,7 @@ categories: Mood
 
 <embed src="http://www.xiami.com/widget/34027985_1772642616/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></embed>
 
-The distance between life and death, maybe far beyond the real boundary from life to death.<!--more-->  
+The distance between life and death, maybe far beyond the real boundary from life and death.<!--more-->  
   
 It might need only one second separating fresh teary faces from pale freezing corpses. Or, seventeen days' passing eclipse infinite dread and heart-lacerating sorrow over these pathetic waiting families who have already withstood too much.  
   
@@ -19,8 +19,8 @@ Since March 8th, no solid wreckages of MH370 are found yet. Maybe we would never
   
 The latest news, came unexpectedly without any warmth of humanity. A text message sending to relatives of the passengers onboard says that "we have to assume beyond any reasonable doubt that MH370 has been lost and that none of those onboard survived." Maybe the planes was ended in the remote Southern Indian Ocean for it is "far from any possible landing sites."  
   
-Cannot imagine those relatives' heartbreaking.  
+Cannot imagine those relatives' heartbreak.  
   
-Lives are so fragile that any good byes would become a farewell forever.  
+Lives are so fragile that any good bye would become a farewell forever.  
   
-Please pray for the living, and mourn over the passing. Cherish every single moment sharing with your beloved.
+Please pray for the living, and mourn over the passing. Cherish every single moment sharing with your beloved. Treat life well.
