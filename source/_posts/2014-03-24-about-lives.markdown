@@ -15,12 +15,12 @@ It might need only one second separating fresh teary faces from pale freezing co
   
 Time is a queer thing could not be explained reasonably which gives people shock, sadness, hope then and despair finally.  
   
-Since March 8th, no solid wreckages of MH370 are found yet. Maybe we would never find the aircraft. However, things become weird and bizarre thanks to kinds of press conferences, analyses, information from concerned third parties.  
+Since March 8th, no solid wreckages of MH370 are found yet. Maybe we would never find the aircraft. However, things become weird and bizarre thanks to kinds of press conferences, analyses, information from so-called concerned third parties. Emotions of the whole nation are affected like riding on the roller coasters, let alone the relatives.   
   
 The latest news, came unexpectedly without any warmth of humanity. A text message sending to relatives of the passengers onboard says that "we have to assume beyond any reasonable doubt that MH370 has been lost and that none of those onboard survived." Maybe the planes was ended in the remote Southern Indian Ocean for it is "far from any possible landing sites."  
   
-Cannot imagine how did those relatives feel.  
+Cannot imagine those relatives' heartbreaking.  
   
 Lives are so fragile that any good byes would become a farewell forever.  
   
-Please pray for the living, and mourn over the passing.
+Please pray for the living, and mourn over the passing. Cherish every single moment sharing with your beloved.
