@@ -12,7 +12,7 @@ Python提供了time/datetime/calendar等模塊來處理日期和時間。
 *B. time.sleep()*  
 可以通過调用time.sleep來挂起當前的進程。time.sleep接收一个浮點型參數，表示進程挂起的時間。  
 *C. time.clock()*  
-time.clock()返回第一次调用该方法到现在的秒數，其精確度高於1微秒。可以使用该函數來記錄程序執行的時間。 <!--more--> 
+time.clock()返回第一次调用该方法到现在的秒數，其精確度高於1微秒。可以使用该函數來記錄程序執行的時間。 <!--more-->  
 *D. time.gmtime()*  
 該函數原型為time.gmtime([sec])，可選參數sec表示從1970-01-01以來的秒數，默認值為time.time()，函數返回time.struct_time類型的對象。(struct_time是在time模塊中定義的表示時間的對象)，下面是一個簡單的例子：  
 ``` python
@@ -65,15 +65,13 @@ python中時間日期格式化符號：
 ```  
   
 **2. datetime模塊**  
-A. 兩個常量  
+*A. 兩個常量*  
 datetime.MINYEAR和datetime.MAXYEAR，分別表示datetime所能表示的最小、最大年份。其中，MINYEAR=1,MAXYEAR=0000。  
-  
-B. 幾個重要的類  
+*B. 幾個重要的類*  
 1) datetime.date:表示日期的類，常用的屬性有tear, month, day:  
 year的返回在兩個常量之間；  
 month的範圍是[1,12]，月份是從1開始；  
 day依據month來決定。   
-  
 2) date類提供了常用的類方法和類屬性：  
 date.max, date.min：date對象所能表示的最大、最小日期；
 date.today()：返回一個表示當前本地日期的date對象。  
@@ -87,7 +85,6 @@ date.today()：返回一個表示當前本地日期的date對象。
 >>> print date.min
 0001-01-01
 ```  
-  
 3) date提供的實例方法和屬性  
 date.year、date.month、date.day：年、月、日；  
 date.replace(year, month, day)：生成一个新的日期對象，用參數指定的年，月，日代替原有對象中的屬性。（原有對象仍保持不變）；  
@@ -115,7 +112,6 @@ isocalendar(): (2014, 13, 3)
 >>> print 'isoformat():',now.isoformat()
 isoformat(): 2014-03-26
 ```   
-  
 4) date還對某些操作進行了重載，它允許我們對日期進行如下一些操作：  
 date2 = date1 + timedelta  # 日期加上一個間隔，返回一個新的日期對象（timedelta將在下面介紹，表示時間間隔）
 date2 = date1 - timedelta   # 日期隔去間隔，返回一個新的日期對象
