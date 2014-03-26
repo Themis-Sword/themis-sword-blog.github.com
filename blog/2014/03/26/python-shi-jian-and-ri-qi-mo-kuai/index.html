@@ -114,18 +114,14 @@ $(document).ready(
 </h3>
 	<div class="entry-content"><p>Python提供了time/datetime/calendar等模塊來處理日期和時間。<br/>
 <strong>1.time模塊常用的函數</strong><br/>
-A. time.time()<br/>
-1970年1月1日以來的秒數，是一個浮點數。</p>
-
-<ol type="a">
-<li><p>time.sleep()<br/>
-可以通過调用time.sleep來挂起當前的進程。time.sleep接收一个浮點型參數，表示進程挂起的時間。</p></li>
-<li><p>time.clock()<br/>
-time.clock()返回第一次调用该方法到现在的秒數，其精確度高於1微秒。可以使用该函數來記錄程序執行的時間。</p></li>
-<li><p>time.gmtime()<br/>
-該函數原型為time.gmtime([sec])，可選參數sec表示從1970-01-01以來的秒數，默認值為time.time()，函數返回time.struct_time類型的對象。(struct_time是在time模塊中定義的表示時間的對象)，下面是一個簡單的例子：</p></li>
-</ol>
-
+<em>A. time.time()</em><br/>
+1970年1月1日以來的秒數，是一個浮點數。<br/>
+<em>B. time.sleep()</em><br/>
+可以通過调用time.sleep來挂起當前的進程。time.sleep接收一个浮點型參數，表示進程挂起的時間。<br/>
+<em>C. time.clock()</em><br/>
+time.clock()返回第一次调用该方法到现在的秒數，其精確度高於1微秒。可以使用该函數來記錄程序執行的時間。 <!--more-->
+<em>D. time.gmtime()</em><br/>
+該函數原型為time.gmtime([sec])，可選參數sec表示從1970-01-01以來的秒數，默認值為time.time()，函數返回time.struct_time類型的對象。(struct_time是在time模塊中定義的表示時間的對象)，下面是一個簡單的例子：</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -142,17 +138,13 @@ time.clock()返回第一次调用该方法到现在的秒數，其精確度高�
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p></p>
-
-<ol type="a">
-<li><p>time.localtime()<br/>
-與time.gmtime()非常類似，也返回一個struct_time對象，可以看作是gmtime()的本地化版本。</p></li>
-<li><p>time.mktime()<br/>
-time.mktime執行與gmtime(), localtime()相反的操作，它接收struct_time對象作為參數，返回用秒數來表示時間的浮點數。</p></li>
-<li><p>time.strftime()<br/>
-time.strftime將日期轉換為字符串表示，它的函數原型為：time.strftime(format[, t])。參數format是格式字符串（格式字符串的知識可以參考：<a href="http://docs.python.org/2/library/time.html">time.strftime</a> ），可選的參數t是一个struct_time對象。</p></li>
-</ol>
-
+<p>
+<em>E. time.localtime()</em><br/>
+與time.gmtime()非常類似，也返回一個struct_time對象，可以看作是gmtime()的本地化版本。<br/>
+<em>F. time.mktime()</em><br/>
+time.mktime執行與gmtime(), localtime()相反的操作，它接收struct_time對象作為參數，返回用秒數來表示時間的浮點數。<br/>
+<em>G. time.strftime()</em><br/>
+time.strftime將日期轉換為字符串表示，它的函數原型為：time.strftime(format[, t])。參數format是格式字符串（格式字符串的知識可以參考：<a href="http://docs.python.org/2/library/time.html">time.strftime</a> ），可選的參數t是一个struct_time對象。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -209,13 +201,9 @@ time.strftime將日期轉換為字符串表示，它的函數原型為：time.st
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p></p>
-
-<ol type="a">
-<li>time.strptime()
-按指定格式解析一個表示时间的字符串，返回struct_time對象。該函數原型為：time.strptime(string, format)，两個參數都是字符串。</li>
-</ol>
-
+<p>
+<em>H. time.strptime()</em>
+按指定格式解析一個表示时间的字符串，返回struct_time對象。該函數原型為：time.strptime(string, format)，两個參數都是字符串。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -235,12 +223,13 @@ datetime.MINYEAR和datetime.MAXYEAR，分別表示datetime所能表示的最小�
 1) datetime.date:表示日期的類，常用的屬性有tear, month, day:<br/>
 year的返回在兩個常量之間；<br/>
 month的範圍是[1,12]，月份是從1開始；<br/>
-day依據month來決定。 <br/>
-2) date類提供了常用的類方法和類屬性：<br/>
-date.max, date.min：date對象所能表示的最大、最小日期；
-date.today()：返回一個表示當前本地日期的date對象。</li>
+day依據month來決定。</li>
 </ol>
 
+
+<p>2) date類提供了常用的類方法和類屬性：<br/>
+date.max, date.min：date對象所能表示的最大、最小日期；
+date.today()：返回一個表示當前本地日期的date對象。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -260,6 +249,8 @@ date.today()：返回一個表示當前本地日期的date對象。</li>
 </span><span class='line'><span class="mo">0001</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">01</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p></p>
 
 <p>3) date提供的實例方法和屬性<br/>
 date.year、date.month、date.day：年、月、日；<br/>
@@ -306,8 +297,9 @@ date.strftime(fmt)：自定義格式化字符串。</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p> <br/>
-4) date還對某些操作進行了重載，它允許我們對日期進行如下一些操作：<br/>
+<p></p>
+
+<p>4) date還對某些操作進行了重載，它允許我們對日期進行如下一些操作：<br/>
 date2 = date1 + timedelta  # 日期加上一個間隔，返回一個新的日期對象（timedelta將在下面介紹，表示時間間隔）
 date2 = date1 &ndash; timedelta   # 日期隔去間隔，返回一個新的日期對象
 timedelta = date1 &ndash; date2   # 两個日期相減，返回一個時間間隔對象
