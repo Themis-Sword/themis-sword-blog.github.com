@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-03-26T16:25:40+08:00</updated>
+  <updated>2014-03-26T16:28:30+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Python 常用函數之join, split, zip, map, reduce, filter]]></title>
+    <title type="html"><![CDATA[Python 常用函數之Join, Split, Zip, Map, Reduce, Filter]]></title>
     <link href="http://www.aprilzephyr.com/blog/2014/03/26/python-chang-yong-han-shu-zhi-join/"/>
     <updated>2014-03-26T15:34:48+08:00</updated>
     <id>http://www.aprilzephyr.com/blog/2014/03/26/python-chang-yong-han-shu-zhi-join</id>
@@ -67,7 +67,7 @@ s.split(&lsquo;xsdfadsf&rsquo;)
 [&lsquo;a b c&rsquo;]
 ```</p></blockquote></blockquote></blockquote>
 
-<p><strong>os.path.split()</strong>
+<p><strong>os.path.split()</strong><br/>
 os.path.split()是按照路徑將文件名和路徑分隔開，比如d:\python\python.ext，可分割為[&rsquo;d:\python', &lsquo;python.exe&rsquo;]<br/>
 <code>python
 import os
