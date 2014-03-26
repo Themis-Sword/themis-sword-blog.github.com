@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Python 常用函數之join, split, zip, map, reduce, filter"
+title: "Python 常用函數之Join, Split, Zip, Map, Reduce, Filter"
 date: 2014-03-26 15:34:48 +0800
 comments: true
 categories: Python
@@ -52,7 +52,7 @@ print st.split('o',1)
 ['a b c']
 ```   
   
-**os.path.split()**
+**os.path.split()**  
 os.path.split()是按照路徑將文件名和路徑分隔開，比如d:\\python\\python.ext，可分割為['d:\\python', 'python.exe']  
 ``` python
 import os
