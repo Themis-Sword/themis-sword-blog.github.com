@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-03-25T01:01:25+08:00</updated>
+  <updated>2014-03-26T16:25:40+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,274 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python 常用函數之join, split, zip, map, reduce, filter]]></title>
+    <link href="http://www.aprilzephyr.com/blog/2014/03/26/python-chang-yong-han-shu-zhi-join/"/>
+    <updated>2014-03-26T15:34:48+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/2014/03/26/python-chang-yong-han-shu-zhi-join</id>
+    <content type="html"><![CDATA[<p><strong><em>1. Join, Split</em></strong><br/>
+<em>A 關於Join和Split方法</em><br/>
+1) 只針對字符串進行處理。split:拆分字符串、join連接字符串<br/>
+2) string.join(sep): 以string作為分割符，将sep中所有的元素(字符串表示)合併成一個新的字符串<br/>
+3) string.split(str=&lsquo; &rsquo;,num=string.count(str)): 以str為分隔符，切片string，如果num有指定值，則僅分隔num個子字符串<br/>
+4) 對導入os模塊進行os.path.splie()/os.path.join() 貌似是處理機制不一樣，但是功能上一樣<!--more--></p>
+
+<p><em>B Join</em><br/>
+<code>python
+a='abcd'
+print '.'.join(a)   
+print '|'.join(['a','b','c'])　　#可以把['a','b','c']看做是 a='abcd';下面同理
+print '.'.join({'a':1,'b':2,'c':3,'d':4})
+</code><br/>
+注意：'.&lsquo;等做分隔符，將join裏的所有元素(字符串)通過分隔符連接成一個新的字符串。</p>
+
+<p><strong>os.path.join(path1[,path2[,&hellip;&hellip;]])</strong><br/>
+``` python
+\将多个路径组合后返回，第一个绝对路径之前的参数将被忽略。</p>
+
+<blockquote><blockquote><blockquote><p>os.path.join(&lsquo;c:\&rsquo;, &lsquo;csv&rsquo;, &lsquo;test.csv&rsquo;)
+&lsquo;c:\csv\test.csv&rsquo;
+os.path.join(&lsquo;windows\temp&rsquo;, &lsquo;c:\&rsquo;, &lsquo;csv&rsquo;, &lsquo;test.csv&rsquo;)
+&lsquo;c:\csv\test.csv&rsquo;
+os.path.join(&lsquo;/home/aa&rsquo;,&lsquo;/home/aa/bb&rsquo;,&lsquo;/home/aa/bb/c&rsquo;)
+&lsquo;/home/aa/bb/c&rsquo;
+```</p></blockquote></blockquote></blockquote>
+
+<p><em>C Split</em><br/>
+<code>python
+s='a b c'
+print s.split(' ')
+st='hello world'
+print st.split('o')
+print st.split('o',1)
+--------output---------
+['a', 'b', 'c']
+['hell', ' w', 'rld']
+['hell', ' world']
+</code><br/>
+注意：分隔符不能為空，否則會報錯，但是可以有不含其中的分隔符：<br/>
+``` python</p>
+
+<blockquote><blockquote><blockquote><p>s.split(&lsquo;x&rsquo;)
+[&lsquo;a b c&rsquo;]
+s.split(&lsquo;xsdfadsf&rsquo;)
+[&lsquo;a b c&rsquo;]
+```</p></blockquote></blockquote></blockquote>
+
+<p><strong>os.path.split()</strong>
+os.path.split()是按照路徑將文件名和路徑分隔開，比如d:\python\python.ext，可分割為[&rsquo;d:\python', &lsquo;python.exe&rsquo;]<br/>
+<code>python
+import os
+print os.path.split('c:\\Program File\\123.doc')
+print os.path.split('c:\\Program File\\')
+-----------------output---------------------
+('c:\\Program File', '123.doc')
+('c:\\Program File', '')
+</code><br/>
+<a href="http://www.cnblogs.com/BeginMan/archive/2013/03/21/2972857.html">Origin</a></p>
+
+<p><strong><em>2. Zip</em></strong><br/>
+zip()是Python的内建函數，(與序列有關的内建函數有：sorted()、reversed()、enumerate()、zip()),其中sorted()和zip()返回一個序列(列表)對象，reversed()、enumerate()返回一個迭代器(類似序列)。<br/>
+定義：zip([seql, &hellip;])接受一系列可迭代對象作為參數，將對象中對應的元素打包成一個個tuple（元组），然後返回由這些tuples組成的list（列表）。若傳入參數的長度不等，则返回list的長度和參數中長度最短的對象相同。<br/>
+``` python</p>
+
+<blockquote><blockquote><blockquote><p>z1=[1,2,3]
+z2=[4,5,6]
+result=zip(z1,z2)
+result
+[(1, 4), (2, 5), (3, 6)]
+z3=[4,5,6,7]
+result=zip(z1,z3)
+result
+[(1, 4), (2, 5), (3, 6)]
+<code>  
+zip()配合*號操作符，可以將已經zip過的列表對象解壓  
+</code> python
+zip(<em>result)
+[(1, 2, 3), (4, 5, 6)]
+<code>  
+更近一層了解  
+</code> python
+* 二維矩陣變換（矩陣的行列互換）
+比如我们有一個由列表描述的二維矩陣
+a = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+通过python列表推导的方法，我们也能轻易完成这个任务
+print [ [row[col] for row in a] for col in range(len(a[0]))]
+[[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+另外一種讓人困惑的方法就是利用zip函數：
+a = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+zip(</em>a)
+[(1, 4, 7), (2, 5, 8), (3, 6, 9)]
+map(list,zip(<em>a))
+[[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+zip函數接受任意多個序列作為參數，將所有序列按相同的索引組合成一個元素是各個序列合併成的tuple的新序列，新的序列的長度以參數中最短的序列為準。另外(</em>)操作符与zip函數配合可以實現與zip相反的功能，即將合併的序列拆成多個tuple。
+①tuple的新序列</p>
+
+<blockquote><p>x=[1,2,3],y=[&lsquo;a&rsquo;,&lsquo;b&rsquo;,&lsquo;c&rsquo;]
+zip(x,y)
+[(1,&lsquo;a&rsquo;),(2,&lsquo;b&rsquo;),(3,&lsquo;c&rsquo;)]
+②新的序列的長度以參數中最短的序列為準.
+x=[1,2],y=[&lsquo;a&rsquo;,&lsquo;b&rsquo;,&lsquo;c&rsquo;]
+zip(x,y)
+[(1,&lsquo;a&rsquo;),(2,&lsquo;b&rsquo;)]
+③(<em>)操作符与zip函數配合可以實現與zip相反的功能,即將合併的序列拆成多個tuple。
+x=[1,2,3],y=[&lsquo;a&rsquo;,&lsquo;b&rsquo;,&lsquo;c&rsquo;]
+zip(</em>zip(x,y))
+[(1,2,3),(&lsquo;a&rsquo;,&lsquo;b&rsquo;,&lsquo;c&rsquo;)]
+```<br/>
+<a href="http://www.cnblogs.com/BeginMan/archive/2013/03/14/2959447.html">Origin</a></p></blockquote></blockquote></blockquote></blockquote>
+
+<p><strong><em>3. Map</em></strong><br/>
+對sequence中的item依次執行function(item)，執行結果輸出為list。<br/>
+``` python</p>
+
+<blockquote><blockquote><blockquote><p>map(str, range(5))           #對range(5)各項進行str操作
+[&lsquo;0&rsquo;, &lsquo;1&rsquo;, &lsquo;2&rsquo;, &lsquo;3&rsquo;, &lsquo;4&rsquo;]        #返回列表
+def add(n):return n+n
+&hellip;
+map(add, range(5))           #對range(5)各項進行add操作
+[0, 2, 4, 6, 8]
+map(lambda x:x+x,range(5))   #lambda 函數，各項+本身
+[0, 2, 4, 6, 8]
+map(lambda x:x+1,range(10))  #lambda 函數，各項+1
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+map(add,&lsquo;zhoujy&rsquo;)          <br/>
+[&lsquo;zz&rsquo;, &lsquo;hh&rsquo;, &lsquo;oo&rsquo;, &lsquo;uu&rsquo;, &lsquo;jj&rsquo;, &lsquo;yy&rsquo;]
+<code>  
+想要輸入多個序列，需要支持多個參數的函數，注意的是各序列的長度必須一樣，否則報錯：  
+</code> python
+def add(x,y):return x+y
+&hellip;
+map(add,&lsquo;zhoujy&rsquo;,&lsquo;Python&rsquo;)
+[&lsquo;zP&rsquo;, &lsquo;hy&rsquo;, &lsquo;ot&rsquo;, &lsquo;uh&rsquo;, &lsquo;jo&rsquo;, &lsquo;yn&rsquo;]
+def add(x,y,z):return x+y+z
+&hellip;
+map(add,&lsquo;zhoujy&rsquo;,&lsquo;Python&rsquo;,&lsquo;test&rsquo;)     #&lsquo;test'的長度比其他2個小
+Traceback (most recent call last):
+  File &ldquo;<stdin>&rdquo;, line 1, in <module>
+TypeError: add() takes exactly 2 arguments (3 given)
+map(add,'zhoujy&rsquo;,&lsquo;Python&rsquo;,&lsquo;testop&rsquo;)
+[&lsquo;zPt&rsquo;, &lsquo;hye&rsquo;, &lsquo;ots&rsquo;, &lsquo;uht&rsquo;, &lsquo;joo&rsquo;, &lsquo;ynp&rsquo;]
+```</p></blockquote></blockquote></blockquote>
+
+<p><strong><em>4. Reduce</em></strong><br/>
+對sequence中的item顺序迭代調用function，函數必須要有2個參數。要是有第3個參數，則表示初始值，可以繼續调用初始值，返回一個值。<br/>
+``` python</p>
+
+<blockquote><blockquote><blockquote><p>def add(x,y):return x+y
+&hellip;
+reduce(add,range(10))        #1+2+3+&hellip;+9
+45
+reduce(add,range(11))        #1+2+3+&hellip;+10
+55
+reduce(lambda x,y:x<em>y,range(1,3),5)           #lambda 函數，5是初始值， 1</em>2<em>5
+10
+reduce(lambda x,y:x</em>y,range(1,6))             #阶乘，1<em>2</em>3<em>4</em>5
+120
+reduce(lambda x,y:x<em>y,range(1,6),3)           #初始值3，结果再</em>3
+360
+reduce(lambda x,y:x+y,[1,2,3,4,5,6])          #1+2+3+4+5+6
+21
+```</p></blockquote></blockquote></blockquote>
+
+<p><strong><em>5. Filter</em></strong><br/>
+對sequence中的item依次執行function(item)，將執行結果為True（！=0）的item組成一個List/String/Tuple（取決于sequence的類型）返回，False則退出（0），進行過濾。<br/>
+``` python</p>
+
+<blockquote><blockquote><blockquote><p>def div(n):return n%2
+&hellip;
+filter(div,range(5))                    #返回div輸出的不等於0的真值
+[1, 3]
+filter(div,range(10))
+[1, 3, 5, 7, 9]
+filter(lambda x : x%2,range(10))        #lambda 函數返回奇數，返回列表
+[1, 3, 5, 7, 9]
+filter(lambda x : not x%2,range(10))
+[0, 2, 4, 6, 8]
+def fin(n):return n!=&lsquo;z&rsquo;                #過濾'z' 函數，出现z则返回False
+&hellip;
+filter(fin,&lsquo;zhoujy&rsquo;)                    #&lsquo;z'被過濾
+'houjy&rsquo;
+filter(lambda x : x !=&lsquo;z&rsquo;,&lsquo;zhoujy&rsquo;)     #labmda返回True值
+&lsquo;houjy&rsquo;
+filter(lambda x : not x==&lsquo;z&rsquo;,&lsquo;zhoujy&rsquo;)  #返回：字符串
+&lsquo;houjy&rsquo;
+```</p></blockquote></blockquote></blockquote>
+
+<p><strong><em>6. Map, Reduce, Filter應用</em></strong><br/>
+<em>A 實現5!+4!+3!+2!+1</em>
+``` python</p>
+
+<h1>!/usr/bin/env python</h1>
+
+<h1>&ndash;<em>&ndash; coding:utf-8 &ndash;</em>&ndash;</h1>
+
+<p>def add_factorial(n):</p>
+
+<pre><code>empty_list=[]           #聲明一個空列表，存各個階乘的結果，方便這些結果相加
+for i in map(lambda x:x+1,range(n)):    #用傳進來的變量(n)來生成一个列表，用map讓列表都+1，eg：range(5) =&gt; [1,2,3,4,5]
+    a=reduce(lambda x,y:x*y,map(lambda x:x+1,range(i)))   #生成階乘，用map去掉列表中的0
+    empty_list.append(a)            #把階乘結果append到空的列表中
+return empty_list
+</code></pre>
+
+<p>if <strong>name</strong> == &lsquo;<strong>main</strong>&rsquo;:</p>
+
+<pre><code>import sys
+</code></pre>
+
+<h1>2選1</h1>
+
+<h1>(一)</h1>
+
+<pre><code>try:
+    n = input("Enter a Number(int) : ")
+    result=add_factorial(n)   #傳入變量
+    print reduce(lambda x,y:x+y,result)      #階乘結果相加
+except (NameError,TypeError):
+    print "That's not a Number!"
+</code></pre>
+
+<h1>(二)</h1>
+
+<h1>result = add_factorial(int(sys.argv[1]))   #傳入變量</h1>
+
+<h1>print reduce(lambda x,y:x+y,result)      #階乘結果相加</h1>
+
+<p>```</p>
+
+<p><em>B 將100-200以內的質數挑選出來</em><br/>
+``` python</p>
+
+<h1>!/usr/bin/env python</h1>
+
+<h1>&ndash;<em>&ndash; coding:utf-8 &ndash;</em>&ndash;</h1>
+
+<p>def is_prime(start,stop):</p>
+
+<pre><code>stop  = stop+1     #包含列表右边的值
+prime = filter(lambda x : not [x%i for i in range(2,x) if x%i == 0],range(start,stop))   #取出質數,x从range(start,stop) 取的數
+print prime
+</code></pre>
+
+<p>if <strong>name</strong> == &lsquo;<strong>main</strong>&rsquo;:</p>
+
+<pre><code>try :
+    start = input("Enter a start Number :")
+except :
+    start = 2   #开始值默认2
+try :
+    stop  = input("Enter a stop  Number :")
+except :
+    stop  = 0   #停止數，默认0，即不返回任何值
+is_prime(start,stop)
+</code></pre>
+
+<p>```<br/>
+<a href="http://www.cnblogs.com/zhoujinyi/archive/2013/06/07/3121976.html">Origin</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Notes of Python 02]]></title>
@@ -351,64 +619,6 @@ if __name__ == '__main__':
  main()  
 </code>
 <a href="http://www.smallqiao.com/31.html">Origin</a></p></li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Python列表刪除重複元素的三種方法及效率分析(轉)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/2014/02/15/pythonlie-biao-shan-chu-zhong-fu-yuan-su-de-san-zhong-fang-fa-ji-xiao-lu-fen-xi-zhuan/"/>
-    <updated>2014-02-15T17:53:01+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/2014/02/15/pythonlie-biao-shan-chu-zhong-fu-yuan-su-de-san-zhong-fang-fa-ji-xiao-lu-fen-xi-zhuan</id>
-    <content type="html"><![CDATA[<h4>方法一：</h4>
-
-<p>使用列表對象的sort()方法對列表進行排序，從最後一個元素開始循環迭代列表，判斷相鄰的兩個元素是否相同。<br/>
-``` python
-def methodONE(list):</p>
-
-<pre><code>list.sort()
-lenList = len(list)
-lastItem = list[lenList-1]
-for i in range(lenList-2,-1,-1):
- if list[i] == lastItem:
-  list.remove(list[i])
- else:
-  lastItem = list[i]
-return list
-</code></pre>
-
-<p>```    <!--more--></p>
-
-<h4>方法二：</h4>
-
-<p>定義一個臨時列表，循環迭代出的元素如果不在循環列表中，則加入，最後返回列表。<br/>
-``` python
-def methodTWO(list):</p>
-
-<pre><code>templist = []
-for i in list:
- if not i in temp list:
-  templist.addend(i)
-return templist
-</code></pre>
-
-<p>```</p>
-
-<h4>方法三：</h4>
-
-<p><code>python
-list = [20,12,34,12,24,34,55,27]
-print list(set(lists))
-</code></p>
-
-<h4>分析：</h4>
-
-<ol>
-<li>方法一相對方法二來說，有更多的額外操作如：排序、賦值。因爲在Python中，變量是不可變的，每迭代出一个元素比較不相等後的操作都是新建立一个局部變量、賦值並丟棄原變量，這需要消耗更多的内存!同時因爲排序操作，破壞了相對位置。</li>
-<li>方法二建立一个臨時列表進行操作，而列表是可變的，每次追加元素都只是在原列表上增加一个索引及值,因而相對方法一來說效率會更高!</li>
-<li>方法三无疑是效率最好的(無論是代碼的簡潔還是運行效率)。set()是內置的數據類型“集合類型”，它是無序的且值是唯一的！所以set()執行的结果就是轉為集合且直接去除了重複的元素，list()則將集合轉回列表類型。<br/>
-但是，set()會破壞排列順序，如果要保留排序，list(set(lists))可改為sorted(set(lists), key=lists.index)</li>
 </ol>
 
 ]]></content>
