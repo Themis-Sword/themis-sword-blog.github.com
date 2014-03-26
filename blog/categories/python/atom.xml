@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-03-26T17:39:32+08:00</updated>
+  <updated>2014-03-26T17:42:50+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -25,7 +25,7 @@
 <em>B. time.sleep()</em><br/>
 可以通過调用time.sleep來挂起當前的進程。time.sleep接收一个浮點型參數，表示進程挂起的時間。<br/>
 <em>C. time.clock()</em><br/>
-time.clock()返回第一次调用该方法到现在的秒數，其精確度高於1微秒。可以使用该函數來記錄程序執行的時間。 <!--more-->
+time.clock()返回第一次调用该方法到现在的秒數，其精確度高於1微秒。可以使用该函數來記錄程序執行的時間。 <!--more--><br/>
 <em>D. time.gmtime()</em><br/>
 該函數原型為time.gmtime([sec])，可選參數sec表示從1970-01-01以來的秒數，默認值為time.time()，函數返回time.struct_time類型的對象。(struct_time是在time模塊中定義的表示時間的對象)，下面是一個簡單的例子：<br/>
 ``` python</p>
@@ -79,19 +79,14 @@ print time.strptime(&lsquo;2013-04-09 12:30:25&rsquo;,&lsquo;%Y-%m-%d %H:%M:%S&r
 ```</p></blockquote></blockquote></blockquote>
 
 <p><strong>2. datetime模塊</strong><br/>
-A. 兩個常量<br/>
-datetime.MINYEAR和datetime.MAXYEAR，分別表示datetime所能表示的最小、最大年份。其中，MINYEAR=1,MAXYEAR=0000。</p>
-
-<ol type="a">
-<li>幾個重要的類<br/>
+<em>A. 兩個常量</em><br/>
+datetime.MINYEAR和datetime.MAXYEAR，分別表示datetime所能表示的最小、最大年份。其中，MINYEAR=1,MAXYEAR=0000。<br/>
+<em>B. 幾個重要的類</em><br/>
 1) datetime.date:表示日期的類，常用的屬性有tear, month, day:<br/>
 year的返回在兩個常量之間；<br/>
 month的範圍是[1,12]，月份是從1開始；<br/>
-day依據month來決定。</li>
-</ol>
-
-
-<p>2) date類提供了常用的類方法和類屬性：<br/>
+day依據month來決定。 <br/>
+2) date類提供了常用的類方法和類屬性：<br/>
 date.max, date.min：date對象所能表示的最大、最小日期；
 date.today()：返回一個表示當前本地日期的date對象。<br/>
 ``` python</p>
@@ -104,20 +99,18 @@ print date.max
 9999-12-31
 print date.min
 0001-01-01
-```</p></blockquote></blockquote></blockquote>
-
-<p>3) date提供的實例方法和屬性<br/>
-date.year、date.month、date.day：年、月、日；<br/>
-date.replace(year, month, day)：生成一个新的日期對象，用參數指定的年，月，日代替原有對象中的屬性。（原有對象仍保持不變）；<br/>
-date.timetuple()：返回日期對應的time.struct_time對象；<br/>
-date.weekday()：返回weekday，如果是星期一，返回0；如果是星期2，返回1，以此類推；<br/>
-data.isoweekday()：返回weekday，如果是星期一，返回1；如果是星期2，返回2，以此類推；<br/>
-date.isocalendar()：返回格式如(year，month，day)的元組；<br/>
-date.isoformat()：返回格式如'YYYY-MM-DD’的字符串；<br/>
-date.strftime(fmt)：自定義格式化字符串。<br/>
-``` python</p>
-
-<blockquote><blockquote><blockquote><p>now=date(2014,03,26)
+<code>  
+3) date提供的實例方法和屬性  
+date.year、date.month、date.day：年、月、日；  
+date.replace(year, month, day)：生成一个新的日期對象，用參數指定的年，月，日代替原有對象中的屬性。（原有對象仍保持不變）；  
+date.timetuple()：返回日期對應的time.struct_time對象；  
+date.weekday()：返回weekday，如果是星期一，返回0；如果是星期2，返回1，以此類推；  
+data.isoweekday()：返回weekday，如果是星期一，返回1；如果是星期2，返回2，以此類推；  
+date.isocalendar()：返回格式如(year，month，day)的元組；  
+date.isoformat()：返回格式如'YYYY-MM-DD’的字符串；  
+date.strftime(fmt)：自定義格式化字符串。  
+</code> python
+now=date(2014,03,26)
 tomorrow=now.replace(day=27)
 print &lsquo;now:&rsquo;,now
 now: 2014-03-26
@@ -133,14 +126,13 @@ print &lsquo;isocalendar():&rsquo;,now.isocalendar()
 isocalendar(): (2014, 13, 3)
 print &lsquo;isoformat():&rsquo;,now.isoformat()
 isoformat(): 2014-03-26
-```</p></blockquote></blockquote></blockquote>
-
-<p>4) date還對某些操作進行了重載，它允許我們對日期進行如下一些操作：<br/>
+<code>  
+4) date還對某些操作進行了重載，它允許我們對日期進行如下一些操作：  
 date2 = date1 + timedelta  # 日期加上一個間隔，返回一個新的日期對象（timedelta將在下面介紹，表示時間間隔）
-date2 = date1 &ndash; timedelta   # 日期隔去間隔，返回一個新的日期對象
-timedelta = date1 &ndash; date2   # 两個日期相減，返回一個時間間隔對象
-date1 &lt; date2  # 两個日期進行比較<br/>
-``` python
+date2 = date1 - timedelta   # 日期隔去間隔，返回一個新的日期對象
+timedelta = date1 - date2   # 两個日期相減，返回一個時間間隔對象
+date1 &lt; date2  # 两個日期進行比較  
+</code> python
 now = date.today()<br/>
 tomorrow = now.replace(day = 7 )<br/>
 delta = tomorrow &ndash; now<br/>
@@ -160,7 +152,7 @@ print  tomorrow > now</p>
 <h1>True</h1>
 
 <p>```<br/>
-<a href="http://www.cnblogs.com/BeginMan/archive/2013/04/08/3007403.html">Origin</a></p>
+<a href="http://www.cnblogs.com/BeginMan/archive/2013/04/08/3007403.html">Origin</a></p></blockquote></blockquote></blockquote>
 ]]></content>
   </entry>
   
