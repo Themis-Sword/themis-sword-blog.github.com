@@ -7,7 +7,7 @@ categories: Python
 ---
 **1. 簡單說說python import與from...import....(python模塊)**
   
-在python用import或者from...import來導入相應的模塊。模塊其實就一些函數和類的集合文件，它能實現一些相應的功能，當我們需要使用這些功能的時候，直接把相應的模塊導入到我們的程序中，我們就可以使用了。這類似於C語言中的include頭文件，Python中我們用import導入我們需要的模塊。  
+在python用import或者from...import來導入相應的模塊。模塊其實就一些函數和類的集合文件，它能實現一些相應的功能，當我們需要使用這些功能的時候，直接把相應的模塊導入到我們的程序中，我們就可以使用了。這類似於C語言中的include頭文件，Python中我們用import導入我們需要的模塊。 <!--more--> 
 ``` python
 import sys
 print('================Python import mode==========================');
