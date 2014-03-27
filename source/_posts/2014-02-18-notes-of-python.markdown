@@ -25,7 +25,7 @@ categories: python
 <tr><td>ord(x) </td><td>將一個字符轉換為它的整數值</td></tr>
 <tr><td>hex(x) </td><td>將一個整數轉換為一個十六進制字符串</td></tr>
 <tr><td>oct(x) </td><td>將一個整數轉換為一個八進制字符串</td></tr>
-<tbody>
+</tbody>
 </table> <!--more-->  
   
 2. range()函數的用法  
