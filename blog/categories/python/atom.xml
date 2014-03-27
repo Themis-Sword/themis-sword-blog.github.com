@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-03-26T17:42:50+08:00</updated>
+  <updated>2014-03-27T14:56:36+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,247 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python import與from...import...(轉)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/2014/03/27/python-importyu-from-dot-dot-dot-import-dot-dot-dot/"/>
+    <updated>2014-03-27T14:23:52+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/2014/03/27/python-importyu-from-dot-dot-dot-import-dot-dot-dot</id>
+    <content type="html"><![CDATA[<p><strong>1. 簡單說說python import與from&hellip;import&hellip;.(python模塊)</strong></p>
+
+<p>在python用import或者from&hellip;import來導入相應的模塊。模塊其實就一些函數和類的集合文件，它能實現一些相應的功能，當我們需要使用這些功能的時候，直接把相應的模塊導入到我們的程序中，我們就可以使用了。這類似於C語言中的include頭文件，Python中我們用import導入我們需要的模塊。<br/>
+``` python
+import sys
+print(&lsquo;================Python import mode==========================&rsquo;);
+print (&lsquo;The command line arguments are:&rsquo;)
+for i in sys.argv:</p>
+
+<pre><code>print (i)
+</code></pre>
+
+<p>print (&lsquo;\n The python path&rsquo;,sys.path)</p>
+
+<p>from sys import argv,path #導入特定的成員
+print(&lsquo;================python from import===================================&rsquo;)
+print(&lsquo;path:&rsquo;,path)</p>
+
+<p>如果你要使用所有sys模塊使用的名字，你可以這樣：</p>
+
+<p>from sys import *
+print(&lsquo;path:&rsquo;,path)
+```<br/>
+從以上我們可以簡單看出：</p>
+
+<p>\==========<br/>
+導入mode，import與from&hellip;import的不同之處在於，簡單說：
+如果你想要直接輸入argv變量到你的程序中而每次使用它時又不想打sys，則可使用：from sys import argv。<br/>
+一般說來，應該避免使用from..import而使用import語句，因為這樣可以使你的程序更加易讀，也可以避免名稱的沖突。<br/>
+\==========</p>
+
+<p>在使用 from xxx import * 時，如果想精準的控制模塊導入的內容，可以使用 <strong>all</strong> = [xxx,xxx] 來實現，例如：<br/>
+``` python
+<strong>all</strong> = [&lsquo;a&rsquo;,&lsquo;b&rsquo;] #__為雙橫線
+class two():</p>
+
+<pre><code>def __init__(self):
+    print('this is two')
+</code></pre>
+
+<p>a = &lsquo;this is two a&rsquo;
+b = &lsquo;this is two b&rsquo;
+if <strong>name</strong>==&lsquo;<strong>main</strong>&rsquo;:</p>
+
+<pre><code>t = two()
+</code></pre>
+
+<p>one.py</p>
+
+<p>from two import *
+print a
+print b
+t = two()</p>
+
+<p>這時，類two()將不會被 import *導入進來
+```</p>
+
+<p><strong>2. 關於import中的路徑搜索問題</strong><br/>
+類似於頭文件，模塊也是需要系統的搜索路徑的，下面的命令即是系統默認的搜索路徑，當你導入一個模塊時，系統就會在下面的路徑列表中搜索相應的文件。<br/>
+``` python</p>
+
+<blockquote><blockquote><blockquote><p>print(sys.path)</p></blockquote></blockquote></blockquote>
+
+<p>[&lsquo;&rsquo;, &lsquo;/usr/lib64/python26.zip&rsquo;, &lsquo;/usr/lib64/python2.6&rsquo;, &lsquo;/usr/lib64/python2.6/plat-linux2&rsquo;, &lsquo;/usr/lib64/python2.6/lib-tk&rsquo;, &lsquo;/usr/lib64/python2.6/lib-old&rsquo;, &lsquo;/usr/lib64/python2.6/lib-dynload&rsquo;, &lsquo;/usr/lib64/python2.6/site-packages&rsquo;, &lsquo;/usr/lib64/python2.6/site-packages/gst-0.10&rsquo;, &lsquo;/usr/lib64/python2.6/site-packages/gtk-2.0&rsquo;, &lsquo;/usr/lib64/python2.6/site-packages/webkit-1.0&rsquo;, &lsquo;/usr/lib/python2.6/site-packages&rsquo;]</p>
+
+<p>(從例中，我們可以看到python會首先在當前工作目錄裏去找)
+```</p>
+
+<p>如果沒有找導相應的內容，則報錯：<br/>
+``` python</p>
+
+<blockquote><blockquote><blockquote><p>import syssTraceback (most recent call last):  File &ldquo;<stdin>&rdquo;, line 1, in <module>ImportError: No module named syss</p></blockquote></blockquote></blockquote>
+
+<p>當然，我們也可以自行添加要搜索的路徑，調用列表的append方法即可：
+import sys
+sys.path.append(&lsquo;/usr/xx/python2.6&rsquo;)
+```</p>
+
+<p><strong>3. 創建自己的模塊</strong><br/>
+在創建之前，有一點需要說明一下：每個Python模塊都有它的__name__（就每個對象都自己的__doc__一樣）。通過<strong>name</strong>我們可以找出每一個模塊的名稱，一般__name__的值有種：1 一是主模塊名稱為："__main__&ldquo;(可以理解為直接運行的那個文件)，2 那些被主模塊導入的模塊名稱為：文件名字（不加後面的.py）。有__name__是很有用的，因為我們可以通過 if __name__  == &lsquo;xxx&rsquo; 判斷來執行那些模塊，那些模塊不被執行。另外：每個Python程序也是一個模塊。它擴展名為：.py擴展名。</p>
+
+<p>下面，我們通過例子來說明：<br/>
+首先：我們創建模塊：mymodel.py<br/>
+``` python</p>
+
+<h1>!/user/bin/python</h1>
+
+<h1>Filename:mymodel.py</h1>
+
+<p>version = &lsquo;1.0&rsquo;
+def sayHello():</p>
+
+<pre><code>print ('Hello world')
+</code></pre>
+
+<p>def modelName():</p>
+
+<pre><code>return __name__#返回它自己的名稱
+</code></pre>
+
+<h1>end of model</h1>
+
+<p><code>  
+以上語句注意：  
+1) 這個模塊應該被放置在我們輸入它的程序的同一個目錄中，或者在sys.path所列目錄之一。  
+2) 你已經看到，它與我們普通的Python程序相比並沒有什麽特別之處。  
+然後：我們在test.py中來調用此模塊：test.py  
+</code> python
+import sys,mymodel
+sys.path.append(&rsquo;D:/xx/PythonSERVER/python31/Code')#提供搜索路径
+print(<strong>name</strong>) #此處打印主模塊的名稱：<strong>main</strong>
+mymodel.sayHello()
+print(&lsquo;Version&rsquo;,mymodel.version)
+print(&lsquo;Model Name&rsquo;,mymodel.modelName())#打印被導入模塊的名稱: mymodel</p>
+
+<p>我們使用from..import&hellip;</p>
+
+<p>print(&lsquo;======================from&hellip;..import=====================================&rsquo;)
+from mymodel import *
+print(<strong>name</strong>)#此處打印主模塊的名稱：<strong>main</strong>
+sayHello()
+print(&lsquo;Version&rsquo;,version)
+print(&lsquo;Model Name&rsquo;,modelName()) #打印被導入模塊的名稱: mymodel
+```<br/>
+以上語句註意：
+1) 我們可以通過import來導入多個模塊，用“,”（逗號）分隔。<br/>
+2) 註意import與from..import&hellip;..</p>
+
+<p><strong>4. 創建自己的包</strong><br/>
+<em>A 一個包的基本組織如下：</em><br/>
+``` python
+FC/
+  <strong>init</strong>.py
+  Libr/</p>
+
+<pre><code>__init__.py
+one.py
+two.py
+....
+</code></pre>
+
+<p>  Model/</p>
+
+<pre><code>__init__.py
+one.py
+....
+</code></pre>
+
+<p>在外部加載調用時，有以下方式：</p>
+
+<h1>coding:utf-8</h1>
+
+<h1>加載方式一</h1>
+
+<p>import Fc.Libr.one
+print Fc.Libr.one.a</p>
+
+<h1>加載方式二</h1>
+
+<p>from Fc.Libr import one
+print one.a</p>
+
+<h1>加載方式三</h1>
+
+<p>from Fc.Libr.one import a
+print a</p>
+
+<h1>加載方式四</h1>
+
+<p>from Fc.Libr import *
+print one.a
+註意直接使用第四種方式是不能正確導入Libr下的one子模塊的，這就需要在Fc目錄下的<strong>init</strong>.py文件中定義好需要加載子模塊的名稱
+Fc/Libr/<strong>init</strong>.py
+<strong>all</strong>=[&lsquo;one&rsquo;,&lsquo;two&rsquo;] #定義加載子模塊的名稱
+```<br/>
+在加載包模塊時，在import語句執行期時，遇到的所有__init__.py文件都會被執行，在上面代碼中
+首先會執行Fc目錄中的__int__.py，然後執行Libr目錄中的__init__.py</p>
+
+<p><em>B 子模塊加子模塊問題</em><br/>
+同一包的相同目錄中：<br/>
+``` python</p>
+
+<h1>coding:utf-8</h1>
+
+<h1>加載方式一:使用完全限定名稱</h1>
+
+<p>from Fc.Libr import one
+aa = &lsquo;libr two load one&mdash;&ndash;&rsquo;+one.a</p>
+
+<h1>加載方式二:使用相對導入</h1>
+
+<p>from . import one
+bb = &lsquo;libr two load one&mdash;&mdash;&rsquo;+one.b
+方二中使用.來表示在同一級目錄中。</p>
+
+<h1>加載方式三:(這種方式應當避免:最後找不到會轉移到標準庫)</h1>
+
+<p>import Fc.Libr.one
+cc = &lsquo;libr two load one&mdash;&ndash;&rsquo;+Fc.Libr.one.a</p>
+
+<p>在外部使用時：</p>
+
+<h1>coding:utf-8</h1>
+
+<p>from Fc.Libr import *
+print two.aa
+print two.bb</p>
+
+<p>同一包的不同目錄中：</p>
+
+<h1>coding:utf-8</h1>
+
+<p>from ..Model import one
+a = &lsquo;libr two load mode one&mdash;&ndash;&rsquo;+one.a</p>
+
+<p>使用時：</p>
+
+<h1>coding:utf-8</h1>
+
+<p>from Fc.Libr import *
+print two.a
+將輸出：libr two load mode one&mdash;-fc model one
+```</p>
+
+<p>另外在導入一個包時，會定義一個特殊的變量__path__，該變量包含一個目錄列表。<br/>
+__path__可通過__init__.py文件中包含的代碼訪問，最初包含的一項具有包的目錄名稱。我們可以向__path__列表提供更多的目錄，以更改查找子模塊時使用的搜索路徑，大型項目中這個很有用。</p>
+
+<p><strong>5. 特別說明</strong><br/>
+1) import執行加載源文件中所有語名（所以模塊是一個文件）。<br/>
+2) import語句可以出現在程序中的任何位置。但是有一點是：無論import語句被使用了多少次，每個模塊中的代碼僅加載和執行一次，後續的import語句僅將模塊名稱綁定到前一次導入所創建的模塊對象上。<br/>
+3) 使用sys.modules可查看當前加載的所有模塊。</p>
+
+<p><a href="http://www.cnblogs.com/ptfblog/archive/2012/07/15/2592122.html">Origin</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python 時間&amp;日期模塊]]></title>
@@ -559,77 +800,6 @@ Compare the two objects x and y and return an integer according to the outcome. 
 2) reversed()<br/>
 3) sort()<br/>
 4) sorted()</li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[平衡點問題和支配點問題之Python求解(轉)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/2014/02/18/ping-heng-dian-wen-ti-he-zhi-pei-dian-wen-ti-zhi-pythonqiu-jie-zhuan/"/>
-    <updated>2014-02-18T21:46:13+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/2014/02/18/ping-heng-dian-wen-ti-he-zhi-pei-dian-wen-ti-zhi-pythonqiu-jie-zhuan</id>
-    <content type="html"><![CDATA[<ol>
-<li><p>平衡點問題<br/>
-平衡點：比如int[] numbers = {1,3,5,7,8,25,4,20}; 25前面的總和爲24，25後面的總和也是24，25這個點就是平衡點；假如一個數組中的元素，其前面的部分等於後面的部分，那麼這個點的位序就是平衡點。 <br/>
-要求：返回任何一個平衡點<br/>
-使用sum函数累加所有的数。
-使用一个变量fore来累加序列的前部。直到满足条件fore&lt;(total-number)/2;
-``` python<br/>
-numbers = [1,3,5,7,8,2,4,20]</p>
-
-<h1>find total</h1>
-
-total=sum(numbers)
-
-<h1>find num</h1>
-
-fore=0<br/>
-for number in numbers:<br/>
-if fore&lt;(total-number)/2 :<br/>
-   fore+=number<br/>
-else:<br/>
-   break
-
-<h1>print answer</h1>
-
-<p>if fore == (total-number)/2 :<br/>
-print number<br/>
-else :<br/>
-print r'not found'<br/>
-```<br/>
-算法簡單，而且是O(n)的。<br/>
-<strong>PS</strong> 上述解題思路爲題目只考慮序列只包括正數的情況(有唯一平衡點)，當序列中有負數的時候，平衡點不一定唯一。<!--more--></p></li>
-<li><p>支配點問題<br/>
-支配數：數組中某個元素出現的次數大於數組總數的一半時就成爲支配數，其所在位序成為支配點；比如int[] a = {3,3,1,2,3};3爲支配數，0，1，4分别爲支配點。<br/>
-要求：返回任何一個支配點<br/>
-《編程之美》中有答案，就是尋找水王那篇。<br/>
-具體方法是：將序列排序，取中位數——注意，如果一個數出現次數大於整體的一半，那麼排序之後支配數一定在中間，然後驗證是否正確。<br/>
-``` python<br/>
-numbers = [1,3,4,3,3]</p>
-
-<h1>calculate</h1>
-
-numbers.sort()<br/>
-lens=len(numbers)<br/>
-candidate=numbers[lens/2]
-
-<h1>validate</h1>
-
-N=0<br/>
-for number in numbers:<br/>
- if number==candidate:<br/>
-    N+=1
-
-<h1>print answer</h1>
-
-<p>if (N>=lens/2):<br/>
-  print numbers[lens/2]<br/>
-else :<br/>
-print &lsquo;not found'<br/>
-```<br/>
-<a href="http://hi.baidu.com/ruclin/item/f2706f26b1d2db140975086b">Origin</a>
-<a href="http://www.iteye.com/topic/600079">Reference</a></p></li>
 </ol>
 
 ]]></content>

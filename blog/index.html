@@ -115,6 +115,400 @@ $(document).ready(
     <article class="post">
 	<h3 class="title">
 		
+		<a href="/blog/2014/03/27/python-importyu-from-dot-dot-dot-import-dot-dot-dot/">
+		
+			Python import與from&#8230;import&#8230;(轉)</a>
+	</h3>
+	<div class="entry-content">
+		<p><strong>1. 簡單說說python import與from&hellip;import&hellip;.(python模塊)</strong></p>
+
+<p>在python用import或者from&hellip;import來導入相應的模塊。模塊其實就一些函數和類的集合文件，它能實現一些相應的功能，當我們需要使用這些功能的時候，直接把相應的模塊導入到我們的程序中，我們就可以使用了。這類似於C語言中的include頭文件，Python中我們用import導入我們需要的模塊。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="s">&#39;================Python import mode==========================&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="k">print</span> <span class="p">(</span><span class="s">&#39;The command line arguments are:&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">print</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span><span class='line'><span class="k">print</span> <span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s"> The python path&#39;</span><span class="p">,</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">argv</span><span class="p">,</span><span class="n">path</span> <span class="c">#導入特定的成員</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="s">&#39;================python from import===================================&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="s">&#39;path:&#39;</span><span class="p">,</span><span class="n">path</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">如果你要使用所有</span><span class="n">sys</span><span class="err">模塊使用的名字，你可以這樣：</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="s">&#39;path:&#39;</span><span class="p">,</span><span class="n">path</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+從以上我們可以簡單看出：</p>
+
+<p>\==========<br/>
+導入mode，import與from&hellip;import的不同之處在於，簡單說：
+如果你想要直接輸入argv變量到你的程序中而每次使用它時又不想打sys，則可使用：from sys import argv。<br/>
+一般說來，應該避免使用from..import而使用import語句，因為這樣可以使你的程序更加易讀，也可以避免名稱的沖突。<br/>
+\==========</p>
+
+<p>在使用 from xxx import * 時，如果想精準的控制模塊導入的內容，可以使用 <strong>all</strong> = [xxx,xxx] 來實現，例如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">]</span> <span class="c">#__為雙橫線</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">two</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span><span class="p">(</span><span class="s">&#39;this is two&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="s">&#39;this is two a&#39;</span>
+</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="s">&#39;this is two b&#39;</span>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">t</span> <span class="o">=</span> <span class="n">two</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">one</span><span class="o">.</span><span class="n">py</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">from</span> <span class="nn">two</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span class='line'><span class="k">print</span> <span class="n">a</span>
+</span><span class='line'><span class="k">print</span> <span class="n">b</span>
+</span><span class='line'><span class="n">t</span> <span class="o">=</span> <span class="n">two</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">這時，類</span><span class="n">two</span><span class="p">()</span><span class="err">將不會被</span> <span class="kn">import</span> <span class="o">*</span><span class="err">導入進來</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><strong>2. 關於import中的路徑搜索問題</strong><br/>
+類似於頭文件，模塊也是需要系統的搜索路徑的，下面的命令即是系統默認的搜索路徑，當你導入一個模塊時，系統就會在下面的路徑列表中搜索相應的文件。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">[</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;/usr/lib64/python26.zip&#39;</span><span class="p">,</span> <span class="s">&#39;/usr/lib64/python2.6&#39;</span><span class="p">,</span> <span class="s">&#39;/usr/lib64/python2.6/plat-linux2&#39;</span><span class="p">,</span> <span class="s">&#39;/usr/lib64/python2.6/lib-tk&#39;</span><span class="p">,</span> <span class="s">&#39;/usr/lib64/python2.6/lib-old&#39;</span><span class="p">,</span> <span class="s">&#39;/usr/lib64/python2.6/lib-dynload&#39;</span><span class="p">,</span> <span class="s">&#39;/usr/lib64/python2.6/site-packages&#39;</span><span class="p">,</span> <span class="s">&#39;/usr/lib64/python2.6/site-packages/gst-0.10&#39;</span><span class="p">,</span> <span class="s">&#39;/usr/lib64/python2.6/site-packages/gtk-2.0&#39;</span><span class="p">,</span> <span class="s">&#39;/usr/lib64/python2.6/site-packages/webkit-1.0&#39;</span><span class="p">,</span> <span class="s">&#39;/usr/lib/python2.6/site-packages&#39;</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="err">從例中，我們可以看到</span><span class="n">python</span><span class="err">會首先在當前工作目錄裏去找</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>如果沒有找導相應的內容，則報錯：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">syss</span>
+</span><span class='line'><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+</span><span class='line'>  <span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+</span><span class='line'><span class="ne">ImportError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="n">syss</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">當然，我們也可以自行添加要搜索的路徑，調用列表的</span><span class="n">append</span><span class="err">方法即可：</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class='line'><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;/usr/xx/python2.6&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><strong>3. 創建自己的模塊</strong><br/>
+在創建之前，有一點需要說明一下：每個Python模塊都有它的__name__（就每個對象都自己的__doc__一樣）。通過<strong>name</strong>我們可以找出每一個模塊的名稱，一般__name__的值有種：1 一是主模塊名稱為：&#8221;__main__&ldquo;(可以理解為直接運行的那個文件)，2 那些被主模塊導入的模塊名稱為：文件名字（不加後面的.py）。有__name__是很有用的，因為我們可以通過 if __name__  == &lsquo;xxx&rsquo; 判斷來執行那些模塊，那些模塊不被執行。另外：每個Python程序也是一個模塊。它擴展名為：.py擴展名。</p>
+
+<p>下面，我們通過例子來說明：<br/>
+首先：我們創建模塊：mymodel.py</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/user/bin/python</span>
+</span><span class='line'><span class="c">#Filename:mymodel.py</span>
+</span><span class='line'><span class="n">version</span> <span class="o">=</span> <span class="s">&#39;1.0&#39;</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">sayHello</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">print</span> <span class="p">(</span><span class="s">&#39;Hello world&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">modelName</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">__name__</span><span class="c">#返回它自己的名稱</span>
+</span><span class='line'><span class="c">#end of model</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+以上語句注意：<br/>
+1) 這個模塊應該被放置在我們輸入它的程序的同一個目錄中，或者在sys.path所列目錄之一。<br/>
+2) 你已經看到，它與我們普通的Python程序相比並沒有什麽特別之處。<br/>
+然後：我們在test.py中來調用此模塊：test.py</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span><span class="nn">mymodel</span>
+</span><span class='line'><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;D:/xx/PythonSERVER/python31/Code&#39;</span><span class="p">)</span><span class="c">#提供搜索路径</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span> <span class="c">#此處打印主模塊的名稱：__main__</span>
+</span><span class='line'><span class="n">mymodel</span><span class="o">.</span><span class="n">sayHello</span><span class="p">()</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="s">&#39;Version&#39;</span><span class="p">,</span><span class="n">mymodel</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="s">&#39;Model Name&#39;</span><span class="p">,</span><span class="n">mymodel</span><span class="o">.</span><span class="n">modelName</span><span class="p">())</span><span class="c">#打印被導入模塊的名稱: mymodel</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">我們使用</span><span class="n">from</span><span class="o">..</span><span class="n">import</span><span class="o">...</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="s">&#39;======================from.....import=====================================&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">mymodel</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span><span class="c">#此處打印主模塊的名稱：__main__</span>
+</span><span class='line'><span class="n">sayHello</span><span class="p">()</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="s">&#39;Version&#39;</span><span class="p">,</span><span class="n">version</span><span class="p">)</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="s">&#39;Model Name&#39;</span><span class="p">,</span><span class="n">modelName</span><span class="p">())</span> <span class="c">#打印被導入模塊的名稱: mymodel</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+以上語句註意：
+1) 我們可以通過import來導入多個模塊，用“,”（逗號）分隔。<br/>
+2) 註意import與from..import&hellip;..</p>
+
+<p><strong>4. 創建自己的包</strong><br/>
+<em>A 一個包的基本組織如下：</em></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">FC</span><span class="o">/</span>
+</span><span class='line'>  <span class="n">__init__</span><span class="o">.</span><span class="n">py</span>
+</span><span class='line'>  <span class="n">Libr</span><span class="o">/</span>
+</span><span class='line'>    <span class="n">__init__</span><span class="o">.</span><span class="n">py</span>
+</span><span class='line'>    <span class="n">one</span><span class="o">.</span><span class="n">py</span>
+</span><span class='line'>    <span class="n">two</span><span class="o">.</span><span class="n">py</span>
+</span><span class='line'>    <span class="o">....</span>
+</span><span class='line'>  <span class="n">Model</span><span class="o">/</span>
+</span><span class='line'>    <span class="n">__init__</span><span class="o">.</span><span class="n">py</span>
+</span><span class='line'>    <span class="n">one</span><span class="o">.</span><span class="n">py</span>
+</span><span class='line'>    <span class="o">....</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="err">在外部加載調用時，有以下方式：</span>
+</span><span class='line'><span class="c">#coding:utf-8</span>
+</span><span class='line'><span class="c">#加載方式一</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">Fc.Libr.one</span>
+</span><span class='line'><span class="k">print</span> <span class="n">Fc</span><span class="o">.</span><span class="n">Libr</span><span class="o">.</span><span class="n">one</span><span class="o">.</span><span class="n">a</span>
+</span><span class='line'><span class="c">#加載方式二</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">Fc.Libr</span> <span class="kn">import</span> <span class="n">one</span>
+</span><span class='line'><span class="k">print</span> <span class="n">one</span><span class="o">.</span><span class="n">a</span>
+</span><span class='line'><span class="c">#加載方式三</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">Fc.Libr.one</span> <span class="kn">import</span> <span class="n">a</span>
+</span><span class='line'><span class="k">print</span> <span class="n">a</span>
+</span><span class='line'><span class="c">#加載方式四</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">Fc.Libr</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span class='line'><span class="k">print</span> <span class="n">one</span><span class="o">.</span><span class="n">a</span>
+</span><span class='line'><span class="err">註意直接使用第四種方式是不能正確導入</span><span class="n">Libr</span><span class="err">下的</span><span class="n">one</span><span class="err">子模塊的，這就需要在</span><span class="n">Fc</span><span class="err">目錄下的</span><span class="n">__init__</span><span class="o">.</span><span class="n">py</span><span class="err">文件中定義好需要加載子模塊的名稱</span>
+</span><span class='line'><span class="n">Fc</span><span class="o">/</span><span class="n">Libr</span><span class="o">/</span><span class="n">__init__</span><span class="o">.</span><span class="n">py</span>
+</span><span class='line'><span class="n">__all__</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;one&#39;</span><span class="p">,</span><span class="s">&#39;two&#39;</span><span class="p">]</span> <span class="c">#定義加載子模塊的名稱</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+在加載包模塊時，在import語句執行期時，遇到的所有__init__.py文件都會被執行，在上面代碼中
+首先會執行Fc目錄中的__int__.py，然後執行Libr目錄中的__init__.py</p>
+
+<p><em>B 子模塊加子模塊問題</em><br/>
+同一包的相同目錄中：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#coding:utf-8</span>
+</span><span class='line'><span class="c">#加載方式一:使用完全限定名稱</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">Fc.Libr</span> <span class="kn">import</span> <span class="n">one</span>
+</span><span class='line'><span class="n">aa</span> <span class="o">=</span> <span class="s">&#39;libr two load one---&#39;</span><span class="o">+</span><span class="n">one</span><span class="o">.</span><span class="n">a</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">#加載方式二:使用相對導入</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">one</span>
+</span><span class='line'><span class="n">bb</span> <span class="o">=</span> <span class="s">&#39;libr two load one----&#39;</span><span class="o">+</span><span class="n">one</span><span class="o">.</span><span class="n">b</span>
+</span><span class='line'><span class="err">方二中使用</span><span class="o">.</span><span class="err">來表示在同一級目錄中。</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c">#加載方式三:(這種方式應當避免:最後找不到會轉移到標準庫)</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">Fc.Libr.one</span>
+</span><span class='line'><span class="n">cc</span> <span class="o">=</span> <span class="s">&#39;libr two load one---&#39;</span><span class="o">+</span><span class="n">Fc</span><span class="o">.</span><span class="n">Libr</span><span class="o">.</span><span class="n">one</span><span class="o">.</span><span class="n">a</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">在外部使用時：</span>
+</span><span class='line'><span class="c">#coding:utf-8</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">Fc.Libr</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span class='line'><span class="k">print</span> <span class="n">two</span><span class="o">.</span><span class="n">aa</span>
+</span><span class='line'><span class="k">print</span> <span class="n">two</span><span class="o">.</span><span class="n">bb</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="err">同一包的不同目錄中：</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">#coding:utf-8</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">..Model</span> <span class="kn">import</span> <span class="n">one</span>
+</span><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="s">&#39;libr two load mode one---&#39;</span><span class="o">+</span><span class="n">one</span><span class="o">.</span><span class="n">a</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">使用時：</span>
+</span><span class='line'><span class="c">#coding:utf-8</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">Fc.Libr</span> <span class="kn">import</span> <span class="o">*</span>
+</span><span class='line'><span class="k">print</span> <span class="n">two</span><span class="o">.</span><span class="n">a</span>
+</span><span class='line'><span class="err">將輸出：</span><span class="n">libr</span> <span class="n">two</span> <span class="n">load</span> <span class="n">mode</span> <span class="n">one</span><span class="o">---</span><span class="n">fc</span> <span class="n">model</span> <span class="n">one</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>另外在導入一個包時，會定義一個特殊的變量__path__，該變量包含一個目錄列表。<br/>
+__path__可通過__init__.py文件中包含的代碼訪問，最初包含的一項具有包的目錄名稱。我們可以向__path__列表提供更多的目錄，以更改查找子模塊時使用的搜索路徑，大型項目中這個很有用。</p>
+
+<p><strong>5. 特別說明</strong><br/>
+1) import執行加載源文件中所有語名（所以模塊是一個文件）。<br/>
+2) import語句可以出現在程序中的任何位置。但是有一點是：無論import語句被使用了多少次，每個模塊中的代碼僅加載和執行一次，後續的import語句僅將模塊名稱綁定到前一次導入所創建的模塊對象上。<br/>
+3) 使用sys.modules可查看當前加載的所有模塊。</p>
+
+<p><a href="http://www.cnblogs.com/ptfblog/archive/2012/07/15/2592122.html">Origin</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-27T14:23:52+08:00" pubdate data-updated="true">Mar 27<span>th</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/python/'>Python</a>
+
+</div>
+
+
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h3 class="title">
+		
 		<a href="/blog/2014/03/26/python-shi-jian-and-ri-qi-mo-kuai/">
 		
 			Python 時間&amp;日期模塊</a>
@@ -586,51 +980,6 @@ time.clock()返回第一次调用该方法到现在的秒數，其精確度高�
 
 
 <time datetime="2014-02-20T15:46:36+08:00" pubdate data-updated="true">Feb 20<span>th</span>, 2014</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/software/'>Software</a>
-
-</div>
-
-
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/2014/02/19/excerpt-software-engineering-a-practitioner-approach/">
-		
-			Excerpt_Software Engineering: A Practitioner Approach</a>
-	</h3>
-	<div class="entry-content">
-		<ol>
-<li><p>&hellip; a set of quality factors that were a first step toward the development of metrics for software quality. These factors assess software from three distinct points of view: (1) product operation (using it), (2) product revision (changing it), and (3) product transition (modifying it to work in a different environment; i.e., &ldquo;porting&rdquo; it). (P95-96)</p></li>
-<li><p>Gilb suggests definitions and measures for each.</br>
-<strong>Correctness</strong>. A program must operate correctly or it provides little value to its users. Correctness is the degree to which the software performs its required function. The most common measure for correctness is defects per KLOC, where a defect is defined as a verified lack of conformance to requirements. When considering the overall quality of a software product, defects are those problems reported by a user of the program after the program has been released for general use. For quality assessment purposes, defects are counted over a standard period of time, typically one year.
-		
-		<a href="/blog/2014/02/19/excerpt-software-engineering-a-practitioner-approach/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-19T18:44:39+08:00" pubdate data-updated="true">Feb 19<span>th</span>, 2014</time></div>
 	
 
 <div class="tags">
