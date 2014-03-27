@@ -3,7 +3,7 @@ layout: post
 title: "About Lives"
 date: 2014-03-24 23:21:46 +0800
 comments: true
-categories: Mood
+categories: mood
 ---
 {% img /images/mourning_angel.jpg %}
 

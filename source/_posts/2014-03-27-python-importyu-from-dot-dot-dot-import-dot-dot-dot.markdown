@@ -3,7 +3,7 @@ layout: post
 title: "Python import與from...import...(轉)"
 date: 2014-03-27 14:23:52 +0800
 comments: true
-categories: Python
+categories: python
 ---
 **1. 簡單說說python import與from...import....(python模塊)**
   

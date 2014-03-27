@@ -3,7 +3,7 @@ layout: post
 title: "Notes of Python 02"
 date: 2014-03-06 17:07:25 +0800
 comments: true
-categories: Python
+categories: python
 ---
 1. 不同算法實現Fibonacci數列  
 1) 遞歸：  

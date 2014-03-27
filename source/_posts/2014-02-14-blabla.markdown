@@ -3,7 +3,7 @@ layout: post
 title: "Blabla"
 date: 2014-02-14 12:37:02 +0800
 comments: true
-categories: Mood
+categories: mood
 ---
 
 {% img /images/time.jpg %} 

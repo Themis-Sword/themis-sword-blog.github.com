@@ -3,7 +3,7 @@ layout: post
 title: "Excerpt_Software Engineering: A Practitioner Approach"
 date: 2014-02-19 18:44:39 +0800
 comments: true
-categories: Software
+categories: software
 ---
 1. ... a set of quality factors that were a first step toward the development of metrics for software quality. These factors assess software from three distinct points of view: (1) product operation (using it), (2) product revision (changing it), and (3) product transition (modifying it to work in a different environment; i.e., "porting" it). (P95-96)  
   

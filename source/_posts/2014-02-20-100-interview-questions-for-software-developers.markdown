@@ -3,7 +3,7 @@ layout: post
 title: "100 Interview Questions for Software Developers(轉)"
 date: 2014-02-20 15:46:36 +0800
 comments: true
-categories: Software
+categories: software
 ---
 1月13日，著名博客作者[Jurgen Appelo](http://www.noop.nl)寫了一篇博文：[“軟件開發者面試百問”](http://www.noop.nl/2009/01/100-interview-questions-for-software-developers.html)。該文甚受讀者歡迎，15日便登上了delicious，Popurls.com，Reddit的首頁。InfoQ中文站在得到作者許可之後，将其全文翻譯爲中文，希望可以對國內讀者有所助益。</br>
 </br>

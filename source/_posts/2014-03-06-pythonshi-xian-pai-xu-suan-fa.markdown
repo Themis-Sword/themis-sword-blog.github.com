@@ -3,7 +3,7 @@ layout: post
 title: "Python實現排序算法"
 date: 2014-03-06 15:53:21 +0800
 comments: true
-categories: Python
+categories: python
 ---
 1. 冒泡排序  
 ``` python   

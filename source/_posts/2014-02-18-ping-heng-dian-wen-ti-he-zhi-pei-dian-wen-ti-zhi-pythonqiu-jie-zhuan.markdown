@@ -3,7 +3,7 @@ layout: post
 title: "平衡點問題和支配點問題之Python求解(轉)"
 date: 2014-02-18 21:46:13 +0800
 comments: true
-categories: Python
+categories: python
 ---
 
 1. 平衡點問題  

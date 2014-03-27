@@ -3,7 +3,7 @@ layout: post
 title: "Python列表刪除重複元素的三種方法及效率分析(轉)"
 date: 2014-02-15 17:53:01 +0800
 comments: true
-categories: Python
+categories: python
 ---
 ####方法一：  
 使用列表對象的sort()方法對列表進行排序，從最後一個元素開始循環迭代列表，判斷相鄰的兩個元素是否相同。  

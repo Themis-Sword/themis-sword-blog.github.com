@@ -3,7 +3,7 @@ layout: post
 title: "Python 常用函數之Join, Split, Zip, Map, Reduce, Filter"
 date: 2014-03-26 15:34:48 +0800
 comments: true
-categories: Python
+categories: python
 ---
 ***1. Join, Split***  
 *A 關於Join和Split方法*  
