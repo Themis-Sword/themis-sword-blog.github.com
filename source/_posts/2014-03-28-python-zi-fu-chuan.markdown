@@ -29,7 +29,26 @@ categories: python
 <tr><td>\other</td><td>其它的字符以普通格式輸出</td></tr>  
 </tbody></table><!--more-->
   
-**2. 索引和切片**  
+**2. 格式化表達**  
+<table><tbody>  
+<tr><td><em>格式化表達</em></td><td><em>描述</em></td></tr>  
+<tr><td>%s</td><td>字符串</td></tr>  
+<tr><td>%r</td><td>repr輸出的字符串</td></tr>  
+<tr><td>%d</td><td>十進制整數</td></tr>  
+<tr><td>%i</td><td>整數</td></tr>  
+<tr><td>%u</td><td>無符號整數</td></tr>  
+<tr><td>%o</td><td>八進制</td></tr>  
+<tr><td>%x</td><td>十六進制</td></tr>  
+<tr><td>%X</td><td>十六進制(大寫)</td></tr>  
+<tr><td>%e</td><td>指數</td></tr>  
+<tr><td>%E</td><td>指數(大寫)</td></tr>  
+<tr><td>%f</td><td>十進制浮點數</td></tr>  
+<tr><td>%F</td><td>十進制浮點數(大寫)</td></tr>  
+<tr><td>%g</td><td>浮點e或f</td></tr>  
+<tr><td>%G</td><td>浮點E或F</td></tr>  
+</tbody></table>  
+  
+**3. 索引和切片**  
 Python中的字符串是有序的字符集合，所以可以通過位置（索引）獲取對應的元素。和c語言中一樣，python的索引也是從0開始的，而且支持使用負索引的方法來獲取元素，一個負的索引可以看做是從字符串結尾處反向計數，-1就表示字符串的最後一個字符。當然也可以理解為負索引與字符串長度相加得到的正索引，即s[-n]等於s[-n+len(s)]。  
 ``` python
 >>> s = "hello"  
@@ -60,7 +79,7 @@ side可以取負值，例如s[::-1]會返回”olleh”，實際效果就是對�
 ''  
 ```  
   
-**3. 字符串方法**  
+**4. 字符串方法**  
 *A 大小寫*  
 S.upper() 全部大寫  
 S.lower() 全部小寫  
@@ -141,22 +160,3 @@ S.isdecimal() 是否全是十進制數字(多語言數字)。
 S.isidentifier() 是否全是合法標識符。  
 S.isnumeric() 是否只包含數字字符。  
 S.isprintable() 是否全是可打印字符。  
-  
-**4. 格式化表達**  
-<table><tbody>  
-<tr><td><em>格式化表達</em></td><td><em>描述</em></td></tr>  
-<tr><td>%s</td><td>字符串</td></tr>  
-<tr><td>%r</td><td>repr輸出的字符串</td></tr>  
-<tr><td>%d</td><td>十進制整數</td></tr>  
-<tr><td>%i</td><td>整數</td></tr>  
-<tr><td>%u</td><td>無符號整數</td></tr>  
-<tr><td>%o</td><td>八進制</td></tr>  
-<tr><td>%x</td><td>十六進制</td></tr>  
-<tr><td>%X</td><td>十六進制(大寫)</td></tr>  
-<tr><td>%e</td><td>指數</td></tr>  
-<tr><td>%E</td><td>指數(大寫)</td></tr>  
-<tr><td>%f</td><td>十進制浮點數</td></tr>  
-<tr><td>%F</td><td>十進制浮點數(大寫)</td></tr>  
-<tr><td>%g</td><td>浮點e或f</td></tr>  
-<tr><td>%G</td><td>浮點E或F</td></tr>  
-</tbody></table>  
