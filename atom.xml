@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-03-28T23:27:21+08:00</updated>
+  <updated>2014-03-29T00:15:28+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -2403,7 +2403,7 @@ Connection to github.com closed.<br/>
 建一個名為CNAME的文件在source目錄下，然後將自己的域名輸入進去。<br/>
 將內容push到GitHub後，第一次生效大概需要一個小時，之後就可以用自己的域名進行訪問了。</p>
 
-<h3>10. 安裝模板</h3>
+<h3>10. 安裝模板並加入版權聲明</h3>
 
 <p>常用第三方模板有：<br/>
 <a href="http://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a><br/>
@@ -2459,7 +2459,97 @@ Connection to github.com closed.<br/>
 <p>註冊<a href="http://www.google.com/analytics/">Google Analytics</a>獲得一個google_analytics_tracking_id，添加到_config.yml中對應位置，並對網站進行驗證即可。然後通過Google Analytics分析網站流量。而且可以通過<a href="https://www.google.com/webmasters/tools/home?hl=zh-CN">Google站長工具</a>，對網站進行更全面的分析和SEO。<br/>
 對自己的網站進行驗證，只需將Google Analytics提供的用於驗證的代碼添加到source/_includes/head.html的<head>標簽之間，網站部署到網上之後，過幾分鐘即可驗證通過，其他需要驗證的也同樣操作。</p>
 
-<h3>12. 參考</h3>
+<h3>12. 實現站內搜索</h3>
+
+<p>1) 訪問<a href="tapirgo.com">Tapirgo.com</a>網站，輸入你的atom.xml 例如: <a href="http://yoursite.com/atom.xml">http://yoursite.com/atom.xml</a> 和你的email地址，然後點擊&#8221;GO&#8221;按鈕，網站會生成一個公鑰和一個私鑰。<br/>
+2) 打開你的_config.yml文件，將下面信息加入：  tapir_token: &ldquo;公鑰&#8221;。<br/>
+3) 將loading.gif 複製粘貼到 source/images/ 文件夾。<br/>
+4) 將jquery-tapir.js 複製粘貼到 source/javascripts/ 文件夾。<br/>
+5) 將search.html 複製粘貼到 source/ 文件夾。<br/>
+6) 修改根目錄下atom.xml文件如下：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>---
+</span><span class='line'>layout: nil
+</span><span class='line'>title : Atom Feed
+</span><span class='line'>---
+</span><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+</span><span class='line'><span class="nt">&lt;feed</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/2005/Atom&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'> <span class="nt">&lt;title&gt;</span>{\\{ site.title }\\}<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'> <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;{\\{ site.production_url }\\}/{\\{ site.atom_path }\\}&quot;</span> <span class="na">rel=</span><span class="s">&quot;self&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'> <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;{\\{ site.production_url }\\}&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'> <span class="nt">&lt;updated&gt;</span>{\\{ site.time | date_to_xmlschema }\\}<span class="nt">&lt;/updated&gt;</span>
+</span><span class='line'> <span class="nt">&lt;id&gt;</span>{\\{ site.production_url }\\}<span class="nt">&lt;/id&gt;</span>
+</span><span class='line'> <span class="nt">&lt;author&gt;</span>
+</span><span class='line'>   <span class="nt">&lt;name&gt;</span>{\\{ site.author.name }\\}<span class="nt">&lt;/name&gt;</span>
+</span><span class='line'>   <span class="nt">&lt;email&gt;</span>{\\{ site.author.email }\\}<span class="nt">&lt;/email&gt;</span>
+</span><span class='line'> <span class="nt">&lt;/author&gt;</span>
+</span><span class='line'> { % for post in site.posts % }
+</span><span class='line'> <span class="nt">&lt;entry&gt;</span>
+</span><span class='line'>   <span class="nt">&lt;title&gt;</span>{\\{ post.title }\\}<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'>   <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;{\\{ site.production_url }\\}{\\{ post.url }\\}&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>   <span class="nt">&lt;updated&gt;</span>{\\{ post.date | date_to_xmlschema }\\}<span class="nt">&lt;/updated&gt;</span>
+</span><span class='line'>   <span class="nt">&lt;id&gt;</span>{\\{ site.production_url }\\}{\\{ post.id }}<span class="nt">&lt;/id&gt;</span>
+</span><span class='line'>   <span class="nt">&lt;content</span> <span class="na">type=</span><span class="s">&quot;html&quot;</span><span class="nt">&gt;</span>{\\{ post.content | xml_escape }\\}<span class="nt">&lt;/content&gt;</span>
+</span><span class='line'>   <span class="nt">&lt;summary</span> <span class="na">type=</span><span class="s">&quot;html&quot;</span><span class="nt">&gt;</span>{\\{ post.description | xml_escape }\\}<span class="nt">&lt;/summary&gt;</span>
+</span><span class='line'> <span class="nt">&lt;/entry&gt;</span>
+</span><span class='line'> { % endfor % }
+</span><span class='line'><span class="nt">&lt;/feed&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+7) 添加如下一段到_layouts/default.html中：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;/atom.xml&quot;</span> <span class="na">type=</span><span class="s">&quot;application/atom+xml&quot;</span> <span class="na">rel=</span><span class="s">&quot;alternate&quot;</span> <span class="na">title=</span><span class="s">&quot;Sitewide ATOM Feed&quot;</span><span class="nt">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+8) 在頁面合適的位置上創建一個搜索框：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">align=</span><span class="s">&#39;center&#39;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;navbar-form&quot;</span> <span class="na">action=</span><span class="s">&quot;/search.html&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Search&quot;</span> <span class="na">name=</span><span class="s">&quot;query&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/form&gt;</span>
+</span><span class='line'> <span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<h3>13. 參考</h3>
 
 <p><a href="http://octopress.org/help/">Octopress Help</a><br/>
 <a href="http://justcoding.iteye.com/blog/1954645">利用Octopress搭建一個GitHub博客</a><br/>
@@ -2469,7 +2559,9 @@ Connection to github.com closed.<br/>
 <a href="http://www.yanjiuyanjiu.com/blog/20130402/">我的Octopress配置</a><br/>
 <a href="http://blog.csdn.net/lcliliil/article/details/13725895">Octopress侧边栏及评论系统定制</a><br/>
 <a href="https://github.com/nswbmw/N-blog/wiki/_pages">N-blog</a><br/>
-<a href="http://blog.csdn.net/lcliliil/article/details/13727927">Octopress添加统计与SEO</a></p>
+<a href="http://blog.csdn.net/lcliliil/article/details/13727927">Octopress添加统计与SEO</a><br/>
+<a href="https://github.com/blimey85/octopress-tapir">octopress-tapir</a>  (需要下載文件，搜索框用)<br/>
+<a href="https://github.com/cinowu/gitskills/blob/master/jekyll-use.md">站内搜索框</a></p>
 
 <h3>PS:</h3>
 
