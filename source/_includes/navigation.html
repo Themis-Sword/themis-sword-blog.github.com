@@ -1,1 +1,9 @@
 {% include custom/navigation.html %}
+
+{% if site.tapir_token %}
+  <form method="get" action="{{ root_url }}/search.html">
+    <fieldset role="search">
+      <input class="search" name="query" type="text" placeholder="Search..." x-webkit-speech />
+    </fieldset>
+  </form>
+{% endif %}
