@@ -84,6 +84,14 @@ $(document).ready(
 	<li><a href="/author">Author</a></li>
 </ul>
 
+
+
+  <form method="get" action="/search.html">
+    <fieldset role="search">
+      <input class="search" name="query" type="text" placeholder="Search..." x-webkit-speech />
+    </fieldset>
+  </form>
+
 </nav>
 <nav id="mobile-nav">
 	<div class="alignleft menu">
@@ -95,12 +103,20 @@ $(document).ready(
 	<li><a href="/author">Author</a></li>
 </ul>
 
+
+
+  <form method="get" action="/search.html">
+    <fieldset role="search">
+      <input class="search" name="query" type="text" placeholder="Search..." x-webkit-speech />
+    </fieldset>
+  </form>
+
 </div>
 	</div>
 	<div class="alignright search">
 		<a class="button"></a>
 		<div class="container">
-			<form action="" method="get">
+			<form action="http://www.aprilzephyr.com" method="get">
 				<input type="text" name="q" results="0">
 				<input type="hidden" name="q" value="site:www.aprilzephyr.com">
 			</form>
@@ -420,6 +436,15 @@ $(document).ready(
     
     <div class="center"><a href="/archives">Blog Archives</a></div>
 </nav></div>
+
+<script src="/js/jquery-tapir.min.js"></script>
+
+<div align='left'>
+    <form class="navbar-form" action="/search.html">
+        <input type="text" class="form-control" placeholder="Search" name="query">
+    </form>               
+ </div>
+
 	<footer id="footer" class="inner">Copyright &copy; 2014
 
     Themis_Sword

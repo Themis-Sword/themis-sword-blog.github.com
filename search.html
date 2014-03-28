@@ -5,7 +5,7 @@
 	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
 	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	<meta charset="utf-8">
-	<title>Never Scared Endeavoring.  | Themis_Sword's Blog</title>
+	<title>Search Results  | Themis_Sword's Blog</title>
 
 <meta name="author" content="Themis_Sword"> 
 
@@ -128,9 +128,23 @@ $(document).ready(
 </header>
 
 	<div id="content" class="inner"><article class="page">
-    <div class="entry-content"><h2>Ooooooooops&hellip;</h2>
+    <div class="entry-content"><div id="search_loading" style="margin: 40px 0">
+    <center><img src="/images/loading.gif"></center>
+</div>
 
-<p>Looks like the page you&rsquo;re looking for doesn&rsquo;t exist. Please go <a href="/">home</a> and try again!</p>
+<script type="text/javascript" src="/javascripts/jquery-tapir.js"></script>
+<div id="blog-archives">
+<div id="search_results" style="display:none">
+
+</div>
+</div>
+<script>
+    $('#search_results').tapir({
+        'token': '533573ab5009090200000000',
+        'complete' : function() { document.getElementById('search_loading').style.display="none"; }
+    });
+</script>
+
 </div>
 </article>
 
