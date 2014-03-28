@@ -6,6 +6,15 @@
 	<header id="header" class="inner">{% include header.html %}</header>
 
 	<div id="content" class="inner">{{ content | expand_urls: root_url }}</div>
+
+<script src="/js/jquery-tapir.min.js"></script>
+
+<div align='left'>
+    <form class="navbar-form" action="/search.html">
+        <input type="text" class="form-control" placeholder="Search" name="query">
+    </form>               
+ </div>
+
 	<footer id="footer" class="inner">{% include footer.html %}</footer>
 	{% include after_footer.html %}
 </body>
