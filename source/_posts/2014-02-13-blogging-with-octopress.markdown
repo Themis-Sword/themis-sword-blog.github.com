@@ -78,7 +78,7 @@ Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲
 在域名管理中，建立一個CNAME指向，將你的域名指向username.github.com  
 建一個名為CNAME的文件在source目錄下，然後將自己的域名輸入進去。  
 將內容push到GitHub後，第一次生效大概需要一個小時，之後就可以用自己的域名進行訪問了。  
-###10. 安裝模板  
+###10. 安裝模板並加入版權聲明  
 常用第三方模板有：  
 [3rd Party Octopress Themes](http://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes)  
 進入選擇好的模板鏈接，根據說明進行安裝。(本Blog使用的模板爲：[CleanPress](https://github.com/macjasp/cleanpress))  
@@ -108,7 +108,56 @@ content="{\{ page.keywords }\}">{ % endif % }
 ####2) 添加Google Analytics  
 註冊[Google Analytics](http://www.google.com/analytics/)獲得一個google_analytics_tracking_id，添加到\_config.yml中對應位置，並對網站進行驗證即可。然後通過Google Analytics分析網站流量。而且可以通過[Google站長工具](https://www.google.com/webmasters/tools/home?hl=zh-CN)，對網站進行更全面的分析和SEO。  
 對自己的網站進行驗證，只需將Google Analytics提供的用於驗證的代碼添加到source/\_includes/head.html的<head>標簽之間，網站部署到網上之後，過幾分鐘即可驗證通過，其他需要驗證的也同樣操作。  
-###12. 參考  
+  
+###12. 實現站內搜索  
+1) 訪問[Tapirgo.com](tapirgo.com)網站，輸入你的atom.xml 例如: http://yoursite.com/atom.xml 和你的email地址，然後點擊"GO"按鈕，網站會生成一個公鑰和一個私鑰。  
+2) 打開你的\_config.yml文件，將下面信息加入：  tapir_token: "公鑰"。  
+3) 將loading.gif 複製粘貼到 source/images/ 文件夾。  
+4) 將jquery-tapir.js 複製粘貼到 source/javascripts/ 文件夾。  
+5) 將search.html 複製粘貼到 source/ 文件夾。  
+6) 修改根目錄下atom.xml文件如下：  
+``` xml
+---
+layout: nil
+title : Atom Feed
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ <title>{\\{ site.title }\\}</title>
+ <link href="{\\{ site.production_url }\\}/{\\{ site.atom_path }\\}" rel="self"/>
+ <link href="{\\{ site.production_url }\\}"/>
+ <updated>{\\{ site.time | date_to_xmlschema }\\}</updated>
+ <id>{\\{ site.production_url }\\}</id>
+ <author>
+   <name>{\\{ site.author.name }\\}</name>
+   <email>{\\{ site.author.email }\\}</email>
+ </author>
+ { % for post in site.posts % }
+ <entry>
+   <title>{\\{ post.title }\\}</title>
+   <link href="{\\{ site.production_url }\\}{\\{ post.url }\\}"/>
+   <updated>{\\{ post.date | date_to_xmlschema }\\}</updated>
+   <id>{\\{ site.production_url }\\}{\\{ post.id }}</id>
+   <content type="html">{\\{ post.content | xml_escape }\\}</content>
+   <summary type="html">{\\{ post.description | xml_escape }\\}</summary>
+ </entry>
+ { % endfor % }
+</feed>
+```  
+7) 添加如下一段到\_layouts/default.html中：  
+``` html
+<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+```  
+8) 在頁面合適的位置上創建一個搜索框：  
+``` html
+<div align='center'>
+    <form class="navbar-form" action="/search.html">
+        <input type="text" class="form-control" placeholder="Search" name="query">
+    </form>               
+ </div>
+```  
+  
+###13. 參考  
 [Octopress Help](http://octopress.org/help/)  
 [利用Octopress搭建一個GitHub博客](http://justcoding.iteye.com/blog/1954645)  
 [象写程序一样写博客：搭建基于github的博客](http://blog.devtang.com/blog/2012/02/10/setup-blog-based-on-github/)  
@@ -118,6 +167,8 @@ content="{\{ page.keywords }\}">{ % endif % }
 [Octopress侧边栏及评论系统定制](http://blog.csdn.net/lcliliil/article/details/13725895)  
 [N-blog](https://github.com/nswbmw/N-blog/wiki/_pages)  
 [Octopress添加统计与SEO](http://blog.csdn.net/lcliliil/article/details/13727927)  
+[octopress-tapir](https://github.com/blimey85/octopress-tapir)  (需要下載文件，搜索框用)  
+[站内搜索框](https://github.com/cinowu/gitskills/blob/master/jekyll-use.md)
   
 ###PS:  
 受限於格式要求，本文代碼中**{**或**}**與旁邊**%**之間的空格請刪去；兩個**{**或者兩個**}**之間的**\\**請刪去。
