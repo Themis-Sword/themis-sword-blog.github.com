@@ -11,8 +11,8 @@ categories: python
 <tr><td><em>轉義字符</em></td><td><em>描述</em></td></tr>  
 <tr><td>\\(在行尾)</td><td>續行符</td></tr>  
 <tr><td>\\\ </td><td>反斜槓</td></tr>  
-<tr><td>\'</td><td>單引號</td></tr>  
-<tr><td>\"</td><td>雙引號</td></tr>  
+<tr><td>\\' </td><td>單引號</td></tr>  
+<tr><td>\\" </td><td>雙引號</td></tr>  
 <tr><td>\a</td><td>響鈴</td></tr>  
 <tr><td>\b</td><td>退格(Backspace)</td></tr>  
 <tr><td>\e</td><td>轉義</td></tr>  
