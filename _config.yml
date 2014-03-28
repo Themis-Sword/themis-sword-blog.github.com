@@ -6,11 +6,11 @@ url: http://www.aprilzephyr.com
 title: Themis_Sword's Blog
 subtitle: Never Scared Endeavoring.
 author: Themis_Sword
-simple_search: /search
+simple_search: http://www.aprilzephyr.com
 description: Independent, critical and technical ideas.
 keywords: Themis_Sword, Blog, Technology, Mood, English, Life, Python, Business
 
-# tapir_token: 533573ab5009090200000000
+tapir_token: 533573ab5009090200000000
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
