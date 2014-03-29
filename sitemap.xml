@@ -1,47 +1,35 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+---
+# Remember to set production_url in your _config.yml file!
+title : Sitemap
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    {% for post in site.posts %}
     <url>
-        <loc>http://www.aprilzephyr.com/blog/2014/02/13/commencement/</loc>
-        <lastmod>2014-02-13T21:01:18+08:00</lastmod>
+      <loc>{{ site.production_url }}{{ post.url }}</loc>
+      <changefreq>daily</changefreq>
+      <lastmod>{{ post.date | date: "%Y-%m-%d"}}</lastmod>
+      <priority>1.0</priority>
     </url>
+    {% endfor %}
+
+    {% for page in site.pages %}
+    {% if page.layout != nil %}
+    {% if page.layout != 'feed' %}
+    {% if page.group == 'navigation' %}
     <url>
-        <loc>http://www.aprilzephyr.com/blog/2014/02/13/blogging-with-octopress/</loc>
-        <lastmod>2014-02-14T12:59:34+08:00</lastmod>
+      <loc>{{ site.production_url }}{{ page.url | remove: 'index.html' }}</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.80</priority>
     </url>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+
     <url>
-        <loc>http://www.aprilzephyr.com/blog/2014/02/14/blabla/</loc>
-        <lastmod>2014-02-14T13:18:28+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.aprilzephyr.com/404.html</loc>
-        <lastmod>2014-02-13T21:01:18+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.aprilzephyr.com/archives/</loc>
-        <lastmod>2014-02-14T13:18:28+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.aprilzephyr.com/author/</loc>
-        <lastmod>2014-02-14T13:18:28+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.aprilzephyr.com/blog/archives/</loc>
-        <lastmod>2014-02-14T13:18:28+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.aprilzephyr.com/blog/</loc>
-        <lastmod>2014-02-14T13:18:28+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.aprilzephyr.com/</loc>
-        <lastmod>2014-02-14T13:18:28+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.aprilzephyr.com/portfolio/</loc>
-        <lastmod>2014-02-14T13:18:28+08:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.aprilzephyr.com/robots.txt</loc>
-        <lastmod>2014-02-13T21:01:18+08:00</lastmod>
+      <loc>{{ site.production_url }}</loc>
+      <changefreq>daily</changefreq>
+      <priority>0.6</priority>
     </url>
 </urlset>
