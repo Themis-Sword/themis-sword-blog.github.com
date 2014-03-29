@@ -104,7 +104,7 @@ $(document).ready(
 	<div class="alignright search">
 		<a class="button"></a>
 		<div class="container">
-			<form action="http://www.aprilzephyr.com" method="get">
+			<form action="/search" method="get">
 				<input type="text" name="q" results="0">
 				<input type="hidden" name="q" value="site:www.aprilzephyr.com">
 			</form>
@@ -264,78 +264,7 @@ Connection to github.com closed.<br/>
 
 <h3>12. 實現站內搜索</h3>
 
-<p>1) 訪問<a href="tapirgo.com">Tapirgo.com</a>網站，輸入你的atom.xml 例如: <a href="http://yoursite.com/atom.xml">http://yoursite.com/atom.xml</a> 和你的email地址，然後點擊&#8221;GO&#8221;按鈕，網站會生成一個公鑰和一個私鑰。<br/>
-2) 打開你的_config.yml文件，將下面信息加入：  tapir_token: &ldquo;公鑰&#8221;。<br/>
-3) 將loading.gif 複製粘貼到 source/images/ 文件夾。<br/>
-4) 將jquery-tapir.js 複製粘貼到 source/javascripts/ 文件夾。<br/>
-5) 將search.html 複製粘貼到 source/ 文件夾。<br/>
-6) 修改根目錄下atom.xml文件如下：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'>---
-</span><span class='line'>layout: nil
-</span><span class='line'>title : Atom Feed
-</span><span class='line'>---
-</span><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
-</span><span class='line'><span class="nt">&lt;feed</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/2005/Atom&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'> <span class="nt">&lt;title&gt;</span>{\\{ site.title }\\}<span class="nt">&lt;/title&gt;</span>
-</span><span class='line'> <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;{\\{ site.production_url }\\}/{\\{ site.atom_path }\\}&quot;</span> <span class="na">rel=</span><span class="s">&quot;self&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'> <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;{\\{ site.production_url }\\}&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'> <span class="nt">&lt;updated&gt;</span>{\\{ site.time | date_to_xmlschema }\\}<span class="nt">&lt;/updated&gt;</span>
-</span><span class='line'> <span class="nt">&lt;id&gt;</span>{\\{ site.production_url }\\}<span class="nt">&lt;/id&gt;</span>
-</span><span class='line'> <span class="nt">&lt;author&gt;</span>
-</span><span class='line'>   <span class="nt">&lt;name&gt;</span>{\\{ site.author.name }\\}<span class="nt">&lt;/name&gt;</span>
-</span><span class='line'>   <span class="nt">&lt;email&gt;</span>{\\{ site.author.email }\\}<span class="nt">&lt;/email&gt;</span>
-</span><span class='line'> <span class="nt">&lt;/author&gt;</span>
-</span><span class='line'> { % for post in site.posts % }
-</span><span class='line'> <span class="nt">&lt;entry&gt;</span>
-</span><span class='line'>   <span class="nt">&lt;title&gt;</span>{\\{ post.title }\\}<span class="nt">&lt;/title&gt;</span>
-</span><span class='line'>   <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;{\\{ site.production_url }\\}{\\{ post.url }\\}&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'>   <span class="nt">&lt;updated&gt;</span>{\\{ post.date | date_to_xmlschema }\\}<span class="nt">&lt;/updated&gt;</span>
-</span><span class='line'>   <span class="nt">&lt;id&gt;</span>{\\{ site.production_url }\\}{\\{ post.id }}<span class="nt">&lt;/id&gt;</span>
-</span><span class='line'>   <span class="nt">&lt;content</span> <span class="na">type=</span><span class="s">&quot;html&quot;</span><span class="nt">&gt;</span>{\\{ post.content | xml_escape }\\}<span class="nt">&lt;/content&gt;</span>
-</span><span class='line'>   <span class="nt">&lt;summary</span> <span class="na">type=</span><span class="s">&quot;html&quot;</span><span class="nt">&gt;</span>{\\{ post.description | xml_escape }\\}<span class="nt">&lt;/summary&gt;</span>
-</span><span class='line'> <span class="nt">&lt;/entry&gt;</span>
-</span><span class='line'> { % endfor % }
-</span><span class='line'><span class="nt">&lt;/feed&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-7) 添加如下一段到_layouts/default.html中：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;/atom.xml&quot;</span> <span class="na">type=</span><span class="s">&quot;application/atom+xml&quot;</span> <span class="na">rel=</span><span class="s">&quot;alternate&quot;</span> <span class="na">title=</span><span class="s">&quot;Sitewide ATOM Feed&quot;</span><span class="nt">&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-8) 在頁面合適的位置上創建一個搜索框：</p>
+<p>1) 在頁面合適的位置上創建一個搜索框：</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -343,10 +272,28 @@ Connection to github.com closed.<br/>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 </pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">align=</span><span class="s">&#39;center&#39;</span><span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;navbar-form&quot;</span> <span class="na">action=</span><span class="s">&quot;/search.html&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Search&quot;</span> <span class="na">name=</span><span class="s">&quot;query&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;navbar-form&quot;</span> <span class="na">action=</span><span class="s">&quot;/search/&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Search&quot;</span> <span class="na">name=</span><span class="s">&quot;q&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'>    <span class="nt">&lt;/form&gt;</span>
 </span><span class='line'> <span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+2) 修改_config.yml文件：<br/>
+simple_search: \search<br/>
+3) 創建新的search頁面：<br/>
+<code>rake new_page["search"]</code><br/>
+4) 修改source/_include/navigation.html 文件：<br/>
+去掉<code>&lt;input type="hidden" name="q" value="site:yourid.github.io" /&gt;</code><br/>
+5) 登錄<a href="https://www.google.com/webmasters/tools/home">Google站長工具</a>，綁定自己的網站，進入網站管理頁面，進入實驗室中的“自定義搜索”，設置細節後獲取代碼，將代碼填入上面新建的search/index.markdown中：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div&gt;</span>
+</span><span class='line'>    插入Google自定義搜索的代碼
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -363,8 +310,9 @@ Connection to github.com closed.<br/>
 <a href="http://blog.csdn.net/lcliliil/article/details/13725895">Octopress侧边栏及评论系统定制</a><br/>
 <a href="https://github.com/nswbmw/N-blog/wiki/_pages">N-blog</a><br/>
 <a href="http://blog.csdn.net/lcliliil/article/details/13727927">Octopress添加统计与SEO</a><br/>
-<a href="https://github.com/blimey85/octopress-tapir">octopress-tapir</a>  (需要下載文件，搜索框用)<br/>
-<a href="https://github.com/cinowu/gitskills/blob/master/jekyll-use.md">站内搜索框</a></p>
+<del><a href="https://github.com/blimey85/octopress-tapir">octopress-tapir</a>  (需要下載文件，搜索框用)</del><br/>
+<del><a href="https://github.com/cinowu/gitskills/blob/master/jekyll-use.md">站内搜索框</a></del><br/>
+<a href="http://cocolighter.com/blog/2013/08/28/octopress-setup/">Octopress_setup</a></p>
 
 <h3>PS:</h3>
 
@@ -436,12 +384,10 @@ var jiathis_config={
 </div>
 
 <div align='center'>
-    <form class="navbar-form" action="/search.html">
-        <input type="text" class="form-control" placeholder="Search" name="query">
+    <form class="navbar-form" action="/search/">
+        <input type="text" class="form-control" placeholder="Google Search" name="q">
     </form>
  </div>
-
-<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
 
 	<footer id="footer" class="inner">Copyright &copy; 2014
 

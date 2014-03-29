@@ -5,7 +5,7 @@
 	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
 	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	<meta charset="utf-8">
-	<title>Search Results  | Themis_Sword's Blog</title>
+	<title>search  | Themis_Sword's Blog</title>
 
 <meta name="author" content="Themis_Sword"> 
 
@@ -104,7 +104,7 @@ $(document).ready(
 	<div class="alignright search">
 		<a class="button"></a>
 		<div class="container">
-			<form action="http://www.aprilzephyr.com" method="get">
+			<form action="/search" method="get">
 				<input type="text" name="q" results="0">
 				<input type="hidden" name="q" value="site:www.aprilzephyr.com">
 			</form>
@@ -116,22 +116,19 @@ $(document).ready(
 </header>
 
 	<div id="content" class="inner"><article class="page">
-    <div class="entry-content"><div id="search_loading" style="margin-top: 20px;" size="40">
-    <center><img src="/images/loading.gif"></center>
-</div>
-
-<script type="text/javascript" src="/javascripts/jquery-tapir.js"></script>
-<div id="blog-archives">
-<div id="search_results" style="display:none">
-
-</div>
-</div>
-<script>
-    $('#search_results').tapir({
-        'token': '533573ab5009090200000000',
-        'complete' : function() { document.getElementById('search_loading').style.display="none"; }
-    });
+    <div class="entry-content"><div><script>
+  (function() {
+    var cx = '016604640184447215994:u1xiowofg70';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
 </script>
+<gcse:searchresults-only></gcse:searchresults-only></div>
 
 </div>
 </article>
@@ -140,12 +137,10 @@ $(document).ready(
 </div>
 
 <div align='center'>
-    <form class="navbar-form" action="/search.html">
-        <input type="text" class="form-control" placeholder="Search" name="query">
+    <form class="navbar-form" action="/search/">
+        <input type="text" class="form-control" placeholder="Google Search" name="q">
     </form>
  </div>
-
-<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
 
 	<footer id="footer" class="inner">Copyright &copy; 2014
 
