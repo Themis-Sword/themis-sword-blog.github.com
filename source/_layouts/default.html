@@ -7,6 +7,10 @@
 
 	<div id="content" class="inner">{{ content | expand_urls: root_url }}</div>
 
+    {% if page.url == "/404.html" %}
+        <meta http-equiv="refresh" content="5; url=/">
+    {% endif %}
+
 <div align='center'>
     <form class="navbar-form" action="/search/">
         <input type="text" class="form-control" placeholder="Google Search" name="q">
