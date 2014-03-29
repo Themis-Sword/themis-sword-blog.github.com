@@ -7,8 +7,6 @@ categories: mood
 ---
 {% img /images/mourning_angel.jpg %}
 
-<embed src="http://www.xiami.com/widget/34027985_1772642616/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></embed>
-
 The distance between life and death, might be far beyond the real boundary from life and death.<!--more-->  
   
 It might need only one second separating fresh teary faces from pale freezing corpses. Or, seventeen days' passing eclipse infinite dread and heart-lacerating sorrow over these pathetic waiting families who have already withstood too much.  

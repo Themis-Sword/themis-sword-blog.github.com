@@ -10,7 +10,7 @@ Python提供了time/datetime/calendar等模塊來處理日期和時間。
 *A. time.time()*  
 1970年1月1日以來的秒數，是一個浮點數。  
 *B. time.sleep()*  
-可以通過调用time.sleep來挂起當前的進程。time.sleep接收一个浮點型參數，表示進程挂起的時間。  
+可以通過調用time.sleep來挂起當前的進程。time.sleep接收一个浮點型參數，表示進程挂起的時間。  
 *C. time.clock()*  
 time.clock()返回第一次调用该方法到现在的秒數，其精確度高於1微秒。可以使用该函數來記錄程序執行的時間。 <!--more-->  
 *D. time.gmtime()*  
