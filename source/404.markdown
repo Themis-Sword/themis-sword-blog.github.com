@@ -3,6 +3,5 @@ layout: page
 sharing: false
 ---
 
-## Ooooooooops...
-
-Looks like the page you're looking for doesn't exist. Please go [home](/) or try again!
+### Looks like the page you're looking for doesn't exist.   
+You would be redirected toward [home](/) within 5 seconds.
