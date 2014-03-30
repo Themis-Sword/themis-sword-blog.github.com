@@ -4,7 +4,7 @@
   <title><![CDATA[Category: software | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/software/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-03-29T23:53:25+08:00</updated>
+  <updated>2014-03-30T14:38:58+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[100 Interview Questions for Software Developers(轉)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/2014/02/20/100-interview-questions-for-software-developers/"/>
+    <link href="http://www.aprilzephyr.com/blog/20140220/100-interview-questions-for-software-developers/"/>
     <updated>2014-02-20T15:46:36+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/2014/02/20/100-interview-questions-for-software-developers</id>
+    <id>http://www.aprilzephyr.com/blog/20140220/100-interview-questions-for-software-developers</id>
     <content type="html"><![CDATA[<p>1月13日，著名博客作者<a href="http://www.noop.nl">Jurgen Appelo</a>寫了一篇博文：<a href="http://www.noop.nl/2009/01/100-interview-questions-for-software-developers.html">“軟件開發者面試百問”</a>。該文甚受讀者歡迎，15日便登上了delicious，Popurls.com，Reddit的首頁。InfoQ中文站在得到作者許可之後，将其全文翻譯爲中文，希望可以對國內讀者有所助益。</br>
 </br>
 以下爲文章全文：</br>
@@ -172,9 +172,9 @@
   
   <entry>
     <title type="html"><![CDATA[Excerpt_Software Engineering: A Practitioner Approach]]></title>
-    <link href="http://www.aprilzephyr.com/blog/2014/02/19/excerpt-software-engineering-a-practitioner-approach/"/>
+    <link href="http://www.aprilzephyr.com/blog/20140219/excerpt-software-engineering-a-practitioner-approach/"/>
     <updated>2014-02-19T18:44:39+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/2014/02/19/excerpt-software-engineering-a-practitioner-approach</id>
+    <id>http://www.aprilzephyr.com/blog/20140219/excerpt-software-engineering-a-practitioner-approach</id>
     <content type="html"><![CDATA[<ol>
 <li><p>&hellip; a set of quality factors that were a first step toward the development of metrics for software quality. These factors assess software from three distinct points of view: (1) product operation (using it), (2) product revision (changing it), and (3) product transition (modifying it to work in a different environment; i.e., &ldquo;porting&rdquo; it). (P95-96)</p></li>
 <li><p>Gilb suggests definitions and measures for each.</br>

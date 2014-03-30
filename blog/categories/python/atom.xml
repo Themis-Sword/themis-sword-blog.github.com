@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-03-29T23:53:25+08:00</updated>
+  <updated>2014-03-30T14:38:58+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Python 字符串]]></title>
-    <link href="http://www.aprilzephyr.com/blog/2014/03/28/python-zi-fu-chuan/"/>
+    <link href="http://www.aprilzephyr.com/blog/20140328/python-zi-fu-chuan/"/>
     <updated>2014-03-28T01:15:00+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/2014/03/28/python-zi-fu-chuan</id>
+    <id>http://www.aprilzephyr.com/blog/20140328/python-zi-fu-chuan</id>
     <content type="html"><![CDATA[<p><strong>1. 轉義字符</strong></p>
 
 <table>
@@ -189,9 +189,9 @@ S.isprintable() 是否全是可打印字符。</p>
   
   <entry>
     <title type="html"><![CDATA[Python import與from...import...(轉)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/2014/03/27/python-importyu-from-dot-dot-dot-import-dot-dot-dot/"/>
+    <link href="http://www.aprilzephyr.com/blog/20140327/python-importyu-from-dot-dot-dot-import-dot-dot-dot/"/>
     <updated>2014-03-27T14:23:52+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/2014/03/27/python-importyu-from-dot-dot-dot-import-dot-dot-dot</id>
+    <id>http://www.aprilzephyr.com/blog/20140327/python-importyu-from-dot-dot-dot-import-dot-dot-dot</id>
     <content type="html"><![CDATA[<p><strong>1. 簡單說說python import與from&hellip;import&hellip;.(python模塊)</strong></p>
 
 <p>在python用import或者from&hellip;import來導入相應的模塊。模塊其實就一些函數和類的集合文件，它能實現一些相應的功能，當我們需要使用這些功能的時候，直接把相應的模塊導入到我們的程序中，我們就可以使用了。這類似於C語言中的include頭文件，Python中我們用import導入我們需要的模塊。 <!--more-->
@@ -430,9 +430,9 @@ __path__可通過__init__.py文件中包含的代碼訪問，最初包含的一�
   
   <entry>
     <title type="html"><![CDATA[Python 時間&amp;日期模塊]]></title>
-    <link href="http://www.aprilzephyr.com/blog/2014/03/26/python-shi-jian-and-ri-qi-mo-kuai/"/>
+    <link href="http://www.aprilzephyr.com/blog/20140326/python-shi-jian-and-ri-qi-mo-kuai/"/>
     <updated>2014-03-26T16:53:19+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/2014/03/26/python-shi-jian-and-ri-qi-mo-kuai</id>
+    <id>http://www.aprilzephyr.com/blog/20140326/python-shi-jian-and-ri-qi-mo-kuai</id>
     <content type="html"><![CDATA[<p>Python提供了time/datetime/calendar等模塊來處理日期和時間。<br/>
 <strong>1.time模塊常用的函數</strong><br/>
 <em>A. time.time()</em><br/>
@@ -573,9 +573,9 @@ print  tomorrow > now</p>
   
   <entry>
     <title type="html"><![CDATA[Python 常用函數之Join, Split, Zip, Map, Reduce, Filter]]></title>
-    <link href="http://www.aprilzephyr.com/blog/2014/03/26/python-chang-yong-han-shu-zhi-join/"/>
+    <link href="http://www.aprilzephyr.com/blog/20140326/python-chang-yong-han-shu-zhi-join/"/>
     <updated>2014-03-26T15:34:48+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/2014/03/26/python-chang-yong-han-shu-zhi-join</id>
+    <id>http://www.aprilzephyr.com/blog/20140326/python-chang-yong-han-shu-zhi-join</id>
     <content type="html"><![CDATA[<p><strong><em>1. Join, Split</em></strong><br/>
 <em>A 關於Join和Split方法</em><br/>
 1) 只針對字符串進行處理。split:拆分字符串、join連接字符串<br/>
@@ -841,9 +841,9 @@ is_prime(start,stop)
   
   <entry>
     <title type="html"><![CDATA[Notes of Python 02]]></title>
-    <link href="http://www.aprilzephyr.com/blog/2014/03/06/notes-of-python-02/"/>
+    <link href="http://www.aprilzephyr.com/blog/20140306/notes-of-python-02/"/>
     <updated>2014-03-06T17:07:25+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/2014/03/06/notes-of-python-02</id>
+    <id>http://www.aprilzephyr.com/blog/20140306/notes-of-python-02</id>
     <content type="html"><![CDATA[<ol>
 <li><p>不同算法實現Fibonacci數列<br/>
 1) 遞歸：<br/>
