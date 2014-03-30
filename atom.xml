@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-03-30T14:38:58+08:00</updated>
+  <updated>2014-03-30T14:43:09+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Python 字符串]]></title>
-    <link href="http://www.aprilzephyr.com/blog/20140328/python-zi-fu-chuan/"/>
+    <link href="http://www.aprilzephyr.com/blog/03282014/python-zi-fu-chuan/"/>
     <updated>2014-03-28T01:15:00+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/20140328/python-zi-fu-chuan</id>
+    <id>http://www.aprilzephyr.com/blog/03282014/python-zi-fu-chuan</id>
     <content type="html"><![CDATA[<p><strong>1. 轉義字符</strong></p>
 
 <table>
@@ -230,9 +230,9 @@ S.isprintable() 是否全是可打印字符。</p>
   
   <entry>
     <title type="html"><![CDATA[Python import與from...import...(轉)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/20140327/python-importyu-from-dot-dot-dot-import-dot-dot-dot/"/>
+    <link href="http://www.aprilzephyr.com/blog/03272014/python-importyu-from-dot-dot-dot-import-dot-dot-dot/"/>
     <updated>2014-03-27T14:23:52+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/20140327/python-importyu-from-dot-dot-dot-import-dot-dot-dot</id>
+    <id>http://www.aprilzephyr.com/blog/03272014/python-importyu-from-dot-dot-dot-import-dot-dot-dot</id>
     <content type="html"><![CDATA[<p><strong>1. 簡單說說python import與from&hellip;import&hellip;.(python模塊)</strong></p>
 
 <p>在python用import或者from&hellip;import來導入相應的模塊。模塊其實就一些函數和類的集合文件，它能實現一些相應的功能，當我們需要使用這些功能的時候，直接把相應的模塊導入到我們的程序中，我們就可以使用了。這類似於C語言中的include頭文件，Python中我們用import導入我們需要的模塊。 <!--more--></p>
@@ -590,9 +590,9 @@ __path__可通過__init__.py文件中包含的代碼訪問，最初包含的一�
   
   <entry>
     <title type="html"><![CDATA[Python 時間&amp;日期模塊]]></title>
-    <link href="http://www.aprilzephyr.com/blog/20140326/python-shi-jian-and-ri-qi-mo-kuai/"/>
+    <link href="http://www.aprilzephyr.com/blog/03262014/python-shi-jian-and-ri-qi-mo-kuai/"/>
     <updated>2014-03-26T16:53:19+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/20140326/python-shi-jian-and-ri-qi-mo-kuai</id>
+    <id>http://www.aprilzephyr.com/blog/03262014/python-shi-jian-and-ri-qi-mo-kuai</id>
     <content type="html"><![CDATA[<p>Python提供了time/datetime/calendar等模塊來處理日期和時間。<br/>
 <strong>1.time模塊常用的函數</strong><br/>
 <em>A. time.time()</em><br/>
@@ -813,9 +813,9 @@ date1 &lt; date2  # 两個日期進行比較</p>
   
   <entry>
     <title type="html"><![CDATA[Python 常用函數之Join, Split, Zip, Map, Reduce, Filter]]></title>
-    <link href="http://www.aprilzephyr.com/blog/20140326/python-chang-yong-han-shu-zhi-join/"/>
+    <link href="http://www.aprilzephyr.com/blog/03262014/python-chang-yong-han-shu-zhi-join/"/>
     <updated>2014-03-26T15:34:48+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/20140326/python-chang-yong-han-shu-zhi-join</id>
+    <id>http://www.aprilzephyr.com/blog/03262014/python-chang-yong-han-shu-zhi-join</id>
     <content type="html"><![CDATA[<p><strong><em>1. Join, Split</em></strong><br/>
 <em>A 關於Join和Split方法</em><br/>
 1) 只針對字符串進行處理。split:拆分字符串、join連接字符串<br/>
@@ -1248,9 +1248,9 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
   
   <entry>
     <title type="html"><![CDATA[About Lives]]></title>
-    <link href="http://www.aprilzephyr.com/blog/20140324/about-lives/"/>
+    <link href="http://www.aprilzephyr.com/blog/03242014/about-lives/"/>
     <updated>2014-03-24T23:21:46+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/20140324/about-lives</id>
+    <id>http://www.aprilzephyr.com/blog/03242014/about-lives</id>
     <content type="html"><![CDATA[<p><img src="http://www.aprilzephyr.com/images/mourning_angel.jpg"></p>
 
 <p>The distance between life and death, might be far beyond the real boundary from life and death.<!--more--></p>
@@ -1273,9 +1273,9 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
   
   <entry>
     <title type="html"><![CDATA[About Time]]></title>
-    <link href="http://www.aprilzephyr.com/blog/20140308/about-time/"/>
+    <link href="http://www.aprilzephyr.com/blog/03082014/about-time/"/>
     <updated>2014-03-08T19:31:58+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/20140308/about-time</id>
+    <id>http://www.aprilzephyr.com/blog/03082014/about-time</id>
     <content type="html"><![CDATA[<p><img src="http://www.aprilzephyr.com/images/Boeing777.jpg"></p>
 
 <p><em>About Time</em> is a movie telling a young man could travel in time back to anytime in his own life changing what happens and what has happened.<!--more--></p>
@@ -1302,9 +1302,9 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
   
   <entry>
     <title type="html"><![CDATA[Notes of Python 02]]></title>
-    <link href="http://www.aprilzephyr.com/blog/20140306/notes-of-python-02/"/>
+    <link href="http://www.aprilzephyr.com/blog/03062014/notes-of-python-02/"/>
     <updated>2014-03-06T17:07:25+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/20140306/notes-of-python-02</id>
+    <id>http://www.aprilzephyr.com/blog/03062014/notes-of-python-02</id>
     <content type="html"><![CDATA[<ol>
 <li>不同算法實現Fibonacci數列<br/>
 1) 遞歸：</li>
@@ -1401,9 +1401,9 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
   
   <entry>
     <title type="html"><![CDATA[Python實現排序算法]]></title>
-    <link href="http://www.aprilzephyr.com/blog/20140306/pythonshi-xian-pai-xu-suan-fa/"/>
+    <link href="http://www.aprilzephyr.com/blog/03062014/pythonshi-xian-pai-xu-suan-fa/"/>
     <updated>2014-03-06T15:53:21+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/20140306/pythonshi-xian-pai-xu-suan-fa</id>
+    <id>http://www.aprilzephyr.com/blog/03062014/pythonshi-xian-pai-xu-suan-fa</id>
     <content type="html"><![CDATA[<ol>
 <li>冒泡排序</li>
 </ol>
@@ -1556,9 +1556,9 @@ Compare the two objects x and y and return an integer according to the outcome. 
   
   <entry>
     <title type="html"><![CDATA[書摘_談判力]]></title>
-    <link href="http://www.aprilzephyr.com/blog/20140225/shu-zhai-tan-pan-li/"/>
+    <link href="http://www.aprilzephyr.com/blog/02252014/shu-zhai-tan-pan-li/"/>
     <updated>2014-02-25T19:36:09+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/20140225/shu-zhai-tan-pan-li</id>
+    <id>http://www.aprilzephyr.com/blog/02252014/shu-zhai-tan-pan-li</id>
     <content type="html"><![CDATA[<ol>
 <li>(不要在立場上討價還價)談判的任何方法都可以通過三方面的標準來衡量:如果有達成共識的可能,就應該達成明智的協議;談判應該有效率;增進或至少不損害雙方的關係(明智的協議是指協議盡可能保障雙方的合法利益,公平解決雙方的利益衝突,協議持久性強,並考慮了社會效益)。</br>
 </br></li>
@@ -1645,9 +1645,9 @@ Compare the two objects x and y and return an integer according to the outcome. 
   
   <entry>
     <title type="html"><![CDATA[思維點滴_關於未來]]></title>
-    <link href="http://www.aprilzephyr.com/blog/20140222/si-wei-dian-di-guan-yu-wei-lai/"/>
+    <link href="http://www.aprilzephyr.com/blog/02222014/si-wei-dian-di-guan-yu-wei-lai/"/>
     <updated>2014-02-22T21:36:20+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/20140222/si-wei-dian-di-guan-yu-wei-lai</id>
+    <id>http://www.aprilzephyr.com/blog/02222014/si-wei-dian-di-guan-yu-wei-lai</id>
     <content type="html"><![CDATA[<p>今天上午，參加大連春季招聘會，未有合適崗位可應聘。午飯和下午與摯友聚會，暢談關於現狀，關於未來。</p>
 
 <p>將所聊的脈絡、思維點滴記錄如下：</p>
@@ -1671,9 +1671,9 @@ Compare the two objects x and y and return an integer according to the outcome. 
   
   <entry>
     <title type="html"><![CDATA[100 Interview Questions for Software Developers(轉)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/20140220/100-interview-questions-for-software-developers/"/>
+    <link href="http://www.aprilzephyr.com/blog/02202014/100-interview-questions-for-software-developers/"/>
     <updated>2014-02-20T15:46:36+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/20140220/100-interview-questions-for-software-developers</id>
+    <id>http://www.aprilzephyr.com/blog/02202014/100-interview-questions-for-software-developers</id>
     <content type="html"><![CDATA[<p>1月13日，著名博客作者<a href="http://www.noop.nl">Jurgen Appelo</a>寫了一篇博文：<a href="http://www.noop.nl/2009/01/100-interview-questions-for-software-developers.html">“軟件開發者面試百問”</a>。該文甚受讀者歡迎，15日便登上了delicious，Popurls.com，Reddit的首頁。InfoQ中文站在得到作者許可之後，将其全文翻譯爲中文，希望可以對國內讀者有所助益。</br>
 </br>
 以下爲文章全文：</br>
@@ -1828,9 +1828,9 @@ Compare the two objects x and y and return an integer according to the outcome. 
   
   <entry>
     <title type="html"><![CDATA[Excerpt_Software Engineering: A Practitioner Approach]]></title>
-    <link href="http://www.aprilzephyr.com/blog/20140219/excerpt-software-engineering-a-practitioner-approach/"/>
+    <link href="http://www.aprilzephyr.com/blog/02192014/excerpt-software-engineering-a-practitioner-approach/"/>
     <updated>2014-02-19T18:44:39+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/20140219/excerpt-software-engineering-a-practitioner-approach</id>
+    <id>http://www.aprilzephyr.com/blog/02192014/excerpt-software-engineering-a-practitioner-approach</id>
     <content type="html"><![CDATA[<ol>
 <li><p>&hellip; a set of quality factors that were a first step toward the development of metrics for software quality. These factors assess software from three distinct points of view: (1) product operation (using it), (2) product revision (changing it), and (3) product transition (modifying it to work in a different environment; i.e., &ldquo;porting&rdquo; it). (P95-96)</p></li>
 <li><p>Gilb suggests definitions and measures for each.</br>
@@ -1888,9 +1888,9 @@ It is difficult, and in some cases impossible, to develop direct measures of the
   
   <entry>
     <title type="html"><![CDATA[平衡點問題和支配點問題之Python求解(轉)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/20140218/ping-heng-dian-wen-ti-he-zhi-pei-dian-wen-ti-zhi-pythonqiu-jie-zhuan/"/>
+    <link href="http://www.aprilzephyr.com/blog/02182014/ping-heng-dian-wen-ti-he-zhi-pei-dian-wen-ti-zhi-pythonqiu-jie-zhuan/"/>
     <updated>2014-02-18T21:46:13+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/20140218/ping-heng-dian-wen-ti-he-zhi-pei-dian-wen-ti-zhi-pythonqiu-jie-zhuan</id>
+    <id>http://www.aprilzephyr.com/blog/02182014/ping-heng-dian-wen-ti-he-zhi-pei-dian-wen-ti-zhi-pythonqiu-jie-zhuan</id>
     <content type="html"><![CDATA[<ol>
 <li>平衡點問題<br/>
 平衡點：比如int[] numbers = {1,3,5,7,8,25,4,20}; 25前面的總和爲24，25後面的總和也是24，25這個點就是平衡點；假如一個數組中的元素，其前面的部分等於後面的部分，那麼這個點的位序就是平衡點。 <br/>
@@ -1987,9 +1987,9 @@ It is difficult, and in some cases impossible, to develop direct measures of the
   
   <entry>
     <title type="html"><![CDATA[Notes of Python 01]]></title>
-    <link href="http://www.aprilzephyr.com/blog/20140218/notes-of-python/"/>
+    <link href="http://www.aprilzephyr.com/blog/02182014/notes-of-python/"/>
     <updated>2014-02-18T14:09:05+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/20140218/notes-of-python</id>
+    <id>http://www.aprilzephyr.com/blog/02182014/notes-of-python</id>
     <content type="html"><![CDATA[<ol>
 <li><p>Python 是怎樣進行類型轉換的？<br/>
 1) Python是動態類型，是强類型的編程語言。<br/>
@@ -2176,9 +2176,9 @@ A&#8217; = sum(a) &ndash; a[i] + b[j] &ndash; (sum(b) &ndash; b[j] + a[i])<br/>
   
   <entry>
     <title type="html"><![CDATA[Destiny]]></title>
-    <link href="http://www.aprilzephyr.com/blog/20140217/destiny/"/>
+    <link href="http://www.aprilzephyr.com/blog/02172014/destiny/"/>
     <updated>2014-02-17T22:21:48+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/20140217/destiny</id>
+    <id>http://www.aprilzephyr.com/blog/02172014/destiny</id>
     <content type="html"><![CDATA[<p><img src="http://www.aprilzephyr.com/images/plumbossom.jpg"></p>
 
 <p>If it&rsquo;s meant to be, it will be.</p>
@@ -2206,9 +2206,9 @@ A&#8217; = sum(a) &ndash; a[i] + b[j] &ndash; (sum(b) &ndash; b[j] + a[i])<br/>
   
   <entry>
     <title type="html"><![CDATA[Python列表刪除重複元素的三種方法及效率分析(轉)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/20140215/pythonlie-biao-shan-chu-zhong-fu-yuan-su-de-san-zhong-fang-fa-ji-xiao-lu-fen-xi-zhuan/"/>
+    <link href="http://www.aprilzephyr.com/blog/02152014/pythonlie-biao-shan-chu-zhong-fu-yuan-su-de-san-zhong-fang-fa-ji-xiao-lu-fen-xi-zhuan/"/>
     <updated>2014-02-15T17:53:01+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/20140215/pythonlie-biao-shan-chu-zhong-fu-yuan-su-de-san-zhong-fang-fa-ji-xiao-lu-fen-xi-zhuan</id>
+    <id>http://www.aprilzephyr.com/blog/02152014/pythonlie-biao-shan-chu-zhong-fu-yuan-su-de-san-zhong-fang-fa-ji-xiao-lu-fen-xi-zhuan</id>
     <content type="html"><![CDATA[<h4>方法一：</h4>
 
 <p>使用列表對象的sort()方法對列表進行排序，從最後一個元素開始循環迭代列表，判斷相鄰的兩個元素是否相同。</p>
@@ -2284,9 +2284,9 @@ A&#8217; = sum(a) &ndash; a[i] + b[j] &ndash; (sum(b) &ndash; b[j] + a[i])<br/>
   
   <entry>
     <title type="html"><![CDATA[Blabla]]></title>
-    <link href="http://www.aprilzephyr.com/blog/20140214/blabla/"/>
+    <link href="http://www.aprilzephyr.com/blog/02142014/blabla/"/>
     <updated>2014-02-14T12:37:02+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/20140214/blabla</id>
+    <id>http://www.aprilzephyr.com/blog/02142014/blabla</id>
     <content type="html"><![CDATA[<p><img src="http://www.aprilzephyr.com/images/time.jpg"></p>
 
 <p><strong>It becomes a torture which the state between-jobs&#8217; lasting more than four months.</strong></p>
@@ -2310,9 +2310,9 @@ Happy Lantern Festival and single&rsquo;s Valentine&rsquo;s Day!</p>
   
   <entry>
     <title type="html"><![CDATA[Blogging with Octopress]]></title>
-    <link href="http://www.aprilzephyr.com/blog/20140213/blogging-with-octopress/"/>
+    <link href="http://www.aprilzephyr.com/blog/02132014/blogging-with-octopress/"/>
     <updated>2014-02-13T21:32:44+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/20140213/blogging-with-octopress</id>
+    <id>http://www.aprilzephyr.com/blog/02132014/blogging-with-octopress</id>
     <content type="html"><![CDATA[<h3>1. 安裝Ruby</h3>
 
 <h3>2. 安裝Octopress</h3>
@@ -2517,9 +2517,9 @@ simple_search: \search<br/>
   
   <entry>
     <title type="html"><![CDATA[Commencement]]></title>
-    <link href="http://www.aprilzephyr.com/blog/20140213/commencement/"/>
+    <link href="http://www.aprilzephyr.com/blog/02132014/commencement/"/>
     <updated>2014-02-13T20:23:32+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/20140213/commencement</id>
+    <id>http://www.aprilzephyr.com/blog/02132014/commencement</id>
     <content type="html"><![CDATA[<p>This is my first blog here.</p>
 
 <p>Octopress and Github, I&rsquo;m coming!</p>
