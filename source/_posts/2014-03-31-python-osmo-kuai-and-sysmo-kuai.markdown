@@ -89,10 +89,7 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 20) sys.api_version  
 解釋器的C的API版本。  
 21) sys.version_info  
-``` python
->>> sys.version_info
-(2, 4, 3, 'final', 0) 'final'表示最終,也有'candidate'表示候選，表示版本級別，是否有後繼的發行
-```  
+`>>> sys.version_info(major=2, minor=7, micro=5, releaselevel='final', serial=0)`  
 22) sys.displayhook(value)  
 如果value非空，這個函數會把他輸出到sys.stdout，並且將他保存進\_\_builtin\_\_.\_.指在python的交互式解釋器裏，'\_'代表上次你輸入得到的結果，hook是鉤子的意思，將上次的結果鉤過來。  
 23) sys.getdefaultencoding()  
