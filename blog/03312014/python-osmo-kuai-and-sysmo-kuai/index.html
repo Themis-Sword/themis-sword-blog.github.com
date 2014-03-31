@@ -5,7 +5,7 @@
 	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
 	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	<meta charset="utf-8">
-	<title>Never Scared Endeavoring.  | Themis_Sword's Blog</title>
+	<title>Python os模塊 &amp; sys模塊  | Themis_Sword's Blog</title>
 
 <meta name="author" content="Themis_Sword"> 
 
@@ -115,18 +115,10 @@ $(document).ready(
 
 </header>
 
-	<div id="content" class="inner">
-
-
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/03312014/python-osmo-kuai-and-sysmo-kuai/">
-		
-			Python Os模塊 &amp; Sys模塊</a>
-	</h3>
-	<div class="entry-content">
-		<p><strong>1. os模塊</strong><br/>
+	<div id="content" class="inner"><article class="post">
+	<h3 class="title">Python Os模塊 &amp; Sys模塊
+</h3>
+	<div class="entry-content"><p><strong>1. os模塊</strong><br/>
 Python os模塊包含普遍的操作系統功能。如果你希望你的程序能夠與平臺無關的話，這個模塊是尤為重要的。</p>
 
 <p>1) os.name<br/>
@@ -147,10 +139,104 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>  
-		
-		<a href="/blog/03312014/python-osmo-kuai-and-sysmo-kuai/" class="more-link">Read on &rarr;</a>
-	</div>
+<p>  <!--more-->
+4) os.remove()<br/>
+刪除一個文件。<br/>
+5) os.system()<br/>
+運行shell命令。<br/>
+6) os.sep<br/>
+可以取代操作系統特定的路徑分隔符。<br/>
+7) os.linesep<br/>
+給出當前平台使用的行終止符。<br/>
+8) os.path.split()<br/>
+函數返回一個路徑的目錄名和文件名<br/>
+9) os.path.isfile()和os.path.isdir()函數<br/>
+分別檢驗給出的路徑是一個文件還是目錄，給出True或者False。<br/>
+10) os.path.exists()<br/>
+檢驗給出的路徑是否真實的存在，給出True或者False。<br/>
+11) os.path.abspath(name)<br/>
+獲得絕對路徑。<br/>
+12) os.path.normpath(path)<br/>
+規範path的字符串形式。<br/>
+13) os.path.getsize(name)<br/>
+獲得文件大小，如果name是目錄返回0L。<br/>
+14) os.path.splitext()<br/>
+分離文件名與擴展名。<br/>
+15) os.path.join(path,name)<br/>
+連接目錄與文件名或目錄。<br/>
+16) os.path.basename(path)<br/>
+返回文件名。<br/>
+17) os.path.dirname(path)<br/>
+返回文件路徑。</p>
+
+<p><strong>2. sys模塊</strong><br/>
+1) sys.argv<br/>
+命令行參數List，第一個元素是程序本身路徑。<br/>
+2) sys.modules.keys()<br/>
+返回所有已經導入的模塊列表。<br/>
+3) sys.exc_info()<br/>
+獲取當前正在處理的異常類,exc_type、4) exc_value、exc_traceback當前處理的異常詳細信息。<br/>
+5) sys.exit(n)<br/>
+退出程序，正常退出時exit(0)。<br/>
+6) sys.hexversion<br/>
+獲取Python解釋程序的版本值，16進制格式如：0x020403F0。<br/>
+7) sys.version<br/>
+獲取Python解釋程序的版本信息。<br/>
+8) sys.maxint<br/>
+最大的Int值。<br/>
+9) sys.maxunicode<br/>
+最大的Unicode值。<br/>
+10) sys.modules<br/>
+返回系統導入的模塊字段，key是模塊名，value是模塊。<br/>
+11) sys.path<br/>
+返回模塊的搜索路徑，初始化時使用PYTHONPATH環境變量的值。<br/>
+12) sys.platform<br/>
+返回操作系統平臺名稱。<br/>
+13) sys.stdout<br/>
+標準輸出。<br/>
+14) sys.stdin<br/>
+標準輸入。<br/>
+15) sys.stderr<br/>
+錯誤輸出。<br/>
+16) sys.exc_clear()<br/>
+用來清除當前線程所出現的當前的或最近的錯誤信息。<br/>
+17) sys.exec_prefix<br/>
+返回平臺獨立的python文件安裝的位置。<br/>
+18) sys.byteorder<br/>
+本地字節規則的指示器，big-endian平臺的值是&#8217;big&#8217;,little-endian平臺的值是&#8217;little&#8217;。<br/>
+19) sys.copyright<br/>
+記錄python版權相關的東西。<br/>
+20) sys.api_version<br/>
+解釋器的C的API版本。<br/>
+21) sys.version_info</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span>
+</span><span class='line'><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;final&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="s">&#39;final&#39;</span><span class="err">表示最終</span><span class="p">,</span><span class="err">也有</span><span class="s">&#39;candidate&#39;</span><span class="err">表示候選，表示版本級別，是否有後繼的發行</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+22) sys.displayhook(value)<br/>
+如果value非空，這個函數會把他輸出到sys.stdout，並且將他保存進__builtin__._.指在python的交互式解釋器裏，&#8217;_&lsquo;代表上次你輸入得到的結果，hook是鉤子的意思，將上次的結果鉤過來。<br/>
+23) sys.getdefaultencoding()<br/>
+返回當前你所用的默認的字符編碼格式。<br/>
+24) sys.getfilesystemencoding()<br/>
+返回將Unicode文件名轉換成系統文件名的編碼的名字。<br/>
+25) sys.setdefaultencoding(name)<br/>
+用來設置當前默認的字符編碼，如果name和任何一個可用的編碼都不匹配，拋出LookupError，這個函數只會被site模塊的sitecustomize使用，一旦別site模塊使用了，他會從sys模塊移除。<br/>
+26) sys.builtin_module_names<br/>
+Python解釋器導入的模塊列表。<br/>
+27) sys.executable<br/>
+Python解釋程序路徑。<br/>
+28) sys.getwindowsversion()<br/>
+獲取Windows的版本。<br/>
+29) sys.stdin.readline()<br/>
+從標準輸入讀一行。<br/>
+30) sys.stdout.write(&ldquo;a&rdquo;)<br/>
+屏幕輸出a。</p>
+</div>
 
 
 <div class="meta">
@@ -179,222 +265,42 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 	
 </div>
 </article>
+<!-- Copyright Info BEGIN -->
 
 
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/03282014/python-zi-fu-chuan/">
-		
-			Python 字符串</a>
-	</h3>
-	<div class="entry-content">
-		<p><strong>1. 轉義字符</strong></p>
-
-<table>
-<tbody>
-<tr><td><em>轉義字符</em></td><td><em>描述</em></td></tr>  
-<tr><td>&#92;(在行尾)</td><td>續行符</td></tr>  
-<tr><td>&#92;\ </td><td>反斜槓</td></tr>  
-<tr><td>&#92;&#8217; </td><td>單引號</td></tr>  
-<tr><td>&#92;&#8221; </td><td>雙引號</td></tr>  
-<tr><td>\a</td><td>響鈴</td></tr>  
-<tr><td>\b</td><td>退格(Backspace)</td></tr>  
-<tr><td>\e</td><td>轉義</td></tr>  
-<tr><td>\000</td><td>空</td></tr>  
-<tr><td>\n</td><td>換行</td></tr>  
-<tr><td>\v</td><td>縱向製表符</td></tr>  
-<tr><td>\t</td><td>橫向製表符</td></tr>  
-<tr><td>\r</td><td>回車</td></tr>  
-<tr><td>\f</td><td>換頁</td></tr>  
-<tr><td>\oyy</td><td>八進制數yy代表的字符，例如:\o12代表換行</td></tr>  
-<tr><td>\xyy</td><td>十進制數yy代表的字符，例如:\x0a代表換行</td></tr>  
-<tr><td>\uhhhh</td><td>Unicode 16位的十六進製值</td></tr>  
-<tr><td>\uhhhhhhhh</td><td>Unicode 32位的十六進製值</td></tr>  
-<tr><td>\other</td><td>其它的字符以普通格式輸出</td></tr>  
-</tbody></table>
-
-
-
-		
-		<a href="/blog/03282014/python-zi-fu-chuan/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-28T01:15:00+08:00" pubdate data-updated="true">Mar 28<span>th</span>, 2014</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/python/'>python</a>
-
+<b>
+   <div class="entry-content"> <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" ></a>版權聲明：非商用-非衍生-保持署名
+<br />
+ <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" >Creative Commons BY-NC-ND 3.0 </a>
 </div>
+</b>
+
+<!-- Copyright Info END -->
 
 
+	<div class="share">
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<a class="jiathis_button_twitter"></a>
+<a class="jiathis_button_tsina"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+	summary:"",
+	shortUrl:false,
+	hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
 	
 </div>
-</article>
-
-
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/03272014/python-importyu-from-dot-dot-dot-import-dot-dot-dot/">
-		
-			Python import與from&#8230;import&#8230;(轉)</a>
-	</h3>
-	<div class="entry-content">
-		<p><strong>1. 簡單說說python import與from&hellip;import&hellip;.(python模塊)</strong></p>
-
-<p>在python用import或者from&hellip;import來導入相應的模塊。模塊其實就一些函數和類的集合文件，它能實現一些相應的功能，當我們需要使用這些功能的時候，直接把相應的模塊導入到我們的程序中，我們就可以使用了。這類似於C語言中的include頭文件，Python中我們用import導入我們需要的模塊。 
-		
-		<a href="/blog/03272014/python-importyu-from-dot-dot-dot-import-dot-dot-dot/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
 
 
 
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-27T14:23:52+08:00" pubdate data-updated="true">Mar 27<span>th</span>, 2014</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/python/'>python</a>
 
 </div>
-
-
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/03262014/python-shi-jian-and-ri-qi-mo-kuai/">
-		
-			Python 時間&amp;日期模塊</a>
-	</h3>
-	<div class="entry-content">
-		<p>Python提供了time/datetime/calendar等模塊來處理日期和時間。<br/>
-<strong>1.time模塊常用的函數</strong><br/>
-<em>A. time.time()</em><br/>
-1970年1月1日以來的秒數，是一個浮點數。<br/>
-<em>B. time.sleep()</em><br/>
-可以通過調用time.sleep來挂起當前的進程。time.sleep接收一个浮點型參數，表示進程挂起的時間。<br/>
-<em>C. time.clock()</em><br/>
-time.clock()返回第一次调用该方法到现在的秒數，其精確度高於1微秒。可以使用该函數來記錄程序執行的時間。 
-		
-		<a href="/blog/03262014/python-shi-jian-and-ri-qi-mo-kuai/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-26T16:53:19+08:00" pubdate data-updated="true">Mar 26<span>th</span>, 2014</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/python/'>python</a>
-
-</div>
-
-
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/03262014/python-chang-yong-han-shu-zhi-join/">
-		
-			Python 常用函數之Join, Split, Zip, Map, Reduce, Filter</a>
-	</h3>
-	<div class="entry-content">
-		<p><strong><em>1. Join, Split</em></strong><br/>
-<em>A 關於Join和Split方法</em><br/>
-1) 只針對字符串進行處理。split:拆分字符串、join連接字符串<br/>
-2) string.join(sep): 以string作為分割符，将sep中所有的元素(字符串表示)合併成一個新的字符串<br/>
-3) string.split(str=&lsquo; &rsquo;,num=string.count(str)): 以str為分隔符，切片string，如果num有指定值，則僅分隔num個子字符串<br/>
-4) 對導入os模塊進行os.path.splie()/os.path.join() 貌似是處理機制不一樣，但是功能上一樣
-		
-		<a href="/blog/03262014/python-chang-yong-han-shu-zhi-join/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-26T15:34:48+08:00" pubdate data-updated="true">Mar 26<span>th</span>, 2014</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/python/'>python</a>
-
-</div>
-
-
-	
-</div>
-</article>
-
-<nav id="pagenavi">
-    
-    
-        <a href="/blog/page/2/" class="next">Next</a>
-    
-    <div class="center"><a href="/archives">Blog Archives</a></div>
-</nav></div>
 
     
 

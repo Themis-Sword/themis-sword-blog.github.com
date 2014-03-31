@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-03-30T15:54:56+08:00</updated>
+  <updated>2014-03-31T17:18:04+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,132 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python os模塊 &amp; sys模塊]]></title>
+    <link href="http://www.aprilzephyr.com/blog/03312014/python-osmo-kuai-and-sysmo-kuai/"/>
+    <updated>2014-03-31T16:06:01+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/03312014/python-osmo-kuai-and-sysmo-kuai</id>
+    <content type="html"><![CDATA[<p><strong>1. os模塊</strong><br/>
+Python os模塊包含普遍的操作系統功能。如果你希望你的程序能夠與平臺無關的話，這個模塊是尤為重要的。</p>
+
+<p>1) os.name<br/>
+輸出字符串指示正在使用的平臺。如果是window 則用&#8217;nt&#8217;表示，對於Linux/Unix用戶，它是&#8217;posix&#8217;。<br/>
+2) os.getcwd()<br/>
+函數得到當前工作目錄，即當前Python腳本工作的目錄路徑。<br/>
+3) os.listdir()<br/>
+返回指定目錄下的所有文件和目錄名。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">os</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+</span><span class='line'><span class="p">[</span><span class="s">&#39;.bash_history&#39;</span><span class="p">,</span> <span class="s">&#39;.bundler&#39;</span><span class="p">,</span> <span class="s">&#39;.CFUserTextEncoding&#39;</span><span class="p">,</span> <span class="s">&#39;.config&#39;</span><span class="p">,</span> <span class="s">&#39;.DS_Store&#39;</span><span class="p">,</span> <span class="s">&#39;.gem&#39;</span><span class="p">,</span> <span class="s">&#39;.gitconfig&#39;</span><span class="p">,</span> <span class="s">&#39;.matplotlib&#39;</span><span class="p">,</span> <span class="s">&#39;.ssh&#39;</span><span class="p">,</span> <span class="s">&#39;.Trash&#39;</span><span class="p">,</span> <span class="s">&#39;.Trash-500&#39;</span><span class="p">,</span> <span class="s">&#39;.vim&#39;</span><span class="p">,</span> <span class="s">&#39;.viminfo&#39;</span><span class="p">,</span> <span class="s">&#39;Applications&#39;</span><span class="p">,</span> <span class="s">&#39;Applications (Parallels)&#39;</span><span class="p">,</span> <span class="s">&#39;Desktop&#39;</span><span class="p">,</span> <span class="s">&#39;Documents&#39;</span><span class="p">,</span> <span class="s">&#39;Downloads&#39;</span><span class="p">,</span> <span class="s">&#39;Library&#39;</span><span class="p">,</span> <span class="s">&#39;Movies&#39;</span><span class="p">,</span> <span class="s">&#39;Music&#39;</span><span class="p">,</span> <span class="s">&#39;octopress&#39;</span><span class="p">,</span> <span class="s">&#39;Pictures&#39;</span><span class="p">,</span> <span class="s">&#39;Public&#39;</span><span class="p">,</span> <span class="s">&#39;PycharmProjects&#39;</span><span class="p">,</span> <span class="s">&#39;</span><span class="se">\xe7\x99\xbe\xe5\xba\xa6\xe4\xba\x91\xe5\x90\x8c\xe6\xad\xa5\xe7\x9b\x98</span><span class="s">&#39;</span><span class="p">]</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>  <!--more-->
+4) os.remove()<br/>
+刪除一個文件。<br/>
+5) os.system()<br/>
+運行shell命令。<br/>
+6) os.sep<br/>
+可以取代操作系統特定的路徑分隔符。<br/>
+7) os.linesep<br/>
+給出當前平台使用的行終止符。<br/>
+8) os.path.split()<br/>
+函數返回一個路徑的目錄名和文件名<br/>
+9) os.path.isfile()和os.path.isdir()函數<br/>
+分別檢驗給出的路徑是一個文件還是目錄，給出True或者False。<br/>
+10) os.path.exists()<br/>
+檢驗給出的路徑是否真實的存在，給出True或者False。<br/>
+11) os.path.abspath(name)<br/>
+獲得絕對路徑。<br/>
+12) os.path.normpath(path)<br/>
+規範path的字符串形式。<br/>
+13) os.path.getsize(name)<br/>
+獲得文件大小，如果name是目錄返回0L。<br/>
+14) os.path.splitext()<br/>
+分離文件名與擴展名。<br/>
+15) os.path.join(path,name)<br/>
+連接目錄與文件名或目錄。<br/>
+16) os.path.basename(path)<br/>
+返回文件名。<br/>
+17) os.path.dirname(path)<br/>
+返回文件路徑。</p>
+
+<p><strong>2. sys模塊</strong><br/>
+1) sys.argv<br/>
+命令行參數List，第一個元素是程序本身路徑。<br/>
+2) sys.modules.keys()<br/>
+返回所有已經導入的模塊列表。<br/>
+3) sys.exc_info()<br/>
+獲取當前正在處理的異常類,exc_type、4) exc_value、exc_traceback當前處理的異常詳細信息。<br/>
+5) sys.exit(n)<br/>
+退出程序，正常退出時exit(0)。<br/>
+6) sys.hexversion<br/>
+獲取Python解釋程序的版本值，16進制格式如：0x020403F0。<br/>
+7) sys.version<br/>
+獲取Python解釋程序的版本信息。<br/>
+8) sys.maxint<br/>
+最大的Int值。<br/>
+9) sys.maxunicode<br/>
+最大的Unicode值。<br/>
+10) sys.modules<br/>
+返回系統導入的模塊字段，key是模塊名，value是模塊。<br/>
+11) sys.path<br/>
+返回模塊的搜索路徑，初始化時使用PYTHONPATH環境變量的值。<br/>
+12) sys.platform<br/>
+返回操作系統平臺名稱。<br/>
+13) sys.stdout<br/>
+標準輸出。<br/>
+14) sys.stdin<br/>
+標準輸入。<br/>
+15) sys.stderr<br/>
+錯誤輸出。<br/>
+16) sys.exc_clear()<br/>
+用來清除當前線程所出現的當前的或最近的錯誤信息。<br/>
+17) sys.exec_prefix<br/>
+返回平臺獨立的python文件安裝的位置。<br/>
+18) sys.byteorder<br/>
+本地字節規則的指示器，big-endian平臺的值是&#8217;big&#8217;,little-endian平臺的值是&#8217;little&#8217;。<br/>
+19) sys.copyright<br/>
+記錄python版權相關的東西。<br/>
+20) sys.api_version<br/>
+解釋器的C的API版本。<br/>
+21) sys.version_info</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span>
+</span><span class='line'><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;final&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="s">&#39;final&#39;</span><span class="err">表示最終</span><span class="p">,</span><span class="err">也有</span><span class="s">&#39;candidate&#39;</span><span class="err">表示候選，表示版本級別，是否有後繼的發行</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+22) sys.displayhook(value)<br/>
+如果value非空，這個函數會把他輸出到sys.stdout，並且將他保存進__builtin__._.指在python的交互式解釋器裏，&#8217;_&lsquo;代表上次你輸入得到的結果，hook是鉤子的意思，將上次的結果鉤過來。<br/>
+23) sys.getdefaultencoding()<br/>
+返回當前你所用的默認的字符編碼格式。<br/>
+24) sys.getfilesystemencoding()<br/>
+返回將Unicode文件名轉換成系統文件名的編碼的名字。<br/>
+25) sys.setdefaultencoding(name)<br/>
+用來設置當前默認的字符編碼，如果name和任何一個可用的編碼都不匹配，拋出LookupError，這個函數只會被site模塊的sitecustomize使用，一旦別site模塊使用了，他會從sys模塊移除。<br/>
+26) sys.builtin_module_names<br/>
+Python解釋器導入的模塊列表。<br/>
+27) sys.executable<br/>
+Python解釋程序路徑。<br/>
+28) sys.getwindowsversion()<br/>
+獲取Windows的版本。<br/>
+29) sys.stdin.readline()<br/>
+從標準輸入讀一行。<br/>
+30) sys.stdout.write(&ldquo;a&rdquo;)<br/>
+屏幕輸出a。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python 字符串]]></title>
