@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-03-31T17:18:04+08:00</updated>
+  <updated>2014-03-31T18:26:22+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,112 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python 文件處理]]></title>
+    <link href="http://www.aprilzephyr.com/blog/03312014/python-wen-jian-chu-li/"/>
+    <updated>2014-03-31T17:48:17+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/03312014/python-wen-jian-chu-li</id>
+    <content type="html"><![CDATA[<p>python對文件的處理的兩個內建函數：<br/>
+open()、file()，這個兩函數提供了初始化輸入\輸出（I\O）操作的通用接口。兩函數的功能相同。<br/>
+基本用法：<br/>
+file_object=open(filename, access_mode=&lsquo;r&rsquo;, buffering=-1）
+file_object 是定義一個打開文件的對象<br/>
+access_mode 是打開文件的模式；通常，文件使用模式  &lsquo;r&rsquo;,&lsquo;w&rsquo;,&lsquo;a&rsquo; 來打開，分別代表，讀取，寫入，追加。<br/>
+&lsquo;r&rsquo; 模式打開已經存在的文件<br/>
+&lsquo;w&rsquo; 模式打開的文件若存在則首先清空，再加入內容。<br/>
+&lsquo;a&rsquo; 這個模式是追加內容到文件中<!--more--><br/>
+註. &lsquo;b&rsquo; 模式這個是打開二進制文件，對於unix-like/unix類型的系統&#8217;b&#8217;模式是可有可無的。<br/>
+buffering 訪問文件所采用的緩沖方式。其中0表示不緩沖，1表示只緩沖一行數據，任何其它大於1的值代表使用給定的值作為緩沖區大小。不給定此參數或者參數為負數都表示使用系統默認的緩沖機制。<br/>
+使用open打開文件之後一定記得調用close()關閉文件。</p>
+
+<p>常用的文件訪問方式如下：<br/>
+r        以讀方式打開<br/>
+rU或Ua   以讀方式打開同時提供通用換行符支持<br/>
+w        以寫方式打開<br/>
+a        以追加方式打開<br/>
+r+       以讀寫方式打開<br/>
+w+       以讀寫方式打開<br/>
+a+       以讀寫方式打開</p>
+
+<p>文件的輸入：<br/>
+python中有三個方法來處理文件內容的輸入：<br/>
+read() 一次讀取全部的文件內容。<br/>
+readline() 每次讀取文件的一行。<br/>
+readlines() 讀取文件的所有行，返回一個字符串列表。</p>
+
+<p>寫數據：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">file_object</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;thefile.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">file_object</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">all_the_text</span><span class="p">)</span>
+</span><span class='line'><span class="n">file_object</span><span class="o">.</span><span class="n">close</span><span class="p">(</span> <span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>寫入多行：<br/>
+<code>file_object.writelines(list_of_text_strings)</code></p>
+
+<p>seek(offset,where):  默認值where=0表示從起始位置移動&#8221;offset&#8221;個字節，where=1表示從當前位置移動&#8221;offset&#8221;個字節，where=2表示從結束位置移動&#8221;offset&#8221;個字節。當有換行時，會被換行截斷。seek()無返回值，故值為None。</p>
+
+<p>tell():  文件的當前位置,即tell是獲得文件指針位置，受seek、readline、read、readlines影響，不受truncate影響。</p>
+
+<p>truncate(n):  從文件的首行首字符開始截斷，截斷文件為n個字符；無n表示從當前位置起截斷；截斷之後n後面的所有字符被刪除。其中win下的換行代表2個字符大小。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'>  <span class="n">fso</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;f:</span><span class="se">\\</span><span class="s">a.txt&quot;</span><span class="p">,</span><span class="s">&#39;w+&#39;</span><span class="p">)</span>    <span class="c">#以w+方式，並非a方式打開文件，故文件原內容被清空</span>
+</span><span class='line'>  <span class="k">print</span> <span class="n">fso</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>    <span class="c">#文件原內容被清空，故此時tell()=0</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">fso</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;abcde</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>  <span class="c">#寫入文件abcde\n，因為換行\n占兩個字符，故共寫入7個字符</span>
+</span><span class='line'>  <span class="k">print</span> <span class="n">fso</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>  <span class="c">#此時tell()=7</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">fso</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;fghwm&quot;</span><span class="p">)</span>  <span class="c">#又寫入文件fghwm，故此時文件共寫入7+5 =142個字符</span>
+</span><span class='line'>  <span class="k">print</span> <span class="n">fso</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>  <span class="c">#此時tell()=12 </span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">fso</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c">#從起始位置即文件首行首字符開始移動1個字符</span>
+</span><span class='line'>  <span class="k">print</span> <span class="n">fso</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>   <span class="c">#此時tell() =1</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">print</span>  <span class="n">fso</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>  <span class="c">#讀取當前行，即文件的第1行，但是從第二個字符(tell()+1)開始讀，結果為:bcde。&#39;若換成for讀取整個文件或read讀取整個文件則結果為bcdefghwm     </span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">print</span> <span class="n">fso</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>   <span class="c">#因為readline此時tell() =7,</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">fso</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>  <span class="c">#從寫入後文件的首行首字符開始階段，截斷為8個字符，即abcde\nf，即文件的內容為：abcde\nf</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">print</span> <span class="n">fso</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>   <span class="c">#tell() 依舊為7,並為受truncate(8)影響，但是此時文件內容為abcde\nf</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">print</span>  <span class="n">fso</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>  <span class="c">#從tell()+1=8開始讀取，讀取當前行內容：f</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">fso</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python os模塊 &amp; sys模塊]]></title>
@@ -108,16 +214,8 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 記錄python版權相關的東西。<br/>
 20) sys.api_version<br/>
 解釋器的C的API版本。<br/>
-21) sys.version_info</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span>
-</span><span class='line'><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;final&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="s">&#39;final&#39;</span><span class="err">表示最終</span><span class="p">,</span><span class="err">也有</span><span class="s">&#39;candidate&#39;</span><span class="err">表示候選，表示版本級別，是否有後繼的發行</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
+21) sys.version_info<br/>
+<code>&gt;&gt;&gt; sys.version_info(major=2, minor=7, micro=5, releaselevel='final', serial=0)</code><br/>
 22) sys.displayhook(value)<br/>
 如果value非空，這個函數會把他輸出到sys.stdout，並且將他保存進__builtin__._.指在python的交互式解釋器裏，&#8217;_&lsquo;代表上次你輸入得到的結果，hook是鉤子的意思，將上次的結果鉤過來。<br/>
 23) sys.getdefaultencoding()<br/>
@@ -2638,17 +2736,6 @@ simple_search: \search<br/>
 <h3>PS:</h3>
 
 <p>受限於格式要求，本文代碼中<strong>{</strong>或<strong>}</strong>與旁邊<strong>%</strong>之間的空格請刪去；兩個<strong>{</strong>或者兩個<strong>}</strong>之間的<strong>\</strong>請刪去。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Commencement]]></title>
-    <link href="http://www.aprilzephyr.com/blog/02132014/commencement/"/>
-    <updated>2014-02-13T20:23:32+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/02132014/commencement</id>
-    <content type="html"><![CDATA[<p>This is my first blog here.</p>
-
-<p>Octopress and Github, I&rsquo;m coming!</p>
 ]]></content>
   </entry>
   

@@ -208,16 +208,8 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 記錄python版權相關的東西。<br/>
 20) sys.api_version<br/>
 解釋器的C的API版本。<br/>
-21) sys.version_info</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span>
-</span><span class='line'><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;final&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="s">&#39;final&#39;</span><span class="err">表示最終</span><span class="p">,</span><span class="err">也有</span><span class="s">&#39;candidate&#39;</span><span class="err">表示候選，表示版本級別，是否有後繼的發行</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
+21) sys.version_info<br/>
+<code>&gt;&gt;&gt; sys.version_info(major=2, minor=7, micro=5, releaselevel='final', serial=0)</code><br/>
 22) sys.displayhook(value)<br/>
 如果value非空，這個函數會把他輸出到sys.stdout，並且將他保存進__builtin__._.指在python的交互式解釋器裏，&#8217;_&lsquo;代表上次你輸入得到的結果，hook是鉤子的意思，將上次的結果鉤過來。<br/>
 23) sys.getdefaultencoding()<br/>
