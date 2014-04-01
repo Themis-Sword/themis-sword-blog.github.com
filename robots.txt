@@ -4,6 +4,5 @@ Disallow: /*?*
 Disallow: /javascripts
 Disallow: /font
 Disallow: /assets
-Disallow: /*.txt
 
 Sitemap: http://www.aprilzephyr.com/sitemap.xml 
