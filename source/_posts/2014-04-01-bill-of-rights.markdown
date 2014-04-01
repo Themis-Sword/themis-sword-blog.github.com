@@ -11,7 +11,7 @@ categories: justice
   
 ###Congress of the United States  
 begun and held at the City of New-York, on
-Wednesday the fourth of March, one thousand seven hundred and eighty nine.  
+Wednesday the fourth of March, one thousand seven hundred and eighty nine.<!--more-->  
   
 **THE** Conventions of a number of the States, having at the time of their adopting the Constitution, expressed a desire, in order to prevent misconstruction or abuse of its powers, that further declaratory and restrictive clauses should be added: And as extending the ground of public confidence in the Government, will best ensure the beneficent ends of its institution.  
   
