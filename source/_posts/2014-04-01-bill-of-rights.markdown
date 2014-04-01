@@ -7,9 +7,9 @@ categories: justice
 ---
 {% img /images/billor.jpg %}  
 
-#####The Preamble to The Bill of Rights  
+####The Preamble to The Bill of Rights  
   
-###Congress of the United States  
+####Congress of the United States  
 begun and held at the City of New-York, on
 Wednesday the fourth of March, one thousand seven hundred and eighty nine.<!--more-->  
   
