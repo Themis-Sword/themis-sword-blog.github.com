@@ -21,6 +21,7 @@ Wednesday the fourth of March, one thousand seven hundred and eighty nine.<!--mo
   
 **Note:** The following text is a transcription of the first ten amendments to the Constitution in their original form. These amendments were ratified December 15, 1791, and form what is known as the "Bill of Rights."  
   
+---------------------------------------------------
 ####Amendment I  
   
 Congress shall make no law respecting an establishment of religion, or prohibiting the free exercise thereof; or abridging the freedom of speech, or of the press; or the right of the people peaceably to assemble, and to petition the Government for a redress of grievances.  
