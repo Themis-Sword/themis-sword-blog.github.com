@@ -9,4 +9,8 @@ categories: mood
 
 Leaves sway down in sough late autumn winds, desolately, fading away, without one single sign.<!--more-->  
   
+Fortunately trees' remaining vigor, notwithstanding in months' hibernation, new shoots would be pushing out after austere winters eventually.   
+  
+Be hopeful and persistent, even through quite tough time, leastways--an opportunity to blossom.  
+  
 ...
