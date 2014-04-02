@@ -10,9 +10,17 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
   
 1) os.name  
 輸出字符串指示正在使用的平臺。如果是window 則用'nt'表示，對於Linux/Unix用戶，它是'posix'。  
-2) os.getcwd()  
+2) os.mkdir(path [,mode=0777])  
+創建目錄  
+3) os.rmdir()  
+刪除目錄  
+4) os.mkdirs()  
+創建多層目錄，類似系統makedir -p  
+5) os.removedirs()  
+刪除多層目錄，每層都是空的，除了要刪除的目錄外。  
+6) os.getcwd()  
 函數得到當前工作目錄，即當前Python腳本工作的目錄路徑。  
-3) os.listdir()  
+7) os.listdir()  
 返回指定目錄下的所有文件和目錄名。
 ``` python
 >>> import os
@@ -20,33 +28,33 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 ['.bash_history', '.bundler', '.CFUserTextEncoding', '.config', '.DS_Store', '.gem', '.gitconfig', '.matplotlib', '.ssh', '.Trash', '.Trash-500', '.vim', '.viminfo', 'Applications', 'Applications (Parallels)', 'Desktop', 'Documents', 'Downloads', 'Library', 'Movies', 'Music', 'octopress', 'Pictures', 'Public', 'PycharmProjects', '\xe7\x99\xbe\xe5\xba\xa6\xe4\xba\x91\xe5\x90\x8c\xe6\xad\xa5\xe7\x9b\x98']
 >>> 
 ```  <!--more-->
-4) os.remove()  
+8) os.remove()  
 刪除一個文件。  
-5) os.system()  
+9) os.system()  
 運行shell命令。  
-6) os.sep  
+10) os.sep  
 可以取代操作系統特定的路徑分隔符。  
-7) os.linesep  
+11) os.linesep  
 給出當前平台使用的行終止符。  
-8) os.path.split()  
+12) os.path.split()  
 函數返回一個路徑的目錄名和文件名  
-9) os.path.isfile()和os.path.isdir()函數  
+13) os.path.isfile()和os.path.isdir()函數  
 分別檢驗給出的路徑是一個文件還是目錄，給出True或者False。  
-10) os.path.exists()  
+14) os.path.exists()  
 檢驗給出的路徑是否真實的存在，給出True或者False。  
-11) os.path.abspath(name)  
+15) os.path.abspath(name)  
 獲得絕對路徑。  
-12) os.path.normpath(path)  
+16) os.path.normpath(path)  
 規範path的字符串形式。  
-13) os.path.getsize(name)  
+17) os.path.getsize(name)  
 獲得文件大小，如果name是目錄返回0L。  
-14) os.path.splitext()  
+18) os.path.splitext()  
 分離文件名與擴展名。  
-15) os.path.join(path,name)  
+19) os.path.join(path,name)  
 連接目錄與文件名或目錄。  
-16) os.path.basename(path)  
+20) os.path.basename(path)  
 返回文件名。  
-17) os.path.dirname(path)  
+21) os.path.dirname(path)  
 返回文件路徑。  
   
 **2. sys模塊**  
