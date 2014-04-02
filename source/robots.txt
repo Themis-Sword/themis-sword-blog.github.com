@@ -2,6 +2,10 @@
 layout: nil
 ---
 User-agent: *
-Disallow: 
+Disallow: /author/
+Disallow: /*?*
+Disallow: /javascripts
+Disallow: /font
+Disallow: /assets
 
-Sitemap: {{ site.url }}/sitemap.xml 
+Sitemap: http://www.aprilzephyr.com/sitemap.xml 
