@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-04-02T11:43:26+08:00</updated>
+  <updated>2014-04-02T15:43:13+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,233 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python 動態類型(轉)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/04022014/python-dong-tai-lei-xing/"/>
+    <updated>2014-04-02T15:15:39+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/04022014/python-dong-tai-lei-xing</id>
+    <content type="html"><![CDATA[<p>Python中只有一個賦值模型</p>
+
+<h4>1. 缺少類型聲明語句的情況</h4>
+
+<p>在Python中，類型是在運行過程中自動決定的，而不是通過代碼聲明。這意味著沒有必要事聲明變量。只要記住，這個概念實質上對變量，對象和它們之間的關系都適用。那麽這個概念也容易理解並掌握。<br/>
+<strong>A 變量，對象和引用</strong><br/>
+變量創建：一個變量，當代碼第一次給它賦值時它就被創建了。之後的賦值將會改變已創建的變量名的值。Python在代碼運行之前先檢測變量名，可以當成是最初的賦值創建變量。<!--more--><br/>
+變量類型：變量永遠不會有任何的它關聯的類型信息或約束。類型的概念是存在於對象中而不是變量中。變量原本是通用的。它只是在一個特定的時間點，簡單地引用了一個特定的對像而已。<br/>
+變量的使用：當變量出現在表達式中時，它會馬上被當前引用的對像所代替，無論這個對象是什麽類型。<br/>
+此外，所有的變量都必須在其使用前明確地賦值。使用未賦值的變量會產生錯誤。<br/>
+<code>&gt;&gt;&gt;a=3</code></p>
+
+<p>在概念上說，Python將執行三個不同的步驟去完成這個請求。<br/>
+1) 創建一個對象來代表值3<br/>
+2) 創建一個變量a，如果它還沒有創建的話<br/>
+3) 將變量與新的對象3連接</p>
+
+<p>在python中從變量到對象的連接稱作引用。引用是一種關系，以內存中的指針形式實現。<br/>
+* 變量 是一個系統表的元素，擁有指向對象的連接空間。<br/>
+* 對象 是被分配的一塊內存，有足夠的空間去表現它們所代表的值。<br/>
+* 引用 是自動形成的從變量到對象的指針。</p>
+
+<p>每一個對象都用兩個標準的頭部信息：一個類型標誌符去標識這個對象的類型，以及一個引用的計數器，用來決定是不是可以回收這個對象。</p>
+
+<p><strong>B 類型屬於對象，而不是變量</strong><br/>
+Python中的類型是與對象相關聯的，而不是和變量關聯。<br/>
+變量沒有類型，變量指向對象。對象有類型，知道自己的類型，每個對象都包含了一個頭部信息，其中標記了這個對象的類型。</p>
+
+<p><strong>C 對象的垃圾收集</strong><br/>
+對象生命結束時發生了什麽變化？<br/>
+每當一個變量名被賦與了一個新的對象，之前的那個對象占用的空間就會被收回（如果它沒有被其他變量名和對象所引用).這種自動回收對象空間的技術稱作垃圾收集。<br/>
+在內部，Python是通過保持用每個對象中的計數器記錄引用指到這個對象上的次數來完成這一功能。一旦（並精確在同一時間）這個計數器被設置為零，這個對象的內存空間就會自動收回。垃圾收集最直接的，可感受到的好處就是這意味著可以在腳本中任意使用對象而不需要考慮釋放內存空間。<br/>
+```</p>
+
+<blockquote><blockquote><blockquote><p>x=42
+id(x)
+674748828
+x=&ldquo;cli&rdquo;
+id(x)  <br/>
+676367648
+```</p></blockquote></blockquote></blockquote>
+
+<h4>2. 共享引用</h4>
+
+<p>上面所講都是單個變量被賦值引用了多個對象的情況。現在，在交互模式下，引入另一個變量，並看一下變量名和對象的變化。<br/>
+```</p>
+
+<blockquote><blockquote><blockquote><p>a=10
+b=a
+id(a)
+674749212
+id(b)
+674749212
+```<br/>
+第二行會使用python創建變量b。使用的是變量a,並且它在這裏沒有被賦值，所以它被替換成其應用的對象10，從而b也成為這個對象的一個引用。實際效果就是變量a和b都引用相同的對象（也就是說指向了相同的內存空間。在Python中稱作是共享引用&mdash;多個變量名應用了同一個對象。)</p></blockquote></blockquote></blockquote>
+
+<p>```</p>
+
+<blockquote><blockquote><blockquote><p>a=10
+b=a<br/>
+a=&lsquo;cli&rsquo;
+id(a)
+676367648
+id(b)
+674749212
+```<br/>
+變量a改變了，但是不影響變量b.這完全可以說明變量b是指向對象10內存空間的。</p></blockquote></blockquote></blockquote>
+
+<p>在ptyhon中，變量總是一個指向對象的指針，而不是可以改變的內存區域的標簽。給一變量賦一個新的值，並不是替換了原始的對象，而是讓這個變量去引用完全不同的一個對象。實際的效果就是對一個變量賦值，僅僅會影響那個被賦值的變量。</p>
+
+<p><strong>A 共享引用和在原處修改</strong><br/>
+有一些對象和類型確實會在實地改變對象。例如，在一個列表中對一個偏移進行賦值確實會改變這個列表對象，而不是生成一個新的列表對象。<br/>
+```</p>
+
+<blockquote><blockquote><blockquote><p>T1=[11,12,13]
+T2=T1
+T1
+[11, 12, 13]
+T2
+[11, 12, 13]
+T1=22
+T1
+22
+T2
+[11, 12, 13]
+```</p></blockquote></blockquote></blockquote>
+
+<p>這個和先前一樣T1改變了T2沒有改變，T2改變也不影響T1<br/>
+```</p>
+
+<blockquote><blockquote><blockquote><p>T1=[11,12,13]
+T2=T1
+T1
+[11, 12, 13]
+T2
+[11, 12, 13]
+T2[1]=33   <br/>
+T1
+[33, 12, 13]
+T2
+[33, 12, 13]
+<code>  
+發現T2改變了，T1也跟這改變了  
+同樣T1改變了，T2也改變了  
+</code>
+T1[1]=99<br/>
+T2
+[33, 99, 13]
+T1
+[33, 99, 13]
+```<br/>
+這裏T1沒有改變，改變了T1所引用對象的一個元素。這類修改會覆蓋列表對象中的某部分。因為這個列表對象是與其他對象共享的（被其他對象引用），那麽一個像這樣在原處的改變不僅僅會對T1有影響。必須意識到當做了這樣的修改，它會影響程序的其他部分。</p></blockquote></blockquote></blockquote>
+
+<p>如果不想要這樣的現象發生，需要Python拷貝對象，而不是創建引用。方法包括內置列表函數以及標準庫的copy模塊，最常用的辦法就是從頭到尾的分片T1[:]<br/>
+```</p>
+
+<blockquote><blockquote><blockquote><p>T1=[11,12,13]
+T2=T1[:]
+T1
+[11, 12, 13]
+T2
+[11, 12, 13]
+T1[0]=99
+T1
+[99, 12, 13]
+T2
+[11, 12, 13]
+id(T1)
+676366604
+id(T2)
+675542060
+<code>  
+T1和T2指向不同的對象，所以不會相互影響。  
+註意：這種分片技術不會引用在其他的可變的核心類型上（字典，因為它們不是序列），對字典應該使用D.copy（）方法.而且，註意標準庫中的copy模塊有一個通用的拷貝任意對象的調用，也有一個拷貝嵌套對象的結構的調用.  
+</code>
+X={&lsquo;name&rsquo;:&lsquo;cli&rsquo;,&lsquo;age&rsquo;:27}<br/>
+import copy
+Y=copy.copy(X)
+X
+{&lsquo;age&rsquo;: 27, &lsquo;name&rsquo;: &lsquo;cli&rsquo;}
+Y
+{&lsquo;age&rsquo;: 27, &lsquo;name&rsquo;: &lsquo;cli&rsquo;}
+id(X)
+676370468
+id(Y)
+676414436
+X={&lsquo;name&rsquo;:{&lsquo;FirstName&rsquo;:&lsquo;cli&rsquo;,&lsquo;LastName&rsquo;:&lsquo;cli&rsquo;},&lsquo;age&rsquo;:27}  <br/>
+X
+{&lsquo;age&rsquo;: 27, &lsquo;name&rsquo;: {&lsquo;LastName&rsquo;: &lsquo;cli&rsquo;, &lsquo;FirstName&rsquo;: &lsquo;cli&rsquo;}}
+Y=copy.copy(X)
+Y
+{&lsquo;age&rsquo;: 27, &lsquo;name&rsquo;: {&lsquo;LastName&rsquo;: &lsquo;cli&rsquo;, &lsquo;FirstName&rsquo;: &lsquo;cli&rsquo;}}
+Z=copy.deepcopy(X)
+Z
+{&lsquo;age&rsquo;: 27, &lsquo;name&rsquo;: {&lsquo;LastName&rsquo;: &lsquo;cli&rsquo;, &lsquo;FirstName&rsquo;: &lsquo;cli&rsquo;}}
+```</p></blockquote></blockquote></blockquote>
+
+<p><strong>B 共享引用和相等</strong>
+```</p>
+
+<blockquote><blockquote><blockquote><p>x=33
+x=&lsquo;cli&rsquo;
+```<br/>
+因為Python緩存並復用了小的整數和小的字符串，就像前文提到的那樣，這裏對象33也許不像前期所說的被收回，相反，它將可能仍保持在一個系統表中，等待下一次你的代碼生成另一個33來利用。盡快如此，大多數種類的對象都會在不再引用時馬上回收。對於那些不會被回收的，緩沖機制與代碼並沒有什麽關系。</p></blockquote></blockquote></blockquote>
+
+<p>判斷是否相等<br/>
+```</p>
+
+<blockquote><blockquote><blockquote><p>L=[1,2,3]
+M=L
+L==M
+True
+L is M
+True
+<code>  
+==檢查對象是否有相同的值。 is操作符，檢查對象的同一性。如果兩個變量名精準地指向同一個對象，它會返回True。所以這是一種更嚴格的相等測試。  
+實際上,is只是比較現實引用的指針。所以如果必要的話是代碼中檢測共享引用的一種方法。如果變量名引用值相等。但是為不同的對象，它的返回值將是False.  
+</code>
+L=[1,2,3]
+M=[1,2,3]
+L==M
+True
+L is M
+False
+id(L)
+676367788
+id(M)
+676367724
+```<br/>
+通過id()函數可以看到兩個變量指向不同的對象。</p></blockquote></blockquote></blockquote>
+
+<p>```</p>
+
+<blockquote><blockquote><blockquote><p>X=33
+Y=33
+X==Y
+True
+X is Y
+True
+id(X)
+674748936
+id(Y)
+674748936
+<code>  
+這個is測試返回True因為小的整數和字符串被緩存被復用了。
+如果想更進一步了解，可以向Python查詢一個對象應用的次數：在sys模塊中的getrefcount函數返回對象應用的次數。  
+</code>
+import sys
+sys.getrefcount(33)
+13
+sys.getrefcount(1)
+427
+sys.getrefcount(00)
+296
+sys.getrefcount(99)
+6
+```</p></blockquote></blockquote></blockquote>
+
+<p><a href="http://ipseek.blog.51cto.com/1041109/786518">Origin</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python 文件處理]]></title>
@@ -102,9 +329,17 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 
 <p>1) os.name<br/>
 輸出字符串指示正在使用的平臺。如果是window 則用'nt'表示，對於Linux/Unix用戶，它是'posix'。<br/>
-2) os.getcwd()<br/>
+2) os.mkdir(path [,mode=0777])<br/>
+創建目錄<br/>
+3) os.rmdir()<br/>
+刪除目錄<br/>
+4) os.mkdirs()<br/>
+創建多層目錄，類似系統makedir -p<br/>
+5) os.removedirs()<br/>
+刪除多層目錄，每層都是空的，除了要刪除的目錄外。<br/>
+6) os.getcwd()<br/>
 函數得到當前工作目錄，即當前Python腳本工作的目錄路徑。<br/>
-3) os.listdir()<br/>
+7) os.listdir()<br/>
 返回指定目錄下的所有文件和目錄名。
 ``` python</p>
 
@@ -113,33 +348,33 @@ os.listdir(os.getcwd())
 [&lsquo;.bash_history&rsquo;, &lsquo;.bundler&rsquo;, &lsquo;.CFUserTextEncoding&rsquo;, &lsquo;.config&rsquo;, &lsquo;.DS_Store&rsquo;, &lsquo;.gem&rsquo;, &lsquo;.gitconfig&rsquo;, &lsquo;.matplotlib&rsquo;, &lsquo;.ssh&rsquo;, &lsquo;.Trash&rsquo;, &lsquo;.Trash-500&rsquo;, &lsquo;.vim&rsquo;, &lsquo;.viminfo&rsquo;, &lsquo;Applications&rsquo;, &lsquo;Applications (Parallels)&rsquo;, &lsquo;Desktop&rsquo;, &lsquo;Documents&rsquo;, &lsquo;Downloads&rsquo;, &lsquo;Library&rsquo;, &lsquo;Movies&rsquo;, &lsquo;Music&rsquo;, &lsquo;octopress&rsquo;, &lsquo;Pictures&rsquo;, &lsquo;Public&rsquo;, &lsquo;PycharmProjects&rsquo;, &lsquo;\xe7\x99\xbe\xe5\xba\xa6\xe4\xba\x91\xe5\x90\x8c\xe6\xad\xa5\xe7\x9b\x98&rsquo;]</p>
 
 <p>```  <!--more-->
-4) os.remove()<br/>
+8) os.remove()<br/>
 刪除一個文件。<br/>
-5) os.system()<br/>
+9) os.system()<br/>
 運行shell命令。<br/>
-6) os.sep<br/>
+10) os.sep<br/>
 可以取代操作系統特定的路徑分隔符。<br/>
-7) os.linesep<br/>
+11) os.linesep<br/>
 給出當前平台使用的行終止符。<br/>
-8) os.path.split()<br/>
+12) os.path.split()<br/>
 函數返回一個路徑的目錄名和文件名<br/>
-9) os.path.isfile()和os.path.isdir()函數<br/>
+13) os.path.isfile()和os.path.isdir()函數<br/>
 分別檢驗給出的路徑是一個文件還是目錄，給出True或者False。<br/>
-10) os.path.exists()<br/>
+14) os.path.exists()<br/>
 檢驗給出的路徑是否真實的存在，給出True或者False。<br/>
-11) os.path.abspath(name)<br/>
+15) os.path.abspath(name)<br/>
 獲得絕對路徑。<br/>
-12) os.path.normpath(path)<br/>
+16) os.path.normpath(path)<br/>
 規範path的字符串形式。<br/>
-13) os.path.getsize(name)<br/>
+17) os.path.getsize(name)<br/>
 獲得文件大小，如果name是目錄返回0L。<br/>
-14) os.path.splitext()<br/>
+18) os.path.splitext()<br/>
 分離文件名與擴展名。<br/>
-15) os.path.join(path,name)<br/>
+19) os.path.join(path,name)<br/>
 連接目錄與文件名或目錄。<br/>
-16) os.path.basename(path)<br/>
+20) os.path.basename(path)<br/>
 返回文件名。<br/>
-17) os.path.dirname(path)<br/>
+21) os.path.dirname(path)<br/>
 返回文件路徑。</p></blockquote></blockquote></blockquote>
 
 <p><strong>2. sys模塊</strong><br/>
@@ -616,149 +851,6 @@ __path__可通過__init__.py文件中包含的代碼訪問，最初包含的一�
 3) 使用sys.modules可查看當前加載的所有模塊。</p>
 
 <p><a href="http://www.cnblogs.com/ptfblog/archive/2012/07/15/2592122.html">Origin</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Python 時間&amp;日期模塊]]></title>
-    <link href="http://www.aprilzephyr.com/blog/03262014/python-shi-jian-and-ri-qi-mo-kuai/"/>
-    <updated>2014-03-26T16:53:19+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/03262014/python-shi-jian-and-ri-qi-mo-kuai</id>
-    <content type="html"><![CDATA[<p>Python提供了time/datetime/calendar等模塊來處理日期和時間。<br/>
-<strong>1.time模塊常用的函數</strong><br/>
-<em>A. time.time()</em><br/>
-1970年1月1日以來的秒數，是一個浮點數。<br/>
-<em>B. time.sleep()</em><br/>
-可以通過調用time.sleep來挂起當前的進程。time.sleep接收一个浮點型參數，表示進程挂起的時間。<br/>
-<em>C. time.clock()</em><br/>
-time.clock()返回第一次调用该方法到现在的秒數，其精確度高於1微秒。可以使用该函數來記錄程序執行的時間。 <!--more--><br/>
-<em>D. time.gmtime()</em><br/>
-該函數原型為time.gmtime([sec])，可選參數sec表示從1970-01-01以來的秒數，默認值為time.time()，函數返回time.struct_time類型的對象。(struct_time是在time模塊中定義的表示時間的對象)，下面是一個簡單的例子：<br/>
-``` python</p>
-
-<blockquote><blockquote><blockquote><p>print time.gmtime()                        #獲取當前時間的struct_time對象 <br/>
-(2013, 4, 8, 4, 28, 30, 0, 98, 0)
-print time.gmtime(time.time())
-(2013, 4, 8, 4, 28, 50, 0, 98, 0)
-print time.gmtime(time.time()-24<em>60</em>60)    #獲取昨天這個時間的struct_time對象
-(2013, 4, 7, 4, 29, 10, 6, 97, 0)
-<code>  
-*E. time.localtime()*  
-與time.gmtime()非常類似，也返回一個struct_time對象，可以看作是gmtime()的本地化版本。  
-*F. time.mktime()*  
-time.mktime執行與gmtime(), localtime()相反的操作，它接收struct_time對象作為參數，返回用秒數來表示時間的浮點數。  
-*G. time.strftime()*  
-time.strftime將日期轉換為字符串表示，它的函數原型為：time.strftime(format[, t])。參數format是格式字符串（格式字符串的知識可以參考：[time.strftime](http://docs.python.org/2/library/time.html) ），可選的參數t是一个struct_time對象。  
-</code> python
-time.strftime參數:
-strftime(format[, tuple]) &ndash;> string
-將指定的struct_time(默認為當前時間)，根據指定的格式化字符串輸出
-python中時間日期格式化符號：
-%y 两位數的年份表示（00-99）
-%Y 四位數的年份表示（000-9999）
-%m 月份（01-12）
-%d 月内中的一天（0-31）
-%H 24小時製小時數（0-23）
-%I 12小時製小時數（01-12）
-%M 分鐘數（00=59）
-%S 秒（00-59）
-%a 本地簡化星期名稱
-%A 本地完整星期名稱
-%b 本地簡化的月份名稱
-%B 本地完整的月份名稱
-%c 本地相應的日期表示和時間表示
-%j 年内的一天（001-366）
-%p 本地A.M.或P.M.的等價符
-%U 一年中的星期數（00-53），星期天為星期的開始
-%w 星期（0-6），星期天為星期的開始
-%W 一年中的星期數（00-53）星期一為星期的開始
-%x 本地相應的日期表示
-%X 本地相應的時間表示
-%Z 當前時區的名稱
-%% %號本身
-<code>  
-*H. time.strptime()*
-按指定格式解析一個表示时间的字符串，返回struct_time對象。該函數原型為：time.strptime(string, format)，两個參數都是字符串。  
-</code> python
-print time.strptime(&lsquo;2013-04-09 12:30:25&rsquo;,&lsquo;%Y-%m-%d %H:%M:%S&rsquo;)
-(2013, 4, 9, 12, 30, 25, 1, 99, -1)
-```</p></blockquote></blockquote></blockquote>
-
-<p><strong>2. datetime模塊</strong><br/>
-<em>A. 兩個常量</em><br/>
-datetime.MINYEAR和datetime.MAXYEAR，分別表示datetime所能表示的最小、最大年份。其中，MINYEAR=1,MAXYEAR=0000。<br/>
-<em>B. 幾個重要的類</em><br/>
-1) datetime.date:表示日期的類，常用的屬性有tear, month, day:<br/>
-year的返回在兩個常量之間；<br/>
-month的範圍是[1,12]，月份是從1開始；<br/>
-day依據month來決定。 <br/>
-2) date類提供了常用的類方法和類屬性：<br/>
-date.max, date.min：date對象所能表示的最大、最小日期；
-date.today()：返回一個表示當前本地日期的date對象。<br/>
-``` python</p>
-
-<blockquote><blockquote><blockquote><p>from datetime import *
-import time
-print date.today()
-2014-03-26
-print date.max
-9999-12-31
-print date.min
-0001-01-01
-<code>  
-3) date提供的實例方法和屬性  
-date.year、date.month、date.day：年、月、日；  
-date.replace(year, month, day)：生成一个新的日期對象，用參數指定的年，月，日代替原有對象中的屬性。（原有對象仍保持不變）；  
-date.timetuple()：返回日期對應的time.struct_time對象；  
-date.weekday()：返回weekday，如果是星期一，返回0；如果是星期2，返回1，以此類推；  
-data.isoweekday()：返回weekday，如果是星期一，返回1；如果是星期2，返回2，以此類推；  
-date.isocalendar()：返回格式如(year，month，day)的元組；  
-date.isoformat()：返回格式如'YYYY-MM-DD’的字符串；  
-date.strftime(fmt)：自定義格式化字符串。  
-</code> python
-now=date(2014,03,26)
-tomorrow=now.replace(day=27)
-print &lsquo;now:&rsquo;,now
-now: 2014-03-26
-print &lsquo;tomorrow:&rsquo;,tomorrow
-tomorrow: 2014-03-27
-print &lsquo;timetuple():&rsquo;,now.timetuple()
-timetuple(): (2013, 4, 8, 0, 0, 0, 2, 85, -1)
-print &lsquo;weekday():&rsquo;,now.weekday()
-weekday(): 2
-print &lsquo;isoweekday():&rsquo;,now.isoweekday()
-isoweekday(): 3
-print &lsquo;isocalendar():&rsquo;,now.isocalendar()
-isocalendar(): (2014, 13, 3)
-print &lsquo;isoformat():&rsquo;,now.isoformat()
-isoformat(): 2014-03-26
-<code>  
-4) date還對某些操作進行了重載，它允許我們對日期進行如下一些操作：  
-date2 = date1 + timedelta  # 日期加上一個間隔，返回一個新的日期對象（timedelta將在下面介紹，表示時間間隔）
-date2 = date1 - timedelta   # 日期隔去間隔，返回一個新的日期對象
-timedelta = date1 - date2   # 两個日期相減，返回一個時間間隔對象
-date1 &lt; date2  # 两個日期進行比較  
-</code> python
-now = date.today()<br/>
-tomorrow = now.replace(day = 7 )<br/>
-delta = tomorrow &ndash; now<br/>
-print   &lsquo;now:&rsquo; , now,  &lsquo; tomorrow:&rsquo; , tomorrow<br/>
-print   &lsquo;timedelta:&rsquo; , delta<br/>
-print  now + delta<br/>
-print  tomorrow > now</p>
-
-<h1># &mdash;&mdash; output &mdash;&mdash;</h1>
-
-<h1>now: 2010-04-06  tomorrow: 2010-04-07</h1>
-
-<h1>timedelta: 1 day, 0:00:00</h1>
-
-<h1>2010-04-07</h1>
-
-<h1>True</h1>
-
-<p>```<br/>
-<a href="http://www.cnblogs.com/BeginMan/archive/2013/04/08/3007403.html">Origin</a></p></blockquote></blockquote></blockquote>
 ]]></content>
   </entry>
   

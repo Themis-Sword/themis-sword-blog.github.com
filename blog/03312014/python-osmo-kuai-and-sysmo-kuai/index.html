@@ -123,9 +123,17 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 
 <p>1) os.name<br/>
 輸出字符串指示正在使用的平臺。如果是window 則用&#8217;nt&#8217;表示，對於Linux/Unix用戶，它是&#8217;posix&#8217;。<br/>
-2) os.getcwd()<br/>
+2) os.mkdir(path [,mode=0777])<br/>
+創建目錄<br/>
+3) os.rmdir()<br/>
+刪除目錄<br/>
+4) os.mkdirs()<br/>
+創建多層目錄，類似系統makedir -p<br/>
+5) os.removedirs()<br/>
+刪除多層目錄，每層都是空的，除了要刪除的目錄外。<br/>
+6) os.getcwd()<br/>
 函數得到當前工作目錄，即當前Python腳本工作的目錄路徑。<br/>
-3) os.listdir()<br/>
+7) os.listdir()<br/>
 返回指定目錄下的所有文件和目錄名。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -140,33 +148,33 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 
 
 <p>  <!--more-->
-4) os.remove()<br/>
+8) os.remove()<br/>
 刪除一個文件。<br/>
-5) os.system()<br/>
+9) os.system()<br/>
 運行shell命令。<br/>
-6) os.sep<br/>
+10) os.sep<br/>
 可以取代操作系統特定的路徑分隔符。<br/>
-7) os.linesep<br/>
+11) os.linesep<br/>
 給出當前平台使用的行終止符。<br/>
-8) os.path.split()<br/>
+12) os.path.split()<br/>
 函數返回一個路徑的目錄名和文件名<br/>
-9) os.path.isfile()和os.path.isdir()函數<br/>
+13) os.path.isfile()和os.path.isdir()函數<br/>
 分別檢驗給出的路徑是一個文件還是目錄，給出True或者False。<br/>
-10) os.path.exists()<br/>
+14) os.path.exists()<br/>
 檢驗給出的路徑是否真實的存在，給出True或者False。<br/>
-11) os.path.abspath(name)<br/>
+15) os.path.abspath(name)<br/>
 獲得絕對路徑。<br/>
-12) os.path.normpath(path)<br/>
+16) os.path.normpath(path)<br/>
 規範path的字符串形式。<br/>
-13) os.path.getsize(name)<br/>
+17) os.path.getsize(name)<br/>
 獲得文件大小，如果name是目錄返回0L。<br/>
-14) os.path.splitext()<br/>
+18) os.path.splitext()<br/>
 分離文件名與擴展名。<br/>
-15) os.path.join(path,name)<br/>
+19) os.path.join(path,name)<br/>
 連接目錄與文件名或目錄。<br/>
-16) os.path.basename(path)<br/>
+20) os.path.basename(path)<br/>
 返回文件名。<br/>
-17) os.path.dirname(path)<br/>
+21) os.path.dirname(path)<br/>
 返回文件路徑。</p>
 
 <p><strong>2. sys模塊</strong><br/>

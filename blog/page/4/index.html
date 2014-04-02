@@ -121,6 +121,54 @@ $(document).ready(
     <article class="post">
 	<h3 class="title">
 		
+		<a href="/blog/02202014/100-interview-questions-for-software-developers/">
+		
+			100 Interview Questions for Software Developers(轉)</a>
+	</h3>
+	<div class="entry-content">
+		<p>1月13日，著名博客作者<a href="http://www.noop.nl">Jurgen Appelo</a>寫了一篇博文：<a href="http://www.noop.nl/2009/01/100-interview-questions-for-software-developers.html">“軟件開發者面試百問”</a>。該文甚受讀者歡迎，15日便登上了delicious，Popurls.com，Reddit的首頁。InfoQ中文站在得到作者許可之後，将其全文翻譯爲中文，希望可以對國內讀者有所助益。</br>
+</br>
+以下爲文章全文：</br>
+</br>
+想雇到搞軟件開發的聰明人可不容易。萬一一不小心，就會搞到一堆低能大狒狒。我去年就碰到这種事了。你肯定不想這樣吧。聽我的，没錯。在樹上開站立會議門都没有。</br>
+</br>
+問點有難度的問題能幫你把聰明人跟狒狒們分開。我决定把我自己整理出來的軟件開發者面視百問發出来，希望能幫到你們的忙。
+		
+		<a href="/blog/02202014/100-interview-questions-for-software-developers/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-20T15:46:36+08:00" pubdate data-updated="true">Feb 20<span>th</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/software/'>software</a>
+
+</div>
+
+
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h3 class="title">
+		
 		<a href="/blog/02192014/excerpt-software-engineering-a-practitioner-approach/">
 		
 			Excerpt_Software Engineering: A Practitioner Approach</a>
@@ -350,75 +398,6 @@ $(document).ready(
 <div class="tags">
 
 	<a class='category' href='/blog/categories/mood/'>mood</a>
-
-</div>
-
-
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/02152014/pythonlie-biao-shan-chu-zhong-fu-yuan-su-de-san-zhong-fang-fa-ji-xiao-lu-fen-xi-zhuan/">
-		
-			Python列表刪除重複元素的三種方法及效率分析(轉)</a>
-	</h3>
-	<div class="entry-content">
-		<h4>方法一：</h4>
-
-<p>使用列表對象的sort()方法對列表進行排序，從最後一個元素開始循環迭代列表，判斷相鄰的兩個元素是否相同。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">methodONE</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
-</span><span class='line'>    <span class="nb">list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-</span><span class='line'>    <span class="n">lenList</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">lastItem</span> <span class="o">=</span> <span class="nb">list</span><span class="p">[</span><span class="n">lenList</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lenList</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-</span><span class='line'>     <span class="k">if</span> <span class="nb">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">lastItem</span><span class="p">:</span>
-</span><span class='line'>      <span class="nb">list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-</span><span class='line'>     <span class="k">else</span><span class="p">:</span>
-</span><span class='line'>      <span class="n">lastItem</span> <span class="o">=</span> <span class="nb">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nb">list</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>    
-		
-		<a href="/blog/02152014/pythonlie-biao-shan-chu-zhong-fu-yuan-su-de-san-zhong-fang-fa-ji-xiao-lu-fen-xi-zhuan/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-15T17:53:01+08:00" pubdate data-updated="true">Feb 15<span>th</span>, 2014</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/python/'>python</a>
 
 </div>
 

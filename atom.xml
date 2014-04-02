@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-04-02T11:43:26+08:00</updated>
+  <updated>2014-04-02T15:43:13+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,366 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python 動態類型(轉)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/04022014/python-dong-tai-lei-xing/"/>
+    <updated>2014-04-02T15:15:39+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/04022014/python-dong-tai-lei-xing</id>
+    <content type="html"><![CDATA[<p>Python中只有一個賦值模型</p>
+
+<h4>1. 缺少類型聲明語句的情況</h4>
+
+<p>在Python中，類型是在運行過程中自動決定的，而不是通過代碼聲明。這意味著沒有必要事聲明變量。只要記住，這個概念實質上對變量，對象和它們之間的關系都適用。那麽這個概念也容易理解並掌握。<br/>
+<strong>A 變量，對象和引用</strong><br/>
+變量創建：一個變量，當代碼第一次給它賦值時它就被創建了。之後的賦值將會改變已創建的變量名的值。Python在代碼運行之前先檢測變量名，可以當成是最初的賦值創建變量。<!--more--><br/>
+變量類型：變量永遠不會有任何的它關聯的類型信息或約束。類型的概念是存在於對象中而不是變量中。變量原本是通用的。它只是在一個特定的時間點，簡單地引用了一個特定的對像而已。<br/>
+變量的使用：當變量出現在表達式中時，它會馬上被當前引用的對像所代替，無論這個對象是什麽類型。<br/>
+此外，所有的變量都必須在其使用前明確地賦值。使用未賦值的變量會產生錯誤。<br/>
+<code>&gt;&gt;&gt;a=3</code></p>
+
+<p>在概念上說，Python將執行三個不同的步驟去完成這個請求。<br/>
+1) 創建一個對象來代表值3<br/>
+2) 創建一個變量a，如果它還沒有創建的話<br/>
+3) 將變量與新的對象3連接</p>
+
+<p>在python中從變量到對象的連接稱作引用。引用是一種關系，以內存中的指針形式實現。<br/>
+* 變量 是一個系統表的元素，擁有指向對象的連接空間。<br/>
+* 對象 是被分配的一塊內存，有足夠的空間去表現它們所代表的值。<br/>
+* 引用 是自動形成的從變量到對象的指針。</p>
+
+<p>每一個對象都用兩個標準的頭部信息：一個類型標誌符去標識這個對象的類型，以及一個引用的計數器，用來決定是不是可以回收這個對象。</p>
+
+<p><strong>B 類型屬於對象，而不是變量</strong><br/>
+Python中的類型是與對象相關聯的，而不是和變量關聯。<br/>
+變量沒有類型，變量指向對象。對象有類型，知道自己的類型，每個對象都包含了一個頭部信息，其中標記了這個對象的類型。</p>
+
+<p><strong>C 對象的垃圾收集</strong><br/>
+對象生命結束時發生了什麽變化？<br/>
+每當一個變量名被賦與了一個新的對象，之前的那個對象占用的空間就會被收回（如果它沒有被其他變量名和對象所引用).這種自動回收對象空間的技術稱作垃圾收集。<br/>
+在內部，Python是通過保持用每個對象中的計數器記錄引用指到這個對象上的次數來完成這一功能。一旦（並精確在同一時間）這個計數器被設置為零，這個對象的內存空間就會自動收回。垃圾收集最直接的，可感受到的好處就是這意味著可以在腳本中任意使用對象而不需要考慮釋放內存空間。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; x=42
+</span><span class='line'>&gt;&gt;&gt; id(x)
+</span><span class='line'>674748828
+</span><span class='line'>&gt;&gt;&gt; x="cli"
+</span><span class='line'>&gt;&gt;&gt; id(x)    
+</span><span class='line'>676367648</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<h4>2. 共享引用</h4>
+
+<p>上面所講都是單個變量被賦值引用了多個對象的情況。現在，在交互模式下，引入另一個變量，並看一下變量名和對象的變化。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; a=10
+</span><span class='line'>&gt;&gt;&gt; b=a 
+</span><span class='line'>&gt;&gt;&gt; id(a)
+</span><span class='line'>674749212
+</span><span class='line'>&gt;&gt;&gt; id(b)
+</span><span class='line'>674749212</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+第二行會使用python創建變量b。使用的是變量a,並且它在這裏沒有被賦值，所以它被替換成其應用的對象10，從而b也成為這個對象的一個引用。實際效果就是變量a和b都引用相同的對象（也就是說指向了相同的內存空間。在Python中稱作是共享引用&mdash;多個變量名應用了同一個對象。)</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; a=10 
+</span><span class='line'>&gt;&gt;&gt; b=a  
+</span><span class='line'>&gt;&gt;&gt; a='cli'
+</span><span class='line'>&gt;&gt;&gt; id(a) 
+</span><span class='line'>676367648
+</span><span class='line'>&gt;&gt;&gt; id(b)
+</span><span class='line'>674749212</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+變量a改變了，但是不影響變量b.這完全可以說明變量b是指向對象10內存空間的。</p>
+
+<p>在ptyhon中，變量總是一個指向對象的指針，而不是可以改變的內存區域的標簽。給一變量賦一個新的值，並不是替換了原始的對象，而是讓這個變量去引用完全不同的一個對象。實際的效果就是對一個變量賦值，僅僅會影響那個被賦值的變量。</p>
+
+<p><strong>A 共享引用和在原處修改</strong><br/>
+有一些對象和類型確實會在實地改變對象。例如，在一個列表中對一個偏移進行賦值確實會改變這個列表對象，而不是生成一個新的列表對象。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; T1=[11,12,13]
+</span><span class='line'>&gt;&gt;&gt; T2=T1
+</span><span class='line'>&gt;&gt;&gt; T1
+</span><span class='line'>[11, 12, 13]
+</span><span class='line'>&gt;&gt;&gt; T2
+</span><span class='line'>[11, 12, 13]
+</span><span class='line'>&gt;&gt;&gt; T1=22
+</span><span class='line'>&gt;&gt;&gt; T1
+</span><span class='line'>22
+</span><span class='line'>&gt;&gt;&gt; T2
+</span><span class='line'>[11, 12, 13]</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>這個和先前一樣T1改變了T2沒有改變，T2改變也不影響T1</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; T1=[11,12,13]
+</span><span class='line'>&gt;&gt;&gt; T2=T1
+</span><span class='line'>&gt;&gt;&gt; T1
+</span><span class='line'>[11, 12, 13]
+</span><span class='line'>&gt;&gt;&gt; T2
+</span><span class='line'>[11, 12, 13]
+</span><span class='line'>&gt;&gt;&gt; T2[1]=33     
+</span><span class='line'>&gt;&gt;&gt; T1
+</span><span class='line'>[33, 12, 13]
+</span><span class='line'>&gt;&gt;&gt; T2
+</span><span class='line'>[33, 12, 13]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+發現T2改變了，T1也跟這改變了<br/>
+同樣T1改變了，T2也改變了</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; T1[1]=99  
+</span><span class='line'>&gt;&gt;&gt; T2
+</span><span class='line'>[33, 99, 13]
+</span><span class='line'>&gt;&gt;&gt; T1
+</span><span class='line'>[33, 99, 13]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+這裏T1沒有改變，改變了T1所引用對象的一個元素。這類修改會覆蓋列表對象中的某部分。因為這個列表對象是與其他對象共享的（被其他對象引用），那麽一個像這樣在原處的改變不僅僅會對T1有影響。必須意識到當做了這樣的修改，它會影響程序的其他部分。</p>
+
+<p>如果不想要這樣的現象發生，需要Python拷貝對象，而不是創建引用。方法包括內置列表函數以及標準庫的copy模塊，最常用的辦法就是從頭到尾的分片T1[:]</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; T1=[11,12,13]
+</span><span class='line'>&gt;&gt;&gt; T2=T1[:]
+</span><span class='line'>&gt;&gt;&gt; T1
+</span><span class='line'>[11, 12, 13]
+</span><span class='line'>&gt;&gt;&gt; T2
+</span><span class='line'>[11, 12, 13]
+</span><span class='line'>&gt;&gt;&gt; T1[0]=99
+</span><span class='line'>&gt;&gt;&gt; T1
+</span><span class='line'>[99, 12, 13]
+</span><span class='line'>&gt;&gt;&gt; T2
+</span><span class='line'>[11, 12, 13]
+</span><span class='line'>&gt;&gt;&gt; id(T1)
+</span><span class='line'>676366604
+</span><span class='line'>&gt;&gt;&gt; id(T2)
+</span><span class='line'>675542060</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+T1和T2指向不同的對象，所以不會相互影響。<br/>
+註意：這種分片技術不會引用在其他的可變的核心類型上（字典，因為它們不是序列），對字典應該使用D.copy（）方法.而且，註意標準庫中的copy模塊有一個通用的拷貝任意對象的調用，也有一個拷貝嵌套對象的結構的調用.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; X={'name':'cli','age':27}  
+</span><span class='line'>&gt;&gt;&gt; import copy
+</span><span class='line'>&gt;&gt;&gt; Y=copy.copy(X)
+</span><span class='line'>&gt;&gt;&gt; X
+</span><span class='line'>{'age': 27, 'name': 'cli'}
+</span><span class='line'>&gt;&gt;&gt; Y
+</span><span class='line'>{'age': 27, 'name': 'cli'}
+</span><span class='line'>&gt;&gt;&gt; id(X)
+</span><span class='line'>676370468
+</span><span class='line'>&gt;&gt;&gt; id(Y)
+</span><span class='line'>676414436
+</span><span class='line'>&gt;&gt;&gt; X={'name':{'FirstName':'cli','LastName':'cli'},'age':27}    
+</span><span class='line'>&gt;&gt;&gt; X
+</span><span class='line'>{'age': 27, 'name': {'LastName': 'cli', 'FirstName': 'cli'}}
+</span><span class='line'>&gt;&gt;&gt; Y=copy.copy(X)
+</span><span class='line'>&gt;&gt;&gt; Y
+</span><span class='line'>{'age': 27, 'name': {'LastName': 'cli', 'FirstName': 'cli'}}
+</span><span class='line'>&gt;&gt;&gt; Z=copy.deepcopy(X) 
+</span><span class='line'>&gt;&gt;&gt; Z
+</span><span class='line'>{'age': 27, 'name': {'LastName': 'cli', 'FirstName': 'cli'}}</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><strong>B 共享引用和相等</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; x=33
+</span><span class='line'>&gt;&gt;&gt; x='cli'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+因為Python緩存並復用了小的整數和小的字符串，就像前文提到的那樣，這裏對象33也許不像前期所說的被收回，相反，它將可能仍保持在一個系統表中，等待下一次你的代碼生成另一個33來利用。盡快如此，大多數種類的對象都會在不再引用時馬上回收。對於那些不會被回收的，緩沖機制與代碼並沒有什麽關系。</p>
+
+<p>判斷是否相等</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; L=[1,2,3]
+</span><span class='line'>&gt;&gt;&gt; M=L
+</span><span class='line'>&gt;&gt;&gt; L==M
+</span><span class='line'>True
+</span><span class='line'>&gt;&gt;&gt; L is M
+</span><span class='line'>True</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+==檢查對象是否有相同的值。 is操作符，檢查對象的同一性。如果兩個變量名精準地指向同一個對象，它會返回True。所以這是一種更嚴格的相等測試。<br/>
+實際上,is只是比較現實引用的指針。所以如果必要的話是代碼中檢測共享引用的一種方法。如果變量名引用值相等。但是為不同的對象，它的返回值將是False.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; L=[1,2,3]
+</span><span class='line'>&gt;&gt;&gt; M=[1,2,3]
+</span><span class='line'>&gt;&gt;&gt; L==M
+</span><span class='line'>True
+</span><span class='line'>&gt;&gt;&gt; L is M
+</span><span class='line'>False
+</span><span class='line'>&gt;&gt;&gt; id(L)
+</span><span class='line'>676367788
+</span><span class='line'>&gt;&gt;&gt; id(M)
+</span><span class='line'>676367724</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+通過id()函數可以看到兩個變量指向不同的對象。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; X=33
+</span><span class='line'>&gt;&gt;&gt; Y=33
+</span><span class='line'>&gt;&gt;&gt; X==Y
+</span><span class='line'>True
+</span><span class='line'>&gt;&gt;&gt; X is Y
+</span><span class='line'>True
+</span><span class='line'>&gt;&gt;&gt; id(X)
+</span><span class='line'>674748936
+</span><span class='line'>&gt;&gt;&gt; id(Y)
+</span><span class='line'>674748936</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+這個is測試返回True因為小的整數和字符串被緩存被復用了。
+如果想更進一步了解，可以向Python查詢一個對象應用的次數：在sys模塊中的getrefcount函數返回對象應用的次數。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; import sys
+</span><span class='line'>&gt;&gt;&gt; sys.getrefcount(33)
+</span><span class='line'>13
+</span><span class='line'>&gt;&gt;&gt; sys.getrefcount(1) 
+</span><span class='line'>427
+</span><span class='line'>&gt;&gt;&gt; sys.getrefcount(00)
+</span><span class='line'>296
+</span><span class='line'>&gt;&gt;&gt; sys.getrefcount(99)
+</span><span class='line'>6</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><a href="http://ipseek.blog.51cto.com/1041109/786518">Origin</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[網頁重定向的方法(轉)]]></title>
@@ -630,9 +990,17 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 
 <p>1) os.name<br/>
 輸出字符串指示正在使用的平臺。如果是window 則用&#8217;nt&#8217;表示，對於Linux/Unix用戶，它是&#8217;posix&#8217;。<br/>
-2) os.getcwd()<br/>
+2) os.mkdir(path [,mode=0777])<br/>
+創建目錄<br/>
+3) os.rmdir()<br/>
+刪除目錄<br/>
+4) os.mkdirs()<br/>
+創建多層目錄，類似系統makedir -p<br/>
+5) os.removedirs()<br/>
+刪除多層目錄，每層都是空的，除了要刪除的目錄外。<br/>
+6) os.getcwd()<br/>
 函數得到當前工作目錄，即當前Python腳本工作的目錄路徑。<br/>
-3) os.listdir()<br/>
+7) os.listdir()<br/>
 返回指定目錄下的所有文件和目錄名。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -647,33 +1015,33 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 
 
 <p>  <!--more-->
-4) os.remove()<br/>
+8) os.remove()<br/>
 刪除一個文件。<br/>
-5) os.system()<br/>
+9) os.system()<br/>
 運行shell命令。<br/>
-6) os.sep<br/>
+10) os.sep<br/>
 可以取代操作系統特定的路徑分隔符。<br/>
-7) os.linesep<br/>
+11) os.linesep<br/>
 給出當前平台使用的行終止符。<br/>
-8) os.path.split()<br/>
+12) os.path.split()<br/>
 函數返回一個路徑的目錄名和文件名<br/>
-9) os.path.isfile()和os.path.isdir()函數<br/>
+13) os.path.isfile()和os.path.isdir()函數<br/>
 分別檢驗給出的路徑是一個文件還是目錄，給出True或者False。<br/>
-10) os.path.exists()<br/>
+14) os.path.exists()<br/>
 檢驗給出的路徑是否真實的存在，給出True或者False。<br/>
-11) os.path.abspath(name)<br/>
+15) os.path.abspath(name)<br/>
 獲得絕對路徑。<br/>
-12) os.path.normpath(path)<br/>
+16) os.path.normpath(path)<br/>
 規範path的字符串形式。<br/>
-13) os.path.getsize(name)<br/>
+17) os.path.getsize(name)<br/>
 獲得文件大小，如果name是目錄返回0L。<br/>
-14) os.path.splitext()<br/>
+18) os.path.splitext()<br/>
 分離文件名與擴展名。<br/>
-15) os.path.join(path,name)<br/>
+19) os.path.join(path,name)<br/>
 連接目錄與文件名或目錄。<br/>
-16) os.path.basename(path)<br/>
+20) os.path.basename(path)<br/>
 返回文件名。<br/>
-17) os.path.dirname(path)<br/>
+21) os.path.dirname(path)<br/>
 返回文件路徑。</p>
 
 <p><strong>2. sys模塊</strong><br/>
@@ -2926,84 +3294,6 @@ A&#8217; = sum(a) &ndash; a[i] + b[j] &ndash; (sum(b) &ndash; b[j] + a[i])<br/>
 <p>Getting prepared and showing, the whole world would make way for you. Besides, don&rsquo;t let the passing time agitated you referring to the conception of “sunk cost”.</p>
 
 <p>Well, be a man, and you will enjoy it! So, if it&rsquo;s meant to be, it will be, only when you are prepared.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Python列表刪除重複元素的三種方法及效率分析(轉)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/02152014/pythonlie-biao-shan-chu-zhong-fu-yuan-su-de-san-zhong-fang-fa-ji-xiao-lu-fen-xi-zhuan/"/>
-    <updated>2014-02-15T17:53:01+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/02152014/pythonlie-biao-shan-chu-zhong-fu-yuan-su-de-san-zhong-fang-fa-ji-xiao-lu-fen-xi-zhuan</id>
-    <content type="html"><![CDATA[<h4>方法一：</h4>
-
-<p>使用列表對象的sort()方法對列表進行排序，從最後一個元素開始循環迭代列表，判斷相鄰的兩個元素是否相同。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">methodONE</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
-</span><span class='line'>    <span class="nb">list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-</span><span class='line'>    <span class="n">lenList</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">lastItem</span> <span class="o">=</span> <span class="nb">list</span><span class="p">[</span><span class="n">lenList</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lenList</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-</span><span class='line'>     <span class="k">if</span> <span class="nb">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">lastItem</span><span class="p">:</span>
-</span><span class='line'>      <span class="nb">list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-</span><span class='line'>     <span class="k">else</span><span class="p">:</span>
-</span><span class='line'>      <span class="n">lastItem</span> <span class="o">=</span> <span class="nb">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nb">list</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>    <!--more--></p>
-
-<h4>方法二：</h4>
-
-<p>定義一個臨時列表，循環迭代出的元素如果不在循環列表中，則加入，最後返回列表。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">methodTWO</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">templist</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
-</span><span class='line'>     <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">temp</span> <span class="nb">list</span><span class="p">:</span>
-</span><span class='line'>      <span class="n">templist</span><span class="o">.</span><span class="n">addend</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">templist</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<h4>方法三：</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="mi">27</span><span class="p">]</span>
-</span><span class='line'><span class="k">print</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">lists</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<h4>分析：</h4>
-
-<ol>
-<li>方法一相對方法二來說，有更多的額外操作如：排序、賦值。因爲在Python中，變量是不可變的，每迭代出一个元素比較不相等後的操作都是新建立一个局部變量、賦值並丟棄原變量，這需要消耗更多的内存!同時因爲排序操作，破壞了相對位置。</li>
-<li>方法二建立一个臨時列表進行操作，而列表是可變的，每次追加元素都只是在原列表上增加一个索引及值,因而相對方法一來說效率會更高!</li>
-<li>方法三无疑是效率最好的(無論是代碼的簡潔還是運行效率)。set()是內置的數據類型“集合類型”，它是無序的且值是唯一的！所以set()執行的结果就是轉為集合且直接去除了重複的元素，list()則將集合轉回列表類型。<br/>
-但是，set()會破壞排列順序，如果要保留排序，list(set(lists))可改為sorted(set(lists), key=lists.index)</li>
-</ol>
-
 ]]></content>
   </entry>
   

@@ -121,6 +121,54 @@ $(document).ready(
     <article class="post">
 	<h3 class="title">
 		
+		<a href="/blog/04022014/python-dong-tai-lei-xing/">
+		
+			Python 動態類型(轉)</a>
+	</h3>
+	<div class="entry-content">
+		<p>Python中只有一個賦值模型</p>
+
+<h4>1. 缺少類型聲明語句的情況</h4>
+
+<p>在Python中，類型是在運行過程中自動決定的，而不是通過代碼聲明。這意味著沒有必要事聲明變量。只要記住，這個概念實質上對變量，對象和它們之間的關系都適用。那麽這個概念也容易理解並掌握。<br/>
+<strong>A 變量，對象和引用</strong><br/>
+變量創建：一個變量，當代碼第一次給它賦值時它就被創建了。之後的賦值將會改變已創建的變量名的值。Python在代碼運行之前先檢測變量名，可以當成是最初的賦值創建變量。
+		
+		<a href="/blog/04022014/python-dong-tai-lei-xing/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-02T15:15:39+08:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/python/'>python</a>
+
+</div>
+
+
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h3 class="title">
+		
 		<a href="/blog/04022014/wang-ye-zhong-ding-xiang-de-fang-fa-zhuan/">
 		
 			網頁重定向的方法(轉)</a>
@@ -286,9 +334,17 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 
 <p>1) os.name<br/>
 輸出字符串指示正在使用的平臺。如果是window 則用&#8217;nt&#8217;表示，對於Linux/Unix用戶，它是&#8217;posix&#8217;。<br/>
-2) os.getcwd()<br/>
+2) os.mkdir(path [,mode=0777])<br/>
+創建目錄<br/>
+3) os.rmdir()<br/>
+刪除目錄<br/>
+4) os.mkdirs()<br/>
+創建多層目錄，類似系統makedir -p<br/>
+5) os.removedirs()<br/>
+刪除多層目錄，每層都是空的，除了要刪除的目錄外。<br/>
+6) os.getcwd()<br/>
 函數得到當前工作目錄，即當前Python腳本工作的目錄路徑。<br/>
-3) os.listdir()<br/>
+7) os.listdir()<br/>
 返回指定目錄下的所有文件和目錄名。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -322,74 +378,6 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 
 
 <time datetime="2014-03-31T16:06:01+08:00" pubdate data-updated="true">Mar 31<span>st</span>, 2014</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/python/'>python</a>
-
-</div>
-
-
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/03282014/python-zi-fu-chuan/">
-		
-			Python 字符串</a>
-	</h3>
-	<div class="entry-content">
-		<p><strong>1. 轉義字符</strong></p>
-
-<table>
-<tbody>
-<tr><td><em>轉義字符</em></td><td><em>描述</em></td></tr>  
-<tr><td>&#92;(在行尾)</td><td>續行符</td></tr>  
-<tr><td>&#92;\ </td><td>反斜槓</td></tr>  
-<tr><td>&#92;&#8217; </td><td>單引號</td></tr>  
-<tr><td>&#92;&#8221; </td><td>雙引號</td></tr>  
-<tr><td>\a</td><td>響鈴</td></tr>  
-<tr><td>\b</td><td>退格(Backspace)</td></tr>  
-<tr><td>\e</td><td>轉義</td></tr>  
-<tr><td>\000</td><td>空</td></tr>  
-<tr><td>\n</td><td>換行</td></tr>  
-<tr><td>\v</td><td>縱向製表符</td></tr>  
-<tr><td>\t</td><td>橫向製表符</td></tr>  
-<tr><td>\r</td><td>回車</td></tr>  
-<tr><td>\f</td><td>換頁</td></tr>  
-<tr><td>\oyy</td><td>八進制數yy代表的字符，例如:\o12代表換行</td></tr>  
-<tr><td>\xyy</td><td>十進制數yy代表的字符，例如:\x0a代表換行</td></tr>  
-<tr><td>\uhhhh</td><td>Unicode 16位的十六進製值</td></tr>  
-<tr><td>\uhhhhhhhh</td><td>Unicode 32位的十六進製值</td></tr>  
-<tr><td>\other</td><td>其它的字符以普通格式輸出</td></tr>  
-</tbody></table>
-
-
-
-		
-		<a href="/blog/03282014/python-zi-fu-chuan/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-28T01:15:00+08:00" pubdate data-updated="true">Mar 28<span>th</span>, 2014</time></div>
 	
 
 <div class="tags">
