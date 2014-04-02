@@ -121,6 +121,50 @@ $(document).ready(
     <article class="post">
 	<h3 class="title">
 		
+		<a href="/blog/03272014/python-importyu-from-dot-dot-dot-import-dot-dot-dot/">
+		
+			Python import與from&#8230;import&#8230;(轉)</a>
+	</h3>
+	<div class="entry-content">
+		<p><strong>1. 簡單說說python import與from&hellip;import&hellip;.(python模塊)</strong></p>
+
+<p>在python用import或者from&hellip;import來導入相應的模塊。模塊其實就一些函數和類的集合文件，它能實現一些相應的功能，當我們需要使用這些功能的時候，直接把相應的模塊導入到我們的程序中，我們就可以使用了。這類似於C語言中的include頭文件，Python中我們用import導入我們需要的模塊。 
+		
+		<a href="/blog/03272014/python-importyu-from-dot-dot-dot-import-dot-dot-dot/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-27T14:23:52+08:00" pubdate data-updated="true">Mar 27<span>th</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/python/'>python</a>
+
+</div>
+
+
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h3 class="title">
+		
 		<a href="/blog/03262014/python-shi-jian-and-ri-qi-mo-kuai/">
 		
 			Python 時間&amp;日期模塊</a>
@@ -301,92 +345,6 @@ time.clock()返回第一次调用该方法到现在的秒數，其精確度高�
 </div>
 </article>
 
-
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/03062014/notes-of-python-02/">
-		
-			Notes of Python 02</a>
-	</h3>
-	<div class="entry-content">
-		<ol>
-<li>不同算法實現Fibonacci數列<br/>
-1) 遞歸：</li>
-</ol>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">fib</span><span class="o">=</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span><span class="mi">1</span> <span class="k">if</span> <span class="n">n</span><span class="o">&lt;=</span><span class="mi">2</span> <span class="k">else</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-2) 迭代：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-</span><span class='line'> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
-</span><span class='line'> <span class="k">while</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-</span><span class='line'>  <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
-</span><span class='line'> <span class="k">return</span> <span class="n">x</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-3) 尾遞歸(SICP)：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-</span><span class='line'> <span class="k">def</span> <span class="nf">fib_iter</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
-</span><span class='line'>  <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span> <span class="p">:</span> <span class="k">return</span> <span class="n">x</span>
-</span><span class='line'>  <span class="k">else</span> <span class="p">:</span> <span class="k">return</span> <span class="n">fib_iter</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
-</span><span class='line'> <span class="k">return</span> <span class="n">fib_iter</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-<a href="http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html">Origin</a>
-		
-		<a href="/blog/03062014/notes-of-python-02/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-06T17:07:25+08:00" pubdate data-updated="true">Mar 6<span>th</span>, 2014</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/python/'>python</a>
-
-</div>
-
-
-	
-</div>
-</article>
-
 <nav id="pagenavi">
     
         <a href="/" class="prev">Prev</a>
@@ -394,7 +352,7 @@ time.clock()返回第一次调用该方法到现在的秒數，其精確度高�
     
         <a href="/blog/page/3/" class="next">Next</a>
     
-    <div class="center"><a href="/archives">Blog Archives</a></div>
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
 
     

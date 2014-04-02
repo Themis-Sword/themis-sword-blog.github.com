@@ -121,6 +121,67 @@ $(document).ready(
     <article class="post">
 	<h3 class="title">
 		
+		<a href="/blog/04022014/wang-ye-zhong-ding-xiang-de-fang-fa-zhuan/">
+		
+			網頁重定向的方法(轉)</a>
+	</h3>
+	<div class="entry-content">
+		<h4>1. 使用HTTP通訊協定301 Moved Permanently來完成轉導網址(永久轉址)</h4>
+
+<p><em>建議使用，不會對SEO有不良影響</em></p>
+
+<h5>PHP程式範例:</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span class='line'>    <span class="nx">header</span><span class="p">(</span><span class="err">“</span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">301</span> <span class="nx">Moved</span> <span class="nx">Permanently</span><span class="s2">&quot;);</span>
+</span><span class='line'><span class="s2">    header(“Location: http://www.new-url.com/&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">&lt;p&gt;The document has moved &lt;a href=&quot;http://www.new-url.com/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>  
+		
+		<a href="/blog/04022014/wang-ye-zhong-ding-xiang-de-fang-fa-zhuan/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-02T10:58:43+08:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/web/'>web</a>
+
+</div>
+
+
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h3 class="title">
+		
 		<a href="/blog/04012014/software-testing/">
 		
 			Software Testing</a>
@@ -342,56 +403,12 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 </div>
 </article>
 
-
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/03272014/python-importyu-from-dot-dot-dot-import-dot-dot-dot/">
-		
-			Python import與from&#8230;import&#8230;(轉)</a>
-	</h3>
-	<div class="entry-content">
-		<p><strong>1. 簡單說說python import與from&hellip;import&hellip;.(python模塊)</strong></p>
-
-<p>在python用import或者from&hellip;import來導入相應的模塊。模塊其實就一些函數和類的集合文件，它能實現一些相應的功能，當我們需要使用這些功能的時候，直接把相應的模塊導入到我們的程序中，我們就可以使用了。這類似於C語言中的include頭文件，Python中我們用import導入我們需要的模塊。 
-		
-		<a href="/blog/03272014/python-importyu-from-dot-dot-dot-import-dot-dot-dot/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-27T14:23:52+08:00" pubdate data-updated="true">Mar 27<span>th</span>, 2014</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/python/'>python</a>
-
-</div>
-
-
-	
-</div>
-</article>
-
 <nav id="pagenavi">
     
     
         <a href="/blog/page/2/" class="next">Next</a>
     
-    <div class="center"><a href="/archives">Blog Archives</a></div>
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
 
     
