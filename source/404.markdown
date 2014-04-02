@@ -4,4 +4,4 @@ sharing: false
 ---
 
 ### Looks like the page you're looking for doesn't exist.   
-You would be redirected toward [home](/) within 5 seconds.
+You would be redirected toward [Home](/) within 5 seconds.
