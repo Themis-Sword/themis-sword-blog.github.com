@@ -7,6 +7,6 @@ categories: mood
 ---
 {% img /images/fallingleaves.png %}  
 
-Leaves sway down in sough late autumn winds, desolately, fading away.<!--more-->  
+Leaves sway down in sough late autumn winds, desolately, fading away, without one single sign.<!--more-->  
   
 ...
