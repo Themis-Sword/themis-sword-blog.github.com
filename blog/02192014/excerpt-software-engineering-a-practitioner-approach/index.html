@@ -1,4 +1,126 @@
-<ol>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
+	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<meta charset="utf-8">
+	<title>Excerpt_Software Engineering: A Practitioner Approach  | Themis_Sword's Blog</title>
+
+
+<meta name="author" content="Themis_Sword"> 
+
+<meta name="description" content="Software Engineering A Practitioner Approach"> <meta name="keywords" content="software, engineering, practitioner, approach">
+
+
+<meta name="msvalidate.01" content="3084BF25D05B2AD0D58CBE0DEA3D888E" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Themis_Sword's Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery.fancybox.pack.js"></script>
+
+<script language="Javascript" type="text/javascript">
+$(document).ready(
+  function() {
+    (function($) {
+      $(".fancybox[data-content-id]").each(function() {
+        this.href = $(this).data('content-id');
+      });
+      $(".fancybox").fancybox({
+        beforeLoad: function() {
+          var el, 
+              id = $(this.element).data('title-id');
+
+          if (id) {
+            el = $('#' + id);
+
+            if (el.length) {
+              this.title = el.html();
+            }
+          }
+          if ($(this).data('content')) {
+            this.content = $(this).data('content');
+          }
+        },
+        helpers: {
+          title: {
+            type: 'inside'
+          }
+        }
+      });
+    })(jQuery);
+  }
+);
+</script>
+
+	
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48083272-1', 'aprilzephyr.com');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Themis_Sword's Blog</a></h1>
+<h4>Never Scared Endeavoring.</h4>
+<nav id="main-nav"><ul>
+	<li><a href="/">Home</a></li>
+	<li><a href="/blog/categories">Categories</a></li>
+        <li><a href="/portfolio">Portfolio</a><li>
+	<li><a href="/author">Author</a></li>
+</ul>
+
+
+
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul>
+	<li><a href="/">Home</a></li>
+	<li><a href="/blog/categories">Categories</a></li>
+        <li><a href="/portfolio">Portfolio</a><li>
+	<li><a href="/author">Author</a></li>
+</ul>
+
+
+
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:www.aprilzephyr.com">
+			</form>
+		</div>
+	</div>
+</nav>
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	<h3 class="title">Excerpt_Software Engineering: A Practitioner Approach
+</h3>
+	<div class="entry-content"><ol>
 <li><p>&hellip; a set of quality factors that were a first step toward the development of metrics for software quality. These factors assess software from three distinct points of view: (1) product operation (using it), (2) product revision (changing it), and (3) product transition (modifying it to work in a different environment; i.e., &ldquo;porting&rdquo; it). (P95-96)</p></li>
 <li><p>Gilb suggests definitions and measures for each.</br>
 <strong>Correctness</strong>. A program must operate correctly or it provides little value to its users. Correctness is the degree to which the software performs its required function. The most common measure for correctness is defects per KLOC, where a defect is defined as a verified lack of conformance to requirements. When considering the overall quality of a software product, defects are those problems reported by a user of the program after the program has been released for general use. For quality assessment purposes, defects are counted over a standard period of time, typically one year.<!--more--></br><strong>Maintainability</strong>. Software maintenance accounts for more effort than any other software engineering activity. Maintainability is the ease with which a program can be corrected if an error is encountered, adapted if its environment changes, or enhanced if the customer desires a change in requirements. There is no way to measure maintainability directly; therefore, we must use indirect measures. A simple time-oriented metric is mean-time-to-change (MTTC), the time it takes to analyze the change request, design an appropriate modification, implement the change, test it, and distribute the change to all users. On average, programs that are maintainable will have a lower MTTC (for equivalent types of changes) than programs that are not maintainable.</br>Hitachi has used a cost-oriented metric for maintainability called spoilage—the cost to correct defects encountered after the software has been released to its end-users. When the ratio of spoilage to overall project cost (for many projects) is plotted as a function of time, a manager can determine whether the overall maintainability of software produced by a software development organization is improving. Actions can then be taken in response to the insight gained from this information.  </br><strong>Integrity</strong>. Software integrity has become increasingly important in the age of hackers and firewalls. This attribute measures a system&rsquo;s ability to withstand attacks (both accidental and intentional) to its security. Attacks can be made on all three components of software: programs, data, and documents.  To measure integrity, two additional attributes must be defined: threat and security. Threat is the probability (which can be estimated or derived from empirical evidence) that an attack of a specific type will occur within a given time. Security is the probability (which can be estimated or derived from empirical evidence) that the attack of a specific type will be repelled. The integrity of a system can then be defined as</br><strong>integrity = summation [(1 – threat)*(1 – security)]</strong></br>where threat and security are summed over each type of attack.</br><strong>Usability</strong>. The catch phrase &ldquo;user-friendliness&rdquo; has become ubiquitous in discussions of software products. If a program is not user-friendly, it is often doomed to failure, even if the functions that it performs are valuable. Usability is an attempt to quantify user-friendliness and can be measured in terms of four characteristics: (1) the physical and or intellectual skill required to learn the system, (2) the time required to become moderately efficient in the use of the system, (3) the net increase in productivity (over the approach that the system replaces) measured when the system is used by someone who is moderately efficient, and (4) a subjective assessment (sometimes obtained through a questionnaire) of users attitudes toward the system. (P96-97)</br></p></li>
@@ -50,3 +172,111 @@ It is difficult, and in some cases impossible, to develop direct measures of the
 <strong>Hardware independence</strong>. The degree to which the software is decoupled from the hardware on which it operates.</br><strong>Instrumentation</strong>. The degree to which the program monitors its own operation and identifies errors that do occur.</br><strong>Modularity</strong>. The functional independence of program components.</br><strong>Operability</strong>. The ease of operation of a program.</br><strong>Security</strong>. The availability of mechanisms that control or protect programs and data.</br><strong>Self-documentation</strong>. The degree to which the source code provides meaningful documentation.</br><strong>Simplicity</strong>. The degree to which a program can be understood without difficulty.</br><strong>Software system independence</strong>. The degree to which the program is independent of nonstandard programming language features, operating system characteristics, and other environmental constraints.</br><strong>Traceability</strong>. The ability to trace a design representation or actual program component back to requirements.</br><strong>Training</strong>. The degree to which the software assists in enabling new users to apply the system. (P509-511)</p></li>
 </ol>
 
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-19T18:44:39+08:00" pubdate data-updated="true">Feb 19<span>th</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/software/'>software</a>
+
+</div>
+
+
+	
+</div>
+</article>
+<!-- Copyright Info BEGIN -->
+
+
+<b>
+   <div class="entry-content"> <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" ></a>版權聲明：非商用-非衍生-保持署名
+<br />
+ <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" >Creative Commons BY-NC-ND 3.0 </a>
+</div>
+</b>
+
+<!-- Copyright Info END -->
+
+
+	<div class="share">
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<a class="jiathis_button_twitter"></a>
+<a class="jiathis_button_tsina"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+	summary:"",
+	shortUrl:false,
+	hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+	
+</div>
+
+
+
+
+</div>
+
+    
+
+<div align='center'>
+    <form class="navbar-form" action="/search/">
+        <input type="text" class="form-control" placeholder="Google Search" name="q">
+    </form>
+ </div>
+
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Themis_Sword
+
+<br>
+Powered by Octopress.
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-48083272-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

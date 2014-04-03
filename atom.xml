@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-04-03T13:52:18+08:00</updated>
+  <updated>2014-04-03T14:06:53+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -2938,9 +2938,9 @@ Compare the two objects x and y and return an integer according to the outcome. 
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Excerpt Software Engineering A Practitioner Approach]]></title>
+    <title type="html"><![CDATA[Excerpt_Software Engineering: A Practitioner Approach]]></title>
     <link href="http://www.aprilzephyr.com/blog/02192014/excerpt-software-engineering-a-practitioner-approach/"/>
-    <updated>2014-02-19T00:00:00+08:00</updated>
+    <updated>2014-02-19T18:44:39+08:00</updated>
     <id>http://www.aprilzephyr.com/blog/02192014/excerpt-software-engineering-a-practitioner-approach</id>
     <content type="html"><![CDATA[<ol>
 <li><p>&hellip; a set of quality factors that were a first step toward the development of metrics for software quality. These factors assess software from three distinct points of view: (1) product operation (using it), (2) product revision (changing it), and (3) product transition (modifying it to work in a different environment; i.e., &ldquo;porting&rdquo; it). (P95-96)</p></li>
@@ -2994,6 +2994,105 @@ It is difficult, and in some cases impossible, to develop direct measures of the
 <strong>Hardware independence</strong>. The degree to which the software is decoupled from the hardware on which it operates.</br><strong>Instrumentation</strong>. The degree to which the program monitors its own operation and identifies errors that do occur.</br><strong>Modularity</strong>. The functional independence of program components.</br><strong>Operability</strong>. The ease of operation of a program.</br><strong>Security</strong>. The availability of mechanisms that control or protect programs and data.</br><strong>Self-documentation</strong>. The degree to which the source code provides meaningful documentation.</br><strong>Simplicity</strong>. The degree to which a program can be understood without difficulty.</br><strong>Software system independence</strong>. The degree to which the program is independent of nonstandard programming language features, operating system characteristics, and other environmental constraints.</br><strong>Traceability</strong>. The ability to trace a design representation or actual program component back to requirements.</br><strong>Training</strong>. The degree to which the software assists in enabling new users to apply the system. (P509-511)</p></li>
 </ol>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[平衡點問題和支配點問題之Python求解(轉)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/02182014/ping-heng-dian-wen-ti-he-zhi-pei-dian-wen-ti-zhi-pythonqiu-jie-zhuan/"/>
+    <updated>2014-02-18T21:46:13+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/02182014/ping-heng-dian-wen-ti-he-zhi-pei-dian-wen-ti-zhi-pythonqiu-jie-zhuan</id>
+    <content type="html"><![CDATA[<ol>
+<li>平衡點問題<br/>
+平衡點：比如int[] numbers = {1,3,5,7,8,25,4,20}; 25前面的總和爲24，25後面的總和也是24，25這個點就是平衡點；假如一個數組中的元素，其前面的部分等於後面的部分，那麼這個點的位序就是平衡點。 <br/>
+要求：返回任何一個平衡點<br/>
+使用sum函数累加所有的数。
+使用一个变量fore来累加序列的前部。直到满足条件fore&lt;(total-number)/2;</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">20</span><span class="p">]</span>
+</span><span class='line'><span class="c">#find total  </span>
+</span><span class='line'><span class="n">total</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</span><span class='line'><span class="c">#find num  </span>
+</span><span class='line'><span class="n">fore</span><span class="o">=</span><span class="mi">0</span>
+</span><span class='line'><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+</span><span class='line'>   <span class="k">if</span> <span class="n">fore</span><span class="o">&lt;</span><span class="p">(</span><span class="n">total</span><span class="o">-</span><span class="n">number</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="p">:</span>
+</span><span class='line'>      <span class="n">fore</span><span class="o">+=</span><span class="n">number</span>
+</span><span class='line'>   <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>      <span class="k">break</span>
+</span><span class='line'><span class="c">#print answer  </span>
+</span><span class='line'><span class="k">if</span> <span class="n">fore</span> <span class="o">==</span> <span class="p">(</span><span class="n">total</span><span class="o">-</span><span class="n">number</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="p">:</span>
+</span><span class='line'>   <span class="k">print</span> <span class="n">number</span>
+</span><span class='line'><span class="k">else</span> <span class="p">:</span>
+</span><span class='line'>   <span class="k">print</span> <span class="s">r&#39;not found&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+算法簡單，而且是O(n)的。<br/>
+<strong>PS</strong> 上述解題思路爲題目只考慮序列只包括正數的情況(有唯一平衡點)，當序列中有負數的時候，平衡點不一定唯一。<!--more--></p>
+
+<ol>
+<li>支配點問題<br/>
+支配數：數組中某個元素出現的次數大於數組總數的一半時就成爲支配數，其所在位序成為支配點；比如int[] a = {3,3,1,2,3};3爲支配數，0，1，4分别爲支配點。<br/>
+要求：返回任何一個支配點<br/>
+《編程之美》中有答案，就是尋找水王那篇。<br/>
+具體方法是：將序列排序，取中位數——注意，如果一個數出現次數大於整體的一半，那麼排序之後支配數一定在中間，然後驗證是否正確。</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+</span><span class='line'><span class="c">#calculate  </span>
+</span><span class='line'><span class="n">numbers</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</span><span class='line'><span class="n">lens</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</span><span class='line'><span class="n">candidate</span><span class="o">=</span><span class="n">numbers</span><span class="p">[</span><span class="n">lens</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>
+</span><span class='line'><span class="c">#validate  </span>
+</span><span class='line'><span class="n">N</span><span class="o">=</span><span class="mi">0</span>
+</span><span class='line'><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">number</span><span class="o">==</span><span class="n">candidate</span><span class="p">:</span>
+</span><span class='line'>       <span class="n">N</span><span class="o">+=</span><span class="mi">1</span>
+</span><span class='line'><span class="c">#print answer  </span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">N</span><span class="o">&gt;=</span><span class="n">lens</span><span class="o">/</span><span class="mi">2</span><span class="p">):</span>
+</span><span class='line'>     <span class="k">print</span> <span class="n">numbers</span><span class="p">[</span><span class="n">lens</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>
+</span><span class='line'><span class="k">else</span> <span class="p">:</span>
+</span><span class='line'>   <span class="k">print</span> <span class="s">&#39;not found&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+<a href="http://hi.baidu.com/ruclin/item/f2706f26b1d2db140975086b">Origin</a>
+<a href="http://www.iteye.com/topic/600079">Reference</a></p>
 ]]></content>
   </entry>
   
@@ -3183,105 +3282,6 @@ A&#8217; = sum(a) &ndash; a[i] + b[j] &ndash; (sum(b) &ndash; b[j] + a[i])<br/>
 
 
 <p><a href="http://www.smallqiao.com/31.html">Origin</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ping Heng Dian Wen Ti He Zhi Pei Dian Wen Ti Zhi Pythonqiu Jie Zhuan]]></title>
-    <link href="http://www.aprilzephyr.com/blog/02182014/ping-heng-dian-wen-ti-he-zhi-pei-dian-wen-ti-zhi-pythonqiu-jie-zhuan/"/>
-    <updated>2014-02-18T00:00:00+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/02182014/ping-heng-dian-wen-ti-he-zhi-pei-dian-wen-ti-zhi-pythonqiu-jie-zhuan</id>
-    <content type="html"><![CDATA[<ol>
-<li>平衡點問題<br/>
-平衡點：比如int[] numbers = {1,3,5,7,8,25,4,20}; 25前面的總和爲24，25後面的總和也是24，25這個點就是平衡點；假如一個數組中的元素，其前面的部分等於後面的部分，那麼這個點的位序就是平衡點。 <br/>
-要求：返回任何一個平衡點<br/>
-使用sum函数累加所有的数。
-使用一个变量fore来累加序列的前部。直到满足条件fore&lt;(total-number)/2;</li>
-</ol>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">20</span><span class="p">]</span>
-</span><span class='line'><span class="c">#find total  </span>
-</span><span class='line'><span class="n">total</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
-</span><span class='line'><span class="c">#find num  </span>
-</span><span class='line'><span class="n">fore</span><span class="o">=</span><span class="mi">0</span>
-</span><span class='line'><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
-</span><span class='line'>   <span class="k">if</span> <span class="n">fore</span><span class="o">&lt;</span><span class="p">(</span><span class="n">total</span><span class="o">-</span><span class="n">number</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="p">:</span>
-</span><span class='line'>      <span class="n">fore</span><span class="o">+=</span><span class="n">number</span>
-</span><span class='line'>   <span class="k">else</span><span class="p">:</span>
-</span><span class='line'>      <span class="k">break</span>
-</span><span class='line'><span class="c">#print answer  </span>
-</span><span class='line'><span class="k">if</span> <span class="n">fore</span> <span class="o">==</span> <span class="p">(</span><span class="n">total</span><span class="o">-</span><span class="n">number</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="p">:</span>
-</span><span class='line'>   <span class="k">print</span> <span class="n">number</span>
-</span><span class='line'><span class="k">else</span> <span class="p">:</span>
-</span><span class='line'>   <span class="k">print</span> <span class="s">r&#39;not found&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-算法簡單，而且是O(n)的。<br/>
-<strong>PS</strong> 上述解題思路爲題目只考慮序列只包括正數的情況(有唯一平衡點)，當序列中有負數的時候，平衡點不一定唯一。<!--more--></p>
-
-<ol>
-<li>支配點問題<br/>
-支配數：數組中某個元素出現的次數大於數組總數的一半時就成爲支配數，其所在位序成為支配點；比如int[] a = {3,3,1,2,3};3爲支配數，0，1，4分别爲支配點。<br/>
-要求：返回任何一個支配點<br/>
-《編程之美》中有答案，就是尋找水王那篇。<br/>
-具體方法是：將序列排序，取中位數——注意，如果一個數出現次數大於整體的一半，那麼排序之後支配數一定在中間，然後驗證是否正確。</li>
-</ol>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-</span><span class='line'><span class="c">#calculate  </span>
-</span><span class='line'><span class="n">numbers</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-</span><span class='line'><span class="n">lens</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
-</span><span class='line'><span class="n">candidate</span><span class="o">=</span><span class="n">numbers</span><span class="p">[</span><span class="n">lens</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>
-</span><span class='line'><span class="c">#validate  </span>
-</span><span class='line'><span class="n">N</span><span class="o">=</span><span class="mi">0</span>
-</span><span class='line'><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
-</span><span class='line'>    <span class="k">if</span> <span class="n">number</span><span class="o">==</span><span class="n">candidate</span><span class="p">:</span>
-</span><span class='line'>       <span class="n">N</span><span class="o">+=</span><span class="mi">1</span>
-</span><span class='line'><span class="c">#print answer  </span>
-</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">N</span><span class="o">&gt;=</span><span class="n">lens</span><span class="o">/</span><span class="mi">2</span><span class="p">):</span>
-</span><span class='line'>     <span class="k">print</span> <span class="n">numbers</span><span class="p">[</span><span class="n">lens</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>
-</span><span class='line'><span class="k">else</span> <span class="p">:</span>
-</span><span class='line'>   <span class="k">print</span> <span class="s">&#39;not found&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-<a href="http://hi.baidu.com/ruclin/item/f2706f26b1d2db140975086b">Origin</a>
-<a href="http://www.iteye.com/topic/600079">Reference</a></p>
 ]]></content>
   </entry>
   
