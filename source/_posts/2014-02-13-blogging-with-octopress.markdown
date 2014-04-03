@@ -4,6 +4,8 @@ title: "Blogging with Octopress"
 date: 2014-02-13 21:32:44 +0800
 comments: true
 categories: web
+keywords: Octopress, github, blog
+description: Using octopress blogging
 ---
   
   

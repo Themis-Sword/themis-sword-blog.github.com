@@ -4,6 +4,8 @@ title: "Python 時間&amp;日期模塊"
 date: 2014-03-26 16:53:19 +0800
 comments: true
 categories: python
+keywords: python, time, date time
+description: python的時間日期模塊
 ---
 Python提供了time/datetime/calendar等模塊來處理日期和時間。  
 **1.time模塊常用的函數**  

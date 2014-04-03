@@ -4,6 +4,8 @@ title: "Blabla"
 date: 2014-02-14 12:37:02 +0800
 comments: true
 categories: mood
+keywords: blabla, torture, cheer up
+description: It becomes a torture which the state between-jobs' lasting more than four months.
 ---
 
 {% img /images/time.jpg %} 

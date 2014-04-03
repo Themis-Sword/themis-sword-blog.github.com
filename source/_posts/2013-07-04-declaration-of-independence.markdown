@@ -4,6 +4,8 @@ title: "Declaration of Independence"
 date: 2013-07-04 00:00:00 -0400
 comments: true
 categories: justice
+keywords: United States, declaration, independence
+description: The unanimous Declaration of the thirteen united States of America
 ---
 {% img /images/declarationod.png %}
 ###IN CONGRESS, July 4, 1776.  

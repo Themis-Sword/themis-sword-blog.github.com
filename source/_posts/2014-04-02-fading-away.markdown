@@ -4,6 +4,8 @@ title: "Fading away"
 date: 2014-04-02 20:21:50 +0800
 comments: true
 categories: mood
+keywords: fading, away, winds hopeful, persistent
+description: Leaves sway down in sough late autumn winds
 ---
 {% img /images/fallingleaves.png %}  
 

@@ -4,6 +4,8 @@ title: "網頁重定向的方法(轉)"
 date: 2014-04-02 10:58:43 +0800
 comments: true
 categories: web
+keywords: webpage, 網頁，重定向，seo，方法
+description: 網頁重定向的方法
 ---
 ####1. 使用HTTP通訊協定301 Moved Permanently來完成轉導網址(永久轉址)  
 *建議使用，不會對SEO有不良影響*  

@@ -4,6 +4,8 @@ title: "Python 動態類型(轉)"
 date: 2014-04-02 15:15:39 +0800
 comments: true
 categories: python
+keywords: python，動態，類型，對象，共享，引用
+description: python的動態類型
 ---
 Python中只有一個賦值模型  
 ####1. 缺少類型聲明語句的情況  

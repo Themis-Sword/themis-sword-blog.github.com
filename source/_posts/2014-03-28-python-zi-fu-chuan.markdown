@@ -4,6 +4,8 @@ title: "Python 字符串"
 date: 2014-03-28 01:15:00 +0800
 comments: true
 categories: python
+keywords: python, string, 
+description: python字符串
 ---
 **1. 轉義字符**  
 <table>

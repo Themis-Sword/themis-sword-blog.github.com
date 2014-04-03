@@ -4,6 +4,8 @@ title: "Constitution of the United States"
 date: 2013-07-04 00:00:00 -0400
 comments: true
 categories: justice
+keywords: United States, Constitution
+description: we the people of the United States
 ---
 {% img /images/constitution.jpg %}  
 **We the People** of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.<!--more-->  

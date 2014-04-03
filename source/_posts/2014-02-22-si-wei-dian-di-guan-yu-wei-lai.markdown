@@ -4,6 +4,8 @@ title: "思維點滴_關於未來"
 date: 2014-02-22 21:36:20 +0800
 comments: true
 categories: mood
+keywords: 思維，未來，記錄，發展
+description: 關於未來的思維
 ---
 今天上午，參加大連春季招聘會，未有合適崗位可應聘。午飯和下午與摯友聚會，暢談關於現狀，關於未來。
 

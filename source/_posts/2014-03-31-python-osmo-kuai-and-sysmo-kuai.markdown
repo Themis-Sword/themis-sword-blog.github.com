@@ -4,6 +4,8 @@ title: "Python os模塊 &amp; sys模塊"
 date: 2014-03-31 16:06:01 +0800
 comments: true
 categories: python
+keywords: python, os, sys
+description: python的os，sys模塊
 ---
 **1. os模塊**  
 Python os模塊包含普遍的操作系統功能。如果你希望你的程序能夠與平臺無關的話，這個模塊是尤為重要的。  

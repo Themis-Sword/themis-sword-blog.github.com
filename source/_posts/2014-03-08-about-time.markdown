@@ -4,6 +4,8 @@ title: "About Time"
 date: 2014-03-08 19:31:58 +0800
 comments: true
 categories: mood
+keywords: time, regret, present
+description: about time is a movie
 ---
 
 {% img /images/Boeing777.jpg %}  

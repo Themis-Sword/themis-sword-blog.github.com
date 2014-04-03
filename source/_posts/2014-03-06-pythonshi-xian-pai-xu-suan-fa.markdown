@@ -4,6 +4,8 @@ title: "Python實現排序算法"
 date: 2014-03-06 15:53:21 +0800
 comments: true
 categories: python
+keywords: 冒泡，排序，插入，選擇，快速，函數
+description: 幾種排序算法
 ---
 1. 冒泡排序  
 ``` python   

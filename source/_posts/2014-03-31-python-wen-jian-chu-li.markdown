@@ -4,6 +4,8 @@ title: "Python 文件處理"
 date: 2014-03-31 17:48:17 +0800
 comments: true
 categories: python
+keywords: python, 文件，函數，處理
+description: python的文件處理
 ---
 python對文件的處理的兩個內建函數：  
 open()、file()，這個兩函數提供了初始化輸入\輸出（I\O）操作的通用接口。兩函數的功能相同。  

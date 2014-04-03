@@ -4,6 +4,8 @@ title: "About Lives"
 date: 2014-03-24 23:21:46 +0800
 comments: true
 categories: mood
+keywords: lives, life, MH370, fragile
+description: The distance between life and death
 ---
 {% img /images/mourning_angel.jpg %}
 

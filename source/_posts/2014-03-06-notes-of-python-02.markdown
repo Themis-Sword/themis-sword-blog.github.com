@@ -4,6 +4,8 @@ title: "Notes of Python 02"
 date: 2014-03-06 17:07:25 +0800
 comments: true
 categories: python
+keywords: 算法，fibonacci，乘法表，素數
+description: 算法
 ---
 1. 不同算法實現Fibonacci數列  
 1) 遞歸：  

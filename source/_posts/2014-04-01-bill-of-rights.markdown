@@ -4,6 +4,8 @@ title: "Bill of Rights"
 date: 2013-07-04 00:00:00 -0400
 comments: true
 categories: justice
+keywords: United States, bill, rights
+description: Congress of the United States
 ---
 {% img /images/billor.jpg %}  
 

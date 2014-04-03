@@ -4,6 +4,8 @@ title: "Software Testing"
 date: 2014-04-01 16:24:56 +0800
 comments: true
 categories: software
+keywords: software, test, testing
+description: software testing
 ---
 ###1. Overview  
 Software testing provide an objective, independent view to allow the business to appreciate and understand the risks of software, product or service implementation. Test techniques include, but are not limited to the process of executing a program or application with the intent of finding software bugs (errors or other defects).<!--more-->  
