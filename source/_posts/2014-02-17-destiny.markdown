@@ -4,8 +4,8 @@ title: "Destiny"
 date: 2014-02-17 22:21:48 +0800
 comments: true
 categories: mood
-keywords： destiny, opportunity, meant
-description：If it's meant to be, it will be. 
+keywords: destiny, opportunity, meant
+description: If it's meant to be, it will be. 
 ---
 {% img /images/plumbossom.jpg %}
 

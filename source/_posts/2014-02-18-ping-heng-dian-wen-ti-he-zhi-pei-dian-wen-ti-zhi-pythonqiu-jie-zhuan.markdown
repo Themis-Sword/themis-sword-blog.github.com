@@ -4,8 +4,8 @@ title: "平衡點問題和支配點問題之Python求解(轉)"
 date: 2014-02-18 21:46:13 +0800
 comments: true
 categories: python
-keywords： 平衡點，支配點，
-description： 平衡點和支配點
+keywords: 平衡點，支配點，
+description: 平衡點和支配點
 ---
 
 1. 平衡點問題  
