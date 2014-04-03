@@ -7,9 +7,11 @@
 	<meta charset="utf-8">
 	<title>Category: python  | Themis_Sword's Blog</title>
 
-<meta name="author" content="Themis_Sword"> 
 
-<meta name="description" content="Category: python"> <meta name="keywords" content="Themis_Sword, Blog, Justice, Technology, Mood, English, Life, Python, Business">
+<meta name="author" content="{{ site.author }}"> 
+{% capture description %}{% if page.description %}{{ page.description }}{% elsif site.description %}{{ site.description }}{%else%}{{ content | raw_content }}{% endif %}{% endcapture %}
+<meta name="description" content="{{ description | strip_html | condense_spaces | truncate:150 }}"> {% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}">{%else%}<meta name="keywords" content="{{ site.keywords }}">{% endif %}
+
 
 <meta name="msvalidate.01" content="3084BF25D05B2AD0D58CBE0DEA3D888E" />
 
@@ -295,27 +297,6 @@ $(document).ready(
 	<h3 class="title"><a href="/blog/03062014/pythonshi-xian-pai-xu-suan-fa/">Python實現排序算法</a></h3>
 	<div class="meta">
 		<div class="date">Mar  6</div>
-		
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/python/'>python</a>
-
-</div>
-
-
-	    
-	</div>
-</article>
-
-
-	
-
-
-<article>
-	<h3 class="title"><a href="/blog/02182014/ping-heng-dian-wen-ti-he-zhi-pei-dian-wen-ti-zhi-pythonqiu-jie-zhuan/">平衡點問題和支配點問題之Python求解(轉)</a></h3>
-	<div class="meta">
-		<div class="date">Feb 18</div>
 		
 
 <div class="tags">

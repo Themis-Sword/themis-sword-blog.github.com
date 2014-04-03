@@ -7,9 +7,11 @@
 	<meta charset="utf-8">
 	<title>Categories  | Themis_Sword's Blog</title>
 
-<meta name="author" content="Themis_Sword"> 
 
-<meta name="description" content="Independent, introspective, critical and technical viewpoints."> <meta name="keywords" content="Themis_Sword, Blog, Justice, Technology, Mood, English, Life, Python, Business">
+<meta name="author" content="{{ site.author }}"> 
+{% capture description %}{% if page.description %}{{ page.description }}{% elsif site.description %}{{ site.description }}{%else%}{{ content | raw_content }}{% endif %}{% endcapture %}
+<meta name="description" content="{{ description | strip_html | condense_spaces | truncate:150 }}"> {% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}">{%else%}<meta name="keywords" content="{{ site.keywords }}">{% endif %}
+
 
 <meta name="msvalidate.01" content="3084BF25D05B2AD0D58CBE0DEA3D888E" />
 
@@ -120,13 +122,13 @@ $(document).ready(
 
     <li><a href="/blog/categories/justice/">Justice</a> [ 3 ]</li>
 
-    <li><a href="/blog/categories/mood/">Mood</a> [ 7 ]</li>
+    <li><a href="/blog/categories/mood/">Mood</a> [ 6 ]</li>
 
     <li><a href="/blog/categories/web/">Web</a> [ 2 ]</li>
 
-    <li><a href="/blog/categories/python/">Python</a> [ 12 ]</li>
+    <li><a href="/blog/categories/python/">Python</a> [ 11 ]</li>
 
-    <li><a href="/blog/categories/software/">Software</a> [ 3 ]</li>
+    <li><a href="/blog/categories/software/">Software</a> [ 2 ]</li>
 
     <li><a href="/blog/categories/business/">Business</a> [ 1 ]</li>
 

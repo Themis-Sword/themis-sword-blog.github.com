@@ -7,9 +7,11 @@
 	<meta charset="utf-8">
 	<title>Blabla  | Themis_Sword's Blog</title>
 
-<meta name="author" content="Themis_Sword"> 
 
-<meta name="description" content="Independent, introspective, critical and technical viewpoints."> <meta name="keywords" content="Themis_Sword, Blog, Justice, Technology, Mood, English, Life, Python, Business">
+<meta name="author" content="{{ site.author }}"> 
+{% capture description %}{% if page.description %}{{ page.description }}{% elsif site.description %}{{ site.description }}{%else%}{{ content | raw_content }}{% endif %}{% endcapture %}
+<meta name="description" content="{{ description | strip_html | condense_spaces | truncate:150 }}"> {% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}">{%else%}<meta name="keywords" content="{{ site.keywords }}">{% endif %}
+
 
 <meta name="msvalidate.01" content="3084BF25D05B2AD0D58CBE0DEA3D888E" />
 
