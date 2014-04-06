@@ -70,7 +70,7 @@
     </url>
     <url>
         <loc>http://www.aprilzephyr.com/blog/03062014/notes-of-python-02/</loc>
-        <lastmod>2014-04-03T13:40:27+08:00</lastmod>
+        <lastmod>2014-04-06T18:02:27+08:00</lastmod>
     </url>
     <url>
         <loc>http://www.aprilzephyr.com/blog/03082014/about-time/</loc>
@@ -129,16 +129,22 @@
         <lastmod>2014-04-06T16:51:13+08:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://www.aprilzephyr.com/blog/04062014/improve-your-python-yield-and-generators-explained/
+        </loc>
+        <lastmod>2014-04-06T18:56:33+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://www.aprilzephyr.com/404.html</loc>
         <lastmod>2014-04-02T15:45:22+08:00</lastmod>
     </url>
     <url>
         <loc>http://www.aprilzephyr.com/author/</loc>
-        <lastmod>2014-04-06T16:51:13+08:00</lastmod>
+        <lastmod>2014-04-06T18:56:33+08:00</lastmod>
     </url>
     <url>
         <loc>http://www.aprilzephyr.com/blog/archives/</loc>
-        <lastmod>2014-04-06T16:51:13+08:00</lastmod>
+        <lastmod>2014-04-06T18:56:33+08:00</lastmod>
     </url>
     <url>
         <loc>http://www.aprilzephyr.com/blog/categories/</loc>
@@ -146,15 +152,15 @@
     </url>
     <url>
         <loc>http://www.aprilzephyr.com/blog/</loc>
-        <lastmod>2014-04-06T16:51:13+08:00</lastmod>
+        <lastmod>2014-04-06T18:56:33+08:00</lastmod>
     </url>
     <url>
         <loc>http://www.aprilzephyr.com/</loc>
-        <lastmod>2014-04-06T16:51:13+08:00</lastmod>
+        <lastmod>2014-04-06T18:56:33+08:00</lastmod>
     </url>
     <url>
         <loc>http://www.aprilzephyr.com/portfolio/</loc>
-        <lastmod>2014-04-06T16:51:13+08:00</lastmod>
+        <lastmod>2014-04-06T18:56:33+08:00</lastmod>
     </url>
     <url>
         <loc>http://www.aprilzephyr.com/robots.txt</loc>

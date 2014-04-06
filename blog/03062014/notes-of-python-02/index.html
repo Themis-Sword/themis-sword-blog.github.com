@@ -166,6 +166,37 @@ $(document).ready(
 <p>
 <a href="http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html">Origin</a><!--more--></p>
 
+<p>4) yield生成器:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">a</span><span class="o">=</span><span class="n">b</span><span class="o">=</span><span class="mi">1</span>
+</span><span class='line'>    <span class="k">yield</span> <span class="n">a</span>
+</span><span class='line'>    <span class="k">yield</span> <span class="n">b</span>
+</span><span class='line'>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+</span><span class='line'>        <span class="k">yield</span> <span class="n">b</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">fibonacci</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">break</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">i</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
 <ol>
 <li>九九乘法表</li>
 </ol>

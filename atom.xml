@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-04-06T16:52:23+08:00</updated>
+  <updated>2014-04-06T18:56:39+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,492 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Improve Your Python: 'yield' and Generators Explained(Fw)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/04062014/improve-your-python-yield-and-generators-explained/"/>
+    <updated>2014-04-06T18:07:35+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/04062014/improve-your-python-yield-and-generators-explained</id>
+    <content type="html"><![CDATA[<p>Prior to beginning tutoring sessions, I ask new students to fill out a brief self-assessment where they rate their understanding of various Python concepts. Some topics (&ldquo;control flow with if/else&rdquo; or &ldquo;defining and using functions&rdquo;) are understood by a majority of students before ever beginning tutoring. There are a handful of topics, however, that almost all students report having no knowledge or very limited understanding of. Of these, &ldquo;<code>generators</code> and the <code>yield</code> keyword&rdquo; is one of the biggest culprits. I&rsquo;m guessing this is the case for most novice Python programmers.<!--more--></p>
+
+<p>Many report having difficulty understanding <code>generators</code> and the <code>yield</code> keyword even after making a concerted effort to teach themselves the topic. I want to change that. In this post, I&rsquo;ll explain what the <code>yield</code> keyword does, why it&rsquo;s useful, and how to use it.</p>
+
+<p><em>Note: In recent years, generators have grown more powerful as features have been added through PEPs. In my next post, I&rsquo;ll explore the true power of <code>yield</code> with respect to coroutines, cooperative multitasking and asynchronous I/O (especially their use in the <a href="https://code.google.com/p/tulip/">&ldquo;tulip&rdquo;</a> prototype implementation GvR has been working on). Before we get there, however, we need a solid understanding of how the <code>yield</code> keyword and generators work.</em></p>
+
+<p><strong>Coroutines and Subroutines</strong><br/>
+When we call a normal Python function, execution starts at function&rsquo;s first line and continues until a <code>return</code> statement, <code>exception</code>, or the end of the function (which is seen as an implicit <code>return None</code>) is encountered. Once a function returns control to its caller, that&rsquo;s it. Any work done by the function and stored in local variables is lost. A new call to the function creates everything from scratch.</p>
+
+<p>This is all very standard when discussing functions (more generally referred to as <a href="http://en.wikipedia.org/wiki/Subroutine">subroutines</a>) in computer programming. There are times, though, when it&rsquo;s beneficial to have the ability to create a &ldquo;function&rdquo; which, instead of simply returning a single value, is able to yield a series of values. To do so, such a function would need to be able to &ldquo;save its work,&rdquo; so to speak.</p>
+
+<p>I said, &ldquo;yield a series of values&rdquo; because our hypothetical function doesn&rsquo;t &ldquo;return&rdquo; in the normal sense. <code>return</code> implies that the function is <em>returning control</em> of execution to the point where the function was called. &ldquo;Yield,&rdquo; however, implies that the transfer of control is temporary and voluntary, and our function expects to regain it in the future.</p>
+
+<p>In Python, &ldquo;functions&rdquo; with these capabilities are called <code>generators</code>, and they&rsquo;re incredibly useful. <code>generators</code> (and the <code>yield</code> statement) were initially introduced to give programmers a more straightforward way to write code responsible for producing a series of values. Previously, creating something like a random number generator required a class or module that both generated values and kept track of state between calls. With the introduction of <code>generators</code>, this became much simpler.</p>
+
+<p>To better understand the problem generators solve, let&rsquo;s take a look at an example. Throughout the example, keep in mind the core problem being solved: <strong>generating a series of values.</strong></p>
+
+<p><em>Note: Outside of Python, all but the simplest <code>generators</code> would be referred to as <code>coroutines</code>. I&rsquo;ll use the latter term later in the post. The important thing to remember is, in Python, everything described here as a <code>coroutine</code> is still a <code>generator</code>. Python formally defines the term <code>generator</code>; <code>coroutine</code> is used in discussion but has no formal definition in the language.</em></p>
+
+<p><strong>Example: Fun With Prime Numbers</strong><br/>
+Suppose our boss asks us to write a function that takes a <code>list</code> of <code>ints</code> and returns some Iterable containing the elements which are prime1 numbers.</p>
+
+<p><em>Remember, an <a href="http://en.wikipedia.org/wiki/Subroutine">Iterable</a> is just an object capable of returning its members one at a time.</em></p>
+
+<p>&ldquo;Simple,&rdquo; we say, and we write the following:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">get_primes</span><span class="p">(</span><span class="n">input_list</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">result_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">input_list</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">element</span><span class="p">):</span>
+</span><span class='line'>            <span class="n">result_list</span><span class="o">.</span><span class="n">append</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="n">result_list</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># or better yet...</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">get_primes</span><span class="p">(</span><span class="n">input_list</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">return</span> <span class="p">(</span><span class="n">element</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">input_list</span> <span class="k">if</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">element</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># not germane to the example, but here&#39;s a possible implementation of</span>
+</span><span class='line'><span class="c"># is_prime...</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">number</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="bp">True</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="bp">False</span>
+</span><span class='line'>        <span class="k">for</span> <span class="n">current</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span>
+</span><span class='line'>            <span class="k">if</span> <span class="n">number</span> <span class="o">%</span> <span class="n">current</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>                <span class="k">return</span> <span class="bp">False</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">True</span>
+</span><span class='line'>    <span class="k">return</span> <span class="bp">False</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p> <br/>
+Either <code>get_primes</code> implementation above fulfills the requirements, so we tell our boss we&rsquo;re done. She reports our function works and is exactly what she wanted.</p>
+
+<p>Dealing With Infinite Sequences</p>
+
+<p>Well, not quite exactly. A few days later, our boss comes back and tells us she&rsquo;s run into a small problem: she wants to use our <code>get_primes</code> function on a very large list of numbers. In fact, the list is so large that merely creating it would consume all of the system&rsquo;s memory. To work around this, she wants to be able to call <code>get_primes</code> with a <code>start</code> value and get all the primes larger than <code>start</code> (perhaps she&rsquo;s solving <a href="http://projecteuler.net/problem=10">Project Euler problem 10</a>).</p>
+
+<p>Once we think about this new requirement, it becomes clear that it requires more than a simple change to <code>get_primes</code>. Clearly, we can&rsquo;t return a list of all the prime numbers from <code>start</code> to infinity (<em>operating on infinite sequences, though, has a wide range of useful applications</em>). The chances of solving this problem using a normal function seem bleak.</p>
+
+<p>Before we give up, let&rsquo;s determine the core obstacle preventing us from writing a function that satisfies our boss&rsquo;s new requirements. Thinking about it, we arrive at the following: <strong>functions only get one chance to return results, and thus must return all results at once.</strong> It seems pointless to make such an obvious statement; &ldquo;functions just work that way,&rdquo; we think. The real value lies in asking, &ldquo;but what if they didn&rsquo;t?&rdquo;</p>
+
+<p>Imagine what we could do if <code>get_primes</code> could simply return the next value instead of all the values at once. It wouldn&rsquo;t need to create a list at all. No list, no memory issues. Since our boss told us she&rsquo;s just iterating over the results, she wouldn&rsquo;t know the difference.</p>
+
+<p>Unfortunately, this doesn&rsquo;t seem possible. Even if we had a magical function that allowed us to iterate from n to <code>infinity</code>, we&rsquo;d get stuck after returning the first value:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">get_primes</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">magical_infinite_range</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">element</span><span class="p">):</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">element</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+Imagine <code>get_primes</code> is called like so:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">solve_number_10</span><span class="p">():</span>
+</span><span class='line'>    <span class="c"># She *is* working on Project Euler #10, I knew it!</span>
+</span><span class='line'>    <span class="n">total</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">next_prime</span> <span class="ow">in</span> <span class="n">get_primes</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">next_prime</span> <span class="o">&lt;</span> <span class="mi">2000000</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">total</span> <span class="o">+=</span> <span class="n">next_prime</span>
+</span><span class='line'>        <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">return</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+Clearly, in <code>get_primes</code>, we would immediately hit the case where <code>number = 3</code> and return at line 4. Instead of <code>return</code>, we need a way to generate a value and, when asked for the next one, pick up where we left off.</p>
+
+<p>Functions, though, can&rsquo;t do this. When they <code>return</code>, they&rsquo;re done for good. Even if we could guarantee a function would be called again, we have no way of saying, &ldquo;OK, now, instead of starting at the first line like we normally do, start up where we left off at line 4.&rdquo; Functions have a single <code>entry point</code>: the first line.</p>
+
+<p><strong>Enter the Generator</strong><br/>
+This sort of problem is so common that a new construct was added to Python to solve it: the <code>generator</code>. A <code>generator</code> &ldquo;generates&rdquo; values. Creating <code>generators</code> was made as straightforward as possible through the concept of <code>generator functions</code>, introduced simultaneously.</p>
+
+<p>A <code>generator function</code> is defined like a normal function, but whenever it needs to generate a value, it does so with the <code>yield</code> keyword rather than <code>return</code>. If the body of a <code>def</code> contains <code>yield</code>, the function automatically becomes a <code>generator function</code> (even if it also contains a return statement). There&rsquo;s nothing else we need to do to create one.</p>
+
+<p><code>generator functions</code> create <code>generator iterators</code>. That&rsquo;s the last time you&rsquo;ll see the term <code>generator iterator</code>, though, since they&rsquo;re almost always referred to as &ldquo;<code>generators</code>&rdquo;. Just remember that a <code>generator</code> is a special type of <code>iterator</code>. To be considered an <code>iterator</code>, <code>generators</code> must define a few methods, one of which is <code>__next__()</code>. To get the next value from a <code>generator</code>, we use the same built-in function as for <code>iterators</code>: <code>next()</code>.</p>
+
+<p>This point bears repeating: <strong>to get the next value from a</strong> <code>generator</code><strong>, </strong>we use the same built-in function as for<strong> <code>iterators</code> </strong>:** <code>next()</code>.</p>
+
+<p>(<code>next()</code> takes care of calling the generator&rsquo;s <code>__next__()</code> method). Since a <code>generator</code> is a type of <code>iterator</code>, it can be used in a <code>for</code> loop.</p>
+
+<p>So whenever <code>next()</code> is called on a <code>generator</code>, the <code>generator</code> is responsible for passing back a value to whomever called <code>next()</code>. It does so by calling yield along with the value to be passed back (e.g. <code>yield 7</code>). The easiest way to remember what <code>yield</code> does is to think of it as <code>return</code> (plus a little magic) for <code>generator functions</code>.</p>
+
+<p>Again, this bears repeating: <code>yield</code> <strong>is just</strong> <code>return</code> <strong>(plus a little magic) for</strong> <code>generator functions</code>.</p>
+
+<p>Here&rsquo;s a simple generator function:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">simple_generator_function</span><span class="p">():</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>    <span class="k">yield</span> <span class="mi">1</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>    <span class="k">yield</span> <span class="mi">2</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>    <span class="k">yield</span> <span class="mi">3</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+And here are two simple ways to use it:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">simple_generator_function</span><span class="p">():</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>     <span class="k">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span><span class='line'><span class="mi">1</span>
+</span><span class='line'><span class="mi">2</span>
+</span><span class='line'><span class="mi">3</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">our_generator</span> <span class="o">=</span> <span class="n">simple_generator_function</span><span class="p">()</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="n">our_generator</span><span class="p">)</span>
+</span><span class='line'><span class="mi">1</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="n">our_generator</span><span class="p">)</span>
+</span><span class='line'><span class="mi">2</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="n">our_generator</span><span class="p">)</span>
+</span><span class='line'><span class="mi">3</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><strong>Magic?</strong><br/>
+What&rsquo;s the magic part? Glad you asked! When a <code>generator function</code> calls <code>yield</code>, the &ldquo;state&rdquo; of the <code>generator function</code> is frozen; the values of all variables are saved and the next line of code to be executed is recorded until <code>next()</code> is called again. Once it is, the <code>generator function</code> simply resumes where it left off. If <code>next()</code> is never called again, the state recorded during the <code>yield</code> call is (eventually) discarded.</p>
+
+<p>Let&rsquo;s rewrite <code>get_primes</code> as a <code>generator function</code>. Notice that we no longer need the <code>magical_infinite_range function</code>. Using a simple <code>while</code> loop, we can create our own infinite sequence:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">get_primes</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+</span><span class='line'>            <span class="k">yield</span> <span class="n">number</span>
+</span><span class='line'>        <span class="n">number</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+If a <code>generator function</code> calls <code>return</code> or reaches the end its definition, a <code>StopIteration</code> exception is raised. This signals to whoever was calling <code>next()</code> that the <code>generator</code> is exhausted (this is normal <code>iterator</code> behavior). It is also the reason the <code>while True:</code> loop is present in <code>get_primes</code>. If it weren&rsquo;t, the first time <code>next()</code> was called we would check if the number is prime and possibly yield it. If <code>next()</code> were called again, we would uselessly add <code>1</code> to <code>number</code> and hit the end of the <code>generator function</code> (causing <code>StopIteration</code> to be raised). Once a generator has been exhausted, calling <code>next()</code> on it will result in an error, so you can only consume all the values of a <code>generator</code> once. The following will not work:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">our_generator</span> <span class="o">=</span> <span class="n">simple_generator_function</span><span class="p">()</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">our_generator</span><span class="p">:</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>     <span class="k">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="c"># our_generator has been exhausted...</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">our_generator</span><span class="p">))</span>
+</span><span class='line'><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+</span><span class='line'>  <span class="n">File</span> <span class="s">&quot;&lt;ipython-input-13-7e48a609051a&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="nb">next</span><span class="p">(</span><span class="n">our_generator</span><span class="p">)</span>
+</span><span class='line'><span class="ne">StopIteration</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="c"># however, we can always create a new generator</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="c"># by calling the generator function again...</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">new_generator</span> <span class="o">=</span> <span class="n">simple_generator_function</span><span class="p">()</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">new_generator</span><span class="p">))</span> <span class="c"># perfectly valid</span>
+</span><span class='line'><span class="mi">1</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>Thus, the <code>while</code> loop is there to make sure we never reach the end of <code>get_primes</code>. It allows us to generate a value for as long as <code>next()</code> is called on the generator. This is a common idiom when dealing with infinite series (and <code>generators</code> in general).</p>
+
+<p><strong>Visualizing the flow</strong>
+Let&rsquo;s go back to the code that was calling <code>get_primes</code>: <code>solve_number_10</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">solve_number_10</span><span class="p">():</span>
+</span><span class='line'>    <span class="c"># She *is* working on Project Euler #10, I knew it!</span>
+</span><span class='line'>    <span class="n">total</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">next_prime</span> <span class="ow">in</span> <span class="n">get_primes</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">next_prime</span> <span class="o">&lt;</span> <span class="mi">2000000</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">total</span> <span class="o">+=</span> <span class="n">next_prime</span>
+</span><span class='line'>        <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">return</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+It&rsquo;s helpful to visualize how the first few elements are created when we call <code>get_primes</code> in <code>solve_number_10</code>&rsquo;s <code>for</code> loop. When the <code>for</code> loop requests the first value from <code>get_primes</code>, we enter <code>get_primes</code> as we would in a normal function.</p>
+
+<p>1) We enter the while loop on line 3<br/>
+2) The if condition holds (3 is prime)<br/>
+3) We yield the value 3 and control to  solve_number_10.</p>
+
+<p>Then, back in <code>solve_number_10</code>:</p>
+
+<p>1) The value <code>3</code> is passed back to the <code>for</code> loop<br/>
+2) The <code>for</code> loop assigns <code>next_prime</code> to this value<br/>
+3) <code>next_prime</code> is added to <code>total</code><br/>
+4) The <code>for</code> loop requests the next element from <code>get_primes</code><br/>
+This time, though, instead of entering <code>get_primes</code> back at the top, we resume at line <code>5</code>, where we left off.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">get_primes</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+</span><span class='line'>            <span class="k">yield</span> <span class="n">number</span>
+</span><span class='line'>        <span class="n">number</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c"># &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+Most importantly, <code>number</code> <em>still has the same value it did when we called <code>yield</code> (i.e. <code>3</code>).</em> Remember, <code>yield</code> both passes a value to whoever called <code>next()</code>, and saves the &ldquo;state&rdquo; of the <code>generator function</code>. Clearly, then, <code>number</code> is incremented to 4, we hit the top of the <code>while</code> loop, and keep incrementing <code>number</code> until we hit the next prime number (<code>5</code>). Again we <code>yield</code> the value of <code>number</code> to the <code>for</code> loop in solve<code>_number_10</code>. This cycle continues until the <code>for</code> loop stops (at the first prime greater than <code>2,000,000</code>).</p>
+
+<p><strong>Moar Power</strong><br/>
+In <a href="http://www.python.org/dev/peps/pep-0342/">PEP 342</a>, support was added for passing values into generators. <a href="http://www.python.org/dev/peps/pep-0342/">PEP 342</a> gave <code>generators</code> the power to yield a value (as before), receive a value, or both yield a value and receive a (possibly different) value in a single statement.</p>
+
+<p>To illustrate how values are sent to a <code>generator</code>, let&rsquo;s return to our prime number example. This time, instead of simply printing every prime number greater than <code>number</code>, we&rsquo;ll find the smallest prime number greater than successive powers of a number (i.e. for 10, we want the smallest prime greater than 10, then 100, then 1000, etc.). We start in the same way as <code>get_primes</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">print_successive_primes</span><span class="p">(</span><span class="n">iterations</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+</span><span class='line'>    <span class="c"># like normal functions, a generator function</span>
+</span><span class='line'>    <span class="c"># can be assigned to a variable</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">prime_generator</span> <span class="o">=</span> <span class="n">get_primes</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+</span><span class='line'>    <span class="c"># missing code...</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">power</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span><span class="p">):</span>
+</span><span class='line'>        <span class="c"># missing code...</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">get_primes</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+</span><span class='line'>        <span class="c"># ... what goes here?</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>The next line of <code>get_primes</code> takes a bit of explanation. While <code>yield number</code> would yield the value of <code>number</code>, a statement of the form <code>other = yield foo</code> means, &ldquo;yield <code>foo</code> and, when a value is sent to me, set <code>other</code> to that value.&rdquo; You can &ldquo;send&rdquo; values to a generator using the generator&rsquo;s <code>send</code> method.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">get_primes</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+</span><span class='line'>            <span class="n">number</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">number</span>
+</span><span class='line'>        <span class="n">number</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+In this way, we can set <code>number</code> to a different value each time the generator <code>yield</code>s. We can now fill in the missing code in <code>print_successive_primes</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">print_successive_primes</span><span class="p">(</span><span class="n">iterations</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">prime_generator</span> <span class="o">=</span> <span class="n">get_primes</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">prime_generator</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">power</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span><span class="p">(</span><span class="n">prime_generator</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">base</span> <span class="o">**</span> <span class="n">power</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+Two things to note here: First, we&rsquo;re printing the result of <code>generator.send</code>, which is possible because <code>send</code> both sends a value to the generator and returns the value yielded by the generator (mirroring how <code>yield</code> works from within the <code>generator function</code>).</p>
+
+<p>Second, notice the <code>prime_generator.send(None)</code> line. When you&rsquo;re using send to &ldquo;start&rdquo; a generator (that is, execute the code from the first line of the generator function up to the first <code>yield</code> statement), you must send <code>None</code>. This makes sense, since by definition the generator hasn&rsquo;t gotten to the first <code>yield</code> statement yet, so if we sent a real value there would be nothing to &ldquo;receive&rdquo; it. Once the generator is started, we can send values as we do above.</p>
+
+<p><strong>Round-up</strong><br/>
+In the second half of this series, we&rsquo;ll discuss the various ways in which <code>generators</code> have been enhanced and the power they gained as a result. <code>yield</code> has become one of the most powerful keywords in Python. Now that we&rsquo;ve built a solid understanding of how <code>yield</code> works, we have the knowledge necessary to understand some of the more &ldquo;mind-bending&rdquo; things that <code>yield</code> can be used for.</p>
+
+<p>Believe it or not, we&rsquo;ve barely scratched the surface of the power of <code>yield</code>. For example, while <code>send</code> does work as described above, it&rsquo;s almost never used when generating simple sequences like our example. Below, I&rsquo;ve pasted a small demonstration of one common way <code>send</code> is used. I&rsquo;ll not say any more about it as figuring out how and why it works will be a good warm-up for part two.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">random</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">get_data</span><span class="p">():</span>
+</span><span class='line'>    <span class="sd">&quot;&quot;&quot;Return 3 random integers between 0 and 9&quot;&quot;&quot;</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">consume</span><span class="p">():</span>
+</span><span class='line'>    <span class="sd">&quot;&quot;&quot;Displays a running average across lists of integers sent to it&quot;&quot;&quot;</span>
+</span><span class='line'>    <span class="n">running_sum</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="n">data_items_seen</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">data</span> <span class="o">=</span> <span class="k">yield</span>
+</span><span class='line'>        <span class="n">data_items_seen</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">running_sum</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">print</span><span class="p">(</span><span class="s">&#39;The running average is {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">running_sum</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">data_items_seen</span><span class="p">)))</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">produce</span><span class="p">(</span><span class="n">consumer</span><span class="p">):</span>
+</span><span class='line'>    <span class="sd">&quot;&quot;&quot;Produces a set of values and forwards them to the pre-defined consumer</span>
+</span><span class='line'><span class="sd">    function&quot;&quot;&quot;</span>
+</span><span class='line'>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">()</span>
+</span><span class='line'>        <span class="k">print</span><span class="p">(</span><span class="s">&#39;Produced {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+</span><span class='line'>        <span class="n">consumer</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">yield</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">consumer</span> <span class="o">=</span> <span class="n">consume</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">consumer</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">producer</span> <span class="o">=</span> <span class="n">produce</span><span class="p">(</span><span class="n">consumer</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span><span class="p">(</span><span class="s">&#39;Producing...&#39;</span><span class="p">)</span>
+</span><span class='line'>        <span class="nb">next</span><span class="p">(</span><span class="n">producer</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><strong>Remember&hellip;</strong><br/>
+There are a few key ideas I hope you take away from this discussion:<br/>
+* <code>generators</code> are used to generate a series of values<br/>
+* <code>yield</code> is like the <code>return</code> of <code>generator functions</code><br/>
+* The only other thing <code>yield</code> does is save the &ldquo;state&rdquo; of a <code>generator function</code><br/>
+* A <code>generator</code> is just a special type of <code>iterator</code><br/>
+* Like <code>iterators</code>, we can get the next value from a <code>generator</code> using <code>next()</code><br/>
+** <code>for</code> gets values by calling <code>next()</code> implicitly</p>
+
+<p>I hope this post was helpful. If you had never heard of <code>generators</code>, I hope you now understand what they are, why they&rsquo;re useful, and how to use them. If you were somewhat familiar with <code>generators</code>, I hope any confusion is now cleared up.</p>
+
+<p><a href="http://www.jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/">Origin</a><br/>
+<a href="http://www.oschina.net/translate/improve-your-python-yield-and-generators-explained">Reference</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python with語句(轉)]]></title>
@@ -2680,6 +3166,37 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
 <p>
 <a href="http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html">Origin</a><!--more--></p>
 
+<p>4) yield生成器:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">a</span><span class="o">=</span><span class="n">b</span><span class="o">=</span><span class="mi">1</span>
+</span><span class='line'>    <span class="k">yield</span> <span class="n">a</span>
+</span><span class='line'>    <span class="k">yield</span> <span class="n">b</span>
+</span><span class='line'>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+</span><span class='line'>        <span class="k">yield</span> <span class="n">b</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">fibonacci</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">break</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">i</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
 <ol>
 <li>九九乘法表</li>
 </ol>
@@ -3212,105 +3729,6 @@ It is difficult, and in some cases impossible, to develop direct measures of the
 <strong>Hardware independence</strong>. The degree to which the software is decoupled from the hardware on which it operates.</br><strong>Instrumentation</strong>. The degree to which the program monitors its own operation and identifies errors that do occur.</br><strong>Modularity</strong>. The functional independence of program components.</br><strong>Operability</strong>. The ease of operation of a program.</br><strong>Security</strong>. The availability of mechanisms that control or protect programs and data.</br><strong>Self-documentation</strong>. The degree to which the source code provides meaningful documentation.</br><strong>Simplicity</strong>. The degree to which a program can be understood without difficulty.</br><strong>Software system independence</strong>. The degree to which the program is independent of nonstandard programming language features, operating system characteristics, and other environmental constraints.</br><strong>Traceability</strong>. The ability to trace a design representation or actual program component back to requirements.</br><strong>Training</strong>. The degree to which the software assists in enabling new users to apply the system. (P509-511)</p></li>
 </ol>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[平衡點問題和支配點問題之Python求解(轉)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/02182014/ping-heng-dian-wen-ti-he-zhi-pei-dian-wen-ti-zhi-pythonqiu-jie-zhuan/"/>
-    <updated>2014-02-18T21:46:13+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/02182014/ping-heng-dian-wen-ti-he-zhi-pei-dian-wen-ti-zhi-pythonqiu-jie-zhuan</id>
-    <content type="html"><![CDATA[<ol>
-<li>平衡點問題<br/>
-平衡點：比如int[] numbers = {1,3,5,7,8,25,4,20}; 25前面的總和爲24，25後面的總和也是24，25這個點就是平衡點；假如一個數組中的元素，其前面的部分等於後面的部分，那麼這個點的位序就是平衡點。 <br/>
-要求：返回任何一個平衡點<br/>
-使用sum函数累加所有的数。
-使用一个变量fore来累加序列的前部。直到满足条件fore&lt;(total-number)/2;</li>
-</ol>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">20</span><span class="p">]</span>
-</span><span class='line'><span class="c">#find total  </span>
-</span><span class='line'><span class="n">total</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
-</span><span class='line'><span class="c">#find num  </span>
-</span><span class='line'><span class="n">fore</span><span class="o">=</span><span class="mi">0</span>
-</span><span class='line'><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
-</span><span class='line'>   <span class="k">if</span> <span class="n">fore</span><span class="o">&lt;</span><span class="p">(</span><span class="n">total</span><span class="o">-</span><span class="n">number</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="p">:</span>
-</span><span class='line'>      <span class="n">fore</span><span class="o">+=</span><span class="n">number</span>
-</span><span class='line'>   <span class="k">else</span><span class="p">:</span>
-</span><span class='line'>      <span class="k">break</span>
-</span><span class='line'><span class="c">#print answer  </span>
-</span><span class='line'><span class="k">if</span> <span class="n">fore</span> <span class="o">==</span> <span class="p">(</span><span class="n">total</span><span class="o">-</span><span class="n">number</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="p">:</span>
-</span><span class='line'>   <span class="k">print</span> <span class="n">number</span>
-</span><span class='line'><span class="k">else</span> <span class="p">:</span>
-</span><span class='line'>   <span class="k">print</span> <span class="s">r&#39;not found&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-算法簡單，而且是O(n)的。<br/>
-<strong>PS</strong> 上述解題思路爲題目只考慮序列只包括正數的情況(有唯一平衡點)，當序列中有負數的時候，平衡點不一定唯一。<!--more--></p>
-
-<ol>
-<li>支配點問題<br/>
-支配數：數組中某個元素出現的次數大於數組總數的一半時就成爲支配數，其所在位序成為支配點；比如int[] a = {3,3,1,2,3};3爲支配數，0，1，4分别爲支配點。<br/>
-要求：返回任何一個支配點<br/>
-《編程之美》中有答案，就是尋找水王那篇。<br/>
-具體方法是：將序列排序，取中位數——注意，如果一個數出現次數大於整體的一半，那麼排序之後支配數一定在中間，然後驗證是否正確。</li>
-</ol>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-</span><span class='line'><span class="c">#calculate  </span>
-</span><span class='line'><span class="n">numbers</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-</span><span class='line'><span class="n">lens</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
-</span><span class='line'><span class="n">candidate</span><span class="o">=</span><span class="n">numbers</span><span class="p">[</span><span class="n">lens</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>
-</span><span class='line'><span class="c">#validate  </span>
-</span><span class='line'><span class="n">N</span><span class="o">=</span><span class="mi">0</span>
-</span><span class='line'><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
-</span><span class='line'>    <span class="k">if</span> <span class="n">number</span><span class="o">==</span><span class="n">candidate</span><span class="p">:</span>
-</span><span class='line'>       <span class="n">N</span><span class="o">+=</span><span class="mi">1</span>
-</span><span class='line'><span class="c">#print answer  </span>
-</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">N</span><span class="o">&gt;=</span><span class="n">lens</span><span class="o">/</span><span class="mi">2</span><span class="p">):</span>
-</span><span class='line'>     <span class="k">print</span> <span class="n">numbers</span><span class="p">[</span><span class="n">lens</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>
-</span><span class='line'><span class="k">else</span> <span class="p">:</span>
-</span><span class='line'>   <span class="k">print</span> <span class="s">&#39;not found&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-<a href="http://hi.baidu.com/ruclin/item/f2706f26b1d2db140975086b">Origin</a>
-<a href="http://www.iteye.com/topic/600079">Reference</a></p>
 ]]></content>
   </entry>
   

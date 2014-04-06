@@ -123,6 +123,55 @@ $(document).ready(
     <article class="post">
 	<h3 class="title">
 		
+		<a href="/blog/03262014/python-shi-jian-and-ri-qi-mo-kuai/">
+		
+			Python 時間&amp;日期模塊</a>
+	</h3>
+	<div class="entry-content">
+		<p>Python提供了time/datetime/calendar等模塊來處理日期和時間。<br/>
+<strong>1.time模塊常用的函數</strong><br/>
+<em>A. time.time()</em><br/>
+1970年1月1日以來的秒數，是一個浮點數。<br/>
+<em>B. time.sleep()</em><br/>
+可以通過調用time.sleep來挂起當前的進程。time.sleep接收一个浮點型參數，表示進程挂起的時間。<br/>
+<em>C. time.clock()</em><br/>
+time.clock()返回第一次调用该方法到现在的秒數，其精確度高於1微秒。可以使用该函數來記錄程序執行的時間。 
+		
+		<a href="/blog/03262014/python-shi-jian-and-ri-qi-mo-kuai/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-26T16:53:19+08:00" pubdate data-updated="true">Mar 26<span>th</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/python/'>python</a>
+
+</div>
+
+
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h3 class="title">
+		
 		<a href="/blog/03262014/python-chang-yong-han-shu-zhi-join/">
 		
 			Python 常用函數之Join, Split, Zip, Map, Reduce, Filter</a>
@@ -327,77 +376,6 @@ $(document).ready(
 
 
 <time datetime="2014-03-06T17:07:25+08:00" pubdate data-updated="true">Mar 6<span>th</span>, 2014</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/python/'>python</a>
-
-</div>
-
-
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/03062014/pythonshi-xian-pai-xu-suan-fa/">
-		
-			Python實現排序算法</a>
-	</h3>
-	<div class="entry-content">
-		<ol>
-<li>冒泡排序</li>
-</ol>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">bubble</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
-</span><span class='line'>\<span class="err">冒泡排序，</span><span class="n">x</span><span class="err">是列表，</span><span class="n">n</span><span class="err">是列表長度</span>
-</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-</span><span class='line'> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-</span><span class='line'>  <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">&gt;</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
-</span><span class='line'>   <span class="n">t</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
-</span><span class='line'>   <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
-</span><span class='line'>   <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span>
-</span><span class='line'><span class="k">return</span> <span class="n">x</span>
-</span><span class='line'><span class="k">print</span> <span class="n">bubble</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">48</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-</br>
-		
-		<a href="/blog/03062014/pythonshi-xian-pai-xu-suan-fa/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-06T15:53:21+08:00" pubdate data-updated="true">Mar 6<span>th</span>, 2014</time></div>
 	
 
 <div class="tags">

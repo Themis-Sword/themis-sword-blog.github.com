@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-04-06T16:52:23+08:00</updated>
+  <updated>2014-04-06T18:56:39+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,359 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Improve Your Python: 'yield' and Generators Explained(Fw)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/04062014/improve-your-python-yield-and-generators-explained/"/>
+    <updated>2014-04-06T18:07:35+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/04062014/improve-your-python-yield-and-generators-explained</id>
+    <content type="html"><![CDATA[<p>Prior to beginning tutoring sessions, I ask new students to fill out a brief self-assessment where they rate their understanding of various Python concepts. Some topics (&ldquo;control flow with if/else&rdquo; or &ldquo;defining and using functions&rdquo;) are understood by a majority of students before ever beginning tutoring. There are a handful of topics, however, that almost all students report having no knowledge or very limited understanding of. Of these, &ldquo;<code>generators</code> and the <code>yield</code> keyword&rdquo; is one of the biggest culprits. I&rsquo;m guessing this is the case for most novice Python programmers.<!--more--></p>
+
+<p>Many report having difficulty understanding <code>generators</code> and the <code>yield</code> keyword even after making a concerted effort to teach themselves the topic. I want to change that. In this post, I&rsquo;ll explain what the <code>yield</code> keyword does, why it&rsquo;s useful, and how to use it.</p>
+
+<p><em>Note: In recent years, generators have grown more powerful as features have been added through PEPs. In my next post, I&rsquo;ll explore the true power of <code>yield</code> with respect to coroutines, cooperative multitasking and asynchronous I/O (especially their use in the <a href="https://code.google.com/p/tulip/">&ldquo;tulip&rdquo;</a> prototype implementation GvR has been working on). Before we get there, however, we need a solid understanding of how the <code>yield</code> keyword and generators work.</em></p>
+
+<p><strong>Coroutines and Subroutines</strong><br/>
+When we call a normal Python function, execution starts at function&rsquo;s first line and continues until a <code>return</code> statement, <code>exception</code>, or the end of the function (which is seen as an implicit <code>return None</code>) is encountered. Once a function returns control to its caller, that&rsquo;s it. Any work done by the function and stored in local variables is lost. A new call to the function creates everything from scratch.</p>
+
+<p>This is all very standard when discussing functions (more generally referred to as <a href="http://en.wikipedia.org/wiki/Subroutine">subroutines</a>) in computer programming. There are times, though, when it&rsquo;s beneficial to have the ability to create a &ldquo;function&rdquo; which, instead of simply returning a single value, is able to yield a series of values. To do so, such a function would need to be able to &ldquo;save its work,&rdquo; so to speak.</p>
+
+<p>I said, &ldquo;yield a series of values&rdquo; because our hypothetical function doesn&rsquo;t &ldquo;return&rdquo; in the normal sense. <code>return</code> implies that the function is <em>returning control</em> of execution to the point where the function was called. &ldquo;Yield,&rdquo; however, implies that the transfer of control is temporary and voluntary, and our function expects to regain it in the future.</p>
+
+<p>In Python, &ldquo;functions&rdquo; with these capabilities are called <code>generators</code>, and they&rsquo;re incredibly useful. <code>generators</code> (and the <code>yield</code> statement) were initially introduced to give programmers a more straightforward way to write code responsible for producing a series of values. Previously, creating something like a random number generator required a class or module that both generated values and kept track of state between calls. With the introduction of <code>generators</code>, this became much simpler.</p>
+
+<p>To better understand the problem generators solve, let&rsquo;s take a look at an example. Throughout the example, keep in mind the core problem being solved: <strong>generating a series of values.</strong></p>
+
+<p><em>Note: Outside of Python, all but the simplest <code>generators</code> would be referred to as <code>coroutines</code>. I&rsquo;ll use the latter term later in the post. The important thing to remember is, in Python, everything described here as a <code>coroutine</code> is still a <code>generator</code>. Python formally defines the term <code>generator</code>; <code>coroutine</code> is used in discussion but has no formal definition in the language.</em></p>
+
+<p><strong>Example: Fun With Prime Numbers</strong><br/>
+Suppose our boss asks us to write a function that takes a <code>list</code> of <code>ints</code> and returns some Iterable containing the elements which are prime1 numbers.</p>
+
+<p><em>Remember, an <a href="http://en.wikipedia.org/wiki/Subroutine">Iterable</a> is just an object capable of returning its members one at a time.</em></p>
+
+<p>&ldquo;Simple,&rdquo; we say, and we write the following:<br/>
+``` python
+def get_primes(input_list):</p>
+
+<pre><code>result_list = list()
+for element in input_list:
+    if is_prime(element):
+        result_list.append()
+
+return result_list
+</code></pre>
+
+<h1>or better yet&hellip;</h1>
+
+<p>def get_primes(input_list):</p>
+
+<pre><code>return (element for element in input_list if is_prime(element))
+</code></pre>
+
+<h1>not germane to the example, but here&rsquo;s a possible implementation of</h1>
+
+<h1>is_prime&hellip;</h1>
+
+<p>def is_prime(number):</p>
+
+<pre><code>if number &gt; 1:
+    if number == 2:
+        return True
+    if number % 2 == 0:
+        return False
+    for current in range(3, int(math.sqrt(number) + 1), 2):
+        if number % current == 0: 
+            return False
+    return True
+return False
+</code></pre>
+
+<p><code>``   
+Either</code>get_primes` implementation above fulfills the requirements, so we tell our boss we&rsquo;re done. She reports our function works and is exactly what she wanted.</p>
+
+<p>Dealing With Infinite Sequences</p>
+
+<p>Well, not quite exactly. A few days later, our boss comes back and tells us she&rsquo;s run into a small problem: she wants to use our <code>get_primes</code> function on a very large list of numbers. In fact, the list is so large that merely creating it would consume all of the system&rsquo;s memory. To work around this, she wants to be able to call <code>get_primes</code> with a <code>start</code> value and get all the primes larger than <code>start</code> (perhaps she&rsquo;s solving <a href="http://projecteuler.net/problem=10">Project Euler problem 10</a>).</p>
+
+<p>Once we think about this new requirement, it becomes clear that it requires more than a simple change to <code>get_primes</code>. Clearly, we can&rsquo;t return a list of all the prime numbers from <code>start</code> to infinity (<em>operating on infinite sequences, though, has a wide range of useful applications</em>). The chances of solving this problem using a normal function seem bleak.</p>
+
+<p>Before we give up, let&rsquo;s determine the core obstacle preventing us from writing a function that satisfies our boss&rsquo;s new requirements. Thinking about it, we arrive at the following: <strong>functions only get one chance to return results, and thus must return all results at once.</strong> It seems pointless to make such an obvious statement; &ldquo;functions just work that way,&rdquo; we think. The real value lies in asking, &ldquo;but what if they didn&rsquo;t?&rdquo;</p>
+
+<p>Imagine what we could do if <code>get_primes</code> could simply return the next value instead of all the values at once. It wouldn&rsquo;t need to create a list at all. No list, no memory issues. Since our boss told us she&rsquo;s just iterating over the results, she wouldn&rsquo;t know the difference.</p>
+
+<p>Unfortunately, this doesn&rsquo;t seem possible. Even if we had a magical function that allowed us to iterate from n to <code>infinity</code>, we&rsquo;d get stuck after returning the first value:<br/>
+``` python
+def get_primes(start):</p>
+
+<pre><code>for element in magical_infinite_range(start):
+    if is_prime(element):
+        return element
+</code></pre>
+
+<p><code>  
+Imagine `get_primes` is called like so:  
+</code> python
+def solve_number_10():</p>
+
+<pre><code># She *is* working on Project Euler #10, I knew it!
+total = 2
+for next_prime in get_primes(3):
+    if next_prime &lt; 2000000:
+        total += next_prime
+    else:
+        print(total)
+        return
+</code></pre>
+
+<p><code>``  
+Clearly, in</code>get_primes<code>, we would immediately hit the case where</code>number = 3<code>and return at line 4. Instead of</code>return`, we need a way to generate a value and, when asked for the next one, pick up where we left off.</p>
+
+<p>Functions, though, can&rsquo;t do this. When they <code>return</code>, they&rsquo;re done for good. Even if we could guarantee a function would be called again, we have no way of saying, &ldquo;OK, now, instead of starting at the first line like we normally do, start up where we left off at line 4.&rdquo; Functions have a single <code>entry point</code>: the first line.</p>
+
+<p><strong>Enter the Generator</strong><br/>
+This sort of problem is so common that a new construct was added to Python to solve it: the <code>generator</code>. A <code>generator</code> &ldquo;generates&rdquo; values. Creating <code>generators</code> was made as straightforward as possible through the concept of <code>generator functions</code>, introduced simultaneously.</p>
+
+<p>A <code>generator function</code> is defined like a normal function, but whenever it needs to generate a value, it does so with the <code>yield</code> keyword rather than <code>return</code>. If the body of a <code>def</code> contains <code>yield</code>, the function automatically becomes a <code>generator function</code> (even if it also contains a return statement). There&rsquo;s nothing else we need to do to create one.</p>
+
+<p><code>generator functions</code> create <code>generator iterators</code>. That&rsquo;s the last time you&rsquo;ll see the term <code>generator iterator</code>, though, since they&rsquo;re almost always referred to as &ldquo;<code>generators</code>&rdquo;. Just remember that a <code>generator</code> is a special type of <code>iterator</code>. To be considered an <code>iterator</code>, <code>generators</code> must define a few methods, one of which is <code>__next__()</code>. To get the next value from a <code>generator</code>, we use the same built-in function as for <code>iterators</code>: <code>next()</code>.</p>
+
+<p>This point bears repeating: <strong>to get the next value from a</strong> <code>generator</code><strong>, </strong>we use the same built-in function as for<strong> <code>iterators</code> </strong>:** <code>next()</code>.</p>
+
+<p>(<code>next()</code> takes care of calling the generator&rsquo;s <code>__next__()</code> method). Since a <code>generator</code> is a type of <code>iterator</code>, it can be used in a <code>for</code> loop.</p>
+
+<p>So whenever <code>next()</code> is called on a <code>generator</code>, the <code>generator</code> is responsible for passing back a value to whomever called <code>next()</code>. It does so by calling yield along with the value to be passed back (e.g. <code>yield 7</code>). The easiest way to remember what <code>yield</code> does is to think of it as <code>return</code> (plus a little magic) for <code>generator functions</code>.</p>
+
+<p>Again, this bears repeating: <code>yield</code> <strong>is just</strong> <code>return</code> <strong>(plus a little magic) for</strong> <code>generator functions</code>.</p>
+
+<p>Here&rsquo;s a simple generator function:<br/>
+``` python</p>
+
+<blockquote><blockquote><blockquote><p>def simple_generator_function():
+   yield 1
+   yield 2
+   yield 3
+<code>  
+And here are two simple ways to use it:  
+</code> python
+for value in simple_generator_function():</p>
+
+<pre><code>print(value)
+</code></pre>
+
+<p>1
+2
+3
+our_generator = simple_generator_function()
+next(our_generator)
+1
+next(our_generator)
+2
+next(our_generator)
+3
+```</p></blockquote></blockquote></blockquote>
+
+<p><strong>Magic?</strong><br/>
+What&rsquo;s the magic part? Glad you asked! When a <code>generator function</code> calls <code>yield</code>, the &ldquo;state&rdquo; of the <code>generator function</code> is frozen; the values of all variables are saved and the next line of code to be executed is recorded until <code>next()</code> is called again. Once it is, the <code>generator function</code> simply resumes where it left off. If <code>next()</code> is never called again, the state recorded during the <code>yield</code> call is (eventually) discarded.</p>
+
+<p>Let&rsquo;s rewrite <code>get_primes</code> as a <code>generator function</code>. Notice that we no longer need the <code>magical_infinite_range function</code>. Using a simple <code>while</code> loop, we can create our own infinite sequence:<br/>
+``` python
+def get_primes(number):</p>
+
+<pre><code>while True:
+    if is_prime(number):
+        yield number
+    number += 1
+</code></pre>
+
+<p><code>  
+If a `generator function` calls `return` or reaches the end its definition, a `StopIteration` exception is raised. This signals to whoever was calling `next()` that the `generator` is exhausted (this is normal `iterator` behavior). It is also the reason the `while True:` loop is present in `get_primes`. If it weren't, the first time `next()` was called we would check if the number is prime and possibly yield it. If `next()` were called again, we would uselessly add `1` to `number` and hit the end of the `generator function` (causing `StopIteration` to be raised). Once a generator has been exhausted, calling `next()` on it will result in an error, so you can only consume all the values of a `generator` once. The following will not work:  
+</code> python</p>
+
+<blockquote><blockquote><blockquote><p>our_generator = simple_generator_function()
+for value in our_generator:</p>
+
+<pre><code>print(value)
+</code></pre>
+
+<h1>our_generator has been exhausted&hellip;</h1>
+
+<p>print(next(our_generator))
+Traceback (most recent call last):
+  File &ldquo;&lt;ipython-input-13-7e48a609051a>&rdquo;, line 1, in <module></p>
+
+<pre><code>next(our_generator)
+</code></pre>
+
+<p>StopIteration</p>
+
+<h1>however, we can always create a new generator</h1>
+
+<h1>by calling the generator function again&hellip;</h1>
+
+<p>new_generator = simple_generator_function()
+print(next(new_generator)) # perfectly valid
+1
+```</p></blockquote></blockquote></blockquote>
+
+<p>Thus, the <code>while</code> loop is there to make sure we never reach the end of <code>get_primes</code>. It allows us to generate a value for as long as <code>next()</code> is called on the generator. This is a common idiom when dealing with infinite series (and <code>generators</code> in general).</p>
+
+<p><strong>Visualizing the flow</strong>
+Let&rsquo;s go back to the code that was calling <code>get_primes</code>: <code>solve_number_10</code>.<br/>
+``` python
+def solve_number_10():</p>
+
+<pre><code># She *is* working on Project Euler #10, I knew it!
+total = 2
+for next_prime in get_primes(3):
+    if next_prime &lt; 2000000:
+        total += next_prime
+    else:
+        print(total)
+        return
+</code></pre>
+
+<p><code>``  
+It's helpful to visualize how the first few elements are created when we call</code>get_primes<code>in</code>solve_number_10<code>'s</code>for<code>loop. When the</code>for<code>loop requests the first value from</code>get_primes<code>, we enter</code>get_primes` as we would in a normal function.</p>
+
+<p>1) We enter the while loop on line 3<br/>
+2) The if condition holds (3 is prime)<br/>
+3) We yield the value 3 and control to  solve_number_10.</p>
+
+<p>Then, back in <code>solve_number_10</code>:</p>
+
+<p>1) The value <code>3</code> is passed back to the <code>for</code> loop<br/>
+2) The <code>for</code> loop assigns <code>next_prime</code> to this value<br/>
+3) <code>next_prime</code> is added to <code>total</code><br/>
+4) The <code>for</code> loop requests the next element from <code>get_primes</code><br/>
+This time, though, instead of entering <code>get_primes</code> back at the top, we resume at line <code>5</code>, where we left off.<br/>
+``` python
+def get_primes(number):</p>
+
+<pre><code>while True:
+    if is_prime(number):
+        yield number
+    number += 1 # &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+</code></pre>
+
+<p><code>``  
+Most importantly,</code>number<code>*still has the same value it did when we called</code>yield<code>(i.e.</code>3<code>).* Remember,</code>yield<code>both passes a value to whoever called</code>next()<code>, and saves the "state" of the</code>generator function<code>. Clearly, then,</code>number<code>is incremented to 4, we hit the top of the</code>while<code>loop, and keep incrementing</code>number<code>until we hit the next prime number (</code>5<code>). Again we</code>yield<code>the value of</code>number<code>to the</code>for<code>loop in solve</code>_number_10<code>. This cycle continues until the</code>for<code>loop stops (at the first prime greater than</code>2,000,000`).</p>
+
+<p><strong>Moar Power</strong><br/>
+In <a href="http://www.python.org/dev/peps/pep-0342/">PEP 342</a>, support was added for passing values into generators. <a href="http://www.python.org/dev/peps/pep-0342/">PEP 342</a> gave <code>generators</code> the power to yield a value (as before), receive a value, or both yield a value and receive a (possibly different) value in a single statement.</p>
+
+<p>To illustrate how values are sent to a <code>generator</code>, let&rsquo;s return to our prime number example. This time, instead of simply printing every prime number greater than <code>number</code>, we&rsquo;ll find the smallest prime number greater than successive powers of a number (i.e. for 10, we want the smallest prime greater than 10, then 100, then 1000, etc.). We start in the same way as <code>get_primes</code>:<br/>
+``` python
+def print_successive_primes(iterations, base=10):</p>
+
+<pre><code># like normal functions, a generator function
+# can be assigned to a variable
+
+prime_generator = get_primes(base)
+# missing code...
+for power in range(iterations):
+    # missing code...
+</code></pre>
+
+<p>def get_primes(number):</p>
+
+<pre><code>while True:
+    if is_prime(number):
+    # ... what goes here?
+</code></pre>
+
+<p>```</p>
+
+<p>The next line of <code>get_primes</code> takes a bit of explanation. While <code>yield number</code> would yield the value of <code>number</code>, a statement of the form <code>other = yield foo</code> means, &ldquo;yield <code>foo</code> and, when a value is sent to me, set <code>other</code> to that value.&rdquo; You can &ldquo;send&rdquo; values to a generator using the generator&rsquo;s <code>send</code> method.<br/>
+``` python
+def get_primes(number):</p>
+
+<pre><code>while True:
+    if is_prime(number):
+        number = yield number
+    number += 1
+</code></pre>
+
+<p><code>  
+In this way, we can set `number` to a different value each time the generator `yield`s. We can now fill in the missing code in `print_successive_primes`:  
+</code> python
+def print_successive_primes(iterations, base=10):</p>
+
+<pre><code>prime_generator = get_primes(base)
+prime_generator.send(None)
+for power in range(iterations):
+    print(prime_generator.send(base ** power))
+</code></pre>
+
+<p><code>``  
+Two things to note here: First, we're printing the result of</code>generator.send<code>, which is possible because</code>send<code>both sends a value to the generator and returns the value yielded by the generator (mirroring how</code>yield<code>works from within the</code>generator function`).</p>
+
+<p>Second, notice the <code>prime_generator.send(None)</code> line. When you&rsquo;re using send to &ldquo;start&rdquo; a generator (that is, execute the code from the first line of the generator function up to the first <code>yield</code> statement), you must send <code>None</code>. This makes sense, since by definition the generator hasn&rsquo;t gotten to the first <code>yield</code> statement yet, so if we sent a real value there would be nothing to &ldquo;receive&rdquo; it. Once the generator is started, we can send values as we do above.</p>
+
+<p><strong>Round-up</strong><br/>
+In the second half of this series, we&rsquo;ll discuss the various ways in which <code>generators</code> have been enhanced and the power they gained as a result. <code>yield</code> has become one of the most powerful keywords in Python. Now that we&rsquo;ve built a solid understanding of how <code>yield</code> works, we have the knowledge necessary to understand some of the more &ldquo;mind-bending&rdquo; things that <code>yield</code> can be used for.</p>
+
+<p>Believe it or not, we&rsquo;ve barely scratched the surface of the power of <code>yield</code>. For example, while <code>send</code> does work as described above, it&rsquo;s almost never used when generating simple sequences like our example. Below, I&rsquo;ve pasted a small demonstration of one common way <code>send</code> is used. I&rsquo;ll not say any more about it as figuring out how and why it works will be a good warm-up for part two.<br/>
+``` python
+import random</p>
+
+<p>def get_data():</p>
+
+<pre><code>"""Return 3 random integers between 0 and 9"""
+return random.sample(range(10), 3)
+</code></pre>
+
+<p>def consume():</p>
+
+<pre><code>"""Displays a running average across lists of integers sent to it"""
+running_sum = 0
+data_items_seen = 0
+
+while True:
+    data = yield
+    data_items_seen += len(data)
+    running_sum += sum(data)
+    print('The running average is {}'.format(running_sum / float(data_items_seen)))
+</code></pre>
+
+<p>def produce(consumer):</p>
+
+<pre><code>"""Produces a set of values and forwards them to the pre-defined consumer
+function"""
+while True:
+    data = get_data()
+    print('Produced {}'.format(data))
+    consumer.send(data)
+    yield
+</code></pre>
+
+<p>if <strong>name</strong> == &lsquo;<strong>main</strong>&rsquo;:</p>
+
+<pre><code>consumer = consume()
+consumer.send(None)
+producer = produce(consumer)
+
+for _ in range(10):
+    print('Producing...')
+    next(producer)
+</code></pre>
+
+<p>```</p>
+
+<p><strong>Remember&hellip;</strong><br/>
+There are a few key ideas I hope you take away from this discussion:<br/>
+* <code>generators</code> are used to generate a series of values<br/>
+* <code>yield</code> is like the <code>return</code> of <code>generator functions</code><br/>
+* The only other thing <code>yield</code> does is save the &ldquo;state&rdquo; of a <code>generator function</code><br/>
+* A <code>generator</code> is just a special type of <code>iterator</code><br/>
+* Like <code>iterators</code>, we can get the next value from a <code>generator</code> using <code>next()</code><br/>
+** <code>for</code> gets values by calling <code>next()</code> implicitly</p>
+
+<p>I hope this post was helpful. If you had never heard of <code>generators</code>, I hope you now understand what they are, why they&rsquo;re useful, and how to use them. If you were somewhat familiar with <code>generators</code>, I hope any confusion is now cleared up.</p>
+
+<p><a href="http://www.jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/">Origin</a><br/>
+<a href="http://www.oschina.net/translate/improve-your-python-yield-and-generators-explained">Reference</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python with語句(轉)]]></title>
@@ -599,180 +952,6 @@ Python解釋程序路徑。<br/>
 從標準輸入讀一行。<br/>
 30) sys.stdout.write(&ldquo;a&rdquo;)<br/>
 屏幕輸出a。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Python 字符串]]></title>
-    <link href="http://www.aprilzephyr.com/blog/03282014/python-zi-fu-chuan/"/>
-    <updated>2014-03-28T01:15:00+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/03282014/python-zi-fu-chuan</id>
-    <content type="html"><![CDATA[<p><strong>1. 轉義字符</strong></p>
-
-<table>
-<tbody>
-<tr><td><em>轉義字符</em></td><td><em>描述</em></td></tr>  
-<tr><td>\\(在行尾)</td><td>續行符</td></tr>  
-<tr><td>\\\ </td><td>反斜槓</td></tr>  
-<tr><td>\\' </td><td>單引號</td></tr>  
-<tr><td>\\" </td><td>雙引號</td></tr>  
-<tr><td>\a</td><td>響鈴</td></tr>  
-<tr><td>\b</td><td>退格(Backspace)</td></tr>  
-<tr><td>\e</td><td>轉義</td></tr>  
-<tr><td>\000</td><td>空</td></tr>  
-<tr><td>\n</td><td>換行</td></tr>  
-<tr><td>\v</td><td>縱向製表符</td></tr>  
-<tr><td>\t</td><td>橫向製表符</td></tr>  
-<tr><td>\r</td><td>回車</td></tr>  
-<tr><td>\f</td><td>換頁</td></tr>  
-<tr><td>\oyy</td><td>八進制數yy代表的字符，例如:\o12代表換行</td></tr>  
-<tr><td>\xyy</td><td>十進制數yy代表的字符，例如:\x0a代表換行</td></tr>  
-<tr><td>\uhhhh</td><td>Unicode 16位的十六進製值</td></tr>  
-<tr><td>\uhhhhhhhh</td><td>Unicode 32位的十六進製值</td></tr>  
-<tr><td>\other</td><td>其它的字符以普通格式輸出</td></tr>  
-</tbody></table>
-
-
-<!--more-->
-
-
-<p><strong>2. 格式化表達</strong></p>
-
-<table><tbody>  
-<tr><td><em>格式化表達</em></td><td><em>描述</em></td></tr>  
-<tr><td>%s</td><td>字符串</td></tr>  
-<tr><td>%r</td><td>repr輸出的字符串</td></tr>  
-<tr><td>%d</td><td>十進制整數</td></tr>  
-<tr><td>%i</td><td>整數</td></tr>  
-<tr><td>%u</td><td>無符號整數</td></tr>  
-<tr><td>%o</td><td>八進制</td></tr>  
-<tr><td>%x</td><td>十六進制</td></tr>  
-<tr><td>%X</td><td>十六進制(大寫)</td></tr>  
-<tr><td>%e</td><td>指數</td></tr>  
-<tr><td>%E</td><td>指數(大寫)</td></tr>  
-<tr><td>%f</td><td>十進制浮點數</td></tr>  
-<tr><td>%F</td><td>十進制浮點數(大寫)</td></tr>  
-<tr><td>%g</td><td>浮點e或f</td></tr>  
-<tr><td>%G</td><td>浮點E或F</td></tr>  
-</tbody></table>
-
-
-<p></p>
-
-<p><strong>3. 索引和切片</strong><br/>
-Python中的字符串是有序的字符集合，所以可以通過位置（索引）獲取對應的元素。和c語言中一樣，python的索引也是從0開始的，而且支持使用負索引的方法來獲取元素，一個負的索引可以看做是從字符串結尾處反向計數，-1就表示字符串的最後一個字符。當然也可以理解為負索引與字符串長度相加得到的正索引，即s[-n]等於s[-n+len(s)]。<br/>
-``` python</p>
-
-<blockquote><blockquote><blockquote><p>s = &ldquo;hello"<br/>
-s[0]<br/>
-&lsquo;1'<br/>
-s = "hello"<br/>
-s[0]<br/>
-'h'<br/>
-s[-1]<br/>
-'o'<br/>
-s[0:3]<br/>
-'hel'<br/>
-s[1:]<br/>
-'ello'<br/>
-s[:-1]<br/>
-'hell&rsquo;
-<code>  
-其實分片的完整格式為s[start:end:side]，意思就是從start開始到end-1，每隔side個元素取一個元素，返回值為所有取到的元素組成的字符串，side默認值為1。  
-side可以取負值，例如s[::-1]會返回”olleh”，實際效果就是對字符串進行了反轉。這裏需要註意的是，如果side為負值，兩個邊界也要進行反轉，s[4:1:-1]就是從4開始反向取到2得到的字符串，如果在sride為負的情況下還是第一個邊界大於第二個邊界那樣的使用的話將返回一個空的字符串。  
-</code> python
-s[::2]<br/>
-&lsquo;hlo'<br/>
-s[::-1]<br/>
-'olleh'<br/>
-s[4:1:-1]<br/>
-'oll'<br/>
-s[0:4:-1]<br/>
-&rsquo;&lsquo;<br/>
-```</p></blockquote></blockquote></blockquote>
-
-<p><strong>4. 字符串方法</strong><br/>
-<em>A 大小寫</em><br/>
-S.upper() 全部大寫<br/>
-S.lower() 全部小寫<br/>
-S.swapcase() 大小寫互換<br/>
-S.capitalize() 首字母大寫，其余都小寫<br/>
-S.title() 每個單詞的首字母大寫，其余不變</p>
-
-<p><em>B 對齊</em><br/>
-S.ljust(width[, fill]) 獲取固定長度width，左對齊，多余位用fill填充，默認空格<br/>
-S.rjust(width[, fill]) 右對齊<br/>
-S.center(width[, fill]) 居中<br/>
-S.zfill(width) 右對齊，左邊不足的位置用0補齊，相當於S.rjust(width,&ldquo;0&rdquo;)<br/>
-如果width&lt;=len(S)，返回於原字符串相同的字符串。</p>
-
-<p><em>C 查找替換</em><br/>
-S.find(sub[, start[, end]]) 返回在範圍start到end(不含end)中第一個sub的索引。<br/>
-S.rfind(sub[, start[, end]]) 從右邊開始查找，也就是返回在範圍start到end(不含end)中最後一個sub的索引。<br/>
-S.index(sub[, start[, end]])功能與find()相同，不同之處在於find()未找到的時候會返回-1，而index()會拋出異常。<br/>
-S.rindex(sub[, start[, end]])功能與rfind()相同，不同之處在於find()未找到的時候會返回-1，而index()會拋出異常。<br/>
-S.count(sub[, start[, end]]) 返回在範圍start到end(不含end)中sub的個數。<br/>
-start默認為0，end默認為len(S)。<br/>
-S.replace(old, new[, count])將字符串中的old替換為new，count為替換的次數，未指定的話就是替換所有。<br/>
-S.translate(table [,deletechars]) 刪除S中deletechars包含的字符，然後將剩下的字符用table定義的關系進行映射。table是string.maketrans()生成的。</p>
-
-<p><em>D 去空白或指定字符</em><br/>
-S.strip([chars]) 去除字符串S兩邊的chars,若chars未指定，則去除兩邊的空白，包括空格、\n、\f、\r、\t和\v。<br/>
-S.lstrip([chars]) 去除左邊的chars，未指定同上。<br/>
-S.rstrip([chars]) 去除右邊的chars，未指定同上。</p>
-
-<p><em>E 分割和組合</em><br/>
-S.split([sep [,maxsplit]]) 以sep為分隔符切割字符串S，不指定sep默認為默認為空白，maxsplit為最大分割次數，未指定則全部分割，返回列表。<br/>
-S.rsplit([sep [,maxsplit]]) 只是和split反向相反，split從頭到尾，rsplit從尾到頭。<br/>
-S.splitlines([keepends]) 按行分割字符串，若keepends指定並且為True，則保留換行符，反之不保留。<br/>
-S.partiton(sep)以sep作為分隔符將S分割為兩個start和end部分，並返回(start,sep, end)這樣格式的元組，若sep沒有找到，則返回S和兩個空串組成的元組(S, &lsquo;&rsquo;, &lsquo;&rsquo;)。<br/>
-S.rpartition(sep)從右邊開始，以sep作為分隔符將S分割為兩個start和end部分，並返回(start,sep, end)，若sep沒有找到，則返回兩個空串和S組成的元組(&lsquo;&rsquo;, &lsquo;&rsquo;, S)。<br/>
-S.join(iterable) 將叠代器iterable的字符串連接在一起，並用分隔符S隔開，一般來說在連接列表的時候都使用空字符串或者空格作為分隔符，返回字符串。</p>
-
-<p><em>F 判斷</em><br/>
-S.startswith(prefix[, start[, end]])判斷字符串start到end(不含end)是否是以prefix開頭，默認start為0，end為len(S)，返回布爾值。<br/>
-S.endswith(suffix[, start[, end]]) 判斷字符串start到end(不含end)是否是以suffix結尾，默認start為0，end為len(S)，返回布爾值。<br/>
-S.isalnum() 是否全為字母或數字，返回布爾值。<br/>
-S.isalpha() 是否全為字母，返回布爾值。<br/>
-S.isdigit() 是否全為數字0-9，返回布爾值。<br/>
-S.islower() 是否全是小寫。<br/>
-S.isupper() 是否全是大寫。<br/>
-S.isspace() 是否全是空白。<br/>
-S.istitle() 是否符合title的格式——每個單詞的首字母大寫。<br/>
-上述這些函數中，若S為空串，則均返回False。</p>
-
-<p><em>G 編碼</em><br/>
-S.decode([encoding[,errors]]) 將字符串S解碼為unicode，encoding為S原來的編碼方式。<br/>
-S.encode([encoding[,errors]]) 將unicodeS編碼為python中的字符串，參數指定對應的編碼方式。<br/>
-errors指定出錯時對應的操作，默認的strict會在編碼/解碼失敗的時候拋出異常，ignore則忽略。<br/>
-關於編碼方式還是有很多的知識的，後續再做研究。</p>
-
-<p><em>H 其他</em><br/>
-S.format(*args, **kwargs)<br/>
-format也是用來格式化字符串的，argv指定的變量可以在S中用{index}來替換，而kwargs則是對應的變量。如果後面的數據為字典，可以使用{&lt;index|var>[key]}來替換其對應的值。當然還可以指定對應的寬度、精度以及對其格式，{index:[fill][&lt;|>|^][width][.precision][typecode]}。<br/>
-fill設置填充位，默認為空格；&lt;左對齊，>右對齊，^居中；寬度和類型見後面格式化表達式部分。註意這裏的精度專指說浮點型數據，整型是不能使用精度的，字符創設置了也沒啥作用。<br/>
-``` python</p>
-
-<blockquote><blockquote><blockquote><p>&ldquo;{0},{2},{1},{s}&rdquo;.format(1,2,3,s=&ldquo;four&rdquo;)<br/>
-&lsquo;1,3,2,four'<br/>
-&ldquo;{0:$&lt;3},{2:^5.2f},{1},{s:>10.6s}&rdquo;.format(1,2,3,s=&ldquo;four&rdquo;)<br/>
-'1$$,3.00 ,2,      four'<br/>
-&ldquo;{0:&lt;3},{2:^5d},{1},{s:>10s}&rdquo;.format(1,2,3,s=&ldquo;four&rdquo;)<br/>
-'1  ,  3  ,2,      four'<br/>
-&ldquo;{0:&lt;03},{2:^05.2d},{1},{s:>10s}&rdquo;.format(1,2,3,s=&ldquo;four&rdquo;)<br/>
-Traceback (most recent call last):<br/>
-  File &ldquo;<stdin>&rdquo;, line 1, in <module><br/>
-ValueError: Precision not allowed in integer format specifier<br/>
-&ldquo;{0:&lt;03},{2:^5.2f},{1},{s:>10.6s}&rdquo;.format(1,2,3,s=&ldquo;four&rdquo;)<br/>
-'100,3.00 ,2,      four&rsquo;
-```<br/>
-S.expandtabs([tabsize]) 將字符串中的制表符替換為tabsize個空格，默認為8。</p></blockquote></blockquote></blockquote>
-
-<p><em>I 3.0新增</em><br/>
-S.isdecimal() 是否全是十進制數字(多語言數字)。<br/>
-S.isidentifier() 是否全是合法標識符。<br/>
-S.isnumeric() 是否只包含數字字符。<br/>
-S.isprintable() 是否全是可打印字符。</p>
 ]]></content>
   </entry>
   
