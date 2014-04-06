@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-04-04T23:16:14+08:00</updated>
+  <updated>2014-04-06T16:52:23+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,168 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python with語句(轉)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/04062014/python-withyu-ju/"/>
+    <updated>2014-04-06T16:37:46+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/04062014/python-withyu-ju</id>
+    <content type="html"><![CDATA[<p><strong>1. With 語句是什麼</strong><br/>
+Python’s with statement provides a very convenient way of dealing with the situation where you have to do a setup and teardown to make something happen. A very good example for this is the situation where you want to gain a handler to a file, read data from the file and the close the file handler.<br/>
+有一些任務，可能事先需要設置，事後做清理工作。對於這種場景，Python的with語句提供了一種非常方便的處理方式。一個很好的例子是文件處理，你需要獲取一個文件句柄，從文件中讀取數據，然後關閉文件句柄。<!--more--></p>
+
+<p>Without the with statement, one would write something along the lines of:<br/>
+如果不用with語句，代碼如下： <br/>
+<code>python
+file = open("/tmp/foo.txt")
+data = file.read()
+file.close()
+</code><br/>
+There are two annoying things here. First, you end up forgetting to close the file handler. The second is how to handle exceptions that may occur once the file handler has been obtained. One could write something like this to get around this:<br/>
+這裏有兩個問題。一是可能忘記關閉文件句柄；二是文件讀取數據發生異常，沒有進行任何處理。下面是處理異常的加強版本：<br/>
+``` python
+file = open(&ldquo;/tmp/foo.txt&rdquo;)
+try:</p>
+
+<pre><code>data = file.read()
+</code></pre>
+
+<p>finally:</p>
+
+<pre><code>file.close()
+</code></pre>
+
+<p><code>  
+While this works well, it is unnecessarily verbose. This is where with is useful. The good thing about with apart from the better syntax is that it is very good handling exceptions. The above code would look like this, when using with:  
+雖然這段代碼運行良好，但是太冗長了。這時候就是with一展身手的時候了。除了有更優雅的語法，with還可以很好的處理上下文環境產生的異常。下面是with版本的代碼：  
+</code> python
+with open(&ldquo;/tmp/foo.txt&rdquo;) as file:</p>
+
+<pre><code>data = file.read()
+</code></pre>
+
+<p>```</p>
+
+<p><strong>2. with如何工作</strong><br/>
+while this might look like magic, the way Python handles with is more clever than magic. The basic idea is that the statement after with has to evaluate an object that responds to an __enter__() as well as an __exit__() function.<br/>
+這看起來充滿魔法，但不僅僅是魔法，Python對with的處理還很聰明。基本思想是with所求值的對象必須有一個__enter__()方法，一個__exit__()方法。</p>
+
+<p>After the statement that follows with is evaluated, the __enter__() function on the resulting object is called. The value returned by this function is assigned to the variable following as. After every statement in the block is evaluated, the __exit__() function is called.<br/>
+緊跟with後面的語句被求值後，返回對象的__enter__()方法被調用，這個方法的返回值將被賦值給as後面的變量。當with後面的代碼塊全部被執行完之後，將調用前面返回對象的__exit__()方法。</p>
+
+<p>This can be demonstrated with the following example:<br/>
+下面例子可以具體說明with如何工作：<br/>
+``` python</p>
+
+<h1>!/usr/bin/env python</h1>
+
+<h1>with_example01.py</h1>
+
+<p>class Sample:</p>
+
+<pre><code>def __enter__(self):
+    print "In __enter__()"
+    return "Foo"
+
+def __exit__(self, type, value, trace):
+    print "In __exit__()"
+</code></pre>
+
+<p>def get_sample():</p>
+
+<pre><code>return Sample()
+</code></pre>
+
+<p>with get_sample() as sample:</p>
+
+<pre><code>print "sample:", sample
+</code></pre>
+
+<p><code>  
+When executed, this will result in:  
+運行代碼，輸出如下  
+</code> python
+bash-3.2$ ./with_example01.py
+In <strong>enter</strong>()
+sample: Foo
+In <strong>exit</strong>()
+<code>  
+As you can see,  
+The \_\_enter\_\_() function is executed  
+The value returned by it - in this case "Foo" is assigned to sample  
+The body of the block is executed, thereby printing the value of sample ie. "Foo"  
+The \_\_exit\_\_() function is called.  
+What makes with really powerful is the fact that it can handle exceptions. You would have noticed that the \_\_exit\_\_() function for Sample takes three arguments - val, type and trace. These are useful in exception handling. Let’s see how this works by modifying the above example.  
+正如你看到的，  
+1) \_\_enter\_\_()方法被執行  
+2) \_\_enter\_\_()方法返回的值 - 這個例子中是"Foo"，賦值給變量'sample'  
+3) 執行代碼塊，打印變量"sample"的值為 "Foo"  
+4) \_\_exit\_\_()方法被調用  
+with真正強大之處是它可以處理異常。可能你已經註意到Sample類的\_\_exit()\_\_方法有三個參數- val, type 和 trace。 這些參數在異常處理中相當有用。我們來改一下代碼，看看具體如何工作的。  
+</code> python</p>
+
+<h1>!/usr/bin/env python</h1>
+
+<h1>with_example02.py</h1>
+
+<p>class Sample:</p>
+
+<pre><code>def __enter__(self):
+    return self
+
+def __exit__(self, type, value, trace):
+    print "type:", type
+    print "value:", value
+    print "trace:", trace
+
+def do_something(self):
+    bar = 1/0
+    return bar + 10
+</code></pre>
+
+<p>with Sample() as sample:</p>
+
+<pre><code>sample.do_something()
+</code></pre>
+
+<p>```<br/>
+Notice how in this example, instead of get_sample(), with takes Sample(). It does not matter, as long as the statement that follows with evaluates to an object that has an __enter__() and __exit__() functions. In this case, Sample()’s __enter__() returns the newly created instance of Sample and that is what gets passed to sample.<br/>
+這個例子中，with後面的get_sample()變成了Sample()。這沒有任何關系，只要緊跟with後面的語句所返回的對象有__enter__()和__exit__()方法即可。此例中，Sample()的__enter__()方法返回新創建的Sample對象，並賦值給變量sample。</p>
+
+<p>When executed:<br/>
+代碼執行後：<br/>
+``` python
+bash-3.2$ ./with_example02.py
+type: <type 'exceptions.ZeroDivisionError'>
+value: integer division or modulo by zero
+trace: <traceback object at 0x1004a8128>
+Traceback (most recent call last):
+  File &ldquo;./with_example02.py&rdquo;, line 19, in <module></p>
+
+<pre><code>sample.do_something()
+</code></pre>
+
+<p>  File &ldquo;./with_example02.py&rdquo;, line 15, in do_something</p>
+
+<pre><code>bar = 1/0
+</code></pre>
+
+<p>ZeroDivisionError: integer division or modulo by zero
+```<br/>
+Essentially, if there are exceptions being thrown from anywhere inside the block, the __exit__() function for the object is called. As you can see, the type, value and the stack trace associated with the exception thrown is passed to this function. In this case, you can see that there was a ZeroDivisionError exception being thrown. People implementing libraries can write code that clean up resources, close files etc. in their __exit__() functions.<br/>
+實際上，在with後面的代碼塊拋出任何異常時，__exit__()方法被執行。正如例子所示，異常拋出時，與之關聯的type，value和stack trace傳給__exit__()方法，因此拋出的ZeroDivisionError異常被打印出來了。開發庫時，清理資源，關閉文件等等操作，都可以放在__exit__方法當中。</p>
+
+<p>Thus, Python’s with is a nifty construct that makes code a little less verbose and makes cleaning up during exceptions a bit easier.<br/>
+因此，Python的with語句是提供一個有效的機制，讓代碼更簡練，同時在異常產生時，清理工作更簡單。</p>
+
+<p>I have put the code examples given here on <a href="https://github.com/sdqali/python_dojo/tree/master/with">Github</a>.<br/>
+示例代碼可以在<a href="https://github.com/sdqali/python_dojo/tree/master/with">Github</a>上面找到。</p>
+
+<p>譯註：本文原文見<a href="http://blog.sdqali.in/blog/2012/07/09/understanding-pythons-with/">Understanding Python&rsquo;s &ldquo;With&rdquo; Statement</a></p>
+
+<p><a href="http://python.42qu.com/11155501">Origin</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python 動態類型(轉)]]></title>
@@ -611,247 +773,6 @@ S.isdecimal() 是否全是十進制數字(多語言數字)。<br/>
 S.isidentifier() 是否全是合法標識符。<br/>
 S.isnumeric() 是否只包含數字字符。<br/>
 S.isprintable() 是否全是可打印字符。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Python import與from...import...(轉)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/03272014/python-importyu-from-dot-dot-dot-import-dot-dot-dot/"/>
-    <updated>2014-03-27T14:23:52+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/03272014/python-importyu-from-dot-dot-dot-import-dot-dot-dot</id>
-    <content type="html"><![CDATA[<p><strong>1. 簡單說說python import與from&hellip;import&hellip;.(python模塊)</strong></p>
-
-<p>在python用import或者from&hellip;import來導入相應的模塊。模塊其實就一些函數和類的集合文件，它能實現一些相應的功能，當我們需要使用這些功能的時候，直接把相應的模塊導入到我們的程序中，我們就可以使用了。這類似於C語言中的include頭文件，Python中我們用import導入我們需要的模塊。 <!--more-->
-``` python
-import sys
-print(&lsquo;================Python import mode==========================&rsquo;);
-print (&lsquo;The command line arguments are:&rsquo;)
-for i in sys.argv:</p>
-
-<pre><code>print (i)
-</code></pre>
-
-<p>print (&lsquo;\n The python path&rsquo;,sys.path)</p>
-
-<p>from sys import argv,path #導入特定的成員
-print(&lsquo;================python from import===================================&rsquo;)
-print(&lsquo;path:&rsquo;,path)</p>
-
-<p>如果你要使用所有sys模塊使用的名字，你可以這樣：</p>
-
-<p>from sys import *
-print(&lsquo;path:&rsquo;,path)
-```<br/>
-從以上我們可以簡單看出：</p>
-
-<p>\==========<br/>
-導入mode，import與from&hellip;import的不同之處在於，簡單說：
-如果你想要直接輸入argv變量到你的程序中而每次使用它時又不想打sys，則可使用：from sys import argv。<br/>
-一般說來，應該避免使用from..import而使用import語句，因為這樣可以使你的程序更加易讀，也可以避免名稱的沖突。<br/>
-\==========</p>
-
-<p>在使用 from xxx import * 時，如果想精準的控制模塊導入的內容，可以使用 <strong>all</strong> = [xxx,xxx] 來實現，例如：<br/>
-``` python
-<strong>all</strong> = [&lsquo;a&rsquo;,&lsquo;b&rsquo;] #__為雙橫線
-class two():</p>
-
-<pre><code>def __init__(self):
-    print('this is two')
-</code></pre>
-
-<p>a = &lsquo;this is two a&rsquo;
-b = &lsquo;this is two b&rsquo;
-if <strong>name</strong>==&lsquo;<strong>main</strong>&rsquo;:</p>
-
-<pre><code>t = two()
-</code></pre>
-
-<p>one.py</p>
-
-<p>from two import *
-print a
-print b
-t = two()</p>
-
-<p>這時，類two()將不會被 import *導入進來
-```</p>
-
-<p><strong>2. 關於import中的路徑搜索問題</strong><br/>
-類似於頭文件，模塊也是需要系統的搜索路徑的，下面的命令即是系統默認的搜索路徑，當你導入一個模塊時，系統就會在下面的路徑列表中搜索相應的文件。<br/>
-``` python</p>
-
-<blockquote><blockquote><blockquote><p>print(sys.path)</p></blockquote></blockquote></blockquote>
-
-<p>[&lsquo;&rsquo;, &lsquo;/usr/lib64/python26.zip&rsquo;, &lsquo;/usr/lib64/python2.6&rsquo;, &lsquo;/usr/lib64/python2.6/plat-linux2&rsquo;, &lsquo;/usr/lib64/python2.6/lib-tk&rsquo;, &lsquo;/usr/lib64/python2.6/lib-old&rsquo;, &lsquo;/usr/lib64/python2.6/lib-dynload&rsquo;, &lsquo;/usr/lib64/python2.6/site-packages&rsquo;, &lsquo;/usr/lib64/python2.6/site-packages/gst-0.10&rsquo;, &lsquo;/usr/lib64/python2.6/site-packages/gtk-2.0&rsquo;, &lsquo;/usr/lib64/python2.6/site-packages/webkit-1.0&rsquo;, &lsquo;/usr/lib/python2.6/site-packages&rsquo;]</p>
-
-<p>(從例中，我們可以看到python會首先在當前工作目錄裏去找)
-```</p>
-
-<p>如果沒有找導相應的內容，則報錯：<br/>
-``` python</p>
-
-<blockquote><blockquote><blockquote><p>import syssTraceback (most recent call last):  File &ldquo;<stdin>&rdquo;, line 1, in <module>ImportError: No module named syss</p></blockquote></blockquote></blockquote>
-
-<p>當然，我們也可以自行添加要搜索的路徑，調用列表的append方法即可：
-import sys
-sys.path.append(&lsquo;/usr/xx/python2.6&rsquo;)
-```</p>
-
-<p><strong>3. 創建自己的模塊</strong><br/>
-在創建之前，有一點需要說明一下：每個Python模塊都有它的__name__（就每個對象都自己的__doc__一樣）。通過<strong>name</strong>我們可以找出每一個模塊的名稱，一般__name__的值有種：1 一是主模塊名稱為："__main__&ldquo;(可以理解為直接運行的那個文件)，2 那些被主模塊導入的模塊名稱為：文件名字（不加後面的.py）。有__name__是很有用的，因為我們可以通過 if __name__  == &lsquo;xxx&rsquo; 判斷來執行那些模塊，那些模塊不被執行。另外：每個Python程序也是一個模塊。它擴展名為：.py擴展名。</p>
-
-<p>下面，我們通過例子來說明：<br/>
-首先：我們創建模塊：mymodel.py<br/>
-``` python</p>
-
-<h1>!/user/bin/python</h1>
-
-<h1>Filename:mymodel.py</h1>
-
-<p>version = &lsquo;1.0&rsquo;
-def sayHello():</p>
-
-<pre><code>print ('Hello world')
-</code></pre>
-
-<p>def modelName():</p>
-
-<pre><code>return __name__#返回它自己的名稱
-</code></pre>
-
-<h1>end of model</h1>
-
-<p><code>  
-以上語句注意：  
-1) 這個模塊應該被放置在我們輸入它的程序的同一個目錄中，或者在sys.path所列目錄之一。  
-2) 你已經看到，它與我們普通的Python程序相比並沒有什麽特別之處。  
-然後：我們在test.py中來調用此模塊：test.py  
-</code> python
-import sys,mymodel
-sys.path.append(&rsquo;D:/xx/PythonSERVER/python31/Code')#提供搜索路径
-print(<strong>name</strong>) #此處打印主模塊的名稱：<strong>main</strong>
-mymodel.sayHello()
-print(&lsquo;Version&rsquo;,mymodel.version)
-print(&lsquo;Model Name&rsquo;,mymodel.modelName())#打印被導入模塊的名稱: mymodel</p>
-
-<p>我們使用from..import&hellip;</p>
-
-<p>print(&lsquo;======================from&hellip;..import=====================================&rsquo;)
-from mymodel import *
-print(<strong>name</strong>)#此處打印主模塊的名稱：<strong>main</strong>
-sayHello()
-print(&lsquo;Version&rsquo;,version)
-print(&lsquo;Model Name&rsquo;,modelName()) #打印被導入模塊的名稱: mymodel
-```<br/>
-以上語句註意：
-1) 我們可以通過import來導入多個模塊，用“,”（逗號）分隔。<br/>
-2) 註意import與from..import&hellip;..</p>
-
-<p><strong>4. 創建自己的包</strong><br/>
-<em>A 一個包的基本組織如下：</em><br/>
-``` python
-FC/
-  <strong>init</strong>.py
-  Libr/</p>
-
-<pre><code>__init__.py
-one.py
-two.py
-....
-</code></pre>
-
-<p>  Model/</p>
-
-<pre><code>__init__.py
-one.py
-....
-</code></pre>
-
-<p>在外部加載調用時，有以下方式：</p>
-
-<h1>coding:utf-8</h1>
-
-<h1>加載方式一</h1>
-
-<p>import Fc.Libr.one
-print Fc.Libr.one.a</p>
-
-<h1>加載方式二</h1>
-
-<p>from Fc.Libr import one
-print one.a</p>
-
-<h1>加載方式三</h1>
-
-<p>from Fc.Libr.one import a
-print a</p>
-
-<h1>加載方式四</h1>
-
-<p>from Fc.Libr import *
-print one.a
-註意直接使用第四種方式是不能正確導入Libr下的one子模塊的，這就需要在Fc目錄下的<strong>init</strong>.py文件中定義好需要加載子模塊的名稱
-Fc/Libr/<strong>init</strong>.py
-<strong>all</strong>=[&lsquo;one&rsquo;,&lsquo;two&rsquo;] #定義加載子模塊的名稱
-```<br/>
-在加載包模塊時，在import語句執行期時，遇到的所有__init__.py文件都會被執行，在上面代碼中
-首先會執行Fc目錄中的__int__.py，然後執行Libr目錄中的__init__.py</p>
-
-<p><em>B 子模塊加子模塊問題</em><br/>
-同一包的相同目錄中：<br/>
-``` python</p>
-
-<h1>coding:utf-8</h1>
-
-<h1>加載方式一:使用完全限定名稱</h1>
-
-<p>from Fc.Libr import one
-aa = &lsquo;libr two load one&mdash;&ndash;&rsquo;+one.a</p>
-
-<h1>加載方式二:使用相對導入</h1>
-
-<p>from . import one
-bb = &lsquo;libr two load one&mdash;&mdash;&rsquo;+one.b
-方二中使用.來表示在同一級目錄中。</p>
-
-<h1>加載方式三:(這種方式應當避免:最後找不到會轉移到標準庫)</h1>
-
-<p>import Fc.Libr.one
-cc = &lsquo;libr two load one&mdash;&ndash;&rsquo;+Fc.Libr.one.a</p>
-
-<p>在外部使用時：</p>
-
-<h1>coding:utf-8</h1>
-
-<p>from Fc.Libr import *
-print two.aa
-print two.bb</p>
-
-<p>同一包的不同目錄中：</p>
-
-<h1>coding:utf-8</h1>
-
-<p>from ..Model import one
-a = &lsquo;libr two load mode one&mdash;&ndash;&rsquo;+one.a</p>
-
-<p>使用時：</p>
-
-<h1>coding:utf-8</h1>
-
-<p>from Fc.Libr import *
-print two.a
-將輸出：libr two load mode one&mdash;-fc model one
-```</p>
-
-<p>另外在導入一個包時，會定義一個特殊的變量__path__，該變量包含一個目錄列表。<br/>
-__path__可通過__init__.py文件中包含的代碼訪問，最初包含的一項具有包的目錄名稱。我們可以向__path__列表提供更多的目錄，以更改查找子模塊時使用的搜索路徑，大型項目中這個很有用。</p>
-
-<p><strong>5. 特別說明</strong><br/>
-1) import執行加載源文件中所有語名（所以模塊是一個文件）。<br/>
-2) import語句可以出現在程序中的任何位置。但是有一點是：無論import語句被使用了多少次，每個模塊中的代碼僅加載和執行一次，後續的import語句僅將模塊名稱綁定到前一次導入所創建的模塊對象上。<br/>
-3) 使用sys.modules可查看當前加載的所有模塊。</p>
-
-<p><a href="http://www.cnblogs.com/ptfblog/archive/2012/07/15/2592122.html">Origin</a></p>
 ]]></content>
   </entry>
   

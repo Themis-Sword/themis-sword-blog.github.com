@@ -1,0 +1,442 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
+	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<meta charset="utf-8">
+	<title>Python with語句(轉)  | Themis_Sword's Blog</title>
+
+
+<meta name="author" content="Themis_Sword"> 
+
+<meta name="description" content="understanding python's with statement"> <meta name="keywords" content="python, with, statement">
+
+
+<meta name="msvalidate.01" content="3084BF25D05B2AD0D58CBE0DEA3D888E" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Themis_Sword's Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery.fancybox.pack.js"></script>
+
+<script language="Javascript" type="text/javascript">
+$(document).ready(
+  function() {
+    (function($) {
+      $(".fancybox[data-content-id]").each(function() {
+        this.href = $(this).data('content-id');
+      });
+      $(".fancybox").fancybox({
+        beforeLoad: function() {
+          var el, 
+              id = $(this.element).data('title-id');
+
+          if (id) {
+            el = $('#' + id);
+
+            if (el.length) {
+              this.title = el.html();
+            }
+          }
+          if ($(this).data('content')) {
+            this.content = $(this).data('content');
+          }
+        },
+        helpers: {
+          title: {
+            type: 'inside'
+          }
+        }
+      });
+    })(jQuery);
+  }
+);
+</script>
+
+	
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48083272-1', 'aprilzephyr.com');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Themis_Sword's Blog</a></h1>
+<h4>Never Scared Endeavoring.</h4>
+<nav id="main-nav"><ul>
+	<li><a href="/">Home</a></li>
+	<li><a href="/blog/categories">Categories</a></li>
+        <li><a href="/portfolio">Portfolio</a><li>
+	<li><a href="/author">Author</a></li>
+</ul>
+
+
+
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul>
+	<li><a href="/">Home</a></li>
+	<li><a href="/blog/categories">Categories</a></li>
+        <li><a href="/portfolio">Portfolio</a><li>
+	<li><a href="/author">Author</a></li>
+</ul>
+
+
+
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:www.aprilzephyr.com">
+			</form>
+		</div>
+	</div>
+</nav>
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	<h3 class="title">Python With語句(轉)
+</h3>
+	<div class="entry-content"><p><strong>1. With 語句是什麼</strong><br/>
+Python’s with statement provides a very convenient way of dealing with the situation where you have to do a setup and teardown to make something happen. A very good example for this is the situation where you want to gain a handler to a file, read data from the file and the close the file handler.<br/>
+有一些任務，可能事先需要設置，事後做清理工作。對於這種場景，Python的with語句提供了一種非常方便的處理方式。一個很好的例子是文件處理，你需要獲取一個文件句柄，從文件中讀取數據，然後關閉文件句柄。<!--more--></p>
+
+<p>Without the with statement, one would write something along the lines of:<br/>
+如果不用with語句，代碼如下：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;/tmp/foo.txt&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span class='line'><span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+There are two annoying things here. First, you end up forgetting to close the file handler. The second is how to handle exceptions that may occur once the file handler has been obtained. One could write something like this to get around this:<br/>
+這裏有兩個問題。一是可能忘記關閉文件句柄；二是文件讀取數據發生異常，沒有進行任何處理。下面是處理異常的加強版本：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;/tmp/foo.txt&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="k">try</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span class='line'><span class="k">finally</span><span class="p">:</span>
+</span><span class='line'>    <span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+While this works well, it is unnecessarily verbose. This is where with is useful. The good thing about with apart from the better syntax is that it is very good handling exceptions. The above code would look like this, when using with:<br/>
+雖然這段代碼運行良好，但是太冗長了。這時候就是with一展身手的時候了。除了有更優雅的語法，with還可以很好的處理上下文環境產生的異常。下面是with版本的代碼：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;/tmp/foo.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">data</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><strong>2. with如何工作</strong><br/>
+while this might look like magic, the way Python handles with is more clever than magic. The basic idea is that the statement after with has to evaluate an object that responds to an __enter__() as well as an __exit__() function.<br/>
+這看起來充滿魔法，但不僅僅是魔法，Python對with的處理還很聰明。基本思想是with所求值的對象必須有一個__enter__()方法，一個__exit__()方法。</p>
+
+<p>After the statement that follows with is evaluated, the __enter__() function on the resulting object is called. The value returned by this function is assigned to the variable following as. After every statement in the block is evaluated, the __exit__() function is called.<br/>
+緊跟with後面的語句被求值後，返回對象的__enter__()方法被調用，這個方法的返回值將被賦值給as後面的變量。當with後面的代碼塊全部被執行完之後，將調用前面返回對象的__exit__()方法。</p>
+
+<p>This can be demonstrated with the following example:<br/>
+下面例子可以具體說明with如何工作：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span><span class='line'><span class="c"># with_example01.py</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Sample</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;In __enter__()&quot;</span>
+</span><span class='line'>        <span class="k">return</span> <span class="s">&quot;Foo&quot;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">trace</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;In __exit__()&quot;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">get_sample</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">Sample</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">with</span> <span class="n">get_sample</span><span class="p">()</span> <span class="k">as</span> <span class="n">sample</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">print</span> <span class="s">&quot;sample:&quot;</span><span class="p">,</span> <span class="n">sample</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+When executed, this will result in:<br/>
+運行代碼，輸出如下</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">bash</span><span class="o">-</span><span class="mf">3.2</span><span class="err">$</span> <span class="o">./</span><span class="n">with_example01</span><span class="o">.</span><span class="n">py</span>
+</span><span class='line'><span class="n">In</span> <span class="n">__enter__</span><span class="p">()</span>
+</span><span class='line'><span class="n">sample</span><span class="p">:</span> <span class="n">Foo</span>
+</span><span class='line'><span class="n">In</span> <span class="n">__exit__</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+As you can see,<br/>
+The __enter__() function is executed<br/>
+The value returned by it &ndash; in this case &ldquo;Foo&rdquo; is assigned to sample<br/>
+The body of the block is executed, thereby printing the value of sample ie. &ldquo;Foo&#8221;<br/>
+The __exit__() function is called.<br/>
+What makes with really powerful is the fact that it can handle exceptions. You would have noticed that the __exit__() function for Sample takes three arguments &ndash; val, type and trace. These are useful in exception handling. Let’s see how this works by modifying the above example.<br/>
+正如你看到的，<br/>
+1) __enter__()方法被執行<br/>
+2) __enter__()方法返回的值 &ndash; 這個例子中是&#8221;Foo&#8221;，賦值給變量&#8217;sample&#8217;<br/>
+3) 執行代碼塊，打印變量&#8221;sample&#8221;的值為 &#8220;Foo&#8221;<br/>
+4) __exit__()方法被調用<br/>
+with真正強大之處是它可以處理異常。可能你已經註意到Sample類的__exit()__方法有三個參數- val, type 和 trace。 這些參數在異常處理中相當有用。我們來改一下代碼，看看具體如何工作的。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span><span class='line'><span class="c"># with_example02.py</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Sample</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">self</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">trace</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;type:&quot;</span><span class="p">,</span> <span class="nb">type</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;value:&quot;</span><span class="p">,</span> <span class="n">value</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&quot;trace:&quot;</span><span class="p">,</span> <span class="n">trace</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">do_something</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">bar</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">bar</span> <span class="o">+</span> <span class="mi">10</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">with</span> <span class="n">Sample</span><span class="p">()</span> <span class="k">as</span> <span class="n">sample</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">sample</span><span class="o">.</span><span class="n">do_something</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+Notice how in this example, instead of get_sample(), with takes Sample(). It does not matter, as long as the statement that follows with evaluates to an object that has an __enter__() and __exit__() functions. In this case, Sample()’s __enter__() returns the newly created instance of Sample and that is what gets passed to sample.<br/>
+這個例子中，with後面的get_sample()變成了Sample()。這沒有任何關系，只要緊跟with後面的語句所返回的對象有__enter__()和__exit__()方法即可。此例中，Sample()的__enter__()方法返回新創建的Sample對象，並賦值給變量sample。</p>
+
+<p>When executed:<br/>
+代碼執行後：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">bash</span><span class="o">-</span><span class="mf">3.2</span><span class="err">$</span> <span class="o">./</span><span class="n">with_example02</span><span class="o">.</span><span class="n">py</span>
+</span><span class='line'><span class="nb">type</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">type</span> <span class="s">&#39;exceptions.ZeroDivisionError&#39;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="n">value</span><span class="p">:</span> <span class="n">integer</span> <span class="n">division</span> <span class="ow">or</span> <span class="n">modulo</span> <span class="n">by</span> <span class="n">zero</span>
+</span><span class='line'><span class="n">trace</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">traceback</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x1004a8128</span><span class="o">&gt;</span>
+</span><span class='line'><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+</span><span class='line'>  <span class="n">File</span> <span class="s">&quot;./with_example02.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">19</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="n">sample</span><span class="o">.</span><span class="n">do_something</span><span class="p">()</span>
+</span><span class='line'>  <span class="n">File</span> <span class="s">&quot;./with_example02.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">15</span><span class="p">,</span> <span class="ow">in</span> <span class="n">do_something</span>
+</span><span class='line'>    <span class="n">bar</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+</span><span class='line'><span class="ne">ZeroDivisionError</span><span class="p">:</span> <span class="n">integer</span> <span class="n">division</span> <span class="ow">or</span> <span class="n">modulo</span> <span class="n">by</span> <span class="n">zero</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+Essentially, if there are exceptions being thrown from anywhere inside the block, the __exit__() function for the object is called. As you can see, the type, value and the stack trace associated with the exception thrown is passed to this function. In this case, you can see that there was a ZeroDivisionError exception being thrown. People implementing libraries can write code that clean up resources, close files etc. in their __exit__() functions.<br/>
+實際上，在with後面的代碼塊拋出任何異常時，__exit__()方法被執行。正如例子所示，異常拋出時，與之關聯的type，value和stack trace傳給__exit__()方法，因此拋出的ZeroDivisionError異常被打印出來了。開發庫時，清理資源，關閉文件等等操作，都可以放在__exit__方法當中。</p>
+
+<p>Thus, Python’s with is a nifty construct that makes code a little less verbose and makes cleaning up during exceptions a bit easier.<br/>
+因此，Python的with語句是提供一個有效的機制，讓代碼更簡練，同時在異常產生時，清理工作更簡單。</p>
+
+<p>I have put the code examples given here on <a href="https://github.com/sdqali/python_dojo/tree/master/with">Github</a>.<br/>
+示例代碼可以在<a href="https://github.com/sdqali/python_dojo/tree/master/with">Github</a>上面找到。</p>
+
+<p>譯註：本文原文見<a href="http://blog.sdqali.in/blog/2012/07/09/understanding-pythons-with/">Understanding Python&rsquo;s &ldquo;With&rdquo; Statement</a></p>
+
+<p><a href="http://python.42qu.com/11155501">Origin</a></p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-06T16:37:46+08:00" pubdate data-updated="true">Apr 6<span>th</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/python/'>python</a>
+
+</div>
+
+
+	
+</div>
+</article>
+<!-- Copyright Info BEGIN -->
+
+
+<b>
+   <div class="entry-content"> <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" ></a>版權聲明：保持署名-非商用-非衍生
+<br />
+Attribution-NonCommercial-NoDerivs
+<br />
+ <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" >Creative Commons BY-NC-ND 3.0 </a>
+</div>
+</b>
+
+<!-- Copyright Info END -->
+
+
+	<div class="share">
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<a class="jiathis_button_twitter"></a>
+<a class="jiathis_button_tsina"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+	summary:"",
+	shortUrl:false,
+	hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+	
+</div>
+
+
+
+
+</div>
+
+    
+
+<div align='center'>
+    <form class="navbar-form" action="/search/">
+        <input type="text" class="form-control" placeholder="Google Search" name="q">
+    </form>
+ </div>
+
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Themis_Sword
+
+<br>
+Powered by Octopress.
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-48083272-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>
