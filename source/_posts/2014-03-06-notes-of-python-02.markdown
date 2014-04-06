@@ -30,6 +30,22 @@ def fib(n):
 ```  
 [Origin](http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html)<!--more-->  
   
+4) yield生成器:  
+``` python
+def fibonacci():
+    a=b=1
+    yield a
+    yield b
+    while True:
+        a,b = b,a+b
+        yield b
+
+for i in fibonacci():
+    if i > 1000:
+        break
+    print i
+```  
+  
 2. 九九乘法表  
 ``` python
 for i in range(1,10):
