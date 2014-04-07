@@ -7,7 +7,7 @@ categories: python
 keywords: python，類型，range()，序列，字符串
 description: python類型轉換
 ---
-1. Python 是怎樣進行類型轉換的？  
+**1. Python 是怎樣進行類型轉換的？**  
 1) Python是動態類型，是强類型的編程語言。  
 2) Python內建函數的實現類型轉換：  
 		<table>
@@ -30,7 +30,8 @@ description: python類型轉換
 </tbody>
 </table> <!--more-->  
   
-2. range()函數的用法  
+**2. range()函數與xrange()函數的用法**  
+01) **range()**  
 **range(start, stop[, step])**  
 Example:  
 ``` python  
@@ -48,9 +49,64 @@ Example:
 []  
 >>> range(1, 0)  
 []  
-```
+```  
   
-3. 生成隨機數  
+02) **xrange()**  
+用法與range()完全相同，不同的是生成的不是一個數組，而是一個生成器。  
+Example:  
+``` python
+>>> xrange(5)
+xrange(5)
+>>> list(xrange(5))
+[0, 1, 2, 3, 4]
+>>> xrange(1,5)
+xrange(1, 5)
+>>> list(xrange(1,5))
+[1, 2, 3, 4]
+>>> xrange(0,6,2)
+xrange(0, 6, 2)
+>>> list(xrange(0,6,2))
+[0, 2, 4]
+```  
+  
+03) **區別**  
+要生成很大的數字序列的時候，用xrange會比range性能優很多，因為不需要一上來就開闢一塊很大的內存空間，這兩個基本上都是在循環的時候用：  
+``` python
+for i in range(0, 100): 
+print i 
+for i in xrange(0, 100): 
+print i 
+```  
+這兩個輸出的結果都是一樣的，實際上有很多不同，range()會直接生成一個list對象：  
+``` python
+>>> a = range(0,100) 
+>>> print type(a) 
+>>> print a 
+>>> print a[0], a[1] 
+```  
+輸出結果：  
+``` python
+>>> <type 'list']] >
+>>> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+>>> 0 1
+```  
+而xrange()不會直接生成一个list，而是每次調用返回其中的一個值：  
+``` python
+>>> a = xrange(0,100) 
+>>> print type(a) 
+>>> print a 
+>>> print a[0], a[1]
+```   
+輸出結果：
+``` python
+>>> <type 'xrange']] >
+>>> xrange(100)
+>>> 0 1
+```  
+  
+因此可見，xrange()做循環的性能比range()好，尤其是返回很大的時候，儘量用xrange()，除非返回的是一個列表。  
+  
+**3. 生成隨機數**  
 1) **random.random**  
 用於生成一個0到1的隨機浮點數：0<=n<1.0。  
 2) **random.uniform**  
@@ -66,7 +122,7 @@ Example:
 7) **random.sample**  
 原型爲random.sample(sequence, k)，從指定序列中隨機獲取制定長度的片段，sample函數不會修改原有序列。  
   
-4. 如何查詢和替換一個文本字符串。  
+**4. 如何查詢和替換一個文本字符串。**  
 1) sub()  
 格式為sub(replacement, string[,count=0])  
 replacement是被替換成的文本；  
