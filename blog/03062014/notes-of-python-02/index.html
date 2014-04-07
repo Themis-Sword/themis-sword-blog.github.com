@@ -5,12 +5,12 @@
 	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
 	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	<meta charset="utf-8">
-	<title>Notes of Python 02  | Themis_Sword's Blog</title>
+	<title>Fibonacci序列, 乘法表與求素數的算法  | Themis_Sword's Blog</title>
 
 
 <meta name="author" content="Themis_Sword"> 
 
-<meta name="description" content="算法"> <meta name="keywords" content="算法，fibonacci，乘法表，素數">
+<meta name="description" content="算法"> <meta name="keywords" content="python, 算法, fibonacci, 乘法表, 素數">
 
 
 <meta name="msvalidate.01" content="3084BF25D05B2AD0D58CBE0DEA3D888E" />
@@ -118,7 +118,7 @@ $(document).ready(
 </header>
 
 	<div id="content" class="inner"><article class="post">
-	<h3 class="title">Notes of Python 02
+	<h3 class="title">Fibonacci序列, 乘法表與求素數的算法
 </h3>
 	<div class="entry-content"><p><strong>1. 不同算法實現Fibonacci數列</strong><br/>
 1) 遞歸：</p>
@@ -163,7 +163,7 @@ $(document).ready(
 <p>
 <a href="http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html">Origin</a><!--more--></p>
 
-<p>4) yield生成器:</p>
+<p>4-1) yield生成器(尾數不大於1000的序列):</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -175,19 +175,39 @@ $(document).ready(
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">():</span>
-</span><span class='line'>    <span class="n">a</span><span class="o">=</span><span class="n">b</span><span class="o">=</span><span class="mi">1</span>
-</span><span class='line'>    <span class="k">yield</span> <span class="n">a</span>
-</span><span class='line'>    <span class="k">yield</span> <span class="n">b</span>
+</span><span class='line'>    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
 </span><span class='line'>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+</span><span class='line'>      <span class="k">yield</span> <span class="n">a</span>
 </span><span class='line'>        <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
-</span><span class='line'>        <span class="k">yield</span> <span class="n">b</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">fibonacci</span><span class="p">():</span>
 </span><span class='line'>    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
 </span><span class='line'>        <span class="k">break</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">i</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+4-2) yield生成器(生成10個元素的序列):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="nb">max</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">yield</span> <span class="n">a</span>
+</span><span class='line'>        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span class='line'>        <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">fibonacci</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
 </span><span class='line'>    <span class="k">print</span> <span class="n">i</span>
 </span></code></pre></td></tr></table></div></figure>
 

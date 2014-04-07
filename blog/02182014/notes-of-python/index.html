@@ -5,7 +5,7 @@
 	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
 	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	<meta charset="utf-8">
-	<title>Notes of Python 01  | Themis_Sword's Blog</title>
+	<title>Python range(), xrange(), random()與求兩個序列的和的差最小  | Themis_Sword's Blog</title>
 
 
 <meta name="author" content="Themis_Sword"> 
@@ -118,35 +118,9 @@ $(document).ready(
 </header>
 
 	<div id="content" class="inner"><article class="post">
-	<h3 class="title">Notes of Python 01
+	<h3 class="title">Python Range(), Xrange(), Random()與求兩個序列的和的差最小
 </h3>
-	<div class="entry-content"><p><strong>1. Python 是怎樣進行類型轉換的？</strong><br/>
-1) Python是動態類型，是强類型的編程語言。<br/>
-2) Python內建函數的實現類型轉換：</p>
-
-<pre><code>    &lt;table&gt;
-</code></pre>
-
-<p><tbody>
-<tr><td><em> 函數 </em></td><td><em> 描述 </em></td></tr><br/>
-<tr><td>int(x [,base ]) </td><td>將x轉換為一個整數</td></tr>
-<tr><td>long(x [,base ]) </td><td>將x轉換為一個長整數</td></tr>
-<tr><td>float(x) </td><td>將x轉換為一個浮點數</td></tr>
-<tr><td>complax(real [, img ]) </td><td>創建一個複數</td></tr>
-<tr><td>str(x) </td><td>將對象x轉換為字符串</td></tr>
-<tr><td>repr(x) </td><td>將對象x轉換為表達式字符串</td></tr>
-<tr><td>eval(str) </td><td>計算在字符串中的有效python表達式，並返回一個對象</td></tr>
-<tr><td>tuple(s) </td><td>將序列s轉換為一個元組</td></tr>
-<tr><td>list(s) </td><td>將序列s轉換為一個列表</td></tr>
-<tr><td>chr(x) </td><td>將一個整數轉換為一個字符</td></tr>
-<tr><td>unichr(x) </td><td>將一個整數轉換為一個Unicode字符</td></tr>
-<tr><td>ord(x) </td><td>將一個字符轉換為它的整數值</td></tr>
-<tr><td>hex(x) </td><td>將一個整數轉換為一個十六進制字符串</td></tr>
-<tr><td>oct(x) </td><td>將一個整數轉換為一個八進制字符串</td></tr>
-</tbody>
-</table> <!--more--></p>
-
-<p><strong>2. range()函數與xrange()函數的用法</strong><br/>
+	<div class="entry-content"><p><strong>1. range()函數與xrange()函數的用法</strong><br/>
 01) <strong>range()</strong><br/>
 <strong>range(start, stop[, step])</strong><br/>
 Example:</p>
@@ -180,6 +154,9 @@ Example:</p>
 </span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </span><span class='line'><span class="p">[]</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
+<!--more-->
 
 
 <p></p>
@@ -287,7 +264,7 @@ Example:</p>
 
 <p>因此可見，xrange()做循環的性能比range()好，尤其是返回很大的時候，儘量用xrange()，除非返回的是一個列表。</p>
 
-<p><strong>3. 生成隨機數</strong><br/>
+<p><strong>2. 生成隨機數</strong><br/>
 1) <strong>random.random</strong><br/>
 用於生成一個0到1的隨機浮點數：0&lt;=n&lt;1.0。<br/>
 2) <strong>random.uniform</strong><br/>
@@ -303,16 +280,7 @@ Example:</p>
 7) <strong>random.sample</strong><br/>
 原型爲random.sample(sequence, k)，從指定序列中隨機獲取制定長度的片段，sample函數不會修改原有序列。</p>
 
-<p><strong>4. 如何查詢和替換一個文本字符串。</strong><br/>
-1) sub()<br/>
-格式為sub(replacement, string[,count=0])<br/>
-replacement是被替換成的文本；<br/>
-string是需要被替換的文本；<br/>
-count是一個可選參數，指最大被替換的數量。<br/>
-2) subn()
-執行的效果跟sub()一样，不過它會返回一個二維數組，包括替換後的新的字符串和總共替換的數量。</p>
-
-<p><strong>5. 兩個序列的和的差最小</strong><br/>
+<p><strong>3. 兩個序列的和的差最小</strong><br/>
 有两個序列a,b，大小都爲n,序列元素的值任意整数，無序；<br/>
 要求：通過交換a,b 中的元素，使[序列a 元素的和]与[序列b 元素的和]之間的差最小。<br/>
 例如:<br/>

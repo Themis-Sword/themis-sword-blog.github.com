@@ -293,33 +293,31 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 			Python 字符串</a>
 	</h3>
 	<div class="entry-content">
-		<p><strong>1. 轉義字符</strong></p>
+		<p><strong>1. 類型轉換</strong><br/>
+1) Python是動態類型，是强類型的編程語言。<br/>
+2) Python內建函數的實現類型轉換：</p>
 
-<table>
-<tbody>
-<tr><td><em>轉義字符</em></td><td><em>描述</em></td></tr>  
-<tr><td>&#92;(在行尾)</td><td>續行符</td></tr>  
-<tr><td>&#92;\ </td><td>反斜槓</td></tr>  
-<tr><td>&#92;&#8217; </td><td>單引號</td></tr>  
-<tr><td>&#92;&#8221; </td><td>雙引號</td></tr>  
-<tr><td>\a</td><td>響鈴</td></tr>  
-<tr><td>\b</td><td>退格(Backspace)</td></tr>  
-<tr><td>\e</td><td>轉義</td></tr>  
-<tr><td>\000</td><td>空</td></tr>  
-<tr><td>\n</td><td>換行</td></tr>  
-<tr><td>\v</td><td>縱向製表符</td></tr>  
-<tr><td>\t</td><td>橫向製表符</td></tr>  
-<tr><td>\r</td><td>回車</td></tr>  
-<tr><td>\f</td><td>換頁</td></tr>  
-<tr><td>\oyy</td><td>八進制數yy代表的字符，例如:\o12代表換行</td></tr>  
-<tr><td>\xyy</td><td>十進制數yy代表的字符，例如:\x0a代表換行</td></tr>  
-<tr><td>\uhhhh</td><td>Unicode 16位的十六進製值</td></tr>  
-<tr><td>\uhhhhhhhh</td><td>Unicode 32位的十六進製值</td></tr>  
-<tr><td>\other</td><td>其它的字符以普通格式輸出</td></tr>  
-</tbody></table>
+<table><tbody>
+<tr><td><em> 函數 </em></td><td><em> 描述 </em></td></tr>  
+<tr><td>int(x [,base ]) </td><td>將x轉換為一個整數</td></tr>
+<tr><td>long(x [,base ]) </td><td>將x轉換為一個長整數</td></tr>
+<tr><td>float(x) </td><td>將x轉換為一個浮點數</td></tr>
+<tr><td>complax(real [, img ]) </td><td>創建一個複數</td></tr>
+<tr><td>str(x) </td><td>將對象x轉換為字符串</td></tr>
+<tr><td>repr(x) </td><td>將對象x轉換為表達式字符串</td></tr>
+<tr><td>eval(str) </td><td>計算在字符串中的有效python表達式，並返回一個對象</td></tr>
+<tr><td>tuple(s) </td><td>將序列s轉換為一個元組</td></tr>
+<tr><td>list(s) </td><td>將序列s轉換為一個列表</td></tr>
+<tr><td>chr(x) </td><td>將一個整數轉換為一個字符</td></tr>
+<tr><td>unichr(x) </td><td>將一個整數轉換為一個Unicode字符</td></tr>
+<tr><td>ord(x) </td><td>將一個字符轉換為它的整數值</td></tr>
+<tr><td>hex(x) </td><td>將一個整數轉換為一個十六進制字符串</td></tr>
+<tr><td>oct(x) </td><td>將一個整數轉換為一個八進制字符串</td></tr>
+</tbody>
+</table>
 
 
-
+<p> 
 		
 		<a href="/blog/03282014/python-zi-fu-chuan/" class="more-link">Read on &rarr;</a>
 	</div>

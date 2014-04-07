@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-04-07T14:17:08+08:00</updated>
+  <updated>2014-04-07T23:34:28+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -1833,7 +1833,33 @@ Python解釋程序路徑。<br/>
     <link href="http://www.aprilzephyr.com/blog/03282014/python-zi-fu-chuan/"/>
     <updated>2014-03-28T01:15:00+08:00</updated>
     <id>http://www.aprilzephyr.com/blog/03282014/python-zi-fu-chuan</id>
-    <content type="html"><![CDATA[<p><strong>1. 轉義字符</strong></p>
+    <content type="html"><![CDATA[<p><strong>1. 類型轉換</strong><br/>
+1) Python是動態類型，是强類型的編程語言。<br/>
+2) Python內建函數的實現類型轉換：</p>
+
+<table><tbody>
+<tr><td><em> 函數 </em></td><td><em> 描述 </em></td></tr>  
+<tr><td>int(x [,base ]) </td><td>將x轉換為一個整數</td></tr>
+<tr><td>long(x [,base ]) </td><td>將x轉換為一個長整數</td></tr>
+<tr><td>float(x) </td><td>將x轉換為一個浮點數</td></tr>
+<tr><td>complax(real [, img ]) </td><td>創建一個複數</td></tr>
+<tr><td>str(x) </td><td>將對象x轉換為字符串</td></tr>
+<tr><td>repr(x) </td><td>將對象x轉換為表達式字符串</td></tr>
+<tr><td>eval(str) </td><td>計算在字符串中的有效python表達式，並返回一個對象</td></tr>
+<tr><td>tuple(s) </td><td>將序列s轉換為一個元組</td></tr>
+<tr><td>list(s) </td><td>將序列s轉換為一個列表</td></tr>
+<tr><td>chr(x) </td><td>將一個整數轉換為一個字符</td></tr>
+<tr><td>unichr(x) </td><td>將一個整數轉換為一個Unicode字符</td></tr>
+<tr><td>ord(x) </td><td>將一個字符轉換為它的整數值</td></tr>
+<tr><td>hex(x) </td><td>將一個整數轉換為一個十六進制字符串</td></tr>
+<tr><td>oct(x) </td><td>將一個整數轉換為一個八進制字符串</td></tr>
+</tbody>
+</table>
+
+
+<p> <!--more--></p>
+
+<p><strong>2. 轉義字符</strong></p>
 
 <table>
 <tbody>
@@ -1859,10 +1885,7 @@ Python解釋程序路徑。<br/>
 </tbody></table>
 
 
-<!--more-->
-
-
-<p><strong>2. 格式化表達</strong></p>
+<p><strong>3. 格式化表達</strong></p>
 
 <table><tbody>  
 <tr><td><em>格式化表達</em></td><td><em>描述</em></td></tr>  
@@ -1885,7 +1908,7 @@ Python解釋程序路徑。<br/>
 
 <p></p>
 
-<p><strong>3. 索引和切片</strong><br/>
+<p><strong>4. 索引和切片</strong><br/>
 Python中的字符串是有序的字符集合，所以可以通過位置（索引）獲取對應的元素。和c語言中一樣，python的索引也是從0開始的，而且支持使用負索引的方法來獲取元素，一個負的索引可以看做是從字符串結尾處反向計數，-1就表示字符串的最後一個字符。當然也可以理解為負索引與字符串長度相加得到的正索引，即s[-n]等於s[-n+len(s)]。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -1944,7 +1967,7 @@ side可以取負值，例如s[::-1]會返回”olleh”，實際效果就是對�
 
 <p></p>
 
-<p><strong>4. 字符串方法</strong><br/>
+<p><strong>5. 字符串方法</strong><br/>
 <em>A 大小寫</em><br/>
 S.upper() 全部大寫<br/>
 S.lower() 全部小寫<br/>
@@ -3116,7 +3139,7 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Notes of Python 02]]></title>
+    <title type="html"><![CDATA[Fibonacci序列, 乘法表與求素數的算法]]></title>
     <link href="http://www.aprilzephyr.com/blog/03062014/notes-of-python-02/"/>
     <updated>2014-03-06T17:07:25+08:00</updated>
     <id>http://www.aprilzephyr.com/blog/03062014/notes-of-python-02</id>
@@ -3163,7 +3186,7 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
 <p>
 <a href="http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html">Origin</a><!--more--></p>
 
-<p>4) yield生成器:</p>
+<p>4-1) yield生成器(尾數不大於1000的序列):</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -3175,19 +3198,39 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">():</span>
-</span><span class='line'>    <span class="n">a</span><span class="o">=</span><span class="n">b</span><span class="o">=</span><span class="mi">1</span>
-</span><span class='line'>    <span class="k">yield</span> <span class="n">a</span>
-</span><span class='line'>    <span class="k">yield</span> <span class="n">b</span>
+</span><span class='line'>    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
 </span><span class='line'>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+</span><span class='line'>      <span class="k">yield</span> <span class="n">a</span>
 </span><span class='line'>        <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
-</span><span class='line'>        <span class="k">yield</span> <span class="n">b</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">fibonacci</span><span class="p">():</span>
 </span><span class='line'>    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
 </span><span class='line'>        <span class="k">break</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">i</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+4-2) yield生成器(生成10個元素的序列):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="nb">max</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">yield</span> <span class="n">a</span>
+</span><span class='line'>        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span class='line'>        <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">fibonacci</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
 </span><span class='line'>    <span class="k">print</span> <span class="n">i</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -3510,14 +3553,11 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Python實現排序算法]]></title>
+    <title type="html"><![CDATA[排序算法]]></title>
     <link href="http://www.aprilzephyr.com/blog/03062014/pythonshi-xian-pai-xu-suan-fa/"/>
     <updated>2014-03-06T15:53:21+08:00</updated>
     <id>http://www.aprilzephyr.com/blog/03062014/pythonshi-xian-pai-xu-suan-fa</id>
-    <content type="html"><![CDATA[<ol>
-<li>冒泡排序</li>
-</ol>
-
+    <content type="html"><![CDATA[<p><strong>1. 冒泡排序</strong></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -3544,7 +3584,7 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
 
 <p>
 </br><!--more-->
-2. 插入排序</p>
+<strong>2. 插入排序</strong></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -3575,7 +3615,7 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
 
 <p>
 </br>
-3. 選擇排序</p>
+<strong>3. 選擇排序</strong></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -3606,7 +3646,7 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
 
 <p>
 </br>
-4. 快速排序</p>
+<strong>4. 快速排序</strong></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -3655,7 +3695,7 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
 
 <p>
 </br>
-5. 利用函數排序<br/>
+<strong>5. 利用函數排序</strong><br/>
 1) cmp()<br/>
 Compare the two objects x and y and return an integer according to the outcome. The return value is negative if x &lt; y, zero if x == y and strictly positive if x > y.<br/>
 2) reversed()<br/>
