@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-04-07T23:34:28+08:00</updated>
+  <updated>2014-04-07T23:55:42+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -1703,7 +1703,7 @@ readlines() 讀取文件的所有行，返回一個字符串列表。</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Python os模塊 &amp; sys模塊]]></title>
+    <title type="html"><![CDATA[Python os &amp; sys模塊]]></title>
     <link href="http://www.aprilzephyr.com/blog/03312014/python-osmo-kuai-and-sysmo-kuai/"/>
     <updated>2014-03-31T16:06:01+08:00</updated>
     <id>http://www.aprilzephyr.com/blog/03312014/python-osmo-kuai-and-sysmo-kuai</id>
@@ -1715,7 +1715,7 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 2) os.mkdir(path [,mode=0777])<br/>
 創建目錄<br/>
 3) os.rmdir()<br/>
-刪除目錄<br/>
+刪除目錄<!--more--><br/>
 4) os.mkdirs()<br/>
 創建多層目錄，類似系統makedir -p<br/>
 5) os.removedirs()<br/>
@@ -1736,7 +1736,7 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>  <!--more-->
+<p>
 8) os.remove()<br/>
 刪除一個文件。<br/>
 9) os.system()<br/>
@@ -3167,7 +3167,10 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>
+<!--more-->
+
+
+<p> <br/>
 3) 尾遞歸(SICP)：</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -3184,7 +3187,7 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
 
 
 <p>
-<a href="http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html">Origin</a><!--more--></p>
+<a href="http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html">Origin</a></p>
 
 <p>4-1) yield生成器(尾數不大於1000的序列):</p>
 
@@ -3804,9 +3807,9 @@ Compare the two objects x and y and return an integer according to the outcome. 
 
 <ol>
 <li><p>即將而立之年，可轉行，前提是所轉行業、方向對於自己有持續性(持久性)，需以事業(開拓)而非工作(餬口)之心面對；若非如此，需以已有經驗爲依託繼續深入，不可浮躁變換目標。</p></li>
-<li><p>尋求可持續發展之道，至少使得自己(家人)的生活水平維持現狀(單身時期)。考慮年工資水平與漲幅、物價水平與漲幅、未來因組建家庭等原因的消費支出以及其他各方面因素，所選職業方向是否能夠完成上述目標。</p></li>
+<li><p>尋求可持續發展之道，至少使得自己(家人)的生活水平維持現狀(單身時期)。考慮年工資水平與漲幅、物價水平與漲幅、未來因組建家庭等原因的消費支出以及其他各方面因素，所選職業方向是否能夠完成上述目標。<!--more--></p></li>
 <li><p>尋求揚長避短的發展軌跡，考慮自身的絕對優勢與相對優勢(參考<a href="http://wiki.mbalib.com/zh-tw/%E7%BB%9D%E5%AF%B9%E4%BC%98%E5%8A%BF%E7%90%86%E8%AE%BA">絕對優勢理論</a>)，選擇最適合自己的職業方向。</p></li>
-<li><p>針對現狀，或者投資有較高回報率和持續性的項目，或者投資自身——MBA、研究生或其他，努力擴大自己的視野、思考高度和人際關係高度。<!--more--></p></li>
+<li><p>針對現狀，或者投資有較高回報率和持續性的項目，或者投資自身——MBA、研究生或其他，努力擴大自己的視野、思考高度和人際關係高度。</p></li>
 <li><p>原始積累的獲取最為困難，如何借助外力，彼此協助，取得進展。</p></li>
 <li><p>創業優先，就業其次。</p></li>
 <li><p>不可急躁，不可輕易放棄；機遇若來，努力抓住；機遇未來，盡心準備。</p></li>
@@ -3828,9 +3831,9 @@ Compare the two objects x and y and return an integer according to the outcome. 
 </br>
 以下爲文章全文：</br>
 </br>
-想雇到搞軟件開發的聰明人可不容易。萬一一不小心，就會搞到一堆低能大狒狒。我去年就碰到这種事了。你肯定不想這樣吧。聽我的，没錯。在樹上開站立會議門都没有。</br>
+想雇到搞軟件開發的聰明人可不容易。萬一一不小心，就會搞到一堆低能大狒狒。我去年就碰到这種事了。你肯定不想這樣吧。聽我的，没錯。在樹上開站立會議門都没有。<!--more--></br>
 </br>
-問點有難度的問題能幫你把聰明人跟狒狒們分開。我决定把我自己整理出來的軟件開發者面視百問發出来，希望能幫到你們的忙。<!--more--></br>
+問點有難度的問題能幫你把聰明人跟狒狒們分開。我决定把我自己整理出來的軟件開發者面視百問發出来，希望能幫到你們的忙。</br>
 </br>
 這個列表涵蓋了軟件工程知識體系中定義的大多數知識域。當然，如果你只想找出類拔萃的程序員，便只需涉及結構、算法、數據結構、測試这幾個話題。如果想雇架構師，也可以只考慮需求、功能設計、技術設計这些地方。</br>
 </br>

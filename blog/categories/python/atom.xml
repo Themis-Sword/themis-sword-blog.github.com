@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-04-07T23:34:28+08:00</updated>
+  <updated>2014-04-07T23:55:42+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -836,7 +836,7 @@ file_object.close( )
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Python os模塊 &amp; sys模塊]]></title>
+    <title type="html"><![CDATA[Python os &amp; sys模塊]]></title>
     <link href="http://www.aprilzephyr.com/blog/03312014/python-osmo-kuai-and-sysmo-kuai/"/>
     <updated>2014-03-31T16:06:01+08:00</updated>
     <id>http://www.aprilzephyr.com/blog/03312014/python-osmo-kuai-and-sysmo-kuai</id>
@@ -848,7 +848,7 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 2) os.mkdir(path [,mode=0777])<br/>
 創建目錄<br/>
 3) os.rmdir()<br/>
-刪除目錄<br/>
+刪除目錄<!--more--><br/>
 4) os.mkdirs()<br/>
 創建多層目錄，類似系統makedir -p<br/>
 5) os.removedirs()<br/>
@@ -863,7 +863,7 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 os.listdir(os.getcwd())
 [&lsquo;.bash_history&rsquo;, &lsquo;.bundler&rsquo;, &lsquo;.CFUserTextEncoding&rsquo;, &lsquo;.config&rsquo;, &lsquo;.DS_Store&rsquo;, &lsquo;.gem&rsquo;, &lsquo;.gitconfig&rsquo;, &lsquo;.matplotlib&rsquo;, &lsquo;.ssh&rsquo;, &lsquo;.Trash&rsquo;, &lsquo;.Trash-500&rsquo;, &lsquo;.vim&rsquo;, &lsquo;.viminfo&rsquo;, &lsquo;Applications&rsquo;, &lsquo;Applications (Parallels)&rsquo;, &lsquo;Desktop&rsquo;, &lsquo;Documents&rsquo;, &lsquo;Downloads&rsquo;, &lsquo;Library&rsquo;, &lsquo;Movies&rsquo;, &lsquo;Music&rsquo;, &lsquo;octopress&rsquo;, &lsquo;Pictures&rsquo;, &lsquo;Public&rsquo;, &lsquo;PycharmProjects&rsquo;, &lsquo;\xe7\x99\xbe\xe5\xba\xa6\xe4\xba\x91\xe5\x90\x8c\xe6\xad\xa5\xe7\x9b\x98&rsquo;]</p>
 
-<p>```  <!--more-->
+<p>```<br/>
 8) os.remove()<br/>
 刪除一個文件。<br/>
 9) os.system()<br/>
