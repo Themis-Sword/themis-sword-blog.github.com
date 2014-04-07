@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Python實現排序算法"
+title: "排序算法"
 date: 2014-03-06 15:53:21 +0800
 comments: true
 categories: python
 keywords: 冒泡，排序，插入，選擇，快速，函數
 description: 幾種排序算法
 ---
-1. 冒泡排序  
+**1. 冒泡排序**  
 ``` python   
 def bubble(x,n):  
 \冒泡排序，x是列表，n是列表長度  
@@ -21,7 +21,7 @@ return x
 print bubble([1,10,2,5,41,25,3,48], 8)    
 ```  
 </br><!--more-->
-2. 插入排序  
+**2. 插入排序**  
 ``` python  
 def insert(x,n):
      i = 1
@@ -37,7 +37,7 @@ def insert(x,n):
 print insert([1,10,2,5,41,25,3,48],8)
 ```  
 </br>
-3. 選擇排序  
+**3. 選擇排序**  
 ``` python
 def select(x,n):
     for i in range(n-1):
@@ -53,7 +53,7 @@ def select(x,n):
 print select([1,10,2,5,41,25,3,48],8)
 ```  
 </br> 
-4. 快速排序
+**4. 快速排序**
 ``` python
 def partition(x,low,high):
     key = x[low]
@@ -78,7 +78,7 @@ def quick(x,low,high):
     return x
 ```  
 </br>
-5. 利用函數排序  
+**5. 利用函數排序**  
 1) cmp()  
 Compare the two objects x and y and return an integer according to the outcome. The return value is negative if x < y, zero if x == y and strictly positive if x > y.  
 2) reversed()  

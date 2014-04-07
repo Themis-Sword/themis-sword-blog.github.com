@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Notes of Python 02"
+title: "Fibonacci序列, 乘法表與求素數的算法"
 date: 2014-03-06 17:07:25 +0800
 comments: true
 categories: python
-keywords: 算法，fibonacci，乘法表，素數
+keywords: python, 算法, fibonacci, 乘法表, 素數
 description: 算法
 ---
 **1. 不同算法實現Fibonacci數列**  
@@ -30,19 +30,29 @@ def fib(n):
 ```  
 [Origin](http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html)<!--more-->  
   
-4) yield生成器:  
+4-1) yield生成器(尾數不大於1000的序列):  
 ``` python
 def fibonacci():
-    a=b=1
-    yield a
-    yield b
+    a, b = 0, 1
     while True:
+    	yield a
         a,b = b,a+b
-        yield b
 
 for i in fibonacci():
     if i > 1000:
         break
+    print i
+```  
+4-2) yield生成器(生成10個元素的序列):  
+``` python
+def fibonacci(max):
+    a, b, n = 0, 1, 0
+    while n < max:
+        yield a
+        a, b = b, a + b
+        n += 1
+
+for i in fibonacci(10):
     print i
 ```  
   

@@ -7,7 +7,29 @@ categories: python
 keywords: python, string, 
 description: python字符串
 ---
-**1. 轉義字符**  
+**1. 類型轉換**  
+1) Python是動態類型，是强類型的編程語言。  
+2) Python內建函數的實現類型轉換：  
+<table><tbody>
+<tr><td><em> 函數 </em></td><td><em> 描述 </em></td></tr>  
+<tr><td>int(x [,base ]) </td><td>將x轉換為一個整數</td></tr>
+<tr><td>long(x [,base ]) </td><td>將x轉換為一個長整數</td></tr>
+<tr><td>float(x) </td><td>將x轉換為一個浮點數</td></tr>
+<tr><td>complax(real [, img ]) </td><td>創建一個複數</td></tr>
+<tr><td>str(x) </td><td>將對象x轉換為字符串</td></tr>
+<tr><td>repr(x) </td><td>將對象x轉換為表達式字符串</td></tr>
+<tr><td>eval(str) </td><td>計算在字符串中的有效python表達式，並返回一個對象</td></tr>
+<tr><td>tuple(s) </td><td>將序列s轉換為一個元組</td></tr>
+<tr><td>list(s) </td><td>將序列s轉換為一個列表</td></tr>
+<tr><td>chr(x) </td><td>將一個整數轉換為一個字符</td></tr>
+<tr><td>unichr(x) </td><td>將一個整數轉換為一個Unicode字符</td></tr>
+<tr><td>ord(x) </td><td>將一個字符轉換為它的整數值</td></tr>
+<tr><td>hex(x) </td><td>將一個整數轉換為一個十六進制字符串</td></tr>
+<tr><td>oct(x) </td><td>將一個整數轉換為一個八進制字符串</td></tr>
+</tbody>
+</table> <!--more-->  
+
+**2. 轉義字符**  
 <table>
 <tbody>
 <tr><td><em>轉義字符</em></td><td><em>描述</em></td></tr>  
@@ -29,9 +51,9 @@ description: python字符串
 <tr><td>\uhhhh</td><td>Unicode 16位的十六進製值</td></tr>  
 <tr><td>\uhhhhhhhh</td><td>Unicode 32位的十六進製值</td></tr>  
 <tr><td>\other</td><td>其它的字符以普通格式輸出</td></tr>  
-</tbody></table><!--more-->
+</tbody></table>
   
-**2. 格式化表達**  
+**3. 格式化表達**  
 <table><tbody>  
 <tr><td><em>格式化表達</em></td><td><em>描述</em></td></tr>  
 <tr><td>%s</td><td>字符串</td></tr>  
@@ -50,7 +72,7 @@ description: python字符串
 <tr><td>%G</td><td>浮點E或F</td></tr>  
 </tbody></table>  
   
-**3. 索引和切片**  
+**4. 索引和切片**  
 Python中的字符串是有序的字符集合，所以可以通過位置（索引）獲取對應的元素。和c語言中一樣，python的索引也是從0開始的，而且支持使用負索引的方法來獲取元素，一個負的索引可以看做是從字符串結尾處反向計數，-1就表示字符串的最後一個字符。當然也可以理解為負索引與字符串長度相加得到的正索引，即s[-n]等於s[-n+len(s)]。  
 ``` python
 >>> s = "hello"  
@@ -81,7 +103,7 @@ side可以取負值，例如s[::-1]會返回”olleh”，實際效果就是對�
 ''  
 ```  
   
-**4. 字符串方法**  
+**5. 字符串方法**  
 *A 大小寫*  
 S.upper() 全部大寫  
 S.lower() 全部小寫  

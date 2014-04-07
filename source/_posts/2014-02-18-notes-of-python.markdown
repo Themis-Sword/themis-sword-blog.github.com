@@ -1,36 +1,14 @@
 ---
 layout: post
-title: "Notes of Python 01"
+title: "Python range(), xrange(), random()與求兩個序列的和的差最小"
 date: 2014-02-18 14:09:05 +0800
 comments: true
 categories: python
 keywords: python，類型，range()，序列，字符串
 description: python類型轉換
 ---
-**1. Python 是怎樣進行類型轉換的？**  
-1) Python是動態類型，是强類型的編程語言。  
-2) Python內建函數的實現類型轉換：  
-		<table>
-<tbody>
-<tr><td><em> 函數 </em></td><td><em> 描述 </em></td></tr>  
-<tr><td>int(x [,base ]) </td><td>將x轉換為一個整數</td></tr>
-<tr><td>long(x [,base ]) </td><td>將x轉換為一個長整數</td></tr>
-<tr><td>float(x) </td><td>將x轉換為一個浮點數</td></tr>
-<tr><td>complax(real [, img ]) </td><td>創建一個複數</td></tr>
-<tr><td>str(x) </td><td>將對象x轉換為字符串</td></tr>
-<tr><td>repr(x) </td><td>將對象x轉換為表達式字符串</td></tr>
-<tr><td>eval(str) </td><td>計算在字符串中的有效python表達式，並返回一個對象</td></tr>
-<tr><td>tuple(s) </td><td>將序列s轉換為一個元組</td></tr>
-<tr><td>list(s) </td><td>將序列s轉換為一個列表</td></tr>
-<tr><td>chr(x) </td><td>將一個整數轉換為一個字符</td></tr>
-<tr><td>unichr(x) </td><td>將一個整數轉換為一個Unicode字符</td></tr>
-<tr><td>ord(x) </td><td>將一個字符轉換為它的整數值</td></tr>
-<tr><td>hex(x) </td><td>將一個整數轉換為一個十六進制字符串</td></tr>
-<tr><td>oct(x) </td><td>將一個整數轉換為一個八進制字符串</td></tr>
-</tbody>
-</table> <!--more-->  
-  
-**2. range()函數與xrange()函數的用法**  
+ 
+**1. range()函數與xrange()函數的用法**  
 01) **range()**  
 **range(start, stop[, step])**  
 Example:  
@@ -49,7 +27,7 @@ Example:
 []  
 >>> range(1, 0)  
 []  
-```  
+```<!--more-->  
   
 02) **xrange()**  
 用法與range()完全相同，不同的是生成的不是一個數組，而是一個生成器。  
@@ -106,7 +84,7 @@ print i
   
 因此可見，xrange()做循環的性能比range()好，尤其是返回很大的時候，儘量用xrange()，除非返回的是一個列表。  
   
-**3. 生成隨機數**  
+**2. 生成隨機數**  
 1) **random.random**  
 用於生成一個0到1的隨機浮點數：0<=n<1.0。  
 2) **random.uniform**  
@@ -121,17 +99,8 @@ print i
 原型爲random.shufle(x[, random])，用於將一個列表中的元素打亂後輸出。  
 7) **random.sample**  
 原型爲random.sample(sequence, k)，從指定序列中隨機獲取制定長度的片段，sample函數不會修改原有序列。  
-  
-**4. 如何查詢和替換一個文本字符串。**  
-1) sub()  
-格式為sub(replacement, string[,count=0])  
-replacement是被替換成的文本；  
-string是需要被替換的文本；  
-count是一個可選參數，指最大被替換的數量。  
-2) subn()
-執行的效果跟sub()一样，不過它會返回一個二維數組，包括替換後的新的字符串和總共替換的數量。  
-  
-**5. 兩個序列的和的差最小**  
+   
+**3. 兩個序列的和的差最小**  
 有两個序列a,b，大小都爲n,序列元素的值任意整数，無序；  
 要求：通過交換a,b 中的元素，使[序列a 元素的和]与[序列b 元素的和]之間的差最小。  
 例如:  
