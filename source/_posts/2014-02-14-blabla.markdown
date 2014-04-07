@@ -10,9 +10,9 @@ description: It becomes a torture which the state between-jobs' lasting more tha
 
 {% img /images/time.jpg %} 
   
-**It becomes a torture which the state between-jobs' lasting more than four months.**  
+**It becomes a torture which the state between-jobs' lasting more than four months.**<!--more-->  
   
-Retrospecting my travel itinerary last year from Thai to South Korea, nearly 50 days across eight countries and districts, I know, traveling is indispensable in my life notwithstanding being not the life itself.<!--more-->   
+Retrospecting my travel itinerary last year from Thai to South Korea, nearly 50 days across eight countries and districts, I know, traveling is indispensable in my life notwithstanding being not the life itself.   
 
 Actually, I love challenges no matter in travel or in daily life, especially from emotions and work. The point is that future is worth expecting and exploring.
   

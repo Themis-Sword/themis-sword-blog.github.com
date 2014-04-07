@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Python os模塊 &amp; sys模塊"
+title: "Python os &amp; sys模塊"
 date: 2014-03-31 16:06:01 +0800
 comments: true
 categories: python
@@ -15,7 +15,7 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 2) os.mkdir(path [,mode=0777])  
 創建目錄  
 3) os.rmdir()  
-刪除目錄  
+刪除目錄<!--more-->  
 4) os.mkdirs()  
 創建多層目錄，類似系統makedir -p  
 5) os.removedirs()  
@@ -29,7 +29,7 @@ Python os模塊包含普遍的操作系統功能。如果你希望你的程序�
 >>> os.listdir(os.getcwd())
 ['.bash_history', '.bundler', '.CFUserTextEncoding', '.config', '.DS_Store', '.gem', '.gitconfig', '.matplotlib', '.ssh', '.Trash', '.Trash-500', '.vim', '.viminfo', 'Applications', 'Applications (Parallels)', 'Desktop', 'Documents', 'Downloads', 'Library', 'Movies', 'Music', 'octopress', 'Pictures', 'Public', 'PycharmProjects', '\xe7\x99\xbe\xe5\xba\xa6\xe4\xba\x91\xe5\x90\x8c\xe6\xad\xa5\xe7\x9b\x98']
 >>> 
-```  <!--more-->
+```  
 8) os.remove()  
 刪除一個文件。  
 9) os.system()  

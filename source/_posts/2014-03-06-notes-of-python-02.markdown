@@ -19,7 +19,7 @@ def fib(n):
  while(n):
   x,y,n=y,x+y,n-1
  return x
-```  
+```<!--more-->   
 3) 尾遞歸(SICP)：  
 ``` python
 def fib(n):
@@ -28,7 +28,7 @@ def fib(n):
   else : return fib_iter(n-1,y,x+y)
  return fib_iter(n,0,1)
 ```  
-[Origin](http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html)<!--more-->  
+[Origin](http://www.cnblogs.com/figure9/archive/2010/08/30/1812927.html) 
   
 4-1) yield生成器(尾數不大於1000的序列):  
 ``` python
