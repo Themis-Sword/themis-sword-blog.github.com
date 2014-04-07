@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-04-07T12:59:24+08:00</updated>
+  <updated>2014-04-07T14:17:08+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -3120,11 +3120,8 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
     <link href="http://www.aprilzephyr.com/blog/03062014/notes-of-python-02/"/>
     <updated>2014-03-06T17:07:25+08:00</updated>
     <id>http://www.aprilzephyr.com/blog/03062014/notes-of-python-02</id>
-    <content type="html"><![CDATA[<ol>
-<li>不同算法實現Fibonacci數列<br/>
-1) 遞歸：</li>
-</ol>
-
+    <content type="html"><![CDATA[<p><strong>1. 不同算法實現Fibonacci數列</strong><br/>
+1) 遞歸：</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">fib</span><span class="o">=</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span><span class="mi">1</span> <span class="k">if</span> <span class="n">n</span><span class="o">&lt;=</span><span class="mi">2</span> <span class="k">else</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
@@ -3197,10 +3194,7 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
 
 <p></p>
 
-<ol>
-<li>九九乘法表</li>
-</ol>
-
+<p><strong>2. 九九乘法表</strong></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -3215,10 +3209,8 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
 
 <p></p>
 
-<ol>
-<li>求素數</li>
-</ol>
-
+<p><strong>3. 求素數</strong><br/>
+01)</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -3236,12 +3228,284 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
 </span><span class='line'>            <span class="k">if</span> <span class="n">obj</span> <span class="o">%</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
 </span><span class='line'>                <span class="n">lis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
 </span><span class='line'><span class="n">lis</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">lis</span><span class="p">))</span>
-</span><span class='line'><span class="n">sushu</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">obj</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lis</span><span class="p">]</span>
-</span><span class='line'><span class="k">print</span> <span class="n">sushu</span>
+</span><span class='line'><span class="n">primes</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">obj</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lis</span><span class="p">]</span>
+</span><span class='line'><span class="k">print</span> <span class="n">primes</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+02)  利用python的數學函數</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">math</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">isPrime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">return</span> <span class="bp">False</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">False</span>
+</span><span class='line'>    <span class="k">return</span> <span class="bp">True</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p></p>
+
+<p>03) 單行程序掃描素數</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+</span><span class='line'><span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
+</span><span class='line'><span class="p">[</span> <span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span>   <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="k">if</span> <span class="mi">0</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span> <span class="n">p</span><span class="o">%</span> <span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p> <br/>
+04) 運用python的itertools模塊</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">count</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">isPrime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">False</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="bp">True</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="bp">False</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+05)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">isPrime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">return</span> <span class="bp">False</span>
+</span><span class='line'>    <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class='line'>    <span class="k">while</span> <span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="bp">False</span>
+</span><span class='line'>        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">return</span> <span class="bp">True</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>4. 從Python求素數到list與dict的比較(轉)</strong><br/>
+<strong>原理:</strong><br/>
+素數，指在一個大於1的自然數中，除了1和此整數自身外，不能被其他自然數整除的數。在加密應用中起重要的位置，比如廣為人知的RSA算法中，就是基於大整數的因式分解難題，尋找兩個超大的素數然後相乘作為密鑰的。一個比較常見的求素數的辦法是<a href="http://zh.wikipedia.org/wiki/%E5%9F%83%E6%8B%89%E6%89%98%E6%96%AF%E7%89%B9%E5%B0%BC%E7%AD%9B%E6%B3%95">埃拉托斯特尼篩法(the Sieve of Eratosthenes)</a>，說簡單一點就是畫表格，然後刪表格，如圖所示：<br/>
+<img src="http://www.aprilzephyr.com/images/sieve.gif"><br/>
+從2開始依次往後面數，如果當前數字一個素數，那麽就將所有其倍數的數從表中刪除或者標記，然後最終得到所有的素數。</p>
+
+<p><strong>實現:</strong><br/>
+01)<br/>
+首先用dic存儲n範圍內的元素，然後依次標記，最後從頭掃描一次dic，把合適的元素放在list中返回結果</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">lis</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lis</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">lis</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'>            <span class="n">k</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="mi">2</span>
+</span><span class='line'>            <span class="k">while</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+</span><span class='line'>                <span class="n">lis</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>                <span class="n">k</span> <span class="o">=</span> <span class="n">k</span><span class="o">+</span><span class="n">i</span>
+</span><span class='line'>    <span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lis</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">lis</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">ans</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">ans</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+測試以後得到的結果是：求一千萬以內的素數用了9.68秒。<br/>
+可是我覺得使用1個dict和1個list存會很浪費空間（其實不然，一千萬以內的素數只有66萬個，相對一千萬來說可以忽略不計），所以想改進一下算法。</p>
+
+<p>02)<br/>
+這次只用一個list存數字，然後遍歷刪除</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">primeC</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">lis</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lis</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">k</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="n">i</span>
+</span><span class='line'>            <span class="k">while</span> <span class="n">k</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">:</span>
+</span><span class='line'>                <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">lis</span><span class="p">:</span>
+</span><span class='line'>                    <span class="n">lis</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</span><span class='line'>                <span class="n">k</span> <span class="o">=</span> <span class="n">k</span><span class="o">+</span><span class="n">i</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">lis</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+因為無法在for中刪除list，所以使用一個xrange，然後每次判斷k是否在lis中再做刪除，結果：求十萬以內的素數一共花了186.79秒。</p>
+
+<p><strong>比較:</strong><br/>
+在時間上，第一個方法遠遠比第二個辦法有效率，dict是哈希實現，查詢的速度是常數級的，所以在標記合數的時候所花費的時間非常少，但是list是順序表，不知道內部是怎麽實現in 和 remove的，從時間上可以大概推測出應該是順序查找實現的，所以用如下代碼做了測試:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">random</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">time</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="n">source</span><span class="p">,</span><span class="n">test</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">test</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">each</span> <span class="ow">in</span> <span class="n">source</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="n">liss</span><span class="p">,</span><span class="n">test</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">test</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">liss</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">liss</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">each</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">removeDic</span><span class="p">(</span><span class="n">dicc</span><span class="p">,</span><span class="n">test</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">test</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">dicc</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">dicc</span><span class="p">[</span><span class="n">each</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">n</span> <span class="o">=</span> <span class="mi">100000</span>
+</span><span class='line'><span class="n">m</span> <span class="o">=</span> <span class="mi">1000</span>
+</span><span class='line'><span class="n">liss</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</span><span class='line'><span class="n">dicc</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">n</span><span class="p">)}</span>
+</span><span class='line'><span class="n">test</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+</span><span class='line'><span class="n">find</span><span class="p">(</span><span class="n">liss</span><span class="p">,</span><span class="n">test</span><span class="p">)</span>
+</span><span class='line'><span class="k">print</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span><span class="o">-</span><span class="n">s</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+</span><span class='line'><span class="n">find</span><span class="p">(</span><span class="n">dicc</span><span class="p">,</span><span class="n">test</span><span class="p">)</span>
+</span><span class='line'><span class="k">print</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span><span class="o">-</span><span class="n">s</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+</span><span class='line'><span class="n">remove</span><span class="p">(</span><span class="n">liss</span><span class="p">,</span><span class="n">test</span><span class="p">)</span>
+</span><span class='line'><span class="k">print</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span><span class="o">-</span><span class="n">s</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+</span><span class='line'><span class="n">removeDic</span><span class="p">(</span><span class="n">dicc</span><span class="p">,</span><span class="n">test</span><span class="p">)</span>
+</span><span class='line'><span class="k">print</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span><span class="o">-</span><span class="n">s</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+結果是:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="mf">1.10526960281</span>
+</span><span class='line'><span class="mf">0.00036479383832</span>
+</span><span class='line'>
+</span><span class='line'><span class="mf">2.11714318396</span>
+</span><span class='line'><span class="mf">0.000374692766596</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+可以看出，在查找方面list是遠遠不如dict的，說明list不應該是哈希查找，而remove的時間也遠遠大於哈希的賦值時間。<br/>
+不過由此判斷第二種方法是一無是處的話未免言之過早了。因為第二種方法裏面的實現是先申請了一段空間，然後再運算，而實現一的空間是動態增長的(在給哈希表賦值的那邊體現)，所以如果漲到一半發現內存不夠用的話就會報錯（測試1億數據的時候就出現了這個問題），而實現二一開始就會報錯，而不用做前面的一系列無用功。<br/>
+總之就是空間換時間，時間換空間的那些戲碼。不過挺有意思。</p>
+
+<p><a href="http://www.cnblogs.com/liga/archive/2012/08/31/2665811.html">Origin</a></p>
 ]]></content>
   </entry>
   
