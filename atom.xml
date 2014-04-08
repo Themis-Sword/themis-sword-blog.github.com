@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-04-08T17:20:43+08:00</updated>
+  <updated>2014-04-08T17:52:10+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -37,9 +37,9 @@
   
   <entry>
     <title type="html"><![CDATA[Improve Your Python: 'yield' and Generators Explained(Fw)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/04062014/improve-your-python-yield-and-generators-explained/"/>
+    <link href="http://www.aprilzephyr.com/blog/04062014/improve-your-python-yield/"/>
     <updated>2014-04-06T18:07:35+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/04062014/improve-your-python-yield-and-generators-explained</id>
+    <id>http://www.aprilzephyr.com/blog/04062014/improve-your-python-yield</id>
     <content type="html"><![CDATA[<p>Prior to beginning tutoring sessions, I ask new students to fill out a brief self-assessment where they rate their understanding of various Python concepts. Some topics (&ldquo;control flow with if/else&rdquo; or &ldquo;defining and using functions&rdquo;) are understood by a majority of students before ever beginning tutoring. There are a handful of topics, however, that almost all students report having no knowledge or very limited understanding of. Of these, &ldquo;<code>generators</code> and the <code>yield</code> keyword&rdquo; is one of the biggest culprits. I&rsquo;m guessing this is the case for most novice Python programmers.<!--more--></p>
 
 <p>Many report having difficulty understanding <code>generators</code> and the <code>yield</code> keyword even after making a concerted effort to teach themselves the topic. I want to change that. In this post, I&rsquo;ll explain what the <code>yield</code> keyword does, why it&rsquo;s useful, and how to use it.</p>
@@ -523,9 +523,9 @@ There are a few key ideas I hope you take away from this discussion:<br/>
   
   <entry>
     <title type="html"><![CDATA[Python with語句(轉)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/04062014/python-withyu-ju/"/>
+    <link href="http://www.aprilzephyr.com/blog/04062014/python-with-yu-ju/"/>
     <updated>2014-04-06T16:37:46+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/04062014/python-withyu-ju</id>
+    <id>http://www.aprilzephyr.com/blog/04062014/python-with-yu-ju</id>
     <content type="html"><![CDATA[<p><strong>1. With 語句是什麼</strong><br/>
 Python’s with statement provides a very convenient way of dealing with the situation where you have to do a setup and teardown to make something happen. A very good example for this is the situation where you want to gain a handler to a file, read data from the file and the close the file handler.<br/>
 有一些任務，可能事先需要設置，事後做清理工作。對於這種場景，Python的with語句提供了一種非常方便的處理方式。一個很好的例子是文件處理，你需要獲取一個文件句柄，從文件中讀取數據，然後關閉文件句柄。<!--more--></p>
@@ -1119,9 +1119,9 @@ T1和T2指向不同的對象，所以不會相互影響。<br/>
   
   <entry>
     <title type="html"><![CDATA[網頁重定向的方法(轉)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/04022014/wang-ye-zhong-ding-xiang-de-fang-fa-zhuan/"/>
+    <link href="http://www.aprilzephyr.com/blog/04022014/wang-ye-zhong-ding-xiang-de-fang-fa/"/>
     <updated>2014-04-02T10:58:43+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/04022014/wang-ye-zhong-ding-xiang-de-fang-fa-zhuan</id>
+    <id>http://www.aprilzephyr.com/blog/04022014/wang-ye-zhong-ding-xiang-de-fang-fa</id>
     <content type="html"><![CDATA[<h4>1. 使用HTTP通訊協定301 Moved Permanently來完成轉導網址(永久轉址)</h4>
 
 <p><em>建議使用，不會對SEO有不良影響</em></p>
@@ -1726,9 +1726,9 @@ readlines() 讀取文件的所有行，返回一個字符串列表。</p>
   
   <entry>
     <title type="html"><![CDATA[Python os &amp; sys模塊]]></title>
-    <link href="http://www.aprilzephyr.com/blog/03312014/python-osmo-kuai-and-sysmo-kuai/"/>
+    <link href="http://www.aprilzephyr.com/blog/03312014/python-os-sys/"/>
     <updated>2014-03-31T16:06:01+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/03312014/python-osmo-kuai-and-sysmo-kuai</id>
+    <id>http://www.aprilzephyr.com/blog/03312014/python-os-sys</id>
     <content type="html"><![CDATA[<p><strong>1. os模塊</strong><br/>
 Python os模塊包含普遍的操作系統功能。如果你希望你的程序能夠與平臺無關的話，這個模塊是尤為重要的。</p>
 
@@ -1852,9 +1852,9 @@ Python解釋程序路徑。<br/>
   
   <entry>
     <title type="html"><![CDATA[Python 字符串]]></title>
-    <link href="http://www.aprilzephyr.com/blog/03282014/python-zi-fu-chuan/"/>
+    <link href="http://www.aprilzephyr.com/blog/03282014/python-string/"/>
     <updated>2014-03-28T01:15:00+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/03282014/python-zi-fu-chuan</id>
+    <id>http://www.aprilzephyr.com/blog/03282014/python-string</id>
     <content type="html"><![CDATA[<p><strong>1. 類型轉換</strong><br/>
 1) Python是動態類型，是强類型的編程語言。<br/>
 2) Python內建函數的實現類型轉換：</p>
@@ -2090,9 +2090,9 @@ S.isprintable() 是否全是可打印字符。</p>
   
   <entry>
     <title type="html"><![CDATA[Python import與from...import...(轉)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/03272014/python-importyu-from-dot-dot-dot-import-dot-dot-dot/"/>
+    <link href="http://www.aprilzephyr.com/blog/03272014/python-import-from-import/"/>
     <updated>2014-03-27T14:23:52+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/03272014/python-importyu-from-dot-dot-dot-import-dot-dot-dot</id>
+    <id>http://www.aprilzephyr.com/blog/03272014/python-import-from-import</id>
     <content type="html"><![CDATA[<p><strong>1. 簡單說說python import與from&hellip;import&hellip;.(python模塊)</strong></p>
 
 <p>在python用import或者from&hellip;import來導入相應的模塊。模塊其實就一些函數和類的集合文件，它能實現一些相應的功能，當我們需要使用這些功能的時候，直接把相應的模塊導入到我們的程序中，我們就可以使用了。這類似於C語言中的include頭文件，Python中我們用import導入我們需要的模塊。 <!--more--></p>
@@ -2450,9 +2450,9 @@ __path__可通過__init__.py文件中包含的代碼訪問，最初包含的一�
   
   <entry>
     <title type="html"><![CDATA[Python 時間&amp;日期模塊]]></title>
-    <link href="http://www.aprilzephyr.com/blog/03262014/python-shi-jian-and-ri-qi-mo-kuai/"/>
+    <link href="http://www.aprilzephyr.com/blog/03262014/python-time-datetime/"/>
     <updated>2014-03-26T16:53:19+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/03262014/python-shi-jian-and-ri-qi-mo-kuai</id>
+    <id>http://www.aprilzephyr.com/blog/03262014/python-time-datetime</id>
     <content type="html"><![CDATA[<p>Python提供了time/datetime/calendar等模塊來處理日期和時間。<br/>
 <strong>1.time模塊常用的函數</strong><br/>
 <em>A. time.time()</em><br/>
@@ -2673,9 +2673,9 @@ date1 &lt; date2  # 两個日期進行比較</p>
   
   <entry>
     <title type="html"><![CDATA[Python 常用函數之Join, Split, Zip, Map, Reduce, Filter]]></title>
-    <link href="http://www.aprilzephyr.com/blog/03262014/python-chang-yong-han-shu-zhi-join/"/>
+    <link href="http://www.aprilzephyr.com/blog/03262014/join-split-zip-map-reduce-filter/"/>
     <updated>2014-03-26T15:34:48+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/03262014/python-chang-yong-han-shu-zhi-join</id>
+    <id>http://www.aprilzephyr.com/blog/03262014/join-split-zip-map-reduce-filter</id>
     <content type="html"><![CDATA[<p><strong><em>1. Join, Split</em></strong><br/>
 <em>A 關於Join和Split方法</em><br/>
 1) 只針對字符串進行處理。split:拆分字符串、join連接字符串<br/>
@@ -3162,9 +3162,9 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
   
   <entry>
     <title type="html"><![CDATA[Fibonacci序列, 乘法表與求素數的算法]]></title>
-    <link href="http://www.aprilzephyr.com/blog/03062014/notes-of-python-02/"/>
+    <link href="http://www.aprilzephyr.com/blog/03062014/fibonacci-cheng-fa-biao-primes/"/>
     <updated>2014-03-06T17:07:25+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/03062014/notes-of-python-02</id>
+    <id>http://www.aprilzephyr.com/blog/03062014/fibonacci-cheng-fa-biao-primes</id>
     <content type="html"><![CDATA[<p><strong>1. 不同算法實現Fibonacci數列</strong><br/>
 1) 遞歸：</p>
 
@@ -3579,9 +3579,9 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
   
   <entry>
     <title type="html"><![CDATA[排序算法]]></title>
-    <link href="http://www.aprilzephyr.com/blog/03062014/pythonshi-xian-pai-xu-suan-fa/"/>
+    <link href="http://www.aprilzephyr.com/blog/03062014/pai-xu-suan-fa/"/>
     <updated>2014-03-06T15:53:21+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/03062014/pythonshi-xian-pai-xu-suan-fa</id>
+    <id>http://www.aprilzephyr.com/blog/03062014/pai-xu-suan-fa</id>
     <content type="html"><![CDATA[<p><strong>1. 冒泡排序</strong></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -3820,9 +3820,9 @@ Compare the two objects x and y and return an integer according to the outcome. 
   
   <entry>
     <title type="html"><![CDATA[思維點滴_關於未來]]></title>
-    <link href="http://www.aprilzephyr.com/blog/02222014/si-wei-dian-di-guan-yu-wei-lai/"/>
+    <link href="http://www.aprilzephyr.com/blog/02222014/si-wei-dian-di/"/>
     <updated>2014-02-22T21:36:20+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/02222014/si-wei-dian-di-guan-yu-wei-lai</id>
+    <id>http://www.aprilzephyr.com/blog/02222014/si-wei-dian-di</id>
     <content type="html"><![CDATA[<p>今天上午，參加大連春季招聘會，未有合適崗位可應聘。午飯和下午與摯友聚會，暢談關於現狀，關於未來。</p>
 
 <p>將所聊的脈絡、思維點滴記錄如下：</p>
@@ -3846,9 +3846,9 @@ Compare the two objects x and y and return an integer according to the outcome. 
   
   <entry>
     <title type="html"><![CDATA[100 Interview Questions for Software Developers(轉)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/02202014/100-interview-questions-for-software-developers/"/>
+    <link href="http://www.aprilzephyr.com/blog/02202014/100-interview-questions/"/>
     <updated>2014-02-20T15:46:36+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/02202014/100-interview-questions-for-software-developers</id>
+    <id>http://www.aprilzephyr.com/blog/02202014/100-interview-questions</id>
     <content type="html"><![CDATA[<p>1月13日，著名博客作者<a href="http://www.noop.nl">Jurgen Appelo</a>寫了一篇博文：<a href="http://www.noop.nl/2009/01/100-interview-questions-for-software-developers.html">“軟件開發者面試百問”</a>。該文甚受讀者歡迎，15日便登上了delicious，Popurls.com，Reddit的首頁。InfoQ中文站在得到作者許可之後，将其全文翻譯爲中文，希望可以對國內讀者有所助益。</br>
 </br>
 以下爲文章全文：</br>

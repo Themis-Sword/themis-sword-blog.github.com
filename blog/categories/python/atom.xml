@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-04-08T17:20:43+08:00</updated>
+  <updated>2014-04-08T17:52:10+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Improve Your Python: 'yield' and Generators Explained(Fw)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/04062014/improve-your-python-yield-and-generators-explained/"/>
+    <link href="http://www.aprilzephyr.com/blog/04062014/improve-your-python-yield/"/>
     <updated>2014-04-06T18:07:35+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/04062014/improve-your-python-yield-and-generators-explained</id>
+    <id>http://www.aprilzephyr.com/blog/04062014/improve-your-python-yield</id>
     <content type="html"><![CDATA[<p>Prior to beginning tutoring sessions, I ask new students to fill out a brief self-assessment where they rate their understanding of various Python concepts. Some topics (&ldquo;control flow with if/else&rdquo; or &ldquo;defining and using functions&rdquo;) are understood by a majority of students before ever beginning tutoring. There are a handful of topics, however, that almost all students report having no knowledge or very limited understanding of. Of these, &ldquo;<code>generators</code> and the <code>yield</code> keyword&rdquo; is one of the biggest culprits. I&rsquo;m guessing this is the case for most novice Python programmers.<!--more--></p>
 
 <p>Many report having difficulty understanding <code>generators</code> and the <code>yield</code> keyword even after making a concerted effort to teach themselves the topic. I want to change that. In this post, I&rsquo;ll explain what the <code>yield</code> keyword does, why it&rsquo;s useful, and how to use it.</p>
@@ -368,9 +368,9 @@ There are a few key ideas I hope you take away from this discussion:<br/>
   
   <entry>
     <title type="html"><![CDATA[Python with語句(轉)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/04062014/python-withyu-ju/"/>
+    <link href="http://www.aprilzephyr.com/blog/04062014/python-with-yu-ju/"/>
     <updated>2014-04-06T16:37:46+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/04062014/python-withyu-ju</id>
+    <id>http://www.aprilzephyr.com/blog/04062014/python-with-yu-ju</id>
     <content type="html"><![CDATA[<p><strong>1. With 語句是什麼</strong><br/>
 Python’s with statement provides a very convenient way of dealing with the situation where you have to do a setup and teardown to make something happen. A very good example for this is the situation where you want to gain a handler to a file, read data from the file and the close the file handler.<br/>
 有一些任務，可能事先需要設置，事後做清理工作。對於這種場景，Python的with語句提供了一種非常方便的處理方式。一個很好的例子是文件處理，你需要獲取一個文件句柄，從文件中讀取數據，然後關閉文件句柄。<!--more--></p>
@@ -837,9 +837,9 @@ file_object.close( )
   
   <entry>
     <title type="html"><![CDATA[Python os &amp; sys模塊]]></title>
-    <link href="http://www.aprilzephyr.com/blog/03312014/python-osmo-kuai-and-sysmo-kuai/"/>
+    <link href="http://www.aprilzephyr.com/blog/03312014/python-os-sys/"/>
     <updated>2014-03-31T16:06:01+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/03312014/python-osmo-kuai-and-sysmo-kuai</id>
+    <id>http://www.aprilzephyr.com/blog/03312014/python-os-sys</id>
     <content type="html"><![CDATA[<p><strong>1. os模塊</strong><br/>
 Python os模塊包含普遍的操作系統功能。如果你希望你的程序能夠與平臺無關的話，這個模塊是尤為重要的。</p>
 

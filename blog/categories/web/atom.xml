@@ -4,7 +4,7 @@
   <title><![CDATA[Category: web | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-04-08T17:20:43+08:00</updated>
+  <updated>2014-04-08T17:52:10+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[網頁重定向的方法(轉)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/04022014/wang-ye-zhong-ding-xiang-de-fang-fa-zhuan/"/>
+    <link href="http://www.aprilzephyr.com/blog/04022014/wang-ye-zhong-ding-xiang-de-fang-fa/"/>
     <updated>2014-04-02T10:58:43+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/04022014/wang-ye-zhong-ding-xiang-de-fang-fa-zhuan</id>
+    <id>http://www.aprilzephyr.com/blog/04022014/wang-ye-zhong-ding-xiang-de-fang-fa</id>
     <content type="html"><![CDATA[<h4>1. 使用HTTP通訊協定301 Moved Permanently來完成轉導網址(永久轉址)</h4>
 
 <p><em>建議使用，不會對SEO有不良影響</em></p>
