@@ -19,6 +19,6 @@ Some plots are interesting that when Phil tries harder and harder to cater to so
   
 And so is the story telling us.  
   
-In real life, things are so similar that few ones are satisfied with their presents living roughly the same days over and over and over again. Sorrowfully that only fewer ones would like or dare to make a change as to be sluggish, revolted and desperate dying finally.  
+In real life, things are so similar that few ones are satisfied with their presents living roughly the same days over and over and over again. Senses of helplessness and so far as abomination towards their own never vanish. Sorrowfully that only fewer ones would like or dare to make a change as to be sluggish, revolted and desperate dying finally.  
   
-Staying hungry and foolish, is only for adequate constant advances. Never scared, even if looked like deserted weeds. Just endeavor, struggle, enrich oneself, waiting for the moment handling that magic to break one's own "time loop".
+Staying hungry and foolish, is only for adequate constant advances for the nature of oneself could not be changed but the substance. There would be one and the only way to get rid of such suck life rhythm is to get cultured. Never scared, even if looked like deserted weeds temporarily. Just endeavor, struggle, enrich oneself, waiting patiently for the moment handling that fabulous magic to break one's own "time loop".
