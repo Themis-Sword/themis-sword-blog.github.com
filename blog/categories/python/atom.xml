@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-05-02T17:01:17+08:00</updated>
+  <updated>2014-05-04T16:14:38+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,379 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python 正則表達式指南(轉)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/05042014/python-zheng-ze-biao-da-shi-zhi-nan-zhuan/"/>
+    <updated>2014-05-04T14:49:04+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/05042014/python-zheng-ze-biao-da-shi-zhi-nan-zhuan</id>
+    <content type="html"><![CDATA[<h4>1. 正則表達式基礎</h4>
+
+<h5>1.1 簡單介紹</h5>
+
+<p>正則表達式並不是Python的一部分。正則表達式是用於處理字符串的強大工具，擁有自己獨特的語法以及一個獨立的處理引擎，效率上可能不如str自帶的方法，但功能十分強大。得益於這一點，在提供了正則表達式的語言裏，正則表達式的語法都是一樣的，區別只在於不同的編程語言實現支持的語法數量不同；但不用擔心，不被支持的語法通常是不常用的部分。如果已經在其他語言裏使用過正則表達式，只需要簡單看一看就可以上手了。</p>
+
+<p>下圖展示了使用正則表達式進行匹配的流程：<!--more--><br/>
+<img src="/images/zhengzbds.png"></p>
+
+<p>正則表達式的大致匹配過程是：依次拿出表達式和文本中的字符比較，如果每一個字符都能匹配，則匹配成功；一旦有匹配不成功的字符則匹配失敗。如果表達式中有量詞或邊界，這個過程會稍微有一些不同，但也是很好理解的，看下圖中的示例以及自己多使用幾次就能明白。</p>
+
+<p>下錶列出了Python支持的正則表達式元字符和語法：</p>
+
+<table><tbody>
+<tr><td><em> 語法 </em></td><td><em> 說明 </em></td><td><em> 表達式實例 </em></td><td><em> 完整匹配的字符串 </em></td></tr>
+<tr><td></td><td><td><em> 字符 </em></td></td><td></td></tr>
+<tr><td> 一般字符 </td><td> 匹配自身 </td><td> abc </td><td> abc </td></tr>
+<tr><td> . </td><td> 匹配任意除換行符"\n"外的字符。在DOTALL模式中也能匹配換行符 </td><td> a.c </td><td> abc </td></tr>
+<tr><td> \ </td><td> 轉義字符，使後一個字符改變原來的意思。如果字符串中有字符*需要匹配，可以使用\*或者字符集[*] </td><td> a\.c a\\c </td><td> a.c a\c </td></tr>
+<tr><td> [...] </td><td> 字符集(字符類)。對應的位置可以是字符集中任意字符。字符集中的字符可以逐個列出，也可以給出範圍，如[abc]或[a-c]。第一個字符如果是^則表示取反，如[^abc]表示不是abc的其他字符。 所有的特殊字符在字符集中都失去原油的特殊含義。在字符集中如果要使用]、-或^，可以在前面加上反斜槓，或把]、-放在第一個字符，把^放在非第一個字符 </td><td> a[bdc]e </td><td> abe ace ade </td></tr>
+<tr><td></td><td><td><em> 預定義字符集(可以寫在字符集[...]中) </em></td></td><td></td></tr>
+<tr><td> \d </td><td> 數字:[0-9] </td><td> a\dc </td><td> a1c </td></tr>
+<tr><td> \D </td><td> 非數字:[^\d] </td><td> a\Dc </td><td> abc </td></tr>
+<tr><td> \s </td><td> 非白字符:[<空格>\t\r\n\f\v] </td><td> a\sc </td><td> a c </td></tr>
+<tr><td> \S </td><td> 非空白字符:[^\s] </td><td> a\Sc </td><td> abc </td></tr>
+<tr><td> \w </td><td> 單詞字符:[A-Z a-z 0-9] </td><td> a\wc </td><td> abc </td></tr>
+<tr><td> \W </td><td> 非單詞字符:[^\W] </td><td> a\Wc </td><td> a c </td></tr>
+<tr><td></td><td><td><em> 數量詞(用在字符或(...)之後) </em></td></td><td></td></tr>
+<tr><td> * </td><td> 匹配前一個字符0或無限次 </td><td> abc* </td><td> ab abccc </td></tr>
+<tr><td> + </td><td> 匹配前一個字符1或無限次 </td><td> abc+ </td><td> abc abccc </td></tr>
+<tr><td> ? </td><td> 匹配前一個字符0或1次 </td><td> abc? </td><td> ab abc </td></tr>
+<tr><td> {m} </td><td> 匹配前一個字符m次 </td><td> ab{2}c </td><td> abbc </td></tr>
+<tr><td> {m,n} </td><td> 匹配前一個字符m至n次。m和n可以省略：若省略m，則匹配0至n次；若省略n，則匹配m至無限次 </td><td> ab{1,2}c </td><td> abc abbc </td></tr>
+<tr><td> \*?+? ?? {m,n}? </td><td> 使*+?{m,n}變成非貪婪模式 </td><td> 示例在下文中介紹 </td><td> </td></tr>
+<tr><td></td><td><td><em> 邊界匹配(不消耗待匹配字符串中的字符) </em></td></td><td></td></tr>
+<tr><td> ^ </td><td> 匹配字符串開頭。在多行模式中匹配每一行的開頭。 </td><td> ^abc </td><td> abc </td></tr>
+<tr><td> $ </td><td> 匹配字符串末尾。在多行模式中匹配每一行的末尾。 </td><td> abc$ </td><td> abc </td></tr>
+<tr><td> \A </td><td> 儘匹配字符串開頭。 </td><td> \Aabc </td><td> abc </td></tr>
+<tr><td> \Z </td><td> 儘匹配字符串末尾。 </td><td> \Zabc </td><td> abc </td></tr>
+<tr><td> \b </td><td> 匹配\w和\W之間。 </td><td> a\b!bc </td><td> a!bc </td></tr>
+<tr><td> \B </td><td> [^\b] </td><td> a\Bbc </td><td> abc </td></tr>
+<tr><td></td><td><td><em> 邏輯、分組 </em></td></td><td></td></tr>
+<tr><td> | </td><td> |代表左右表達式任意匹配一個。總是先嘗試匹配左邊的表達式，一旦成功匹配則跳過匹配右邊的表達式。如果|沒有被包括在()中，則它的範圍是整個正則表達式。 </td><td> abc|def </td><td> abc def </td></tr>
+<tr><td> (...) </td><td> 被擴起來的表達式將作為分組，從表達式左邊開始每遇到一個分組的左括號'('，編號+1。另外，分組表達式作為一個整體，可以後接數量詞。表達式中的|儘在該組中有效。 </td><td> (abc){2} a(123|456)c </td><td> abcabc a456c </td></tr>
+<tr><td> (?P<name>...) </td><td> 分組，除了原有的編號外再指定一個額外的別名。 </td><td> (?P<id>abc){2} </td><td> abcabc </td></tr>
+<tr><td> \<number> </td><td> 引用編號為<number>的分組匹配到的字符串 </td><td> (\d)abc\1 </td><td> 1abc1 5abc5 </td></tr>
+<tr><td> (?P=name) </td><td> 引用別名為<name>的分組匹配到的字符串。 </td><td> (?P<id>\d)abc(?P=id) </td><td> 1abc 5abc5 </td></tr>
+<tr><td></td><td><td><em> 特殊構造(不作為分組) </em></td></td><td></td></tr>
+<tr><td> (?:...) </td><td> (...)的不分組版本，用於使用'|'或後接數量詞 </td><td> (?:abc){2} </td><td> abc abc </td></tr>
+<tr><td> (?iLmsux) </td><td> iLmsux的每個字符串代表一個匹配模式，只能用在正則表達式的開頭，可選多個。匹配模式將在下文中介紹。 </td><td> (?i)(abc) </td><td> AbC </td></tr>
+<tr><td> (?#...) </td><td> #後的內容將作為註釋被忽略 </td><td> abc(?#comment)123 </td><td> abc123 </td></tr>
+<tr><td> (?=...) </td><td> 之後的字符串內容需要匹配表達式才能成功匹配。不消耗字符串內容。 </td><td> abc(?=\d) </td><td> 後面是數字的a </td></tr>
+<tr><td> (?!...) </td><td> 之後的字符串內容需要不匹配表達式才能成功匹配。不消耗字符串內容。 </td><td> abc(?!\d) </td><td> 後面不是數字的a </td></tr>
+<tr><td> (?<=...) </td><td> 之前的字符串內容需要匹配表達式才能成功匹配。不消耗字符串內容。 </td><td> (?<=\d)a </td><td> 前面是數字的a </td></tr>
+<tr><td> (?< !...) </td><td> 之前的字符串內容需要不匹配表達式才能成功匹配。不消耗字符串內容。 </td><td> (?<!\d)a </td><td> 前面不是數字的a </td></tr>
+<tr><td> (?(id/name)yes-pattern|no-pattern) </td><td> 如果編號為id/別名為name的組匹配到字符，則需要皮皮yes-pattern，否則需要匹配no-pattern。 |np-pattern可以省略。 </td><td> (\d)abc(?(1)\d|abc) </td><td> 1abc2 abcabc </td></tr>
+</tbody></table>
+
+
+<p></p>
+
+<h5>1.2 數量詞的貪婪模式與非貪婪模式</h5>
+
+<p>正則表達式通常用於在文本中查找匹配的字符串。Python裏數量詞默認是貪婪的（在少數語言裏也可能是默認非貪婪），總是嘗試匹配盡可能多的字符；非貪婪的則相反，總是嘗試匹配盡可能少的字符。例如：正則表達式"a*&ldquo;如果用於查找"abbbc"，將找到"abbb"。而如果使用非貪婪的數量詞"ab*?"，將找到"a"。</p>
+
+<h5>1.3. 反斜杠的困擾</h5>
+
+<p>與大多數編程語言相同，正則表達式裏使用"\&ldquo;作為轉義字符，這就可能造成反斜杠困擾。假如你需要匹配文本中的字符&rdquo;\&ldquo;，那麽使用編程語言表示的正則表達式裏將需要4個反斜杠&rdquo;\\\\&ldquo;：前兩個和後兩個分別用於在編程語言裏轉義成反斜杠，轉換成兩個反斜杠後再在正則表達式裏轉義成一個反斜杠。Python裏的原生字符串很好地解決了這個問題，這個例子中的正則表達式可以使用r&rdquo;\\&ldquo;表示。同樣，匹配一個數字的&rdquo;\\d"可以寫成r"\d"。有了原生字符串，你再也不用擔心是不是漏寫了反斜杠，寫出來的表達式也更直觀。</p>
+
+<h5>1.4. 匹配模式</h5>
+
+<p>正則表達式提供了一些可用的匹配模式，比如忽略大小寫、多行匹配等，這部分內容將在Pattern類的工廠方法re.compile(pattern[, flags])中一起介紹。</p>
+
+<h4>2. re模塊</h4>
+
+<h5>2.1 開始使用re</h5>
+
+<p>Python通過re模塊提供對正則表達式的支持。使用re的一般步驟是先將正則表達式的字符串形式編譯為Pattern實例，然後使用Pattern實例處理文本並獲得匹配結果（一個Match實例），最後使用Match實例獲得信息，進行其他的操作。<br/>
+``` python</p>
+
+<h1>encoding: UTF-8</h1>
+
+<p>import re</p>
+
+<h1>将正则表达式编译成Pattern对象</h1>
+
+<p>pattern = re.compile(r'hello')</p>
+
+<h1>使用Pattern匹配文本，获得匹配结果，无法匹配时将返回None</h1>
+
+<p>match = pattern.match(&lsquo;hello world!&rsquo;)</p>
+
+<p>if match:</p>
+
+<pre><code># 使用Match获得分组信息
+print match.group()
+</code></pre>
+
+<h3>输出</h3>
+
+<h1>hello</h1>
+
+<p>```</p>
+
+<p><strong>re.compile(strPattern[, flag]):</strong><br/>
+這個方法是Pattern類的工廠方法，用於將字符串形式的正則表達式編譯為Pattern對象。 第二個參數flag是匹配模式，取值可以使用按位或運算符'|&lsquo;表示同時生效，比如re.I | re.M。另外，你也可以在regex字符串中指定模式，比如re.compile('pattern&rsquo;, re.I | re.M)與re.compile(&lsquo;(?im)pattern&rsquo;)是等價的。
+可選值有：<br/>
+* re.I(re.IGNORECASE): 忽略大小寫（括號內是完整寫法，下同）<br/>
+* M(MULTILINE): 多行模式，改變'^&lsquo;和&rsquo;$&lsquo;的行為（參見上圖）<br/>
+* S(DOTALL): 點任意匹配模式，改變&rsquo;.&lsquo;的行為<br/>
+* L(LOCALE): 使預定字符類 \w \W \b \B \s \S 取決於當前區域設定<br/>
+* U(UNICODE): 使預定字符類 \w \W \b \B \s \S \d \D 取決於unicode定義的字符屬性<br/>
+* X(VERBOSE): 詳細模式。這個模式下正則表達式可以是多行，忽略空白字符，並可以加入註釋。以下兩個正則表達式是等價的：<br/>
+``` python
+a = re.compile(r"&ldquo;&rdquo;\d +  # the integral part</p>
+
+<pre><code>               \.    # the decimal point
+               \d *  # some fractional digits""", re.X)
+</code></pre>
+
+<p>b = re.compile(r"\d+.\d<em>&ldquo;)
+<code>  
+re提供了眾多模塊方法用於完成正則表達式的功能。這些方法可以使用Pattern實例的相應方法替代，唯一的好處是少寫一行re.compile()代碼，但同時也無法復用編譯後的Pattern對象。這些方法將在Pattern類的實例方法部分一起介紹。如上面這個例子可以簡寫為：  
+</code> python
+m = re.match(r'hello', &lsquo;hello world!&rsquo;)
+print m.group()
+```<br/>
+re模塊還提供了一個方法escape(string)，用於將string中的正則表達式元字符如</em>/+/?等之前加上轉義符再返回，在需要大量匹配元字符時有那麽一點用。</p>
+
+<h5>2.2 Match</h5>
+
+<p>Match对象是一次匹配的结果，包含了很多关于此次匹配的信息，可以使用Match提供的可读属性或方法来获取这些信息。</p>
+
+<p>属性：<br/>
+1) string: 匹配时使用的文本。<br/>
+2) re: 匹配时使用的Pattern对象。<br/>
+3) pos: 文本中正则表达式开始搜索的索引。值与Pattern.match()和Pattern.seach()方法的同名参数相同。<br/>
+4) endpos: 文本中正则表达式结束搜索的索引。值与Pattern.match()和Pattern.seach()方法的同名参数相同。<br/>
+5) lastindex: 最后一个被捕获的分组在文本中的索引。如果没有被捕获的分组，将为None。<br/>
+6) lastgroup: 最后一个被捕获的分组的别名。如果这个分组没有别名或者没有被捕获的分组，将为None。</p>
+
+<p>方法：<br/>
+1) <strong>group([group1, …]):</strong> <br/>
+获得一个或多个分组截获的字符串；指定多个参数时将以元组形式返回。group1可以使用编号也可以使用别名；编号0代表整个匹配的子串；不填写参数时，返回group(0)；没有截获字符串的组返回None；截获了多次的组返回最后一次截获的子串。<br/>
+2) <strong>groups([default]):</strong><br/>
+以元组形式返回全部分组截获的字符串。相当于调用group(1,2,…last)。default表示没有截获字符串的组以这个值替代，默认为None。<br/>
+3) <strong>groupdict([default]):</strong><br/>
+返回以有别名的组的别名为键、以该组截获的子串为值的字典，没有别名的组不包含在内。default含义同上。<br/>
+4) <strong>start([group]):</strong><br/>
+返回指定的组截获的子串在string中的起始索引（子串第一个字符的索引）。group默认值为0。<br/>
+5) <strong>end([group]):</strong><br/>
+返回指定的组截获的子串在string中的结束索引（子串最后一个字符的索引+1）。group默认值为0。<br/>
+6) <strong>span([group]):</strong><br/>
+返回(start(group), end(group))。<br/>
+7) <strong>expand(template):</strong><br/>
+将匹配到的分组代入template中然后返回。template中可以使用\id或\g<id>、\g<name>引用分组，但不能使用编号0。\id与\g<id>是等价的；但\10将被认为是第10个分组，如果你想表达\1之后是字符'0'，只能使用\g<1>0。<br/>
+``` python
+import re
+m = re.match(r'(\w+) (\w+)(?P<sign>.*)&lsquo;, 'hello world!&rsquo;)</p>
+
+<p>print &ldquo;m.string:&rdquo;, m.string
+print &ldquo;m.re:&rdquo;, m.re
+print &ldquo;m.pos:&rdquo;, m.pos
+print &ldquo;m.endpos:&rdquo;, m.endpos
+print &ldquo;m.lastindex:&rdquo;, m.lastindex
+print &ldquo;m.lastgroup:&rdquo;, m.lastgroup</p>
+
+<p>print &ldquo;m.group(1,2):&rdquo;, m.group(1, 2)
+print &ldquo;m.groups():&rdquo;, m.groups()
+print &ldquo;m.groupdict():&rdquo;, m.groupdict()
+print &ldquo;m.start(2):&rdquo;, m.start(2)
+print &ldquo;m.end(2):&rdquo;, m.end(2)
+print &ldquo;m.span(2):&rdquo;, m.span(2)
+print r"m.expand(r'\2 \1\3'):&ldquo;, m.expand(r'\2 \1\3')</p>
+
+<h3>output</h3>
+
+<h1>m.string: hello world!</h1>
+
+<h1>m.re: &lt;_sre.SRE_Pattern object at 0x016E1A38></h1>
+
+<h1>m.pos: 0</h1>
+
+<h1>m.endpos: 12</h1>
+
+<h1>m.lastindex: 3</h1>
+
+<h1>m.lastgroup: sign</h1>
+
+<h1>m.group(1,2): (&lsquo;hello&rsquo;, &lsquo;world&rsquo;)</h1>
+
+<h1>m.groups(): (&lsquo;hello&rsquo;, &lsquo;world&rsquo;, &lsquo;!&rsquo;)</h1>
+
+<h1>m.groupdict(): {&lsquo;sign&rsquo;: &lsquo;!&rsquo;}</h1>
+
+<h1>m.start(2): 6</h1>
+
+<h1>m.end(2): 11</h1>
+
+<h1>m.span(2): (6, 11)</h1>
+
+<h1>m.expand(r'\2 \1\3'): world hello!</h1>
+
+<p>```</p>
+
+<h5>2.3 Pattern</h5>
+
+<p>Pattern對象是一個編譯好的正則表達式，通過Pattern提供的一系列方法可以對文本進行匹配查找。<br/>
+Pattern不能直接實例化，必須使用re.compile()進行構造。<br/>
+Pattern提供了幾個可讀屬性用於獲取表達式的相關信息：<br/>
+1) pattern: 編譯時用的表達式字符串。<br/>
+2) flags: 編譯時用的匹配模式。數字形式。<br/>
+3) groups: 表達式中分組的數量。<br/>
+4) groupindex: 以表達式中有別名的組的別名為鍵、以該組對應的編號為值的字典，沒有別名的組不包含在內。<br/>
+``` python
+import re
+p = re.compile(r'(\w+) (\w+)(?P<sign>.*)&lsquo;, re.DOTALL)</p>
+
+<p>print &ldquo;p.pattern:&rdquo;, p.pattern
+print &ldquo;p.flags:&rdquo;, p.flags
+print &ldquo;p.groups:&rdquo;, p.groups
+print &ldquo;p.groupindex:&rdquo;, p.groupindex</p>
+
+<h3>output</h3>
+
+<h1>p.pattern: (\w+) (\w+)(?P<sign>.*)</h1>
+
+<h1>p.flags: 16</h1>
+
+<h1>p.groups: 3</h1>
+
+<h1>p.groupindex: {&lsquo;sign&rsquo;: 3}</h1>
+
+<p><code>  
+实例方法[ | re模块方法]：  
+1) **match(string[, pos[, endpos]]) | re.match(pattern, string[, flags]):**  
+这个方法将从string的pos下标处起尝试匹配pattern；如果pattern结束时仍可匹配，则返回一个Match对象；如果匹配过程中pattern无法匹配，或者匹配未结束就已到达endpos，则返回None。  
+pos和endpos的默认值分别为0和len(string)；re.match()无法指定这两个参数，参数flags用于编译pattern时指定匹配模式。  
+注意：这个方法并不是完全匹配。当pattern结束时若string还有剩余字符，仍然视为成功。想要完全匹配，可以在表达式末尾加上边界匹配符'$'。  
+示例参见2.1小节。
+2) **search(string[, pos[, endpos]]) | re.search(pattern, string[, flags]):**  
+这个方法用于查找字符串中可以匹配成功的子串。从string的pos下标处起尝试匹配pattern，如果pattern结束时仍可匹配，则返回一个Match对象；若无法匹配，则将pos加1后重新尝试匹配；直到pos=endpos时仍无法匹配则返回None。  
+pos和endpos的默认值分别为0和len(string))；re.search()无法指定这两个参数，参数flags用于编译pattern时指定匹配模式。  
+</code> python</p>
+
+<h1>encoding: UTF-8</h1>
+
+<p>import re</p>
+
+<h1>将正则表达式编译成Pattern对象</h1>
+
+<p>pattern = re.compile(r'world')</p>
+
+<h1>使用search()查找匹配的子串，不存在能匹配的子串时将返回None</h1>
+
+<h1>这个例子中使用match()无法成功匹配</h1>
+
+<p>match = pattern.search(&lsquo;hello world!&rsquo;)</p>
+
+<p>if match:</p>
+
+<pre><code># 使用Match获得分组信息 
+print match.group() 
+</code></pre>
+
+<h3>输出 ###</h3>
+
+<h1>world</h1>
+
+<p><code>  
+3) **split(string[, maxsplit]) | re.split(pattern, string[, maxsplit]):**  
+按照能夠匹配的子串將string分割後返回列表。maxsplit用於指定最大分割次數，不指定將全部分割。  
+</code> python
+import re</p>
+
+<p>p = re.compile(r'\d+&lsquo;)
+print p.split('one1two2three3four4&rsquo;)</p>
+
+<h3>output</h3>
+
+<h1>[&lsquo;one&rsquo;, &lsquo;two&rsquo;, &lsquo;three&rsquo;, &lsquo;four&rsquo;, &lsquo;&rsquo;]</h1>
+
+<p><code>  
+4) **findall(string[, pos[, endpos]]) | re.findall(pattern, string[, flags]):**  
+搜索string，以列表形式返回全部能匹配的子串。  
+</code> python
+import re</p>
+
+<p>p = re.compile(r'\d+&lsquo;)
+print p.findall('one1two2three3four4&rsquo;)</p>
+
+<h3>output</h3>
+
+<h1>[&lsquo;1&rsquo;, &lsquo;2&rsquo;, &lsquo;3&rsquo;, &lsquo;4&rsquo;]</h1>
+
+<p><code>  
+5) **finditer(string[, pos[, endpos]]) | re.finditer(pattern, string[, flags]):**  
+搜索string，返回一個順序訪問每一個匹配結果（Match對象）的叠代器。  
+</code> python
+import re</p>
+
+<p>p = re.compile(r'\d+&lsquo;)
+for m in p.finditer('one1two2three3four4&rsquo;):</p>
+
+<pre><code>print m.group(),
+</code></pre>
+
+<h3>output</h3>
+
+<h1>1 2 3 4</h1>
+
+<p><code>  
+6) **sub(repl, string[, count]) | re.sub(pattern, repl, string[, count]):**  
+使用repl替換string中每一個匹配的子串後返回替換後的字符串。  
+當repl是一個字符串時，可以使用\id或\g&lt;id&gt;、\g&lt;name&gt;引用分組，但不能使用編號0。  
+當repl是一個方法時，這個方法應當只接受一個參數（Match對象），並返回一個字符串用於替換（返回的字符串中不能再引用分組）。  
+count用於指定最多替換次數，不指定時全部替換。  
+</code> python
+import re</p>
+
+<p>p = re.compile(r'(\w+) (\w+)&lsquo;)
+s = 'i say, hello world!&rsquo;</p>
+
+<p>print p.sub(r'\2 \1', s)</p>
+
+<p>def func(m):</p>
+
+<pre><code>return m.group(1).title() + ' ' + m.group(2).title()
+</code></pre>
+
+<p>print p.sub(func, s)</p>
+
+<h3>output</h3>
+
+<h1>say i, world hello!</h1>
+
+<h1>I Say, Hello World!</h1>
+
+<p><code>  
+7) **subn(repl, string[, count]) |re.sub(pattern, repl, string[, count]):**  
+返回 (sub(repl, string[, count]), 替換次數)。  
+</code> python
+import re</p>
+
+<p>p = re.compile(r'(\w+) (\w+)&lsquo;)
+s = 'i say, hello world!&rsquo;</p>
+
+<p>print p.subn(r'\2 \1', s)</p>
+
+<p>def func(m):</p>
+
+<pre><code>return m.group(1).title() + ' ' + m.group(2).title()
+</code></pre>
+
+<p>print p.subn(func, s)</p>
+
+<h3>output</h3>
+
+<h1>(&lsquo;say i, world hello!&rsquo;, 2)</h1>
+
+<h1>(&lsquo;I Say, Hello World!&rsquo;, 2)</h1>
+
+<p>```</p>
+
+<p><a href="http://www.cnblogs.com/huxi/archive/2010/07/04/1771073.html">Origin</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python with語句(轉)]]></title>
@@ -599,203 +972,6 @@ Python解釋程序路徑。<br/>
 從標準輸入讀一行。<br/>
 30) sys.stdout.write(&ldquo;a&rdquo;)<br/>
 屏幕輸出a。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Python 字符串]]></title>
-    <link href="http://www.aprilzephyr.com/blog/03282014/python-string/"/>
-    <updated>2014-03-28T01:15:00+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/03282014/python-string</id>
-    <content type="html"><![CDATA[<p><strong>1. 類型轉換</strong><br/>
-1) Python是動態類型，是强類型的編程語言。<br/>
-2) Python內建函數的實現類型轉換：</p>
-
-<table><tbody>
-<tr><td><em> 函數 </em></td><td><em> 描述 </em></td></tr>  
-<tr><td>int(x [,base ]) </td><td>將x轉換為一個整數</td></tr>
-<tr><td>long(x [,base ]) </td><td>將x轉換為一個長整數</td></tr>
-<tr><td>float(x) </td><td>將x轉換為一個浮點數</td></tr>
-<tr><td>complax(real [, img ]) </td><td>創建一個複數</td></tr>
-<tr><td>str(x) </td><td>將對象x轉換為字符串</td></tr>
-<tr><td>repr(x) </td><td>將對象x轉換為表達式字符串</td></tr>
-<tr><td>eval(str) </td><td>計算在字符串中的有效python表達式，並返回一個對象</td></tr>
-<tr><td>tuple(s) </td><td>將序列s轉換為一個元組</td></tr>
-<tr><td>list(s) </td><td>將序列s轉換為一個列表</td></tr>
-<tr><td>chr(x) </td><td>將一個整數轉換為一個字符</td></tr>
-<tr><td>unichr(x) </td><td>將一個整數轉換為一個Unicode字符</td></tr>
-<tr><td>ord(x) </td><td>將一個字符轉換為它的整數值</td></tr>
-<tr><td>hex(x) </td><td>將一個整數轉換為一個十六進制字符串</td></tr>
-<tr><td>oct(x) </td><td>將一個整數轉換為一個八進制字符串</td></tr>
-</tbody>
-</table>
-
-
-<p> <!--more--></p>
-
-<p><strong>2. 轉義字符</strong></p>
-
-<table>
-<tbody>
-<tr><td><em>轉義字符</em></td><td><em>描述</em></td></tr>  
-<tr><td>\\(在行尾)</td><td>續行符</td></tr>  
-<tr><td>\\\ </td><td>反斜槓</td></tr>  
-<tr><td>\\' </td><td>單引號</td></tr>  
-<tr><td>\\" </td><td>雙引號</td></tr>  
-<tr><td>\a</td><td>響鈴</td></tr>  
-<tr><td>\b</td><td>退格(Backspace)</td></tr>  
-<tr><td>\e</td><td>轉義</td></tr>  
-<tr><td>\000</td><td>空</td></tr>  
-<tr><td>\n</td><td>換行</td></tr>  
-<tr><td>\v</td><td>縱向製表符</td></tr>  
-<tr><td>\t</td><td>橫向製表符</td></tr>  
-<tr><td>\r</td><td>回車</td></tr>  
-<tr><td>\f</td><td>換頁</td></tr>  
-<tr><td>\oyy</td><td>八進制數yy代表的字符，例如:\o12代表換行</td></tr>  
-<tr><td>\xyy</td><td>十進制數yy代表的字符，例如:\x0a代表換行</td></tr>  
-<tr><td>\uhhhh</td><td>Unicode 16位的十六進製值</td></tr>  
-<tr><td>\uhhhhhhhh</td><td>Unicode 32位的十六進製值</td></tr>  
-<tr><td>\other</td><td>其它的字符以普通格式輸出</td></tr>  
-</tbody></table>
-
-
-<p><strong>3. 格式化表達</strong></p>
-
-<table><tbody>  
-<tr><td><em>格式化表達</em></td><td><em>描述</em></td></tr>  
-<tr><td>%s</td><td>字符串</td></tr>  
-<tr><td>%r</td><td>repr輸出的字符串</td></tr>  
-<tr><td>%d</td><td>十進制整數</td></tr>  
-<tr><td>%i</td><td>整數</td></tr>  
-<tr><td>%u</td><td>無符號整數</td></tr>  
-<tr><td>%o</td><td>八進制</td></tr>  
-<tr><td>%x</td><td>十六進制</td></tr>  
-<tr><td>%X</td><td>十六進制(大寫)</td></tr>  
-<tr><td>%e</td><td>指數</td></tr>  
-<tr><td>%E</td><td>指數(大寫)</td></tr>  
-<tr><td>%f</td><td>十進制浮點數</td></tr>  
-<tr><td>%F</td><td>十進制浮點數(大寫)</td></tr>  
-<tr><td>%g</td><td>浮點e或f</td></tr>  
-<tr><td>%G</td><td>浮點E或F</td></tr>  
-</tbody></table>
-
-
-<p></p>
-
-<p><strong>4. 索引和切片</strong><br/>
-Python中的字符串是有序的字符集合，所以可以通過位置（索引）獲取對應的元素。和c語言中一樣，python的索引也是從0開始的，而且支持使用負索引的方法來獲取元素，一個負的索引可以看做是從字符串結尾處反向計數，-1就表示字符串的最後一個字符。當然也可以理解為負索引與字符串長度相加得到的正索引，即s[-n]等於s[-n+len(s)]。<br/>
-``` python</p>
-
-<blockquote><blockquote><blockquote><p>s = &ldquo;hello"<br/>
-s[0]<br/>
-&lsquo;1'<br/>
-s = "hello"<br/>
-s[0]<br/>
-'h'<br/>
-s[-1]<br/>
-'o'<br/>
-s[0:3]<br/>
-'hel'<br/>
-s[1:]<br/>
-'ello'<br/>
-s[:-1]<br/>
-'hell&rsquo;
-<code>  
-其實分片的完整格式為s[start:end:side]，意思就是從start開始到end-1，每隔side個元素取一個元素，返回值為所有取到的元素組成的字符串，side默認值為1。  
-side可以取負值，例如s[::-1]會返回”olleh”，實際效果就是對字符串進行了反轉。這裏需要註意的是，如果side為負值，兩個邊界也要進行反轉，s[4:1:-1]就是從4開始反向取到2得到的字符串，如果在sride為負的情況下還是第一個邊界大於第二個邊界那樣的使用的話將返回一個空的字符串。  
-</code> python
-s[::2]<br/>
-&lsquo;hlo'<br/>
-s[::-1]<br/>
-'olleh'<br/>
-s[4:1:-1]<br/>
-'oll'<br/>
-s[0:4:-1]<br/>
-&rsquo;&lsquo;<br/>
-```</p></blockquote></blockquote></blockquote>
-
-<p><strong>5. 字符串方法</strong><br/>
-<em>A 大小寫</em><br/>
-S.upper() 全部大寫<br/>
-S.lower() 全部小寫<br/>
-S.swapcase() 大小寫互換<br/>
-S.capitalize() 首字母大寫，其余都小寫<br/>
-S.title() 每個單詞的首字母大寫，其余不變</p>
-
-<p><em>B 對齊</em><br/>
-S.ljust(width[, fill]) 獲取固定長度width，左對齊，多余位用fill填充，默認空格<br/>
-S.rjust(width[, fill]) 右對齊<br/>
-S.center(width[, fill]) 居中<br/>
-S.zfill(width) 右對齊，左邊不足的位置用0補齊，相當於S.rjust(width,&ldquo;0&rdquo;)<br/>
-如果width&lt;=len(S)，返回於原字符串相同的字符串。</p>
-
-<p><em>C 查找替換</em><br/>
-S.find(sub[, start[, end]]) 返回在範圍start到end(不含end)中第一個sub的索引。<br/>
-S.rfind(sub[, start[, end]]) 從右邊開始查找，也就是返回在範圍start到end(不含end)中最後一個sub的索引。<br/>
-S.index(sub[, start[, end]])功能與find()相同，不同之處在於find()未找到的時候會返回-1，而index()會拋出異常。<br/>
-S.rindex(sub[, start[, end]])功能與rfind()相同，不同之處在於find()未找到的時候會返回-1，而index()會拋出異常。<br/>
-S.count(sub[, start[, end]]) 返回在範圍start到end(不含end)中sub的個數。<br/>
-start默認為0，end默認為len(S)。<br/>
-S.replace(old, new[, count])將字符串中的old替換為new，count為替換的次數，未指定的話就是替換所有。<br/>
-S.translate(table [,deletechars]) 刪除S中deletechars包含的字符，然後將剩下的字符用table定義的關系進行映射。table是string.maketrans()生成的。</p>
-
-<p><em>D 去空白或指定字符</em><br/>
-S.strip([chars]) 去除字符串S兩邊的chars,若chars未指定，則去除兩邊的空白，包括空格、\n、\f、\r、\t和\v。<br/>
-S.lstrip([chars]) 去除左邊的chars，未指定同上。<br/>
-S.rstrip([chars]) 去除右邊的chars，未指定同上。</p>
-
-<p><em>E 分割和組合</em><br/>
-S.split([sep [,maxsplit]]) 以sep為分隔符切割字符串S，不指定sep默認為默認為空白，maxsplit為最大分割次數，未指定則全部分割，返回列表。<br/>
-S.rsplit([sep [,maxsplit]]) 只是和split反向相反，split從頭到尾，rsplit從尾到頭。<br/>
-S.splitlines([keepends]) 按行分割字符串，若keepends指定並且為True，則保留換行符，反之不保留。<br/>
-S.partiton(sep)以sep作為分隔符將S分割為兩個start和end部分，並返回(start,sep, end)這樣格式的元組，若sep沒有找到，則返回S和兩個空串組成的元組(S, &lsquo;&rsquo;, &lsquo;&rsquo;)。<br/>
-S.rpartition(sep)從右邊開始，以sep作為分隔符將S分割為兩個start和end部分，並返回(start,sep, end)，若sep沒有找到，則返回兩個空串和S組成的元組(&lsquo;&rsquo;, &lsquo;&rsquo;, S)。<br/>
-S.join(iterable) 將叠代器iterable的字符串連接在一起，並用分隔符S隔開，一般來說在連接列表的時候都使用空字符串或者空格作為分隔符，返回字符串。</p>
-
-<p><em>F 判斷</em><br/>
-S.startswith(prefix[, start[, end]])判斷字符串start到end(不含end)是否是以prefix開頭，默認start為0，end為len(S)，返回布爾值。<br/>
-S.endswith(suffix[, start[, end]]) 判斷字符串start到end(不含end)是否是以suffix結尾，默認start為0，end為len(S)，返回布爾值。<br/>
-S.isalnum() 是否全為字母或數字，返回布爾值。<br/>
-S.isalpha() 是否全為字母，返回布爾值。<br/>
-S.isdigit() 是否全為數字0-9，返回布爾值。<br/>
-S.islower() 是否全是小寫。<br/>
-S.isupper() 是否全是大寫。<br/>
-S.isspace() 是否全是空白。<br/>
-S.istitle() 是否符合title的格式——每個單詞的首字母大寫。<br/>
-上述這些函數中，若S為空串，則均返回False。</p>
-
-<p><em>G 編碼</em><br/>
-S.decode([encoding[,errors]]) 將字符串S解碼為unicode，encoding為S原來的編碼方式。<br/>
-S.encode([encoding[,errors]]) 將unicodeS編碼為python中的字符串，參數指定對應的編碼方式。<br/>
-errors指定出錯時對應的操作，默認的strict會在編碼/解碼失敗的時候拋出異常，ignore則忽略。<br/>
-關於編碼方式還是有很多的知識的，後續再做研究。</p>
-
-<p><em>H 其他</em><br/>
-S.format(*args, **kwargs)<br/>
-format也是用來格式化字符串的，argv指定的變量可以在S中用{index}來替換，而kwargs則是對應的變量。如果後面的數據為字典，可以使用{&lt;index|var>[key]}來替換其對應的值。當然還可以指定對應的寬度、精度以及對其格式，{index:[fill][&lt;|>|^][width][.precision][typecode]}。<br/>
-fill設置填充位，默認為空格；&lt;左對齊，>右對齊，^居中；寬度和類型見後面格式化表達式部分。註意這裏的精度專指說浮點型數據，整型是不能使用精度的，字符創設置了也沒啥作用。<br/>
-``` python</p>
-
-<blockquote><blockquote><blockquote><p>&ldquo;{0},{2},{1},{s}&rdquo;.format(1,2,3,s=&ldquo;four&rdquo;)<br/>
-&lsquo;1,3,2,four'<br/>
-&ldquo;{0:$&lt;3},{2:^5.2f},{1},{s:>10.6s}&rdquo;.format(1,2,3,s=&ldquo;four&rdquo;)<br/>
-'1$$,3.00 ,2,      four'<br/>
-&ldquo;{0:&lt;3},{2:^5d},{1},{s:>10s}&rdquo;.format(1,2,3,s=&ldquo;four&rdquo;)<br/>
-'1  ,  3  ,2,      four'<br/>
-&ldquo;{0:&lt;03},{2:^05.2d},{1},{s:>10s}&rdquo;.format(1,2,3,s=&ldquo;four&rdquo;)<br/>
-Traceback (most recent call last):<br/>
-  File &ldquo;<stdin>&rdquo;, line 1, in <module><br/>
-ValueError: Precision not allowed in integer format specifier<br/>
-&ldquo;{0:&lt;03},{2:^5.2f},{1},{s:>10.6s}&rdquo;.format(1,2,3,s=&ldquo;four&rdquo;)<br/>
-'100,3.00 ,2,      four&rsquo;
-```<br/>
-S.expandtabs([tabsize]) 將字符串中的制表符替換為tabsize個空格，默認為8。</p></blockquote></blockquote></blockquote>
-
-<p><em>I 3.0新增</em><br/>
-S.isdecimal() 是否全是十進制數字(多語言數字)。<br/>
-S.isidentifier() 是否全是合法標識符。<br/>
-S.isnumeric() 是否只包含數字字符。<br/>
-S.isprintable() 是否全是可打印字符。</p>
 ]]></content>
   </entry>
   
