@@ -19,39 +19,39 @@ description: Python正則表達式
 下錶列出了Python支持的正則表達式元字符和語法：  
 <table><tbody>
 <tr><td><em> 語法 </em></td><td><em> 說明 </em></td><td><em> 表達式實例 </em></td><td><em> 完整匹配的字符串 </em></td></tr>
-<tr><td></td><td><td><em> 字符 </em></td></td><td></td></tr>
+<tr><td></td><td><em> 字符 </em><td></td></td><td></td></tr>
 <tr><td> 一般字符 </td><td> 匹配自身 </td><td> abc </td><td> abc </td></tr>
 <tr><td> . </td><td> 匹配任意除換行符"\n"外的字符。在DOTALL模式中也能匹配換行符 </td><td> a.c </td><td> abc </td></tr>
 <tr><td> \ </td><td> 轉義字符，使後一個字符改變原來的意思。如果字符串中有字符*需要匹配，可以使用\*或者字符集[*] </td><td> a\.c a\\c </td><td> a.c a\c </td></tr>
 <tr><td> [...] </td><td> 字符集(字符類)。對應的位置可以是字符集中任意字符。字符集中的字符可以逐個列出，也可以給出範圍，如[abc]或[a-c]。第一個字符如果是^則表示取反，如[^abc]表示不是abc的其他字符。 所有的特殊字符在字符集中都失去原油的特殊含義。在字符集中如果要使用]、-或^，可以在前面加上反斜槓，或把]、-放在第一個字符，把^放在非第一個字符 </td><td> a[bdc]e </td><td> abe ace ade </td></tr>
-<tr><td></td><td><td><em> 預定義字符集(可以寫在字符集[...]中) </em></td></td><td></td></tr>
+<tr><td></td><td><em> 預定義字符集(可以寫在字符集[...]中) </em><td></td></td><td></td></tr>
 <tr><td> \d </td><td> 數字:[0-9] </td><td> a\dc </td><td> a1c </td></tr>
 <tr><td> \D </td><td> 非數字:[^\d] </td><td> a\Dc </td><td> abc </td></tr>
 <tr><td> \s </td><td> 非白字符:[<空格>\t\r\n\f\v] </td><td> a\sc </td><td> a c </td></tr>
 <tr><td> \S </td><td> 非空白字符:[^\s] </td><td> a\Sc </td><td> abc </td></tr>
 <tr><td> \w </td><td> 單詞字符:[A-Z a-z 0-9] </td><td> a\wc </td><td> abc </td></tr>
 <tr><td> \W </td><td> 非單詞字符:[^\W] </td><td> a\Wc </td><td> a c </td></tr>
-<tr><td></td><td><td><em> 數量詞(用在字符或(...)之後) </em></td></td><td></td></tr>
+<tr><td></td><td><em> 數量詞(用在字符或(...)之後) </em><td></td></td><td></td></tr>
 <tr><td> * </td><td> 匹配前一個字符0或無限次 </td><td> abc* </td><td> ab abccc </td></tr>
 <tr><td> + </td><td> 匹配前一個字符1或無限次 </td><td> abc+ </td><td> abc abccc </td></tr>
 <tr><td> ? </td><td> 匹配前一個字符0或1次 </td><td> abc? </td><td> ab abc </td></tr>
 <tr><td> {m} </td><td> 匹配前一個字符m次 </td><td> ab{2}c </td><td> abbc </td></tr>
 <tr><td> {m,n} </td><td> 匹配前一個字符m至n次。m和n可以省略：若省略m，則匹配0至n次；若省略n，則匹配m至無限次 </td><td> ab{1,2}c </td><td> abc abbc </td></tr>
 <tr><td> \*?+? ?? {m,n}? </td><td> 使*+?{m,n}變成非貪婪模式 </td><td> 示例在下文中介紹 </td><td> </td></tr>
-<tr><td></td><td><td><em> 邊界匹配(不消耗待匹配字符串中的字符) </em></td></td><td></td></tr>
+<tr><td></td><td><em> 邊界匹配(不消耗待匹配字符串中的字符) </em><td></td></td><td></td></tr>
 <tr><td> ^ </td><td> 匹配字符串開頭。在多行模式中匹配每一行的開頭。 </td><td> ^abc </td><td> abc </td></tr>
 <tr><td> $ </td><td> 匹配字符串末尾。在多行模式中匹配每一行的末尾。 </td><td> abc$ </td><td> abc </td></tr>
 <tr><td> \A </td><td> 儘匹配字符串開頭。 </td><td> \Aabc </td><td> abc </td></tr>
 <tr><td> \Z </td><td> 儘匹配字符串末尾。 </td><td> \Zabc </td><td> abc </td></tr>
 <tr><td> \b </td><td> 匹配\w和\W之間。 </td><td> a\b!bc </td><td> a!bc </td></tr>
 <tr><td> \B </td><td> [^\b] </td><td> a\Bbc </td><td> abc </td></tr>
-<tr><td></td><td><td><em> 邏輯、分組 </em></td></td><td></td></tr>
+<tr><td></td><td><em> 邏輯、分組 </em><td></td></td><td></td></tr>
 <tr><td> | </td><td> |代表左右表達式任意匹配一個。總是先嘗試匹配左邊的表達式，一旦成功匹配則跳過匹配右邊的表達式。如果|沒有被包括在()中，則它的範圍是整個正則表達式。 </td><td> abc|def </td><td> abc def </td></tr>
 <tr><td> (...) </td><td> 被擴起來的表達式將作為分組，從表達式左邊開始每遇到一個分組的左括號'('，編號+1。另外，分組表達式作為一個整體，可以後接數量詞。表達式中的|儘在該組中有效。 </td><td> (abc){2} a(123|456)c </td><td> abcabc a456c </td></tr>
 <tr><td> (?P<name>...) </td><td> 分組，除了原有的編號外再指定一個額外的別名。 </td><td> (?P<id>abc){2} </td><td> abcabc </td></tr>
 <tr><td> \<number> </td><td> 引用編號為<number>的分組匹配到的字符串 </td><td> (\d)abc\1 </td><td> 1abc1 5abc5 </td></tr>
 <tr><td> (?P=name) </td><td> 引用別名為<name>的分組匹配到的字符串。 </td><td> (?P<id>\d)abc(?P=id) </td><td> 1abc 5abc5 </td></tr>
-<tr><td></td><td><td><em> 特殊構造(不作為分組) </em></td></td><td></td></tr>
+<tr><td></td><td><em> 特殊構造(不作為分組) </em><td></td></td><td></td></tr>
 <tr><td> (?:...) </td><td> (...)的不分組版本，用於使用'|'或後接數量詞 </td><td> (?:abc){2} </td><td> abc abc </td></tr>
 <tr><td> (?iLmsux) </td><td> iLmsux的每個字符串代表一個匹配模式，只能用在正則表達式的開頭，可選多個。匹配模式將在下文中介紹。 </td><td> (?i)(abc) </td><td> AbC </td></tr>
 <tr><td> (?#...) </td><td> #後的內容將作為註釋被忽略 </td><td> abc(?#comment)123 </td><td> abc123 </td></tr>
