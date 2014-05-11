@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "2014，路向何方"
-date: 2014-02-13 17:11:39 +0800
+date: 2014-02-13 23:11:39 +0800
 comments: true
 categories: mood
 keywords: 2014, 路向何方
 description: 2014，路向何方
 ---
-{% img /imges/mark.jpg %}  
+{% img /images/mark.jpg %}  
   
 2013，在旅行－工作－旅行－工作－辭職－旅行－折騰中度過。  
   
