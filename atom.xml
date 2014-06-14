@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2014-05-11T17:31:16+08:00</updated>
+  <updated>2014-06-14T10:35:58+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[New Job]]></title>
+    <link href="http://www.aprilzephyr.com/blog/06142014/new-job/"/>
+    <updated>2014-06-14T10:04:25+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/06142014/new-job</id>
+    <content type="html"><![CDATA[<p><img src="http://www.aprilzephyr.com/images/bigdata.jpg"></p>
+
+<p>It&rsquo;s been a whole month working in a new company, which is a venture company with the area of distributed storage focused.<!--more--></p>
+
+<p>Returning back to Beijing after half a year&rsquo;s separation, living in a high-rise apartment, I soon realized, it would be a new way.</p>
+
+<p>Everything&rsquo;s changed whereas everything seems the same.</p>
+
+<p>NEW CHALLENGES come with the new position. Studying and reading fulfill every day and almost every minute, that joys me. I could see vigor&rsquo;s back and fresh air&rsquo;s pervading.</p>
+
+<p>Time to transform and evolve.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[You Are Alive]]></title>
@@ -3951,158 +3970,6 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
 總之就是空間換時間，時間換空間的那些戲碼。不過挺有意思。</p>
 
 <p><a href="http://www.cnblogs.com/liga/archive/2012/08/31/2665811.html">Origin</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[排序算法]]></title>
-    <link href="http://www.aprilzephyr.com/blog/03062014/pai-xu-suan-fa/"/>
-    <updated>2014-03-06T15:53:21+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/03062014/pai-xu-suan-fa</id>
-    <content type="html"><![CDATA[<p><strong>1. 冒泡排序</strong></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">bubble</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
-</span><span class='line'>\<span class="err">冒泡排序，</span><span class="n">x</span><span class="err">是列表，</span><span class="n">n</span><span class="err">是列表長度</span>
-</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-</span><span class='line'> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-</span><span class='line'>  <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">&gt;</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
-</span><span class='line'>   <span class="n">t</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
-</span><span class='line'>   <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
-</span><span class='line'>   <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span>
-</span><span class='line'><span class="k">return</span> <span class="n">x</span>
-</span><span class='line'><span class="k">print</span> <span class="n">bubble</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">48</span><span class="p">],</span> <span class="mi">8</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-</br><!--more-->
-<strong>2. 插入排序</strong></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
-</span><span class='line'>     <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span class='line'>     <span class="k">while</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-</span><span class='line'>         <span class="n">key</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-</span><span class='line'>         <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span>
-</span><span class='line'>         <span class="k">while</span> <span class="n">j</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">key</span><span class="o">&lt;</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
-</span><span class='line'>             <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
-</span><span class='line'>             <span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span>
-</span><span class='line'>         <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
-</span><span class='line'>         <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-</span><span class='line'>     <span class="k">return</span> <span class="n">x</span>
-</span><span class='line'><span class="k">print</span> <span class="n">insert</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">48</span><span class="p">],</span><span class="mi">8</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-</br>
-<strong>3. 選擇排序</strong></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
-</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-</span><span class='line'>        <span class="n">key</span> <span class="o">=</span> <span class="n">i</span>
-</span><span class='line'>        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
-</span><span class='line'>            <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
-</span><span class='line'>                 <span class="n">key</span> <span class="o">=</span> <span class="n">j</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">key</span><span class="o">!=</span><span class="n">i</span><span class="p">:</span>
-</span><span class='line'>            <span class="n">t</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-</span><span class='line'>            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-</span><span class='line'>            <span class="n">x</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">x</span>
-</span><span class='line'><span class="k">print</span> <span class="n">select</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">48</span><span class="p">],</span><span class="mi">8</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-</br>
-<strong>4. 快速排序</strong></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">partition</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">low</span><span class="p">,</span><span class="n">high</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">key</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">low</span><span class="p">]</span>
-</span><span class='line'>    <span class="k">while</span> <span class="n">low</span><span class="o">&lt;</span><span class="n">high</span><span class="p">:</span>
-</span><span class='line'>        <span class="k">while</span> <span class="n">low</span><span class="o">&lt;</span><span class="n">high</span> <span class="ow">and</span> <span class="n">x</span><span class="p">[</span><span class="n">high</span><span class="p">]</span><span class="o">&gt;=</span><span class="n">key</span><span class="p">:</span>
-</span><span class='line'>            <span class="n">high</span> <span class="o">-=</span> <span class="mi">1</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">low</span> <span class="o">&lt;</span> <span class="n">high</span><span class="p">:</span>
-</span><span class='line'>            <span class="n">x</span><span class="p">[</span><span class="n">low</span><span class="p">]</span><span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">high</span><span class="p">]</span>
-</span><span class='line'>            <span class="n">low</span> <span class="o">+=</span> <span class="mi">1</span>
-</span><span class='line'>        <span class="k">while</span> <span class="n">low</span> <span class="o">&lt;</span><span class="n">high</span> <span class="ow">and</span> <span class="n">x</span><span class="p">[</span><span class="n">low</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">key</span><span class="p">:</span>
-</span><span class='line'>            <span class="n">low</span> <span class="o">+=</span> <span class="mi">1</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">low</span> <span class="o">&lt;</span> <span class="n">high</span><span class="p">:</span>
-</span><span class='line'>            <span class="n">x</span><span class="p">[</span><span class="n">high</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">low</span><span class="p">]</span>
-</span><span class='line'>            <span class="n">high</span> <span class="o">-=</span> <span class="mi">1</span>
-</span><span class='line'>    <span class="n">x</span><span class="p">[</span><span class="n">low</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">low</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">quick</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">low</span><span class="p">,</span><span class="n">high</span><span class="p">):</span>
-</span><span class='line'>    <span class="k">if</span> <span class="n">low</span> <span class="o">&lt;</span> <span class="n">high</span><span class="p">:</span>
-</span><span class='line'>       <span class="n">p</span> <span class="o">=</span> <span class="n">partition</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">low</span><span class="p">,</span><span class="n">high</span><span class="p">)</span>
-</span><span class='line'>       <span class="n">quick</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">low</span><span class="p">,</span><span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>       <span class="n">quick</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">high</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">x</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-</br>
-<strong>5. 利用函數排序</strong><br/>
-1) cmp()<br/>
-Compare the two objects x and y and return an integer according to the outcome. The return value is negative if x &lt; y, zero if x == y and strictly positive if x > y.<br/>
-2) reversed()<br/>
-3) sort()<br/>
-4) sorted()</p>
 ]]></content>
   </entry>
   
