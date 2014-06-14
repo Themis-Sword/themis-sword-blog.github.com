@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "New Job"
+title: "New Job, New Way"
 date: 2014-06-14 10:04:25 +0800
 comments: true
 categories: mood
-keywords: new, job, future
+keywords: new, job, way
 description: new job new future
 ---
 {% img /images/bigdata.jpg %}
