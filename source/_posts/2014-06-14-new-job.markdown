@@ -1,0 +1,20 @@
+---
+layout: post
+title: "New Job"
+date: 2014-06-14 10:04:25 +0800
+comments: true
+categories: mood
+keywords: new, job, future
+description: new job new future
+---
+{% img /images/bigdata.jpg %}
+
+It's been a whole month working in a new company, which is a venture company with the area of distributed storage focused.<!--more-->  
+  
+Returning back to Beijing after half a year's separation, living in a high-rise apartment, I soon realized, it would be a new way.  
+  
+Everything's changed whereas everything seems the same.  
+  
+NEW CHALLENGES come with the new position. Studying and reading fulfill every day and almost every minute, that joys me. I could see vigor's back and fresh air's pervading.  
+  
+Time to transform and evolve.

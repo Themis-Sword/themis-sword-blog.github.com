@@ -7,7 +7,7 @@ categories: mood
 keywords: 2014, 路向何方
 description: 2014，路向何方
 ---
-{% img /images/mark.jpg %}  
+{% img /images/mark.jpg %}<!--more-->  
   
 2013，在旅行－工作－旅行－工作－辭職－旅行－折騰中度過。  
   
