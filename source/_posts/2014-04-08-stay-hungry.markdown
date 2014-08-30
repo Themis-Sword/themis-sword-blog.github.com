@@ -9,7 +9,7 @@ description: stay hungry stay foolish
 ---
 
 {% img /images/stayhsf.png %}  
-**"Stay Hungry, Stay Foolish."** Such resounding words delivered by Steve Jobs were in 2005 Stanford Commencement Address which, was actually not the topic today. The quote is just about some reflections of a movie [*Groundhog Day*](http://www.imdb.com/title/tt0107048/).<!--more-->  
+**"Stay Hungry, Stay Foolish."** Such resounding words delivered by Steve Jobs in 2005 Stanford Commencement Address which, was actually not the topic today. The quote is just about some reflections of a movie [*Groundhog Day*](http://www.imdb.com/title/tt0107048/).<!--more-->  
   
 **"What would you do if you were stuck in one place and every day was exactly the same, and nothing that you did mattered?"**  
   
