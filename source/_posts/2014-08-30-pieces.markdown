@@ -7,7 +7,7 @@ categories: mood
 keywords: thoughts, pieces
 description: pieces
 ---
-{% img /images/oelcoffee.jpg %}
+{% img /images/owlcoffee.jpg %}
 
 A friend said I am a traditional person intrinsically somehow with an attempt to break the invisible shackles, the boundary of the traditional and the nontraditional. I know it's true for I am raised and influenced since my juvenile in such family.<!--more-->  
   
