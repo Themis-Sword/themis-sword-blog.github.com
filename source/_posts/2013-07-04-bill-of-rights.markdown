@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Bill of Rights"
+title: "Bill of Rights and the Constitution Amendments 11-27"
 date: 2013-07-04 00:00:00 -0400
 comments: true
 categories: justice
@@ -64,6 +64,8 @@ The enumeration in the Constitution, of certain rights, shall not be construed t
   
 The powers not delegated to the United States by the Constitution, nor prohibited by it to the States, are reserved to the States respectively, or to the people.  
   
+---------------------------------------------------
+
 ####AMENDMENT XI  
 Passed by Congress March 4, 1794. Ratified February 7, 1795.  
   
