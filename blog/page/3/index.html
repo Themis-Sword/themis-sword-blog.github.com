@@ -123,15 +123,16 @@ $(document).ready(
     <article class="post">
 	<h3 class="title">
 		
-		<a href="/blog/04142015/big/">
+		<a href="/blog/04022014/fading-away/">
 		
-			Test</a>
+			Fading Away</a>
 	</h3>
 	<div class="entry-content">
-		
+		<p><img src="/images/fallingleaves.png"></p>
 
+<p>Leaves sway down in sough late autumn winds, desolately, fading away, without one single sign.
 		
-		
+		<a href="/blog/04022014/fading-away/" class="more-link">Read on &rarr;</a>
 	</div>
 
 
@@ -148,45 +149,7 @@ $(document).ready(
   
 
 
-<time datetime="2015-04-14T11:54:08+08:00" pubdate data-updated="true">Apr 14<span>th</span>, 2015</time></div>
-	
-
-
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/08302014/pieces/">
-		
-			Pieces</a>
-	</h3>
-	<div class="entry-content">
-		<p><img src="/images/owlcoffee.jpg"></p>
-
-<p>A friend said I am a traditional person intrinsically somehow with an attempt to break the invisible shackles, the boundary of the traditional and the nontraditional. I know it&rsquo;s true for I am raised and influenced since my juvenile in such family and society.
-		
-		<a href="/blog/08302014/pieces/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-08-30T22:15:03+08:00" pubdate data-updated="true">Aug 30<span>th</span>, 2014</time></div>
+<time datetime="2014-04-02T20:21:50+08:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2014</time></div>
 	
 
 <div class="tags">
@@ -204,18 +167,21 @@ $(document).ready(
     <article class="post">
 	<h3 class="title">
 		
-		<a href="/blog/07102014/hurt/">
+		<a href="/blog/04022014/python-dong-tai-lei-xing/">
 		
-			Hurt</a>
+			Python 動態類型(轉)</a>
 	</h3>
 	<div class="entry-content">
-		<iframe width="640" height="360" src="//www.youtube.com/embed/clq01TXQR0s?rel=0" frameborder="0" allowfullscreen></iframe>
+		<p>Python中只有一個賦值模型</p>
 
+<h4>1. 缺少類型聲明語句的情況</h4>
 
-<p>I hurt myself today<br/>
-To see if I still feel  
+<p>在Python中，類型是在運行過程中自動決定的，而不是通過代碼聲明。這意味著沒有必要事聲明變量。只要記住，這個概念實質上對變量，對象和它們之間的關系都適用。那麽這個概念也容易理解並掌握。</p>
+
+<p><strong>A 變量，對象和引用</strong><br/>
+變量創建：一個變量，當代碼第一次給它賦值時它就被創建了。之後的賦值將會改變已創建的變量名的值。Python在代碼運行之前先檢測變量名，可以當成是最初的賦值創建變量。
 		
-		<a href="/blog/07102014/hurt/" class="more-link">Read on &rarr;</a>
+		<a href="/blog/04022014/python-dong-tai-lei-xing/" class="more-link">Read on &rarr;</a>
 	</div>
 
 
@@ -232,12 +198,12 @@ To see if I still feel
   
 
 
-<time datetime="2014-07-10T16:52:28+08:00" pubdate data-updated="true">Jul 10<span>th</span>, 2014</time></div>
+<time datetime="2014-04-02T15:15:39+08:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2014</time></div>
 	
 
 <div class="tags">
 
-	<a class='category' href='/blog/categories/mood/'>mood</a>
+	<a class='category' href='/blog/categories/python/'>python</a>
 
 </div>
 
@@ -250,16 +216,33 @@ To see if I still feel
     <article class="post">
 	<h3 class="title">
 		
-		<a href="/blog/06142014/new-job/">
+		<a href="/blog/04022014/wang-ye-zhong-ding-xiang-de-fang-fa/">
 		
-			New Job, New Way</a>
+			網頁重定向的方法(轉)</a>
 	</h3>
 	<div class="entry-content">
-		<p><img src="/images/bigdata.jpg"></p>
+		<h4>1. 使用HTTP通訊協定301 Moved Permanently來完成轉導網址(永久轉址)</h4>
 
-<p>It&rsquo;s been a whole month working in a new company, which is a venture company with the area of distributed storage focused.
+<p><em>建議使用，不會對SEO有不良影響</em></p>
+
+<h5>PHP程式範例:</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span class='line'>    <span class="nx">header</span><span class="p">(</span><span class="err">“</span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">301</span> <span class="nx">Moved</span> <span class="nx">Permanently</span><span class="s2">&quot;);</span>
+</span><span class='line'><span class="s2">    header(“Location: http://www.new-url.com/&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span><span class='line'><span class="x">&lt;p&gt;The document has moved &lt;a href=&quot;http://www.new-url.com/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>  
 		
-		<a href="/blog/06142014/new-job/" class="more-link">Read on &rarr;</a>
+		<a href="/blog/04022014/wang-ye-zhong-ding-xiang-de-fang-fa/" class="more-link">Read on &rarr;</a>
 	</div>
 
 
@@ -276,12 +259,12 @@ To see if I still feel
   
 
 
-<time datetime="2014-06-14T10:04:25+08:00" pubdate data-updated="true">Jun 14<span>th</span>, 2014</time></div>
+<time datetime="2014-04-02T10:58:43+08:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2014</time></div>
 	
 
 <div class="tags">
 
-	<a class='category' href='/blog/categories/mood/'>mood</a>
+	<a class='category' href='/blog/categories/web/'>web</a>
 
 </div>
 
@@ -294,17 +277,16 @@ To see if I still feel
     <article class="post">
 	<h3 class="title">
 		
-		<a href="/blog/05042014/you-are-alive/">
+		<a href="/blog/04012014/software-testing/">
 		
-			You Are Alive</a>
+			Software Testing</a>
 	</h3>
 	<div class="entry-content">
-		<p><img src="/images/alive.jpg"></p>
+		<h3>1. Overview</h3>
 
-<p>如果你的內心有不安<br/>
-If you&rsquo;re carrying your restlessness in your heart,
+<p>Software testing provide an objective, independent view to allow the business to appreciate and understand the risks of software, product or service implementation. Test techniques include, but are not limited to the process of executing a program or application with the intent of finding software bugs (errors or other defects).
 		
-		<a href="/blog/05042014/you-are-alive/" class="more-link">Read on &rarr;</a>
+		<a href="/blog/04012014/software-testing/" class="more-link">Read on &rarr;</a>
 	</div>
 
 
@@ -321,12 +303,62 @@ If you&rsquo;re carrying your restlessness in your heart,
   
 
 
-<time datetime="2014-05-04T20:21:19+08:00" pubdate data-updated="true">May 4<span>th</span>, 2014</time></div>
+<time datetime="2014-04-01T16:24:56+08:00" pubdate data-updated="true">Apr 1<span>st</span>, 2014</time></div>
 	
 
 <div class="tags">
 
-	<a class='category' href='/blog/categories/mood/'>mood</a>
+	<a class='category' href='/blog/categories/software/'>software</a>
+
+</div>
+
+
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h3 class="title">
+		
+		<a href="/blog/03312014/python-wen-jian-chu-li/">
+		
+			Python 文件處理</a>
+	</h3>
+	<div class="entry-content">
+		<p>python對文件的處理的兩個內建函數：<br/>
+open()、file()，這個兩函數提供了初始化輸入\輸出（I\O）操作的通用接口。兩函數的功能相同。<br/>
+基本用法：<br/>
+file_object=open(filename, access_mode=&lsquo;r&rsquo;, buffering=-1）
+file_object 是定義一個打開文件的對象<br/>
+access_mode 是打開文件的模式；通常，文件使用模式  &lsquo;r&rsquo;,&lsquo;w&rsquo;,&lsquo;a&rsquo; 來打開，分別代表，讀取，寫入，追加。<br/>
+&lsquo;r&rsquo; 模式打開已經存在的文件<br/>
+&lsquo;w&rsquo; 模式打開的文件若存在則首先清空，再加入內容。<br/>
+&lsquo;a&rsquo; 這個模式是追加內容到文件中
+		
+		<a href="/blog/03312014/python-wen-jian-chu-li/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-31T17:48:17+08:00" pubdate data-updated="true">Mar 31<span>st</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/python/'>python</a>
 
 </div>
 
@@ -337,8 +369,10 @@ If you&rsquo;re carrying your restlessness in your heart,
 
 <nav id="pagenavi">
     
+        <a href="/blog/page/2/" class="prev">Prev</a>
     
-        <a href="/blog/page/2/" class="next">Next</a>
+    
+        <a href="/blog/page/4/" class="next">Next</a>
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>

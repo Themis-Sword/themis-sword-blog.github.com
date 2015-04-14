@@ -1,0 +1,978 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: python | Themis_Sword's Blog]]></title>
+  <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://www.aprilzephyr.com/"/>
+  <updated>2015-04-14T12:48:56+08:00</updated>
+  <id>http://www.aprilzephyr.com/</id>
+  <author>
+    <name><![CDATA[Themis_Sword]]></name>
+    <email><![CDATA[licong0419@outlook.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Python 正則表達式指南(轉)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/05042014/python-zheng-ze-biao-da-shi-zhi-nan-zhuan/"/>
+    <updated>2014-05-04T14:49:04+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/05042014/python-zheng-ze-biao-da-shi-zhi-nan-zhuan</id>
+    <content type="html"><![CDATA[<h4>1. 正則表達式基礎</h4>
+
+<h5>1.1 簡單介紹</h5>
+
+<p>正則表達式並不是Python的一部分。正則表達式是用於處理字符串的強大工具，擁有自己獨特的語法以及一個獨立的處理引擎，效率上可能不如str自帶的方法，但功能十分強大。得益於這一點，在提供了正則表達式的語言裏，正則表達式的語法都是一樣的，區別只在於不同的編程語言實現支持的語法數量不同；但不用擔心，不被支持的語法通常是不常用的部分。如果已經在其他語言裏使用過正則表達式，只需要簡單看一看就可以上手了。</p>
+
+<p>下圖展示了使用正則表達式進行匹配的流程：<!--more--><br/>
+<img src="/images/zhengzbds.png"></p>
+
+<p>正則表達式的大致匹配過程是：依次拿出表達式和文本中的字符比較，如果每一個字符都能匹配，則匹配成功；一旦有匹配不成功的字符則匹配失敗。如果表達式中有量詞或邊界，這個過程會稍微有一些不同，但也是很好理解的，看下圖中的示例以及自己多使用幾次就能明白。</p>
+
+<p>下錶列出了Python支持的正則表達式元字符和語法：</p>
+
+<table><tbody>
+<tr><td><em> 語法 </em></td><td><em> 說明 </em></td><td><em> 表達式實例 </em></td><td><em> 完整匹配的字符串 </em></td></tr>
+<tr><td></td><td><em> 字符 </em><td></td></td><td></td></tr>
+<tr><td> 一般字符 </td><td> 匹配自身 </td><td> abc </td><td> abc </td></tr>
+<tr><td> . </td><td> 匹配任意除換行符"\n"外的字符。在DOTALL模式中也能匹配換行符 </td><td> a.c </td><td> abc </td></tr>
+<tr><td> \ </td><td> 轉義字符，使後一個字符改變原來的意思。如果字符串中有字符*需要匹配，可以使用\*或者字符集[*] </td><td> a\.c a\\c </td><td> a.c a\c </td></tr>
+<tr><td> [...] </td><td> 字符集(字符類)。對應的位置可以是字符集中任意字符。字符集中的字符可以逐個列出，也可以給出範圍，如[abc]或[a-c]。第一個字符如果是^則表示取反，如[^abc]表示不是abc的其他字符。 所有的特殊字符在字符集中都失去原油的特殊含義。在字符集中如果要使用]、-或^，可以在前面加上反斜槓，或把]、-放在第一個字符，把^放在非第一個字符 </td><td> a[bdc]e </td><td> abe ace ade </td></tr>
+<tr><td></td><td><em> 預定義字符集(可以寫在字符集[...]中) </em><td></td></td><td></td></tr>
+<tr><td> \d </td><td> 數字:[0-9] </td><td> a\dc </td><td> a1c </td></tr>
+<tr><td> \D </td><td> 非數字:[^\d] </td><td> a\Dc </td><td> abc </td></tr>
+<tr><td> \s </td><td> 非白字符:[<空格>\t\r\n\f\v] </td><td> a\sc </td><td> a c </td></tr>
+<tr><td> \S </td><td> 非空白字符:[^\s] </td><td> a\Sc </td><td> abc </td></tr>
+<tr><td> \w </td><td> 單詞字符:[A-Z a-z 0-9] </td><td> a\wc </td><td> abc </td></tr>
+<tr><td> \W </td><td> 非單詞字符:[^\W] </td><td> a\Wc </td><td> a c </td></tr>
+<tr><td></td><td><em> 數量詞(用在字符或(...)之後) </em><td></td></td><td></td></tr>
+<tr><td> * </td><td> 匹配前一個字符0或無限次 </td><td> abc* </td><td> ab abccc </td></tr>
+<tr><td> + </td><td> 匹配前一個字符1或無限次 </td><td> abc+ </td><td> abc abccc </td></tr>
+<tr><td> ? </td><td> 匹配前一個字符0或1次 </td><td> abc? </td><td> ab abc </td></tr>
+<tr><td> {m} </td><td> 匹配前一個字符m次 </td><td> ab{2}c </td><td> abbc </td></tr>
+<tr><td> {m,n} </td><td> 匹配前一個字符m至n次。m和n可以省略：若省略m，則匹配0至n次；若省略n，則匹配m至無限次 </td><td> ab{1,2}c </td><td> abc abbc </td></tr>
+<tr><td> \*?+? ?? {m,n}? </td><td> 使*+?{m,n}變成非貪婪模式 </td><td> 示例在下文中介紹 </td><td> </td></tr>
+<tr><td></td><td><em> 邊界匹配(不消耗待匹配字符串中的字符) </em><td></td></td><td></td></tr>
+<tr><td> ^ </td><td> 匹配字符串開頭。在多行模式中匹配每一行的開頭。 </td><td> ^abc </td><td> abc </td></tr>
+<tr><td> $ </td><td> 匹配字符串末尾。在多行模式中匹配每一行的末尾。 </td><td> abc$ </td><td> abc </td></tr>
+<tr><td> \A </td><td> 儘匹配字符串開頭。 </td><td> \Aabc </td><td> abc </td></tr>
+<tr><td> \Z </td><td> 儘匹配字符串末尾。 </td><td> \Zabc </td><td> abc </td></tr>
+<tr><td> \b </td><td> 匹配\w和\W之間。 </td><td> a\b!bc </td><td> a!bc </td></tr>
+<tr><td> \B </td><td> [^\b] </td><td> a\Bbc </td><td> abc </td></tr>
+<tr><td></td><td><em> 邏輯、分組 </em><td></td></td><td></td></tr>
+<tr><td> | </td><td> |代表左右表達式任意匹配一個。總是先嘗試匹配左邊的表達式，一旦成功匹配則跳過匹配右邊的表達式。如果|沒有被包括在()中，則它的範圍是整個正則表達式。 </td><td> abc|def </td><td> abc def </td></tr>
+<tr><td> (...) </td><td> 被擴起來的表達式將作為分組，從表達式左邊開始每遇到一個分組的左括號'('，編號+1。另外，分組表達式作為一個整體，可以後接數量詞。表達式中的|儘在該組中有效。 </td><td> (abc){2} a(123|456)c </td><td> abcabc a456c </td></tr>
+<tr><td> (?P<name>...) </td><td> 分組，除了原有的編號外再指定一個額外的別名。 </td><td> (?P<id>abc){2} </td><td> abcabc </td></tr>
+<tr><td> \<number> </td><td> 引用編號為<number>的分組匹配到的字符串 </td><td> (\d)abc\1 </td><td> 1abc1 5abc5 </td></tr>
+<tr><td> (?P=name) </td><td> 引用別名為<name>的分組匹配到的字符串。 </td><td> (?P<id>\d)abc(?P=id) </td><td> 1abc 5abc5 </td></tr>
+<tr><td></td><td><em> 特殊構造(不作為分組) </em><td></td></td><td></td></tr>
+<tr><td> (?:...) </td><td> (...)的不分組版本，用於使用'|'或後接數量詞 </td><td> (?:abc){2} </td><td> abc abc </td></tr>
+<tr><td> (?iLmsux) </td><td> iLmsux的每個字符串代表一個匹配模式，只能用在正則表達式的開頭，可選多個。匹配模式將在下文中介紹。 </td><td> (?i)(abc) </td><td> AbC </td></tr>
+<tr><td> (?#...) </td><td> #後的內容將作為註釋被忽略 </td><td> abc(?#comment)123 </td><td> abc123 </td></tr>
+<tr><td> (?=...) </td><td> 之後的字符串內容需要匹配表達式才能成功匹配。不消耗字符串內容。 </td><td> abc(?=\d) </td><td> 後面是數字的a </td></tr>
+<tr><td> (?!...) </td><td> 之後的字符串內容需要不匹配表達式才能成功匹配。不消耗字符串內容。 </td><td> abc(?!\d) </td><td> 後面不是數字的a </td></tr>
+<tr><td> (?<=...) </td><td> 之前的字符串內容需要匹配表達式才能成功匹配。不消耗字符串內容。 </td><td> (?<=\d)a </td><td> 前面是數字的a </td></tr>
+<tr><td> (?< !...) </td><td> 之前的字符串內容需要不匹配表達式才能成功匹配。不消耗字符串內容。 </td><td> (?<!\d)a </td><td> 前面不是數字的a </td></tr>
+<tr><td> (?(id/name)yes-pattern|no-pattern) </td><td> 如果編號為id/別名為name的組匹配到字符，則需要皮皮yes-pattern，否則需要匹配no-pattern。 |np-pattern可以省略。 </td><td> (\d)abc(?(1)\d|abc) </td><td> 1abc2 abcabc </td></tr>
+</tbody></table>
+
+
+<p></p>
+
+<h5>1.2 數量詞的貪婪模式與非貪婪模式</h5>
+
+<p>正則表達式通常用於在文本中查找匹配的字符串。Python裏數量詞默認是貪婪的（在少數語言裏也可能是默認非貪婪），總是嘗試匹配盡可能多的字符；非貪婪的則相反，總是嘗試匹配盡可能少的字符。例如：正則表達式"a*&ldquo;如果用於查找"abbbc"，將找到"abbb"。而如果使用非貪婪的數量詞"ab*?"，將找到"a"。</p>
+
+<h5>1.3. 反斜杠的困擾</h5>
+
+<p>與大多數編程語言相同，正則表達式裏使用"\&ldquo;作為轉義字符，這就可能造成反斜杠困擾。假如你需要匹配文本中的字符&rdquo;\&ldquo;，那麽使用編程語言表示的正則表達式裏將需要4個反斜杠&rdquo;\\\\&ldquo;：前兩個和後兩個分別用於在編程語言裏轉義成反斜杠，轉換成兩個反斜杠後再在正則表達式裏轉義成一個反斜杠。Python裏的原生字符串很好地解決了這個問題，這個例子中的正則表達式可以使用r&rdquo;\\&ldquo;表示。同樣，匹配一個數字的&rdquo;\\d"可以寫成r"\d"。有了原生字符串，你再也不用擔心是不是漏寫了反斜杠，寫出來的表達式也更直觀。</p>
+
+<h5>1.4. 匹配模式</h5>
+
+<p>正則表達式提供了一些可用的匹配模式，比如忽略大小寫、多行匹配等，這部分內容將在Pattern類的工廠方法re.compile(pattern[, flags])中一起介紹。</p>
+
+<h4>2. re模塊</h4>
+
+<h5>2.1 開始使用re</h5>
+
+<p>Python通過re模塊提供對正則表達式的支持。使用re的一般步驟是先將正則表達式的字符串形式編譯為Pattern實例，然後使用Pattern實例處理文本並獲得匹配結果（一個Match實例），最後使用Match實例獲得信息，進行其他的操作。<br/>
+``` python</p>
+
+<h1>encoding: UTF-8</h1>
+
+<p>import re</p>
+
+<h1>将正则表达式编译成Pattern对象</h1>
+
+<p>pattern = re.compile(r'hello')</p>
+
+<h1>使用Pattern匹配文本，获得匹配结果，无法匹配时将返回None</h1>
+
+<p>match = pattern.match(&lsquo;hello world!&rsquo;)</p>
+
+<p>if match:</p>
+
+<pre><code># 使用Match获得分组信息
+print match.group()
+</code></pre>
+
+<h3>输出</h3>
+
+<h1>hello</h1>
+
+<p>```</p>
+
+<p><strong>re.compile(strPattern[, flag]):</strong><br/>
+這個方法是Pattern類的工廠方法，用於將字符串形式的正則表達式編譯為Pattern對象。 第二個參數flag是匹配模式，取值可以使用按位或運算符'|&lsquo;表示同時生效，比如re.I | re.M。另外，你也可以在regex字符串中指定模式，比如re.compile('pattern&rsquo;, re.I | re.M)與re.compile(&lsquo;(?im)pattern&rsquo;)是等價的。
+可選值有：<br/>
+* re.I(re.IGNORECASE): 忽略大小寫（括號內是完整寫法，下同）<br/>
+* M(MULTILINE): 多行模式，改變'^&lsquo;和&rsquo;$&lsquo;的行為（參見上圖）<br/>
+* S(DOTALL): 點任意匹配模式，改變&rsquo;.&lsquo;的行為<br/>
+* L(LOCALE): 使預定字符類 \w \W \b \B \s \S 取決於當前區域設定<br/>
+* U(UNICODE): 使預定字符類 \w \W \b \B \s \S \d \D 取決於unicode定義的字符屬性<br/>
+* X(VERBOSE): 詳細模式。這個模式下正則表達式可以是多行，忽略空白字符，並可以加入註釋。以下兩個正則表達式是等價的：<br/>
+``` python
+a = re.compile(r"&ldquo;&rdquo;\d +  # the integral part</p>
+
+<pre><code>               \.    # the decimal point
+               \d *  # some fractional digits""", re.X)
+</code></pre>
+
+<p>b = re.compile(r"\d+.\d<em>&ldquo;)
+<code>  
+re提供了眾多模塊方法用於完成正則表達式的功能。這些方法可以使用Pattern實例的相應方法替代，唯一的好處是少寫一行re.compile()代碼，但同時也無法復用編譯後的Pattern對象。這些方法將在Pattern類的實例方法部分一起介紹。如上面這個例子可以簡寫為：  
+</code> python
+m = re.match(r'hello', &lsquo;hello world!&rsquo;)
+print m.group()
+```<br/>
+re模塊還提供了一個方法escape(string)，用於將string中的正則表達式元字符如</em>/+/?等之前加上轉義符再返回，在需要大量匹配元字符時有那麽一點用。</p>
+
+<h5>2.2 Match</h5>
+
+<p>Match对象是一次匹配的结果，包含了很多关于此次匹配的信息，可以使用Match提供的可读属性或方法来获取这些信息。</p>
+
+<p>属性：<br/>
+1) string: 匹配时使用的文本。<br/>
+2) re: 匹配时使用的Pattern对象。<br/>
+3) pos: 文本中正则表达式开始搜索的索引。值与Pattern.match()和Pattern.seach()方法的同名参数相同。<br/>
+4) endpos: 文本中正则表达式结束搜索的索引。值与Pattern.match()和Pattern.seach()方法的同名参数相同。<br/>
+5) lastindex: 最后一个被捕获的分组在文本中的索引。如果没有被捕获的分组，将为None。<br/>
+6) lastgroup: 最后一个被捕获的分组的别名。如果这个分组没有别名或者没有被捕获的分组，将为None。</p>
+
+<p>方法：<br/>
+1) <strong>group([group1, …]):</strong> <br/>
+获得一个或多个分组截获的字符串；指定多个参数时将以元组形式返回。group1可以使用编号也可以使用别名；编号0代表整个匹配的子串；不填写参数时，返回group(0)；没有截获字符串的组返回None；截获了多次的组返回最后一次截获的子串。<br/>
+2) <strong>groups([default]):</strong><br/>
+以元组形式返回全部分组截获的字符串。相当于调用group(1,2,…last)。default表示没有截获字符串的组以这个值替代，默认为None。<br/>
+3) <strong>groupdict([default]):</strong><br/>
+返回以有别名的组的别名为键、以该组截获的子串为值的字典，没有别名的组不包含在内。default含义同上。<br/>
+4) <strong>start([group]):</strong><br/>
+返回指定的组截获的子串在string中的起始索引（子串第一个字符的索引）。group默认值为0。<br/>
+5) <strong>end([group]):</strong><br/>
+返回指定的组截获的子串在string中的结束索引（子串最后一个字符的索引+1）。group默认值为0。<br/>
+6) <strong>span([group]):</strong><br/>
+返回(start(group), end(group))。<br/>
+7) <strong>expand(template):</strong><br/>
+将匹配到的分组代入template中然后返回。template中可以使用\id或\g<id>、\g<name>引用分组，但不能使用编号0。\id与\g<id>是等价的；但\10将被认为是第10个分组，如果你想表达\1之后是字符'0'，只能使用\g<1>0。<br/>
+``` python
+import re
+m = re.match(r'(\w+) (\w+)(?P<sign>.*)&lsquo;, 'hello world!&rsquo;)</p>
+
+<p>print &ldquo;m.string:&rdquo;, m.string
+print &ldquo;m.re:&rdquo;, m.re
+print &ldquo;m.pos:&rdquo;, m.pos
+print &ldquo;m.endpos:&rdquo;, m.endpos
+print &ldquo;m.lastindex:&rdquo;, m.lastindex
+print &ldquo;m.lastgroup:&rdquo;, m.lastgroup</p>
+
+<p>print &ldquo;m.group(1,2):&rdquo;, m.group(1, 2)
+print &ldquo;m.groups():&rdquo;, m.groups()
+print &ldquo;m.groupdict():&rdquo;, m.groupdict()
+print &ldquo;m.start(2):&rdquo;, m.start(2)
+print &ldquo;m.end(2):&rdquo;, m.end(2)
+print &ldquo;m.span(2):&rdquo;, m.span(2)
+print r"m.expand(r'\2 \1\3'):&ldquo;, m.expand(r'\2 \1\3')</p>
+
+<h3>output</h3>
+
+<h1>m.string: hello world!</h1>
+
+<h1>m.re: &lt;_sre.SRE_Pattern object at 0x016E1A38></h1>
+
+<h1>m.pos: 0</h1>
+
+<h1>m.endpos: 12</h1>
+
+<h1>m.lastindex: 3</h1>
+
+<h1>m.lastgroup: sign</h1>
+
+<h1>m.group(1,2): (&lsquo;hello&rsquo;, &lsquo;world&rsquo;)</h1>
+
+<h1>m.groups(): (&lsquo;hello&rsquo;, &lsquo;world&rsquo;, &lsquo;!&rsquo;)</h1>
+
+<h1>m.groupdict(): {&lsquo;sign&rsquo;: &lsquo;!&rsquo;}</h1>
+
+<h1>m.start(2): 6</h1>
+
+<h1>m.end(2): 11</h1>
+
+<h1>m.span(2): (6, 11)</h1>
+
+<h1>m.expand(r'\2 \1\3'): world hello!</h1>
+
+<p>```</p>
+
+<h5>2.3 Pattern</h5>
+
+<p>Pattern對象是一個編譯好的正則表達式，通過Pattern提供的一系列方法可以對文本進行匹配查找。<br/>
+Pattern不能直接實例化，必須使用re.compile()進行構造。<br/>
+Pattern提供了幾個可讀屬性用於獲取表達式的相關信息：<br/>
+1) pattern: 編譯時用的表達式字符串。<br/>
+2) flags: 編譯時用的匹配模式。數字形式。<br/>
+3) groups: 表達式中分組的數量。<br/>
+4) groupindex: 以表達式中有別名的組的別名為鍵、以該組對應的編號為值的字典，沒有別名的組不包含在內。<br/>
+``` python
+import re
+p = re.compile(r'(\w+) (\w+)(?P<sign>.*)&lsquo;, re.DOTALL)</p>
+
+<p>print &ldquo;p.pattern:&rdquo;, p.pattern
+print &ldquo;p.flags:&rdquo;, p.flags
+print &ldquo;p.groups:&rdquo;, p.groups
+print &ldquo;p.groupindex:&rdquo;, p.groupindex</p>
+
+<h3>output</h3>
+
+<h1>p.pattern: (\w+) (\w+)(?P<sign>.*)</h1>
+
+<h1>p.flags: 16</h1>
+
+<h1>p.groups: 3</h1>
+
+<h1>p.groupindex: {&lsquo;sign&rsquo;: 3}</h1>
+
+<p><code>  
+实例方法[ | re模块方法]：  
+1) **match(string[, pos[, endpos]]) | re.match(pattern, string[, flags]):**  
+这个方法将从string的pos下标处起尝试匹配pattern；如果pattern结束时仍可匹配，则返回一个Match对象；如果匹配过程中pattern无法匹配，或者匹配未结束就已到达endpos，则返回None。  
+pos和endpos的默认值分别为0和len(string)；re.match()无法指定这两个参数，参数flags用于编译pattern时指定匹配模式。  
+注意：这个方法并不是完全匹配。当pattern结束时若string还有剩余字符，仍然视为成功。想要完全匹配，可以在表达式末尾加上边界匹配符'$'。  
+示例参见2.1小节。
+2) **search(string[, pos[, endpos]]) | re.search(pattern, string[, flags]):**  
+这个方法用于查找字符串中可以匹配成功的子串。从string的pos下标处起尝试匹配pattern，如果pattern结束时仍可匹配，则返回一个Match对象；若无法匹配，则将pos加1后重新尝试匹配；直到pos=endpos时仍无法匹配则返回None。  
+pos和endpos的默认值分别为0和len(string))；re.search()无法指定这两个参数，参数flags用于编译pattern时指定匹配模式。  
+</code> python</p>
+
+<h1>encoding: UTF-8</h1>
+
+<p>import re</p>
+
+<h1>将正则表达式编译成Pattern对象</h1>
+
+<p>pattern = re.compile(r'world')</p>
+
+<h1>使用search()查找匹配的子串，不存在能匹配的子串时将返回None</h1>
+
+<h1>这个例子中使用match()无法成功匹配</h1>
+
+<p>match = pattern.search(&lsquo;hello world!&rsquo;)</p>
+
+<p>if match:</p>
+
+<pre><code># 使用Match获得分组信息 
+print match.group() 
+</code></pre>
+
+<h3>输出 ###</h3>
+
+<h1>world</h1>
+
+<p><code>  
+3) **split(string[, maxsplit]) | re.split(pattern, string[, maxsplit]):**  
+按照能夠匹配的子串將string分割後返回列表。maxsplit用於指定最大分割次數，不指定將全部分割。  
+</code> python
+import re</p>
+
+<p>p = re.compile(r'\d+&lsquo;)
+print p.split('one1two2three3four4&rsquo;)</p>
+
+<h3>output</h3>
+
+<h1>[&lsquo;one&rsquo;, &lsquo;two&rsquo;, &lsquo;three&rsquo;, &lsquo;four&rsquo;, &lsquo;&rsquo;]</h1>
+
+<p><code>  
+4) **findall(string[, pos[, endpos]]) | re.findall(pattern, string[, flags]):**  
+搜索string，以列表形式返回全部能匹配的子串。  
+</code> python
+import re</p>
+
+<p>p = re.compile(r'\d+&lsquo;)
+print p.findall('one1two2three3four4&rsquo;)</p>
+
+<h3>output</h3>
+
+<h1>[&lsquo;1&rsquo;, &lsquo;2&rsquo;, &lsquo;3&rsquo;, &lsquo;4&rsquo;]</h1>
+
+<p><code>  
+5) **finditer(string[, pos[, endpos]]) | re.finditer(pattern, string[, flags]):**  
+搜索string，返回一個順序訪問每一個匹配結果（Match對象）的叠代器。  
+</code> python
+import re</p>
+
+<p>p = re.compile(r'\d+&lsquo;)
+for m in p.finditer('one1two2three3four4&rsquo;):</p>
+
+<pre><code>print m.group(),
+</code></pre>
+
+<h3>output</h3>
+
+<h1>1 2 3 4</h1>
+
+<p><code>  
+6) **sub(repl, string[, count]) | re.sub(pattern, repl, string[, count]):**  
+使用repl替換string中每一個匹配的子串後返回替換後的字符串。  
+當repl是一個字符串時，可以使用\id或\g&lt;id&gt;、\g&lt;name&gt;引用分組，但不能使用編號0。  
+當repl是一個方法時，這個方法應當只接受一個參數（Match對象），並返回一個字符串用於替換（返回的字符串中不能再引用分組）。  
+count用於指定最多替換次數，不指定時全部替換。  
+</code> python
+import re</p>
+
+<p>p = re.compile(r'(\w+) (\w+)&lsquo;)
+s = 'i say, hello world!&rsquo;</p>
+
+<p>print p.sub(r'\2 \1', s)</p>
+
+<p>def func(m):</p>
+
+<pre><code>return m.group(1).title() + ' ' + m.group(2).title()
+</code></pre>
+
+<p>print p.sub(func, s)</p>
+
+<h3>output</h3>
+
+<h1>say i, world hello!</h1>
+
+<h1>I Say, Hello World!</h1>
+
+<p><code>  
+7) **subn(repl, string[, count]) |re.sub(pattern, repl, string[, count]):**  
+返回 (sub(repl, string[, count]), 替換次數)。  
+</code> python
+import re</p>
+
+<p>p = re.compile(r'(\w+) (\w+)&lsquo;)
+s = 'i say, hello world!&rsquo;</p>
+
+<p>print p.subn(r'\2 \1', s)</p>
+
+<p>def func(m):</p>
+
+<pre><code>return m.group(1).title() + ' ' + m.group(2).title()
+</code></pre>
+
+<p>print p.subn(func, s)</p>
+
+<h3>output</h3>
+
+<h1>(&lsquo;say i, world hello!&rsquo;, 2)</h1>
+
+<h1>(&lsquo;I Say, Hello World!&rsquo;, 2)</h1>
+
+<p>```</p>
+
+<p><a href="http://www.cnblogs.com/huxi/archive/2010/07/04/1771073.html">Origin</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python with語句(轉)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/04062014/python-with-yu-ju/"/>
+    <updated>2014-04-06T16:37:46+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/04062014/python-with-yu-ju</id>
+    <content type="html"><![CDATA[<p><strong>1. With 語句是什麼</strong><br/>
+Python’s with statement provides a very convenient way of dealing with the situation where you have to do a setup and teardown to make something happen. A very good example for this is the situation where you want to gain a handler to a file, read data from the file and the close the file handler.<br/>
+有一些任務，可能事先需要設置，事後做清理工作。對於這種場景，Python的with語句提供了一種非常方便的處理方式。一個很好的例子是文件處理，你需要獲取一個文件句柄，從文件中讀取數據，然後關閉文件句柄。<!--more--></p>
+
+<p>Without the with statement, one would write something along the lines of:<br/>
+如果不用with語句，代碼如下： <br/>
+<code>python
+file = open("/tmp/foo.txt")
+data = file.read()
+file.close()
+</code><br/>
+There are two annoying things here. First, you end up forgetting to close the file handler. The second is how to handle exceptions that may occur once the file handler has been obtained. One could write something like this to get around this:<br/>
+這裏有兩個問題。一是可能忘記關閉文件句柄；二是文件讀取數據發生異常，沒有進行任何處理。下面是處理異常的加強版本：<br/>
+``` python
+file = open(&ldquo;/tmp/foo.txt&rdquo;)
+try:</p>
+
+<pre><code>data = file.read()
+</code></pre>
+
+<p>finally:</p>
+
+<pre><code>file.close()
+</code></pre>
+
+<p><code>  
+While this works well, it is unnecessarily verbose. This is where with is useful. The good thing about with apart from the better syntax is that it is very good handling exceptions. The above code would look like this, when using with:  
+雖然這段代碼運行良好，但是太冗長了。這時候就是with一展身手的時候了。除了有更優雅的語法，with還可以很好的處理上下文環境產生的異常。下面是with版本的代碼：  
+</code> python
+with open(&ldquo;/tmp/foo.txt&rdquo;) as file:</p>
+
+<pre><code>data = file.read()
+</code></pre>
+
+<p>```</p>
+
+<p><strong>2. with如何工作</strong><br/>
+while this might look like magic, the way Python handles with is more clever than magic. The basic idea is that the statement after with has to evaluate an object that responds to an __enter__() as well as an __exit__() function.<br/>
+這看起來充滿魔法，但不僅僅是魔法，Python對with的處理還很聰明。基本思想是with所求值的對象必須有一個__enter__()方法，一個__exit__()方法。</p>
+
+<p>After the statement that follows with is evaluated, the __enter__() function on the resulting object is called. The value returned by this function is assigned to the variable following as. After every statement in the block is evaluated, the __exit__() function is called.<br/>
+緊跟with後面的語句被求值後，返回對象的__enter__()方法被調用，這個方法的返回值將被賦值給as後面的變量。當with後面的代碼塊全部被執行完之後，將調用前面返回對象的__exit__()方法。</p>
+
+<p>This can be demonstrated with the following example:<br/>
+下面例子可以具體說明with如何工作：<br/>
+``` python</p>
+
+<h1>!/usr/bin/env python</h1>
+
+<h1>with_example01.py</h1>
+
+<p>class Sample:</p>
+
+<pre><code>def __enter__(self):
+    print "In __enter__()"
+    return "Foo"
+
+def __exit__(self, type, value, trace):
+    print "In __exit__()"
+</code></pre>
+
+<p>def get_sample():</p>
+
+<pre><code>return Sample()
+</code></pre>
+
+<p>with get_sample() as sample:</p>
+
+<pre><code>print "sample:", sample
+</code></pre>
+
+<p><code>  
+When executed, this will result in:  
+運行代碼，輸出如下  
+</code> python
+bash-3.2$ ./with_example01.py
+In <strong>enter</strong>()
+sample: Foo
+In <strong>exit</strong>()
+<code>  
+As you can see,  
+The \_\_enter\_\_() function is executed  
+The value returned by it - in this case "Foo" is assigned to sample  
+The body of the block is executed, thereby printing the value of sample ie. "Foo"  
+The \_\_exit\_\_() function is called.  
+What makes with really powerful is the fact that it can handle exceptions. You would have noticed that the \_\_exit\_\_() function for Sample takes three arguments - val, type and trace. These are useful in exception handling. Let’s see how this works by modifying the above example.  
+正如你看到的，  
+1) \_\_enter\_\_()方法被執行  
+2) \_\_enter\_\_()方法返回的值 - 這個例子中是"Foo"，賦值給變量'sample'  
+3) 執行代碼塊，打印變量"sample"的值為 "Foo"  
+4) \_\_exit\_\_()方法被調用  
+with真正強大之處是它可以處理異常。可能你已經註意到Sample類的\_\_exit()\_\_方法有三個參數- val, type 和 trace。 這些參數在異常處理中相當有用。我們來改一下代碼，看看具體如何工作的。  
+</code> python</p>
+
+<h1>!/usr/bin/env python</h1>
+
+<h1>with_example02.py</h1>
+
+<p>class Sample:</p>
+
+<pre><code>def __enter__(self):
+    return self
+
+def __exit__(self, type, value, trace):
+    print "type:", type
+    print "value:", value
+    print "trace:", trace
+
+def do_something(self):
+    bar = 1/0
+    return bar + 10
+</code></pre>
+
+<p>with Sample() as sample:</p>
+
+<pre><code>sample.do_something()
+</code></pre>
+
+<p>```<br/>
+Notice how in this example, instead of get_sample(), with takes Sample(). It does not matter, as long as the statement that follows with evaluates to an object that has an __enter__() and __exit__() functions. In this case, Sample()’s __enter__() returns the newly created instance of Sample and that is what gets passed to sample.<br/>
+這個例子中，with後面的get_sample()變成了Sample()。這沒有任何關系，只要緊跟with後面的語句所返回的對象有__enter__()和__exit__()方法即可。此例中，Sample()的__enter__()方法返回新創建的Sample對象，並賦值給變量sample。</p>
+
+<p>When executed:<br/>
+代碼執行後：<br/>
+``` python
+bash-3.2$ ./with_example02.py
+type: <type 'exceptions.ZeroDivisionError'>
+value: integer division or modulo by zero
+trace: <traceback object at 0x1004a8128>
+Traceback (most recent call last):
+  File &ldquo;./with_example02.py&rdquo;, line 19, in <module></p>
+
+<pre><code>sample.do_something()
+</code></pre>
+
+<p>  File &ldquo;./with_example02.py&rdquo;, line 15, in do_something</p>
+
+<pre><code>bar = 1/0
+</code></pre>
+
+<p>ZeroDivisionError: integer division or modulo by zero
+```<br/>
+Essentially, if there are exceptions being thrown from anywhere inside the block, the __exit__() function for the object is called. As you can see, the type, value and the stack trace associated with the exception thrown is passed to this function. In this case, you can see that there was a ZeroDivisionError exception being thrown. People implementing libraries can write code that clean up resources, close files etc. in their __exit__() functions.<br/>
+實際上，在with後面的代碼塊拋出任何異常時，__exit__()方法被執行。正如例子所示，異常拋出時，與之關聯的type，value和stack trace傳給__exit__()方法，因此拋出的ZeroDivisionError異常被打印出來了。開發庫時，清理資源，關閉文件等等操作，都可以放在__exit__方法當中。</p>
+
+<p>Thus, Python’s with is a nifty construct that makes code a little less verbose and makes cleaning up during exceptions a bit easier.<br/>
+因此，Python的with語句是提供一個有效的機制，讓代碼更簡練，同時在異常產生時，清理工作更簡單。</p>
+
+<p>I have put the code examples given here on <a href="https://github.com/sdqali/python_dojo/tree/master/with">Github</a>.<br/>
+示例代碼可以在<a href="https://github.com/sdqali/python_dojo/tree/master/with">Github</a>上面找到。</p>
+
+<p>譯註：本文原文見<a href="http://blog.sdqali.in/blog/2012/07/09/understanding-pythons-with/">Understanding Python&rsquo;s &ldquo;With&rdquo; Statement</a></p>
+
+<p><a href="http://python.42qu.com/11155501">Origin</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python 動態類型(轉)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/04022014/python-dong-tai-lei-xing/"/>
+    <updated>2014-04-02T15:15:39+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/04022014/python-dong-tai-lei-xing</id>
+    <content type="html"><![CDATA[<p>Python中只有一個賦值模型</p>
+
+<h4>1. 缺少類型聲明語句的情況</h4>
+
+<p>在Python中，類型是在運行過程中自動決定的，而不是通過代碼聲明。這意味著沒有必要事聲明變量。只要記住，這個概念實質上對變量，對象和它們之間的關系都適用。那麽這個概念也容易理解並掌握。</p>
+
+<p><strong>A 變量，對象和引用</strong><br/>
+變量創建：一個變量，當代碼第一次給它賦值時它就被創建了。之後的賦值將會改變已創建的變量名的值。Python在代碼運行之前先檢測變量名，可以當成是最初的賦值創建變量。<!--more--><br/>
+變量類型：變量永遠不會有任何的它關聯的類型信息或約束。類型的概念是存在於對象中而不是變量中。變量原本是通用的。它只是在一個特定的時間點，簡單地引用了一個特定的對像而已。<br/>
+變量的使用：當變量出現在表達式中時，它會馬上被當前引用的對像所代替，無論這個對象是什麽類型。<br/>
+此外，所有的變量都必須在其使用前明確地賦值。使用未賦值的變量會產生錯誤。<br/>
+<code>&gt;&gt;&gt;a=3</code></p>
+
+<p>在概念上說，Python將執行三個不同的步驟去完成這個請求。<br/>
+1) 創建一個對象來代表值3<br/>
+2) 創建一個變量a，如果它還沒有創建的話<br/>
+3) 將變量與新的對象3連接</p>
+
+<p>在python中從變量到對象的連接稱作引用。引用是一種關系，以內存中的指針形式實現。<br/>
+* 變量 是一個系統表的元素，擁有指向對象的連接空間。<br/>
+* 對象 是被分配的一塊內存，有足夠的空間去表現它們所代表的值。<br/>
+* 引用 是自動形成的從變量到對象的指針。</p>
+
+<p>每一個對象都用兩個標準的頭部信息：一個類型標誌符去標識這個對象的類型，以及一個引用的計數器，用來決定是不是可以回收這個對象。</p>
+
+<p><strong>B 類型屬於對象，而不是變量</strong><br/>
+Python中的類型是與對象相關聯的，而不是和變量關聯。<br/>
+變量沒有類型，變量指向對象。對象有類型，知道自己的類型，每個對象都包含了一個頭部信息，其中標記了這個對象的類型。</p>
+
+<p><strong>C 對象的垃圾收集</strong><br/>
+對象生命結束時發生了什麽變化？<br/>
+每當一個變量名被賦與了一個新的對象，之前的那個對象占用的空間就會被收回（如果它沒有被其他變量名和對象所引用).這種自動回收對象空間的技術稱作垃圾收集。<br/>
+在內部，Python是通過保持用每個對象中的計數器記錄引用指到這個對象上的次數來完成這一功能。一旦（並精確在同一時間）這個計數器被設置為零，這個對象的內存空間就會自動收回。垃圾收集最直接的，可感受到的好處就是這意味著可以在腳本中任意使用對象而不需要考慮釋放內存空間。<br/>
+```</p>
+
+<blockquote><blockquote><blockquote><p>x=42
+id(x)
+674748828
+x=&ldquo;cli&rdquo;
+id(x)  <br/>
+676367648
+```</p></blockquote></blockquote></blockquote>
+
+<h4>2. 共享引用</h4>
+
+<p>上面所講都是單個變量被賦值引用了多個對象的情況。現在，在交互模式下，引入另一個變量，並看一下變量名和對象的變化。<br/>
+```</p>
+
+<blockquote><blockquote><blockquote><p>a=10
+b=a
+id(a)
+674749212
+id(b)
+674749212
+```<br/>
+第二行會使用python創建變量b。使用的是變量a,並且它在這裏沒有被賦值，所以它被替換成其應用的對象10，從而b也成為這個對象的一個引用。實際效果就是變量a和b都引用相同的對象（也就是說指向了相同的內存空間。在Python中稱作是共享引用&mdash;多個變量名應用了同一個對象。)</p></blockquote></blockquote></blockquote>
+
+<p>```</p>
+
+<blockquote><blockquote><blockquote><p>a=10
+b=a<br/>
+a=&lsquo;cli&rsquo;
+id(a)
+676367648
+id(b)
+674749212
+```<br/>
+變量a改變了，但是不影響變量b.這完全可以說明變量b是指向對象10內存空間的。</p></blockquote></blockquote></blockquote>
+
+<p>在ptyhon中，變量總是一個指向對象的指針，而不是可以改變的內存區域的標簽。給一變量賦一個新的值，並不是替換了原始的對象，而是讓這個變量去引用完全不同的一個對象。實際的效果就是對一個變量賦值，僅僅會影響那個被賦值的變量。</p>
+
+<p><strong>A 共享引用和在原處修改</strong><br/>
+有一些對象和類型確實會在實地改變對象。例如，在一個列表中對一個偏移進行賦值確實會改變這個列表對象，而不是生成一個新的列表對象。<br/>
+```</p>
+
+<blockquote><blockquote><blockquote><p>T1=[11,12,13]
+T2=T1
+T1
+[11, 12, 13]
+T2
+[11, 12, 13]
+T1=22
+T1
+22
+T2
+[11, 12, 13]
+```</p></blockquote></blockquote></blockquote>
+
+<p>這個和先前一樣T1改變了T2沒有改變，T2改變也不影響T1<br/>
+```</p>
+
+<blockquote><blockquote><blockquote><p>T1=[11,12,13]
+T2=T1
+T1
+[11, 12, 13]
+T2
+[11, 12, 13]
+T2[1]=33   <br/>
+T1
+[33, 12, 13]
+T2
+[33, 12, 13]
+<code>  
+發現T2改變了，T1也跟這改變了  
+同樣T1改變了，T2也改變了  
+</code>
+T1[1]=99<br/>
+T2
+[33, 99, 13]
+T1
+[33, 99, 13]
+```<br/>
+這裏T1沒有改變，改變了T1所引用對象的一個元素。這類修改會覆蓋列表對象中的某部分。因為這個列表對象是與其他對象共享的（被其他對象引用），那麽一個像這樣在原處的改變不僅僅會對T1有影響。必須意識到當做了這樣的修改，它會影響程序的其他部分。</p></blockquote></blockquote></blockquote>
+
+<p>如果不想要這樣的現象發生，需要Python拷貝對象，而不是創建引用。方法包括內置列表函數以及標準庫的copy模塊，最常用的辦法就是從頭到尾的分片T1[:]<br/>
+```</p>
+
+<blockquote><blockquote><blockquote><p>T1=[11,12,13]
+T2=T1[:]
+T1
+[11, 12, 13]
+T2
+[11, 12, 13]
+T1[0]=99
+T1
+[99, 12, 13]
+T2
+[11, 12, 13]
+id(T1)
+676366604
+id(T2)
+675542060
+<code>  
+T1和T2指向不同的對象，所以不會相互影響。  
+註意：這種分片技術不會引用在其他的可變的核心類型上（字典，因為它們不是序列），對字典應該使用D.copy（）方法.而且，註意標準庫中的copy模塊有一個通用的拷貝任意對象的調用，也有一個拷貝嵌套對象的結構的調用.  
+</code>
+X={&lsquo;name&rsquo;:&lsquo;cli&rsquo;,&lsquo;age&rsquo;:27}<br/>
+import copy
+Y=copy.copy(X)
+X
+{&lsquo;age&rsquo;: 27, &lsquo;name&rsquo;: &lsquo;cli&rsquo;}
+Y
+{&lsquo;age&rsquo;: 27, &lsquo;name&rsquo;: &lsquo;cli&rsquo;}
+id(X)
+676370468
+id(Y)
+676414436
+X={&lsquo;name&rsquo;:{&lsquo;FirstName&rsquo;:&lsquo;cli&rsquo;,&lsquo;LastName&rsquo;:&lsquo;cli&rsquo;},&lsquo;age&rsquo;:27}  <br/>
+X
+{&lsquo;age&rsquo;: 27, &lsquo;name&rsquo;: {&lsquo;LastName&rsquo;: &lsquo;cli&rsquo;, &lsquo;FirstName&rsquo;: &lsquo;cli&rsquo;}}
+Y=copy.copy(X)
+Y
+{&lsquo;age&rsquo;: 27, &lsquo;name&rsquo;: {&lsquo;LastName&rsquo;: &lsquo;cli&rsquo;, &lsquo;FirstName&rsquo;: &lsquo;cli&rsquo;}}
+Z=copy.deepcopy(X)
+Z
+{&lsquo;age&rsquo;: 27, &lsquo;name&rsquo;: {&lsquo;LastName&rsquo;: &lsquo;cli&rsquo;, &lsquo;FirstName&rsquo;: &lsquo;cli&rsquo;}}
+```</p></blockquote></blockquote></blockquote>
+
+<p><strong>B 共享引用和相等</strong>
+```</p>
+
+<blockquote><blockquote><blockquote><p>x=33
+x=&lsquo;cli&rsquo;
+```<br/>
+因為Python緩存並復用了小的整數和小的字符串，就像前文提到的那樣，這裏對象33也許不像前期所說的被收回，相反，它將可能仍保持在一個系統表中，等待下一次你的代碼生成另一個33來利用。盡快如此，大多數種類的對象都會在不再引用時馬上回收。對於那些不會被回收的，緩沖機制與代碼並沒有什麽關系。</p></blockquote></blockquote></blockquote>
+
+<p>判斷是否相等<br/>
+```</p>
+
+<blockquote><blockquote><blockquote><p>L=[1,2,3]
+M=L
+L==M
+True
+L is M
+True
+<code>  
+==檢查對象是否有相同的值。 is操作符，檢查對象的同一性。如果兩個變量名精準地指向同一個對象，它會返回True。所以這是一種更嚴格的相等測試。  
+實際上,is只是比較現實引用的指針。所以如果必要的話是代碼中檢測共享引用的一種方法。如果變量名引用值相等。但是為不同的對象，它的返回值將是False.  
+</code>
+L=[1,2,3]
+M=[1,2,3]
+L==M
+True
+L is M
+False
+id(L)
+676367788
+id(M)
+676367724
+```<br/>
+通過id()函數可以看到兩個變量指向不同的對象。</p></blockquote></blockquote></blockquote>
+
+<p>```</p>
+
+<blockquote><blockquote><blockquote><p>X=33
+Y=33
+X==Y
+True
+X is Y
+True
+id(X)
+674748936
+id(Y)
+674748936
+<code>  
+這個is測試返回True因為小的整數和字符串被緩存被復用了。
+如果想更進一步了解，可以向Python查詢一個對象應用的次數：在sys模塊中的getrefcount函數返回對象應用的次數。  
+</code>
+import sys
+sys.getrefcount(33)
+13
+sys.getrefcount(1)
+427
+sys.getrefcount(00)
+296
+sys.getrefcount(99)
+6
+```</p></blockquote></blockquote></blockquote>
+
+<p><a href="http://ipseek.blog.51cto.com/1041109/786518">Origin</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python 文件處理]]></title>
+    <link href="http://www.aprilzephyr.com/blog/03312014/python-wen-jian-chu-li/"/>
+    <updated>2014-03-31T17:48:17+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/03312014/python-wen-jian-chu-li</id>
+    <content type="html"><![CDATA[<p>python對文件的處理的兩個內建函數：<br/>
+open()、file()，這個兩函數提供了初始化輸入\輸出（I\O）操作的通用接口。兩函數的功能相同。<br/>
+基本用法：<br/>
+file_object=open(filename, access_mode=&lsquo;r&rsquo;, buffering=-1）
+file_object 是定義一個打開文件的對象<br/>
+access_mode 是打開文件的模式；通常，文件使用模式  &lsquo;r&rsquo;,&lsquo;w&rsquo;,&lsquo;a&rsquo; 來打開，分別代表，讀取，寫入，追加。<br/>
+&lsquo;r&rsquo; 模式打開已經存在的文件<br/>
+&lsquo;w&rsquo; 模式打開的文件若存在則首先清空，再加入內容。<br/>
+&lsquo;a&rsquo; 這個模式是追加內容到文件中<!--more--><br/>
+註. &lsquo;b&rsquo; 模式這個是打開二進制文件，對於unix-like/unix類型的系統'b'模式是可有可無的。<br/>
+buffering 訪問文件所采用的緩沖方式。其中0表示不緩沖，1表示只緩沖一行數據，任何其它大於1的值代表使用給定的值作為緩沖區大小。不給定此參數或者參數為負數都表示使用系統默認的緩沖機制。<br/>
+使用open打開文件之後一定記得調用close()關閉文件。</p>
+
+<p>常用的文件訪問方式如下：<br/>
+r        以讀方式打開<br/>
+rU或Ua   以讀方式打開同時提供通用換行符支持<br/>
+w        以寫方式打開<br/>
+a        以追加方式打開<br/>
+r+       以讀寫方式打開<br/>
+w+       以讀寫方式打開<br/>
+a+       以讀寫方式打開</p>
+
+<p>文件的輸入：<br/>
+python中有三個方法來處理文件內容的輸入：<br/>
+read() 一次讀取全部的文件內容。<br/>
+readline() 每次讀取文件的一行。<br/>
+readlines() 讀取文件的所有行，返回一個字符串列表。</p>
+
+<p>寫數據：<br/>
+<code>python
+file_object = open('thefile.txt', 'w')
+file_object.write(all_the_text)
+file_object.close( )
+</code></p>
+
+<p>寫入多行：<br/>
+<code>file_object.writelines(list_of_text_strings)</code></p>
+
+<p>seek(offset,where):  默認值where=0表示從起始位置移動"offset"個字節，where=1表示從當前位置移動"offset"個字節，where=2表示從結束位置移動"offset"個字節。當有換行時，會被換行截斷。seek()無返回值，故值為None。</p>
+
+<p>tell():  文件的當前位置,即tell是獲得文件指針位置，受seek、readline、read、readlines影響，不受truncate影響。</p>
+
+<p>truncate(n):  從文件的首行首字符開始截斷，截斷文件為n個字符；無n表示從當前位置起截斷；截斷之後n後面的所有字符被刪除。其中win下的換行代表2個字符大小。<br/>
+``` python</p>
+
+<pre><code>  fso = open("f:\\a.txt",'w+')    #以w+方式，並非a方式打開文件，故文件原內容被清空
+  print fso.tell()    #文件原內容被清空，故此時tell()=0
+
+  fso.write("abcde\n")  #寫入文件abcde\n，因為換行\n占兩個字符，故共寫入7個字符
+  print fso.tell()  #此時tell()=7
+
+  fso.write("fghwm")  #又寫入文件fghwm，故此時文件共寫入7+5 =142個字符
+  print fso.tell()  #此時tell()=12 
+
+  fso.seek(1, 0)  #從起始位置即文件首行首字符開始移動1個字符
+  print fso.tell()   #此時tell() =1
+
+  print  fso.readline()  #讀取當前行，即文件的第1行，但是從第二個字符(tell()+1)開始讀，結果為:bcde。'若換成for讀取整個文件或read讀取整個文件則結果為bcdefghwm     
+
+  print fso.tell()   #因為readline此時tell() =7,
+
+  fso.truncate(8)  #從寫入後文件的首行首字符開始階段，截斷為8個字符，即abcde\nf，即文件的內容為：abcde\nf
+
+  print fso.tell()   #tell() 依舊為7,並為受truncate(8)影響，但是此時文件內容為abcde\nf
+
+  print  fso.readline()  #從tell()+1=8開始讀取，讀取當前行內容：f
+
+  fso.close()
+</code></pre>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python os &amp; sys模塊]]></title>
+    <link href="http://www.aprilzephyr.com/blog/03312014/python-os-sys/"/>
+    <updated>2014-03-31T16:06:01+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/03312014/python-os-sys</id>
+    <content type="html"><![CDATA[<p><strong>1. os模塊</strong><br/>
+Python os模塊包含普遍的操作系統功能。如果你希望你的程序能夠與平臺無關的話，這個模塊是尤為重要的。</p>
+
+<p>1) os.name<br/>
+輸出字符串指示正在使用的平臺。如果是window 則用'nt'表示，對於Linux/Unix用戶，它是'posix'。<br/>
+2) os.mkdir(path [,mode=0777])<br/>
+創建目錄<br/>
+3) os.rmdir()<br/>
+刪除目錄<!--more--><br/>
+4) os.mkdirs()<br/>
+創建多層目錄，類似系統makedir -p<br/>
+5) os.removedirs()<br/>
+刪除多層目錄，每層都是空的，除了要刪除的目錄外。<br/>
+6) os.getcwd()<br/>
+函數得到當前工作目錄，即當前Python腳本工作的目錄路徑。<br/>
+7) os.listdir()<br/>
+返回指定目錄下的所有文件和目錄名。
+``` python</p>
+
+<blockquote><blockquote><blockquote><p>import os
+os.listdir(os.getcwd())
+[&lsquo;.bash_history&rsquo;, &lsquo;.bundler&rsquo;, &lsquo;.CFUserTextEncoding&rsquo;, &lsquo;.config&rsquo;, &lsquo;.DS_Store&rsquo;, &lsquo;.gem&rsquo;, &lsquo;.gitconfig&rsquo;, &lsquo;.matplotlib&rsquo;, &lsquo;.ssh&rsquo;, &lsquo;.Trash&rsquo;, &lsquo;.Trash-500&rsquo;, &lsquo;.vim&rsquo;, &lsquo;.viminfo&rsquo;, &lsquo;Applications&rsquo;, &lsquo;Applications (Parallels)&rsquo;, &lsquo;Desktop&rsquo;, &lsquo;Documents&rsquo;, &lsquo;Downloads&rsquo;, &lsquo;Library&rsquo;, &lsquo;Movies&rsquo;, &lsquo;Music&rsquo;, &lsquo;octopress&rsquo;, &lsquo;Pictures&rsquo;, &lsquo;Public&rsquo;, &lsquo;PycharmProjects&rsquo;, &lsquo;\xe7\x99\xbe\xe5\xba\xa6\xe4\xba\x91\xe5\x90\x8c\xe6\xad\xa5\xe7\x9b\x98&rsquo;]</p>
+
+<p>```<br/>
+8) os.remove()<br/>
+刪除一個文件。<br/>
+9) os.system()<br/>
+運行shell命令。<br/>
+10) os.sep<br/>
+可以取代操作系統特定的路徑分隔符。<br/>
+11) os.linesep<br/>
+給出當前平台使用的行終止符。<br/>
+12) os.path.split()<br/>
+函數返回一個路徑的目錄名和文件名<br/>
+13) os.path.isfile()和os.path.isdir()函數<br/>
+分別檢驗給出的路徑是一個文件還是目錄，給出True或者False。<br/>
+14) os.path.exists()<br/>
+檢驗給出的路徑是否真實的存在，給出True或者False。<br/>
+15) os.path.abspath(name)<br/>
+獲得絕對路徑。<br/>
+16) os.path.normpath(path)<br/>
+規範path的字符串形式。<br/>
+17) os.path.getsize(name)<br/>
+獲得文件大小，如果name是目錄返回0L。<br/>
+18) os.path.splitext()<br/>
+分離文件名與擴展名。<br/>
+19) os.path.join(path,name)<br/>
+連接目錄與文件名或目錄。<br/>
+20) os.path.basename(path)<br/>
+返回文件名。<br/>
+21) os.path.dirname(path)<br/>
+返回文件路徑。</p></blockquote></blockquote></blockquote>
+
+<p><strong>2. sys模塊</strong><br/>
+1) sys.argv<br/>
+命令行參數List，第一個元素是程序本身路徑。<br/>
+2) sys.modules.keys()<br/>
+返回所有已經導入的模塊列表。<br/>
+3) sys.exc_info()<br/>
+獲取當前正在處理的異常類,exc_type、4) exc_value、exc_traceback當前處理的異常詳細信息。<br/>
+5) sys.exit(n)<br/>
+退出程序，正常退出時exit(0)。<br/>
+6) sys.hexversion<br/>
+獲取Python解釋程序的版本值，16進制格式如：0x020403F0。<br/>
+7) sys.version<br/>
+獲取Python解釋程序的版本信息。<br/>
+8) sys.maxint<br/>
+最大的Int值。<br/>
+9) sys.maxunicode<br/>
+最大的Unicode值。<br/>
+10) sys.modules<br/>
+返回系統導入的模塊字段，key是模塊名，value是模塊。<br/>
+11) sys.path<br/>
+返回模塊的搜索路徑，初始化時使用PYTHONPATH環境變量的值。<br/>
+12) sys.platform<br/>
+返回操作系統平臺名稱。<br/>
+13) sys.stdout<br/>
+標準輸出。<br/>
+14) sys.stdin<br/>
+標準輸入。<br/>
+15) sys.stderr<br/>
+錯誤輸出。<br/>
+16) sys.exc_clear()<br/>
+用來清除當前線程所出現的當前的或最近的錯誤信息。<br/>
+17) sys.exec_prefix<br/>
+返回平臺獨立的python文件安裝的位置。<br/>
+18) sys.byteorder<br/>
+本地字節規則的指示器，big-endian平臺的值是'big',little-endian平臺的值是'little'。<br/>
+19) sys.copyright<br/>
+記錄python版權相關的東西。<br/>
+20) sys.api_version<br/>
+解釋器的C的API版本。<br/>
+21) sys.version_info<br/>
+<code>&gt;&gt;&gt; sys.version_info(major=2, minor=7, micro=5, releaselevel='final', serial=0)</code><br/>
+22) sys.displayhook(value)<br/>
+如果value非空，這個函數會把他輸出到sys.stdout，並且將他保存進__builtin__._.指在python的交互式解釋器裏，'_&lsquo;代表上次你輸入得到的結果，hook是鉤子的意思，將上次的結果鉤過來。<br/>
+23) sys.getdefaultencoding()<br/>
+返回當前你所用的默認的字符編碼格式。<br/>
+24) sys.getfilesystemencoding()<br/>
+返回將Unicode文件名轉換成系統文件名的編碼的名字。<br/>
+25) sys.setdefaultencoding(name)<br/>
+用來設置當前默認的字符編碼，如果name和任何一個可用的編碼都不匹配，拋出LookupError，這個函數只會被site模塊的sitecustomize使用，一旦別site模塊使用了，他會從sys模塊移除。<br/>
+26) sys.builtin_module_names<br/>
+Python解釋器導入的模塊列表。<br/>
+27) sys.executable<br/>
+Python解釋程序路徑。<br/>
+28) sys.getwindowsversion()<br/>
+獲取Windows的版本。<br/>
+29) sys.stdin.readline()<br/>
+從標準輸入讀一行。<br/>
+30) sys.stdout.write(&ldquo;a&rdquo;)<br/>
+屏幕輸出a。</p>
+]]></content>
+  </entry>
+  
+</feed>
