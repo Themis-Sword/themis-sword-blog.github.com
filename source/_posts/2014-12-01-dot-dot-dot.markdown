@@ -7,7 +7,7 @@ categories: mood
 keywords: thoughts, challenge, choice, opportunity
 description: ... ...
 ---
-{%img /images/adventure.jpg %}
+{% img /images/adventure.jpg %}
 
 今天，2014年最後一個月的第一天，是該收拾下情緒了。  
   
