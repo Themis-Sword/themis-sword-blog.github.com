@@ -123,130 +123,6 @@ $(document).ready(
     <article class="post">
 	<h3 class="title">
 		
-		<a href="/blog/02182014/range-xrange-random/">
-		
-			Python Range(), Xrange(), Random()與求兩個序列的和的差最小</a>
-	</h3>
-	<div class="entry-content">
-		<p><strong>1. range()函數與xrange()函數的用法</strong><br/>
-01) <strong>range()</strong><br/>
-<strong>range(start, stop[, step])</strong><br/>
-Example:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</span><span class='line'><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
-</span><span class='line'><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-</span><span class='line'><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</span><span class='line'><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">]</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</span><span class='line'><span class="p">[]</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</span><span class='line'><span class="p">[]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-		
-		<a href="/blog/02182014/range-xrange-random/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-18T14:09:05+08:00" pubdate data-updated="true">Feb 18<span>th</span>, 2014</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/python/'>python</a>
-
-</div>
-
-
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/02172014/destiny/">
-		
-			Destiny</a>
-	</h3>
-	<div class="entry-content">
-		<p><img src="/images/plumbossom.jpg"></p>
-
-<p>If it&rsquo;s meant to be, it will be.</p>
-
-<p>Most things in the life seem to be predestined. Emotion, fortunes, jobs&hellip; No idea when it would burst into your life rather than when it would be going to vanish.
-		
-		<a href="/blog/02172014/destiny/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-17T22:21:48+08:00" pubdate data-updated="true">Feb 17<span>th</span>, 2014</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/mood/'>mood</a>
-
-</div>
-
-
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h3 class="title">
-		
 		<a href="/blog/02152014/shan-chu-lie-biao-zhong-fu-yuan-su/">
 		
 			刪除列表重複元素的三種方法及效率分析(轉)</a>
@@ -400,6 +276,103 @@ Example:</p>
 <div class="tags">
 
 	<a class='category' href='/blog/categories/mood/'>mood</a>
+
+</div>
+
+
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h3 class="title">
+		
+		<a href="/blog/02142014/2014%2Clu-xiang-he-fang/">
+		
+			2014，路向何方</a>
+	</h3>
+	<div class="entry-content">
+		<p><img src="/images/mark.jpg">
+		
+		<a href="/blog/02142014/2014%2Clu-xiang-he-fang/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-14T00:11:39+08:00" pubdate data-updated="true">Feb 14<span>th</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/mood/'>mood</a>
+
+</div>
+
+
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h3 class="title">
+		
+		<a href="/blog/02132014/blogging-with-octopress/">
+		
+			Blogging With Octopress</a>
+	</h3>
+	<div class="entry-content">
+		<h3>1. 安裝Ruby</h3>
+
+<h3>2. 安裝Octopress</h3>
+
+<p>確保安裝了git，在終端輸入git &mdash;version可以看到計算機中的git版本。<br/>
+利用命令將octopress從github上clone到本機：<br/>
+<code>$ git clone git://github.com/imathis/octopress.git octopress</code><br/>
+<code>$ cd octopress</code><br/>
+<code>$ ruby --version</code><br/>
+安裝相關依賴項：<br/>
+<code>$ sudo gem install bundler #需要輸入root密碼</code><br/>
+<code>$ bundle install</code><br/>
+安裝默認的Octopress主題：<br/>
+<code>$ rake install</code>   
+		
+		<a href="/blog/02132014/blogging-with-octopress/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-13T21:32:44+08:00" pubdate data-updated="true">Feb 13<span>th</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/web/'>web</a>
 
 </div>
 
