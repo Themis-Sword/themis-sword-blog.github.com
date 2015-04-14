@@ -155,7 +155,7 @@ Hi username! You&rsquo;ve successfully authenticated, but GitHub does not provid
 Connection to github.com closed.<br/>
 代表成功。</p>
 
-<h3>6. 將Blog部署到GitHub上</h3>
+<h3>5. 將Blog部署到GitHub上</h3>
 
 <p>在GitHub上創建一個倉庫，命名為username.github.com。等全部配置完後，可以通過在瀏覽器中輸入<a href="http://username.github.com">http://username.github.com</a>來訪問。一般來說，將Blog的源碼放在source分支，把生成的內容提交到master分支。<br/>
 創建好倉庫之後，需要利用octopress的一個配置rake任務來自動配置上面創建的倉庫：<br/>
@@ -167,7 +167,7 @@ Connection to github.com closed.<br/>
 上面的命令首先生成Blog文件，並將生成的Blog文件拷貝到_deploy 目錄下，然後將這些內容添加到git中，並commit和push到倉庫的master分支。<br/>
 現在可以訪問<a href="http://username.github.com">http://username.github.com</a>了。注意，由於會發生延時，要等大約10分鐘才能打開。至此，我們已經基本完成對Blog的部署，不過Blog的source要單獨提交。</p>
 
-<h3>7. 開始寫Blog</h3>
+<h3>6. 開始寫Blog</h3>
 
 <p>Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲在source/_posts 目錄下，並且需要按照Jekyll的命名規範對文章進行命名：YYYY-MM-DD-post-title.markdown。文章的名字會被當作url的一部分，而其中的日期用於對博文的區分和排序。創建博文命令爲：<br/>
 <code>$ rake new_post["title"]</code><br/>
@@ -180,19 +180,19 @@ Connection to github.com closed.<br/>
 <code>$ git push origin source</code><br/>
 <code>$ rake deploy</code></p>
 
-<h3>8. 添加頁面(pages)</h3>
+<h3>7. 添加頁面(pages)</h3>
 
 <p>在Octopress中，有兩個默認的頁面，即blog/archives，可以參考它來完成自己的頁面。首先在source中創建一個目錄，例如author，然後在這個目錄中新建一個名為index.html的文件，根據需要進行編輯這個文件。<br/>
 重要的是，我們需要在首頁將這個頁面的鏈接顯示出來，此時需要編輯source/_includes/custom/navigation.html，仿照已有的內容添加一個新行，指向新創建的目錄即可。<br/>
 當rake generate正常之後，就可以rake deploy到GitHub上了。</p>
 
-<h3>9. 獨立域名</h3>
+<h3>8. 獨立域名</h3>
 
 <p>在域名管理中，建立一個CNAME指向，將你的域名指向username.github.com<br/>
 建一個名為CNAME的文件在source目錄下，然後將自己的域名輸入進去。<br/>
 將內容push到GitHub後，第一次生效大概需要一個小時，之後就可以用自己的域名進行訪問了。</p>
 
-<h3>10. 安裝模板並加入版權聲明</h3>
+<h3>9. 安裝模板並加入版權聲明</h3>
 
 <p>常用第三方模板有：<br/>
 <a href="http://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a><br/>
@@ -222,7 +222,7 @@ Connection to github.com closed.<br/>
 
 <p></p>
 
-<h3>11. Octopress添加Google Analytics統計與SEO</h3>
+<h3>10. Octopress添加Google Analytics統計與SEO</h3>
 
 <h4>1) 在各搜索引擎中提交本博客的地址：</h4>
 
@@ -248,7 +248,7 @@ Connection to github.com closed.<br/>
 <p>註冊<a href="http://www.google.com/analytics/">Google Analytics</a>獲得一個google_analytics_tracking_id，添加到_config.yml中對應位置，並對網站進行驗證即可。然後通過Google Analytics分析網站流量。而且可以通過<a href="https://www.google.com/webmasters/tools/home?hl=zh-CN">Google站長工具</a>，對網站進行更全面的分析和SEO。<br/>
 對自己的網站進行驗證，只需將Google Analytics提供的用於驗證的代碼添加到source/_includes/head.html的<head>標簽之間，網站部署到網上之後，過幾分鐘即可驗證通過，其他需要驗證的也同樣操作。</p>
 
-<h3>12. 實現站內搜索</h3>
+<h3>11. 實現站內搜索</h3>
 
 <p>1) 在頁面合適的位置上創建一個搜索框：</p>
 
@@ -285,7 +285,7 @@ simple_search: \search<br/>
 
 <p></p>
 
-<h3>13. 參考</h3>
+<h3>12. 參考</h3>
 
 <p><a href="http://octopress.org/help/">Octopress Help</a><br/>
 <a href="http://justcoding.iteye.com/blog/1954645">利用Octopress搭建一個GitHub博客</a><br/>
