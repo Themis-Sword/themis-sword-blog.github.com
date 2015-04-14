@@ -123,6 +123,53 @@ $(document).ready(
     <article class="post">
 	<h3 class="title">
 		
+		<a href="/blog/02252014/shu-zhai-tan-pan-li/">
+		
+			書摘_談判力</a>
+	</h3>
+	<div class="entry-content">
+		<ol>
+<li>(不要在立場上討價還價)談判的任何方法都可以通過三方面的標準來衡量:如果有達成共識的可能,就應該達成明智的協議;談判應該有效率;增進或至少不損害雙方的關係(明智的協議是指協議盡可能保障雙方的合法利益,公平解決雙方的利益衝突,協議持久性強,並考慮了社會效益)。</br>
+</br></li>
+<li>在立場式談判中,強硬者主導溫和者。如果強硬者堅持要對方作出妥協並不斷威脅對方,而溫和者為避免衝突不斷讓步,堅持以達成協議為重,那這樣的談判是不公平的。強硬者佔了便宜。談判會有結果,但卻不一定明智。它偏向於強硬者而不利於溫和者。</br>
+</br></li>
+<li>談判有兩個層次:第一個層次是解決實質性問題;第二個層次往往比較含蓄,它關註解決實質性問題的程序。
+		
+		<a href="/blog/02252014/shu-zhai-tan-pan-li/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-25T19:36:09+08:00" pubdate data-updated="true">Feb 25<span>th</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/business/'>business</a>
+
+</div>
+
+
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h3 class="title">
+		
 		<a href="/blog/02222014/si-wei-dian-di/">
 		
 			思維點滴_關於未來</a>
@@ -291,84 +338,6 @@ $(document).ready(
 
 
 <time datetime="2014-02-18T21:46:13+08:00" pubdate data-updated="true">Feb 18<span>th</span>, 2014</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/python/'>python</a>
-
-</div>
-
-
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/02182014/range-xrange-random/">
-		
-			Python Range(), Xrange(), Random()與求兩個序列的和的差最小</a>
-	</h3>
-	<div class="entry-content">
-		<p><strong>1. range()函數與xrange()函數的用法</strong><br/>
-01) <strong>range()</strong><br/>
-<strong>range(start, stop[, step])</strong><br/>
-Example:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</span><span class='line'><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
-</span><span class='line'><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-</span><span class='line'><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</span><span class='line'><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">]</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</span><span class='line'><span class="p">[]</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</span><span class='line'><span class="p">[]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-		
-		<a href="/blog/02182014/range-xrange-random/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-18T14:09:05+08:00" pubdate data-updated="true">Feb 18<span>th</span>, 2014</time></div>
 	
 
 <div class="tags">
