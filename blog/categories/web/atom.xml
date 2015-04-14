@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: web | Themis_Sword's Blog]]></title>
+  <link href="http://www.aprilzephyr.com/blog/categories/web/atom.xml" rel="self"/>
+  <link href="http://www.aprilzephyr.com/"/>
+  <updated>2015-04-14T13:28:38+08:00</updated>
+  <id>http://www.aprilzephyr.com/</id>
+  <author>
+    <name><![CDATA[Themis_Sword]]></name>
+    <email><![CDATA[licong0419@outlook.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[網頁重定向的方法(轉)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/04022014/wang-ye-zhong-ding-xiang-de-fang-fa/"/>
+    <updated>2014-04-02T10:58:43+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/04022014/wang-ye-zhong-ding-xiang-de-fang-fa</id>
+    <content type="html"><![CDATA[<h4>1. 使用HTTP通訊協定301 Moved Permanently來完成轉導網址(永久轉址)</h4>
+
+<p><em>建議使用，不會對SEO有不良影響</em></p>
+
+<h5>PHP程式範例:</h5>
+
+<p>``` php
+&lt;?php</p>
+
+<pre><code>header(“HTTP/1.1 301 Moved Permanently");
+header(“Location: http://www.new-url.com/");
+</code></pre>
+
+<p>?></p>
+
+<p>The document has moved <a href="http://www.new-url.com/">here</a>.</p>
+
+
+<p>```  <!--more-->
+註<br/>
+1) 使用者的瀏覽器必須根據HTTP header的Location欄位值(稱做URI)來轉導網址。<br/>
+2) 除非Request Method是HEAD，不然伺服器端回覆的訊息內必須包含一短的新網址的連結(hyperlink)資訊。</p>
+
+<h5>ASP程式範例:</h5>
+
+<p>```
+&lt;%@ Language=VBScript %>
+&lt;%</p>
+
+<pre><code>Response.Status="301 Moved Permanently"
+Response.AddHeader “Location", " http://www.new-url.com/"
+
+Response.End
+</code></pre>
+
+<p>%></p>
+
+<p>The document has moved <a href="http://www.new-url.com/">here</a>.</p>
+
+
+<p>```</p>
+
+<h5>ASP.NET程式範例:</h5>
+
+<p>```</p>
+
+<script runat="server">
+
+private void Page_Load(object sender, System.EventArgs e)
+{
+    Response.Status = “301 Moved Permanently";
+    Response.AddHeader(“Location","http://www.new-url.com/");
+}
+</script>
+
+
+<p>The document has moved <a href="http://www.new-url.com/">here</a>.</p>
+
+
+<p>```</p>
+
+<h5>在 .htaccess/httpd.conf檔案中設定—轉整domain</h5>
+
+<p><code>
+Options +FollowSymLinks
+RewriteEngine on
+RewriteRule ^(.*) http://www.new-domain.com/$1 [R=301,L]
+</code></p>
+
+<h5>在 .htaccess/httpd.conf檔案中設定—轉到新的www.</h5>
+
+<p>```
+Options +FollowSymlinks
+RewriteEngine on
+RewriteCond %{http_host} ^old-domain.com [NC]</p>
+
+<p>RewriteRule ^(.*)$ <a href="http://www.new-domain.com/$1">http://www.new-domain.com/$1</a> [R=301,NC]
+```</p>
+
+<h4>2. 使用HTTP/1.1通訊協定302 Found來完成轉導網址</h4>
+
+<p><em>不建議使用，會對新網站SEO有不良影響</em></p>
+
+<h5>PHP程式範例:</h5>
+
+<p>``` php
+&lt;?php</p>
+
+<pre><code>header(“HTTP/1.1 302 Found");
+
+header(“Location: http://www.new-url.com/");
+</code></pre>
+
+<p>?></p>
+
+<p>The document has moved <a href="http://www.new-url.com/">here</a>.</p>
+
+
+<p>```</p>
+
+<p>(…其他ASP, ASP.NET程式及設定.htaccess/httpd.conf方法，此處略…)</p>
+
+<p>註<br/>
+1) 302，在HTTP/1.0是『Moved Temporarily』；HTTP/1.1是『Found』，會根據HTTP header的Location欄位值(稱做URI)來轉導網址。但是很多網路上的文章會直接稱302是Moved Temporatily。<br/>
+2) 除非Request Method是HEAD，不然伺服器端回覆的訊息內必須包含一短的新網址的連結(hyperlink)資訊。<br/>
+3) HTTP 1.1中增訂了『307 Temporary Redirect』，307碼時只會根據GET Request轉導網址。<br/>
+4) 更多的HTTP 302細節和307會被再增訂出來的原因<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">請參考</a>。</p>
+
+<h4>3. HTML的refresh meta tag來轉導網址</h4>
+
+<p><em>非常不建議使用，會對新網站SEO有不良影響。有些文章寫說要用時最好秒數設定大於10秒以避免對頁面的SEO不利。</em></p>
+
+<h5>在HTML檔案的HEAD中，範例:</h5>
+
+<p>``` html
+<html>
+<head></p>
+
+<pre><code>&lt;meta http-equiv="refresh" content="0;url=http://www.new-url.com/" /&gt;
+</code></pre>
+
+<p></head>
+```</p>
+
+<h4>4. 用JavaScript來達到轉導網址(放在 HTML的<head>…</head>或<body>…<body>中</h4>
+
+<p><em>因為搜尋引擎的bot一般都不理會JavaScript，所以做什麼動作不會被檢查。這意味著要實做『點擊計算(click counting)後再轉導到目的網址的話，用這個方法比較好(302或refresh都是不好的方法)』。如果使用者按瀏覽器的『上一頁』按鈕，不會跳回轉導頁面。</em></p>
+
+<h5>直接在HTML的HEAD中用轉導網址JavaScript範例:</h5>
+
+<p>``` html
+<html>
+<head></p>
+
+<script language="JavaScript">
+<!–
+    window.location.replace(“http://www.new-url.com");
+
+//–>
+</script>
+
+
+<p></head>
+</html>
+```</p>
+
+<h5>JavaScript內容同上例，但是把它放到外部的一個 .js 檔案，然後<head>…</head>中只要寫:</h5>
+
+<p>``` html
+<html></p>
+
+<p><head></p>
+
+<pre><code>&lt;script language="JavaScript" src="redirect.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<p></head>
+```</p>
+
+<h5>也是使用JavaScript，但是額外透過『表單』來完成:</h5>
+
+<p><em>因為搜尋引擎的bot一般都不理會『表單』，所以做什麼動作不會被檢查。</em><br/>
+```</p>
+
+<script language="JavaScript">
+<!–
+
+    document.myform.submit();
+//–>
+</script>
+
+
+<p><form name="myform" action="http://www.new-url.com/" method="get"></form>
+```</p>
+
+<h4>額外討論:</h4>
+
+<ol>
+<li>301/302有時會被一些人用作旁門走道方法，在玩『PR劫持』(如<a href="http://www.seozac.com/google/pr-hijack/">這篇文章</a>所述)，更多的一些手法討論請看<a href="http://www.loriswebs.com/hijacking_web_pages.html">這篇文章</a>或用 hijack 當 KeyWord 去查查。</li>
+<li>302在之前會造成bot誤以為是轉導到的網站在惡搞，而將轉導到的網站從索引中除名。所以會變得無法防止別人以此方法攻擊自己的 URL。現或許已更正。(詳情請看<a href="http://www.tonyspencer.com/2004/12/10/tracker2php-pagejacking-via-http-302-redirect-google-bug/">這裡</a>)</li>
+<li>當然，refresh也能如上述302一樣去惡搞別人的網站。</li>
+</ol>
+
+
+<p><a href="http://rental.zhupiter.com/postshow_184_1_1.html">Origin</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Blogging with Octopress]]></title>
+    <link href="http://www.aprilzephyr.com/blog/02132014/blogging-with-octopress/"/>
+    <updated>2014-02-13T21:32:44+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/02132014/blogging-with-octopress</id>
+    <content type="html"><![CDATA[<h3>1. 安裝Ruby</h3>
+
+<h3>2. 安裝Octopress</h3>
+
+<p>確保安裝了git，在終端輸入git &mdash;version可以看到計算機中的git版本。<br/>
+利用命令將octopress從github上clone到本機：<br/>
+<code>$ git clone git://github.com/imathis/octopress.git octopress</code><br/>
+<code>$ cd octopress</code><br/>
+<code>$ ruby --version</code><br/>
+安裝相關依賴項：<br/>
+<code>$ sudo gem install bundler #需要輸入root密碼</code><br/>
+<code>$ bundle install</code><br/>
+安裝默認的Octopress主題：<br/>
+<code>$ rake install</code>   <!--more--></p>
+
+<h3>3. 配置Octopress</h3>
+
+<p><code>$ vim ./_config.yml</code></p>
+
+<h3>4. 在本機創建ssh</h3>
+
+<p><code>$ cd ~/.ssh</code><br/>
+<code>$ ssh-keygen -t rsa -C 你註冊github時的email</code><br/>
+彈出Enter file in which to save the key (/Users/twer/.ssh/id_rsa): 直接按空格<br/>
+彈出Enter passphrase(empty for no passphrase):輸入你GitHub帳號的密碼。Enter same passphrase again: 再次輸入你的密碼。<br/>
+打開~/.ssh下的id_rsa.pub文件複製裡面的所有內容。<br/>
+登錄GitHub，選擇Account Settings&mdash;>SSH Public Keys添加ssh，把剪貼板的內容複製到key輸入框內直接保存。<br/>
+測試ssh：<br/>
+<code>$ ssh git@github.com</code><br/>
+輸出：<br/>
+PTY allocation request failed on channel 0<br/>
+Hi username! You&rsquo;ve successfully authenticated, but GitHub does not provide shell access.<br/>
+Connection to github.com closed.<br/>
+代表成功。</p>
+
+<h3>5. 在本機創建ssh</h3>
+
+<p><code>$ cd ~/.ssh</code><br/>
+<code>$ ssh-keygen -t rsa -C 你註冊github時的email</code><br/>
+彈出Enter file in which to save the key (/Users/twer/.ssh/id_rsa): 直接按空格<br/>
+彈出Enter passphrase(empty for no passphrase):輸入你GitHub帳號的密碼。Enter same passphrase again: 再次輸入你的密碼。<br/>
+打開~/.ssh下的id_rsa.pub文件複製裡面的所有內容。<br/>
+登錄GitHub，選擇Account Settings—>SSH Public Keys添加ssh，把剪貼板的內容複製到key輸入框內直接保存。<br/>
+測試ssh：<br/>
+<code>$ ssh git@github.com</code><br/>
+輸出：<br/>
+PTY allocation request failed on channel 0<br/>
+Hi username! You’ve successfully authenticated, but GitHub does not provide shell access.<br/>
+Connection to github.com closed.<br/>
+代表成功。</p>
+
+<h3>6. 將Blog部署到GitHub上</h3>
+
+<p>在GitHub上創建一個倉庫，命名為username.github.com。等全部配置完後，可以通過在瀏覽器中輸入<a href="http://username.github.com">http://username.github.com</a>來訪問。一般來說，將Blog的源碼放在source分支，把生成的內容提交到master分支。<br/>
+創建好倉庫之後，需要利用octopress的一個配置rake任務來自動配置上面創建的倉庫：<br/>
+<code>$ rake setup_github_pages</code><br/>
+上面的命令最主要的是創建一個_deploy目錄，用來存放部署到master分支的內容。期間會要求你輸入倉庫的url，根據提示，去GitHub.com上複製粘貼即可。<br/>
+完成上面的命令之後，我們就可以生成Blog並真正部署到倉庫中了。執行如下命令：<br/>
+<code>$ rake generate</code><br/>
+<code>$ rake deploy</code><br/>
+上面的命令首先生成Blog文件，並將生成的Blog文件拷貝到_deploy 目錄下，然後將這些內容添加到git中，並commit和push到倉庫的master分支。<br/>
+現在可以訪問<a href="http://username.github.com">http://username.github.com</a>了。注意，由於會發生延時，要等大約10分鐘才能打開。至此，我們已經基本完成對Blog的部署，不過Blog的source要單獨提交。</p>
+
+<h3>7. 開始寫Blog</h3>
+
+<p>Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲在source/_posts 目錄下，並且需要按照Jekyll的命名規範對文章進行命名：YYYY-MM-DD-post-title.markdown。文章的名字會被當作url的一部分，而其中的日期用於對博文的區分和排序。創建博文命令爲：<br/>
+<code>$ rake new_post["title"]</code><br/>
+然後在source/_posts/YY-MM-DD-post-title.markdown中寫博文。<br/>
+如果想讓文章在首頁只顯示一部分，只需要在文章中相應的位置添加<code>&lt;!--more--&gt;</code>即可。<br/>
+之後，按照如下命令部署：<br/>
+<code>$ rake generate</code><br/>
+<code>$ git add .</code><br/>
+<code>$ git commit -am "Some comments here."</code><br/>
+<code>$ git push origin source</code><br/>
+<code>$ rake deploy</code></p>
+
+<h3>8. 添加頁面(pages)</h3>
+
+<p>在Octopress中，有兩個默認的頁面，即blog/archives，可以參考它來完成自己的頁面。首先在source中創建一個目錄，例如author，然後在這個目錄中新建一個名為index.html的文件，根據需要進行編輯這個文件。<br/>
+重要的是，我們需要在首頁將這個頁面的鏈接顯示出來，此時需要編輯source/_includes/custom/navigation.html，仿照已有的內容添加一個新行，指向新創建的目錄即可。<br/>
+當rake generate正常之後，就可以rake deploy到GitHub上了。</p>
+
+<h3>9. 獨立域名</h3>
+
+<p>在域名管理中，建立一個CNAME指向，將你的域名指向username.github.com<br/>
+建一個名為CNAME的文件在source目錄下，然後將自己的域名輸入進去。<br/>
+將內容push到GitHub後，第一次生效大概需要一個小時，之後就可以用自己的域名進行訪問了。</p>
+
+<h3>10. 安裝模板並加入版權聲明</h3>
+
+<p>常用第三方模板有：<br/>
+<a href="http://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a><br/>
+進入選擇好的模板鏈接，根據說明進行安裝。(本Blog使用的模板爲：<a href="https://github.com/macjasp/cleanpress">CleanPress</a>)<br/>
+首先在source/_includes/post目錄下添加license.html文件，內容如下：<br/>
+``` html</p>
+
+<!-- Copyright Info BEGIN -->
+
+
+<p>
+{ % if site.post_license % }<br/>
+<b></p>
+
+<div class="entry-content"> <a rel="license"   href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" ></a>版權聲明：非商用-非衍生-保持署名  
+<br />  
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">Creative Commons BY-NC-ND 3.0  
+</a></div>
+
+
+<p></b><br/>
+{ % endif % }</p>
+
+<!-- Copyright Info END -->
+
+
+<p>
+```</p>
+
+<h3>11. Octopress添加Google Analytics統計與SEO</h3>
+
+<h4>1) 在各搜索引擎中提交本博客的地址：</h4>
+
+<p><a href="http://urlc.cn/tool/addurl.html">免费收录网站搜索引擎登录口大全</a><br/>
+爲網站、文章添加描述信息(description)、關鍵字(keywords)、標簽(tags)，以此幫助用戶準確的搜索到本博客。描述信息和關鍵字是指網頁head部分的元標簽(meta)，是給搜索引擎看的。<br/>
+爲每一篇文章都添加描述，可以在Octopress模板中修改source/_includes/head.html中的代碼<br/>
+<code>html
+{ % capture description % }{ % if page.description % }{\{ page.description }\}{ % else % }{\{ content | raw_content }\}{ % endif % }{ % endcapture % }  
+&lt;meta name="description" content="{\{ description | strip_html | condense_spaces | truncate:150 }\}"&gt;  
+{ % if page.keywords % }&lt;meta name="keywords"  
+content="{\{ page.keywords }\}"&gt;{ % endif % }  
+</code></p>
+
+<h4>2) 添加Google Analytics</h4>
+
+<p>註冊<a href="http://www.google.com/analytics/">Google Analytics</a>獲得一個google_analytics_tracking_id，添加到_config.yml中對應位置，並對網站進行驗證即可。然後通過Google Analytics分析網站流量。而且可以通過<a href="https://www.google.com/webmasters/tools/home?hl=zh-CN">Google站長工具</a>，對網站進行更全面的分析和SEO。<br/>
+對自己的網站進行驗證，只需將Google Analytics提供的用於驗證的代碼添加到source/_includes/head.html的<head>標簽之間，網站部署到網上之後，過幾分鐘即可驗證通過，其他需要驗證的也同樣操作。</p>
+
+<h3>12. 實現站內搜索</h3>
+
+<p>1) 在頁面合適的位置上創建一個搜索框：<br/>
+``` html</p>
+
+<div align='center'>
+    <form class="navbar-form" action="/search/">
+        <input type="text" class="form-control" placeholder="Search" name="q">
+    </form>               
+ </div>
+
+
+<p><code>  
+2) 修改\_config.yml文件：  
+simple_search: \search  
+3) 創建新的search頁面：  
+`rake new_page["search"]`  
+4) 修改source/\_include/navigation.html 文件：  
+去掉`&lt;input type="hidden" name="q" value="site:yourid.github.io" /&gt;`  
+5) 登錄[Google站長工具](https://www.google.com/webmasters/tools/home)，綁定自己的網站，進入網站管理頁面，進入實驗室中的“自定義搜索”，設置細節後獲取代碼，將代碼填入上面新建的search/index.markdown中：  
+</code></p>
+
+<div>
+    插入Google自定義搜索的代碼
+</div>
+
+
+<p>```</p>
+
+<h3>13. 參考</h3>
+
+<p><a href="http://octopress.org/help/">Octopress Help</a><br/>
+<a href="http://justcoding.iteye.com/blog/1954645">利用Octopress搭建一個GitHub博客</a><br/>
+<a href="http://blog.devtang.com/blog/2012/02/10/setup-blog-based-on-github/">象写程序一样写博客：搭建基于github的博客</a><br/>
+<a href="http://blog.segmentfault.com/yaashion_xiang/1190000000364677">在Mac上从零开始搭建基于Github的Octopress博客</a><br/>
+<a href="http://icodeit.org/2013/01/add-new-page-to-octopress/">为octopress添加新的页面(page)</a><br/>
+<a href="http://www.yanjiuyanjiu.com/blog/20130402/">我的Octopress配置</a><br/>
+<a href="http://blog.csdn.net/lcliliil/article/details/13725895">Octopress侧边栏及评论系统定制</a><br/>
+<a href="https://github.com/nswbmw/N-blog/wiki/_pages">N-blog</a><br/>
+<a href="http://blog.csdn.net/lcliliil/article/details/13727927">Octopress添加统计与SEO</a><br/>
+<del><a href="https://github.com/blimey85/octopress-tapir">octopress-tapir</a>  (需要下載文件，搜索框用)</del><br/>
+<del><a href="https://github.com/cinowu/gitskills/blob/master/jekyll-use.md">站内搜索框</a></del><br/>
+<a href="http://cocolighter.com/blog/2013/08/28/octopress-setup/">Octopress_setup</a></p>
+
+<h3>PS:</h3>
+
+<p>受限於格式要求，本文代碼中<strong>{</strong>或<strong>}</strong>與旁邊<strong>%</strong>之間的空格請刪去；兩個<strong>{</strong>或者兩個<strong>}</strong>之間的<strong>\</strong>請刪去。</p>
+]]></content>
+  </entry>
+  
+</feed>

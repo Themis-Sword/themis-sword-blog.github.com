@@ -1,0 +1,350 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
+	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<meta charset="utf-8">
+	<title>Python os &amp; sys模塊  | Themis_Sword's Blog</title>
+
+
+<meta name="author" content="Themis_Sword"> 
+
+<meta name="description" content="python的os，sys模塊"> <meta name="keywords" content="python, os, sys">
+
+
+<meta name="msvalidate.01" content="3084BF25D05B2AD0D58CBE0DEA3D888E" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Themis_Sword's Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery.fancybox.pack.js"></script>
+
+<script language="Javascript" type="text/javascript">
+$(document).ready(
+  function() {
+    (function($) {
+      $(".fancybox[data-content-id]").each(function() {
+        this.href = $(this).data('content-id');
+      });
+      $(".fancybox").fancybox({
+        beforeLoad: function() {
+          var el, 
+              id = $(this.element).data('title-id');
+
+          if (id) {
+            el = $('#' + id);
+
+            if (el.length) {
+              this.title = el.html();
+            }
+          }
+          if ($(this).data('content')) {
+            this.content = $(this).data('content');
+          }
+        },
+        helpers: {
+          title: {
+            type: 'inside'
+          }
+        }
+      });
+    })(jQuery);
+  }
+);
+</script>
+
+	
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48083272-1', 'aprilzephyr.com');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Themis_Sword's Blog</a></h1>
+<h4>Never Scared Endeavoring.</h4>
+<nav id="main-nav"><ul>
+	<li><a href="/">Home</a></li>
+	<li><a href="/blog/categories">Categories</a></li>
+        <li><a href="/portfolio">Portfolio</a><li>
+	<li><a href="/author">Author</a></li>
+</ul>
+
+
+
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul>
+	<li><a href="/">Home</a></li>
+	<li><a href="/blog/categories">Categories</a></li>
+        <li><a href="/portfolio">Portfolio</a><li>
+	<li><a href="/author">Author</a></li>
+</ul>
+
+
+
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:www.aprilzephyr.com">
+			</form>
+		</div>
+	</div>
+</nav>
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	<h3 class="title">Python Os &amp; Sys模塊
+</h3>
+	<div class="entry-content"><p><strong>1. os模塊</strong><br/>
+Python os模塊包含普遍的操作系統功能。如果你希望你的程序能夠與平臺無關的話，這個模塊是尤為重要的。</p>
+
+<p>1) os.name<br/>
+輸出字符串指示正在使用的平臺。如果是window 則用&#8217;nt&#8217;表示，對於Linux/Unix用戶，它是&#8217;posix&#8217;。<br/>
+2) os.mkdir(path [,mode=0777])<br/>
+創建目錄<br/>
+3) os.rmdir()<br/>
+刪除目錄<!--more--><br/>
+4) os.mkdirs()<br/>
+創建多層目錄，類似系統makedir -p<br/>
+5) os.removedirs()<br/>
+刪除多層目錄，每層都是空的，除了要刪除的目錄外。<br/>
+6) os.getcwd()<br/>
+函數得到當前工作目錄，即當前Python腳本工作的目錄路徑。<br/>
+7) os.listdir()<br/>
+返回指定目錄下的所有文件和目錄名。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">os</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+</span><span class='line'><span class="p">[</span><span class="s">&#39;.bash_history&#39;</span><span class="p">,</span> <span class="s">&#39;.bundler&#39;</span><span class="p">,</span> <span class="s">&#39;.CFUserTextEncoding&#39;</span><span class="p">,</span> <span class="s">&#39;.config&#39;</span><span class="p">,</span> <span class="s">&#39;.DS_Store&#39;</span><span class="p">,</span> <span class="s">&#39;.gem&#39;</span><span class="p">,</span> <span class="s">&#39;.gitconfig&#39;</span><span class="p">,</span> <span class="s">&#39;.matplotlib&#39;</span><span class="p">,</span> <span class="s">&#39;.ssh&#39;</span><span class="p">,</span> <span class="s">&#39;.Trash&#39;</span><span class="p">,</span> <span class="s">&#39;.Trash-500&#39;</span><span class="p">,</span> <span class="s">&#39;.vim&#39;</span><span class="p">,</span> <span class="s">&#39;.viminfo&#39;</span><span class="p">,</span> <span class="s">&#39;Applications&#39;</span><span class="p">,</span> <span class="s">&#39;Applications (Parallels)&#39;</span><span class="p">,</span> <span class="s">&#39;Desktop&#39;</span><span class="p">,</span> <span class="s">&#39;Documents&#39;</span><span class="p">,</span> <span class="s">&#39;Downloads&#39;</span><span class="p">,</span> <span class="s">&#39;Library&#39;</span><span class="p">,</span> <span class="s">&#39;Movies&#39;</span><span class="p">,</span> <span class="s">&#39;Music&#39;</span><span class="p">,</span> <span class="s">&#39;octopress&#39;</span><span class="p">,</span> <span class="s">&#39;Pictures&#39;</span><span class="p">,</span> <span class="s">&#39;Public&#39;</span><span class="p">,</span> <span class="s">&#39;PycharmProjects&#39;</span><span class="p">,</span> <span class="s">&#39;</span><span class="se">\xe7\x99\xbe\xe5\xba\xa6\xe4\xba\x91\xe5\x90\x8c\xe6\xad\xa5\xe7\x9b\x98</span><span class="s">&#39;</span><span class="p">]</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+8) os.remove()<br/>
+刪除一個文件。<br/>
+9) os.system()<br/>
+運行shell命令。<br/>
+10) os.sep<br/>
+可以取代操作系統特定的路徑分隔符。<br/>
+11) os.linesep<br/>
+給出當前平台使用的行終止符。<br/>
+12) os.path.split()<br/>
+函數返回一個路徑的目錄名和文件名<br/>
+13) os.path.isfile()和os.path.isdir()函數<br/>
+分別檢驗給出的路徑是一個文件還是目錄，給出True或者False。<br/>
+14) os.path.exists()<br/>
+檢驗給出的路徑是否真實的存在，給出True或者False。<br/>
+15) os.path.abspath(name)<br/>
+獲得絕對路徑。<br/>
+16) os.path.normpath(path)<br/>
+規範path的字符串形式。<br/>
+17) os.path.getsize(name)<br/>
+獲得文件大小，如果name是目錄返回0L。<br/>
+18) os.path.splitext()<br/>
+分離文件名與擴展名。<br/>
+19) os.path.join(path,name)<br/>
+連接目錄與文件名或目錄。<br/>
+20) os.path.basename(path)<br/>
+返回文件名。<br/>
+21) os.path.dirname(path)<br/>
+返回文件路徑。</p>
+
+<p><strong>2. sys模塊</strong><br/>
+1) sys.argv<br/>
+命令行參數List，第一個元素是程序本身路徑。<br/>
+2) sys.modules.keys()<br/>
+返回所有已經導入的模塊列表。<br/>
+3) sys.exc_info()<br/>
+獲取當前正在處理的異常類,exc_type、4) exc_value、exc_traceback當前處理的異常詳細信息。<br/>
+5) sys.exit(n)<br/>
+退出程序，正常退出時exit(0)。<br/>
+6) sys.hexversion<br/>
+獲取Python解釋程序的版本值，16進制格式如：0x020403F0。<br/>
+7) sys.version<br/>
+獲取Python解釋程序的版本信息。<br/>
+8) sys.maxint<br/>
+最大的Int值。<br/>
+9) sys.maxunicode<br/>
+最大的Unicode值。<br/>
+10) sys.modules<br/>
+返回系統導入的模塊字段，key是模塊名，value是模塊。<br/>
+11) sys.path<br/>
+返回模塊的搜索路徑，初始化時使用PYTHONPATH環境變量的值。<br/>
+12) sys.platform<br/>
+返回操作系統平臺名稱。<br/>
+13) sys.stdout<br/>
+標準輸出。<br/>
+14) sys.stdin<br/>
+標準輸入。<br/>
+15) sys.stderr<br/>
+錯誤輸出。<br/>
+16) sys.exc_clear()<br/>
+用來清除當前線程所出現的當前的或最近的錯誤信息。<br/>
+17) sys.exec_prefix<br/>
+返回平臺獨立的python文件安裝的位置。<br/>
+18) sys.byteorder<br/>
+本地字節規則的指示器，big-endian平臺的值是&#8217;big&#8217;,little-endian平臺的值是&#8217;little&#8217;。<br/>
+19) sys.copyright<br/>
+記錄python版權相關的東西。<br/>
+20) sys.api_version<br/>
+解釋器的C的API版本。<br/>
+21) sys.version_info<br/>
+<code>&gt;&gt;&gt; sys.version_info(major=2, minor=7, micro=5, releaselevel='final', serial=0)</code><br/>
+22) sys.displayhook(value)<br/>
+如果value非空，這個函數會把他輸出到sys.stdout，並且將他保存進__builtin__._.指在python的交互式解釋器裏，&#8217;_&lsquo;代表上次你輸入得到的結果，hook是鉤子的意思，將上次的結果鉤過來。<br/>
+23) sys.getdefaultencoding()<br/>
+返回當前你所用的默認的字符編碼格式。<br/>
+24) sys.getfilesystemencoding()<br/>
+返回將Unicode文件名轉換成系統文件名的編碼的名字。<br/>
+25) sys.setdefaultencoding(name)<br/>
+用來設置當前默認的字符編碼，如果name和任何一個可用的編碼都不匹配，拋出LookupError，這個函數只會被site模塊的sitecustomize使用，一旦別site模塊使用了，他會從sys模塊移除。<br/>
+26) sys.builtin_module_names<br/>
+Python解釋器導入的模塊列表。<br/>
+27) sys.executable<br/>
+Python解釋程序路徑。<br/>
+28) sys.getwindowsversion()<br/>
+獲取Windows的版本。<br/>
+29) sys.stdin.readline()<br/>
+從標準輸入讀一行。<br/>
+30) sys.stdout.write(&ldquo;a&rdquo;)<br/>
+屏幕輸出a。</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-31T16:06:01+08:00" pubdate data-updated="true">Mar 31<span>st</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/python/'>python</a>
+
+</div>
+
+
+	
+</div>
+</article>
+<!-- Copyright Info BEGIN -->
+
+
+<b>
+   <div class="entry-content"> <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" ></a>版權聲明：保持署名-非商用-非衍生
+<br />
+Attribution-NonCommercial-NoDerivs
+<br />
+ <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" >Creative Commons BY-NC-ND 3.0 </a>
+</div>
+</b>
+
+<!-- Copyright Info END -->
+
+
+	<div class="share">
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<a class="jiathis_button_twitter"></a>
+<a class="jiathis_button_tsina"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+	summary:"",
+	shortUrl:false,
+	hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+	
+</div>
+
+
+
+
+</div>
+
+    
+
+<div align='center'>
+    <form class="navbar-form" action="/search/">
+        <input type="text" class="form-control" placeholder="Google Search" name="q">
+    </form>
+ </div>
+
+	<footer id="footer" class="inner">Copyright &copy; 2015
+
+    Themis_Sword
+
+<br>
+Powered by Octopress.
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-48083272-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>
