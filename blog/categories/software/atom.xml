@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: software | Themis_Sword's Blog]]></title>
+  <link href="http://www.aprilzephyr.com/blog/categories/software/atom.xml" rel="self"/>
+  <link href="http://www.aprilzephyr.com/"/>
+  <updated>2015-04-15T17:41:35+08:00</updated>
+  <id>http://www.aprilzephyr.com/</id>
+  <author>
+    <name><![CDATA[Themis_Sword]]></name>
+    <email><![CDATA[licong0419@outlook.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Software Testing]]></title>
+    <link href="http://www.aprilzephyr.com/blog/04012014/software-testing/"/>
+    <updated>2014-04-01T16:24:56+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/04012014/software-testing</id>
+    <content type="html"><![CDATA[<h3>1. Overview</h3>
+
+<p>Software testing provide an objective, independent view to allow the business to appreciate and understand the risks of software, product or service implementation. Test techniques include, but are not limited to the process of executing a program or application with the intent of finding software bugs (errors or other defects).<!--more--></p>
+
+<p>Software testing can be stated as the process of validating and verifying that a computer program/application/product:<br/>
+* meets the requirements that guided its design and development,<br/>
+* works as expected,<br/>
+* can be implemented with the same characteristics,
+and satisfies the needs of stakeholders.</p>
+
+<p>Software testing, depending on the testing method employed, can be implemented at any time in the software development process.</p>
+
+<p>Testing can never completely identify all the defects within software. Instead, it furnishes a criticism or comparison that compares the state and behavior of the product against oracles—principles or mechanisms by which someone might recognize a problem. These oracles may include (but are not limited to) specifications, contracts, comparable products, past versions of the same product, inferences about intended or expected purpose, user or customer expectations, relevant standards, applicable laws, or other criteria.</p>
+
+<p>A primary purpose of testing is to detect software failures so that defects may be discovered and corrected. Testing cannot establish that a product functions properly under all conditions but can only establish that it does not function properly under specific conditions. The scope of software testing often includes examination of code as well as execution of that code in various environments and conditions as well as examining the aspects of code: does it do what it is supposed to do and do what it needs to do. A testing organization may be separate from the development team. There are various roles for testing team members. Information derived from software testing may be used to correct the process by which software is developed.</p>
+
+<p>Software testing is the process of attempting to make the assessment that whether the software product will be acceptable to its end users, its target audience, its purchasers and other stakeholders..</p>
+
+<h4>A Defects and failures</h4>
+
+<p>Not all software defects are caused by coding errors. One common source of expensive defects is requirement gaps, e.g., unrecognized requirements which result in errors of omission by the program designer. Requirement gaps can often be non-functional requirements such as testability, scalability, maintainability, usability, performance, and security.</p>
+
+<h4>B Input combinations and preconditions</h4>
+
+<p>A fundamental problem with software testing is that testing under all combinations of inputs and preconditions (initial state) is not feasible. More significantly, non-functional dimensions of quality (how it is supposed to be versus what it is supposed to do)—usability, scalability, performance, compatibility, reliability—can be highly subjective; something that constitutes sufficient value to one person may be intolerable to another.</p>
+
+<p>Software developers can&rsquo;t test everything, but they can use combinatorial test design to identify the minimum number of tests needed to get the coverage they want.</p>
+
+<h3>2. Testing methods</h3>
+
+<h4>A Static vs. dynamic testing</h4>
+
+<p>Reviews, walkthroughs, or inspections are referred to as static testing, whereas actually executing programmed code with a given set of test cases is referred to as dynamic testing.</p>
+
+<p>Static testing involves verification, whereas dynamic testing involves validation.</p>
+
+<h4>B The box approach</h4>
+
+<p><em>1) White-box testing</em><br/>
+White-box testing (also known as clear box testing, glass box testing, transparent box testing and structural testing) tests internal structures or workings of a program, as opposed to the functionality exposed to the end-user. In white-box testing an internal perspective of the system, as well as programming skills, are used to design test cases. The tester chooses inputs to exercise paths through the code and determine the appropriate outputs. This is analogous to testing nodes in a circuit.</p>
+
+<p>While white-box testing can be applied at the unit, integration and system levels of the software testing process, it is usually done at the unit level. It can test paths within a unit, paths between units during integration, and between subsystems during a system–level test. Though this method of test design can uncover many errors or problems, it might not detect unimplemented parts of the specification or missing requirements.</p>
+
+<p>Techniques used in white-box testing include:<br/>
+* API testing (application programming interface) – testing of the application using public and private APIs<br/>
+* Code coverage – creating tests to satisfy some criteria of code coverage (e.g., the test designer can create tests to cause all statements in the program to be executed at least once)<br/>
+* Fault injection methods – intentionally introducing faults to gauge the efficacy of testing strategies<br/>
+* Mutation testing methods<br/>
+* Static testing methods</p>
+
+<p>Code coverage tools can evaluate the completeness of a test suite that was created with any method, including black-box testing. This allows the software team to examine parts of a system that are rarely tested and ensures that the most important function points have been tested. Code coverage as a software metric can be reported as a percentage for:<br/>
+* Function coverage, which reports on functions executed<br/>
+* Statement coverage, which reports on the number of lines executed to complete the test</p>
+
+<p>100% statement coverage ensures that all code paths, or branches (in terms of control flow) are executed at least once. This is helpful in ensuring correct functionality, but not sufficient since the same code may process different inputs correctly or incorrectly.</p>
+
+<p><em>2) Black-box testing</em><br/>
+Black-box testing treats the software as a &ldquo;black box&rdquo;, examining functionality without any knowledge of internal implementation. The testers are only aware of what the software is supposed to do, not how it does it. Black-box testing methods include: equivalence partitioning, boundary value analysis, all-pairs testing, state transition tables, decision table testing, fuzz testing, model-based testing, use case testing, exploratory testing and specification-based testing.</p>
+
+<p>One advantage of the black box technique is that no programming knowledge is required. Whatever biases the programmers may have had, the tester likely has a different set and may emphasize different areas of functionality.</p>
+
+<p>This method of test can be applied to all levels of software testing: unit, integration, system and acceptance. It typically comprises most if not all testing at higher levels, but can also dominate unit testing as well.</p>
+
+<p><em>3) Grey-box testing</em><br/>
+Grey-box testing involves having knowledge of internal data structures and algorithms for purposes of designing tests, while executing those tests at the user, or black-box level. The tester is not required to have full access to the software&rsquo;s source code. Manipulating input data and formatting output do not qualify as grey-box, because the input and output are clearly outside of the &ldquo;black box&rdquo; that we are calling the system under test. This distinction is particularly important when conducting integration testing between two modules of code written by two different developers, where only the interfaces are exposed for test.</p>
+
+<p>Typically, a grey-box tester will be permitted to set up an isolated testing environment with activities such as seeding a database. The tester can observe the state of the product being tested after performing certain actions such as executing SQL statements against the database and then executing queries to ensure that the expected changes have been reflected. Grey-box testing implements intelligent test scenarios, based on limited information. This will particularly apply to data type handling, exception handling, and so on.</p>
+
+<h3>3. Testing levels</h3>
+
+<h4>A Unit testing</h4>
+
+<p>Unit testing, also known as component testing, refers to tests that verify the functionality of a specific section of code, usually at the function level. In an object-oriented environment, this is usually at the class level, and the minimal unit tests include the constructors and destructors.</p>
+
+<p>Unit testing aims to eliminate construction errors before code is promoted to QA; this strategy is intended to increase the quality of the resulting software as well as the efficiency of the overall development and QA process.</p>
+
+<p>Depending on the organization&rsquo;s expectations for software development, unit testing might include static code analysis, data flow analysis metrics analysis, peer code reviews, code coverage analysis and other software verification practices.</p>
+
+<h4>B Integration testing</h4>
+
+<p>Integration testing is any type of software testing that seeks to verify the interfaces between components against a software design. Software components may be integrated in an iterative way or all together.</p>
+
+<p>Integration testing works to expose defects in the interfaces and interaction between integrated components (modules). Progressively larger groups of tested software components corresponding to elements of the architectural design are integrated and tested until the software works as a system.</p>
+
+<h4>C Component interface testing</h4>
+
+<p>The practice of component interface testing can be used to check the handling of data passed between various units, or subsystem components, beyond full integration testing between those units. The data being passed can be considered as &ldquo;message packets&rdquo; and the range or data types can be checked, for data generated from one unit, and tested for validity before being passed into another unit. Tests can include checking the handling of some extreme data values while other interface variables are passed as normal values. Unusual data values in an interface can help explain unexpected performance in the next unit. Component interface testing is a variation of black-box testing, with the focus on the data values beyond just the related actions of a subsystem component.</p>
+
+<h4>D System testing</h4>
+
+<p>System testing, or end-to-end testing, tests a completely integrated system to verify that it meets its requirements. For example, a system test might involve testing a logon interface, then creating and editing an entry, plus sending or printing results, followed by summary processing or deletion (or archiving) of entries, then logoff.</p>
+
+<p>In addition, the software testing should ensure that the program, as well as working as expected, does not also destroy or partially corrupt its operating environment or cause other processes within that environment to become inoperative (this includes not corrupting shared memory, not consuming or locking up excessive resources and leaving any parallel processes unharmed by its presence).</p>
+
+<h4>E Acceptance testing</h4>
+
+<p>At last the system is delivered to the user for Acceptance testing.</p>
+
+<h3>4. Testing types</h3>
+
+<h4>A Installation testing</h4>
+
+<p>An installation test assures that the system is installed correctly and working at actual customer&rsquo;s hardware.</p>
+
+<h4>B Compatibility testing</h4>
+
+<p>A common cause of software failure (real or perceived) is a lack of its compatibility with other application software, operating systems (or operating system versions), or target environments that differ greatly from the original (such as a terminal or GUI application intended to be run on the desktop now being required to become a web application, which must render in a web browser).  This results in the unintended consequence that the latest work may not function on earlier versions of the target environment, or on older hardware that earlier versions of the target environment was capable of using.</p>
+
+<h4>C Smoke and sanity testing</h4>
+
+<p>Sanity testing determines whether it is reasonable to proceed with further testing. Smoke testing consists of minimal attempts to operate the software, designed to determine whether there are any basic problems that will prevent it from working at all. Such tests can be used as build verification test.</p>
+
+<h4>D Regression testing</h4>
+
+<p>Regression testing focuses on finding defects after a major code change has occurred. Specifically, it seeks to uncover software regressions, as degraded or lost features, including old bugs that have come back. Such regressions occur whenever software functionality that was previously working, correctly, stops working as intended. Typically, regressions occur as an unintended consequence of program changes, when the newly developed part of the software collides with the previously existing code.</p>
+
+<h4>E Acceptance testing</h4>
+
+<h4>F Alpha testing</h4>
+
+<p>Alpha testing is simulated or actual operational testing by potential users/customers or an independent test team at the developers' site. Alpha testing is often employed for off-the-shelf software as a form of internal acceptance testing, before the software goes to beta testing.</p>
+
+<h4>G Beta testing</h4>
+
+<p>Beta testing comes after alpha testing and can be considered a form of external user acceptance testing. Beta versions, of software are released to a limited audience outside of the programming team.</p>
+
+<h4>H Functional vs non-functional testing</h4>
+
+<p>Functional testing refers to activities that verify a specific action or function of the code. These are usually found in the code requirements documentation, although some development methodologies work from use cases or user stories.
+Non-functional testing refers to aspects of the software that may not be related to a specific function or user action, such as scalability or other performance, behavior under certain constraints, or security. Testing will determine the breaking point, the point at which extremes of scalability or performance leads to unstable execution. Non-functional requirements tend to be those that reflect the quality of the product, particularly in the context of the suitability perspective of its users.</p>
+
+<h4>I Destructive testing</h4>
+
+<p>Destructive testing attempts to cause the software or a sub-system to fail. It verifies that the software functions properly even when it receives invalid or unexpected inputs, thereby establishing the robustness of input validation and error-management routines.</p>
+
+<h4>J Software performance testing</h4>
+
+<p>Performance testing is generally executed to determine how a system or sub-system performs in terms of responsiveness and stability under a particular workload. It can also serve to investigate, measure, validate or verify other quality attributes of the system, such as scalability, reliability and resource usage.</p>
+
+<p>Load testing is primarily concerned with testing that the system can continue to operate under a specific load, whether that be large quantities of data or a large number of users. This is generally referred to as software scalability. The related load testing activity of when performed as a non-functional activity is often referred to as endurance testing. Volume testing is a way to test software functions even when certain components (for example a file or database) increase radically in size. Stress testing is a way to test reliability under unexpected or rare workloads. Stability testing (often referred to as load or endurance testing) checks to see if the software can continuously function well in or above an acceptable period.</p>
+
+<p>The terms load testing, performance testing, scalability testing, and volume testing, are often used interchangeably. Real-time software systems have strict timing constraints.</p>
+
+<h4>K Usability testing</h4>
+
+<p>Usability testing is needed to check if the user interface is easy to use and understand. It is concerned mainly with the use of the application.</p>
+
+<h4>L Accessibility testing</h4>
+
+<h4>M Security testing</h4>
+
+<h4>N Other testings</h4>
+
+<h3>5. Testing process</h3>
+
+<h4>A Traditional waterfall development model</h4>
+
+<p>A common practice of software testing is that testing is performed by an independent group of testers after the functionality is developed, before it is shipped to the customer. This practice often results in the testing phase being used as a project buffer to compensate for project delays, thereby compromising the time devoted to testing.</p>
+
+<p>Another practice is to start software testing at the same moment the project starts and it is a continuous process until the project finishes.</p>
+
+<h4>B Agile or Extreme development model</h4>
+
+<p>In contrast, some emerging software disciplines such as extreme programming and the agile software development movement, adhere to a &ldquo;test-driven software development&rdquo; model. In this process, unit tests are written first, by the software engineers (often with pair programming in the extreme programming methodology). Of course these tests fail initially; as they are expected to. Then as code is written it passes incrementally larger portions of the test suites. The test suites are continuously updated as new failure conditions and corner cases are discovered, and they are integrated with any regression tests that are developed. Unit tests are maintained along with the rest of the software source code and generally integrated into the build process (with inherently interactive tests being relegated to a partially manual build acceptance process). The ultimate goal of this test process is to achieve continuous integration where software updates can be published to the public frequently.</p>
+
+<p>This methodology increases the testing effort done by development, before reaching any formal testing team. In some other development models, most of the test execution occurs after the requirements have been defined and the coding process has been completed.</p>
+
+<h4>C Top-down and bottom-up</h4>
+
+<p>Bottom Up Testing is an approach to integrated testing where the lowest level components (modules, procedures, and functions) are tested first, then integrated and used to facilitate the testing of higher level components. After the integration testing of lower level integrated modules, the next level of modules will be formed and can be used for integration testing. The process is repeated until the components at the top of the hierarchy are tested. This approach is helpful only when all or most of the modules of the same development level are ready. This method also helps to determine the levels of software developed and makes it easier to report testing progress in the form of a percentage.</p>
+
+<p>Top Down Testing is an approach to integrated testing where the top integrated modules are tested and the branch of the module is tested step by step until the end of the related module.</p>
+
+<h4>D A sample testing cycle</h4>
+
+<ul>
+<li>Requirement analysis</li>
+<li>Test planning</li>
+<li>Test development</li>
+<li>Test execution</li>
+<li>Test reporting</li>
+<li>Test result analysis</li>
+<li>Defect retesting</li>
+<li>Regression testing</li>
+<li>Test closure</li>
+</ul>
+
+
+<h3>6. Automated testing</h3>
+
+<h4>A Testing tools</h4>
+
+<ul>
+<li>Program monitors, permitting full or partial monitoring of program code including:
+
+<ul>
+<li>Instruction set simulator, permitting complete instruction level monitoring and trace facilities</li>
+<li>Program animation, permitting step-by-step execution and conditional breakpoint at source level or in machine code</li>
+<li>Code coverage reports</li>
+</ul>
+</li>
+<li>Formatted dump or symbolic debugging, tools allowing inspection of program variables on error or at chosen points</li>
+<li>Automated functional GUI testing tools are used to repeat system-level tests through the GUI</li>
+<li>Benchmarks, allowing run-time performance comparisons to be made</li>
+<li>Performance analysis (or profiling tools) that can help to highlight hot spots and resource usage</li>
+</ul>
+
+
+<h4>B Measurement in software testing</h4>
+
+<p>Usually, quality is constrained to such topics as correctness, completeness, security, but can also include more technical requirements as described under the ISO standard ISO/IEC 9126, such as capability, reliability, efficiency, portability, maintainability, compatibility, and usability.</p>
+
+<p>There are a number of frequently used software metrics, or measures, which are used to assist in determining the state of the software or the adequacy of the testing.</p>
+
+<h3>7. Testing artifacts</h3>
+
+<ul>
+<li>Test plan</li>
+<li>Traceability matrix</li>
+<li>Test case</li>
+<li>Test script</li>
+<li>Test suite</li>
+<li>Test fixture or test data</li>
+<li>Test harness</li>
+</ul>
+
+
+<h3>8. Related process</h3>
+
+<h4>A Software verification and validation</h4>
+
+<ul>
+<li>Verification: Have we built the software right? (i.e., does it implement the requirements).</li>
+<li>Validation: Have we built the right software? (i.e., do the requirements satisfy the customer).</li>
+</ul>
+
+
+<p>According to the IEEE Standard Glossary of Software Engineering Terminology:<br/>
+* Verification is the process of evaluating a system or component to determine whether the products of a given development phase satisfy the conditions imposed at the start of that phase.<br/>
+* Validation is the process of evaluating a system or component during or at the end of the development process to determine whether it satisfies specified requirements.</p>
+
+<p>According to the ISO 9000 standard:<br/>
+* Verification is confirmation by examination and through provision of objective evidence that specified requirements have been fulfilled.
+* Validation is confirmation by examination and through provision of objective evidence that the requirements for a specific intended use or application have been fulfilled.</p>
+
+<h4>B Software quality assurance</h4>
+
+<p>Software testing is a part of the software quality assurance (SQA) process. In SQA, software process specialists and auditors are concerned for the software development process rather than just the artifacts such as documentation, code and systems. They examine and change the software engineering process itself to reduce the number of faults that end up in the delivered software: the so-called &ldquo;defect rate&rdquo;. What constitutes an &ldquo;acceptable defect rate&rdquo; depends on the nature of the software; A flight simulator video game would have much higher defect tolerance than software for an actual airplane. Although there are close links with SQA, testing departments often exist independently, and there may be no SQA function in some companies.</p>
+
+<p>Software testing is a task intended to detect defects in software by contrasting a computer program&rsquo;s expected results with its actual results for a given set of inputs. By contrast, QA (quality assurance) is the implementation of policies and procedures intended to prevent defects from occurring in the first place.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Software_testing">Origin</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[100 Interview Questions for Software Developers(轉)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/02202014/100-interview-questions/"/>
+    <updated>2014-02-20T15:46:36+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/02202014/100-interview-questions</id>
+    <content type="html"><![CDATA[<p>1月13日，著名博客作者<a href="http://www.noop.nl">Jurgen Appelo</a>寫了一篇博文：<a href="http://www.noop.nl/2009/01/100-interview-questions-for-software-developers.html">“軟件開發者面試百問”</a>。該文甚受讀者歡迎，15日便登上了delicious，Popurls.com，Reddit的首頁。InfoQ中文站在得到作者許可之後，将其全文翻譯爲中文，希望可以對國內讀者有所助益。</br>
+</br>
+以下爲文章全文：</br>
+</br>
+想雇到搞軟件開發的聰明人可不容易。萬一一不小心，就會搞到一堆低能大狒狒。我去年就碰到这種事了。你肯定不想這樣吧。聽我的，没錯。在樹上開站立會議門都没有。<!--more--></br>
+</br>
+問點有難度的問題能幫你把聰明人跟狒狒們分開。我决定把我自己整理出來的軟件開發者面視百問發出来，希望能幫到你們的忙。</br>
+</br>
+這個列表涵蓋了軟件工程知識體系中定義的大多數知識域。當然，如果你只想找出類拔萃的程序員，便只需涉及結構、算法、數據結構、測試这幾個話題。如果想雇架構師，也可以只考慮需求、功能設計、技術設計这些地方。</br>
+</br>
+不過不管你怎麼做，都要牢記一點：</br>
+</br>
+這裡大多數問題的答案都没有對错之分！</br>
+</br>
+你可以把我的這些問題作為引子，展開討論。例如下面有個問題是使用静態方法或是單例的缘由。如果那個面試者就此展開長篇大論，那他很有可能是個聰明能幹的家伙！如果他一臉茫然的看著你，發出這種聲音，很明顯這就是只狒狒了。同樣，想知道一個數是不是2的乘方也有很多方法，不過要是面試的人想用mod運算符，嗯……你知道我的意思吧。（你不知道也没關係，來根香蕉？）</br>
+</br>
+<strong>需求</strong></br>
+</br>
+1) 你能給出一些非功能性（或者質量）需求的例子么？</br>
+2) 如果客户需要高性能、使用极其方便而又高度安全，你會给他什麼建議？</br>
+3) 你能給出一些用來描述需求的不同技術么？它們各自適用於什麼場景？</br>
+4) 需求跟蹤是什麼意思？什麼是向前追溯，什麼是向後追溯？</br>
+5) 你喜歡用什麼工具跟蹤需求？</br>
+6) 你怎麼看待需求變化？它是好是壞？給出你的理由。</br>
+7) 你怎樣研究需求，發現需求？有哪些資源可以用到？</br>
+8) 你怎麼給需求製定優先級？有哪些技術？</br>
+9) 在需求過程中，用户、客户、開發人員各自的職責是什麼？</br>
+10) 你怎麼對待不完整或是令人費解的需求？</br>
+</br>
+<strong>功能設計</strong></br>
+</br>
+1) 在功能設計中有哪些隱喻？給出幾個成功的例子。</br>
+2) 如果有些功能的執行時間很长，怎麼能讓用户感觉不到太長的等待？</br>
+3) 如果用户必須要在一個很小的區域内，從一個常常的列表中選擇多个條目，你會用什么控件？</br>
+4) 有哪些方法可以保证數據項的完整？</br>
+5) 建立系統原型有哪些技術？</br>
+6) 应用程序怎樣建立對用户行为的预期？給出一些例子。</br>
+7) 如何入手設計一組數量龐大而又複雜的特性，你能舉出一些設計思路吗？</br>
+8) 有一個列表，其中有10個元素，每個元素都有20個字段可以編輯，你怎樣設計這種情况？如果是1000個元素，每個元素有3個字段呢？</br>
+9) 用不同的顏色對一段文本中的文字標記高亮，這種做法有什麼問題？</br>
+10) Web環境和Windows環境各有些什么限制？</br>
+</br>
+<strong>技術設計</strong></br>
+</br>
+1) 什麼是低耦合和高聚合？封裝原則又是什麼意思？</br>
+2) 在Web應用中，你怎樣避免几個人編輯同一段數據所造成的衝突？</br>
+3) 你知道設計模式吗？你用过哪些設計模式？在什麼场合下用的？</br>
+4) 是否了解什麼是無狀態的業務層？長事物如何與之相適應？</br>
+5) 在搭建一個架構，或是技術設計時，你用過幾種圖？</br>
+6) 在N層架構中都有哪些層？它們各自的職責是什麼？</br>
+7) 有哪些方法可以確保架構中數據的正確和健壮？</br>
+8) 面向对象設計和面向組件設計有哪些不同之處？</br>
+9) 怎樣在數據庫中對用户授權、用户配置、權限管理這幾項功能建模？</br>
+10) 怎樣按照等級制度給动物王國（包括各種物種和各自的行爲）建模？</br>
+</br>
+<strong>程序設計</strong></br>
+</br>
+1) 你怎樣保證你的代碼可以處理各種錯誤事件？</br>
+2) 解釋一下什麼是測試驅動開發，舉出極限編程中的一些原則。</br>
+3) 看别人代碼的時候，你最關心什麼地方？</br>
+4) 什麼時候使用抽象類，什麼時候使用接口？</br>
+5) 除了IDE以外，你還喜歡哪些必不可少的工具？</br>
+6) 你怎麼保證代碼執行速度快，而又不出問題？</br>
+7) 什麼時候用多態，什麼時候用委派？</br>
+8) 什麼時候使用帶有靜態成員的類，什麼時候使用單例？</br>
+9) 你在代碼裏面怎麼提前處理需求的變化？給一些例子。</br>
+10) 描述一下實現一段代碼的過程，從需求到最终交付。</br>
+</br>
+<strong>算法</strong></br>
+</br>
+1) 怎樣知道一個數字是不是2的乘方？怎樣判斷一個数是不是奇數？</br>
+2) 怎樣找出鏈表中間的元素？</br>
+3) 怎樣改變10,000個靜態HTML頁面中所有電話號碼的格式？</br>
+4) 舉出一個你所用過的遞歸的例子。</br>
+5) 在散列表和排序後的列表中找一個元素，哪個查找速度最快？</br>
+6) 不管是書、雜誌还是網絡，你從中所學到的最後一點算法知識是什麼？</br>
+7) 怎樣把字符串反轉？你能不用臨時的字符串么？</br>
+8) 你願意用什么類型的語言來編寫複雜的算法？</br>
+9) 有一個數組，裏面是從1到1,000,000的整数，其中有一個數字出現了两次，你怎麼找出那個重複的數字？</br>
+10) 你知道“旅行商問題（Traveling Salesman Problem）”么？</br>
+</br>
+<strong>數據結構</strong></br>
+</br>
+1) 怎樣在内存中實現倫敦地鐵的結構？</br>
+2) 怎樣以最有效的方式在數據庫中存儲顏色值？</br>
+3) 队列和堆棧區別是什麼？</br>
+4) 用堆或者棧存儲數據的區別是什麼？</br>
+5) 怎樣在數據庫中存儲N維向量？</br>
+6) 你倾向於用哪种類型的語言編寫複雜的數據結構？</br>
+7) 21的二進製值是什么？十六進製值呢？</br>
+8) 不管是書、雜誌还是網絡，你從中所學到的最後一點數據結構的知識是什麼？</br>
+9) 怎樣在XML文檔中存儲足球比赛結果（包括队伍和比分）？</br>
+10) 有哪些文本格式可以保存Unicode字符？</br>
+</br>
+<strong>測試</strong></br>
+</br>
+1) 什麼是回歸測試？怎樣知道新引入的變化没有給現有的功能造成破壞？</br>
+2) 如果業務層和數據層之間有依赖關係，你該怎麼寫單元測試？</br>
+3) 你用哪些工具測試代碼質量？</br>
+4) 在產品部署之後，你最常碰到的是什麼類型的問题？</br>
+5) 什麼是代碼覆蓋率？有多少種代碼覆盖率？</br>
+6) 功能測試和探索性測試的區別是什麼？你怎麼對網站進行測試？</br>
+7) 測試套件、測試用例、測試計劃，這三者之間的區別是什麼？你怎麼組織測試？</br>
+8) 要對電子商務網站做冒煙測試，你會做哪些類型的測試？</br>
+9) 客户在驗收測試中會發現不满意的東西，怎樣减少這種情况的發生？</br>
+10) 你去年在測試和質量保證方面學到了哪些東西？</br>
+</br>
+<strong>維護</strong></br>
+</br>
+1) 你用哪些工具在維護階段對產品進行監控？</br>
+2) 要想對一個正在產品環境中被使用的產品進行升級，該注意哪些重要事項？</br>
+3) 如果在一个龐大的文件中有錯誤，而代碼又無法逐步跟蹤，你怎麼找出錯誤？</br>
+4) 你怎樣保證代碼中的變化不會影響產品的其他部分？</br>
+5) 你怎樣爲產品編寫技術文檔？</br>
+6) 你用过哪些方式保證軟件產品容易維護？</br>
+7) 怎樣在產品運行的環境中進行系統調試？</br>
+8) 什麼是負載均衡？負載均衡的方式有哪些？</br>
+9) 為什麼在應用程序的生命週期中，軟件維護費用所佔的份額最高？</br>
+10) 再造工程（re-engineering）和逆向工程（reverse engineering）的區別是什麼？</br>
+</br>
+<strong>配置管理</strong></br>
+</br>
+1) 你知道配置管理中基線的含義麼？怎樣把項目中某個重要的時刻凍結？</br>
+2) 你一般會把哪些東西纳入版本控制？</br>
+3) 怎樣可以保證團隊中每個人都知道誰改變了哪些東西？</br>
+4) Tag和Branch的區別是什么？在什麼情况下该使用tag，什麼時候用branch？</br>
+5) 怎樣管理技術文檔——如產品架構文檔——的變化？</br>
+6) 你用什麼工具管理項目中所有數字信息的狀態？你最喜歡哪种工具？</br>
+7) 如果客户想要對一款已經發佈的產品做出變動，你怎麼處理？</br>
+8) 版本管理和發佈管理有什麼差異？</br>
+9) 對文本文件的變化和二進製文件的變化進行管理，這二者有什麼不同？</br>
+10) 同時處理多個變更請求，或是同時進行增量開發和維護，這種事情你怎麼看待？</br>
+</br>
+<strong>項目管理</strong></br>
+</br>
+1) 範圍、時間、成本，这三項中哪些是可以由客户控制的？</br>
+2) 誰該對項目中所要付出的一切做出估算？誰有權設置最後期限？</br>
+3) 减少交付的次數，或是减少每個交付中的工作量，你喜歡哪種做法？</br>
+4) 你喜歡用哪種圖來跟蹤項目進度？</br>
+5) 迭代和增量的區別在哪里？</br>
+6) 試著解释一下風險管理中用到的實踐。風險該如何管理？</br>
+7) 你喜歡任務分解还是滾動式計劃？</br>
+8) 你需要哪些东西幫助你判斷項目是否符合時間要求，在預算範圍内運作？</br>
+9) DSDM、Prince2、Scrum，这三者之間有哪些區别？</br>
+10) 如果客户想要的東西太多，你在範圍和時間上怎樣跟他達成一致呢？</br>
+</br>
+閱讀英文原文：<a href="http://www.noop.nl/2009/01/100-interview-questions-for-software-developers.html">100 Interview Questions for Software Developers</a></br>
+</br>
+<a href="http://www.infoq.com/cn/articles/programmer-interview">Origin</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Excerpt_Software Engineering: A Practitioner Approach]]></title>
+    <link href="http://www.aprilzephyr.com/blog/02192014/excerpt-software-engineering/"/>
+    <updated>2014-02-19T18:44:39+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/02192014/excerpt-software-engineering</id>
+    <content type="html"><![CDATA[<ol>
+<li><p>&hellip; a set of quality factors that were a first step toward the development of metrics for software quality. These factors assess software from three distinct points of view: (1) product operation (using it), (2) product revision (changing it), and (3) product transition (modifying it to work in a different environment; i.e., &ldquo;porting&rdquo; it). (P95-96)</p></li>
+<li><p>Gilb suggests definitions and measures for each.</br>
+<strong>Correctness</strong>. A program must operate correctly or it provides little value to its users. Correctness is the degree to which the software performs its required function. The most common measure for correctness is defects per KLOC, where a defect is defined as a verified lack of conformance to requirements. When considering the overall quality of a software product, defects are those problems reported by a user of the program after the program has been released for general use. For quality assessment purposes, defects are counted over a standard period of time, typically one year.<!--more--></br><strong>Maintainability</strong>. Software maintenance accounts for more effort than any other software engineering activity. Maintainability is the ease with which a program can be corrected if an error is encountered, adapted if its environment changes, or enhanced if the customer desires a change in requirements. There is no way to measure maintainability directly; therefore, we must use indirect measures. A simple time-oriented metric is mean-time-to-change (MTTC), the time it takes to analyze the change request, design an appropriate modification, implement the change, test it, and distribute the change to all users. On average, programs that are maintainable will have a lower MTTC (for equivalent types of changes) than programs that are not maintainable.</br>Hitachi has used a cost-oriented metric for maintainability called spoilage—the cost to correct defects encountered after the software has been released to its end-users. When the ratio of spoilage to overall project cost (for many projects) is plotted as a function of time, a manager can determine whether the overall maintainability of software produced by a software development organization is improving. Actions can then be taken in response to the insight gained from this information.  </br><strong>Integrity</strong>. Software integrity has become increasingly important in the age of hackers and firewalls. This attribute measures a system&rsquo;s ability to withstand attacks (both accidental and intentional) to its security. Attacks can be made on all three components of software: programs, data, and documents.  To measure integrity, two additional attributes must be defined: threat and security. Threat is the probability (which can be estimated or derived from empirical evidence) that an attack of a specific type will occur within a given time. Security is the probability (which can be estimated or derived from empirical evidence) that the attack of a specific type will be repelled. The integrity of a system can then be defined as</br><strong>integrity = summation [(1 – threat)*(1 – security)]</strong></br>where threat and security are summed over each type of attack.</br><strong>Usability</strong>. The catch phrase &ldquo;user-friendliness&rdquo; has become ubiquitous in discussions of software products. If a program is not user-friendly, it is often doomed to failure, even if the functions that it performs are valuable. Usability is an attempt to quantify user-friendliness and can be measured in terms of four characteristics: (1) the physical and or intellectual skill required to learn the system, (2) the time required to become moderately efficient in the use of the system, (3) the net increase in productivity (over the approach that the system replaces) measured when the system is used by someone who is moderately efficient, and (4) a subjective assessment (sometimes obtained through a questionnaire) of users attitudes toward the system. (P96-97)</br></p></li>
+<li><p>A leading executive was once asked what single characteristic was most important when selecting a project manager. His response: &ldquo;a person with the ability to know what will go wrong before it actually does &hellip;&rdquo; We might add: &ldquo;and the courage to estimate when the future is cloudy.&rdquo; (P114)</br></p></li>
+<li><p>A considerably more intelligent strategy for risk management is to be proactive. A proactive strategy begins long before technical work is initiated. Potential risks are identified, their probability and impact are assessed, and they are ranked by importance. Then, the software team establishes a plan for managing risk. The primary objective is to avoid risk, but because not all risks can be avoided, the team works to develop a contingency plan that will enable it to respond in a controlled and effective manner. (P146)</br></p></li>
+<li><p>When risks are analyzed, it is important to quantify the level of uncertainty and the degree of loss associated with each risk. To accomplish this, different categories of risks are considered.</br><strong>Project risks</strong> threaten the project plan. That is, if project risks become real, it is likely that project schedule will slip and that costs will increase. Project risks identify potential budgetary, schedule, personnel (staffing and organization), resource, customer, and requirements problems and their impact on a software project. Project complexity, size, and the degree of structural uncertainty were also defined as project (and estimation) risk factors.</br><strong>Technical risks</strong> threaten the quality and timeliness of the software to be produced. If a technical risk becomes a reality, implementation may become difficult or impossible. Technical risks identify potential design, implementation, interface, verification, and maintenance problems. In addition, specification ambiguity, technical uncertainty, technical obsolescence, and &ldquo;leading-edge&rdquo; technology are also risk factors. Technical risks occur because the problem is harder to solve than we thought it would be.</br><strong>Business risks</strong> threaten the viability of the software to be built. Business risks often jeopardize the project or the product. Candidates for the top five business risks are (1) building a excellent product or system that no one really wants (market risk), (2) building a product that no longer fits into the overall business strategy for the company (strategic risk), (3) building a product that the sales force doesn&rsquo;t understand how to sell, (4) losing the support of senior management due to a change in focus or a change in people (management risk), and (5) losing budgetary or personnel commitment (budget risks). It is extremely important to note that simple categorization won&rsquo;t always work. Some risks are simply unpredictable in advance. (P147)</br></p></li>
+<li><p>One method for identifying risks is to create a risk item checklist. The checklist can be used for risk identification and focuses on some subset of known and predictable risks in the following generic subcategories:</br>• Product size—risks associated with the overall size of the software to be built or modified.</br>• Business impact—risks associated with constraints imposed by management or the marketplace.</br>• Customer characteristics—risks associated with the sophistication of the customer and the developer&rsquo;s ability to communicate with the customer in a timely manner.</br>• Process definition—risks associated with the degree to which the software process has been defined and is followed by the development organization.</br>• Development environment—risks associated with the availability and quality of the tools to be used to build the product.</br>• Technology to be built—risks associated with the complexity of the system to be built and the &ldquo;newness&rdquo; of the technology that is packaged by the system.</br>• Staff size and experience—risks associated with the overall technical and project experience of the software engineers who will do the work. (P148)</br></p></li>
+<li><p>Some software developers continue to believe that software quality is something you begin to worry about after code has been generated. Nothing could be further from the truth! Software quality assurance (SQA) is an umbrella activity that is applied throughout the software process.</br>
+SQA encompasses (1) a quality management approach, (2) effective software engineering technology (methods and tools), (3) formal technical reviews that are applied throughout the software process, (4) a multitiered testing strategy, (5) control of soft- ware documentation and the changes made to it, (6) a procedure to ensure compliance with software development standards (when applicable), and (7) measurement and reporting mechanisms. (P193-194)</br></p></li>
+<li><p>Variation control is the heart of quality control. (P194)</br></p></li>
+<li><p>When we examine an item based on its measurable characteristics, two kinds of quality may be encountered: quality of design and quality of conformance.</br><strong>Quality of design</strong> refers to the characteristics that designers specify for an item. The grade of materials, tolerances, and performance specifications all contribute to the quality of design. As higher-grade materials are used, tighter tolerances and greater levels of performance are specified, the design quality of a product increases, if the product is manufactured according to specifications.</br><strong>Quality of conformance</strong> is the degree to which the design specifications are followed during manufacturing. Again, the greater the degree of conformance, the higher is the level of quality of conformance.</br>In software development, quality of design encompasses requirements, specifications, and the design of the system. Quality of conformance is an issue focused primarily on implementation. If the implementation follows the design and the result- ing system meets its requirements and performance goals, conformance quality is high.  </br>But are quality of design and quality of conformance the only issues that software engineers must consider? Robert Glass argues that a more “intuitive” relationship is in order:  </br><strong>User satisfaction = compliant product + good quality + delivery within budget and schedule</strong>  </br>At the bottom line, Glass contends that quality is important, but if the user isn’t satisfied, nothing else really matters. DeMarco reinforces this view when he states: “A product’s quality is a function of how much it changes the world for the better.” This view of quality contends that if a software product provides substantial benefit to its end-users, they may be willing to tolerate occasional reliability or performance problems. (P195-196)</br></p></li>
+<li><p>Technical work needs reviewing for the same reason that pencils need erasers: To err is human. The second reason we need technical reviews is that although people are good at catching some of their own errors, large classes of errors escape the originator more easily than they escape anyone else. The review process is, therefore, the answer to the prayer of Robert Burns:</br><strong>O wad some power the giftie give us</br>
+to see ourselves as other see us</strong></br>A review—any review—is a way of using the diversity of a group of people to:</br>1) Point out needed improvements in the product of a single person or team;</br>2) Confirm those parts of a product in which improvement is either not desired or not needed;</br>3) Achieve technical work of more uniform, or at least more predictable, quality than can be achieved without reviews, in order to make technical work more manageable. (P202)</br></p></li>
+<li><p>The following represents a minimum set of guidelines for formal technical reviews:</br>
+1) Review the product, not the producer.</br>
+2) Set an agenda and maintain it.</br>
+3) Limit debate and rebuttal.</br>
+4) Enunciate problem areas, but don&rsquo;t attempt to solve every problem noted.</br>
+5) Take written notes.</br>
+6) Limit the number of participants and insist upon advance preparation.</br>
+7) Develop a checklist for each product that is likely to be reviewed.</br>
+8) Allocate resources and schedule time for FTRs(Formal Technical Reviews).</br>
+9) Conduct meaningful training for all reviewers.</br>
+10) Review your early reviews. (P208)</br></p></li>
+<li><p>If we consider a computer-based system, a simple measure of reliability is mean-time-between-failure (MTBF), where </br><strong>MTBF = MTTF + MTTR</strong></br>The acronyms MTTF and MTTR are mean-time-to-failure and mean-time-to-repair, respectively.</br>
+&hellip;</br>In addition to a reliability measure, we must develop a measure of availability. Software availability is the probability that a program is operating according to requirements at a given point in time and is defined as</br><strong>Availability = [MTTF/(MTTF + MTTR)] * 100%</strong></br>The MTBF reliability measure is equally sensitive to MTTF and MTTR. The availability measure is somewhat more sensitive to MTTR, an indirect measure of the maintainability of software. (P212-213)</br></p></li>
+<li><p>System engineering is a modeling process. Whether the focus is on the world view or the detailed view, the engineer creates models that</br>• Define the processes that serve the needs of the view under consideration.</br>• Represent the behavior of the processes and the assumptions on which the behavior is based.</br>• Explicitly define both exogenous and endogenous input3 to the model.</br>• Represent all linkages (including output) that will enable the engineer to better understand the view.</br>
+To construct a system model, the engineer should consider a number of restraining factors:</br>
+1) Assumptions that reduce the number of possible permutations and variations, thus enabling a model to reflect the problem in a reasonable manner. As an example, consider a three-dimensional rendering product used by the entertainment industry to create realistic animation. One domain of the product enables the representation of 3D human forms. Input to this domain encompasses the ability to specify movement from a live human actor, from video, or by the creation of graphical models. The system engineer makes certain assumptions about the range of allowable human movement (e.g., legs cannot be wrapped around the torso) so that the range of inputs and processing can be limited.</br>2) Simplifications that enable the model to be created in a timely manner. To illustrate, consider an office products company that sells and services a broad range of copiers, faxes, and related equipment. The system engineer is modeling the needs of the service organization and is working to understand the flow of information that spawns a service order. Although a service order can be derived from many origins, the engineer categorizes only two sources: internal demand and external request. This enables a simplified partitioning of input that is required to generate the service order.</br>3) Limitations that help to bound the system. For example, an aircraft avionics system is being modeled for a next generation aircraft. Since the aircraft will be a two-engine design, the monitoring domain for propulsion will be modeled to accommodate a maximum of two engines and associated redundant systems.</br>4) Constraints that will guide the manner in which the model is created and the approach taken when the model is implemented. For example, the technology infrastructure for the three-dimensional rendering system described previously is a single G4-based processor. The computational complexity of problems must be constrained to fit within the processing bounds imposed by the processor.</br>5) Preferences that indicate the preferred architecture for all data, functions, and technology. The preferred solution sometimes comes into conflict with other restraining factors. Yet, customer satisfaction is often predicated on the degree to which the preferred approach is realized. (P249-250)</br></p></li>
+<li><p>Software requirements analysis may be divided into five areas of effort: (1) problem recognition, (2) evaluation and synthesis, (3) modeling, (4) specification, and (5) review. (P272)</br></p></li>
+<li><p>Over the past two decades, a large number of analysis modeling methods have been developed. Investigators have identified analysis problems and their causes and have developed a variety of modeling notations and corresponding sets of heuristics to overcome them. Each analysis method has a unique point of view. However, all analysis methods are related by a set of operational principles:</br>1) The information domain of a problem must be represented and understood.</br>2) The functions that the software is to perform must be defined.</br>3) The behavior of the software (as a consequence of external events) must be represented.</br>4) The models that depict information, function, and behavior must be partitioned in a manner that uncovers detail in a layered (or hierarchical) fashion.</br>
+5) The analysis process should move from essential information toward implementation detail.</br>By applying these principles, the analyst approaches a problem systematically. The information domain is examined so that function may be understood more completely. Models are used so that the characteristics of function and behavior can be communicated in a compact fashion. Partitioning is applied to reduce complexity. Essential and implementation views of the software are necessary to accommodate the logical constraints imposed by processing requirements and the physical constraints imposed by other system elements.</br>In addition to these operational analysis principles, Davis suggests a set of guiding principles for requirements engineering:</br>• Understand the problem before you begin to create the analysis model. There is a tendency to rush to a solution, even before the problem is understood. This often leads to elegant software that solves the wrong problem!</br>• Develop prototypes that enable a user to understand how human/machine inter- action will occur. Since the perception of the quality of software is often based on the perception of the “friendliness” of the interface, prototyping (and the iteration that results) are highly recommended.</br>• Record the origin of and the reason for every requirement. This is the first step in establishing traceability back to the customer.</br>• Use multiple views of requirements. Building data, functional, and behavioral models provide the software engineer with three different views. This reduces the likelihood that something will be missed and increases the likelihood that inconsistency will be recognized.</br>• Rank requirements. Tight deadlines may preclude the implementation of every software requirement. If an incremental process model is applied, those requirements to be delivered in the first increment must be identified.</br>• Work to eliminate ambiguity. Because most requirements are described in a natural language, the opportunity for ambiguity abounds. The use of formal technical reviews is one way to uncover and eliminate ambiguity.</br>A software engineer who takes these principles to heart is more likely to develop a software specification that will provide an excellent foundation for design. (P282-283)</br></p></li>
+<li><p>In an excellent book on software testing, Glen Myers states a number of rules that can serve well as testing objectives:</br>1) Testing is a process of executing a program with the intent of finding an error.</br>2) A good test case is one that has a high probability of finding an as-yet- undiscovered error.</br>3) A successful test is one that uncovers an as-yet-undiscovered error.</br></p></li>
+<li><p>Before applying methods to design effective test cases, a software engineer must understand the basic principles that guide software testing. Davis suggests a set1 of testing principles that have been adapted for use in this book:</br>• <strong>All tests should be traceable to customer requirements.</strong> As we have seen, the objective of software testing is to uncover errors. It follows that the most severe defects (from the customer’s point of view) are those that cause the program to fail to meet its requirements.</br>• <strong>Tests should be planned long before testing begins.</strong> Test planning can begin as soon as the requirements model is complete. Detailed definition of test cases can begin as soon as the design model has been solidified. Therefore, all tests can be planned and designed before any code has been generated.</br>• <strong>The Pareto principle applies to software testing.</strong> Stated simply, the Pareto principle implies that 80 percent of all errors uncovered during testing will likely be traceable to 20 percent of all program components. The problem, of course, is to isolate these suspect components and to thoroughly test them.</br>• <strong>Testing should begin “in the small” and progress toward testing “in the large.”</strong> The first tests planned and executed generally focus on individual components. As testing progresses, focus shifts in an attempt to find errors in integrated clusters of components and ultimately in the entire system.</br>• <strong>Exhaustive testing is not possible.</strong> The number of path permutations for even a moderately sized program is exceptionally large. For this reason, it is impossible to execute every combination of paths during testing. It is possible, however, to adequately cover program logic and to ensure that all conditions in the component-level design have been exercised.</br>• <strong>To be most effective, testing should be conducted by an independent third party.</strong> By most effective, we mean testing that has the highest probability of finding errors (the primary objective of testing). For reasons that have been introduced earlier in this chapter and are considered in more detail in Chapter 18, the software engineer who created the system is not the best person to conduct all tests for the software. (P439-440)</br></p></li>
+<li>And what about the tests themselves? Kaner, Falk, and Nguyen suggest the following attributes of a “good” test:</br>1) A good test has a high probability of finding an error. To achieve this goal, the tester must understand the software and attempt to develop a mental picture of how the software might fail. Ideally, the classes of failure are probed. For example, one class of potential failure in a GUI (graphical user interface) is a failure to recognize proper mouse position. A set of tests would be designed to exercise the mouse in an attempt to demonstrate an error in mouse position recognition.</br>2) A good test is not redundant. Testing time and resources are limited. There is no point in conducting a test that has the same purpose as another test. Every test should have a different purpose (even if it is subtly different). For example, a module of the SafeHome software (discussed in earlier chapters) is designed to recognize a user password to activate and deactivate the system. In an effort to uncover an error in password input, the tester designs a series of tests that input a sequence of passwords. Valid and invalid pass- words (four numeral sequences) are input as separate tests. However, each valid/invalid password should probe a different mode of failure. For example, the invalid password 1234 should not be accepted by a system programmed to recognize 8080 as the valid password. If it is accepted, an error is present. Another test input, say 1235, would have the same purpose as 1234 and is therefore redundant. However, the invalid input 8081 or 8180 has a subtle difference, attempting to demonstrate that an error exists for passwords “close to” but not identical with the valid password.</br>3) A good test should be “best of breed”. In a group of tests that have a similar intent, time and resource limitations may mitigate toward the execution of only a subset of these tests. In such cases, the test that has the highest likelihood of uncovering a whole class of errors should be used.</br>4) A good test should be neither too simple nor too complex. Although it is sometimes possible to combine a series of tests into one test case, the possible side effects associated with this approach may mask errors. In general, each test should be executed separately. (P442-443)</br></li>
+<li><p>White-box testing, sometimes called glass-box testing, is a test case design method that uses the control structure of the procedural design to derive test cases. Using white-box testing methods, the software engineer can derive test cases that (1) guarantee that all independent paths within a module have been exercised at least once, (2) exercise all logical decisions on their true and false sides, (3) execute all loops at their boundaries and within their operational bounds, and (4) exercise internal data structures to ensure their validity. (P444)</br></p></li>
+<li><p>Black-box testing, also called behavioral testing, focuses on the functional requirements of the software. That is, black-box testing enables the software engineer to derive sets of input conditions that will fully exercise all functional requirements for a program. Black-box testing is not an alternative to white-box techniques. Rather, it is a complementary approach that is likely to uncover a different class of errors than white-box methods.</br>
+Black-box testing attempts to find errors in the following categories: (1) incorrect or missing functions, (2) interface errors, (3) errors in data structures or external data base access, (4) behavior or performance errors, and (5) initialization and termination errors.</br>Unlike white-box testing, which is performed early in the testing process, black- box testing tends to be applied during later stages of testing. Because black-box testing purposely disregards control structure, attention is focused on the information domain. Tests are designed to answer the following questions:</br>• How is functional validity tested?</br>• How is system behavior and performance tested? </br>• What classes of input will make good test cases?</br>• Is the system particularly sensitive to certain input values?</br>• How are the boundaries of a data class isolated?</br>• What data rates and data volume can the system tolerate?</br>• What effect will specific combinations of data have on system operation? (P459-460)</br></p></li>
+<li><p>Quality of software:</br>
+1) Software requirements are the foundation from which quality is measured. Lack of conformance to requirements is lack of quality.</br>
+2) Specified standards define a set of development criteria that guide the manner in which software is engineered. If the criteria are not followed, lack of quality will almost surely result.</br>3) There is a set of implicit requirements that often goes unmentioned (e.g., the desire for ease of use). If software conforms to its explicit requirements but fails to meet implicit requirements, software quality is suspect. (P508-509)</br></p></li>
+<li><p>The factors that affect software quality can be categorized in two broad groups: (1) factors that can be directly measured (e.g., defects per function-point) and (2) factors that can be measured only indirectly (e.g., usability or maintainability). In each case measurement must occur. We must compare the software (documents, pro- grams, data) to some datum and arrive at an indication of quality.  McCall, Richards, and Walters propose a useful categorization of factors that affect software quality. These software quality factors, focus on three important aspects of a software product: its operational characteristics, its ability to undergo change, and its adaptability to new environments.</br>McCall and his colleagues provide the following descriptions:</br><strong>Correctness</strong>. The extent to which a program satisfies its specification and fulfills the customer&rsquo;s mission objectives.</br><strong>Reliability</strong>. The extent to which a program can be expected to perform its intended function with required precision. [It should be noted that other, more complete definitions of reliability have been proposed.</br>
+<strong>Efficiency</strong>. The amount of computing resources and code required by a program to perform its function.</br><strong>Integrity</strong>. Extent to which access to software or data by unauthorized persons can be controlled.</br><strong>Usability</strong>. Effort required to learn, operate, prepare input, and interpret output of a program.</br>
+<strong>Maintainability</strong>. Effort required to locate and fix an error in a program. [This is a very limited definition.]</br><strong>Flexibility</strong>. Effort required to modify an operational program.</br><strong>Testability</strong>. Effort required to test a program to ensure that it performs its intended function.</br><strong>Portability</strong>. Effort required to transfer the program from one hardware and/or software system environment to another.</br><strong>Reusability</strong>. Extent to which a program [or parts of a program] can be reused in other applications—related to the packaging and scope of the functions that the program performs.</br><strong>Interoperability</strong>. Effort required to couple one system to another.<br/>
+It is difficult, and in some cases impossible, to develop direct measures of these quality factors. Therefore, a set of metrics are defined and used to develop expressions for each of the factors according to the following relationship:</br><strong>Fq = c1 * m1 + c2 * m2 + &hellip; + cn * mn</strong></br>where Fq is a software quality factor, cn are regression coefficients, mn are the metrics that affect the quality factor. Unfortunately, many of the metrics defined by McCall et al. can be measured only subjectively. The metrics may be in the form of a check-list that is used to &ldquo;grade&rdquo; specific attributes of the software. The grading scheme proposed by McCall et al. is a 0 (low) to 10 (high) scale. The following metrics are used in the grading scheme:</br><strong>Auditability</strong>. The ease with which conformance to standards can be checked.</br>
+<strong>Accuracy</strong>. The precision of computations and control.</br><strong>Communication commonality</strong>. The degree to which standard interfaces, protocols, and bandwidth are used.</br><strong>Completeness</strong>. The degree to which full implementation of required function has been achieved.</br><strong>Conciseness</strong>. The compactness of the program in terms of lines of code.</br>
+<strong>Consistency</strong>. The use of uniform design and documentation technique throughout the software development project.</br><strong>Data commonality</strong>. The use of standard data structures and types throughout the program.</br>
+<strong>Error tolerance</strong>. The damage that occurs when the program encounters an error.</br><strong>Execution efficiency</strong>. The run-time performance of a program.</br><strong>Expandability</strong>. The degree to which architectural, data, or procedural design can be extended.</br><strong>Generality</strong>. The breadth of potential application of program components.</br>
+<strong>Hardware independence</strong>. The degree to which the software is decoupled from the hardware on which it operates.</br><strong>Instrumentation</strong>. The degree to which the program monitors its own operation and identifies errors that do occur.</br><strong>Modularity</strong>. The functional independence of program components.</br><strong>Operability</strong>. The ease of operation of a program.</br><strong>Security</strong>. The availability of mechanisms that control or protect programs and data.</br><strong>Self-documentation</strong>. The degree to which the source code provides meaningful documentation.</br><strong>Simplicity</strong>. The degree to which a program can be understood without difficulty.</br><strong>Software system independence</strong>. The degree to which the program is independent of nonstandard programming language features, operating system characteristics, and other environmental constraints.</br><strong>Traceability</strong>. The ability to trace a design representation or actual program component back to requirements.</br><strong>Training</strong>. The degree to which the software assists in enabling new users to apply the system. (P509-511)</p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

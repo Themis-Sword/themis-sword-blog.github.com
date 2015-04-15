@@ -1,0 +1,587 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
+	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<meta charset="utf-8">
+	<title>Python 動態類型(轉)  | Themis_Sword's Blog</title>
+
+
+<meta name="author" content="Themis_Sword"> 
+
+<meta name="description" content="python的動態類型"> <meta name="keywords" content="python，動態，類型，對象，共享，引用">
+
+
+<meta name="msvalidate.01" content="3084BF25D05B2AD0D58CBE0DEA3D888E" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Themis_Sword's Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery.fancybox.pack.js"></script>
+
+<script language="Javascript" type="text/javascript">
+$(document).ready(
+  function() {
+    (function($) {
+      $(".fancybox[data-content-id]").each(function() {
+        this.href = $(this).data('content-id');
+      });
+      $(".fancybox").fancybox({
+        beforeLoad: function() {
+          var el, 
+              id = $(this.element).data('title-id');
+
+          if (id) {
+            el = $('#' + id);
+
+            if (el.length) {
+              this.title = el.html();
+            }
+          }
+          if ($(this).data('content')) {
+            this.content = $(this).data('content');
+          }
+        },
+        helpers: {
+          title: {
+            type: 'inside'
+          }
+        }
+      });
+    })(jQuery);
+  }
+);
+</script>
+
+	
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48083272-1', 'aprilzephyr.com');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Themis_Sword's Blog</a></h1>
+<h4>Never Scared Endeavoring.</h4>
+<nav id="main-nav"><ul>
+	<li><a href="/">Home</a></li>
+	<li><a href="/blog/categories">Categories</a></li>
+        <li><a href="/portfolio">Portfolio</a><li>
+        <li><a href="/gallery">Gallery</a><li>
+	<li><a href="/author">Author</a></li>
+</ul>
+
+
+
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul>
+	<li><a href="/">Home</a></li>
+	<li><a href="/blog/categories">Categories</a></li>
+        <li><a href="/portfolio">Portfolio</a><li>
+        <li><a href="/gallery">Gallery</a><li>
+	<li><a href="/author">Author</a></li>
+</ul>
+
+
+
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:www.aprilzephyr.com">
+			</form>
+		</div>
+	</div>
+</nav>
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	<h3 class="title">Python 動態類型(轉)
+</h3>
+	<div class="entry-content"><p>Python中只有一個賦值模型</p>
+
+<h4>1. 缺少類型聲明語句的情況</h4>
+
+<p>在Python中，類型是在運行過程中自動決定的，而不是通過代碼聲明。這意味著沒有必要事聲明變量。只要記住，這個概念實質上對變量，對象和它們之間的關系都適用。那麽這個概念也容易理解並掌握。</p>
+
+<p><strong>A 變量，對象和引用</strong><br/>
+變量創建：一個變量，當代碼第一次給它賦值時它就被創建了。之後的賦值將會改變已創建的變量名的值。Python在代碼運行之前先檢測變量名，可以當成是最初的賦值創建變量。<!--more--><br/>
+變量類型：變量永遠不會有任何的它關聯的類型信息或約束。類型的概念是存在於對象中而不是變量中。變量原本是通用的。它只是在一個特定的時間點，簡單地引用了一個特定的對像而已。<br/>
+變量的使用：當變量出現在表達式中時，它會馬上被當前引用的對像所代替，無論這個對象是什麽類型。<br/>
+此外，所有的變量都必須在其使用前明確地賦值。使用未賦值的變量會產生錯誤。<br/>
+<code>&gt;&gt;&gt;a=3</code></p>
+
+<p>在概念上說，Python將執行三個不同的步驟去完成這個請求。<br/>
+1) 創建一個對象來代表值3<br/>
+2) 創建一個變量a，如果它還沒有創建的話<br/>
+3) 將變量與新的對象3連接</p>
+
+<p>在python中從變量到對象的連接稱作引用。引用是一種關系，以內存中的指針形式實現。<br/>
+* 變量 是一個系統表的元素，擁有指向對象的連接空間。<br/>
+* 對象 是被分配的一塊內存，有足夠的空間去表現它們所代表的值。<br/>
+* 引用 是自動形成的從變量到對象的指針。</p>
+
+<p>每一個對象都用兩個標準的頭部信息：一個類型標誌符去標識這個對象的類型，以及一個引用的計數器，用來決定是不是可以回收這個對象。</p>
+
+<p><strong>B 類型屬於對象，而不是變量</strong><br/>
+Python中的類型是與對象相關聯的，而不是和變量關聯。<br/>
+變量沒有類型，變量指向對象。對象有類型，知道自己的類型，每個對象都包含了一個頭部信息，其中標記了這個對象的類型。</p>
+
+<p><strong>C 對象的垃圾收集</strong><br/>
+對象生命結束時發生了什麽變化？<br/>
+每當一個變量名被賦與了一個新的對象，之前的那個對象占用的空間就會被收回（如果它沒有被其他變量名和對象所引用).這種自動回收對象空間的技術稱作垃圾收集。<br/>
+在內部，Python是通過保持用每個對象中的計數器記錄引用指到這個對象上的次數來完成這一功能。一旦（並精確在同一時間）這個計數器被設置為零，這個對象的內存空間就會自動收回。垃圾收集最直接的，可感受到的好處就是這意味著可以在腳本中任意使用對象而不需要考慮釋放內存空間。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; x=42
+</span><span class='line'>&gt;&gt;&gt; id(x)
+</span><span class='line'>674748828
+</span><span class='line'>&gt;&gt;&gt; x="cli"
+</span><span class='line'>&gt;&gt;&gt; id(x)    
+</span><span class='line'>676367648</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<h4>2. 共享引用</h4>
+
+<p>上面所講都是單個變量被賦值引用了多個對象的情況。現在，在交互模式下，引入另一個變量，並看一下變量名和對象的變化。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; a=10
+</span><span class='line'>&gt;&gt;&gt; b=a 
+</span><span class='line'>&gt;&gt;&gt; id(a)
+</span><span class='line'>674749212
+</span><span class='line'>&gt;&gt;&gt; id(b)
+</span><span class='line'>674749212</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+第二行會使用python創建變量b。使用的是變量a,並且它在這裏沒有被賦值，所以它被替換成其應用的對象10，從而b也成為這個對象的一個引用。實際效果就是變量a和b都引用相同的對象（也就是說指向了相同的內存空間。在Python中稱作是共享引用&mdash;多個變量名應用了同一個對象。)</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; a=10 
+</span><span class='line'>&gt;&gt;&gt; b=a  
+</span><span class='line'>&gt;&gt;&gt; a='cli'
+</span><span class='line'>&gt;&gt;&gt; id(a) 
+</span><span class='line'>676367648
+</span><span class='line'>&gt;&gt;&gt; id(b)
+</span><span class='line'>674749212</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+變量a改變了，但是不影響變量b.這完全可以說明變量b是指向對象10內存空間的。</p>
+
+<p>在ptyhon中，變量總是一個指向對象的指針，而不是可以改變的內存區域的標簽。給一變量賦一個新的值，並不是替換了原始的對象，而是讓這個變量去引用完全不同的一個對象。實際的效果就是對一個變量賦值，僅僅會影響那個被賦值的變量。</p>
+
+<p><strong>A 共享引用和在原處修改</strong><br/>
+有一些對象和類型確實會在實地改變對象。例如，在一個列表中對一個偏移進行賦值確實會改變這個列表對象，而不是生成一個新的列表對象。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; T1=[11,12,13]
+</span><span class='line'>&gt;&gt;&gt; T2=T1
+</span><span class='line'>&gt;&gt;&gt; T1
+</span><span class='line'>[11, 12, 13]
+</span><span class='line'>&gt;&gt;&gt; T2
+</span><span class='line'>[11, 12, 13]
+</span><span class='line'>&gt;&gt;&gt; T1=22
+</span><span class='line'>&gt;&gt;&gt; T1
+</span><span class='line'>22
+</span><span class='line'>&gt;&gt;&gt; T2
+</span><span class='line'>[11, 12, 13]</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>這個和先前一樣T1改變了T2沒有改變，T2改變也不影響T1</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; T1=[11,12,13]
+</span><span class='line'>&gt;&gt;&gt; T2=T1
+</span><span class='line'>&gt;&gt;&gt; T1
+</span><span class='line'>[11, 12, 13]
+</span><span class='line'>&gt;&gt;&gt; T2
+</span><span class='line'>[11, 12, 13]
+</span><span class='line'>&gt;&gt;&gt; T2[1]=33     
+</span><span class='line'>&gt;&gt;&gt; T1
+</span><span class='line'>[33, 12, 13]
+</span><span class='line'>&gt;&gt;&gt; T2
+</span><span class='line'>[33, 12, 13]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+發現T2改變了，T1也跟這改變了<br/>
+同樣T1改變了，T2也改變了</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; T1[1]=99  
+</span><span class='line'>&gt;&gt;&gt; T2
+</span><span class='line'>[33, 99, 13]
+</span><span class='line'>&gt;&gt;&gt; T1
+</span><span class='line'>[33, 99, 13]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+這裏T1沒有改變，改變了T1所引用對象的一個元素。這類修改會覆蓋列表對象中的某部分。因為這個列表對象是與其他對象共享的（被其他對象引用），那麽一個像這樣在原處的改變不僅僅會對T1有影響。必須意識到當做了這樣的修改，它會影響程序的其他部分。</p>
+
+<p>如果不想要這樣的現象發生，需要Python拷貝對象，而不是創建引用。方法包括內置列表函數以及標準庫的copy模塊，最常用的辦法就是從頭到尾的分片T1[:]</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; T1=[11,12,13]
+</span><span class='line'>&gt;&gt;&gt; T2=T1[:]
+</span><span class='line'>&gt;&gt;&gt; T1
+</span><span class='line'>[11, 12, 13]
+</span><span class='line'>&gt;&gt;&gt; T2
+</span><span class='line'>[11, 12, 13]
+</span><span class='line'>&gt;&gt;&gt; T1[0]=99
+</span><span class='line'>&gt;&gt;&gt; T1
+</span><span class='line'>[99, 12, 13]
+</span><span class='line'>&gt;&gt;&gt; T2
+</span><span class='line'>[11, 12, 13]
+</span><span class='line'>&gt;&gt;&gt; id(T1)
+</span><span class='line'>676366604
+</span><span class='line'>&gt;&gt;&gt; id(T2)
+</span><span class='line'>675542060</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+T1和T2指向不同的對象，所以不會相互影響。<br/>
+註意：這種分片技術不會引用在其他的可變的核心類型上（字典，因為它們不是序列），對字典應該使用D.copy（）方法.而且，註意標準庫中的copy模塊有一個通用的拷貝任意對象的調用，也有一個拷貝嵌套對象的結構的調用.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; X={'name':'cli','age':27}  
+</span><span class='line'>&gt;&gt;&gt; import copy
+</span><span class='line'>&gt;&gt;&gt; Y=copy.copy(X)
+</span><span class='line'>&gt;&gt;&gt; X
+</span><span class='line'>{'age': 27, 'name': 'cli'}
+</span><span class='line'>&gt;&gt;&gt; Y
+</span><span class='line'>{'age': 27, 'name': 'cli'}
+</span><span class='line'>&gt;&gt;&gt; id(X)
+</span><span class='line'>676370468
+</span><span class='line'>&gt;&gt;&gt; id(Y)
+</span><span class='line'>676414436
+</span><span class='line'>&gt;&gt;&gt; X={'name':{'FirstName':'cli','LastName':'cli'},'age':27}    
+</span><span class='line'>&gt;&gt;&gt; X
+</span><span class='line'>{'age': 27, 'name': {'LastName': 'cli', 'FirstName': 'cli'}}
+</span><span class='line'>&gt;&gt;&gt; Y=copy.copy(X)
+</span><span class='line'>&gt;&gt;&gt; Y
+</span><span class='line'>{'age': 27, 'name': {'LastName': 'cli', 'FirstName': 'cli'}}
+</span><span class='line'>&gt;&gt;&gt; Z=copy.deepcopy(X) 
+</span><span class='line'>&gt;&gt;&gt; Z
+</span><span class='line'>{'age': 27, 'name': {'LastName': 'cli', 'FirstName': 'cli'}}</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><strong>B 共享引用和相等</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; x=33
+</span><span class='line'>&gt;&gt;&gt; x='cli'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+因為Python緩存並復用了小的整數和小的字符串，就像前文提到的那樣，這裏對象33也許不像前期所說的被收回，相反，它將可能仍保持在一個系統表中，等待下一次你的代碼生成另一個33來利用。盡快如此，大多數種類的對象都會在不再引用時馬上回收。對於那些不會被回收的，緩沖機制與代碼並沒有什麽關系。</p>
+
+<p>判斷是否相等</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; L=[1,2,3]
+</span><span class='line'>&gt;&gt;&gt; M=L
+</span><span class='line'>&gt;&gt;&gt; L==M
+</span><span class='line'>True
+</span><span class='line'>&gt;&gt;&gt; L is M
+</span><span class='line'>True</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+==檢查對象是否有相同的值。 is操作符，檢查對象的同一性。如果兩個變量名精準地指向同一個對象，它會返回True。所以這是一種更嚴格的相等測試。<br/>
+實際上,is只是比較現實引用的指針。所以如果必要的話是代碼中檢測共享引用的一種方法。如果變量名引用值相等。但是為不同的對象，它的返回值將是False.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; L=[1,2,3]
+</span><span class='line'>&gt;&gt;&gt; M=[1,2,3]
+</span><span class='line'>&gt;&gt;&gt; L==M
+</span><span class='line'>True
+</span><span class='line'>&gt;&gt;&gt; L is M
+</span><span class='line'>False
+</span><span class='line'>&gt;&gt;&gt; id(L)
+</span><span class='line'>676367788
+</span><span class='line'>&gt;&gt;&gt; id(M)
+</span><span class='line'>676367724</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+通過id()函數可以看到兩個變量指向不同的對象。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; X=33
+</span><span class='line'>&gt;&gt;&gt; Y=33
+</span><span class='line'>&gt;&gt;&gt; X==Y
+</span><span class='line'>True
+</span><span class='line'>&gt;&gt;&gt; X is Y
+</span><span class='line'>True
+</span><span class='line'>&gt;&gt;&gt; id(X)
+</span><span class='line'>674748936
+</span><span class='line'>&gt;&gt;&gt; id(Y)
+</span><span class='line'>674748936</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+這個is測試返回True因為小的整數和字符串被緩存被復用了。
+如果想更進一步了解，可以向Python查詢一個對象應用的次數：在sys模塊中的getrefcount函數返回對象應用的次數。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; import sys
+</span><span class='line'>&gt;&gt;&gt; sys.getrefcount(33)
+</span><span class='line'>13
+</span><span class='line'>&gt;&gt;&gt; sys.getrefcount(1) 
+</span><span class='line'>427
+</span><span class='line'>&gt;&gt;&gt; sys.getrefcount(00)
+</span><span class='line'>296
+</span><span class='line'>&gt;&gt;&gt; sys.getrefcount(99)
+</span><span class='line'>6</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><a href="http://ipseek.blog.51cto.com/1041109/786518">Origin</a></p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-02T15:15:39+08:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/python/'>python</a>
+
+</div>
+
+
+	
+</div>
+</article>
+<!-- Copyright Info BEGIN -->
+
+
+<b>
+   <div class="entry-content"> <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" ></a>版權聲明：保持署名-非商用-非衍生
+<br />
+Attribution-NonCommercial-NoDerivs
+<br />
+ <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" >Creative Commons BY-NC-ND 3.0 </a>
+</div>
+</b>
+
+<!-- Copyright Info END -->
+
+
+	<div class="share">
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<a class="jiathis_button_twitter"></a>
+<a class="jiathis_button_tsina"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+	summary:"",
+	shortUrl:false,
+	hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+	
+</div>
+
+
+
+
+</div>
+
+    
+
+<div align='center'>
+    <form class="navbar-form" action="/search/">
+        <input type="text" class="form-control" placeholder="Google Search" name="q">
+    </form>
+ </div>
+
+	<footer id="footer" class="inner">Copyright &copy; 2015
+
+    Themis_Sword
+
+<br>
+Powered by Octopress.
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-48083272-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

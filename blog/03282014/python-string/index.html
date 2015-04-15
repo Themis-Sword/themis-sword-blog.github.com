@@ -1,0 +1,464 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
+	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<meta charset="utf-8">
+	<title>Python 字符串  | Themis_Sword's Blog</title>
+
+
+<meta name="author" content="Themis_Sword"> 
+
+<meta name="description" content="python字符串"> <meta name="keywords" content="python, string,">
+
+
+<meta name="msvalidate.01" content="3084BF25D05B2AD0D58CBE0DEA3D888E" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Themis_Sword's Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery.fancybox.pack.js"></script>
+
+<script language="Javascript" type="text/javascript">
+$(document).ready(
+  function() {
+    (function($) {
+      $(".fancybox[data-content-id]").each(function() {
+        this.href = $(this).data('content-id');
+      });
+      $(".fancybox").fancybox({
+        beforeLoad: function() {
+          var el, 
+              id = $(this.element).data('title-id');
+
+          if (id) {
+            el = $('#' + id);
+
+            if (el.length) {
+              this.title = el.html();
+            }
+          }
+          if ($(this).data('content')) {
+            this.content = $(this).data('content');
+          }
+        },
+        helpers: {
+          title: {
+            type: 'inside'
+          }
+        }
+      });
+    })(jQuery);
+  }
+);
+</script>
+
+	
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48083272-1', 'aprilzephyr.com');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Themis_Sword's Blog</a></h1>
+<h4>Never Scared Endeavoring.</h4>
+<nav id="main-nav"><ul>
+	<li><a href="/">Home</a></li>
+	<li><a href="/blog/categories">Categories</a></li>
+        <li><a href="/portfolio">Portfolio</a><li>
+        <li><a href="/gallery">Gallery</a><li>
+	<li><a href="/author">Author</a></li>
+</ul>
+
+
+
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul>
+	<li><a href="/">Home</a></li>
+	<li><a href="/blog/categories">Categories</a></li>
+        <li><a href="/portfolio">Portfolio</a><li>
+        <li><a href="/gallery">Gallery</a><li>
+	<li><a href="/author">Author</a></li>
+</ul>
+
+
+
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:www.aprilzephyr.com">
+			</form>
+		</div>
+	</div>
+</nav>
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	<h3 class="title">Python 字符串
+</h3>
+	<div class="entry-content"><p><strong>1. 類型轉換</strong><br/>
+1) Python是動態類型，是强類型的編程語言。<br/>
+2) Python內建函數的實現類型轉換：</p>
+
+<table><tbody>
+<tr><td><em> 函數 </em></td><td><em> 描述 </em></td></tr>  
+<tr><td>int(x [,base ]) </td><td>將x轉換為一個整數</td></tr>
+<tr><td>long(x [,base ]) </td><td>將x轉換為一個長整數</td></tr>
+<tr><td>float(x) </td><td>將x轉換為一個浮點數</td></tr>
+<tr><td>complax(real [, img ]) </td><td>創建一個複數</td></tr>
+<tr><td>str(x) </td><td>將對象x轉換為字符串</td></tr>
+<tr><td>repr(x) </td><td>將對象x轉換為表達式字符串</td></tr>
+<tr><td>eval(str) </td><td>計算在字符串中的有效python表達式，並返回一個對象</td></tr>
+<tr><td>tuple(s) </td><td>將序列s轉換為一個元組</td></tr>
+<tr><td>list(s) </td><td>將序列s轉換為一個列表</td></tr>
+<tr><td>chr(x) </td><td>將一個整數轉換為一個字符</td></tr>
+<tr><td>unichr(x) </td><td>將一個整數轉換為一個Unicode字符</td></tr>
+<tr><td>ord(x) </td><td>將一個字符轉換為它的整數值</td></tr>
+<tr><td>hex(x) </td><td>將一個整數轉換為一個十六進制字符串</td></tr>
+<tr><td>oct(x) </td><td>將一個整數轉換為一個八進制字符串</td></tr>
+</tbody>
+</table>
+
+
+<p> <!--more--></p>
+
+<p><strong>2. 轉義字符</strong></p>
+
+<table>
+<tbody>
+<tr><td><em>轉義字符</em></td><td><em>描述</em></td></tr>  
+<tr><td>&#92;(在行尾)</td><td>續行符</td></tr>  
+<tr><td>&#92;\ </td><td>反斜槓</td></tr>  
+<tr><td>&#92;&#8217; </td><td>單引號</td></tr>  
+<tr><td>&#92;&#8221; </td><td>雙引號</td></tr>  
+<tr><td>\a</td><td>響鈴</td></tr>  
+<tr><td>\b</td><td>退格(Backspace)</td></tr>  
+<tr><td>\e</td><td>轉義</td></tr>  
+<tr><td>\000</td><td>空</td></tr>  
+<tr><td>\n</td><td>換行</td></tr>  
+<tr><td>\v</td><td>縱向製表符</td></tr>  
+<tr><td>\t</td><td>橫向製表符</td></tr>  
+<tr><td>\r</td><td>回車</td></tr>  
+<tr><td>\f</td><td>換頁</td></tr>  
+<tr><td>\oyy</td><td>八進制數yy代表的字符，例如:\o12代表換行</td></tr>  
+<tr><td>\xyy</td><td>十進制數yy代表的字符，例如:\x0a代表換行</td></tr>  
+<tr><td>\uhhhh</td><td>Unicode 16位的十六進製值</td></tr>  
+<tr><td>\uhhhhhhhh</td><td>Unicode 32位的十六進製值</td></tr>  
+<tr><td>\other</td><td>其它的字符以普通格式輸出</td></tr>  
+</tbody></table>
+
+
+<p><strong>3. 格式化表達</strong></p>
+
+<table><tbody>  
+<tr><td><em>格式化表達</em></td><td><em>描述</em></td></tr>  
+<tr><td>%s</td><td>字符串</td></tr>  
+<tr><td>%r</td><td>repr輸出的字符串</td></tr>  
+<tr><td>%d</td><td>十進制整數</td></tr>  
+<tr><td>%i</td><td>整數</td></tr>  
+<tr><td>%u</td><td>無符號整數</td></tr>  
+<tr><td>%o</td><td>八進制</td></tr>  
+<tr><td>%x</td><td>十六進制</td></tr>  
+<tr><td>%X</td><td>十六進制(大寫)</td></tr>  
+<tr><td>%e</td><td>指數</td></tr>  
+<tr><td>%E</td><td>指數(大寫)</td></tr>  
+<tr><td>%f</td><td>十進制浮點數</td></tr>  
+<tr><td>%F</td><td>十進制浮點數(大寫)</td></tr>  
+<tr><td>%g</td><td>浮點e或f</td></tr>  
+<tr><td>%G</td><td>浮點E或F</td></tr>  
+</tbody></table>
+
+
+<p></p>
+
+<p><strong>4. 索引和切片</strong><br/>
+Python中的字符串是有序的字符集合，所以可以通過位置（索引）獲取對應的元素。和c語言中一樣，python的索引也是從0開始的，而且支持使用負索引的方法來獲取元素，一個負的索引可以看做是從字符串結尾處反向計數，-1就表示字符串的最後一個字符。當然也可以理解為負索引與字符串長度相加得到的正索引，即s[-n]等於s[-n+len(s)]。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;hello&quot;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;1&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;hello&quot;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;h&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;o&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;hel&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+</span><span class='line'><span class="s">&#39;ello&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;hell&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+其實分片的完整格式為s[start:end:side]，意思就是從start開始到end-1，每隔side個元素取一個元素，返回值為所有取到的元素組成的字符串，side默認值為1。<br/>
+side可以取負值，例如s[::-1]會返回”olleh”，實際效果就是對字符串進行了反轉。這裏需要註意的是，如果side為負值，兩個邊界也要進行反轉，s[4:1:-1]就是從4開始反向取到2得到的字符串，如果在sride為負的情況下還是第一個邊界大於第二個邊界那樣的使用的話將返回一個空的字符串。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;hlo&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;olleh&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;oll&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'><span class="s">&#39;&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><strong>5. 字符串方法</strong><br/>
+<em>A 大小寫</em><br/>
+S.upper() 全部大寫<br/>
+S.lower() 全部小寫<br/>
+S.swapcase() 大小寫互換<br/>
+S.capitalize() 首字母大寫，其余都小寫<br/>
+S.title() 每個單詞的首字母大寫，其余不變</p>
+
+<p><em>B 對齊</em><br/>
+S.ljust(width[, fill]) 獲取固定長度width，左對齊，多余位用fill填充，默認空格<br/>
+S.rjust(width[, fill]) 右對齊<br/>
+S.center(width[, fill]) 居中<br/>
+S.zfill(width) 右對齊，左邊不足的位置用0補齊，相當於S.rjust(width,&ldquo;0&rdquo;)<br/>
+如果width&lt;=len(S)，返回於原字符串相同的字符串。</p>
+
+<p><em>C 查找替換</em><br/>
+S.find(sub[, start[, end]]) 返回在範圍start到end(不含end)中第一個sub的索引。<br/>
+S.rfind(sub[, start[, end]]) 從右邊開始查找，也就是返回在範圍start到end(不含end)中最後一個sub的索引。<br/>
+S.index(sub[, start[, end]])功能與find()相同，不同之處在於find()未找到的時候會返回-1，而index()會拋出異常。<br/>
+S.rindex(sub[, start[, end]])功能與rfind()相同，不同之處在於find()未找到的時候會返回-1，而index()會拋出異常。<br/>
+S.count(sub[, start[, end]]) 返回在範圍start到end(不含end)中sub的個數。<br/>
+start默認為0，end默認為len(S)。<br/>
+S.replace(old, new[, count])將字符串中的old替換為new，count為替換的次數，未指定的話就是替換所有。<br/>
+S.translate(table [,deletechars]) 刪除S中deletechars包含的字符，然後將剩下的字符用table定義的關系進行映射。table是string.maketrans()生成的。</p>
+
+<p><em>D 去空白或指定字符</em><br/>
+S.strip([chars]) 去除字符串S兩邊的chars,若chars未指定，則去除兩邊的空白，包括空格、\n、\f、\r、\t和\v。<br/>
+S.lstrip([chars]) 去除左邊的chars，未指定同上。<br/>
+S.rstrip([chars]) 去除右邊的chars，未指定同上。</p>
+
+<p><em>E 分割和組合</em><br/>
+S.split([sep [,maxsplit]]) 以sep為分隔符切割字符串S，不指定sep默認為默認為空白，maxsplit為最大分割次數，未指定則全部分割，返回列表。<br/>
+S.rsplit([sep [,maxsplit]]) 只是和split反向相反，split從頭到尾，rsplit從尾到頭。<br/>
+S.splitlines([keepends]) 按行分割字符串，若keepends指定並且為True，則保留換行符，反之不保留。<br/>
+S.partiton(sep)以sep作為分隔符將S分割為兩個start和end部分，並返回(start,sep, end)這樣格式的元組，若sep沒有找到，則返回S和兩個空串組成的元組(S, &lsquo;&rsquo;, &lsquo;&rsquo;)。<br/>
+S.rpartition(sep)從右邊開始，以sep作為分隔符將S分割為兩個start和end部分，並返回(start,sep, end)，若sep沒有找到，則返回兩個空串和S組成的元組(&lsquo;&rsquo;, &lsquo;&rsquo;, S)。<br/>
+S.join(iterable) 將叠代器iterable的字符串連接在一起，並用分隔符S隔開，一般來說在連接列表的時候都使用空字符串或者空格作為分隔符，返回字符串。</p>
+
+<p><em>F 判斷</em><br/>
+S.startswith(prefix[, start[, end]])判斷字符串start到end(不含end)是否是以prefix開頭，默認start為0，end為len(S)，返回布爾值。<br/>
+S.endswith(suffix[, start[, end]]) 判斷字符串start到end(不含end)是否是以suffix結尾，默認start為0，end為len(S)，返回布爾值。<br/>
+S.isalnum() 是否全為字母或數字，返回布爾值。<br/>
+S.isalpha() 是否全為字母，返回布爾值。<br/>
+S.isdigit() 是否全為數字0-9，返回布爾值。<br/>
+S.islower() 是否全是小寫。<br/>
+S.isupper() 是否全是大寫。<br/>
+S.isspace() 是否全是空白。<br/>
+S.istitle() 是否符合title的格式——每個單詞的首字母大寫。<br/>
+上述這些函數中，若S為空串，則均返回False。</p>
+
+<p><em>G 編碼</em><br/>
+S.decode([encoding[,errors]]) 將字符串S解碼為unicode，encoding為S原來的編碼方式。<br/>
+S.encode([encoding[,errors]]) 將unicodeS編碼為python中的字符串，參數指定對應的編碼方式。<br/>
+errors指定出錯時對應的操作，默認的strict會在編碼/解碼失敗的時候拋出異常，ignore則忽略。<br/>
+關於編碼方式還是有很多的知識的，後續再做研究。</p>
+
+<p><em>H 其他</em><br/>
+S.format(*args, **kwargs)<br/>
+format也是用來格式化字符串的，argv指定的變量可以在S中用{index}來替換，而kwargs則是對應的變量。如果後面的數據為字典，可以使用{&lt;index|var>[key]}來替換其對應的值。當然還可以指定對應的寬度、精度以及對其格式，{index:[fill][&lt;|>|^][width][.precision][typecode]}。<br/>
+fill設置填充位，默認為空格；&lt;左對齊，>右對齊，^居中；寬度和類型見後面格式化表達式部分。註意這裏的精度專指說浮點型數據，整型是不能使用精度的，字符創設置了也沒啥作用。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="s">&quot;{0},{2},{1},{s}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="s">&quot;four&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="s">&#39;1,3,2,four&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="s">&quot;{0:$&lt;3},{2:^5.2f},{1},{s:&gt;10.6s}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="s">&quot;four&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="s">&#39;1$$,3.00 ,2,      four&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="s">&quot;{0:&lt;3},{2:^5d},{1},{s:&gt;10s}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="s">&quot;four&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="s">&#39;1  ,  3  ,2,      four&#39;</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="s">&quot;{0:&lt;03},{2:^05.2d},{1},{s:&gt;10s}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="s">&quot;four&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+</span><span class='line'>  <span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+</span><span class='line'><span class="ne">ValueError</span><span class="p">:</span> <span class="n">Precision</span> <span class="ow">not</span> <span class="n">allowed</span> <span class="ow">in</span> <span class="n">integer</span> <span class="n">format</span> <span class="n">specifier</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="s">&quot;{0:&lt;03},{2:^5.2f},{1},{s:&gt;10.6s}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="s">&quot;four&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="s">&#39;100,3.00 ,2,      four&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+S.expandtabs([tabsize]) 將字符串中的制表符替換為tabsize個空格，默認為8。</p>
+
+<p><em>I 3.0新增</em><br/>
+S.isdecimal() 是否全是十進制數字(多語言數字)。<br/>
+S.isidentifier() 是否全是合法標識符。<br/>
+S.isnumeric() 是否只包含數字字符。<br/>
+S.isprintable() 是否全是可打印字符。</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-28T01:15:00+08:00" pubdate data-updated="true">Mar 28<span>th</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/python/'>python</a>
+
+</div>
+
+
+	
+</div>
+</article>
+<!-- Copyright Info BEGIN -->
+
+
+<b>
+   <div class="entry-content"> <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" ></a>版權聲明：保持署名-非商用-非衍生
+<br />
+Attribution-NonCommercial-NoDerivs
+<br />
+ <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" >Creative Commons BY-NC-ND 3.0 </a>
+</div>
+</b>
+
+<!-- Copyright Info END -->
+
+
+	<div class="share">
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<a class="jiathis_button_twitter"></a>
+<a class="jiathis_button_tsina"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+	summary:"",
+	shortUrl:false,
+	hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+	
+</div>
+
+
+
+
+</div>
+
+    
+
+<div align='center'>
+    <form class="navbar-form" action="/search/">
+        <input type="text" class="form-control" placeholder="Google Search" name="q">
+    </form>
+ </div>
+
+	<footer id="footer" class="inner">Copyright &copy; 2015
+
+    Themis_Sword
+
+<br>
+Powered by Octopress.
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-48083272-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

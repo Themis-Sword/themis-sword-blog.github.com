@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /author/
+Disallow: /*?*
+Disallow: /javascripts
+Disallow: /font
+Disallow: /assets
+
+Sitemap: http://www.aprilzephyr.com/sitemap.xml 
