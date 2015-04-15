@@ -3,7 +3,7 @@ layout: post
 title: "You Are Alive"
 date: 2014-05-04 20:21:19 +0800
 comments: true
-categories: mood
+categories: inspiring
 keywords: restlessness, lighting, dreams, wind, free, sea, greet, alive
 description: you are alive
 ---
