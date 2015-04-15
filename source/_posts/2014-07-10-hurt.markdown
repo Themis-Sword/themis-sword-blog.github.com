@@ -7,7 +7,7 @@ categories: mood
 keywords: Hurt, Johnny Cash
 description: Hurt, Johnny Cash
 ---
-<iframe height=360 width=640 src="http://player.youku.com/embed/XMjYzNzI0OTA4" frameborder=0 allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vt1Pwfnh5pc" frameborder="0" allowfullscreen></iframe>
 
 I hurt myself today  
 To see if I still feel  <!--more--> 
