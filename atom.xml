@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2015-04-18T13:44:05+08:00</updated>
+  <updated>2015-04-18T13:52:52+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The Eve of Another Birthday]]></title>
+    <link href="http://www.aprilzephyr.com/blog/04182015/the-eve-of-another-birthday/"/>
+    <updated>2015-04-18T13:48:27+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/04182015/the-eve-of-another-birthday</id>
+    <content type="html"><![CDATA[<p><img src="http://www.aprilzephyr.com/images/life.jpg"></p>
+
+<p>I almost forgot how old I am this year.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The 20 Most Popular TED Talks of All Time]]></title>
@@ -3068,229 +3079,6 @@ __path__可通過__init__.py文件中包含的代碼訪問，最初包含的一�
 3) 使用sys.modules可查看當前加載的所有模塊。</p>
 
 <p><a href="http://www.cnblogs.com/ptfblog/archive/2012/07/15/2592122.html">Origin</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Python 時間&amp;日期模塊]]></title>
-    <link href="http://www.aprilzephyr.com/blog/03262014/python-time-datetime/"/>
-    <updated>2014-03-26T16:53:19+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/03262014/python-time-datetime</id>
-    <content type="html"><![CDATA[<p>Python提供了time/datetime/calendar等模塊來處理日期和時間。<br/>
-<strong>1.time模塊常用的函數</strong><br/>
-<em>A. time.time()</em><br/>
-1970年1月1日以來的秒數，是一個浮點數。<br/>
-<em>B. time.sleep()</em><br/>
-可以通過調用time.sleep來挂起當前的進程。time.sleep接收一个浮點型參數，表示進程挂起的時間。<br/>
-<em>C. time.clock()</em><br/>
-time.clock()返回第一次调用该方法到现在的秒數，其精確度高於1微秒。可以使用该函數來記錄程序執行的時間。 <!--more--><br/>
-<em>D. time.gmtime()</em><br/>
-該函數原型為time.gmtime([sec])，可選參數sec表示從1970-01-01以來的秒數，默認值為time.time()，函數返回time.struct_time類型的對象。(struct_time是在time模塊中定義的表示時間的對象)，下面是一個簡單的例子：</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">()</span>                        <span class="c">#獲取當前時間的struct_time對象   </span>
-</span><span class='line'><span class="p">(</span><span class="mi">2013</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
-</span><span class='line'><span class="p">(</span><span class="mi">2013</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="mi">24</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>    <span class="c">#獲取昨天這個時間的struct_time對象</span>
-</span><span class='line'><span class="p">(</span><span class="mi">2013</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-<em>E. time.localtime()</em><br/>
-與time.gmtime()非常類似，也返回一個struct_time對象，可以看作是gmtime()的本地化版本。<br/>
-<em>F. time.mktime()</em><br/>
-time.mktime執行與gmtime(), localtime()相反的操作，它接收struct_time對象作為參數，返回用秒數來表示時間的浮點數。<br/>
-<em>G. time.strftime()</em><br/>
-time.strftime將日期轉換為字符串表示，它的函數原型為：time.strftime(format[, t])。參數format是格式字符串（格式字符串的知識可以參考：<a href="http://docs.python.org/2/library/time.html">time.strftime</a> ），可選的參數t是一个struct_time對象。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="err">參數</span><span class="p">:</span>
-</span><span class='line'><span class="n">strftime</span><span class="p">(</span><span class="n">format</span><span class="p">[,</span> <span class="nb">tuple</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">string</span>
-</span><span class='line'><span class="err">將指定的</span><span class="n">struct_time</span><span class="p">(</span><span class="err">默認為當前時間</span><span class="p">)</span><span class="err">，根據指定的格式化字符串輸出</span>
-</span><span class='line'><span class="n">python</span><span class="err">中時間日期格式化符號：</span>
-</span><span class='line'><span class="o">%</span><span class="n">y</span> <span class="err">两位數的年份表示（</span><span class="mo">00</span><span class="o">-</span><span class="mi">99</span><span class="err">）</span>
-</span><span class='line'><span class="o">%</span><span class="n">Y</span> <span class="err">四位數的年份表示（</span><span class="mo">000</span><span class="o">-</span><span class="mi">9999</span><span class="err">）</span>
-</span><span class='line'><span class="o">%</span><span class="n">m</span> <span class="err">月份（</span><span class="mo">01</span><span class="o">-</span><span class="mi">12</span><span class="err">）</span>
-</span><span class='line'><span class="o">%</span><span class="n">d</span> <span class="err">月内中的一天（</span><span class="mi">0</span><span class="o">-</span><span class="mi">31</span><span class="err">）</span>
-</span><span class='line'><span class="o">%</span><span class="n">H</span> <span class="mi">24</span><span class="err">小時製小時數（</span><span class="mi">0</span><span class="o">-</span><span class="mi">23</span><span class="err">）</span>
-</span><span class='line'><span class="o">%</span><span class="n">I</span> <span class="mi">12</span><span class="err">小時製小時數（</span><span class="mo">01</span><span class="o">-</span><span class="mi">12</span><span class="err">）</span>
-</span><span class='line'><span class="o">%</span><span class="n">M</span> <span class="err">分鐘數（</span><span class="mo">00</span><span class="o">=</span><span class="mi">59</span><span class="err">）</span>
-</span><span class='line'><span class="o">%</span><span class="n">S</span> <span class="err">秒（</span><span class="mo">00</span><span class="o">-</span><span class="mi">59</span><span class="err">）</span>
-</span><span class='line'><span class="o">%</span><span class="n">a</span> <span class="err">本地簡化星期名稱</span>
-</span><span class='line'><span class="o">%</span><span class="n">A</span> <span class="err">本地完整星期名稱</span>
-</span><span class='line'><span class="o">%</span><span class="n">b</span> <span class="err">本地簡化的月份名稱</span>
-</span><span class='line'><span class="o">%</span><span class="n">B</span> <span class="err">本地完整的月份名稱</span>
-</span><span class='line'><span class="o">%</span><span class="n">c</span> <span class="err">本地相應的日期表示和時間表示</span>
-</span><span class='line'><span class="o">%</span><span class="n">j</span> <span class="err">年内的一天（</span><span class="mo">001</span><span class="o">-</span><span class="mi">366</span><span class="err">）</span>
-</span><span class='line'><span class="o">%</span><span class="n">p</span> <span class="err">本地</span><span class="n">A</span><span class="o">.</span><span class="n">M</span><span class="o">.</span><span class="err">或</span><span class="n">P</span><span class="o">.</span><span class="n">M</span><span class="o">.</span><span class="err">的等價符</span>
-</span><span class='line'><span class="o">%</span><span class="n">U</span> <span class="err">一年中的星期數（</span><span class="mo">00</span><span class="o">-</span><span class="mi">53</span><span class="err">），星期天為星期的開始</span>
-</span><span class='line'><span class="o">%</span><span class="n">w</span> <span class="err">星期（</span><span class="mi">0</span><span class="o">-</span><span class="mi">6</span><span class="err">），星期天為星期的開始</span>
-</span><span class='line'><span class="o">%</span><span class="n">W</span> <span class="err">一年中的星期數（</span><span class="mo">00</span><span class="o">-</span><span class="mi">53</span><span class="err">）星期一為星期的開始</span>
-</span><span class='line'><span class="o">%</span><span class="n">x</span> <span class="err">本地相應的日期表示</span>
-</span><span class='line'><span class="o">%</span><span class="n">X</span> <span class="err">本地相應的時間表示</span>
-</span><span class='line'><span class="o">%</span><span class="n">Z</span> <span class="err">當前時區的名稱</span>
-</span><span class='line'><span class="o">%%</span> <span class="o">%</span><span class="err">號本身</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-<em>H. time.strptime()</em>
-按指定格式解析一個表示时间的字符串，返回struct_time對象。該函數原型為：time.strptime(string, format)，两個參數都是字符串。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">time</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s">&#39;2013-04-09 12:30:25&#39;</span><span class="p">,</span><span class="s">&#39;%Y-%m-</span><span class="si">%d</span><span class="s"> %H:%M:%S&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="p">(</span><span class="mi">2013</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<p><strong>2. datetime模塊</strong><br/>
-<em>A. 兩個常量</em><br/>
-datetime.MINYEAR和datetime.MAXYEAR，分別表示datetime所能表示的最小、最大年份。其中，MINYEAR=1,MAXYEAR=0000。<br/>
-<em>B. 幾個重要的類</em><br/>
-1) datetime.date:表示日期的類，常用的屬性有tear, month, day:<br/>
-year的返回在兩個常量之間；<br/>
-month的範圍是[1,12]，月份是從1開始；<br/>
-day依據month來決定。 <br/>
-2) date類提供了常用的類方法和類屬性：<br/>
-date.max, date.min：date對象所能表示的最大、最小日期；
-date.today()：返回一個表示當前本地日期的date對象。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="o">*</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">time</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
-</span><span class='line'><span class="mi">2014</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mi">26</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">date</span><span class="o">.</span><span class="n">max</span>
-</span><span class='line'><span class="mi">9999</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">31</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">date</span><span class="o">.</span><span class="n">min</span>
-</span><span class='line'><span class="mo">0001</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">01</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-3) date提供的實例方法和屬性<br/>
-date.year、date.month、date.day：年、月、日；<br/>
-date.replace(year, month, day)：生成一个新的日期對象，用參數指定的年，月，日代替原有對象中的屬性。（原有對象仍保持不變）；<br/>
-date.timetuple()：返回日期對應的time.struct_time對象；<br/>
-date.weekday()：返回weekday，如果是星期一，返回0；如果是星期2，返回1，以此類推；<br/>
-data.isoweekday()：返回weekday，如果是星期一，返回1；如果是星期2，返回2，以此類推；<br/>
-date.isocalendar()：返回格式如(year，month，day)的元組；<br/>
-date.isoformat()：返回格式如&#8217;YYYY-MM-DD’的字符串；<br/>
-date.strftime(fmt)：自定義格式化字符串。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">now</span><span class="o">=</span><span class="n">date</span><span class="p">(</span><span class="mi">2014</span><span class="p">,</span><span class="mo">03</span><span class="p">,</span><span class="mi">26</span><span class="p">)</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">tomorrow</span><span class="o">=</span><span class="n">now</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="mi">27</span><span class="p">)</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s">&#39;now:&#39;</span><span class="p">,</span><span class="n">now</span>
-</span><span class='line'><span class="n">now</span><span class="p">:</span> <span class="mi">2014</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mi">26</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s">&#39;tomorrow:&#39;</span><span class="p">,</span><span class="n">tomorrow</span>
-</span><span class='line'><span class="n">tomorrow</span><span class="p">:</span> <span class="mi">2014</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mi">27</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s">&#39;timetuple():&#39;</span><span class="p">,</span><span class="n">now</span><span class="o">.</span><span class="n">timetuple</span><span class="p">()</span>
-</span><span class='line'><span class="n">timetuple</span><span class="p">():</span> <span class="p">(</span><span class="mi">2013</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s">&#39;weekday():&#39;</span><span class="p">,</span><span class="n">now</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span>
-</span><span class='line'><span class="n">weekday</span><span class="p">():</span> <span class="mi">2</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s">&#39;isoweekday():&#39;</span><span class="p">,</span><span class="n">now</span><span class="o">.</span><span class="n">isoweekday</span><span class="p">()</span>
-</span><span class='line'><span class="n">isoweekday</span><span class="p">():</span> <span class="mi">3</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s">&#39;isocalendar():&#39;</span><span class="p">,</span><span class="n">now</span><span class="o">.</span><span class="n">isocalendar</span><span class="p">()</span>
-</span><span class='line'><span class="n">isocalendar</span><span class="p">():</span> <span class="p">(</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s">&#39;isoformat():&#39;</span><span class="p">,</span><span class="n">now</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
-</span><span class='line'><span class="n">isoformat</span><span class="p">():</span> <span class="mi">2014</span><span class="o">-</span><span class="mo">03</span><span class="o">-</span><span class="mi">26</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p> <br/>
-4) date還對某些操作進行了重載，它允許我們對日期進行如下一些操作：<br/>
-date2 = date1 + timedelta  # 日期加上一個間隔，返回一個新的日期對象（timedelta將在下面介紹，表示時間間隔）
-date2 = date1 &ndash; timedelta   # 日期隔去間隔，返回一個新的日期對象
-timedelta = date1 &ndash; date2   # 两個日期相減，返回一個時間間隔對象
-date1 &lt; date2  # 两個日期進行比較</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">now</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
-</span><span class='line'><span class="n">tomorrow</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">day</span> <span class="o">=</span> <span class="mi">7</span> <span class="p">)</span>
-</span><span class='line'><span class="n">delta</span> <span class="o">=</span> <span class="n">tomorrow</span> <span class="o">-</span> <span class="n">now</span>
-</span><span class='line'><span class="k">print</span>   <span class="s">&#39;now:&#39;</span> <span class="p">,</span> <span class="n">now</span><span class="p">,</span>  <span class="s">&#39; tomorrow:&#39;</span> <span class="p">,</span> <span class="n">tomorrow</span>
-</span><span class='line'><span class="k">print</span>   <span class="s">&#39;timedelta:&#39;</span> <span class="p">,</span> <span class="n">delta</span>
-</span><span class='line'><span class="k">print</span>  <span class="n">now</span> <span class="o">+</span> <span class="n">delta</span>
-</span><span class='line'><span class="k">print</span>  <span class="n">tomorrow</span> <span class="o">&gt;</span> <span class="n">now</span>
-</span><span class='line'><span class="c"># # ---- output ----   </span>
-</span><span class='line'><span class="c"># now: 2010-04-06  tomorrow: 2010-04-07   </span>
-</span><span class='line'><span class="c"># timedelta: 1 day, 0:00:00   </span>
-</span><span class='line'><span class="c"># 2010-04-07   </span>
-</span><span class='line'><span class="c"># True</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-<a href="http://www.cnblogs.com/BeginMan/archive/2013/04/08/3007403.html">Origin</a></p>
 ]]></content>
   </entry>
   
