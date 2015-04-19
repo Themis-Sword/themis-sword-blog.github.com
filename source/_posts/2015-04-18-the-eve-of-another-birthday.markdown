@@ -13,7 +13,7 @@ I almost forgot how old I am this year.
   
 Thanks my parents for their affectionate SMS this morning wishing me a happy birthday and take-care overseas alone. 
   
-Actually, I might be solatary in a way rather than lonely.<!--more-->   
+Actually, I might be solitary in a way rather than lonely.<!--more-->   
   
 Retrospecting, It seems like I even don't tolerate continuing the "insipid and mundane" life traces no matter in which city of China. The gap between the so-called "dream" and reality keeps on tearing. I am kind of negative for picking that apple always higher despite my leaping and attempting. So I chose to leave(flounder) and chase a new style sitting in a classroom as a postgraduate student, overseas. There would be other choices for sure, nevertheless, I also need some fresh air.   
   
