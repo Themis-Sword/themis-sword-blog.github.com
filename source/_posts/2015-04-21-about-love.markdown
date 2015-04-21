@@ -34,7 +34,7 @@ If it disdained its brother;
 And the sunlight clasps the earth
 And the moonbeams kiss the sea;
 What is all this sweet work worth
-If thou kiss not me?
+If thou kiss not me?  
 **--"Love's Philosophy" (Percy Bysshe Shelley, 1820')**
   
     
@@ -51,7 +51,7 @@ Within his bending sickle's compass come;
 Love alters not with his brief hours and weeks, 
 But bears it out even to the edge of doom.
 If this be error and upon me proved,
-I never writ, nor no man ever loved. 
+I never writ, nor no man ever loved.   
 **--"Sonnet 116" (Shakespeare, 1609')**
   
   
