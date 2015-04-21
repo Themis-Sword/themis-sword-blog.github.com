@@ -55,13 +55,13 @@ I never writ, nor no man ever loved.
 **--"Sonnet 116" (Shakespeare, 1609')**
   
   
-Love is not a word, it is a state of mind
+Love is not a word, it is a state of mind  
 Love is beyond a promise, it is a belief  
-Love is a hope, it is also fortitude
-Love makes a little green, but not so jealous
-Love leads to a colorful dream, which is worth weaving and cherishing
-Love means tolerating, which permits you being real
-Love paints your life, furthermore harbors your soul.
+Love is a hope, it is also fortitude  
+Love makes a little green, but not so jealous  
+Love leads to a colorful dream, which is worth weaving and cherishing  
+Love means tolerating, which permits you being real  
+Love paints your life, furthermore harbors your soul.  
    
 **I Love Thee! [@leah0204](http://www.weibo.com/leah0204)**
 <iframe width="420" height="315" src="https://www.youtube.com/embed/1moWxHdTkT0" frameborder="0" allowfullscreen></iframe>
