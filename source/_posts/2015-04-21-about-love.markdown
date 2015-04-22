@@ -65,5 +65,5 @@ Love paints your life, furthermore harbors your soul.
 Love is so hard to achieve, but it trully lasts.  
 **--"About Love" (Themis_Sword, 2015')**   
   
-**I Love Thee, with all my heart! [@leah0204](http://www.weibo.com/leah0204)**
+**I Love Thee! [@leah0204](http://www.weibo.com/leah0204)**
 <iframe width="420" height="315" src="https://www.youtube.com/embed/1moWxHdTkT0" frameborder="0" allowfullscreen></iframe>
