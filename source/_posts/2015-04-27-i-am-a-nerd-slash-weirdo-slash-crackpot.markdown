@@ -32,7 +32,7 @@ I am a QiPa cuz I need washing my hair every morning. However, I could tolerant 
 
 I am a QiPa cuz I am too alone to attend "unnecessary" social or other activities. However, I am kind of eager to be understood and admitted.
 
-I am a QiPa cuz I am only interested in American Justice related TV series and enough aware of their fictionality. However, I am hooked in such ethreal Justice, human right and happy ends.
+I am a QiPa cuz I am only interested in American Justice related TV series and enough aware of their fictionality. However, I am hooked in such ethereal Justice, human right and happy ends.
 
 I am a QiPa cuz I read a lot including fictional, non-fictional, scientific, technical, even Philosophical and Chinese medical. However, I could not make myself a thing nor be unconventional.
 
