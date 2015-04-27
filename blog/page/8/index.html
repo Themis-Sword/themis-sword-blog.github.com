@@ -125,6 +125,75 @@ $(document).ready(
     <article class="post">
 	<h3 class="title">
 		
+		<a href="/blog/02152014/shan-chu-lie-biao-zhong-fu-yuan-su/">
+		
+			刪除列表重複元素的三種方法及效率分析(轉)</a>
+	</h3>
+	<div class="entry-content">
+		<h4>方法一：</h4>
+
+<p>使用列表對象的sort()方法對列表進行排序，從最後一個元素開始循環迭代列表，判斷相鄰的兩個元素是否相同。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">methodONE</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+</span><span class='line'>    <span class="nb">list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">lenList</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">lastItem</span> <span class="o">=</span> <span class="nb">list</span><span class="p">[</span><span class="n">lenList</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lenList</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+</span><span class='line'>     <span class="k">if</span> <span class="nb">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">lastItem</span><span class="p">:</span>
+</span><span class='line'>      <span class="nb">list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span><span class='line'>     <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>      <span class="n">lastItem</span> <span class="o">=</span> <span class="nb">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nb">list</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>    
+		
+		<a href="/blog/02152014/shan-chu-lie-biao-zhong-fu-yuan-su/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-15T17:53:01+08:00" pubdate data-updated="true">Feb 15<span>th</span>, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/python/'>python</a>
+
+</div>
+
+
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h3 class="title">
+		
 		<a href="/blog/02152014/the-zen-of-python/">
 		
 			The Zen of Python</a>
@@ -306,51 +375,6 @@ $(document).ready(
 <div class="tags">
 
 	<a class='category' href='/blog/categories/web/'>web</a>
-
-</div>
-
-
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/02132014/commencement/">
-		
-			Commencement</a>
-	</h3>
-	<div class="entry-content">
-		<p>This is my first blog here.</p>
-
-<p>Octopress and Github, I&rsquo;m coming!</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-13T20:23:32+08:00" pubdate data-updated="true">Feb 13<span>th</span>, 2014</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/mood/'>mood</a>
 
 </div>
 
