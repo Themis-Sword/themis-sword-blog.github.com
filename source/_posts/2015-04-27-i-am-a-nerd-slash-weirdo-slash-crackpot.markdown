@@ -12,7 +12,6 @@ description: I Am a Nerd/Weirdo/Crackpot.
 ****
 **Nerd**  
 : a person who behaves awkwardly around other people and usually has unstylish clothes, hair, etc.  
-  
 : a person who is very interested in technical subjects, computers, etc.
 
 **Weirdo**  
@@ -21,7 +20,7 @@ description: I Am a Nerd/Weirdo/Crackpot.
 **Crackpot**  
 : a person who is crazy or very strange  
 
---From ***Merriam Webster Dictionary***
+--From ***[Merriam Webster Dictionary](http://www.merriam-webster.com)***
 ****
 <!--more-->
 I have got no idea about the noun which could exactly describe myself--in Chinese I mean myself a 奇葩(QiPa).
