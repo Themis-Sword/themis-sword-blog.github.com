@@ -36,6 +36,8 @@ I am a QiPa cuz I am only interested in American Justice related TV series and I
 
 I am a QiPa cuz I read a lot including fictional, non-fictional, scientific, technical, even Philosophical and Chinese medical books. However, I could not make myself a thing nor be unconventional.
 
+I am a QiPa cuz I try to be abstemious about daily basic necessities. However, I am somewhat squandering money on travelling, books(now I have a kindle), civil aircraft models and have no schedule about buying a house(or somewhere to shelter).
+
 I am a QiPa cuz I know it's meaningless to be too reasonable with woman so well. However, I keep indulging myself into a dead-end state with woman in so many specific aspects.
 
 I am a QiPa cuz I give top priority nothing but love. However, I am so likely to be messed up in those trifles.
