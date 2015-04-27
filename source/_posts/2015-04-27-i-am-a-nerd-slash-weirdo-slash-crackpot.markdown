@@ -30,7 +30,7 @@ I am a QiPa cuz I am so languish not to lay down a backup flat sheet after the d
 
 I am a QiPa cuz I need washing my hair every morning. However, I could tolerant some tiny dirty spots on my pants or shoes and my those so-casual shirts.
 
-I am a QiPa cuz I am too cynical to attend "unnecessary" social or other activities. However, I am kind of eager to be understood and admitted.
+I am a QiPa cuz I am too alone to attend "unnecessary" social or other activities. However, I am kind of eager to be understood and admitted.
 
 I am a QiPa cuz I am only interested in American Justice related TV series and enough aware of their fictionality. However, I am hooked in such ethreal Justice, human right and happy ends.
 
@@ -41,6 +41,8 @@ I am a QiPa cuz I try to be abstemious about daily basic necessities. However, I
 I am a QiPa cuz I know it's meaningless to be too reasonable with woman so well. However, I keep indulging myself into a dead-end state with the loved in so many specific aspects.
 
 I am a QiPa cuz I give top priority nothing but love. However, I am so likely to be messed up in those trifles.
+
+I am a QiPa cuz I thought I am firm and resolute sufficiently. However, I am thirsting for support and encouragement from the intimates.
 
 I am a QiPa cuz I feel I understand, however, I don't.
 
