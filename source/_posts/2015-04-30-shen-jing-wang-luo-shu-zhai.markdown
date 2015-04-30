@@ -3,7 +3,7 @@ layout: post
 title: "神經網絡(書摘)."
 date: 2015-04-30 11:15:35 +0800
 comments: true
-categories: artificial intelligence
+categories: artificial-intelligence
 keywords: 神經網絡
 description: 神經網絡(書摘)
 ---
