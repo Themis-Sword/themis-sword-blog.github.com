@@ -4,7 +4,7 @@
   <title><![CDATA[Category: artificial-intelligence | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/artificial-intelligence/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2015-04-30T18:06:30+08:00</updated>
+  <updated>2015-05-04T14:51:43+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -1215,7 +1215,7 @@
 <p>機器學習這個概念認為，對於待解問題，你無需編寫任何專門的程序代碼，遺傳算法（Generic Algorithms）能夠在數據集上為你得出有趣的答案。對於遺傳算法，不用編碼，而是將數據輸入，它將在數據之上建立起它自己的邏輯。</p>
 
 <p>舉個例子，有一類算法稱為分類算法，它可以將數據劃分為不同的組別。一個用來識別手寫數字的分類算法，不用修改一行代碼，就可以用來將電子郵件分為垃圾郵件和普通郵件。算法沒變，但是輸入的訓練數據變了，因此它得出了不同的分類邏輯。<br/>
-<img src="/images/m1.png"></p>
+<img src="/images/mlf/m1.png"></p>
 
 <h6><em>機器學習算法是個黑盒，可以重用來解決很多不同的分類問題。</em></h6>
 
@@ -1235,17 +1235,17 @@
 
 <h6><em>這是我們的“訓練數據”。</em></h6>
 
-<p><img src="/images/m2.png"></p>
+<p><img src="/images/mlf/m2.png"></p>
 
 <p>我們要利用這些訓練數據來編寫一個程序來估算該地區其他房屋的價值：<br/>
-<img src="/images/m3.png"></p>
+<img src="/images/mlf/m3.png"></p>
 
 <p>這就稱為<strong>監督式學習</strong>。你已經知道每一棟房屋的售價，換句話說，你知道問題的答案，並可以反向找出解題的邏輯。</p>
 
 <p>為了編寫軟件，你將包含每一套房產的訓練數據輸入你的機器學習算法。算法嘗試找出應該使用何種運算來得出價格數字。</p>
 
 <p>這就像是算術練習題，算式中的運算符號都被擦去了：<br/>
-<img src="/images/m4.png"></p>
+<img src="/images/mlf/m4.png"></p>
 
 <h6><em>天哪！一個陰險的學生將老師答案上的算術符號全擦去了。</em></h6>
 
@@ -1256,7 +1256,7 @@
 <h4>非監督式學習</h4>
 
 <p>讓我們回到開頭那個房地產經紀的例子。要是你不知道每棟房子的售價怎麽辦？即使你所知道的只是房屋的大小、位置等信息，你也可以搞出很酷的花樣。這就是所謂的<strong>非監督式學習</strong>。<br/>
-<img src="/images/m5.png"></p>
+<img src="/images/mlf/m5.png"></p>
 
 <h6><em>即使你不是想去預測未知的數據（如價格），你也可以運用機器學習完成一些有意思的事。</em></h6>
 
@@ -1388,7 +1388,7 @@ def estimate_house_sales_price(num_of_bedrooms, sqft, neighborhood):
 <h4>步驟2：</h4>
 
 <p>將每棟房產帶入你的函數運算，檢驗估算值與正確價格的偏離程度：<br/>
-<img src="/images/m6.png"></p>
+<img src="/images/mlf/m6.png"></p>
 
 <h6><em>運用你的程序預測房屋價格。</em></h6>
 
@@ -1426,23 +1426,23 @@ def estimate_house_sales_price(num_of_bedrooms, sqft, neighborhood):
 
 <h6><em>這是你的代價函數。</em></h6>
 
-<p><img src="/images/m7.png"></p>
+<p><img src="/images/mlf/m7.png"></p>
 
 <p>接著，讓我們將這同一個等式用機器學習的數學術語（現在你可以忽略它們）進行重寫：</p>
 
 <h6><em>θ表示當前的權重值。 J(θ) 意為“當前權重值對應的代價”。</em></h6>
 
-<p><img src="/images/m8.png"></p>
+<p><img src="/images/mlf/m8.png"></p>
 
 <p>這個等式表示我們的估價程序在當前權重值下偏離程度的大小。
 如果將所有賦給臥室數和面積的可能權重值以圖形形式顯示，我們會得到類似下圖的圖表：<br/>
-<img src="/images/m9.png"></p>
+<img src="/images/mlf/m9.png"></p>
 
 <h6><em>代價函數的圖形像一支碗。縱軸表示代價。</em></h6>
 
 <p>圖中藍色的最低點就是代價最低的地方——即我們的程序偏離最小。最高點意味著偏離最大。所以，如果我們能找到一組權重值帶領我們到達圖中的最低點，我們就找到了答案！</p>
 
-<p><img src="/images/m10.png"></p>
+<p><img src="/images/mlf/m10.png"></p>
 
 <p>因此，我們只需要調整權重值使我們在圖上能向著最低點“走下坡路”。如果對於權重的細小調節能一直使我們保持向最低點移動，那麽最終我們不用嘗試太多權重值就能到達那裏。</p>
 
@@ -1473,7 +1473,7 @@ def estimate_house_sales_price(num_of_bedrooms, sqft, neighborhood):
 <p>但是很重要的一點你要記住，機器學習只能對用你占有的數據實際可解的問題才適用。</p>
 
 <p>例如，如果你建立了一個模型來根據每套房屋內盆栽數量來預測房價，它就永遠不會成功。房屋內盆栽數量和房價之間沒有任何的關系。所以，無論它怎麽去嘗試，計算機也推導不出兩者之間的關系。<br/>
-<img src="/images/m11.png"></p>
+<img src="/images/mlf/m11.png"></p>
 
 <h6><em>你只能對實際存在的關系建模。</em></h6>
 
