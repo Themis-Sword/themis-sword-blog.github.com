@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2015-05-04T14:51:43+08:00</updated>
+  <updated>2015-05-05T14:12:30+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,696 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The Python IAQ: Infrequently Answered Questions]]></title>
+    <link href="http://www.aprilzephyr.com/blog/05052015/python-infrequently-answered-questions/"/>
+    <updated>2015-05-05T13:02:30+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/05052015/python-infrequently-answered-questions</id>
+    <content type="html"><![CDATA[<h3>1 Q: 什麽是"少有回答的問題(Infrequently Answered Question)&ldquo; ?</h3>
+
+<p>一個問題之所以很少有人回答，要麽是因為很少有人知道問題的答案，要麽是因為它涉及到一個晦澀而隱蔽的知識點(但可能是你關心的)。我過去認為是我在<a href="http://www.norvig.com/java-iaq.html">Java IAQ</a>中發明了這個詞組，但是它也出現在了以資料豐富而著稱的<a href="http://urbanlegends.about.com/library/weekly/aa082497.htm">About.com Urban Legends</a>網站上. 關於Python的FAQ有很多,但是Python的IAQ只有這一個。(&ldquo;少見問題列表"倒是有一些，其中一個是有諷刺意味的<a href="http://www.plethora.net/%7Eseebs/faqs/c-iaq.html">C</a>。)<!--more--></p>
+
+<h3>2 Q: finally子句中的代碼每次都會被執行,對嗎?</h3>
+
+<p>每次?應該說，幾乎每次。在try子句被執行後，無論是否出現異常，finally子句中的代碼都會被執行，即使調用了sys.exit. 不過如果程序沒有執行到finally子句的話，它就沒有辦法運行了。下面的代碼中，無論choice取何值，都會發生這樣的情況:</p>
+
+<pre><code>try:
+    if choice:
+        while 1:
+            pass
+    else:
+        print "Please pull the plug on your computer sometime soon..."
+        time.sleep(60 * 60 * 24 * 365 * 10000)
+finally:
+    print "Finally ..."
+</code></pre>
+
+<h3>3 Q: 多態真是太棒了!無論一個列表(list)中的元素是什麽類型,我都可以用sort對它排序,對嗎?</h3>
+
+<p>不對。考慮這種情況:</p>
+
+<pre><code>&gt;&gt;&gt; x = [1, 1j]
+&gt;&gt;&gt; x.sort()
+Traceback (most recent call last):
+  File "&lt;pyshell#13&gt;", line 1, in ?
+    x.sort()
+TypeError: cannot compare complex numbers using &lt;, &lt;=, &gt;, &gt;=
+</code></pre>
+
+<p>(1j是一個數，表示-1的平方根)問題在於:sort方法(在目前的實現中)使用__lt__方法來 比較元素的大小。而__lt__方法拒絕比較復數的大小(因為它們是不能排序的)。奇怪的是,complex.__lt__會毫不猶豫的比較復數與字符串，列表(list)和其他所有類型，除了復數。所以答案是,你可以對支持__lt__方法的對象序列(sequence)進行排序(當然如果將來實現變了，可能就是其它方法了)。</p>
+
+<p>對於問題的地一部份，“多態真棒”，我同意。但是Python有時會讓使用多態變得困難，因為許多Python的類型(比如序列和數)的定義不太符合規則。</p>
+
+<h3>4 Q: 在Python中我能寫++x和x++嗎?</h3>
+
+<p>從語法上說，++x能， x++不能。但是從實際使用來說，別這樣做。這麽說什麽意思？<br/>
+* 可以， ++x是合法的Python語法。不過如果你是一個C++或者Java程序員的話，它表示不是你想的那個意思。加號+是一個單目前綴操作符，所以++x被解析為+(+x),它表示的(至少對於數字來說)就是x。<br/>
+* 不可以， x++本身就不是一個合法的表達式, 雖然在某些上下文時合法。比如， x++ -y被解析為x++(&ndash;(y)), 對於數字來說，等於x &ndash; y。當然，你可以創建一個類，讓++x有(很有限的)意義。比如可以讓這個類保存一個數字，然後使單目操作符+使它增加0.5(或者有0.5的概率增加1，如果你喜歡隨機化算法)，但是&hellip;<br/>
+* 不可以，那樣真傻。最好還是用Python 2.0已經中加入的x += 1。
+進一步的問題:為什麽Python不允許 x++？ 我相信原因與Python不允許在表達式中賦值一樣: Python想要清晰的區分語句和表達式。如果我覺得這兩者應該有所區別，那麽不允許++就是最好的決定。另一方面，函數語言的鼓吹者認為語句就應該是表達式。我跟我的丹麥老鄉，Bjarne Stroustrup，都這樣認為。他在The Design and Evolution of C++中說:“如果是從頭來設計一種語言的話，我會按照Algol68的方式，讓每條語句和聲明都是一個有返回值的表達式”。</p>
+
+<h3>5 Q: 我能使用C++中對ostreams那樣的語法嗎，像這樣麽: count &lt;&lt; x &lt;&lt; y &hellip;?</h3>
+
+<p>當然可以。如果你不喜歡寫"print x,y"，你可以試試這個：</p>
+
+<pre><code>import sys
+
+class ostream:
+    def __init__(self, file):
+        self.file = file
+
+    def __lshift__(self, obj):
+        self.file.write(str(obj));
+        return self
+
+cout = ostream(sys.stdout)
+cerr = ostream(sys.stderr)
+nl = '\n'
+-----------------------------------
+cout &lt;&lt; x &lt;&lt; " " &lt;&lt; y &lt;&lt; nl
+</code></pre>
+
+<p>(本文中所有的文件中的代碼都在橫線以上，使用這些代碼的例子在橫線以下。)這樣你就可以使用一種不同的語法了，但是它不能給你帶來一種新的輸出格式，它只是把Python中以有str的格式封裝了一層而已。這個做法很像Java裏面的toString()格式。C++使用的是一種迥異的格式：它沒有定義一組把對象轉換為字符串的規則，而定義了一種把對象打印到流的規則(也許是不完整的規則，因為很多C++程序仍然使用printf)。用流來實現會更加復雜，但是它的優勢在於如果你需要打印一個相當巨大的對象，就不用創建一個巨大的臨時對象來做這件事。</p>
+
+<h3>6 Q: 如果我喜歡C++的printf呢?</h3>
+
+<p>在Python中定義一個printf不是一個壞主意. 你可能認為printf(&ldquo;%d = %s&rdquo;, num, result)比print &ldquo;%d = %s&rdquo; % (num, result)更加自然, 因為那一對括號在更熟悉的位置(而且你不想要那個%)。更和況, 滿足這個需求輕而易舉:</p>
+
+<pre><code>def printf(format, *args): print format % args,
+</code></pre>
+
+<p>即使是像這樣的一行代碼，也有幾個不同實現。首先，我必需要決定是否在結尾添加逗號。為了更像C++, 我決定加上(這就意味著如果你想在結尾換行，你需要自己在格式字符串的末尾添加)。其次，結尾處會打印一個空格。如果你不想要它，使用sys.stdout.write來代替print. 最後, 把一切都變得更像C好是一件好事嗎? 是，因為你需要一個打印函數(而不是一個打印語句)在只接受函數不接受語句的地方使用。比如，在lambda表達式中和map的第一個參數。事實上，這樣一個函數使用起來是很趁手的，你可能想要一個沒有格式化功能的:</p>
+
+<pre><code>def prin(x): print x,
+</code></pre>
+
+<p>現在map(prin, seq)將打印seq中的每一個元素. 但是map(print, seq)是一個語法錯誤. 我曾經見過有些粗心大意的程序員(好吧, 沒錯, 我自己就是. 但是我知道我自己很粗心 )認為把這兩個函數合二為一是個好主意, 像這樣:</p>
+
+<pre><code>def printf(format, *args): print str(format) % args,  
+</code></pre>
+
+<p>這樣 printf(42)， printf(&lsquo;A multi-line\n message&rsquo;)和 printf(&lsquo;%4.2f&rsquo;, 42)都能工作。但是當你用了pring(&lsquo;100% guaranteed&rsquo;)或者是其他任何含有%字符卻並不是一個格式化指令時，"好主意"就會變成"我想啥呢?&ldquo;。如果你真的實現了這麽一個printf，它需要這樣的註釋:</p>
+
+<pre><code>def printf(format, *args): 
+    """使用第一個參數作為格式字符串來格式化args, 然後打印. 
+    如果format不是字符串, 將被str轉換成字符串. 如果x可能含
+    有%和反斜線字符, 你必須使用printf('%s', x)來代替 printf(x).
+    """ 
+  print str(format) % args,
+</code></pre>
+
+<h3>7 Q: 關於字典(Dictionary)，有沒有更好的語法? 我使用的鍵(key)都是標識符.</h3>
+
+<p>有!用一對引號來包括鍵的確是一件麻煩的事情，尤其當鍵是一個很長的字符串時. 起初我認為Python中加入特別的語法是有幫助的，用{a=1, b=2}來代替現在必需的{&lsquo;a&rsquo;:1, &lsquo;b&rsquo;:2}。在Python 2.3中，你可以用的語法是dict(a=1, b=2, c=3, dee=4)，這和我的想法一樣好。在Python 2.3以前，我使用一個只有一行的函數def Dict(**dict): return dict</p>
+
+<p>一個讀者指出，對於散列Perl也有類似的特殊符號: 在Perl中對於散列文本，你可以寫(&ldquo;a&rdquo;, 1, &ldquo;b&rdquo;, 2)或者(a=>1, b=>2)。這是事實，但不是事實的全部。"man perlop"說"=>符號最多只是逗號操作符的同意詞&hellip;&ldquo;而且事實上當a和b是barewords時，你可以寫(a, 1, b, 2)。但是，就像Dag Asheim指出的，如果你打開strict，你將會從這個寫法中得到一個錯誤。你必須要麽使用字符串，要麽使用=>操作符。最後，Larry Wall已經申明，"Perl 6中將不會有bareword"。(關於perl的這以部分，我的翻譯可能有很大問題，因為我根本不會Perl!&mdash;譯註)</p>
+
+<h3>8 Q: 那麽，對象有沒有類似的簡便辦法呢?</h3>
+
+<p>的確是有的。如果你想要創建一個對象來把數據保存在不同的域中，下面的代碼就可以做到:</p>
+
+<pre><code>class Struct:
+    def __init__(self, **entries):      self.__dict__.update(entries)
+&gt;&gt;&gt; globals = Struct(answer=42, linelen = 80,   font='courier')
+&gt;&gt;&gt; globals.answer
+42
+&gt;&gt;&gt; globals.answer = 'plastics'
+&gt;&gt;&gt; vars(globals)
+{'answer': 'plastics', 'font': 'courier', 'linelen': 80}
+</code></pre>
+
+<p>從本質上說，我們在這裏做的是創建一個匿名類。好吧，我知道globals的類是 Struct，但是因為我們在它裏面添加了slots，就像是創建了一個新的，未命名的類(這和lambda創建匿名函數是很像的)。我討厭再給Struct添加什麽了，因為它現在很簡潔，不過如果你添加下面的方法，就可以漂亮打印出它的每個結構。</p>
+
+<pre><code>def __repr__(self):
+    args = ['%s=%s' % (k, repr(v)) for (k,v) in     vars(self).items()]
+    return 'Struct(%s)' % ', '.join(args)
+&gt;&gt;&gt; globals
+------------------------------------------------
+Struct(answer='plastics', font='courier', linelen=80)
+</code></pre>
+
+<h3>9 Q: 這樣創建新對象是很方便，但是要更新時怎麽辦呢?</h3>
+
+<p>是這樣的，字典是有一個update方法的，所以當d是一個字典時，你可以用d.update(dict(a=100, b=200))。但是對象沒有對應的方法，所以你只能用obj.a = 100;obj.b = 200。或者你可以定義一個函數update(x, a=100, b=200)來更新x，無論它是字典還是對象都可以:</p>
+
+<pre><code>import types
+
+def update(x, **entries):
+    if type(x) == types.DictType: x.update(entries)
+    else: x.__dict__.update(entries)
+    return x
+</code></pre>
+
+<p>把它用於構造函數特別漂亮:</p>
+
+<pre><code>def __init__(self, a, b, c, d=42, e=None, f=()):
+    update(self, a=a, b=b, c=c, d=d, e=e, f=f) 
+</code></pre>
+
+<h3>10 Q: 我能創建一個默認值為0或者[]的或者別的什麽的字典麽?</h3>
+
+<p>如果你常常要對某個東西計數，咱們會有同感: count[x] ＋＝ 1比被迫用的count[x] = count.get(x, 0) + 1要優美許多。在Python 2.2以後，繼承內建的dict類可以輕松的搞定這個。我把它叫做我的DefaultDict。註意copy.deepcopy的使用: 有了它，就不會讓dict裏面的每個key都使用同一個[]作為默認值(雖然拷貝0浪費了一點時間，不過如果你使用更新和訪問比初始化更頻繁的話，還算可以接受):</p>
+
+<pre><code>class DefaultDict(dict):
+"""Dictionary with a default value for unknown keys."""
+    def __init__(self, default):
+        self.default = default
+
+   def __getitem__(self, key):
+        if key in self: return self.get(key)
+        return self.setdefault(key, copy.deepcopy(self.default))
+--------------------------------------
+&gt;&gt;&gt; d = DefaultDict(0)
+&gt;&gt;&gt; d['hello'] += 1
+&gt;&gt;&gt; d
+{'hello': 1}
+&gt;&gt;&gt; d2 = DefaultDict([])
+&gt;&gt;&gt; d2[1].append('hello')
+&gt;&gt;&gt; d2[2].append('world')
+&gt;&gt;&gt; d2[1].append('there')
+&gt;&gt;&gt; d2
+{1: ['hello', 'there'], 2: ['world']}
+
+def bigrams(words):
+    "Counts of word pairs, in a dict of dicts."
+    d = DefaultDict(DefaultDict(0))
+    for (w1, w2) in zip([None] + words, words + [None]):
+        d[w1][w2] += 1
+    return d
+
+&gt;&gt;&gt; bigrams('i am what i am'.split())
+{None: {'i': 1}, 'i': {'am': 2}, 'what': {'i': 1},  'am': {None: 1, 'what': 1}}
+</code></pre>
+
+<p>值得註意的是，如果沒有DefaultDict，bigram例子程序中的d[w1][w2] += 1就大概應該象這樣:</p>
+
+<pre><code>d.setdefault(w1,{}).setdefault(w2, 0); d[w1][w2] += 1
+</code></pre>
+
+<h3>11 Q: 嘿，你能用0.0007KB或者更少的代碼做一個矩陣變換麽?</h3>
+
+<p>我還以為你永遠不會問呢. 如果你用序列組成的序列來表示矩陣的話，用zip就可以搞定了:</p>
+
+<pre><code>&gt;&gt;&gt; m = [(1,2,3), (4,5,6)] 
+&gt;&gt;&gt; zip(*m) 
+[(1, 4), (2, 5), (3, 6)]
+</code></pre>
+
+<p>要想理解它，你需要知道f(*m)就像於apply(f,m)。你問的是一個古老的Lisp問題，在Python中它的等價答案是map(None, *m)，但是用Chih-Chung Chang建議的zip版代碼會更短小。你可能認為這些代碼唯一的用處就是在Letterman的Stupid Programmer'sTricks(David Michael Letterman, 美國晚間脫口秀主持人，他主持的一個著名節目是Stupid Pet Tricks——譯註)中露臉，但是有一天我遇到了這個問題:有一個數據庫行的列表，每一行中都是排序過的值的列表。找出每一列中不重復的值，組成一個列表。我的答案是：</p>
+
+<pre><code>possible_values = map(unique, zip(*db))  
+</code></pre>
+
+<h3>12 Q: 用f(*m)的技巧很酷. 有沒有同樣的語法可以用在方法調用上, 比如x.f(*y)?</h3>
+
+<p>這個問題暴露一個錯誤的概念。根本就沒有方法調用的語法！Python語法中，有函數調用的，也有從對象中取得域的，也有綁定方法的。把這三者結合起來，就讓x.f(y)看起來像一塊單獨的語法，而事實上，它等價於(x.f)(y)，後者又等價於(getattr(x, &lsquo;f&rsquo;))(y)。我猜你可能不相信我，來看:</p>
+
+<pre><code>class X:
+    def f(self, y): return 2 * y
+    --------------------------------------
+&gt;&gt;&gt; x = X()
+&gt;&gt;&gt; x.f
+&lt;bound method X.f of &lt;__main__.X instance at 0x009C7DB0&gt;&gt;
+&gt;&gt;&gt; y = 21
+&gt;&gt;&gt; x.f(y)
+42
+&gt;&gt;&gt; (x.f)(y)
+42
+&gt;&gt;&gt; (getattr(x, 'f'))(y)
+42
+&gt;&gt;&gt; xf = x.f
+&gt;&gt;&gt; xf(y)
+42
+&gt;&gt;&gt; map(x.f, range(5))
+[0, 2, 4, 6, 8]
+</code></pre>
+
+<p>所以這個問題的答案是:你可以在方法調用中使用*y或**y(或者其他任何你可以放在函數調用中的)，因為方法調用就是函數調用。</p>
+
+<h3>13 Q: 你能用用0行代碼實現Python的抽象類嗎? 4行呢?</h3>
+
+<p>Java中有一個abstract關鍵詞。你可以用它來定義一個只能繼承不能被實例化的抽象類，該類中所有的抽象方法都需要你來實現。很少有人知道在Python中，你可以用幾乎一樣的方式使用abstract。不同的是，當你想要調用一個沒有實現的方式時，你得到的是一個運行時錯誤而不是編譯錯誤。比較下面的代碼:</p>
+
+<pre><code>## Python
+class MyAbstractClass:
+    def method1(self): abstract
+
+class MyClass(MyAbstractClass): 
+    pass
+    --------------------------------------
+&gt;&gt;&gt; MyClass().method1()
+Traceback (most recent call last):
+    ...
+NameError: name 'abstract' is not defined
+</code></pre>
+
+<p>==============================================</p>
+
+<pre><code>    /* Java */
+public abstract class MyAbstractClass {
+    public abstract void method1();
+}
+
+class MyClass extends MyAbstractClass {}
+----------------------------------------------
+% javac MyAbstractClass
+MyAbstractClass.java:5: 
+  class MyClass must be declared abstract. 
+  It does not define void method1() from class MyAbstractClass.
+</code></pre>
+
+<p>別花太多時間在Python語言參考手冊裏面尋找abstract關鍵字，它根本就不在那裏。我把它加入了Python語言中，並且最美妙的是，它的實現用了0行代碼! 當你調用methord1，你會得到一個NameError錯誤，因為不存在abstract變量。(你也許會說這是欺騙，如果有人定義一個變量叫做abstract它就沒有效果了) 但是如果代碼中依賴的一個變量被人重定義的話，任何程序都難逃錯誤的命運。這裏唯一的區別就是我們依賴的是沒有定義的變量。</p>
+
+<p>如果你願意寫abstract()替代abstract，那麽你可以定義一個函數拋出一個更有意義的NotImplementedError以取代NameError。(同樣，如果有人重定義abstract為零參數函數以外的任何東西，你還是會得到一個錯誤信息。)為了讓abstract的錯誤信息看起來舒服一點，只需去函數調用棧(stack frame)中看看誰是這個討厭的調用者:</p>
+
+<pre><code>def abstract():
+    import inspect
+    caller = inspect.getouterframes(inspect.currentframe())[1][3]
+    raise NotImplementedError(caller + ' must be implemented in subclass')
+    ----------------------------------------------
+&gt;&gt;&gt; MyDerivedClass().method1()
+Traceback (most recent call last):
+    ...
+NotImplementedError: method1 must be implemented in subclass
+</code></pre>
+
+<h3>14 Q: 在Python中我怎麽實現枚舉類型呢?</h3>
+
+<p>這個問題沒有一個答案，因為在Python中有好幾個答案，取決於你對枚舉的期望。如果你只是想有幾個變量，每個都有不同的整數值，你可以這樣:</p>
+
+<pre><code>red, green, blue = range(3)
+</code></pre>
+
+<p>缺點是當你想在左邊添加一個新的變量，需要同時增加右邊的整數。不過這不算太壞，因為當你忘記的時候Python會拋出一個錯誤。如果你把枚舉隔離在類中可能更幹凈一點:</p>
+
+<pre><code>class Colors:
+    red, green, blue = range(3)
+</code></pre>
+
+<p>現在Colors.red會得到0, 並且dir(Colors)可能也能派上用場(雖然你還需要忽略__doc__和__module__兩項). 如果你想完全控制每個枚舉變量的值, 可以使用好幾個問題以前的Struct函數, 就像下面:</p>
+
+<pre><code>Enum = Struct
+Colors = Enum(red=0, green=100, blue=200)
+</code></pre>
+
+<p>盡管這些簡單的辦法通常已經夠了，可有人還想要更多。在 <a href="http://www.python.org/doc/essays/metaclasses/Enum.py">python.org</a>，<a href="http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/67107">ASPN</a>和<a href="http://www.faqts.com/knowledge_base/view.phtml/aid/4415">faqts</a>上都有枚舉類型的實現。下面是我的版本，它(幾乎)涵蓋所有人的需要，並且仍然保持合理的簡潔(一共44行，其中有22行代碼):</p>
+
+<pre><code>class Enum:
+
+    """創建一個可的枚舉類型, 然後給他添加變量/值對. 構造函數
+    和.ints(names)方法接受變量名的列表並且將連續的整數賦予他們. 方法.strs(names)將每個變量名賦給它自己(就是說變量'v'有值'v'). 方法.vals(a=99, b=200) 讓你可以給任何變量賦任何值. "變量名列表"也可以是一個字符串, 它將被.split()分開. 方法.end()返回最大整數值加1,比如: opcode = Enum("add sub load store").vals(illegal=255)."""
+
+    def __init__(self, names=[]): self.ints(names)
+
+    def set(self, var, val):
+    """Set var to the value val in the enum."""
+        if var in vars(self).keys(): raise AttributeError("duplicate var in enum")
+        if val in vars(self).values(): raise ValueError("duplicate value in enum")
+        vars(self)[var] = val
+        return self
+
+    def strs(self, names):
+    """Set each of the names to itself (as a string) in the enum."""
+        for var in self._parse(names): self.set(var, var)
+        return self
+
+    def ints(self, names):
+    """Set each of the names to the next highest int in the enum."""
+        for var in self._parse(names): self.set(var, self.end())
+        return self
+
+    def vals(self, **entries):
+    """Set each of var=val pairs in the enum."""
+        for (var, val) in entries.items(): self.set(var, val)
+        return self
+
+    def end(self):
+    """One more than the largest int value in the enum, or 0 if none."""
+        try: return max([x for x in vars(self).values() if type(x)==type(0)]) + 1
+        except ValueError: return 0
+
+    def _parse(self, names):
+    ### If names is a string, parse it as a list of names.
+        if type(names) == type(""): return names.split()
+        else: return names
+</code></pre>
+
+<p>下面是使用它的例子:</p>
+
+<pre><code>&gt;&gt;&gt; opcodes = Enum("add sub load store").vals(illegal=255)
+&gt;&gt;&gt; opcodes.add
+  0
+&gt;&gt;&gt; opcodes.illegal
+  255
+&gt;&gt;&gt; opcodes.end()
+  256
+&gt;&gt;&gt; dir(opcodes)
+  ['add', 'illegal', 'load', 'store', 'sub']
+&gt;&gt;&gt; vars(opcodes)
+  {'store': 3, 'sub': 1, 'add': 0, 'illegal': 255, 'load': 2}
+&gt;&gt;&gt; vars(opcodes).values()
+  [3, 1, 0, 255, 2]
+</code></pre>
+
+<p>註意這些方法都是層疊(cascaded)的，在構造函數後你可以把.strs， .ints和.vals組合在一行代碼中。還要註意的dir和vals輔助使用，它們不會被任何東西幹擾, 除了你定義的變量。為了遍歷所有的枚舉值，你可以使用for x in vars(opcodes).values()。還有就是，如果你願意，可以使用非整數值來賦給枚舉變量。使用.strs和.vals方法就行了。最後，註意重復變量名和值都是一種錯誤。有時你可能想有一個重復的值(比如為了創建別名)。你可以刪掉拋出ValueError的那行，或者像這樣用:vars(opcodes)[&lsquo;first_op&rsquo;] = 0。這裏我最不喜歡的是很有可能把vals和value搞混。也許我可以給vals想一個更好的名字。</p>
+
+<h3>15 Q: 為什麽Python中沒有"集合(Set)&ldquo;類型?</h3>
+
+<p>當這個問題第一個發布在這裏的時候還沒有, 程序員們通常用字典來代替它. 但是在Python 2.4中有一個很好的內建<a href="http://docs.python.org/lib/types-set.html">set類型</a>。</p>
+
+<h3>16 Q: 我能用布爾類型嗎?</h3>
+
+<p>當這個問題第一次發布在這裏時，Python中還沒有布爾類型。現在嘛，Python 2.3以後都內建有一個<a href="http://docs.python.org/lib/node31.html">bool類型</a>。</p>
+
+<h3>17 Q: Python中有能與(test?result:alternative)等價的操作嗎?</h3>
+
+<p>Java和C++都有三目運算符(test?result:alternative)。Python一直拒絕它，但在將來的Python 2.5中，將允許(result if test else alternative)形式的表達式。這樣的結果是破壞了Python中表達式和語句清楚的區別，不過它是對許多人要求的妥協。</p>
+
+<p>在Python 2.5到來前，你怎麽辦?這裏有幾個選擇:</p>
+
+<ol>
+<li>. 你可以試試[alternaticve, result][test]. 註意如果alternative和result中有遞歸調用或者昂貴的操作的話, 這個方法不太好, 因為它們兩個都會被求值. 如果test可以返回一個非布爾值, 那就下面這個</li>
+<li>. [result, alternative][not test]. 這兩個的可讀性都很好.</li>
+<li>. test and result or alternative 有人很習慣這樣，有人卻覺得它令人糊塗. 它只在能確認result非假後使用.</li>
+<li>. (test and [result] or [alternative])[0] 避免了上面那個限制.</li>
+<li>. [lambda: result, lambda: alternative][not not test]()擺脫了上面所有的限制(除了可讀性), 但別跟人家說是我告訴你這樣做的. 你甚至可以把它封裝在一個函數裏面. 公認的命名規範是, 對於模仿關鍵詞的變量, 在後面跟一個下劃線. 所以我們有:</li>
+<li>. if_(test, result, lambda: alternative)
+這裏我們定義</li>
+</ol>
+
+
+<hr />
+
+<pre><code>def if_(test, result, alternative=None):
+"If test is true, 'do' result, else alternative. 'Do' means call if callable."
+    if test:
+    if callable(result): result = result()
+    return result
+else:
+    if callable(alternative): alternative = alternative()
+    return alternative
+--------------------------------------------------
+&gt;&gt;&gt; fact = lambda n: if_(n &lt;= 1, 1, lambda: n *     fact(n-1))
+&gt;&gt;&gt; fact(6)
+720
+</code></pre>
+
+<ol>
+<li>. 現在假定你因為某種原因, 與"if(test, &hellip;&ldquo;的語法相比, 就是更喜歡"if(test) &hellip;&rdquo;(並且, 你從來不想擺脫alternative那個部分). 你可以試試這個:</li>
+</ol>
+
+
+<hr />
+
+<pre><code>def _if(test):
+    return lambda alternative: \
+               lambda result: \
+                   [delay(result), delay(alternative)][not not test]()
+
+def delay(f):
+    if callable(f): return f
+    else: return lambda: f
+&gt;&gt;&gt; fact = lambda n: _if (n &lt;= 1) (1) (lambda: n *  fact(n-1))
+&gt;&gt;&gt; fact(100)
+93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000L
+</code></pre>
+
+<p>If u cn rd ths, u cn gt a jb in fncnl prg (if thr wr any)。(這個就不翻了吧:) )</p>
+
+<h3>18 Q: 還有其他主要類型是Python缺少的嗎?</h3>
+
+<p>關於Python，有一件很爽的事情就是你可以使用數字，字符串，列表，和字典(現在還有集合和布爾)就能走很遠。但是還有幾個主要類型是缺少的. 對我來說，最重要的是一個可變的字符串。一次又一次的使用str ＋＝ x 是很慢的，而維護字符組成的列表(或者子字符串的列表)意味著你放棄了一些很棒的字符串函數。一個可能的解決是array.array(&lsquo;c&rsquo;)。另一個是UserString.MutableString，盡管它本來的目的是用於教學而不是實踐。第三個是mmap模塊, 第四是cStringIO. 這些方法都不完美，不過加在一起也提供了足夠的選擇。最後，我發現我經常需要一個某種順序的隊列。標準庫中有一個<a href="http://www.python.org/doc/current/lib/module-Queue.html">Queue module</a>，但它是專用於線程的隊列。因為這裏有太多選項了，所以我就不為了實現一個標準隊列的去遊說了。不過呢，我將提供我實現的幾種隊列，FIFO，LIFO和優先隊列:</p>
+
+<pre><code>"""
+This module provides three types of queues, with these constructors:
+  Stack([items])  -- Create a Last In First Out queue, implemented as a list
+  Queue([items])  -- Create a First In First Out queue
+  PriorityQueue([items]) -- Create a queue where minimum item (by &lt;) is first
+Here [items] is an optional list of initial items; if omitted, queue is empty.
+Each type supports the following methods and functions:
+  len(q)          -- number of items in q (also q.__len__())
+  q.append(item)  -- add an item to the queue
+  q.extend(items) -- add each of the items to the queue
+  q.pop()         -- remove and return the "first" item from the queue
+"""
+
+def Stack(items=None):
+    "A stack, or last-in-first-out queue, is    implemented as a list."
+    return items or []
+
+class Queue:
+    "A first-in-first-out queue."
+    def __init__(self, items=None): self.start = 0;     self.A = items or []
+    def __len__(self):                return    len(self.A) - self.start
+    def append(self, item):             self.A.append(item)
+    def extend(self, items):            self.A.extend(items)
+
+    def pop(self):
+        A = self.A
+        item = A[self.start]
+        self.start += 1
+        if self.start &gt; 100 and self.start &gt; len(A)/2:
+            del A[:self.start]
+            self.start = 0
+        return item
+
+class PriorityQueue:
+    "A queue in which the minimum element (as determined by cmp) is first."
+    def __init__(self, items=None, cmp=operator.lt):
+          self.A = []; self.cmp = cmp;
+          if items: self.extend(items)
+
+    def __len__(self): return len(self.A)
+
+    def append(self, item):
+        A, cmp = self.A, self.cmp
+        A.append(item)
+        i = len(A) - 1
+        while i &gt; 0 and cmp(item, A[i//2]):
+            A[i], i = A[i//2], i//2
+        A[i] = item
+
+    def extend(self, items):
+        for item in items: self.append(item)
+
+    def pop(self):
+        A = self.A
+        if len(A) == 1: return A.pop()
+        e = A[0]
+        A[0] = A.pop()
+        self.heapify(0)
+        return e
+
+    def heapify(self, i):
+        "Assumes A is an array whose left and right children are heaps,"
+        "move A[i] into the correct position.  See CLR&amp;S p. 130"
+        A, cmp = self.A, self.cmp
+        left, right, N = 2*i + 1, 2*i + 2, len(A)-1
+        if left &lt;= N and cmp(A[left], A[i]):
+            smallest = left
+        else:
+            smallest = i
+        if right &lt;= N and cmp(A[right], A[smallest]):
+            smallest = right
+        if smallest != i:
+            A[i], A[smallest] = A[smallest], A[i]
+            self.heapify(smallest)
+</code></pre>
+
+<p>註意一個技巧"items or []&ldquo;，下面這樣做是非常錯誤的</p>
+
+<pre><code>def Stack(items=[]): return items
+</code></pre>
+
+<p>這是想說明默認值是一個空的列表。如果我們這樣作了，那麽不同的堆棧將會共享一個列表。通過使默認值為None(一個有效輸入之外的false值)，我們可以安排每個實例得到它自己的新列表。可能拒絕使用這個技巧的理由，在下面例子中，一個用戶這樣用</p>
+
+<pre><code>s = Stack(items)
+</code></pre>
+
+<p>他可能覺得之後的s和items應該是相同的。但這是只會在發生在當items非空的時候。我認為這樣的反對理由是不太嚴重的，因為這裏並沒有什麽明確的承諾。(事實上，一個用戶也可能期望items保持不變，這只在item為空時候成立)。</p>
+
+<h3>19 Q: 在Python裏面怎麽實現Singleton模式?</h3>
+
+<p>我假定你的意思是：你希望一個類只可以被實例化一次，然後當你再次實例化時拋出一個異常。我知道的最簡單的辦法是定義一個函數施行這個想法，然後在你的類構造函數裏面調用這個函數:</p>
+
+<pre><code>def singleton(object, instantiated=[]):
+    "Raise an exception if an object of this class has been instantiated before."
+    assert object.__class__ not in instantiated, \
+        "%s is a Singleton class but is already instantiated" % object.__class__
+    instantiated.append(object.__class__)
+
+class YourClass:
+    "A singleton class to do something ..."
+    def __init__(self, args):
+        singleton(self)
+        ...
+</code></pre>
+
+<p>你也可以跟metaclass打交道，這樣你可以寫出class YourClass(Singletion)，但是為什麽自找麻煩呢?在"四人幫"把理論帶給我們以前，"singleton"(沒有那個公式化的名字)只是一個簡單的想法，剛好與一行簡單代碼相配，而不是一套信仰.</p>
+
+<h3>20 Q: 沒有"news"是好消息嗎?</h3>
+
+<p>我假設你的意思是Python沒有new關鍵字。的確是的。在C++中，new用來標記堆的分配而不是棧的。這時，這個關鍵字是有用的。在Java中，所有的對象都是在堆上分配的，所以new沒有真正的意義。它只是作為一個區別構造函數和其他靜態方法的提醒。但是這個區別可能對Java弊大於利，因為它是低層次的，它強迫實現代碼過早決定那些真正應該延後的東西。我想Python作出了正確的選擇，保持構造函數和一個普通函數調用使用相同的語法。</p>
+
+<p>比如說，在有bool類出現之前，我們曾經想實現一個。為了跟內建的有所區別的，我們就叫它Bool。假設我們想實現這樣的想法:Bool類型只有一個true和一個false對象。一個辦法是把類名從Bool改為_Bool(這樣它不會被導出)，然後定義一個函數Bool:</p>
+
+<pre><code>def Bool(val):
+    if val: return true
+    else: return false
+
+true, false = _Bool(1), _Bool(0)
+</code></pre>
+
+<p>這就讓函數Bool變成_Bool對象的一個工廠(誠然是一個小得少見的工廠)。要點在於調用Bool(1)的程序員不應該知道或者關心返回的對象是一個新的還是回收的(至少對於不可變對象是這樣)。Python語法允許隱藏這個區別，但是Java語法不行。</p>
+
+<p>在一些著作中這裏有點混淆。有些人使用術語"Singleton Pattern"稱呼這樣的工廠，因為這裏對構造函數的每個不同的參數有一個單獨的對象。和大多數人一樣，我贊同前一個問題中我下的定義。這個模式也可以封裝一個類型。我們可以叫它"CachedFactory"。這個想法來源於當你寫下</p>
+
+<pre><code>class Bool:
+    ... ## see here for Bool's definition
+
+Bool = CachedFactory(Bool)
+</code></pre>
+
+<p>然後當你第一次調用Bool(1)，參數列表(1,)，得到原來的Bool類的代理。但是任何後續的對Bool(1)調用將返回第一個對象，它是被保存在緩存中：</p>
+
+<pre><code>class CachedFactory:
+    def __init__(self, klass):
+        self.cache = {}
+        self.klass = klass
+
+    def __call__(self, *args):
+        if self.cache.has_key(args):
+            return self.cache[args]
+        else:
+            object = self.cache[args] = self.klass(*args)
+            return object
+</code></pre>
+
+<p>需要註意的一件事情是，類和構造函數沒有任何其余的東西。這個模式將適用於所有可調用的對象。當擴展到普通的函數，它被稱作"Memoization Pattern"。實現代碼是一樣的，只是名字變了:</p>
+
+<pre><code>class Memoize:
+    def __init__(self, fn):
+        self.cache = {}
+        self.fn = fn
+
+    def __call__(self, *args):
+        if self.cache.has_key(args):
+            return self.cache[args]
+        else:
+            object = self.cache[args] = self.fn(*args)
+            return object
+</code></pre>
+
+<p>現在你可以寫下fact = Memoize(fact)，現在階乘運算的時間復雜度是分攤到每次調用的O(1)，而不是O(n)。</p>
+
+<h3>21 Q: 我能有一個像shell裏面一樣的歷史記錄嗎?</h3>
+
+<p>能。如果你要是這個麽?</p>
+
+<pre><code>&gt;&gt;&gt; from shellhistory import h
+h[2] &gt;&gt;&gt; 7*8
+56
+h[3] &gt;&gt;&gt; 9*9
+81
+h[4] &gt;&gt;&gt; h[2]
+56
+h[5] &gt;&gt;&gt; 'hello' + ' world'
+'hello world'
+h[6] &gt;&gt;&gt; h
+[None, 9, 56, 81, 56, 'hello world']
+h[7] &gt;&gt;&gt; h[5] * 2
+'hello worldhello world'
+h[8] &gt;&gt;&gt;  h[7] is _ is h[-1]
+1
+</code></pre>
+
+<p>這是怎辦到的?變量sys.ps1是系統提示符，默認值是字符串'>>>&lsquo;，但是你可以設置成其它任何東西。如果你設置了一個非字符串對象，這個對象的__str__方法將被調用。所以我們將創建這麽一個對象，它的字符串方法把最近的結果(變量_)添加到一個叫h(代表history)的列表中, 然後返回一個包含列表長度，接著是&rsquo;>>>&lsquo;的提示字符串。至少原來計劃是這樣。結果是(在IDLE 2.2的Windows實現中)，sys.ps1.__str__被調用了三次，而不是提示符被打印前的一次。別問我為什麽。為了解決這個問題，只有當_不是歷史列表中最後一個元素時，我才加入它。而且我也不自討麻煩的把None加入歷史列表中了，因為它不會被Python的交互循環顯示。我還排除了向h自己中添加h，因為這樣的環形結構可以能會帶來打印和比較時的麻煩。另一個復雜因素是Python解釋器實際上是嘗試打印&rsquo;\n' + sys.ps1，(它本來應該單獨的打印'\n'，或者打印'\n' + str(sys.ps1))這就意味著sys.ps1也需要一個__radd__方法. 最後，如果Python session中(或者是在.python啟動文件中)一開始的輸入是導入我的第一版模塊，它將會失敗。在檢查了一番之後，我發現這是因為直到第一個表達式被求值以後，變量_才被綁定。所以我捕獲了_未綁定的異常。然後就有:</p>
+
+<pre><code>import sys
+
+h = [None]
+
+class Prompt:
+    "Create a prompt that stores results (i.e. _) in the array h."
+    def __init__(self, str='h[%d] &gt;&gt;&gt; '):
+        self.str = str;
+
+    def __str__(self):
+        try:
+            if _ not in [h[-1], None, h]: h.append(_);
+        except NameError:
+            pass
+        return self.str % len(h);
+
+    def __radd__(self, other):
+        return str(other) + str(self)
+
+sys.ps1 = Prompt()
+</code></pre>
+
+<h3>22 Q: 怎麽得到我的函數的執行時間?</h3>
+
+<p>下面是一個簡單的答案:</p>
+
+<pre><code>def timer(fn, *args):
+    "Time the application of fn to args. Return (result, seconds)."
+    import time
+    start = time.clock()
+    return fn(*args), time.clock() - start
+&gt;&gt;&gt;timer(max, range(1e6))
+(999999, 0.4921875)
+</code></pre>
+
+<p>在我的utils module裏還有一個更復雜的答案。</p>
+
+<h3>23 Q: 我的.python啟動文件是什麽樣子的?</h3>
+
+<p>現在它是看起來像這樣，但是它已經改變了很多了:</p>
+
+<pre><code>from __future__ import nested_scopes
+import sys, os, string, time
+from utils import *
+
+################ Interactive Prompt and Debugging ################
+
+try:
+    import readline
+except ImportError:
+    print "Module readline not available."
+else:
+    import rlcompleter
+    readline.parse_and_bind("tab: complete")
+
+h = [None]
+
+class Prompt:
+    def __init__(self, str='h[%d] &gt;&gt;&gt; '):
+        self.str = str;
+
+    def __str__(self):
+        try:
+            if _ not in [h[-1], None, h]: h.append(_);
+        except NameError:
+           pass
+        return self.str % len(h);
+
+  def __radd__(self, other):
+        return str(other) + str(self)
+
+
+if os.environ.get('TERM') in [ 'xterm', 'vt100' ]:
+    sys.ps1 = Prompt('\001\033[0:1;31m\002h[%d] &gt;&gt;&gt; \001\033[0m\002')
+else:
+    sys.ps1 = Prompt()
+sys.ps2 = ''
+</code></pre>
+
+<p><a href="mailto:%20peter@norvig.com">Peter Norvig</a><br/>
+<a href="http://norvig.com/python-iaq.html">Origin</a><br/>
+<a href="http://pythonic.zoomquiet.io/data/20071017193806/index.html#11">中文翻譯</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python 正則表達式指南(轉)]]></title>
@@ -852,126 +1542,6 @@ file_object.close( )
 </code></pre>
 
 <p>```</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Python os &amp; sys模塊]]></title>
-    <link href="http://www.aprilzephyr.com/blog/03312014/python-os-sys/"/>
-    <updated>2014-03-31T16:06:01+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/03312014/python-os-sys</id>
-    <content type="html"><![CDATA[<p><strong>1. os模塊</strong><br/>
-Python os模塊包含普遍的操作系統功能。如果你希望你的程序能夠與平臺無關的話，這個模塊是尤為重要的。</p>
-
-<p>1) os.name<br/>
-輸出字符串指示正在使用的平臺。如果是window 則用'nt'表示，對於Linux/Unix用戶，它是'posix'。<br/>
-2) os.mkdir(path [,mode=0777])<br/>
-創建目錄<br/>
-3) os.rmdir()<br/>
-刪除目錄<!--more--><br/>
-4) os.mkdirs()<br/>
-創建多層目錄，類似系統makedir -p<br/>
-5) os.removedirs()<br/>
-刪除多層目錄，每層都是空的，除了要刪除的目錄外。<br/>
-6) os.getcwd()<br/>
-函數得到當前工作目錄，即當前Python腳本工作的目錄路徑。<br/>
-7) os.listdir()<br/>
-返回指定目錄下的所有文件和目錄名。
-``` python</p>
-
-<blockquote><blockquote><blockquote><p>import os
-os.listdir(os.getcwd())
-[&lsquo;.bash_history&rsquo;, &lsquo;.bundler&rsquo;, &lsquo;.CFUserTextEncoding&rsquo;, &lsquo;.config&rsquo;, &lsquo;.DS_Store&rsquo;, &lsquo;.gem&rsquo;, &lsquo;.gitconfig&rsquo;, &lsquo;.matplotlib&rsquo;, &lsquo;.ssh&rsquo;, &lsquo;.Trash&rsquo;, &lsquo;.Trash-500&rsquo;, &lsquo;.vim&rsquo;, &lsquo;.viminfo&rsquo;, &lsquo;Applications&rsquo;, &lsquo;Applications (Parallels)&rsquo;, &lsquo;Desktop&rsquo;, &lsquo;Documents&rsquo;, &lsquo;Downloads&rsquo;, &lsquo;Library&rsquo;, &lsquo;Movies&rsquo;, &lsquo;Music&rsquo;, &lsquo;octopress&rsquo;, &lsquo;Pictures&rsquo;, &lsquo;Public&rsquo;, &lsquo;PycharmProjects&rsquo;, &lsquo;\xe7\x99\xbe\xe5\xba\xa6\xe4\xba\x91\xe5\x90\x8c\xe6\xad\xa5\xe7\x9b\x98&rsquo;]</p>
-
-<p>```<br/>
-8) os.remove()<br/>
-刪除一個文件。<br/>
-9) os.system()<br/>
-運行shell命令。<br/>
-10) os.sep<br/>
-可以取代操作系統特定的路徑分隔符。<br/>
-11) os.linesep<br/>
-給出當前平台使用的行終止符。<br/>
-12) os.path.split()<br/>
-函數返回一個路徑的目錄名和文件名<br/>
-13) os.path.isfile()和os.path.isdir()函數<br/>
-分別檢驗給出的路徑是一個文件還是目錄，給出True或者False。<br/>
-14) os.path.exists()<br/>
-檢驗給出的路徑是否真實的存在，給出True或者False。<br/>
-15) os.path.abspath(name)<br/>
-獲得絕對路徑。<br/>
-16) os.path.normpath(path)<br/>
-規範path的字符串形式。<br/>
-17) os.path.getsize(name)<br/>
-獲得文件大小，如果name是目錄返回0L。<br/>
-18) os.path.splitext()<br/>
-分離文件名與擴展名。<br/>
-19) os.path.join(path,name)<br/>
-連接目錄與文件名或目錄。<br/>
-20) os.path.basename(path)<br/>
-返回文件名。<br/>
-21) os.path.dirname(path)<br/>
-返回文件路徑。</p></blockquote></blockquote></blockquote>
-
-<p><strong>2. sys模塊</strong><br/>
-1) sys.argv<br/>
-命令行參數List，第一個元素是程序本身路徑。<br/>
-2) sys.modules.keys()<br/>
-返回所有已經導入的模塊列表。<br/>
-3) sys.exc_info()<br/>
-獲取當前正在處理的異常類,exc_type、4) exc_value、exc_traceback當前處理的異常詳細信息。<br/>
-5) sys.exit(n)<br/>
-退出程序，正常退出時exit(0)。<br/>
-6) sys.hexversion<br/>
-獲取Python解釋程序的版本值，16進制格式如：0x020403F0。<br/>
-7) sys.version<br/>
-獲取Python解釋程序的版本信息。<br/>
-8) sys.maxint<br/>
-最大的Int值。<br/>
-9) sys.maxunicode<br/>
-最大的Unicode值。<br/>
-10) sys.modules<br/>
-返回系統導入的模塊字段，key是模塊名，value是模塊。<br/>
-11) sys.path<br/>
-返回模塊的搜索路徑，初始化時使用PYTHONPATH環境變量的值。<br/>
-12) sys.platform<br/>
-返回操作系統平臺名稱。<br/>
-13) sys.stdout<br/>
-標準輸出。<br/>
-14) sys.stdin<br/>
-標準輸入。<br/>
-15) sys.stderr<br/>
-錯誤輸出。<br/>
-16) sys.exc_clear()<br/>
-用來清除當前線程所出現的當前的或最近的錯誤信息。<br/>
-17) sys.exec_prefix<br/>
-返回平臺獨立的python文件安裝的位置。<br/>
-18) sys.byteorder<br/>
-本地字節規則的指示器，big-endian平臺的值是'big',little-endian平臺的值是'little'。<br/>
-19) sys.copyright<br/>
-記錄python版權相關的東西。<br/>
-20) sys.api_version<br/>
-解釋器的C的API版本。<br/>
-21) sys.version_info<br/>
-<code>&gt;&gt;&gt; sys.version_info(major=2, minor=7, micro=5, releaselevel='final', serial=0)</code><br/>
-22) sys.displayhook(value)<br/>
-如果value非空，這個函數會把他輸出到sys.stdout，並且將他保存進__builtin__._.指在python的交互式解釋器裏，'_&lsquo;代表上次你輸入得到的結果，hook是鉤子的意思，將上次的結果鉤過來。<br/>
-23) sys.getdefaultencoding()<br/>
-返回當前你所用的默認的字符編碼格式。<br/>
-24) sys.getfilesystemencoding()<br/>
-返回將Unicode文件名轉換成系統文件名的編碼的名字。<br/>
-25) sys.setdefaultencoding(name)<br/>
-用來設置當前默認的字符編碼，如果name和任何一個可用的編碼都不匹配，拋出LookupError，這個函數只會被site模塊的sitecustomize使用，一旦別site模塊使用了，他會從sys模塊移除。<br/>
-26) sys.builtin_module_names<br/>
-Python解釋器導入的模塊列表。<br/>
-27) sys.executable<br/>
-Python解釋程序路徑。<br/>
-28) sys.getwindowsversion()<br/>
-獲取Windows的版本。<br/>
-29) sys.stdin.readline()<br/>
-從標準輸入讀一行。<br/>
-30) sys.stdout.write(&ldquo;a&rdquo;)<br/>
-屏幕輸出a。</p>
 ]]></content>
   </entry>
   
