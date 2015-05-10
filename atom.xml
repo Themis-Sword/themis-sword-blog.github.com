@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2015-05-05T14:12:30+08:00</updated>
+  <updated>2015-05-10T22:34:55+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,106 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Data Science Resources]]></title>
+    <link href="http://www.aprilzephyr.com/blog/05102015/data-science-resources/"/>
+    <updated>2015-05-10T22:01:26+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/05102015/data-science-resources</id>
+    <content type="html"><![CDATA[<h3>Blogs</h3>
+
+<p><a href="http://simplystatistics.org/">Simply Statistics</a>: Written by the Biostatistics professors at Johns Hopkins University who also run Coursera&rsquo;s <a href="https://www.coursera.org/specialization/jhudatascience/1">Data Science Specialization</a><br/>
+<a href="http://blog.yhathq.com/">yhat&rsquo;s blog</a>: Beginner-friendly content, usually in Python<br/>
+<a href="http://blog.kaggle.com/">No Free Hunch (Kaggle&rsquo;s blog)</a>: Mostly interviews with competition winners, or updates on their competitions<br/>
+<a href="http://fastml.com/">FastML</a>: Various machine learning content, often with code<br/>
+<a href="http://blog.echen.me/">Edwin Chen</a>: Infrequently updated, but long and thoughtful pieces<br/>
+<a href="http://fivethirtyeight.com/">FiveThirtyEight</a>: Tons of timely data-related content<br/>
+<a href="http://machinelearningmastery.com/blog/">Machine Learning Mastery</a>: Frequent posts on machine learning, very accessible<br/>
+<a href="http://www.dataschool.io/">Data School</a>: Kevin Markham&rsquo;s blog! Beginner-focused, with reference guides and videos<br/>
+<a href="http://mlwave.com/">MLWave</a>: Detailed posts on Kaggle competitions, by a Kaggle Master<br/>
+<a href="http://101.datascience.community/">Data Science 101</a>: Short, frequent content about all aspects of data science<br/>
+<a href="http://ml.posthaven.com/">ML in the Valley</a>: Thoughtful pieces by the Director of Analytics at Codecademy<!--more--></p>
+
+<h3>Aggregators</h3>
+
+<p><a href="http://www.datatau.com/">DataTau:</a> Like <a href="https://news.ycombinator.com/">Hacker News</a>, but for data<br/>
+<a href="http://www.reddit.com/r/MachineLearning/">MachineLearning on reddit</a>: Very active subreddit<br/>
+<a href="http://www.quora.com/Machine-Learning">Quora&rsquo;s Machine Learning section</a>: Lots of interesting Q&amp;A
+<a href="https://www.quora.com/What-is-the-Data-Science-topic-FAQ">Quora&rsquo;s Data Science topic FAQ</a><br/>
+<a href="http://www.kdnuggets.com/">KDnuggets</a>: Data mining news, jobs, classes and more</p>
+
+<h3>DC Data Groups</h3>
+
+<p><a href="http://www.datacommunitydc.org/">Data Community DC</a>: Coordinates six local data-related meetup groups<br/>
+<a href="http://www.districtdatalabs.com/">District Data Labs</a>: Offers courses and other projects to local data scientists</p>
+
+<h3>Online Classes</h3>
+
+<p><a href="https://www.coursera.org/specialization/jhudatascience/1">Coursera&rsquo;s Data Science Specialization</a>: Nine courses (running every month) and a Capstone project, taught in R<br/>
+<a href="http://online.stanford.edu/course/statistical-learning">Stanford&rsquo;s Statistical Learning</a>: By the authors of <a href="http://www-bcf.usc.edu/%7Egareth/ISL/">An Introduction to Statistical Learning</a> and <a href="http://statweb.stanford.edu/%7Etibs/ElemStatLearn/">Elements of Statistical Learning</a>, taught in R, highly recommended, running January through April 2015 (preview the <a href="http://www.dataschool.io/15-hours-of-expert-machine-learning-videos/">lecture videos</a>)<br/>
+<a href="https://www.coursera.org/course/ml">Coursera&rsquo;s Machine Learning (Andrew Ng)</a>: Andrew Ng&rsquo;s acclaimed course, taught in MATLAB/Octave (preview the <a href="https://class.coursera.org/ml-005/lecture">lecture videos</a>)<br/>
+<a href="https://www.coursera.org/course/machlearning">Coursera&rsquo;s Machine Learning (Pedro Domingos)</a>: No upcoming sessions (preview the <a href="https://class.coursera.org/machlearning-001/lecture">lecture videos</a>)<br/>
+<a href="http://work.caltech.edu/telecourse.html">Caltech&rsquo;s Learning from Data</a>: Widely praised, not language-specific<br/>
+<a href="https://www.udacity.com/course/nd002">Udacity&rsquo;s Data Analyst Nanodegree</a>: Project-based curriculum using Python, R, MapReduce, MongoDB<br/>
+<a href="https://www.coursera.org/specialization/datamining/20">Coursera&rsquo;s Data Mining Specialization</a>: Brand new specialization beginning February 2015<br/>
+<a href="https://www.coursera.org/course/nlp">Coursera&rsquo;s Natural Language Processing</a>: No upcoming sessions, but <a href="https://class.coursera.org/nlp/lecture">lectures</a> and <a href="http://web.stanford.edu/%7Ejurafsky/NLPCourseraSlides.html">slides</a> are available<br/>
+<a href="https://www.mysliderule.com/learning-paths/data-analysis">SlideRule&rsquo;s Data Analysis Learning Path</a>: Curated content from various online classes<br/>
+<a href="https://www.udacity.com/course/cs271">Udacity&rsquo;s Intro to Artificial Intelligence</a>: Taught by Peter Norvig and Sebastian Thrun<br/>
+<a href="https://www.coursera.org/course/neuralnets">Coursera&rsquo;s Neural Networks for Machine Learning</a>: Taught by Geoffrey Hinton, no upcoming sessions<br/>
+<a href="http://www.statistics.com/data-science/">statistics.com</a>: Many online courses in data science<br/>
+<a href="http://www.coursetalk.com/">CourseTalk</a>: Read reviews of online courses</p>
+
+<h3>Online Content from Offline Classes</h3>
+
+<p><a href="http://cs109.github.io/2014/">Harvard&rsquo;s CS109 Data Science</a>: Similar topics as General Assembly&rsquo;s course<br/>
+<a href="http://www2.research.att.com/%7Evolinsky/DataMining/Columbia2011/Columbia2011.html">Columbia&rsquo;s Data Mining Class</a>: Excellent slides<br/>
+<a href="http://www.cs171.org/2015/index.html">Harvard&rsquo;s CS171 Visualization</a>: Includes programming in D3<br/>
+<a href="http://cs229.stanford.edu">Stanford&rsquo;s Machine Learning CS229</a></p>
+
+<h3>Face-to-Face Educational Programs</h3>
+
+<p><a href="http://yet-another-data-blog.blogspot.com/2014/04/data-science-bootcamp-landscape-full.html">Comparison of data science bootcamps</a>: Up-to-date list maintained by a Zipfian Academy graduate<br/>
+<a href="http://www.skilledup.com/articles/list-data-science-bootcamps/">The Complete List of Data Science Bootcamps &amp; Fellowships</a><br/>
+<a href="http://www.zipfianacademy.com/">Zipfian Academy</a>: Offers Data Science Immersive, Data Engineering Immersive, Master&rsquo;s in Big Data (San Francisco, but possibly expanding)<br/>
+<a href="http://datascienceretreat.com/">Data Science Retreat</a>: Primarily uses R (Berlin)<br/>
+<a href="http://www.thisismetis.com/data-science">Metis Data Science Bootcamp</a>: Newer bootcamp (New York)<br/>
+<a href="http://www.persontyle.com/">Persontyle</a>: Various course offerings (based in London)<br/>
+<a href="http://software-carpentry.org/">Software Carpentry</a>: Two-day workshops, primarily for researchers and hosted by universities (worldwide)<br/>
+<a href="http://datascience.community/colleges">Colleges and Universities with Data Science Degrees</a></p>
+
+<h3>Conferences</h3>
+
+<p><a href="http://www.kdd.org/">Knowledge Discovery and Data Mining (KDD)</a>: Hosted by ACM<br/>
+<a href="http://strataconf.com/">O&#8217;Reilly Strata + Hadoop World</a>: Big focus on &ldquo;big data&rdquo; (San Jose, London, New York)<br/>
+<a href="http://pydata.org/">PyData</a>: For developers and users of Python data tools (worldwide)<br/>
+<a href="https://us.pycon.org/">PyCon</a>: For developers and users of Python (Montreal in April 2015)</p>
+
+<h3>Books</h3>
+
+<p><a href="http://www-bcf.usc.edu/%7Egareth/ISL/">An Introduction to Statistical Learning with Applications in R</a><br/>
+<a href="http://www-stat.stanford.edu/%7Etibs/ElemStatLearn/">Elements of Statistical Learning</a><br/>
+<a href="http://www.greenteapress.com/thinkstats/">Think Stats</a><br/>
+<a href="http://www.mmds.org/">Mining of Massive Datasets</a><br/>
+<a href="http://www.pythonlearn.com/book.php">Python for Informatics</a><br/>
+<a href="http://www.statsoft.com/Textbook">Statistics: Methods and Applications</a><br/>
+<a href="http://shop.oreilly.com/product/0636920023784.do">Python for Data Analysis</a><br/>
+<a href="http://www.amazon.com/gp/product/111866146X/">Data Smart: Using Data Science to Transform Information into Insight</a><br/>
+<a href="http://www.amazon.com/Sams-Teach-Yourself-Minutes-Edition/dp/0672336073">Sams Teach Yourself SQL in 10 Minutes</a></p>
+
+<h3>Other Resources</h3>
+
+<p><a href="https://github.com/datasciencemasters/go">Open Source Data Science Masters</a>: Huge list of resources<br/>
+<a href="https://trello.com/b/rbpEfMld/data-science">Data Science Trello Board</a>: Another list of resources<br/>
+<a href="http://docs.python-guide.org/en/latest/">The Hitchhiker&rsquo;s Guide to Python</a>: Online guide to understanding Python and getting good at it<br/>
+<a href="https://github.com/rasbt/python_reference">Python Reference</a>: Python tips, tutorials, and more<br/>
+<a href="http://videolectures.net/Top/Computer_Science/">videolectures.net</a>: Tons of academic videos<br/>
+<a href="http://www.metacademy.org/list">Metacademy</a>: Quick summary of many machine learning terms, with links to resources for learning more<br/>
+<a href="https://github.com/rasbt/pattern_classification/blob/master/resources/data_glossary.md">Terms in data science defined in one paragraph</a></p>
+
+<p><a href="https://github.com/justmarkham/DAT4/blob/master/resources.md">Origin</a><br/>
+<a href="http://www.dataschool.io/resources/">Reference</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The Python IAQ: Infrequently Answered Questions]]></title>
@@ -3931,367 +4031,6 @@ Essentially, if there are exceptions being thrown from anywhere inside the block
 <p>Be hopeful and persistent, even through quite tough time, leastways&mdash;an opportunity to blossom.</p>
 
 <p>&hellip;</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Python 動態類型(轉)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/04022014/python-dong-tai-lei-xing/"/>
-    <updated>2014-04-02T15:15:39+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/04022014/python-dong-tai-lei-xing</id>
-    <content type="html"><![CDATA[<p>Python中只有一個賦值模型</p>
-
-<h4>1. 缺少類型聲明語句的情況</h4>
-
-<p>在Python中，類型是在運行過程中自動決定的，而不是通過代碼聲明。這意味著沒有必要事聲明變量。只要記住，這個概念實質上對變量，對象和它們之間的關系都適用。那麽這個概念也容易理解並掌握。</p>
-
-<p><strong>A 變量，對象和引用</strong><br/>
-變量創建：一個變量，當代碼第一次給它賦值時它就被創建了。之後的賦值將會改變已創建的變量名的值。Python在代碼運行之前先檢測變量名，可以當成是最初的賦值創建變量。<!--more--><br/>
-變量類型：變量永遠不會有任何的它關聯的類型信息或約束。類型的概念是存在於對象中而不是變量中。變量原本是通用的。它只是在一個特定的時間點，簡單地引用了一個特定的對像而已。<br/>
-變量的使用：當變量出現在表達式中時，它會馬上被當前引用的對像所代替，無論這個對象是什麽類型。<br/>
-此外，所有的變量都必須在其使用前明確地賦值。使用未賦值的變量會產生錯誤。<br/>
-<code>&gt;&gt;&gt;a=3</code></p>
-
-<p>在概念上說，Python將執行三個不同的步驟去完成這個請求。<br/>
-1) 創建一個對象來代表值3<br/>
-2) 創建一個變量a，如果它還沒有創建的話<br/>
-3) 將變量與新的對象3連接</p>
-
-<p>在python中從變量到對象的連接稱作引用。引用是一種關系，以內存中的指針形式實現。<br/>
-* 變量 是一個系統表的元素，擁有指向對象的連接空間。<br/>
-* 對象 是被分配的一塊內存，有足夠的空間去表現它們所代表的值。<br/>
-* 引用 是自動形成的從變量到對象的指針。</p>
-
-<p>每一個對象都用兩個標準的頭部信息：一個類型標誌符去標識這個對象的類型，以及一個引用的計數器，用來決定是不是可以回收這個對象。</p>
-
-<p><strong>B 類型屬於對象，而不是變量</strong><br/>
-Python中的類型是與對象相關聯的，而不是和變量關聯。<br/>
-變量沒有類型，變量指向對象。對象有類型，知道自己的類型，每個對象都包含了一個頭部信息，其中標記了這個對象的類型。</p>
-
-<p><strong>C 對象的垃圾收集</strong><br/>
-對象生命結束時發生了什麽變化？<br/>
-每當一個變量名被賦與了一個新的對象，之前的那個對象占用的空間就會被收回（如果它沒有被其他變量名和對象所引用).這種自動回收對象空間的技術稱作垃圾收集。<br/>
-在內部，Python是通過保持用每個對象中的計數器記錄引用指到這個對象上的次數來完成這一功能。一旦（並精確在同一時間）這個計數器被設置為零，這個對象的內存空間就會自動收回。垃圾收集最直接的，可感受到的好處就是這意味著可以在腳本中任意使用對象而不需要考慮釋放內存空間。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; x=42
-</span><span class='line'>&gt;&gt;&gt; id(x)
-</span><span class='line'>674748828
-</span><span class='line'>&gt;&gt;&gt; x="cli"
-</span><span class='line'>&gt;&gt;&gt; id(x)    
-</span><span class='line'>676367648</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<h4>2. 共享引用</h4>
-
-<p>上面所講都是單個變量被賦值引用了多個對象的情況。現在，在交互模式下，引入另一個變量，並看一下變量名和對象的變化。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; a=10
-</span><span class='line'>&gt;&gt;&gt; b=a 
-</span><span class='line'>&gt;&gt;&gt; id(a)
-</span><span class='line'>674749212
-</span><span class='line'>&gt;&gt;&gt; id(b)
-</span><span class='line'>674749212</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-第二行會使用python創建變量b。使用的是變量a,並且它在這裏沒有被賦值，所以它被替換成其應用的對象10，從而b也成為這個對象的一個引用。實際效果就是變量a和b都引用相同的對象（也就是說指向了相同的內存空間。在Python中稱作是共享引用&mdash;多個變量名應用了同一個對象。)</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; a=10 
-</span><span class='line'>&gt;&gt;&gt; b=a  
-</span><span class='line'>&gt;&gt;&gt; a='cli'
-</span><span class='line'>&gt;&gt;&gt; id(a) 
-</span><span class='line'>676367648
-</span><span class='line'>&gt;&gt;&gt; id(b)
-</span><span class='line'>674749212</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-變量a改變了，但是不影響變量b.這完全可以說明變量b是指向對象10內存空間的。</p>
-
-<p>在ptyhon中，變量總是一個指向對象的指針，而不是可以改變的內存區域的標簽。給一變量賦一個新的值，並不是替換了原始的對象，而是讓這個變量去引用完全不同的一個對象。實際的效果就是對一個變量賦值，僅僅會影響那個被賦值的變量。</p>
-
-<p><strong>A 共享引用和在原處修改</strong><br/>
-有一些對象和類型確實會在實地改變對象。例如，在一個列表中對一個偏移進行賦值確實會改變這個列表對象，而不是生成一個新的列表對象。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; T1=[11,12,13]
-</span><span class='line'>&gt;&gt;&gt; T2=T1
-</span><span class='line'>&gt;&gt;&gt; T1
-</span><span class='line'>[11, 12, 13]
-</span><span class='line'>&gt;&gt;&gt; T2
-</span><span class='line'>[11, 12, 13]
-</span><span class='line'>&gt;&gt;&gt; T1=22
-</span><span class='line'>&gt;&gt;&gt; T1
-</span><span class='line'>22
-</span><span class='line'>&gt;&gt;&gt; T2
-</span><span class='line'>[11, 12, 13]</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<p>這個和先前一樣T1改變了T2沒有改變，T2改變也不影響T1</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; T1=[11,12,13]
-</span><span class='line'>&gt;&gt;&gt; T2=T1
-</span><span class='line'>&gt;&gt;&gt; T1
-</span><span class='line'>[11, 12, 13]
-</span><span class='line'>&gt;&gt;&gt; T2
-</span><span class='line'>[11, 12, 13]
-</span><span class='line'>&gt;&gt;&gt; T2[1]=33     
-</span><span class='line'>&gt;&gt;&gt; T1
-</span><span class='line'>[33, 12, 13]
-</span><span class='line'>&gt;&gt;&gt; T2
-</span><span class='line'>[33, 12, 13]</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-發現T2改變了，T1也跟這改變了<br/>
-同樣T1改變了，T2也改變了</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; T1[1]=99  
-</span><span class='line'>&gt;&gt;&gt; T2
-</span><span class='line'>[33, 99, 13]
-</span><span class='line'>&gt;&gt;&gt; T1
-</span><span class='line'>[33, 99, 13]</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-這裏T1沒有改變，改變了T1所引用對象的一個元素。這類修改會覆蓋列表對象中的某部分。因為這個列表對象是與其他對象共享的（被其他對象引用），那麽一個像這樣在原處的改變不僅僅會對T1有影響。必須意識到當做了這樣的修改，它會影響程序的其他部分。</p>
-
-<p>如果不想要這樣的現象發生，需要Python拷貝對象，而不是創建引用。方法包括內置列表函數以及標準庫的copy模塊，最常用的辦法就是從頭到尾的分片T1[:]</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; T1=[11,12,13]
-</span><span class='line'>&gt;&gt;&gt; T2=T1[:]
-</span><span class='line'>&gt;&gt;&gt; T1
-</span><span class='line'>[11, 12, 13]
-</span><span class='line'>&gt;&gt;&gt; T2
-</span><span class='line'>[11, 12, 13]
-</span><span class='line'>&gt;&gt;&gt; T1[0]=99
-</span><span class='line'>&gt;&gt;&gt; T1
-</span><span class='line'>[99, 12, 13]
-</span><span class='line'>&gt;&gt;&gt; T2
-</span><span class='line'>[11, 12, 13]
-</span><span class='line'>&gt;&gt;&gt; id(T1)
-</span><span class='line'>676366604
-</span><span class='line'>&gt;&gt;&gt; id(T2)
-</span><span class='line'>675542060</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-T1和T2指向不同的對象，所以不會相互影響。<br/>
-註意：這種分片技術不會引用在其他的可變的核心類型上（字典，因為它們不是序列），對字典應該使用D.copy（）方法.而且，註意標準庫中的copy模塊有一個通用的拷貝任意對象的調用，也有一個拷貝嵌套對象的結構的調用.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; X={'name':'cli','age':27}  
-</span><span class='line'>&gt;&gt;&gt; import copy
-</span><span class='line'>&gt;&gt;&gt; Y=copy.copy(X)
-</span><span class='line'>&gt;&gt;&gt; X
-</span><span class='line'>{'age': 27, 'name': 'cli'}
-</span><span class='line'>&gt;&gt;&gt; Y
-</span><span class='line'>{'age': 27, 'name': 'cli'}
-</span><span class='line'>&gt;&gt;&gt; id(X)
-</span><span class='line'>676370468
-</span><span class='line'>&gt;&gt;&gt; id(Y)
-</span><span class='line'>676414436
-</span><span class='line'>&gt;&gt;&gt; X={'name':{'FirstName':'cli','LastName':'cli'},'age':27}    
-</span><span class='line'>&gt;&gt;&gt; X
-</span><span class='line'>{'age': 27, 'name': {'LastName': 'cli', 'FirstName': 'cli'}}
-</span><span class='line'>&gt;&gt;&gt; Y=copy.copy(X)
-</span><span class='line'>&gt;&gt;&gt; Y
-</span><span class='line'>{'age': 27, 'name': {'LastName': 'cli', 'FirstName': 'cli'}}
-</span><span class='line'>&gt;&gt;&gt; Z=copy.deepcopy(X) 
-</span><span class='line'>&gt;&gt;&gt; Z
-</span><span class='line'>{'age': 27, 'name': {'LastName': 'cli', 'FirstName': 'cli'}}</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<p><strong>B 共享引用和相等</strong></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; x=33
-</span><span class='line'>&gt;&gt;&gt; x='cli'</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-因為Python緩存並復用了小的整數和小的字符串，就像前文提到的那樣，這裏對象33也許不像前期所說的被收回，相反，它將可能仍保持在一個系統表中，等待下一次你的代碼生成另一個33來利用。盡快如此，大多數種類的對象都會在不再引用時馬上回收。對於那些不會被回收的，緩沖機制與代碼並沒有什麽關系。</p>
-
-<p>判斷是否相等</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; L=[1,2,3]
-</span><span class='line'>&gt;&gt;&gt; M=L
-</span><span class='line'>&gt;&gt;&gt; L==M
-</span><span class='line'>True
-</span><span class='line'>&gt;&gt;&gt; L is M
-</span><span class='line'>True</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-==檢查對象是否有相同的值。 is操作符，檢查對象的同一性。如果兩個變量名精準地指向同一個對象，它會返回True。所以這是一種更嚴格的相等測試。<br/>
-實際上,is只是比較現實引用的指針。所以如果必要的話是代碼中檢測共享引用的一種方法。如果變量名引用值相等。但是為不同的對象，它的返回值將是False.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; L=[1,2,3]
-</span><span class='line'>&gt;&gt;&gt; M=[1,2,3]
-</span><span class='line'>&gt;&gt;&gt; L==M
-</span><span class='line'>True
-</span><span class='line'>&gt;&gt;&gt; L is M
-</span><span class='line'>False
-</span><span class='line'>&gt;&gt;&gt; id(L)
-</span><span class='line'>676367788
-</span><span class='line'>&gt;&gt;&gt; id(M)
-</span><span class='line'>676367724</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-通過id()函數可以看到兩個變量指向不同的對象。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; X=33
-</span><span class='line'>&gt;&gt;&gt; Y=33
-</span><span class='line'>&gt;&gt;&gt; X==Y
-</span><span class='line'>True
-</span><span class='line'>&gt;&gt;&gt; X is Y
-</span><span class='line'>True
-</span><span class='line'>&gt;&gt;&gt; id(X)
-</span><span class='line'>674748936
-</span><span class='line'>&gt;&gt;&gt; id(Y)
-</span><span class='line'>674748936</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-這個is測試返回True因為小的整數和字符串被緩存被復用了。
-如果想更進一步了解，可以向Python查詢一個對象應用的次數：在sys模塊中的getrefcount函數返回對象應用的次數。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&gt;&gt;&gt; import sys
-</span><span class='line'>&gt;&gt;&gt; sys.getrefcount(33)
-</span><span class='line'>13
-</span><span class='line'>&gt;&gt;&gt; sys.getrefcount(1) 
-</span><span class='line'>427
-</span><span class='line'>&gt;&gt;&gt; sys.getrefcount(00)
-</span><span class='line'>296
-</span><span class='line'>&gt;&gt;&gt; sys.getrefcount(99)
-</span><span class='line'>6</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<p><a href="http://ipseek.blog.51cto.com/1041109/786518">Origin</a></p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: artificial-intelligence | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/artificial-intelligence/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2015-05-05T14:12:30+08:00</updated>
+  <updated>2015-05-10T22:34:55+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,106 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Data Science Resources]]></title>
+    <link href="http://www.aprilzephyr.com/blog/05102015/data-science-resources/"/>
+    <updated>2015-05-10T22:01:26+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/05102015/data-science-resources</id>
+    <content type="html"><![CDATA[<h3>Blogs</h3>
+
+<p><a href="http://simplystatistics.org/">Simply Statistics</a>: Written by the Biostatistics professors at Johns Hopkins University who also run Coursera&rsquo;s <a href="https://www.coursera.org/specialization/jhudatascience/1">Data Science Specialization</a><br/>
+<a href="http://blog.yhathq.com/">yhat&rsquo;s blog</a>: Beginner-friendly content, usually in Python<br/>
+<a href="http://blog.kaggle.com/">No Free Hunch (Kaggle&rsquo;s blog)</a>: Mostly interviews with competition winners, or updates on their competitions<br/>
+<a href="http://fastml.com/">FastML</a>: Various machine learning content, often with code<br/>
+<a href="http://blog.echen.me/">Edwin Chen</a>: Infrequently updated, but long and thoughtful pieces<br/>
+<a href="http://fivethirtyeight.com/">FiveThirtyEight</a>: Tons of timely data-related content<br/>
+<a href="http://machinelearningmastery.com/blog/">Machine Learning Mastery</a>: Frequent posts on machine learning, very accessible<br/>
+<a href="http://www.dataschool.io/">Data School</a>: Kevin Markham&rsquo;s blog! Beginner-focused, with reference guides and videos<br/>
+<a href="http://mlwave.com/">MLWave</a>: Detailed posts on Kaggle competitions, by a Kaggle Master<br/>
+<a href="http://101.datascience.community/">Data Science 101</a>: Short, frequent content about all aspects of data science<br/>
+<a href="http://ml.posthaven.com/">ML in the Valley</a>: Thoughtful pieces by the Director of Analytics at Codecademy<!--more--></p>
+
+<h3>Aggregators</h3>
+
+<p><a href="http://www.datatau.com/">DataTau:</a> Like <a href="https://news.ycombinator.com/">Hacker News</a>, but for data<br/>
+<a href="http://www.reddit.com/r/MachineLearning/">MachineLearning on reddit</a>: Very active subreddit<br/>
+<a href="http://www.quora.com/Machine-Learning">Quora&rsquo;s Machine Learning section</a>: Lots of interesting Q&amp;A
+<a href="https://www.quora.com/What-is-the-Data-Science-topic-FAQ">Quora&rsquo;s Data Science topic FAQ</a><br/>
+<a href="http://www.kdnuggets.com/">KDnuggets</a>: Data mining news, jobs, classes and more</p>
+
+<h3>DC Data Groups</h3>
+
+<p><a href="http://www.datacommunitydc.org/">Data Community DC</a>: Coordinates six local data-related meetup groups<br/>
+<a href="http://www.districtdatalabs.com/">District Data Labs</a>: Offers courses and other projects to local data scientists</p>
+
+<h3>Online Classes</h3>
+
+<p><a href="https://www.coursera.org/specialization/jhudatascience/1">Coursera&rsquo;s Data Science Specialization</a>: Nine courses (running every month) and a Capstone project, taught in R<br/>
+<a href="http://online.stanford.edu/course/statistical-learning">Stanford&rsquo;s Statistical Learning</a>: By the authors of <a href="http://www-bcf.usc.edu/%7Egareth/ISL/">An Introduction to Statistical Learning</a> and <a href="http://statweb.stanford.edu/%7Etibs/ElemStatLearn/">Elements of Statistical Learning</a>, taught in R, highly recommended, running January through April 2015 (preview the <a href="http://www.dataschool.io/15-hours-of-expert-machine-learning-videos/">lecture videos</a>)<br/>
+<a href="https://www.coursera.org/course/ml">Coursera&rsquo;s Machine Learning (Andrew Ng)</a>: Andrew Ng&rsquo;s acclaimed course, taught in MATLAB/Octave (preview the <a href="https://class.coursera.org/ml-005/lecture">lecture videos</a>)<br/>
+<a href="https://www.coursera.org/course/machlearning">Coursera&rsquo;s Machine Learning (Pedro Domingos)</a>: No upcoming sessions (preview the <a href="https://class.coursera.org/machlearning-001/lecture">lecture videos</a>)<br/>
+<a href="http://work.caltech.edu/telecourse.html">Caltech&rsquo;s Learning from Data</a>: Widely praised, not language-specific<br/>
+<a href="https://www.udacity.com/course/nd002">Udacity&rsquo;s Data Analyst Nanodegree</a>: Project-based curriculum using Python, R, MapReduce, MongoDB<br/>
+<a href="https://www.coursera.org/specialization/datamining/20">Coursera&rsquo;s Data Mining Specialization</a>: Brand new specialization beginning February 2015<br/>
+<a href="https://www.coursera.org/course/nlp">Coursera&rsquo;s Natural Language Processing</a>: No upcoming sessions, but <a href="https://class.coursera.org/nlp/lecture">lectures</a> and <a href="http://web.stanford.edu/%7Ejurafsky/NLPCourseraSlides.html">slides</a> are available<br/>
+<a href="https://www.mysliderule.com/learning-paths/data-analysis">SlideRule&rsquo;s Data Analysis Learning Path</a>: Curated content from various online classes<br/>
+<a href="https://www.udacity.com/course/cs271">Udacity&rsquo;s Intro to Artificial Intelligence</a>: Taught by Peter Norvig and Sebastian Thrun<br/>
+<a href="https://www.coursera.org/course/neuralnets">Coursera&rsquo;s Neural Networks for Machine Learning</a>: Taught by Geoffrey Hinton, no upcoming sessions<br/>
+<a href="http://www.statistics.com/data-science/">statistics.com</a>: Many online courses in data science<br/>
+<a href="http://www.coursetalk.com/">CourseTalk</a>: Read reviews of online courses</p>
+
+<h3>Online Content from Offline Classes</h3>
+
+<p><a href="http://cs109.github.io/2014/">Harvard&rsquo;s CS109 Data Science</a>: Similar topics as General Assembly&rsquo;s course<br/>
+<a href="http://www2.research.att.com/%7Evolinsky/DataMining/Columbia2011/Columbia2011.html">Columbia&rsquo;s Data Mining Class</a>: Excellent slides<br/>
+<a href="http://www.cs171.org/2015/index.html">Harvard&rsquo;s CS171 Visualization</a>: Includes programming in D3<br/>
+<a href="http://cs229.stanford.edu">Stanford&rsquo;s Machine Learning CS229</a></p>
+
+<h3>Face-to-Face Educational Programs</h3>
+
+<p><a href="http://yet-another-data-blog.blogspot.com/2014/04/data-science-bootcamp-landscape-full.html">Comparison of data science bootcamps</a>: Up-to-date list maintained by a Zipfian Academy graduate<br/>
+<a href="http://www.skilledup.com/articles/list-data-science-bootcamps/">The Complete List of Data Science Bootcamps &amp; Fellowships</a><br/>
+<a href="http://www.zipfianacademy.com/">Zipfian Academy</a>: Offers Data Science Immersive, Data Engineering Immersive, Master&rsquo;s in Big Data (San Francisco, but possibly expanding)<br/>
+<a href="http://datascienceretreat.com/">Data Science Retreat</a>: Primarily uses R (Berlin)<br/>
+<a href="http://www.thisismetis.com/data-science">Metis Data Science Bootcamp</a>: Newer bootcamp (New York)<br/>
+<a href="http://www.persontyle.com/">Persontyle</a>: Various course offerings (based in London)<br/>
+<a href="http://software-carpentry.org/">Software Carpentry</a>: Two-day workshops, primarily for researchers and hosted by universities (worldwide)<br/>
+<a href="http://datascience.community/colleges">Colleges and Universities with Data Science Degrees</a></p>
+
+<h3>Conferences</h3>
+
+<p><a href="http://www.kdd.org/">Knowledge Discovery and Data Mining (KDD)</a>: Hosted by ACM<br/>
+<a href="http://strataconf.com/">O'Reilly Strata + Hadoop World</a>: Big focus on &ldquo;big data&rdquo; (San Jose, London, New York)<br/>
+<a href="http://pydata.org/">PyData</a>: For developers and users of Python data tools (worldwide)<br/>
+<a href="https://us.pycon.org/">PyCon</a>: For developers and users of Python (Montreal in April 2015)</p>
+
+<h3>Books</h3>
+
+<p><a href="http://www-bcf.usc.edu/%7Egareth/ISL/">An Introduction to Statistical Learning with Applications in R</a><br/>
+<a href="http://www-stat.stanford.edu/%7Etibs/ElemStatLearn/">Elements of Statistical Learning</a><br/>
+<a href="http://www.greenteapress.com/thinkstats/">Think Stats</a><br/>
+<a href="http://www.mmds.org/">Mining of Massive Datasets</a><br/>
+<a href="http://www.pythonlearn.com/book.php">Python for Informatics</a><br/>
+<a href="http://www.statsoft.com/Textbook">Statistics: Methods and Applications</a><br/>
+<a href="http://shop.oreilly.com/product/0636920023784.do">Python for Data Analysis</a><br/>
+<a href="http://www.amazon.com/gp/product/111866146X/">Data Smart: Using Data Science to Transform Information into Insight</a><br/>
+<a href="http://www.amazon.com/Sams-Teach-Yourself-Minutes-Edition/dp/0672336073">Sams Teach Yourself SQL in 10 Minutes</a></p>
+
+<h3>Other Resources</h3>
+
+<p><a href="https://github.com/datasciencemasters/go">Open Source Data Science Masters</a>: Huge list of resources<br/>
+<a href="https://trello.com/b/rbpEfMld/data-science">Data Science Trello Board</a>: Another list of resources<br/>
+<a href="http://docs.python-guide.org/en/latest/">The Hitchhiker&rsquo;s Guide to Python</a>: Online guide to understanding Python and getting good at it<br/>
+<a href="https://github.com/rasbt/python_reference">Python Reference</a>: Python tips, tutorials, and more<br/>
+<a href="http://videolectures.net/Top/Computer_Science/">videolectures.net</a>: Tons of academic videos<br/>
+<a href="http://www.metacademy.org/list">Metacademy</a>: Quick summary of many machine learning terms, with links to resources for learning more<br/>
+<a href="https://github.com/rasbt/pattern_classification/blob/master/resources/data_glossary.md">Terms in data science defined in one paragraph</a></p>
+
+<p><a href="https://github.com/justmarkham/DAT4/blob/master/resources.md">Origin</a><br/>
+<a href="http://www.dataschool.io/resources/">Reference</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[機器學習&amp;深度學習資料]]></title>
