@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Excerpt_Artificial Intelligence: A Modern Approach 3rd Edition(Russell &amp; Norvig)"
+title: "Excerpt_Artificial Intelligence(Russell &amp; Norvig)"
 date: 2015-05-12 15:08:13 +0800
 comments: true
 categories: artificial-intelligence
 keywords: Artificial, Intelligence, Modern Approach
-description: Excerpt_Artificial Intelligence: A Modern Approach 3rd Edition(Russell & Norvig)
+description: Excerpt_Artificial Intelligence A Modern Approach
 ---
 ###1. Introduction
 * Different people approach Al with different goals in mind, Two important questions to ask are: Are you concerned with thinking or behavior? Do you want to model humans or work from an ideal standard?  
