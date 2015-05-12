@@ -4,7 +4,7 @@
   <title><![CDATA[Category: artificial-intelligence | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/artificial-intelligence/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2015-05-12T16:57:39+08:00</updated>
+  <updated>2015-05-12T17:06:06+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,209 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Excerpt_Artificial Intelligence(Russell &amp; Norvig)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/05122015/excerpt-artificial-intelligence-a-modern-approach-3rd-edition-russell-and-norvig/"/>
+    <updated>2015-05-12T15:08:13+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/05122015/excerpt-artificial-intelligence-a-modern-approach-3rd-edition-russell-and-norvig</id>
+    <content type="html"><![CDATA[<h3>1. Introduction</h3>
+
+<ul>
+<li>Different people approach Al with different goals in mind, Two important questions to ask are: Are you concerned with thinking or behavior? Do you want to model humans or work from an ideal standard?</li>
+<li>In this book, we adopt the view that intelligence is concerned mainly with rational action. Ideally, an intelligent agent takes the best possible action in a situation. We study the problem of building agents that are intelligent in this sense.* Philosophers (going back to 400 B.C.) made AI conceivable by considering the ideas that the mind is in some ways like a machine, that it operates on knowledge encoded in some internal language, and that thought can be used to choose what actions to take.</li>
+<li>Mathematicians provided the tools to manipulate statements of logical certainty as well as uncertain, probabilistic statements. They also set the groundwork for understanding computation and reasoning about algorithms.  * Economists formalized the problem of making decisions that maximize the expected outcome to the decision maker.<!--more-->  * Neuroscientists discovered some facts about how the brain works and the ways in which it is similar to and different from computers.  * Psychologists adopted the idea that humans and animals can be considered information- processing machines. Linguists showed that language use fits into this model.</li>
+<li>Computer engineers provided the ever-more-powerful machines that make AI applications possible.  * Control theory deals with designing devices that act optimally on the basis of feedback from the environment. Initially, the mathematical tools of control theory were quite different from AI, but the fields are coming closer together.  * The history of Al has had cycles of success, misplaced optimism. and resulting cutbacks in enthusiasm and funding. There have also been cycles of introducing new creative approaches and systematically refining the best ones.  * AI has advanced more rapidly in the past decade because of greater use of the scientific method in experimenting with and comparing approaches.  * Recent progress in understanding the theoretical basis for intelligence has gone hand in hand with improvements in the capabilities of real systems. The subfields of AI have become more integrated, and AI has found common ground with other disciplines.</li>
+</ul>
+
+
+<h3>2. Intelligent Agents</h3>
+
+<ul>
+<li>An agent is something that perceives and acts in an environment. The agent ftmction for an avail. specifics the action taken by the agent in response to any percept sequence.<em> The performance measure evaluates the behavior of the agent in an environment A rational agent acts so as to maximize the expected value of the performance measure, given the percept sequence it has seen so far.</em> A task environment specification includes the performance measure, the external environment, the actuators. and the sensors. In designing an agent, the first step must always be to specify the task environment as fully as possible.<em> Task environments vary along several significant dimensions. They can be fully or partially observable, single-agent or multiagent, deterministic or stochastic, episodic or sequential, static or dynamic, discrete or continuous, and known or unknown.</em> The agent program implements the agent function. There exists a variety of basic agent-program designs reflecting the kind of information made explicit and used in the decision process. The designs vary in efficiency, compactness, and flexibility. The appropriate design of the agent program depends on the nature of the environment.<em> Simple reflex agents respond directly to percepts, whereas model-based reflex agents maintain internal state to track aspects of the world that are not evident in the current percept. Goal-based agents act to achieve their goals, and utility-based agents try to maximize their own expected &ldquo;happiness.&rdquo;</em> All agents can improve their performance through learning.</li>
+</ul>
+
+
+<h3>3. Solving Problems by Searching</h3>
+
+<ul>
+<li>Before an agent can start searching for solutions, a goal must be identified and a well-defined problem must be formulated.<em> A problem consists of five parts: the initial state, a set of actions, a transition model describing the results of those actions, a goal test function, and a path cost function. The environment of the problem is represented by a state space. A path through the state space from the initial state to a goal state is asolution.</em> Search algorithms treat states and actions as atomic: they do not consider any internal structure they might possess.<em> A general TREE-SEARCH algorithm considers all possible paths to find a solution, whereas a GRAPH-SEARCH algorithm avoids consideration of redundant paths.</em> Search algorithms are judged on the basis of <strong>completeness, optimality, time complexity</strong>, and space complexity. Complexity depends on h, the branching factor in the state space, and d, the depth of the shallowest solution.<em> Uninformed search methods have access only to the problem definition. The basic algorithms are as follows:  *</em> <strong>Breadth-first</strong> search expands the shallowest nodes first; it is complete, optimal for unit step costs. but has exponential space complexity.  *<em> <strong>Uniform-cost</strong> search expands the node with lowest path cast, g(n), and is optimal for general step costs.  *</em> <strong>Depth-first</strong> search expands the deepest unexpanded node first. It is neither complete nor optimal, but has linear space complexity. Depth limited search adds a depth bound.  *<em> <strong>Iterative deepening</strong> search calls depth-first search with increasing depth limits until a goal is found. It is complete, optimal for unit step costs, has time complexity comparable to breadth-first search, and has linear space complexity.  *</em> <strong>Bidirectional</strong> search can enormously reduce time complexity, but it is not always applicable and may require too much space.</li>
+<li>Informed search methods may have access to a <strong>heuristic</strong> function h(n) that estimates the cost of a solution from n.  *<em> The generic <strong>best-first</strong> search algorithm selects a node for expansion according to an evaluation function.  *</em> <strong>Greedy best-first</strong> search expands nudes with minimal h(n). It is not optimal but is often efficient.<br/>
+*<em> <strong>A*</strong> search expands nodes with minimal f(n) = g(n) + h(n). A</em> is complete and optimal, provided that h(n) is admissible (for TREE-SEARCH) or consistent (for <strong>GRAPH-SEARCH</strong>). The space complexity of A<em> is still prohibitive.  *</em> <strong>RBFS</strong> (recursive best-first search) and <strong>SMA*</strong> (simplified memory-bounded A*) are robust, optimal search algorithms that use limited amounts of memory; given enough time, they can solve problems that A* cannot solve because it runs out of memory.  * The performance of heuristic search algorithms depends on the quality of the heuristic function. One can sometimes construct good heuristics by relaxing the problem definition, by storing precomputed solution costs for subproblems in a pattern database, or by learning from experience with the problem class.</li>
+</ul>
+
+
+<h3>4. Beyond Classical Search</h3>
+
+<ul>
+<li>Local search methods such as <strong>hill climbing</strong> operate on complete-state formulations, keeping only a small number of nodes in memory. Several stochastic algorithms have been developed, including <strong>simulated annealing</strong>, which returns optimal solutions when given an appropriate cooling schedule.<em> Many local search methods apply also to problems in continuous spaces. <strong>Linear programming</strong> and <strong>convex optimization</strong> problem; obey certain restrictions on the shape of the state space and the nature of the objective function, and admit polynomial-time algorithms that are often extremely efficient in practice.</em> A <strong>genetic algorithm</strong> is a stochastic hill-climbing search in which a large population of states is maintained. New states are generated by mutation and by crossover, which combines pairs of states from the population.</li>
+<li>In nondeterministic environments, agents can apply <strong>AND—OR</strong> search to generate Contingent plans that reach the goal regardless of which outcomcs occur during execution.</li>
+<li>When the environment is partially observable, the <strong>belief state</strong> represents the set ofpossible states that the agent might be in.<strong> Standard search algorithms can be applied directly to belief-state space to solve </strong>sensorless problems<strong>, and belief-state AND—OR search can solve general partially observable problems. Incremental algorithms that construct solutions state by state within a belief state are often more efficient.* </strong>Exploration problems<strong> arise when the agent has no idea about the states and actions of its environment. For safely explorable environments, </strong>online search** agents can build a map and find a goal if one exists. Updating heuristic estimates from experience provides an effective method to escape from local minima.</li>
+</ul>
+
+
+<h3>5. Adversarial Search</h3>
+
+<ul>
+<li>A game can be defined by the initial state (how the board is set up), the legal actions in each state, the result of each action, a terminal test (which says when the game is over), and a utility function that applies to terminal states.<em> In two-player zero-sum games with perfect information, the minimax algorithm can select optimal moves by a depth-first enumeration of the game tree.</em> The alpha—beta search algorithm computes the same optimal move as minimax, but achieves much greater efficiency by eliminating subtrees that are provably irrelevant.<em> Usually, it is not feasible to consider the whole game tree (even with alpha—beta), so we need to cut the search off at some point and apply a heuristic <strong>evaluation function</strong> that estimates the utility of a state.</em> Many game programs precompute tables of best moves in the opening and endgame so that they can look up a move rather than search.<em> Games of chance can be handled by an extension to the minimax algorithm that evaluates a <strong>chance node</strong> by taking the average utility of all its children, weighted by the probability of each child.</em> Optimal play in games of <strong>imperfect information</strong>, such as Kriegspiel and bridge, requires reasoning about the current and future <strong>belief states</strong> of each player. A simple approximation can be obtained by averaging the value of an action over each possible configuration of missing information.* Programs have bested even champion human players at games such as chess, checkers, and Othello. Humans retain the edge in several games of imperfect information, such as poker, bridge, and Kriegspiel, and in games with very large branching factors and little good heuristic knowledge, such as Go.</li>
+</ul>
+
+
+<h3>6. Constraint Satisfaction Probllems</h3>
+
+<ul>
+<li><strong>Constraint satisfaction problems (CSPs)</strong> represent a state with a set of variable/value pairs and represent the conditions for a solution by a set of constraints on the variables. Many important real-world problems can be described as CSPs.<em> A number of inference techniques use the constraints to infer winch variable/value pairs are consistent and which are not. These include node, arc, path, and k-consistency.</em> <strong>Backtracking search</strong>, a form of depth-first search, is commonly used for solving CSPs. Inference can be interwoven with search.<em> The <strong>minimtun-remaining-values</strong> and <strong>degree</strong> heuristics are domain-independent methods for deciding which variable to choose next in a backtracking search. The <strong>least-constraining-value</strong> heuristic helps in deciding which value to try first for a given variable. Backtracking occurs when no legal assignment can be found for a variable. <strong>Conflict-directed backjumping</strong> backtracks directly to the source of the problem.</em> Local search using the <strong>min-conflicts</strong> heuristic has also been applied to constraint satisfaction problems with great success.* The complexity of solving a CSP is strongly related to the structure of its constraint graph. Tree-structured problems can be solved in linear time. <strong>Cutset conditioning</strong> can reduce a general CSP to a tree-structured one and is quite efficient if a small cutset can be found. <strong>Tree decomposition</strong> techniques transform the CSP into a tree of subproblems and are efficient if the <strong>tree width</strong> of the constraint graph is small.</li>
+</ul>
+
+
+<h3>7. Logical Agents</h3>
+
+<ul>
+<li>Intelligent agents need knowledge about the world in order to reach good decisions.<em> Knowledge is contained in agents in the form of sentences in a <strong>knowledge representation language</strong> that are stored in a <strong>knowledge base</strong>.</em> A knowledge-based agent is composed of a knowledge base and an inference mechanism. It operates by storing sentences about the world in its knowledge base, using the inference mechanism to infer new sentences, and using these sentences to decide what action to take.<em> A representation language is defined by its <strong>syntax</strong>, which specifies the structure of sentences, and its <strong>semantics</strong>, which defines the truth of each sentence in each <strong>possible world</strong> or <strong>model</strong>.</em> The relationship of <strong>entailment</strong> between sentences is crucial to our understanding of reasoning. A sentence α entails another sentence β if it is true in all worlds where is is true. Equivalent definitions include the <strong>validity of</strong> the sentence α = β and the <strong>unsatisfiability</strong> of the sentence it α ¬ β.<em> Inference is the process of deriving new sentences from old ones. Sound inference algorithms derive only sentences that are entailed; complete algorithms derive all sentences that are entailed.</em> <strong>Propositional logic</strong> is a simple language consisting of <strong>proposition symbols</strong> and <strong>logical connectives</strong>. It can handle propositions that are known true, known false, or completely unknown.* The set of possible models, given a fixed propositional vocabulary, is finite, so entailment can be checked by enumerating models. Efficient <strong>model-checking</strong> inference algorithms for propositional logic include backtracking and local search methods and can often solve large problems quickly.</li>
+<li>Inference rules are patterns of sound inference that can be used to find proofs. The resolution rule yields a complete inference algorithm for knowledge bases that arc expressed in <strong>conjunctive normal form</strong>. <strong>Forward chaining</strong> and <strong>backward chaining</strong> are very natural reasoning algorithms for knowledge bases in <strong>Horn form</strong>.<em> <strong>Local search</strong> methods such as WALKSAT can be used to find solutions. Such algo- rithms are sound but not complete.</em> Logical state estimation involves maintaining a logical sentence that describes the set of possible states consistent with the observation history. Each update step requires inference using the transition model of the environment, which is built from <strong>successor-state axioms</strong> that specify how each fluent changes.<em> Decisions within a logical agent can be made by SAT solving: finding possible models specifying future action sequences that reach the goal. This approach works only for fully observable or sensorless environments.</em> Propositional logic does not scale to environments of unbounded size because it lacks the expressive power to deal concisely with time, space, and universal patterns of relationships among objects.</li>
+</ul>
+
+
+<h3>8. First-Order Logic</h3>
+
+<ul>
+<li>Knowledge representation languages should be declarative, compositional, expressive,context independent, and unambiguous.<em> Logics differ in their <strong>ontological commitments</strong> and <strong>epistemological commitments</strong>. While propositional logic commits only to the existence of facts, firsi-order logic commits to the existence of objects and relations and thereby gains expressive power.</em> The syntax of first-order logic builds on that of propositional logic. It adds terms to represent objects, and has universal and existential quantifiers to construct assertions about all or some of the possible values of the quantified variables.<em> A possible world, or model, for first-order logic includes a set of objects and an <strong>interpretation</strong> that maps constant symbols to objects, predicate symbols to relations among objects, and function symbols to functions on objects.</em> An atomic sentence is true just when the relation named by the predicate holds between the objects named by the terms. <strong>Extended interpretations</strong>, which map quantifier variables to objects in the model, define the truth of quantified sentences.* Developing a knowledge base in first-order logic requires a careful process of analyzingthe domain, choosing a vocabulary, and encoding the axioms required to support thedesired inferences.</li>
+</ul>
+
+
+<h3>9. Inference in First-Order Logic</h3>
+
+<ul>
+<li>A first approach uses inference rules (universal instantiation and existential instan- tiation) to <strong>propositionalize</strong> the inference problem. Typically, this approach is slow, unless the domain is small.<em> The use of unification to identify appropriate substitutions for variables eliminates the instantiation step in first-order proofs, making the process more efficient in many cases.</em> A lifted version of Modus Ponens uses unification to provide a natural and powerful inference nile, generalized <strong>Modus Ponens</strong>. The <strong>forward-chaining</strong> and <strong>backward-chaining</strong> algorithms apply this rule to sets of definite clauses.<strong> Generalized Modus Ponens is complete for definite clauses, although the entailment problem is </strong>semidecidable<strong>. For Datalog knowledge bases consisting of function-free definite clauses, entailment is decidable.<em> Forward chaining is used in deductive databases, where it can be combined with relational database operations. It is also used in production systems, which perform efficient updates with very large rule sets Forward chaining is complete for Datalog and runs in polynomial time.</em> Backward chaining is used in logic programming systems, which employ sophisticated compiler technology to provide very fast inference. Backward chaining suffers from redundant inferences and infinite loops; these can be alleviated by memoization.<em> Prolog, unlike first-order logic, uses a closed world with the unique names assumption and negation as failure. These make Prolog a more practical programming language, but bring it further from pure logic.</em> The generalized resolution inference rule provides a complete proof system for first-order logic, using knowledge bases in conjunctive normal form.* Several strategies exist for reducing the search space of a resolution system without compromising completeness. One of the most important issues is dealing with equality; we showed how </strong>demodulation<strong> and </strong>paramodulation<em>* can be used.</em> Efficient resolution-based theorem provers have been used to prove interesting mathematical theorems and to verify and synthesize software and hardware.</li>
+</ul>
+
+
+<h3>10. Classical Planning</h3>
+
+<ul>
+<li>Planning systems are problem-solving algorithms that operate on explicit propositional or relational representations of states and actions. These representations make possible the derivation of effective heuristics and the development of powerful and flexible algorithms for solving problems.<em> PDDL, the Planning Domain Definition Language, describes the initial and goal states as conjunctions of literals, and actions in terms of their preconditions and effects.</em> State-space search can operate in the forward direction (progression) or the backward direction (regression), Effective heuristics can be derived by subgoal independence assumptions and by various relaxations of the planning problem.<em> A planning graph can be constructed incrementally, starting from the initial state, Each layer contains a superset of all the literals or actions that could occur at that time step and encodes mutual exclusion (mutex) relations among literals or actions that cannot cooccur Planning graphs yield useful heuristics for state-space and partial-order planners and can be used directly in the GRAPHPLAN algorithm.</em> Other approaches include first-order deduction over situation calculus axioms; encoding a planning problem as a Boolean satisfiability problem or as a constraint satisfaction problem; and explicitly searching through the space of partially ordered plans.* Each of the major approaches to planning has its adherents, and there is as yet no con- sensus on which is best. Competition and cross-fertilization among the approaches have resulted in significant gains in efficiency for planning systems.</li>
+</ul>
+
+
+<h3>11. Planning and Acting in the Real World</h3>
+
+<ul>
+<li>Many actions consume <strong>resources</strong>, such as money, gas, or raw materials. It is convenient to treat these resources as numeric measures in a pool rather than try to reason about. say, each individual coin and bill in the world. Actions can generate and consume resources, and it is usually cheap and effective to check partial plans for satisfaction of resource constraints before attempting further refinements.* Time is one of the most important resources. It can be handled by specialized scheduling algorithms, or scheduling can be integrated with planning.</li>
+<li><strong>Hierarchical task network (HTN)</strong> planning allows the agent to take advice from the domain designer in the form of high-level actions (HLAs) that can be implemented in various ways by lower-level action sequences. The effects of HLAs can be defined with <strong>angelic semantics</strong>, allowing provably correct high-level plans to be derived without consideration of lower-level implementations. HTN methods can create the very large plans required by many real-world applications.<em> Standard planning algorithms assume complete and correct information and deterministic, fully observable environments. Many domains violate this assumption.</em> <strong>Contingent plans</strong> allow the agent to sense the world during execution to dccidc what branch of the plan to follow, hi some cases, sensorless or <strong>conformant planning</strong> can be used to construct a plan that works without the need for perception. Both conformant and contingent plans can be constructed by search in the space of <strong>belief states</strong>. Efficient representation or computation of belief states is a key problem.<em> An <strong>online planning agent</strong> uses execution monitoring and splices in repairs as needed to recover from unexpected situations, which can be due to nondeterministic actions, exogenous events, or incorrect models of the environment.</em> <strong>Multiagent planning</strong> is necessary when there are other agents in the environment with which to cooperate or compete. Joint plans can be constructed, but must be augmented with some form of coordination if two agents are to agree on which joint plan to execute.* This chapter extends classic planning to cover nondeterministic environments (where outcomes of actions are uncertain), but it is not the last word on planning. Chapter 17 describes techniques for stochastic environments (in which outcomes of actions have probabilities associated with them): Markov decision processes, partially observable Markov decision processes, and game theory. In Chapter 21 we show that reinforcement learning allows an agent to learn how to behave from past successes and failures.</li>
+</ul>
+
+
+<h3>12. Knowledge Representation</h3>
+
+<ul>
+<li>Large-scale knowledge representation requites a general-purpose ontology to organize and tie together the various specific domains of knowledge.<em> A general-purpose ontology needs to cover a wide variety of knowledge and should be capable, in principle, of handling any domain.</em> Building a large, general-purpose ontology is a significant challenge that has yet to befully realized, although current frameworks seem to be quite robust* We presented an <strong>upper ontology based on categories and the event calculus</strong>. We covered categories, subcategories, parts, structured objects, measurements, substances, events, time and space, change, and beliefs.</li>
+<li>Natural kinds cannot be defined completely in logic, but properties of natural kinds can be represented.<em> Actions, events, and time can be represented either in situation calculus or in more expressive representations such as event calculus. Such representations enable an agentto construct plans by logical inference.• We presented a detailed analysis of the Internet shopping domain, exercising the generalontology and showing how the domain knowledge can be used by a shopping agent.</em> Special-purpose representation systems, such as <strong>semantic networks</strong> and <strong>description logics</strong>, have been devised to help in organizing a hierarchy of categories. <strong>Inheritance</strong> is an important form of inference, allowing the properties of objects to be deduced from their membership in categories.<em> <strong>The closed-world assumption</strong>, as implemented in logic programs, provides a simple way to avoid having to specify lots of negative information. It is best interpreted as a default that can be overridden by additional information.</em> <strong>Nonmonotonic logics</strong>, such as <strong>circumscription and default logic, are intended to capture</strong> default reasoning in general.* <strong>Truth maintenance systems handle knowledge updates</strong> and revisions efficiently.</li>
+</ul>
+
+
+<h3>13. Quantifying Uncertainty</h3>
+
+<ul>
+<li>Uncertainty arises because of both laziness and ignorance. It is inescapable in complex,nondeterministic, or partially observable environments.<em> Probabilities express the agent&rsquo;s inability to reach a definite decision regarding the truth of a sentence. Probabilities summarize the agent&rsquo;s beliefs relative to the evidence.</em> Decision theory combines the agent&rsquo;s beliefs and desires, defining the best action as the one that maximizes expected utility.<em> Basic probability statements include prior probabilities and conditional probabilities over simple and complex propositions.</em> The axioms of probability constrain the possible assignments of probabilities to propositions. An agent that violates the axioms must behave irrationally in some cases.<em> The <strong>full joint probability distribution</strong> specifies the probability of each complete assignment of values to random variables. It is usually too large to create or use in its explicit form, but when it is available it can be used to answer queries simply by adding up entries for the possible worlds corresponding to the query propositions.</em> <strong>Absolute independence</strong> between subsets of random variables allows the full joint distribution to be factored into smaller joint distributions, greatly reducing its complexity. Absolute independence seldom occurs in practice.<em> <strong>Bayes' rule</strong> allows unknown probabilities to be computed from known conditional probabilities, usually in the causal direction. Applying Bayes' rule with many pieces of evidence runs into the same scaling problems as does the full joint distribution.</em> Conditional independence brought about by direct causal relationships in the domain might allow the full joint distribution to be factored into smaller, conditional distributions. The naive Bayes model assumes the conditional independence of all effect variables, given a single cause variable, and grows linearly with the number of effects.* A wumpus-world agent can calculate probabilities for unobserved aspects of the world, thereby improving on the decisions of a purely logical agent. Conditional independence makes these calculations tractable.</li>
+</ul>
+
+
+<h3>14. Probabilistic Reasoning</h3>
+
+<ul>
+<li>A Bayesian network is a directed acyclic graph whose nodes correspond to random variables; each node has a conditional distribution for the node, given its parents.<em> Bayesian networks provide a concise way to represent <strong>conditional independence relationships in the domain</strong>.</em> A Bayesian network specifies a full joint distribution; each joint entry is defined as the product of the corresponding entries in the local conditional distributions. A Bayesian network is often exponentially smaller than an explicitly enumerated joint distribution.<em> Many conditional distributions can be represented compactly by canonical families of distributions. <strong>Hybrid Bayesian networks</strong>, which include both discrete and continuous variables, use a variety of canonical distributions.</em> Inference in Bayesian networks means computing the probability distribution of a set of query variables, given a set of evidence variables. Exact inference algorithms, such as <strong>variable elimination</strong>, evaluate sums of products of conditional probabilities as efficiently as possible.<em> In <strong>polytrees</strong> (singly connected networks), exact inference takes time linear in the size of the network. In the general case, the problem is intractable.</em> Stochastic approximation techniques such as <strong>likelihood weighting* and </strong>Markov chainMonte Carlo<strong> can give reasonable estimates of the true posterior probabilities in a network and can cope with much larger networks than can exact algorithms.* Probability theory can be combined with representational ideas from first-order logic to produce very powerful systems for reasoning under uncertainty, </strong>Relational probability models (RPMs)<strong> include representational restrictions that guarantee a well-defined probability distribution that can be expressed as an equivalent Bayesian network. </strong>Open universe probability models<strong> handle </strong>existence<strong> and </strong>identity uncertainty<em>*, defining probabilty distributions over the infinite space of first-order possible worlds.</em> Various alternative systems for reasoning under uncertainty have been suggested. Generally speaking, truth-functional systems are not well suited for such reasoning.</li>
+</ul>
+
+
+<h3>15. Probabilistic Reasoning over Time</h3>
+
+<ul>
+<li>The changing state of the world is handled by using a set of random variables to represent the state at each point in time.<em> Representations can be designed to satisfy the Markov property, so that the future is independent of the past given the present. Combined with the assumption that the process is stationary -— that is, the dynamics do not change over time &mdash; this greatly simplifies the representation.</em> A temporal probability model can he thought of as containing a transition model describing the state evolution and a sensor model describing the observation process.<em> The principal inference tasks in temporal models are filtering, prediction, smoothing, and computing the most likely explanation. Each of these can be achieved using simple, recursive algorithms whose rim time is linear in the length of the sequence</em> Three families of temporal models were studied in more depth: hidden <strong>Markov models</strong>, Kalman filters, and dynamic Bayesian networks (which include the other two as special cases).<em> Unless special assumptions are made, as in Kalman filters, exact inference with many stare variables is intractahle. In practice, the particle filtering algorithm seems to he an effective approximation algorithm.</em> When trying to keep track of many objects, uncertainty arises as to which observations belong to which objects &mdash; the data association problem. The number of association hypotheses is typically intractably large, but MCMC and particle filtering algorithms for data association work well in practice.</li>
+</ul>
+
+
+<h3>16. Making Simple Decisions</h3>
+
+<ul>
+<li>Probability theory describes what an agent should believe on the basis of evidence, utility theory describes what an agent wants, and decision theory puts the two together to describe what an agent should do.<em> We can use decision theory to build a system that makes decisions by considering all possible actions and choosing the one that leads to the best expected outcome. Such a system is known as a rational agent.</em> Utility theory shows that an agent whose preferences between lotteries are consistent with a set of simple axioms can be described as possessing a utility function; further-more, the agent selects actions as if maximizing its expected utility.<em> <strong>Multiattribute</strong> utility theory deals with utilities that depend on several distinct attributes of states. <strong>Stochastic dominance</strong> is a particularly useful technique for making unambiguous decisions, even without precise utility values for attributes.</em> <strong>Decision networks</strong> provide a simple formalism for expressing and solving decision problems. They are a natural extension of Bayesian networks, containing decision and utility nodes in addition to chance nodes.<em> Sometimes, salving a problem involves finding more information before making a decision. The <strong>value of information</strong> is defined as the expected improvement in utility compared with making a decision without the information.</em> Expert systems that incorporate utility information have additional capabilities compared with pure inference systems. In addition to being able to make decisions, they can use the value of information to decide which questions to ask, if any; they can recommend contingency plans; and they can calculate the sensitivity of their decisions to small changes in probability and utility assessments.</li>
+</ul>
+
+
+<h3>17. Making Complex Decisions</h3>
+
+<ul>
+<li>Sequential decision problems in uncertain environments, also called <strong>Markov decision</strong> processes, or <strong>MDPs</strong>, are defined by a <strong>transition model</strong> specifying the probabilistic outcomes of actions and a <strong>reward function</strong> specifying the reward in each state.<em> The utility of a state sequence is the sum of all the rewards over the sequence, possibly discounted over time. The solution of an MDP is a policy that associates a decision with every stale that the agent might reach. An optimal policy maximizes the utility of the state sequences encountered when it is executed.</em> The utility of a state is the expected utility of the state sequences encountered when an optimal policy is executed, starting in that state. <strong>The value iteration</strong> algorithm for solving MDPs works by iteratively solving the equations relating the utility of each state to those of its neighbors.<em> <strong>Policy iteration</strong> alternates between calculating the utilities of states under the current policy and improving the current policy with respect to the current utilities.</em> Partially observable MDPs, or POMDPs, are much more difficult to solve than are MDPs. They can be solved by conversion to an <strong>MOP</strong> in the continuous space of belief states; both value iteration and policy iteration algorithms have been devised. Optimal behavior in POMDPs includes information gathering to reduce uncertainty and therefore make better decisions in the future.<em> A decision-theoretic agent can be constructed for <strong>POMDP</strong> environments. The agent uses a <strong>dynamic decision network</strong> to represent the transition and sensor models, to update its belief state, and to project forward possible action sequences.</em> <strong>Game theory</strong> describes rational behavior for agents in situations in which multiple agents interact simultaneously. Solutions of games are Nash equilibria &mdash; strategy profiles in which no agent has an incentive to deviate from the specified strategy.* <strong>Mechanism design</strong> can be used to set the rules by which agents will interact, in order to maximize some global utility through the operation of individually rational agents. Sometimes, mechanisms exist that achieve this goal without requiring each agent to consider the choices made by other agents.</li>
+</ul>
+
+
+<h3>18. Learning From Examples</h3>
+
+<ul>
+<li>Learning takes many forms, depending on the nature of the agent, the component to be improved, and the available feedback.<em> If the available feedback provides the correct answer for example inputs, then the learning problem is called supervised learning. The task is to learn a function y = h(x). Learning a discrete-valued function is called classification; learning a continuous function is called regression.</em> Inductive learning involves finding a hypothesis that agrees well with the examples. <strong>Ockham&rsquo;s razor</strong> suggests choosing the simplest consistent hypothesis. The difficulty of this task depends on the chosen representation.<em> Decision trees can represent all Boolean fractions. The information-gain heuristic provides an efficient method for finding a simple, consistent decision tree.</em> The performance of at learning algorithm is measured by the learning curve, which shows the prediction accuracy on the test set as a function of the <strong>training-set</strong> size.<em> When there are multiple models to choose from, <strong>cross-validation</strong> can be used to select a model that will generalize well</em> Sometimes not all errors are equal. A <strong>loss function</strong> tells us how bad each error is; the goal is then to minimize loss over a validation set.<em> <strong>Computational learning theory</strong> analyzes the sample complexity and computational complexity of inductive learning. There is a tradeoff between the expressiveness of the hypothesis language and the ease of learning.</em> <strong>Linear regression</strong> is a widely used model. The optimal parameters of a linear regression model can he found by gradient descent search, or computed exactly.* A linear classifier with a hard threshold &mdash; also known as a <strong>perceptron</strong> &mdash; can be trained by a simple weight update rule to fit data that are <strong>linearly separable</strong>. In other cases, the rule fails to converge.</li>
+</ul>
+
+
+<h3>19. Knowledge in Learning</h3>
+
+<ul>
+<li>The use of prior knowledge in learning leads to a picture of <strong>cumulative learning</strong>, in which learning agents improve their learning ability as they acquire more knowledge.<em> Prior knowledge helps learning by eliminating otherwise consistent hypotheses and by &ldquo;filling in&rdquo; the explanation of examples, thereby allowing for shorter hypotheses. These contributions often result in faster teaming from fewer examples.</em> Understanding the different logical roles played by prior knowledge, as expressed by entailment constraints, helps to define a variety of learning techniques.•* Explanation-based learning (EBL) extracts general rules from single examples by explaining the examples and generalizing the explanation. It provides a deductive method for turning first-principles knowledge into useful, efficient, special purpose expertise.</li>
+<li>Relevance-based learning (RBL) uses prior knowledge in the form of determinations to identify the relevant attributes, thereby generating a reduced hypothesis space and speeding up learning. RBL also allows deductive generalizations from single examples.</li>
+<li>Knowledge-based inductive learning (KBIL) finds inductive hypotheses that explain sets of observations with the help of background knowledge.<em> Inductive logic programming (ILP) techniques perform KBIL on knowledge that is expressed in first-order logic. ILP methods can learn relational knowledge that is not expressible in attribute-based systems,</em> 1LP can be done with a top-down approach of refining a very general rule or through a bottom-up approach of inverting the deductive process.* 1LP methods naturally generate new predicates with which concise new theories can be expressed and show promise as general-purpose scientific theory formation systems.</li>
+</ul>
+
+
+<h3>20. Learning Probabilistic Models</h3>
+
+<ul>
+<li><strong>Bayesian learning</strong> methods formulate learning as a form of probabilistic inference, using the observations to update a prior distribution over hypotheses. This approach provides a good way to implement Ockham&rsquo;s razor, but quickly becomes intractable for complex hypothesis spaces.<em> <strong>Maximum a posteriori (MAP)</strong> learning selects a single most likely hypothesis given the data. The hypothesis prior is still used and the method is often more tractable than full Bayesian learning.</em> <strong>Maximum-likelihood learning</strong> simply selects the hypothesis that maximizes the likelihood of the data; it is equivalent to MAP learning with a uniform prior. In simple cases such as linear regression and fully observable Bayesian networks, maximum-likelihood solutions can be found easily in closed form. <strong>Naive Bayes learning</strong> is a particularly effective technique that scales well.<em> When some variables are hidden, local maximum likelihood solutions can be found using the EM algorithm. Applications include clustering using mixtures of Gaussians, learning Bayesian networks, and learning hidden Markov models.</em> Learning the structure of Bayesian networks is an example of <strong>model selection</strong>. This usually involves a discrete search in the space of structures. Some method is required for trading off model complexity against degree of fit_* <strong>Nonparametric models</strong> represent a distribution using the collection of data points. Thus, the number of parameters grows with the training set. Nearest-neighbors methods look at the examples nearest to the point in question, whereas <strong>kernel methods</strong> form a distance-weighted combination of all the examples.</li>
+</ul>
+
+
+<h3>21. Reinforcement Learning</h3>
+
+<ul>
+<li>The overall agent design dictates the kind of information that must be learned. The three main designs we covered were the <strong>model-based</strong> design, using a model P and a utility function U; the model-free design, using an action-utility function Q; and the reflex design, using a policy r.<em> Utilities can be learned using three approaches:    1) <strong>Direct utility estimation</strong> uses the total observed reward-to-go for a given state as direct evidence for learning its utility.    2) <strong>Adaptive dynamic programming (ADP)</strong> learns a model and a reward function from observations and then uses value or policy iteration to obtain the utilities or an optimal policy. ADP makes optimal use of the local constraints on utilities of states imposed through the neighborhood structure of the environment.     3) Temporal-difference (TD) methods update utility estimates to match those of successor states. They can be viewed as simple approximations to the ADP approach that can learn without requiring a transition model. Using a learned model to generate pseudoexperiences can, however, result in faster learning.</em> Action-utility functions, or Q-functions, can be learned by an ADP approach or a TD approach. With TD, Q-learning requires no model in either the learning or action-selection phase. This simplifies the learning problem but potentially restricts the ability to learn in complex environments, because the agent cannot simulate the results of possible courses of action.<em> When the learning agent is responsible for selecting actions while it learns, it must trade off the estimated value of those actions against the potential for learning useful new information. An exact solution of the exploration problem is infeasible, but some simple heuristics do a reasonable job.</em> In large state spaces, reinforcement learning algorithms must use an approximate functional representation in order to generalize over states. The temporal-difference signal can be used directly to update parameters in representations such as neural networks.* Policy-search methods operate directly on a representation of the policy, attempting to improve it based on observed performance. The variation in the performance in a stochastic domain is a serious problem; for simulated domains this can be overcome by fixing the randomness in advance.</li>
+</ul>
+
+
+<h3>22. Natural Language Processing</h3>
+
+<ul>
+<li>Probabilistic language models based on n-grams recover a surprising amount of information about as language. They can perform well on such diverse tasks as language identification, spelling correction, genre classification, and named-entity recognition.<em> These language models can have millions of features, so feature selection and preprocessing of the data to reduce noise is important.</em> <strong>Text classification</strong> can be done with naive Bayes n-gram models or with any of the classification algorithms we have previously discussed. Classification can also be seen as a problem in data compression.</li>
+<li><strong>Information retrieval</strong> systems use a very simple language model based on bags of words, yct still manage to perform well in tcrms of <strong>recall</strong> and precision on very large corpora of text. On Web corpora, link-analysis algorithms improve performance.<em> <strong>Question answering</strong> can be handled by an approach based on information retrieval, for questions that have multiple answers in the corpus. When more answers are available in the corpus, we can use techniques that emphasize precision rather than recall.</em> <strong>Information-extraction</strong> systems use a more complex model that includes limited notions of syntax and semantics in the form of templates. They can be built from finite-state automata, HMMs, or conditional random fields, and can be learned from examples.* In building a statistical language system, it is best to devise a model that can make good use of available <strong>data</strong>, even if the model seems overly simplistic.</li>
+</ul>
+
+
+<h3>23. Natural Language for Communication</h3>
+
+<ul>
+<li>Formal language theory and <strong>phrase structure</strong> grammars (and in particular, context. free grammar) are useful tools for dealing with some aspects of natural language. The probabilistic context-free grammar (PCFG) formalism is widely used.</li>
+<li>Sentences in a context-free language can be parsed in O(n<sup>3</sup>) time by a <strong>chart parser</strong> such as the CYK algorithm, which requires grammar rules to be in <strong>Chomsky Normal Form</strong>.<em> A treebank can be used to learn a grammar. It is also possible to learn a grammar from an unparsed corpus of sentences, but this is less successful.</em> A <strong>lexicalized PCFG</strong> allows us to represent that some relationships between words are mare common than others.<em> It is convenient to augment a grammar to handle such problems as subject–verb agreement and pronoun case. Definite clause grammar (DCG) is a formalism that allows for augmentations. With DCG, parsing and semantic interpretation (and even generation) can be done using logical inference.</em> Semantic interpretation can also be handled by an augmented grammar.<em> <strong>Ambiguity</strong> is a very important problem in natural language understanding; most sentences have many possible interpretations, but usually only one is appropriate. Disam-biguation relies on knowledge about the world, about the current situation, and aboutlanguage use.</em> <strong>Machine translation</strong> systems have been implemented using a range of techniques, from full syntactic and semantic analysis to statistical techniques based on phrase frequencies. Currently the statistical models are most popular and most successful.<em> <strong>Speech recognition</strong> systems are also primarily based on statistical principles. Speechsystems are popular and useful, albeit imperfect.</em> Together, machine translation and speech recognition are two of the big successes of natural language technology. One reason that the models perform well is that large corpora are available—both translation and speech are tasks that are performed in the wild" by people every day. In contrast, tasks like parsing sentences have been less successful, in part because no large corpora of parsed sentences are available in the wild" and in part because parsing is not useful in and of itself.</li>
+</ul>
+
+
+<h3>24. Perception</h3>
+
+<ul>
+<li>The process of image formation is well understood in its geometric and physical aspects. Given a description of a three-dimensional scene, we can easily produce a picture of it from some arbitrary camera position (the graphics problem). Inverting the process by going from an image to a description of the scene is more difficult.<em> To extract the visual information necessary for the tasks of manipulation ; navigation, and recognition, intermediate representations have to be constructed. Early vision image-processing algorithms extract primitive features from the image, such as edges and regions.</em> There are various cues in the image that enable one to obtain three-dimensional in- formation about the scene: motion, stereopsis, texture, shading, and contour analysis. Each of these cues relies en background assumptions about physical scenes to provide nearly unambiguous interpretations.* Object recognition in its full generality is a very hard problem. We discussed brightness-based and feature-based approaches. We also presented a simple algorithm for pose estimation. Other possibilities exist.</li>
+</ul>
+
+
+<h3>25. Robotics</h3>
+
+<ul>
+<li>Robots are equipped with sensors fur perceiving their environment and effectors with which they can assert physical forces on their environment. Most robots are either manipulators anchored at fixed locations or mobile robots that can move.<em> Robotic perception concerns itself with estimating decision-relevant quantities from sensor data. To do so, we need an internal representation and a method for updating this intemal representation over time. Common examples of hard perceptual problems include <strong>localization, mapping, and object recognition</strong>.</em> <strong>Probabilistic filtering algorithms</strong> such as Kalman filters and particle filters arc useful for robot perception. These techniques maintain the belief state, a posterior distribution over state variables.<em> The planning of robot motion is usually done in <strong>configuration space</strong>, where each point specifies the location and orientation of the robot and its joint angles.</em> Configuration space search algorithms include <strong>cell decomposition</strong> techniques, which decompose the space of all configurations into finitely many cells, and <strong>skeletonization</strong> techniques, which project configuration spaces into lower-dimensional manifolds. The motion planning problem is then solved using search in these simpler structures.<em> A path found by a search algorithm can be executed by using the path as the reference trajectory for a <strong>PID controller</strong>. Controllers are necessary in robotics to accommodate small perturbations; path planning alone is usually insufficient.</em> <strong>Potential field</strong> techniques navigate robots by potential functions, defined over the distance to obstacles and the goal location. Potential field techniques may get stuck in local minima but they can generate motion directly without the need for path planning.* Sometimes it is easier to specify a robot controller directly, rather than deriving a path from an explicit model of the environment. Such controllers can often be written as simple <strong>finite state machines</strong>.</li>
+</ul>
+
+
+<h3>26. Philosophical Foundations</h3>
+
+<ul>
+<li>Philosophers use the term weak AI for the hypothesis that machines could possibly behave intelligently. and strong AI for the hypothesis that such machines would count as having actual minds (as opposed to simulated minds).<em> Alan Turing rejected the question &ldquo;Can machines think&rdquo; and replaced it with a behavioral test. He anticipated many objections to the possibility of thinking machines. Few AI researchers pay attention to the Turing Test, preferring to concentrate on their systems' performance on practical tasks, rather than the ability to imitate humans.</em> There is general agreement in modem times that mental states are brain states.<em> Arguments for and against strong AI are inconclusive. Few mainstream AI researchers believe that anything significant hinges on the outcome of the debate.</em> Consciousness remains a mystery.* We identified six potential threats to society posed by AI and related technology. We concluded that some of the threats are either unlikely or differ little from threats posed by &ldquo;unintelligent&rdquo; technologies. One threat in particular is worthy of further consideration: that ultraintelligent machines might lead to a future that is very different from today &mdash; we may not like it, and at that paint we may not have a choice. Such considerations lead inevitably to the conclusion that we must weigh carefully, and soon, the possible consequences of AI research.</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Excerpt_Machine Learning(Tom Mitchell)]]></title>
@@ -1741,208 +1944,6 @@ def estimate_house_sales_price(num_of_bedrooms, sqft, neighborhood):
 <li><a href="https://medium.com/@ageitgey/machine-learning-is-fun-80ea3ec3c471">中文翻譯</a></li>
 </ol>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[神經網絡(書摘).]]></title>
-    <link href="http://www.aprilzephyr.com/blog/04302015/shen-jing-wang-luo-shu-zhai/"/>
-    <updated>2015-04-30T11:15:35+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/04302015/shen-jing-wang-luo-shu-zhai</id>
-    <content type="html"><![CDATA[<p><img src="/images/astonishing.jpg"></p>
-
-<p> “……我相信，對一個模型的最好的檢驗是它的設計者能否回答這些問題：‘現在你知道哪些原本不知道的東西？’以及‘你如何證明它是否是對的？’”  ——詹姆斯·鮑爾（<a href="http://en.wikipedia.org/wiki/James_M._Bower">James M.Bower</a>)<!--more--></p>
-
-<p>神經網絡是由具有各種相互聯系的單元組成的集合。每個單元具有極為簡化的神經元的特性。神經網絡常常被用來模擬神經系統中某些部分的行為，生產有用的商業化裝置以及檢驗腦是如何工作的一般理論。</p>
-
-<p>神經科學家們究竟為什麽那麽需要理論呢？如果他們能了解單個神經元的確切行為，他們就有可能預測出具有相互作用的神經元群體的特性。令人遺憾的是，事情並非如此輕而易舉。事實上，單個神經元的行為通常遠不那麽簡單，而且神經元幾乎總是以一種復雜的方式連接在一起。此外，整個系統通常是高度非線性的。線性系統，就其最簡單形式而言，當輸入加倍時，它的輸出也嚴格加倍——即輸出與輸入呈比例關系。①例如，在池塘的表面，當
-兩股行進中的小湍流彼此相遇時，它們會彼此穿過而互不幹擾。為了計算兩股小水波聯合產生的效果，人們只需把第一列波與第二列波的效果在空間和時間的每一點上相加即可。這樣，每一列波都獨立於另一列的行為。對於大振幅的波則通常不是這樣。物理定律表明，大振幅情況下均衡性被打破。沖破一列波的過程是高度非線性的：一旦振幅超過某個閾值，波的行為完全以全新的方式出現。那不僅僅是“更多同樣的東西”，而是某些新的特性。非線性行為在日常生活中很普遍，特別是在愛情和戰爭當中。正如歌中的：“吻她一次遠不及吻她兩次的一半那麽美妙。”</p>
-
-<p>如果一個系統是非線性的，從數學上理解它通常比線性系統要困難得多。它的行為可能更為復雜。因此對相互作用的神經元群體進行預測變得十分困難，特別是最終的結果往往與直覺相反。</p>
-
-<p>高速數字計算機是近50年來最重要的技術發展之一。它時常被稱作馮.諾依曼計算機，以紀念這位傑出的科學家、計算機的締造者。由於計算機能像人腦一樣對符號和數字進行操作，人們自然地想像腦是某種形式相當復雜的馮·諾依曼計算機。這種比較，如果陷入極端的話，將導致不切實際的理論。</p>
-
-<p>計算機是構建在固有的高速組件之上的。即便是個人計算機，其基本周期，或稱時鐘頻率，也高於每秒1000萬次操作。相反地，一個神經元的典型發放率僅僅在每秒100個脈沖的範圍內。計算機要快上百萬倍。而像克雷型機那樣的高速超級計算機速度甚至更高。大致說來，計算機的操作是序列式的，即一條操作接著一條操作。與此相反，腦的工作方式則通常是大規模並行的，例如，從每只眼睛到達腦的軸突大約有100萬個，它們全都同時工作。
-在系統中這種高度的並行情況幾乎重復出現在每個階段。這種連線方式在某種程度上彌補了神經元行為上的相對緩慢性。它也意味著即使失去少數分散的神經元也不大可能明顯地改變腦的行為。用專業術語講，腦被稱作“故障弱化”（Degrade Gracefully)。而計算機則是脆弱的，哪怕是對它極小的損傷，或是程序中的一個小錯誤，也會引起大的災難。計算機中出現錯誤則是災難性的（Degrade Catastrophically)。</p>
-
-<p>計算機在工作中是高度穩定的。因為其單個組件是很可靠的，當給定相同的輸入時通常產生完全同樣的輸出。反之，單個神經元則具有更多的變化。它們受可以調節其行為的信號所支配，有些特性邊“計算”邊改變。</p>
-
-<p>一個典型的神經元可能具有來自各處的上百乃至數萬個輸入，其軸突又有大量投射。而計算機的一個基本元件——晶體管，則只有極少數的輸入和輸出。</p>
-
-<p>在計算機中，信息被編碼成由0和1組成的脈沖序列。計算機通過這種形式高度精確地將信息從一個特定的地方傳送到另一個地方。信息可以到達特定的地址，提取或者改變那裏所儲存的內容。這樣就能夠將信息存入記憶體的某個特殊位置，並在以後的某些時刻進一步加以利用。這種精確性在腦中是不會出現的。盡管一個神經元沿它的軸突發送的脈沖的模式（而不僅僅是其平均發放率）可能攜帶某些信息，但並不存在精確的由脈沖編碼的信息。①這樣，記憶必然將以不同的形式“存儲”。</p>
-
-<p>腦看起來一點也不像通用計算機。腦的不同部分，甚至是新皮層的不同部分，都是專門用來處理不同類型的信息的（至少在某種程度上是這樣的）。看來大多數記憶存儲在進行當前操作的那個地方。所有這些與傳統的馮·諾依曼計算機完全不同，因為執行計算機的基本操作（如加法.乘法等等）僅在一個或少數幾個地方，而它的記憶卻存貯在許多很不同的地方。</p>
-
-<p>最後，計算機是由工程師精心設計出來的，而腦則是動物經自然選擇一代又一代進化而來的。這就產生了如第一章所述的本質上不同的設計形式。</p>
-
-<p>人們習慣於從硬件和軟件的角度來談論計算機。由於人們編寫軟件（計算機程序）時幾乎不必了解硬件（回路等）的細節，所以人們——特別是心理學家——爭論說沒必要了解有關腦的“硬件”的任何知識。實際上想把這種理論強加到腦的操作過程中是不恰當的，腦的硬件與軟件之間並沒有明顯的差異。對於這種探討的一種合理的解釋是，雖然腦的活動是高度並行的，在所有這些平行操作的頂端有某些形式的（由註意控制的）序列機制，因而，在腦的操作的較高層次，在那些遠離感覺輸入的地方，可以膚淺地說腦與計算機有某種相似之處。</p>
-
-<p>人們可以從一個理論途徑的成果來對它作判斷。計算機按編寫的程序執行，因而擅長解決諸如大規模數字處理、嚴格的邏輯推理以及下棋等某些類型的問題。這些事情大多數人都沒有它們完成得那麽快、那麽好。但是，面對常人能快速、不費氣力就能完成的任務，如觀察物體並理解其意義，即便是最現代的計算機也顯得無能為力。</p>
-
-<p>近幾年在設計新一代的、以更加並行方式工作的計算機方面取得了重要進展。大多數設計使用了許多小型計算機，或是小型計算機的某些部件。它們被連接在一起，並同時運行。由一些相當復雜的設備來處理小計算機之間的信息交換並對計算進行全局控制。像天氣預測等類似問題，其基本要素在多處出現。此時超級計算機特別有用。</p>
-
-<p>人工智能界也采取了行動設計更具有腦的特點的程序。他們用一種模糊邏輯取代通常計算中使用的嚴格的邏輯。命題不再一定是真的或假的，而只需是具有更大或更小的可能性。程序試圖在一組命題中發現具有最大可能性的那種組合，並以之作為結論，而不是那些它認為可能性較小的結論。</p>
-
-<p>在概念的設置上，這種方法確實比早期的人工智能方法與腦更為相像，但在其他方面，特別是在記憶的存貯上，則不那麽像腦。因此，要檢查它與真實的腦在所有層次上行為的相似性可能會有困難。</p>
-
-<p>一群原先很不知名的理論工作者發展了一種更具有腦的特性的方法。如今它被稱為PDP方法（即平行分布式處理）。這個話題有很長的歷史，我只能概述一二。在1943年沃侖·麥卡洛克（Warrenc McCulloch）和沃爾特·皮茲（Walter Pitts）的工作是這方面最早的嘗試之一。他們表明，在原則上由非常簡單的單元連接在一起組成的“網絡”可以對任何邏輯和算術函數進行計算。因為網絡的單元有些像大大簡化的神經元，它現在常被稱作“神經網絡”。</p>
-
-<p>這個成就非常令人鼓舞，以致它使許多人受到誤導，相信腦就是這樣工作的。或許它對現代計算機的設計有所幫助，但它的最引人註目的結論就腦而言則是極端錯誤的。</p>
-
-<p>下一個重要的進展是弗蘭克·羅森布拉特（Frank Rosenblatt）發明的一種非常簡單的單層裝置，他稱之為感知機（Perceptron)。意義在於，雖然它的連接最初是隨機的，它能使用一種簡單而明確的規則改變這些連接，因而可以教會它執行某些簡單的任務，如識別固定位置的印刷字母。感知機的工作方式是，它對任務只有兩種反應：正確或是錯誤。你只需告訴它它所作出的（暫時的）回答是否正確。然後它根據一種感知機學習規則來改變其連接。羅森布拉特證明，對於某一類簡單的問題——“線性可分”的問題——感知機通過有限次訓練就能學會正確的行為。</p>
-
-<p>由於這個結果在數學上很優美，從而吸引了眾人的註目。只可惜它時運不濟，它的影響很快就消退了。馬文·明斯基（MarVinMinsky)和西摩·佩伯特（Segmour Papert)證明感知機的結構及學習規則無法執行“異或問題”（如，判斷這是蘋果還是桔子，但不是二者皆是），因而也不可能學會它。他們寫了一本書，通篇詳述了感知機的局限性。這在許多年內扼殺了人們對感知機的興趣（明斯基後來承認做得過分了）。此問大部分工作將註意力轉向人工智能方法。①</p>
-
-<p>用簡單單元構建一個多層網絡，使之完成簡單的單層網絡所無法完成的異或問題（或類似任務），這是可能的。這種網絡必定具有許多不同層次上的連接，問題在於，對哪些最初是隨機的連接進行修改才能使網絡完成所要求的操作。如果明斯基和佩伯特為這個問題提供了解答，而不是把感知機打入死路的話，他們的貢獻會更大些。</p>
-
-<p>下一個引起廣泛註意的發展來自約翰·霍普菲爾德（John Hop-field)，一位加利福尼亞州理工學院的物理學家，後來成為分子生物學家和腦理論家。1982年他提出了一種網絡，現在被稱為霍普菲爾德網絡(見圖53）。這是一個具有自反饋的簡單網絡。每個單元只能有兩種輸出：一1（表示抑制）或十1（表示興奮）。但每個單元具有多個輸入。每個連接均被指派一個特定的強度。在每個時刻單元把來自它的全部連接的效果(2)總和起來。如果這個總和大於0則置輸出狀態為十1（平均而言，當單元興奮性輸入大於抑制性輸人時，則輸出為正），否則就輸出一1。有些時候這意味著一個單元的輸出會因為來自其他單元的輸入發生了改變而改變。</p>
-
-<p>盡管如此，仍有不少理論工作者默默無聞地繼續工作。這其中包括斯蒂芬.格羅斯伯格（Stephen Grossberg），吉姆·安德森（Jim Anderson），托伊沃.科霍寧（TeuvoKohonen）和戴維·威爾肖（Devid Willshaw）。(2)每個輸入對單元的影響是將當前的輸入信號（+1或-1）與其相應的權值相乘而得到的。（如果當前信號是-1，權重是+2，則影響為-2。）</p>
-
-<p>計算將被一遍遍地反復進行，直到所有單元的輸出都穩定為止。①在霍普菲爾德網絡中，所有單元的狀態並不是同時改變的，而是按隨機次序一個接一個進行，霍普菲爾德從理論上證明了，給定一組權重（連接強度）以及任何輸入，網絡將不會無限制地處於漫遊狀態，也不會進入振蕩，而是迅速達到一個穩態。①</p>
-
-<p>霍普菲爾德的論證令人信服，表達也清晰有力。他的網絡對數學家和物理學家有巨大的吸引力，他們認為終於找到了一種他們可以涉足腦研究的方法（正如我們在加利福尼亞州所說的）。雖然這個網絡在許多細節上嚴重違背生物學，但他們並不對此感到憂慮。</p>
-
-<p>如何調節所有這些連接的強度呢？194年，加拿大心理學家唐納德·赫布（Donald Hebb）出版了《行為的組織》一書。當時人們就像現在一樣普遍相信，在學習過程中，一個關鍵因素是神經元的連接（突觸）強度的調節。赫布意識到，僅僅因為一個突觸是活動的，就增加其強度，這是不夠的。他期望一種只在兩個神經元的活動相關時才起作用的機制。他的書中有一個後來被廣泛引用的段落：“當細胞A的一個軸突和細胞B 很近，足以對它產生影響，並且持久地、不斷地參與了對細胞B 的興奮，那麽在這兩個細胞或其中之一會發生某種生長過程或新陳代謝變化，以致於A作為能使B 興奮的細胞之一，它的影響加強了。”這個機制以及某些類似規則，現在稱為“赫布律”。</p>
-
-<p>霍普菲爾德在他的網絡中使用了一種形式的赫布規則來調節連接權重。對於問題中的一種模式，如果兩個單元具有相同的輸出，則它們之間的相互連接權重都設為+1。如果它們具有相反的輸出，則兩個權重均設為-1。大致他說，每個單元激勵它的“朋友”並試圖削弱它的“敵人”。</p>
-
-<p>霍普菲爾德網絡是如何工作的呢？如果網絡輸入的是正確的單元活動模式，它將停留在該狀態。這並沒有什麽特別的，因為此時給予它的就是答案。值得註意的是，如果僅僅給出模式的一小部分作為“線索”，它在經過短暫的演化後，會穩定在正確的輸出即整個模式上，在不斷地調節各個單元的輸出之後，網絡所揭示的是單元活動的穩定聯系。最終它將有效地從某些僅僅與其存貯的“記憶”接近的東西中恢復出該記憶，此外，這種記憶也被稱作是按“內容尋址”的——即它沒有通常計算機中具有的分離的、唯一用於作為“地址”的信號。輸入模式的任何可察覺的部分都將作為地址。這開始與人的記憶略微有些相似了。</p>
-
-<p>請註意記憶並不必存貯在活動狀態中，它也可以完全是被動的，因為它是鑲嵌在權重的模式之中的即在所有各個單元之間的連接強度之中。網絡可以完全不活動（所有輸出置為0），但只要有信號輸入，網絡突然活動起來並在很短時間內進入與其應當記住的模式相對應的穩定的活動狀態。據推測，人類長期記憶的回憶具有這種一般性質（只是活動模式不能永久保持）。你能記住大量現在一時想不起來的事情。</p>
-
-<p>神經網絡（特別是霍普菲爾德網絡）能“記住”一個模式，但是除此以外它還能再記住第二個模式嗎？如果幾個模式彼此不太相似，一個網絡是能夠全部記住這幾個不同模式，即給出其中一個模式的足夠大的一部分，網絡經過少數幾個周期後將輸出該模式。因為任何一個記憶都是分布在許多連接當中的，所以整個系統中記憶是分布式的。因為任何一個連接都可能包含在多個記憶中，因而記憶是可以疊加的。此外，記憶具有魯棒性，改變少數連接通常不會顯著改變網絡的行為。</p>
-
-<p>為了實現這些特性就需要付出代價，這不足為奇。如果將過多的記憶加到網絡之中則很容易使它陷入混亂。即使給出線索，甚至以完整的模式作為輸入，網絡也會產生毫無意義的輸出。①</p>
-
-<p>有人提出這是我們做夢時出現的現象（弗洛伊德稱之為“凝聚”——Condensation），但這是題外話。值得註意的是，所有這些特性是“自然發生”的。它們並不是網絡設計者精心設置的，而是由單元的本性、它們連接的模式以及權重調節規則所決定的。</p>
-
-<p>霍普菲爾德網絡還有另一個性質，即當幾個輸人事實上彼此大致相似時，在適當計算網絡的連接權重後，它“記住”的將是訓練的模式的某種平均。這是另一個與腦有些類似的性質。對我們人類而言，當我們聽某個特定的聲調時，即便它在一定範圍內發生變化，我們也會覺得它是一樣的。輸入是相似但不同的，而輸出——我們所聽到的——則是一樣的。</p>
-
-<p>這些簡單網絡是不能和腦的復雜性相提並論的，但這種簡化確實使我們可能對它們的行為有所了解，即使是簡單網絡中出現的特點也可能出現在具有相同普遍特性的更復雜的網絡中，此外，它們向我們提供了多種觀點，表明特定的腦回路所可能具有的功能。例如，海馬中有一個稱為CA3的區域，它的連接事實上很像一個按內容尋址的網絡。當然，這是否正確尚需實驗檢驗。</p>
-
-<p>有趣的是，這些簡單的神經網絡具有全息圖的某些特點。在全息圖中，幾個影像可以彼此重疊地存貯在一起；全息圖的任何一部分都能用來恢復整個圖像，只不過清晰度會下降；全息圖對於小的缺陷是魯棒的。對腦和全息圖兩者均知之甚少的人經常會熱情地支持這種類比。幾乎可以肯定這種比較是沒有價值的。原因有兩個。詳細的數學分析表明神經網絡和全息圖在數學上是不同的。更重要的是，雖然神經網絡是由那些與真實神經元有些相似的單元
-構建的，沒有證據表明腦中具有全息圖所需的裝置或處理過程。（1）</p>
-
-<p>一本更新的書產生了巨大的沖擊力，這就是戴維·魯梅爾哈特（David Rumelhart）、詹姆斯·麥克萊蘭（James McClelland）和PDP小組所編的一套很厚的兩卷著作《平行分布式處理》（1)。該書於1986年問世，並很快至少在學術界成為最暢銷書。名義上我也是PDP小組的成員，並和淺沼智行（Chiko Asanuma）合寫了其中的一個章節。不過我起的作用很小。我幾乎只有一個貢獻，就是堅持要求他們停止使用神經元一詞作為他們網絡的單元。</p>
-
-<p>加利福尼亞州立大學聖叠戈分校心理系離索爾克研究所僅有大約一英裏。在70年代末80年代初我經常步行去參加他們的討論小組舉行的小型非正式會議。那時我時常漫步的地方如今已變成了巨大的停車場。生活的步伐越來越快，我現在已改為驅車飛馳於兩地之間了。</p>
-
-<p>研究小組當時是由魯梅爾哈特和麥克萊蘭領導的，但是不久麥克萊蘭就離開前往東海岸了。他們倆最初都是心理學家，但他們對符號處理器感到失望並共同研制了處理單詞的“相互作用激勵器”的模型。在克裏斯托夫·朗格特-希金斯（Christopher Longuet-Higgins）的另一位學生傑弗裏·希爾頓（Geoffrey Hinton）的鼓勵下，他們著手研究一個更加雄心勃勃的“聯結主義”方案。他們采納了平行分布式處理這個術語，因為它比以前的術語——聯想記憶②——的覆蓋面更廣。</p>
-
-<p>在人們發明網絡的初期，一些理論家勇敢地開始了嘗試。他們把一些仍顯笨拙的小型電子回路（其中常包括有老式繼電器）連接在一起來模擬他們的非常簡單的網絡。現在已發展出了復雜得多的神經網絡，這得益於現代計算機的運算速度得到了極大的提高，也很便宜。現在可以在計算機（這主要是數字計算機）上模擬檢驗關於網絡的新思想，而不必像早期的研究那樣僅靠粗糙的模擬線路或是用相當困難的數學論證。</p>
-
-<p>1986年出版的《平行分布式處理》一書從1981年底開始經過了很長時間的醞釀。這很幸運，因為它是一個特殊算法的最新發展（或者說是它的復興或應用），在其早期工作基礎上，很快給人留下了深刻的印象。該書的熱情讀者不僅包括腦理論家和心理學家，還有數學家、物理學家和工程師，甚至有人工智能領域的工作者。不過後者最初的反應是相當敵視的。最終神經科學家和分子生物學家也對它的消息有所耳聞。</p>
-
-<p>該書的副標題是“認知微結構的探索”。它是某種大雜燴，但是其中一個的特殊的算法產生了驚人的效果。該算法現在稱作“誤差反傳算法”，通常簡稱為“反傳法”。為了理解這個算法，你需要知道一些關於學習算法的一般性知識。</p>
-
-<p>在神經網絡有些學習形式被稱作是“無教師的”。這意味著沒有外界輸入的指導信息。對任何連接的改變只依賴於網絡內部的局部狀態。簡單的赫布規則具有這種特點。與之相反，在有教師學習中，從外部向網絡提供關於網絡執行狀況的指導信號。</p>
-
-<p>無教師學習具有很誘人的性質，因為從某種意義上說網絡是在自己指導自己。理論家們設計了一種更有效的學習規則，但它需要一位“教師”來告訴網絡它對某些輸入的反應是好、是差還是很糟。這種規則中有一個稱作“δ律”。</p>
-
-<p>訓練一個網絡需要有供訓練用的輸入集合，稱作“訓練集”。很快我們在討論網絡發音器（NETtalk）時將看到一個這樣的例子。這有用的訓練集必須是網絡在訓練後可能遇到的輸入的合適的樣本。通常需要將訓練集的信號多次輸入，因而在網絡學會很好地執行之前需要進行大量的訓練。其部分原因是這種網絡的連接通常是隨機的。而從某種意義上講，腦的初始連接是由遺傳機制控制的，通常不完全是隨機的。</p>
-
-<p>網絡是如何進行訓練的呢？當訓練集的一個信號被輸入到網絡中，網絡就會產生一個輸出。這意味著每個輸出神經元都處在一個特殊的活動狀態。教師則用信號告訴每個輸出神經元它的誤差，即它的狀態與正確之間的差異，δ這個名稱便來源於這個真實活動與要求之間的差異（數學上δ常用來表示小而有限的差異）。網絡的學習規則利用這個信息計算如何調整權重以改進網絡的性能。</p>
-
-<p>Adaline網絡是使用有教師學習的一個較早的例子。它是1960年由伯納德·威德羅（Bernard Widrow）和霍夫（M.E.Hoff）設計的，因此δ律又稱作威德羅-霍夫規則。他們設計規則使得在每一步修正中總誤差總是下降的。①這意味著隨著訓練過程網絡最終會達到一個誤差的極小值。這是毫無疑問的，但還不能確定它是真正的全局極小還是僅僅是個局域極小值。用自然地理的術語說就是，我們達到的是一個火山口中的湖，還是較低的池塘。海洋，還是像死海那樣的凹下去的海（低於海平面的海）？</p>
-
-<p>訓練算法是可以調節的，因而趨近局域極小的步長可大可小。如果步長過大，算法會使網絡在極小值附近跳來跳去（開始時它會沿下坡走，但走得太遠以致又上坡了）。如果步子小，算法就需要極長的時間才能達到極小值的底端。人們也可以使用更精細的調節方案。</p>
-
-<p>反傳算法是有教師學習算法中的一個特殊例子。為了讓它工作，網絡的單元需要具有一些特殊性質。它們的輸出不必是二值的（即，或0，或者＋1或-1），而是分成若幹級。它通常在0到+1之間取值。理論家們盲目地相信這對應於神經元的平均發放率（取最大發放率為＋1），但他們常常說不清應該在什麽時候取這種平均。</p>
-
-<p>如何確定這種“分級”輸出的大小呢？像以前一樣，每個單元對輸入加權求和，但此時不再有一個真實的閾值。如果總和很小，輸出幾乎是0。總和稍大一些時，輸出便增加。當總和很大時，輸出接近於最大值。圖54所示的S形函數（Sigmoid函數）體現了這種輸入總和與輸出間的典型關系。如果將一個真實神經元的平均發放率視為它的輸出，那麽它的行為與此相差不大。</p>
-
-<p>這條看似平滑的曲線有兩個重要性質。它在數學上是“可微的”，即任意一處的斜率都是有限的；反傳算法正依賴於這個特性。更重要的是，這條曲線是非線性的，而真實神經元即是如此。當（內部）輸入加倍時輸出並不總是加倍。這種非線性使得它能處理的問題比嚴格的線性系統更加廣泛。</p>
-
-<p>現在讓我們看一個典型的反傳網絡。它通常具有三個不同的單元層（見圖55）。最底層是輸入層。下一層被稱作“隱單元”層，因為這些單元並不直接與網絡外部的世界連接。最頂層是輸出層。最底層的每個單元都與上一層的所有單元連接。中間層也是如此。網絡只有前向連接，而沒有側向連接，除了訓練以外也沒有反向的投射。它的結構幾乎不能被簡化。</p>
-
-<p>訓練開始的時候，所有的權重都被隨機賦值，因而網絡最初對所有信號的反應是無意義的。此後給定一個訓練輸入，產生輸出並按反傳訓練規則調節權重。過程如下：在網絡對訓練產生輸出以後，告訴高層的每個單元它的輸出與“正確”輸出之間的差。單元利用該信息來對每個從低層單元達到它的突觸的權重進行小的調整。然後它將該信息反傳到隱層的每個單元。每個隱層單元則收集所有高層單元傳未的誤差信息，並以此調節來自最底層的所有突觸。</p>
-
-<p>從整體上看具體的算法使得網絡總是不斷調節以減小誤差。這個過程被多次重復。（該算法是普適的，可以用於多於三層的前向網絡。）</p>
-
-<p>經過了足夠數量的訓練之後網絡就可以使用了。此時有一個輸入的測試集來檢驗網絡。測試集是經過選擇的，它的一般（統計）特性與訓練集相似，但其他方面則不同。（權重在這個階段保持不變，以便考察訓練後網絡的行為。）如果結果不能令人滿意，設計者會從頭開始，修改網絡的結構、輸入和輸出的編碼方式、訓練規則中的參數或是訓練總數。</p>
-
-<p>所有這些看上去顯得很抽象。舉個例子或許能讓讀者清楚一些。特裏·塞吉諾斯基和查爾斯·羅森堡（Charles Rosenberg）在1987年提供了一個著名的演示。他們把他們的網絡稱為網絡發音器（NETtalk）。它的任務是把書寫的英文轉化成英文發音。英文的拼法不規則,這使它成為一門發音特別困難的語言，因而這個任務並不那麽簡單易行。當然，事先並不把英語的發音規則清楚地告訴網絡。在訓練過程中，網絡每次嘗試後將得到修正信號，網絡則從中學習。輸入是通過一種特殊的方式一個字母接一個字母地傳到網絡中。NETtalk的全部輸出是與口頭發音相對應的一串符號，為了讓演示更生動，網絡的輸出與一個獨立的以前就有的機器（一種數字發音合成器）耦合。它能將NETtallk的輸出變為發音，這樣就可以聽到機器“朗讀”英語了。</p>
-
-<p>由於一個英語字母的發音在很大程度上依賴於它前後的字母搭配，輸入層每次讀入一串7個字母。①輸出層中的單元與音素所要求的21個發音特征②相對應，還有5個單元處理音節分界和重音。圖56給出了它的一般結構。③</p>
-
-<p>他們使用了兩段文字的摘錄來訓練網絡，每段文字都附有訓練機器所需的標音法。第一段文字摘自梅裏亞姆-韋伯斯特袖珍詞典。第二段摘錄則多少有些令人奇怪，是一個小孩的連續說話。初始權重具有小的隨機值，並在訓練期內每處理一個詞更新一次。他們編寫程序使得計算機能根據提供的輸入和（正確的）輸出信息自動地完成這一步。在對真實的輸出進行判斷時，程序會采納一個與真實發音最接近的音素作為最佳猜測，通常有好幾個“發音”輸出單元對此有關系。</p>
-
-<p>聆聽機器學著“讀”英語是一件令人著迷的事情。①最初，由於初始連接是隨機的，只能聽到一串令人困惑的聲音。NETtalk很快就學會了區分元音和輔音。但開始時它只知道一個元音和一個輔音，因此像在咿呀學語。後來它能識別詞的邊界，並能發出像詞那樣的一串聲音。在對訓練集進行了大約十次操作之後，單詞變得清楚，讀的聲音也和幼兒說話很像了。</p>
-
-<p>實際結果並不完美，在某種情況下英語發音依賴於詞意，而NETtalk對此一無所知。一些相似的發音通常引起混淆，如論文（Thesis)和投擲（Throw）的“th”音。把同一個小孩的另一段例文作為檢測，機器完成得很好，表明它能把從相當小的訓練集（1024個單詞）中學到的推廣到它從未遇到的新詞上。②這稱為“泛化”。</p>
-
-<p>顯然網絡不僅僅是它所訓練過的每一個單詞的查詢表。它的泛化能力取決於英語發音的冗余度。並不是每一個英語單詞都按自己唯一的方式發音，雖然首次接觸英語的外國人容易這樣想。（這個問題是由於英語具有兩個起源造成的，即拉丁語系和日爾曼語系，這使得英語的詞匯十分豐富。）</p>
-
-<p>相對於大多數從真實神經元上收集的資料而言，神經網絡的一個優點在於在訓練後很容易檢查它的每一個隱單元的感受野。一個字母僅會激發少數幾個隱單元，還是像全息圖那樣它的活動在許多隱單元中傳播呢？答案更接近於前者。雖然在每個字母一發音對應中並沒有特殊的隱單元，但是每個這種對應並不傳播到所有的隱單元。</p>
-
-<p>因此便有可能檢查隱單元的行為如何成簇的（即具有相同的特性）。塞吉諾斯基和羅森堡發現“……最重要的區別是元音與輔音完全分離，然而在這兩類之中隱單元簇具有不同的模式，對於元音而言，下一個重要的變量是字母，而輔音成簇則按照了一種混合的策略，更多地依賴於它們聲音的相似性。”</p>
-
-<p>這種相當雜亂的布置在神經網絡中是典型現象，其重要性在於它與許多真實皮層神經元（如視覺系統中的神經元）的反應驚人地相似，而與工程師強加給系統的那種巧妙的設計截然不同。</p>
-
-<p>他們的結論是：
-NETtalk是一個演示，是學習的許多方面的縮影。首先，網絡在開始時具有一些合理的“先天”的知識，體現為由實驗者選擇的輸入輸出的表達形式，但沒有關於英語的特別知識——網絡可以對任何具有相同的字母和音素集的語言進行訓練。其次，網絡通過學習獲得了它的能力，其間經歷了幾個不同的訓練階段，並達到了一種顯著的水平。最後，信息分布在網絡之中，因而沒有一個單元或連接是必不可少的，作為結果，網絡具有容錯能力，對增長的損害是故障弱化的。此外，網絡從損傷中恢復的速度比重新學習要快得多。</p>
-
-<p>盡管這些與人類的學習和記憶很相似，但NETtalk過於簡單，還不能作為人類獲得閱讀能力的一個好的模型。網絡試圖用一個階段完成人類發育中兩個階段出現的過程，即首先是兒童學會說話；只有在單詞及其含義的表達已經建立好以後，他們才學習閱讀。同時，我們不僅具有使用字母-發音對應的能力，似乎還能達到整個單詞的發音表達，但在網絡中並沒有單詞水平的表達。註意到網絡上並沒有什麽地方清楚地表達英語的發音規則，這與標準的
-計算機程序不同。它們內在地鑲嵌在習得的權重模式當中。這正是小孩學習語言的方式。它能正確他說話，但對它的腦所默認的規則一無所知。①</p>
-
-<p>NETtalk有幾條特性是與生物學大為抵觸的。網絡的單元違背了一條規律，即一個神經元只能產生興奮性或抑制性輸出，而不會二者皆有。更為嚴重的是，照字面上說，反傳算法要求教師信息快速地沿傳遞向前的操作信息的同一個突觸發送回去。這在腦中是完全不可能發生的。試驗中用了獨立的回路來完成這一步，但對我而言它們顯得過於勉強，並不符合生物原型。</p>
-
-<p>盡管有這些局限性，NETtalk展示了一個相對簡單的神經網絡所能完成的功能，給人印象非常深刻。別忘了那裏只有不足500個神經元和2萬個連接。如果包括（在前面的腳註中列出的）某些限制和忽略，這個數目將會大一些，但恐怕不會大10倍。而在每一側新皮層邊長大約四分之一毫米的一小塊表面（比針尖還小）有大約5000個神經元。因而與腦相比，NETtalk僅是極小的一部分。②所以它能學會這樣相對復雜的任務給人印象格外深刻。</p>
-
-<p>另一個神經網絡是由西德尼·萊基（Sidney Lehky）和特裏·塞吉諾斯基設計的。他們的網絡所要解決的問題是在不知道光源方向的情況下試圖從某些物體的陰影中推斷出其三維形狀（第四章　描述的所謂從陰影到形狀問題）。對隱層單元的感受野進行檢查時發現了令人吃驚的結果。其中一些感受野與實驗中在腦視覺第一區（V1區）發現的一些神經元非常相似。它們總是成為邊緣檢測器或棒檢測器，但在訓練過程中，並未向網絡呈現過邊或棒，設計者也未強行規定感受野的形狀。它們的出現是訓練的結果。此外，當用一根棒來測試網絡時，其輸出層單元的反應類似於V1區具有端點抑制（End-stopping）的復雜細胞。</p>
-
-<p>網絡和反傳算法二者都在多處與生物學違背，但這個例子提出了這樣一個回想起來應該很明顯的問題：僅僅從觀察腦中一個神經元的感受野並不能推斷出它的功能，正如第十一章描述的那樣，了解它的投射野，即它將軸突傳向哪些神經元，也同樣重要。</p>
-
-<p>我們已經關註了神經網絡中“學習”的兩種極端情況：由赫布規則說明的無教師學習和反傳算法那樣的有教師學習。此外還有若幹種常見的類型。一種同樣重要的類型是“競爭學習”。①其基本思想是網絡操作中存在一種勝者為王機制，使得能夠最好地表達了輸入的含義的那個單元（或更實際他說是少數單元）抑制了其他所有單元。學習過程中，每一步中只修正與勝者密切相關的那些連接，而不是系統的全部連接。這通常用一個三層網絡進行模擬，如同標準的反傳網絡，但又有顯著差異，即它的中間層單元之間具有強的相互連接。這些連接的強度通常是固定的，並不改變。通常短程連接是興奮性的，而長程的則是抑制性的，一個單元傾向於與其近鄰友好而與遠處的相對抗。這種設置意味著中間層的神經元為整個網絡的活動而競爭。在一個精心設計的網絡中，在任何一次試驗中通常只有一個勝者。</p>
-
-<p>這種網絡並沒有外部教師。網絡自己尋找最佳反應。這種學習算法使得只有勝者及其近鄰單元調節輸入權重。這種方式使得當前的那種特殊反應在將來出現可能性更大。由於學習算法自動將權重推向所要求的方向，每個隱單元將學會與一種特定種類的輸入相聯系。①</p>
-
-<p>到此為止我們考慮的網絡處理的是靜態的輸入，並在一個時間間隔後產生一個靜態的輸出。很顯然在腦中有一些操作能表達一個時間序列，如口哨吹出一段曲調或理解一種語言並用之交談。人們初步設計了一些網絡來著手解決這個問題，但目前尚不深入。（NETtalk確實產生了一個時間序列，但這只是數據傳入和傳出網絡的一種方法，而不是它的一種特性。）</p>
-
-<p>語言學家曾經強調，目前在語言處理方面（如句法規則）根據人工智能理論編寫的程序處理更為有效。其本質原因是網絡擅長於高度並行的處理，而這種語言學任務要求一定程度的序列式處理。腦中具有註意系統，它具有某種序列式的本性，對低層的並行處理進行操作，迄今為止神經網絡並未達到要求的這種序列處理的復雜程度，雖然它應當出現。</p>
-
-<p>真實神經元（其軸突、突觸和樹突）都存在不可避免的時間延遲和處理過程中的不斷變化。神經網絡的大多數設計者認為這些特性很討厭，因而回避它們。這種態度也許是錯的。幾乎可以肯定進化就建立在這些改變和時間延遲上，並從中獲益。</p>
-
-<p>對這些神經網絡的一種可能的批評是，由於它們使用這樣一種大體上說不真實的學習算法，事實上它們並不能揭示很多關於腦的情況。對此有兩種答案。一種是嘗試在生物學看來更容易接受的算法，另一種方法更有效且更具有普遍性。加利福尼亞州立大學聖叠戈分校的戴維·齊帕澤（David Zipser），一個由分子生物學家轉為神經理論學家，曾經指出，對於鑒別研究中的系統的本質而言，反傳算法是非常好的方法。他稱之為“神經系統的身份證明”。他的觀點是，如果一個網絡的結構至少近似於真實物體，並了解了系統足夠多的限制，那麽反傳算法作為一種最小化誤差的方法，通常能達到一個一般性質相似於真實生物系統的解。這樣便在朝著了解生物系統行為的正確方向上邁出了第一步。</p>
-
-<p>如果神經元及其連接的結構還算逼真，並已有足夠的限制被加入到系統中，那麽產生的模型可能是有用的，它與現實情況足夠相似。這樣便允許仔細地研究模型各組成部分的行為。與在動物上做相同的實驗相比，這更加快速也更徹底。</p>
-
-<p>我們必須明白科學目標並非到此為止，這很重要。例如，模型可能會顯示，在該模型中某一類突觸需要按反傳法確定的某種方式改變。但在真實系統中反傳法並不出現。因此模擬者必須為這一類突觸找到合適的真實的學習規則。例如，那些特定的突觸或許只需要某一種形式的赫布規則。這些現實性的學習規則可能是局部的，在模型的各個部分不盡相同。如果需要的話，可能會引入一些全局信號，然後必須重新運行該模型。</p>
-
-<p>如果模型仍能工作，那麽實驗者必須表明這種學習方式確實在預測的地方出現，並揭示這種學習所包含的細胞和分子機制以支持這個觀點。只有如此我們才能從這些“有趣”的演示上升為真正科學的有說服力的結果。</p>
-
-<p>所有這些意味著需要對大量的模型及其變體進行測試。幸運的是，隨著極高速而又廉價的計算機的發展，現在可以對許多模型進行模擬。這樣人們就可以檢測某種設置的實際行為是否與原先所希望的相同，但即便使用最先進的計算機也很難檢驗那些人們所希望的巨大而復雜的模型。</p>
-
-<p>“堅持要求所有的模型應當經過模擬檢驗，這令人遺憾地帶來了兩個副產品。如果一個的假設模型的行為相當成功，其設計者很難相信它是不正確的。然而經驗告訴我們，若幹差異很大的模型也會產生相同的行為。為了證明這些模型哪個更接近於事實，看來還需要其他證據，諸如真實神經元及腦中該部分的分子的準確特性。</p>
-
-<p>另一種危害是，對成功的模型過分強調會抑制對問題的更為自由的想像，從而會阻礙理論的產生。自然界是以一種特殊的方式運行的。對問題過於狹隘的討論會使人們由於某種特殊的困難而放棄極有價值的想法。但是進化或許使用了某些額外的小花招來回避這些困難。盡管有這些保留，模擬一個理論，即便僅僅為了體會一下它事實上如何工作，也是有用的。</p>
-
-<p>我們對神經網絡能總結出些什麽呢？它們的基礎設計更像腦，而不是標準計算機的結構，然而，它們的單元並沒有真實神經元那樣復雜，大多數網絡的結構與新皮層的回路相比也過於簡單。目前，如果一個網絡要在普通計算機上在合理的時間內進行模擬，它的規模只能很小。隨著計算機變得越來越快，以及像網絡那樣高度並行的計算機的生產商業化，這會有所改善，但仍將一直是嚴重的障礙。</p>
-
-<p>盡管神經網絡有這些局限性，它現在仍然顯示出了驚人的完成任務的能力。整個領域內充滿了新觀點。雖然其中許多網絡會被人們遺忘，但通過了解它們，抓住其局限性並設計改進它們的新方法，肯定會有堅實的發展。這些網絡有可能具有重要的商業應用。盡管有時它會導致理論家遠離生物事實，但最終會產生有用的觀點和發明。也許所有這些神經網絡方面的工作的最重要的結果是它提出了關於腦可能的工作方式的新觀點。</p>
-
-<p>在過去，腦的許多方面看上去是完全不可理解的。得益於所有這些新的觀念，人們現在至少瞥見了將來按生物現實設計腦模型的可能性，而不是用一些毫無生物依據的模型僅僅去捕捉腦行為的某些有限方面。即便現在這些新觀念已經使我們對實驗的討論更為敏銳，我們現在更多地了解了關於個體神經元所必須掌握的知識。我們可以指出回路的哪些方面我們尚不足夠了解（如新皮層的向回的通路），我們從新的角度看待單個神經元的行為，並意識到在實驗日程上下一個重要的任務是它們整個群體的行為。神經網絡還有很長的路要走，但它們終於有了好的開端。<br/>
-  ======================<br/>
-①查爾斯·安德森（Charles Anderson）和戴維·範·埃森提出腦中有些裝置將信息按規定路線從一處傳至另一處。不過這個觀點尚有爭議。<br/>
-①該網絡以一個早期網絡為基礎。那個網絡被稱為“自旋玻璃”，是物理學家受一種理論概念的啟發而提出的。<br/>
-①這對應於一個適定的數學函數（稱為“能量函數”，來自自旋玻璃）的（局域）極小值。霍普菲爾德還給出了一個確定權重的簡單規則以使網絡的每個特定的活動模式對應於能量函數的一個極小值。<br/>
-①對於霍普菲爾德網絡而言，輸出可視為網絡存貯的記憶中與輸出（似為“輸入”之誤——譯者註）緊密相關的那些記憶的加權和。<br/>
-①在1968年，克裏斯托夫·朗格特-希金斯（Christopher Longuet-Higgins）從全息圖出發發明了一種稱為“聲音全息記器”（Holophone）的裝置。此後他又發明了另一種裝置稱為“相關圖”，並最終形成了一種特殊的神經網絡形式。他的學生戴維·威爾肖在完成博士論文期間對其進行了詳細的研究。<br/>
-(2)他們和其他一些想法接近的理論家合作，在1981年完成了《聯想記憶的並行模式》，由傑弗裏·希爾頓（Geoffrey Hinton）和吉姆·安德森編著。這本書的讀者主要是神經網絡方面的工作者，它的影響並不像後一本書那樣廣泛。<br/>
-(1)PDP即平行分布式處理（Parallel Distributed Processing）的縮寫。<br/>
-①更準確他說是誤差的平方的平均值在下降，因此該規則有時又叫做最小均方（LMS）規則。<br/>
-①29個“字母”各有一個相應的單元；這包括字母表中的26個字母，還有三個表示標點和邊界。因而輸入層需要29x7=203個單元。<br/>
-②例如，因為輔音p和b發音時都是以攏起嘴唇開始的，所以都稱作“唇止音”。<br/>
-③中間層（隱層）最初有80個隱單元，後來改為120個，結果能完成得更好。機器總共需要調節大約2萬個突觸。權重可正可負。他們並沒有構造一個真正的平行的網絡來做這件事，而是在一臺中型高速計算機上（一臺VAX 11//780FPA）模擬這個網絡。<br/>
-①計算機的工作通常不夠快，不能實時地發音，因而需要先把輸出錄下來，再加速播放，這樣人們才能聽明白。<br/>
-②塞吉諾斯基和羅森堡還表明，網絡對於他們設置的連接上的隨機損傷具有相當的抵抗力。在這種環境下它的行為是”故障弱化”。他們還試驗以11個字母（而不是7個字母）為一組輸入。這顯著改善了網絡的成績。加上第二個隱單元層並不能改善它的成績，但有助於網絡更好地進行泛化。<br/>
-①除了上面列出的以外，NEttalk還有許多簡化。雖然作者們信奉分布式表達，在輸入輸出均有“祖母細胞”即，例如有一個單元代表“窗口中第三個位置上的字母a”。這樣做是為了降低計算所需要的時間，是一種合理的簡化形式。雖然數據順序傳入7個字母的方式在人工智能程序是完全可以接受的，卻顯得與生物事實相違背。輸出的“勝者為王”這一步並不是由“單元”完成的，也不存在一組單元去表達預計輸出與實際輸出之間的差異（即教師信號）。這些運算都是由程序執行的。<br/>
-②這種比較不太公平，因為神經網絡的一個單元更好的考慮是等價於腦中一小群相神經元。因而更合適的數字大約是8萬個神經元（相當於一平方毫米皮層下神經元的數目）。<br/>
-①它是由斯蒂芬·格羅斯伯格、托伊沃·科霍寧等人發展的。<br/>
-①我不打算討論競爭網絡的局限性。顯然必須有足夠多的隱單元來容納網絡試圖從提供的輸入中所學的所有東西，訓練不能太快，也不能太慢，等等。這種網絡要正確工作需要仔細設計。毫無疑問，不久的將來會發明出基於競爭學習基本思想的更加復雜的應用。</p>
-
-<p><a href="http://en.wikipedia.org/wiki/The_Astonishing_Hypothesis">《驚人的假說&mdash;靈魂的科學探索》Francis Crick 1994'</a> 湖南科學技術出版社出版</p>
 ]]></content>
   </entry>
   
