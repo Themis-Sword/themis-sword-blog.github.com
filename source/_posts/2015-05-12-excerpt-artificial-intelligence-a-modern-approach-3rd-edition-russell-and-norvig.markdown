@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Excerpt_Artificial Intelligence A Modern Approach 3rd Edition(Russell &amp; Norvig)"
+title: "Excerpt_Artificial Intelligence: A Modern Approach 3rd Edition(Russell &amp; Norvig)"
 date: 2015-05-12 15:08:13 +0800
 comments: true
 categories: artificial-intelligence
