@@ -216,6 +216,7 @@ if __name__ == '__main__':
 ```  
   
 *B 將100-200以內的質數挑選出來*  
+1)  
 ``` python
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
@@ -233,5 +234,16 @@ if __name__ == '__main__':
     except :
         stop  = 0   #停止數，默认0，即不返回任何值
     is_prime(start,stop)
-```  
+```</br>
+2)  
+``` python
+def prime(n):
+    for s in range(2,n):
+        if n % s == 0:
+            return False
+    return True
+
+print filter(prime, range(100,201))
+```
+
 [Origin](http://www.cnblogs.com/zhoujinyi/archive/2013/06/07/3121976.html)
