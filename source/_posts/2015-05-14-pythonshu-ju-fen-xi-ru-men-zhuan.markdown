@@ -3,7 +3,7 @@ layout: post
 title: "Python數據分析入門(轉)"
 date: 2015-05-14 10:46:30 +0800
 comments: true
-categories: python
+categories: python, artificial-intelligence
 keywords: python, data analysis
 discription: Python Getting started with data analysis
 ---
@@ -195,7 +195,7 @@ two-tailed p-value 雙側概率值
 第一個數組是t統計量，第二個數組則是相應的p值。
 
 ###可視化
-Python中有許多可視化模塊，最流行的當屬matpalotlib庫。稍加提及，我們也可選擇bokeh和seaborn模塊。之前的博文中，我已經說明了matplotlib庫中的盒須圖模塊功能。
+Python中有許多可視化模塊，最流行的當屬matpalotlib庫。稍加提及，我們也可選擇bokeh和seaborn模塊。之前的博文中，我已經說明了matplotlib庫中的盒須圖模塊功能。  
 {% img /images/pda/1.jpg %}
 
 	# Import the module for plotting
@@ -211,7 +211,7 @@ Python中有許多可視化模塊，最流行的當屬matpalotlib庫。稍加提
 這樣我們就得到如下圖表：
 {% img /images/pda/2.jpg %}
 
-比matplotlib.pyplot主題簡潔太多。但是在本博文中，我更願意引入seaborn模塊，該模塊是一個統計數據可視化庫。因此我們有：
+比matplotlib.pyplot主題簡潔太多。但是在本博文中，我更願意引入seaborn模塊，該模塊是一個統計數據可視化庫。因此我們有：  
 {% img /images/pda/3.jpg %}
 
 	# Import the seaborn library
@@ -219,7 +219,7 @@ Python中有許多可視化模塊，最流行的當屬matpalotlib庫。稍加提
 	 # Do the boxplot
 	plt.show(sns.boxplot(df, widths = 0.5, color = "pastel"))
 
-多性感的盒式圖，繼續往下看。
+多性感的盒式圖，繼續往下看。  
 {% img /images/pda/4.jpg %}
 
 	plt.show(sns.violinplot(df, widths = 0.5, color = "pastel"))
