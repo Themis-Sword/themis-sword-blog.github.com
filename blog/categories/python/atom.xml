@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2015-05-14T09:41:22+08:00</updated>
+  <updated>2015-05-14T11:12:03+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,350 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python數據分析入門(轉)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/05142015/pythonshu-ju-fen-xi-ru-men-zhuan/"/>
+    <updated>2015-05-14T10:46:30+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/05142015/pythonshu-ju-fen-xi-ru-men-zhuan</id>
+    <content type="html"><![CDATA[<p>最近，<a href="http://alstatr.blogspot.com/">Analysis with Programming</a>加入了<a href="http://planetpython.org/">Planet Python</a>。作為該網站的首批特約博客，我這裏來分享一下如何通過Python來開始數據分析。具體內容如下：</p>
+
+<ol>
+<li>數據導入<br/>
+** 導入本地的或者web端的CSV文件；</li>
+<li>數據變換；</li>
+<li>數據統計描述；</li>
+<li>假設檢驗<br/>
+** 單樣本t檢驗；</li>
+<li>可視化；</li>
+<li>創建自定義函數。<!--more--></li>
+</ol>
+
+
+<h3>數據導入</h3>
+
+<p>這是很關鍵的一步，為了後續的分析我們首先需要導入數據。通常來說，數據是CSV格式，就算不是，至少也可以轉換成CSV格式。在Python中，我們的操作如下：</p>
+
+<pre><code>import pandas as pd
+
+# Reading data locally
+df = pd.read_csv('/Users/al-ahmadgaidasaad/Documents/d.csv')
+
+# Reading data from web
+data_url = "https://raw.githubusercontent.com/alstat/Analysis-with-Programming/master/2014/Python/Numerical-Descriptions-of-the-Data/data.csv"
+df = pd.read_csv(data_url)
+</code></pre>
+
+<p>為了讀取本地CSV文件，我們需要pandas這個數據分析庫中的相應模塊。其中的read_csv函數能夠讀取本地和web數據。</p>
+
+<h3>數據變換</h3>
+
+<p>既然在工作空間有了數據，接下來就是數據變換。統計學家和科學家們通常會在這一步移除分析中的非必要數據。我們先看看數據：</p>
+
+<pre><code># Head of the data
+print df.head()
+
+# OUTPUT
+    Abra  Apayao  Benguet  Ifugao  Kalinga
+0   1243    2934      148    3300    10553
+1   4158    9235     4287    8063    35257
+2   1787    1922     1955    1074     4544
+3  17152   14501     3536   19607    31687
+4   1266    2385     2530    3315     8520
+
+# Tail of the data
+print df.tail()
+
+# OUTPUT
+ Abra  Apayao  Benguet  Ifugao  Kalinga
+74   2505   20878     3519   19737    16513
+75  60303   40065     7062   19422    61808
+76   6311    6756     3561   15910    23349
+77  13345   38902     2583   11096    68663
+78   2623   18264     3745   16787    16900
+</code></pre>
+
+<p>對R語言程序員來說，上述操作等價於通過print(head(df))來打印數據的前6行，以及通過print(tail(df))來打印數據的後6行。當然Python中，默認打印是5行，而R則是6行。因此R的代碼head(df, n = 10)，在Python中就是df.head(n = 10)，打印數據尾部也是同樣道理。</p>
+
+<p>在R語言中，數據列和行的名字通過colnames和rownames來分別進行提取。在Python中，我們則使用columns和index屬性來提取，如下：</p>
+
+<pre><code># Extracting column names
+print df.columns
+
+# OUTPUT
+Index([u'Abra', u'Apayao', u'Benguet', u'Ifugao', u'Kalinga'], dtype='object')
+
+# Extracting row names or the index
+print df.index
+
+# OUTPUT
+Int64Index([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78], dtype='int64')
+</code></pre>
+
+<p>數據轉置使用T方法，</p>
+
+<pre><code># Transpose data
+print df.T
+
+# OUTPUT
+            0      1     2      3     4      5     6      7     8      9  
+Abra      1243   4158  1787  17152  1266   5576   927  21540  1039   5424  
+Apayao    2934   9235  1922  14501  2385   7452  1099  17038  1382  10588  
+Benguet    148   4287  1955   3536  2530    771  2796   2463  2592   1064  
+Ifugao    3300   8063  1074  19607  3315  13134  5134  14226  6842  13828  
+Kalinga  10553  35257  4544  31687  8520  28252  3106  36238  4973  40140  
+
+         ...       69     70     71     72     73     74     75     76     77 
+Abra     ...    12763   2470  59094   6209  13316   2505  60303   6311  13345  
+Apayao   ...    37625  19532  35126   6335  38613  20878  40065   6756  38902  
+Benguet  ...     2354   4045   5987   3530   2585   3519   7062   3561   2583  
+Ifugao   ...     9838  17125  18940  15560   7746  19737  19422  15910  11096  
+Kalinga  ...    65782  15279  52437  24385  66148  16513  61808  23349  68663  
+
+            78 
+Abra      2623 
+Apayao   18264 
+Benguet   3745 
+Ifugao   16787 
+Kalinga  16900 
+
+Other transformations such as sort can be done using &lt;code&gt;sort&lt;/code&gt; attribute. Now let's extract a specific column. In Python, we do it using either &lt;code&gt;iloc&lt;/code&gt; or &lt;code&gt;ix&lt;/code&gt; attributes, but &lt;code&gt;ix&lt;/code&gt; is more robust and thus I prefer it. Assuming we want the head of the first column of the data, we have
+</code></pre>
+
+<p>其他變換，例如排序就是用sort屬性。現在我們提取特定的某列數據。Python中，可以使用iloc或者ix屬性。但是我更喜歡用ix，因為它更穩定一些。假設我們需數據第一列的前5行，我們有：</p>
+
+<pre><code>print df.ix[:, 0].head()
+
+# OUTPUT
+0     1243
+1     4158
+2     1787
+3    17152
+4     1266
+Name: Abra, dtype: int64
+</code></pre>
+
+<p>順便提一下，Python的索引是從0開始而非1。為了取出從11到20行的前3列數據，我們有：</p>
+
+<pre><code>print df.ix[10:20, 0:3]
+
+# OUTPUT
+    Abra  Apayao  Benguet
+10    981    1311     2560
+11  27366   15093     3039
+12   1100    1701     2382
+13   7212   11001     1088
+14   1048    1427     2847
+15  25679   15661     2942
+16   1055    2191     2119
+17   5437    6461      734
+18   1029    1183     2302
+19  23710   12222     2598
+20   1091    2343     2654
+</code></pre>
+
+<p>上述命令相當於df.ix[10:20, [&lsquo;Abra&rsquo;, &lsquo;Apayao&rsquo;, &lsquo;Benguet&rsquo;]]。</p>
+
+<p>為了舍棄數據中的列，這裏是列1(Apayao)和列2(Benguet)，我們使用drop屬性，如下：</p>
+
+<pre><code>print df.drop(df.columns[[1, 2]], axis = 1).head()
+
+# OUTPUT
+    Abra  Ifugao  Kalinga
+0   1243    3300    10553
+1   4158    8063    35257
+2   1787    1074     4544
+3  17152   19607    31687
+4   1266    3315     8520
+</code></pre>
+
+<p>axis 參數告訴函數到底舍棄列還是行。如果axis等於0，那麽就舍棄行。</p>
+
+<h3>統計描述</h3>
+
+<p>下一步就是通過describe屬性，對數據的統計特性進行描述：</p>
+
+<pre><code>print df.describe()
+
+# OUTPUT
+               Abra        Apayao      Benguet        Ifugao       Kalinga
+count     79.000000     79.000000    79.000000     79.000000     79.000000
+mean   12874.379747  16860.645570  3237.392405  12414.620253  30446.417722
+std    16746.466945  15448.153794  1588.536429   5034.282019  22245.707692
+min      927.000000    401.000000   148.000000   1074.000000   2346.000000
+25%     1524.000000   3435.500000  2328.000000   8205.000000   8601.500000
+50%     5790.000000  10588.000000  3202.000000  13044.000000  24494.000000
+75%    13330.500000  33289.000000  3918.500000  16099.500000  52510.500000
+max    60303.000000  54625.000000  8813.000000  21031.000000  68663.000000
+</code></pre>
+
+<h3>假設檢驗</h3>
+
+<p>Python有一個很好的統計推斷包。那就是scipy裏面的stats。ttest_1samp實現了單樣本t檢驗。因此，如果我們想檢驗數據Abra列的稻谷產量均值，通過零假設，這裏我們假定總體稻谷產量均值為15000，我們有：</p>
+
+<pre><code>from scipy import stats as ss
+
+# Perform one sample t-test using 1500 as the true mean
+print ss.ttest_1samp(a = df.ix[:, 'Abra'], popmean = 15000)
+
+# OUTPUT
+(-1.1281738488299586, 0.26270472069109496)
+</code></pre>
+
+<p>返回下述值組成的元祖：<br/>
+* t : 浮點或數組類型<br/>
+t統計量<br/>
+* prob : 浮點或數組類型<br/>
+two-tailed p-value 雙側概率值</p>
+
+<p>通過上面的輸出，看到p值是0.267遠大於α等於0.05，因此沒有充分的證據說平均稻谷產量不是150000。將這個檢驗應用到所有的變量，同樣假設均值為15000，我們有：</p>
+
+<pre><code>print ss.ttest_1samp(a = df, popmean = 15000)
+
+# OUTPUT
+(array([ -1.12817385,   1.07053437, -65.81425599,  -4.564575  ,   6.17156198]),
+ array([  2.62704721e-01,   2.87680340e-01,   4.15643528e-70,
+          1.83764399e-05,   2.82461897e-08]))
+</code></pre>
+
+<p>第一個數組是t統計量，第二個數組則是相應的p值。</p>
+
+<h3>可視化</h3>
+
+<p>Python中有許多可視化模塊，最流行的當屬matpalotlib庫。稍加提及，我們也可選擇bokeh和seaborn模塊。之前的博文中，我已經說明了matplotlib庫中的盒須圖模塊功能。
+<img src="/images/pda/1.jpg"></p>
+
+<pre><code># Import the module for plotting
+import matplotlib.pyplot as plt
+ plt.show(df.plot(kind = 'box'))
+</code></pre>
+
+<p>現在，我們可以用pandas模塊中集成R的ggplot主題來美化圖表。要使用ggplot，我們只需要在上述代碼中多加一行，</p>
+
+<pre><code>import matplotlib.pyplot as plt
+pd.options.display.mpl_style = 'default' # Sets the plotting display theme to ggplot2
+df.plot(kind = 'box')
+</code></pre>
+
+<p>這樣我們就得到如下圖表：
+<img src="/images/pda/2.jpg"></p>
+
+<p>比matplotlib.pyplot主題簡潔太多。但是在本博文中，我更願意引入seaborn模塊，該模塊是一個統計數據可視化庫。因此我們有：
+<img src="/images/pda/3.jpg"></p>
+
+<pre><code># Import the seaborn library
+import seaborn as sns
+ # Do the boxplot
+plt.show(sns.boxplot(df, widths = 0.5, color = "pastel"))
+</code></pre>
+
+<p>多性感的盒式圖，繼續往下看。
+<img src="/images/pda/4.jpg"></p>
+
+<pre><code>plt.show(sns.violinplot(df, widths = 0.5, color = "pastel"))
+</code></pre>
+
+<p><img src="/images/pda/5.jpg"></p>
+
+<pre><code>plt.show(sns.distplot(df.ix[:,2], rug = True, bins = 15))
+</code></pre>
+
+<p><img src="/images/pda/6.jpg"></p>
+
+<pre><code>with sns.axes_style("white"):
+    plt.show(sns.jointplot(df.ix[:,1], df.ix[:,2], kind = "kde"))
+</code></pre>
+
+<p><img src="/images/pda/7.jpg"></p>
+
+<pre><code>plt.show(sns.lmplot("Benguet", "Ifugao", df))
+</code></pre>
+
+<h3>創建自定義函數</h3>
+
+<p>在Python中，我們使用def函數來實現一個自定義函數。例如，如果我們要定義一個兩數相加的函數，如下即可：</p>
+
+<pre><code>def add_2int(x, y):
+    return x + y
+
+print add_2int(2, 2)
+
+# OUTPUT
+4
+</code></pre>
+
+<p>順便說一下，Python中的縮進是很重要的。通過縮進來定義函數作用域，就像在R語言中使用大括號{…}一樣。這有一個我們之前博文的例子：</p>
+
+<ol>
+<li>產生10個正態分布樣本，其中u=3和σ<sup>2</sup>=5</li>
+<li>基於95%的置信度，計算x̄和<img src="http://latex.codecogs.com/gif.latex?\bar{x}\mp&space;z_{a/}(2\frac{\sigma&space;}{\sqrt{n}})" title="\bar{x}\mp z_{a/}(2\frac{\sigma }{\sqrt{n}})" />;</li>
+<li>重復100次; 然後</li>
+<li>計算出置信區間包含真實均值的百分比</li>
+</ol>
+
+
+<p>Python中，程序如下：</p>
+
+<pre><code>import numpy as np
+import scipy.stats as ss
+
+def case(n = 10, mu = 3, sigma = np.sqrt(5), p = 0.025, rep = 100):
+    m = np.zeros((rep, 4))
+
+    for i in range(rep):
+        norm = np.random.normal(loc = mu, scale = sigma, size = n)
+        xbar = np.mean(norm)
+        low = xbar - ss.norm.ppf(q = 1 - p) * (sigma / np.sqrt(n))
+        up = xbar + ss.norm.ppf(q = 1 - p) * (sigma / np.sqrt(n))
+
+        if (mu &gt; low) &amp; (mu &lt; up):
+            rem = 1
+        else:
+            rem = 0
+
+        m[i, :] = [xbar, low, up, rem]
+
+    inside = np.sum(m[:, 3])
+    per = inside / rep
+    desc = "There are " + str(inside) + " confidence intervals that contain "
+           "the true mean (" + str(mu) + "), that is " + str(per) + " percent of the total CIs"
+
+    return {"Matrix": m, "Decision": desc}
+</code></pre>
+
+<p>上述代碼讀起來很簡單，但是循環的時候就很慢了。下面針對上述代碼進行了改進，這多虧了 Python專家，看我上篇博文的<a href="http://alstatr.blogspot.com/2014/01/python-and-r-is-python-really-faster.html#disqus_thread">15條意見</a>吧。</p>
+
+<pre><code>import numpy as np
+import scipy.stats as ss
+
+def case2(n = 10, mu = 3, sigma = np.sqrt(5), p = 0.025, rep = 100):
+    scaled_crit = ss.norm.ppf(q = 1 - p) * (sigma / np.sqrt(n))
+    norm = np.random.normal(loc = mu, scale = sigma, size = (rep, n))
+
+    xbar = norm.mean(1)
+    low = xbar - scaled_crit
+    up = xbar + scaled_crit
+
+    rem = (mu &gt; low) &amp; (mu &lt; up)
+    m = np.c_[xbar, low, up, rem]
+
+    inside = np.sum(m[:, 3])
+    per = inside / rep
+    desc = "There are " + str(inside) + " confidence intervals that contain "
+           "the true mean (" + str(mu) + "), that is " + str(per) + " percent of the total CIs"
+    return {"Matrix": m, "Decision": desc}
+</code></pre>
+
+<h3>更新</h3>
+
+<p>那些對於本文ipython notebook版本感興趣的，請點擊<a href="http://nuttenscl.be/Python_Getting_Started_with_Data_Analysis.html">這裏</a>。這篇文章由<a href="https://twitter.com/NuttensC">Nuttens Claude</a>負責轉換成 ipython notebook 。</p>
+
+<p>關於作者: <a href="http://python.jobbole.com/author/dengcy/">Den</a></p>
+
+<p><a href="http://alstatr.blogspot.ca/2015/02/python-getting-started-with-data.html">Origin</a><br/>
+<a href="http://python.jobbole.com/81133/">中文譯文</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Potential Pythonic Pitfalls(FW)]]></title>
@@ -1417,234 +1761,6 @@ Essentially, if there are exceptions being thrown from anywhere inside the block
 <p>譯註：本文原文見<a href="http://blog.sdqali.in/blog/2012/07/09/understanding-pythons-with/">Understanding Python&rsquo;s &ldquo;With&rdquo; Statement</a></p>
 
 <p><a href="http://python.42qu.com/11155501">Origin</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Python 動態類型(轉)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/04022014/python-dong-tai-lei-xing/"/>
-    <updated>2014-04-02T15:15:39+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/04022014/python-dong-tai-lei-xing</id>
-    <content type="html"><![CDATA[<p>Python中只有一個賦值模型</p>
-
-<h4>1. 缺少類型聲明語句的情況</h4>
-
-<p>在Python中，類型是在運行過程中自動決定的，而不是通過代碼聲明。這意味著沒有必要事聲明變量。只要記住，這個概念實質上對變量，對象和它們之間的關系都適用。那麽這個概念也容易理解並掌握。</p>
-
-<p><strong>A 變量，對象和引用</strong><br/>
-變量創建：一個變量，當代碼第一次給它賦值時它就被創建了。之後的賦值將會改變已創建的變量名的值。Python在代碼運行之前先檢測變量名，可以當成是最初的賦值創建變量。<!--more--><br/>
-變量類型：變量永遠不會有任何的它關聯的類型信息或約束。類型的概念是存在於對象中而不是變量中。變量原本是通用的。它只是在一個特定的時間點，簡單地引用了一個特定的對像而已。<br/>
-變量的使用：當變量出現在表達式中時，它會馬上被當前引用的對像所代替，無論這個對象是什麽類型。<br/>
-此外，所有的變量都必須在其使用前明確地賦值。使用未賦值的變量會產生錯誤。<br/>
-<code>&gt;&gt;&gt;a=3</code></p>
-
-<p>在概念上說，Python將執行三個不同的步驟去完成這個請求。<br/>
-1) 創建一個對象來代表值3<br/>
-2) 創建一個變量a，如果它還沒有創建的話<br/>
-3) 將變量與新的對象3連接</p>
-
-<p>在python中從變量到對象的連接稱作引用。引用是一種關系，以內存中的指針形式實現。<br/>
-* 變量 是一個系統表的元素，擁有指向對象的連接空間。<br/>
-* 對象 是被分配的一塊內存，有足夠的空間去表現它們所代表的值。<br/>
-* 引用 是自動形成的從變量到對象的指針。</p>
-
-<p>每一個對象都用兩個標準的頭部信息：一個類型標誌符去標識這個對象的類型，以及一個引用的計數器，用來決定是不是可以回收這個對象。</p>
-
-<p><strong>B 類型屬於對象，而不是變量</strong><br/>
-Python中的類型是與對象相關聯的，而不是和變量關聯。<br/>
-變量沒有類型，變量指向對象。對象有類型，知道自己的類型，每個對象都包含了一個頭部信息，其中標記了這個對象的類型。</p>
-
-<p><strong>C 對象的垃圾收集</strong><br/>
-對象生命結束時發生了什麽變化？<br/>
-每當一個變量名被賦與了一個新的對象，之前的那個對象占用的空間就會被收回（如果它沒有被其他變量名和對象所引用).這種自動回收對象空間的技術稱作垃圾收集。<br/>
-在內部，Python是通過保持用每個對象中的計數器記錄引用指到這個對象上的次數來完成這一功能。一旦（並精確在同一時間）這個計數器被設置為零，這個對象的內存空間就會自動收回。垃圾收集最直接的，可感受到的好處就是這意味著可以在腳本中任意使用對象而不需要考慮釋放內存空間。<br/>
-```</p>
-
-<blockquote><blockquote><blockquote><p>x=42
-id(x)
-674748828
-x=&ldquo;cli&rdquo;
-id(x)  <br/>
-676367648
-```</p></blockquote></blockquote></blockquote>
-
-<h4>2. 共享引用</h4>
-
-<p>上面所講都是單個變量被賦值引用了多個對象的情況。現在，在交互模式下，引入另一個變量，並看一下變量名和對象的變化。<br/>
-```</p>
-
-<blockquote><blockquote><blockquote><p>a=10
-b=a
-id(a)
-674749212
-id(b)
-674749212
-```<br/>
-第二行會使用python創建變量b。使用的是變量a,並且它在這裏沒有被賦值，所以它被替換成其應用的對象10，從而b也成為這個對象的一個引用。實際效果就是變量a和b都引用相同的對象（也就是說指向了相同的內存空間。在Python中稱作是共享引用&mdash;多個變量名應用了同一個對象。)</p></blockquote></blockquote></blockquote>
-
-<p>```</p>
-
-<blockquote><blockquote><blockquote><p>a=10
-b=a<br/>
-a=&lsquo;cli&rsquo;
-id(a)
-676367648
-id(b)
-674749212
-```<br/>
-變量a改變了，但是不影響變量b.這完全可以說明變量b是指向對象10內存空間的。</p></blockquote></blockquote></blockquote>
-
-<p>在ptyhon中，變量總是一個指向對象的指針，而不是可以改變的內存區域的標簽。給一變量賦一個新的值，並不是替換了原始的對象，而是讓這個變量去引用完全不同的一個對象。實際的效果就是對一個變量賦值，僅僅會影響那個被賦值的變量。</p>
-
-<p><strong>A 共享引用和在原處修改</strong><br/>
-有一些對象和類型確實會在實地改變對象。例如，在一個列表中對一個偏移進行賦值確實會改變這個列表對象，而不是生成一個新的列表對象。<br/>
-```</p>
-
-<blockquote><blockquote><blockquote><p>T1=[11,12,13]
-T2=T1
-T1
-[11, 12, 13]
-T2
-[11, 12, 13]
-T1=22
-T1
-22
-T2
-[11, 12, 13]
-```</p></blockquote></blockquote></blockquote>
-
-<p>這個和先前一樣T1改變了T2沒有改變，T2改變也不影響T1<br/>
-```</p>
-
-<blockquote><blockquote><blockquote><p>T1=[11,12,13]
-T2=T1
-T1
-[11, 12, 13]
-T2
-[11, 12, 13]
-T2[1]=33   <br/>
-T1
-[33, 12, 13]
-T2
-[33, 12, 13]
-<code>  
-發現T2改變了，T1也跟這改變了  
-同樣T1改變了，T2也改變了  
-</code>
-T1[1]=99<br/>
-T2
-[33, 99, 13]
-T1
-[33, 99, 13]
-```<br/>
-這裏T1沒有改變，改變了T1所引用對象的一個元素。這類修改會覆蓋列表對象中的某部分。因為這個列表對象是與其他對象共享的（被其他對象引用），那麽一個像這樣在原處的改變不僅僅會對T1有影響。必須意識到當做了這樣的修改，它會影響程序的其他部分。</p></blockquote></blockquote></blockquote>
-
-<p>如果不想要這樣的現象發生，需要Python拷貝對象，而不是創建引用。方法包括內置列表函數以及標準庫的copy模塊，最常用的辦法就是從頭到尾的分片T1[:]<br/>
-```</p>
-
-<blockquote><blockquote><blockquote><p>T1=[11,12,13]
-T2=T1[:]
-T1
-[11, 12, 13]
-T2
-[11, 12, 13]
-T1[0]=99
-T1
-[99, 12, 13]
-T2
-[11, 12, 13]
-id(T1)
-676366604
-id(T2)
-675542060
-<code>  
-T1和T2指向不同的對象，所以不會相互影響。  
-註意：這種分片技術不會引用在其他的可變的核心類型上（字典，因為它們不是序列），對字典應該使用D.copy（）方法.而且，註意標準庫中的copy模塊有一個通用的拷貝任意對象的調用，也有一個拷貝嵌套對象的結構的調用.  
-</code>
-X={&lsquo;name&rsquo;:&lsquo;cli&rsquo;,&lsquo;age&rsquo;:27}<br/>
-import copy
-Y=copy.copy(X)
-X
-{&lsquo;age&rsquo;: 27, &lsquo;name&rsquo;: &lsquo;cli&rsquo;}
-Y
-{&lsquo;age&rsquo;: 27, &lsquo;name&rsquo;: &lsquo;cli&rsquo;}
-id(X)
-676370468
-id(Y)
-676414436
-X={&lsquo;name&rsquo;:{&lsquo;FirstName&rsquo;:&lsquo;cli&rsquo;,&lsquo;LastName&rsquo;:&lsquo;cli&rsquo;},&lsquo;age&rsquo;:27}  <br/>
-X
-{&lsquo;age&rsquo;: 27, &lsquo;name&rsquo;: {&lsquo;LastName&rsquo;: &lsquo;cli&rsquo;, &lsquo;FirstName&rsquo;: &lsquo;cli&rsquo;}}
-Y=copy.copy(X)
-Y
-{&lsquo;age&rsquo;: 27, &lsquo;name&rsquo;: {&lsquo;LastName&rsquo;: &lsquo;cli&rsquo;, &lsquo;FirstName&rsquo;: &lsquo;cli&rsquo;}}
-Z=copy.deepcopy(X)
-Z
-{&lsquo;age&rsquo;: 27, &lsquo;name&rsquo;: {&lsquo;LastName&rsquo;: &lsquo;cli&rsquo;, &lsquo;FirstName&rsquo;: &lsquo;cli&rsquo;}}
-```</p></blockquote></blockquote></blockquote>
-
-<p><strong>B 共享引用和相等</strong>
-```</p>
-
-<blockquote><blockquote><blockquote><p>x=33
-x=&lsquo;cli&rsquo;
-```<br/>
-因為Python緩存並復用了小的整數和小的字符串，就像前文提到的那樣，這裏對象33也許不像前期所說的被收回，相反，它將可能仍保持在一個系統表中，等待下一次你的代碼生成另一個33來利用。盡快如此，大多數種類的對象都會在不再引用時馬上回收。對於那些不會被回收的，緩沖機制與代碼並沒有什麽關系。</p></blockquote></blockquote></blockquote>
-
-<p>判斷是否相等<br/>
-```</p>
-
-<blockquote><blockquote><blockquote><p>L=[1,2,3]
-M=L
-L==M
-True
-L is M
-True
-<code>  
-==檢查對象是否有相同的值。 is操作符，檢查對象的同一性。如果兩個變量名精準地指向同一個對象，它會返回True。所以這是一種更嚴格的相等測試。  
-實際上,is只是比較現實引用的指針。所以如果必要的話是代碼中檢測共享引用的一種方法。如果變量名引用值相等。但是為不同的對象，它的返回值將是False.  
-</code>
-L=[1,2,3]
-M=[1,2,3]
-L==M
-True
-L is M
-False
-id(L)
-676367788
-id(M)
-676367724
-```<br/>
-通過id()函數可以看到兩個變量指向不同的對象。</p></blockquote></blockquote></blockquote>
-
-<p>```</p>
-
-<blockquote><blockquote><blockquote><p>X=33
-Y=33
-X==Y
-True
-X is Y
-True
-id(X)
-674748936
-id(Y)
-674748936
-<code>  
-這個is測試返回True因為小的整數和字符串被緩存被復用了。
-如果想更進一步了解，可以向Python查詢一個對象應用的次數：在sys模塊中的getrefcount函數返回對象應用的次數。  
-</code>
-import sys
-sys.getrefcount(33)
-13
-sys.getrefcount(1)
-427
-sys.getrefcount(00)
-296
-sys.getrefcount(99)
-6
-```</p></blockquote></blockquote></blockquote>
-
-<p><a href="http://ipseek.blog.51cto.com/1041109/786518">Origin</a></p>
 ]]></content>
   </entry>
   
