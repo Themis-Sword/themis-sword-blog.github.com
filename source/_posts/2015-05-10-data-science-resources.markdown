@@ -86,7 +86,8 @@ description: Data Science Resources
 [Python Reference](https://github.com/rasbt/python_reference): Python tips, tutorials, and more  
 [videolectures.net](http://videolectures.net/Top/Computer_Science/): Tons of academic videos  
 [Metacademy](http://www.metacademy.org/list): Quick summary of many machine learning terms, with links to resources for learning more  
-[Terms in data science defined in one paragraph](https://github.com/rasbt/pattern_classification/blob/master/resources/data_glossary.md)
+[Terms in data science defined in one paragraph](https://github.com/rasbt/pattern_classification/blob/master/resources/data_glossary.md)  
+[Great R packages for data import, wrangling & visualization](http://www.computerworld.com/article/2921176/business-intelligence/great-r-packages-for-data-import-wrangling-visualization.html)
 
 [Origin](https://github.com/justmarkham/DAT4/blob/master/resources.md)  
 [Reference](http://www.dataschool.io/resources/)
