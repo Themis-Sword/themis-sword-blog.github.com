@@ -510,7 +510,8 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
 
 <p></p>
 
-<p><em>B 將100-200以內的質數挑選出來</em></p>
+<p><em>B 將100-200以內的質數挑選出來</em><br/>
+1)</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -547,8 +548,27 @@ zip()配合*號操作符，可以將已經zip過的列表對象解壓</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>
-<a href="http://www.cnblogs.com/zhoujinyi/archive/2013/06/07/3121976.html">Origin</a></p>
+<p></br>
+2)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">s</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="bp">False</span>
+</span><span class='line'>    <span class="k">return</span> <span class="bp">True</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">print</span> <span class="nb">filter</span><span class="p">(</span><span class="n">prime</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">201</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="http://www.cnblogs.com/zhoujinyi/archive/2013/06/07/3121976.html">Origin</a></p>
 </div>
 
 

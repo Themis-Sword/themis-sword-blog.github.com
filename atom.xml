@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2015-05-12T18:02:44+08:00</updated>
+  <updated>2015-05-14T09:41:22+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,188 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Potential Pythonic Pitfalls(FW)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/05142015/potential-pythonic-pitfalls-fw/"/>
+    <updated>2015-05-14T09:24:13+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/05142015/potential-pythonic-pitfalls-fw</id>
+    <content type="html"><![CDATA[<p>Python is a very expressive language. It provides us with a large standard library and many builtins to get the job done quickly. However, many can get lost in the power that it provides, fail to make full use of the standard library, value one liners over clarity and misunderstand its basic constructs. This is a non-exhaustive list of a few of the pitfalls programmers new to Python fall into.<!--more--></p>
+
+<h2>Not Knowing the Python Version</h2>
+
+<p>This is a recurring problem in StackOverflow questions. Many write perfectly working code for one version but they have a different version of Python installed on their system.<sup>[1]</sup> Make sure that you know the Python version you&rsquo;re working with. You can check via the following:</p>
+
+<pre><code>$ python --version
+Python 2.7.9
+</code></pre>
+
+<h2>Not using Pyenv</h2>
+
+<p><a href="https://github.com/yyuu/pyenv">pyenv</a> is a great tool for managing different Python versions. Unfortunately, it only works on *nix systems. On Mac OS, one can simply install it via  <code>brew install pyenv</code>  and on Linux, there is an <a href="https://github.com/yyuu/pyenv-installer">automatic installer</a>.</p>
+
+<h2>Obsessing Over One-Liners</h2>
+
+<p>Some get a real kick out of one liners. Many boast about their one-liner solutions even if they are less efficient than a multi-line solution.</p>
+
+<p>What this essentially means in Python is convoluted comprehensions having multiple expressions. For example:</p>
+
+<pre><code>l = [m for a, b in zip(this, that) if b.method(a) != b for m in b if not m.method(a, b) and reduce(lambda x, y: a + y.method(), (m, a, b))]
+</code></pre>
+
+<p>To be perfectly honest, I made the above example up. But, I&rsquo;ve seen plenty of people write code like it. Code like this will make no sense in a week&rsquo;s time. If you&rsquo;re trying to do something a little more complex that simply adding an item to a <code>list</code> or <code>set</code> with a condition then you&rsquo;re probably making a mistake.</p>
+
+<p>One-Liners are not achievements, yes they can seem very clever but they are not achievements. Its like thinking that shoving everything into your closet is an actual attempt at cleaning your room. Good code is clean, easy to read and efficient.</p>
+
+<h2>Initializing a set the Wrong Way</h2>
+
+<p>This is a more subtle problem that can catch you off guard. <code>set</code> comprehensions are a lot like list comprehensions.</p>
+
+<pre><code>&gt;&gt;&gt; { n for n in range(10) if n % 2 == 0 }
+{0, 8, 2, 4, 6}
+&gt;&gt;&gt; type({ n for n in range(10) if n % 2 == 0 })
+&lt;class 'set'&gt;
+</code></pre>
+
+<p>The above is one such example of a set comprehension. Sets are like lists in that they are containers. The difference is that a set cannot have any duplicate values and sets are unordered. Seeing set comprehensions people often make the mistake of thinking that <code>{}</code> initializes an empty set. It does not, it initializes an empty dict.</p>
+
+<pre><code>&gt;&gt;&gt; {}
+{}
+&gt;&gt;&gt; type({})
+&lt;class 'dict'&gt;
+</code></pre>
+
+<p>If we wish to initialize an empty set, then we simply call <code>set()</code>.</p>
+
+<pre><code>&gt;&gt;&gt; set()
+set()
+&gt;&gt;&gt; type(set())
+&lt;class 'set'&gt;
+</code></pre>
+
+<p>Note how an empty set is denoted as <code>set()</code> but a set containing something is denoted as items surrounded by curly braces.</p>
+
+<pre><code>&gt;&gt;&gt; s = set()
+&gt;&gt;&gt; s
+set()
+&gt;&gt;&gt; s.add(1)
+&gt;&gt;&gt; s
+{1}
+&gt;&gt;&gt; s.add(2)
+&gt;&gt;&gt; s
+{1, 2}
+</code></pre>
+
+<p>This is rather counter intuitive, since you&rsquo;d expect something like <code>set([1, 2])</code>.</p>
+
+<h2>Misunderstanding the GIL</h2>
+
+<p>The GIL (Global Interpreter Lock) means that only one thread in a Python program can be running at any one time. This implies that when we create a thread and expect to run in parallel it doesn&rsquo;t. What the Python interpreter is actually doing is quickly switching between different running threads. But this is an oversimplified version of what is actually happening. There are many instances in which things do run in parallel, like when using libraries that are essentially C extensions. But when running Python code, you don&rsquo;t get parallel execution most of the time. In other words, threads in Python are not like Threads in Java or C++.</p>
+
+<p>Many will try to defend Python by saying that these are real threads<sup>[2]</sup>. This is indeed true, but does not change the fact that how Python handles threads is different from what you&rsquo;d generally expect. This is the same case for a language like Ruby (which also has an interpreter lock).</p>
+
+<p>The prescribed solution to this is using the <code>multiprocessing</code> module. The <code>multiprocessing</code> module provides you with the <code>Process</code> class which is basically a nice cover over a fork. However, a fork is much more expensive than a thread, so you might not always see the performance benefits since now the different processes have to do a lot of work to co-ordinate with each other.</p>
+
+<p>However, this problem does not exist every implementation of Python. <a href="http://pypy.readthedocs.org/en/latest/stm.html">PyPy-stm</a> for example is an implementation of Python that tries to get rid of the GIL (still not stable yet). Implementations built on top of other platforms like the JVM (Jython) or CLR (IronPython) do not have GIL problems.</p>
+
+<p>All in all, be careful when using the <code>Thread</code> class, what you get might not be what you expect.</p>
+
+<h2>Using Old Style Classes</h2>
+
+<p>In Python 2 there are two types of classes, there&rsquo;s the &ldquo;old style&rdquo; classes, and there&rsquo;s the &ldquo;new style&rdquo; classes. If you&rsquo;re using Python 3, then you&rsquo;re using the &ldquo;new style&rdquo; classes by default. In order to make sure that you&rsquo;re using &ldquo;new style&rdquo; classes in Python 2, you need to inherit from <code>object</code> for any new class you create that isn&rsquo;t already inheriting from a builtin like <code>int</code> or <code>list</code>. In other words, your base class, the class that isn&rsquo;t inheriting from anything else, should always inherit from object.</p>
+
+<pre><code>class MyNewObject(object):
+    # stuff here
+</code></pre>
+
+<p>These &ldquo;new style&rdquo; classes fix some very fundamental flaws in the old style classes that we really don&rsquo;t need to get into. However, if anyone is interested they can find the information in the <a href="https://docs.python.org/2/reference/datamodel.html#new-style-and-classic-classes">related documentation</a>.</p>
+
+<h2>Iterating the Wrong Way</h2>
+
+<p>Its very common to see the following code from users who are relatively new to the language:</p>
+
+<pre><code>for name_index in range(len(names)):
+    print(names[name_index])
+</code></pre>
+
+<p>There is no need to call <code>len</code> in the above example, since iterating over the list is actually much simpler:</p>
+
+<pre><code>for name in names:
+    print(name)
+</code></pre>
+
+<p>Furthermore, there are a whole host of other tools at your disposal to make iteration easier. For example, <code>zip</code> can be used to iterate over two lists at once<sup>[3]</sup>:</p>
+
+<pre><code>for cat, dog in zip(cats, dogs):
+    print(cat, dog)
+</code></pre>
+
+<p>If we want to take into consideration both the index and the value list variable, we can use <code>enumerate</code>:<sup>[4]</sup></p>
+
+<pre><code>for index, cat in enumerate(cats):
+    print(cat, index)
+</code></pre>
+
+<p>There are also many useful functions to choose from in <a href="https://docs.python.org/3/library/itertools.html">itertools</a>. Please note however, that using <code>itertools</code> functions is not always the right choice. If one of the functions in <code>itertools</code> offers a very convenient solution to the problem you&rsquo;re trying to solve, like flattening a list or creating a getting the permutations of the contents of a given list, then go for it. But don&rsquo;t try to fit it into some part of your code just because you want to.</p>
+
+<p>The problem with <code>itertools</code> abuse happens so often that one highly respected Python contributor on StackOverflow has dedicated a significant part of their profile to it.<sup>[5]</sup></p>
+
+<h2>Using Mutable Default Arguments</h2>
+
+<p>I&rsquo;ve seen the following quite a lot:</p>
+
+<pre><code>def foo(a, b, c=[]):
+    # append to c
+    # do some more stuff
+</code></pre>
+
+<p>Never use mutable default arguments, instead use the following:</p>
+
+<pre><code>def foo(a, b, c=None):
+    if c is None:
+        c = []
+    # append to c
+    # do some more stuff
+</code></pre>
+
+<p>Instead of explaining what the problem is, its better to show the effects of using mutable default arguments:</p>
+
+<pre><code>In[2]: def foo(a, b, c=[]):
+...     c.append(a)
+...     c.append(b)
+...     print(c)
+...
+In[3]: foo(1, 1)
+[1, 1]
+In[4]: foo(1, 1)
+[1, 1, 1, 1]
+In[5]: foo(1, 1)
+[1, 1, 1, 1, 1, 1]
+</code></pre>
+
+<p>The same <code>c</code> is being referenced again and again every time the function is called. This can have some very unwanted consequences.</p>
+
+<h2>Takeaway</h2>
+
+<p>These are just some of the problems that one might run into when relatively new at Python. Please note however, that this is far from a comprehensive list of the problems that one might run into. The other pitfalls however are largely to do with people using Python like Java or C++ and trying to use Python in a way that they are familiar with. So, as a continuation of this, try diving into things like Python&rsquo;s <code>super</code> function. Take a look at <code>classmethod</code>, <code>staticmethod</code> and <code>__slots__</code>.</p>
+
+<h2>Update</h2>
+
+<p>Last Updated on 12 May 2015 4:50 PM (GMT +6)</p>
+
+<p>Made the section on <a href="http://nafiulis.me/potential-pythonic-pitfalls.html#misunderstanding-the-gil">Misunderstanding the GIL</a></p>
+
+<hr />
+
+<p>[1] Most people are taught Python using Python 2. However, when they go home and try things out themselves, they install Python 3 (quite a natural thing to install the latest version).<br/>
+[2] When people talk about real threads what they essentially mean is that these threads are real CPU threads, which are scheduled by the OS (Operating System).<br/>
+[3] <a href="https://docs.python.org/3/library/functions.html#zip">https://docs.python.org/3/library/functions.html#zip</a><br/>
+[4] <code>enumerate</code> can be further configured to produce the kind of index you want. <a href="https://docs.python.org/3/library/functions.html#enumerate">https://docs.python.org/3/library/functions.html#enumerate</a><br/>
+[5] <a href="http://stackoverflow.com/users/908494/abarnert">http://stackoverflow.com/users/908494/abarnert</a></p>
+
+<p><a href="http://nafiulis.me/potential-pythonic-pitfalls.html">Original</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Excerpt_Artificial Intelligence: A Modern Approach 3rd Edition(Russell &amp; Norvig)]]></title>
@@ -4325,28 +4507,6 @@ Look at these words: helpful, good question, agreed, together, useful, I’d be 
 </span><span class='line'>Tel: 000-0001
 </span><span class='line'>Read more at Buzzle: http://www.buzzle.com/articles/business-email-format.html</span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Stay Hungry, Stay Foolish]]></title>
-    <link href="http://www.aprilzephyr.com/blog/04082014/stay-hungry/"/>
-    <updated>2014-04-08T14:43:38+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/04082014/stay-hungry</id>
-    <content type="html"><![CDATA[<p><img src="http://www.aprilzephyr.com/images/stayhsf.png"><br/>
-<strong>&ldquo;Stay Hungry, Stay Foolish.&rdquo;</strong> Such resounding words delivered by Steve Jobs in 2005 Stanford Commencement Address which, was actually not the topic today. The quote is just about some reflections of a movie <a href="http://www.imdb.com/title/tt0107048/"><em>Groundhog Day</em></a>.<!--more--></p>
-
-<p><strong>&ldquo;What would you do if you were stuck in one place and every day was exactly the same, and nothing that you did mattered?&rdquo;</strong></p>
-
-<p>Phil Connors, the hero in that movie, an arrogant and egocentric Pittsburgh TV weatherman who, during a disgusted assignment covering the annual Groundhog Day event in Punxsutawney, finds himself in a time loop, repeating the same day over and over and over again. After indulging in periods of hedonism, dismay, bitterness, despair then numerous suicide attempts, he begins to re-examine his life and tries to change &mdash; improving and enriching himself through learning new skills and helping people.</p>
-
-<p>Some plots are interesting that when Phil tries harder and harder to cater to someone he is interested, either terrible consequences(such as slaps on his face) come or void&rsquo;s arising even he succeeds. It might be because Phil attempts to alter the original himself which he actually couldn&rsquo;t. Such alternation would not last long even though he makes it for a flash. Only when Phil accepts the circumstances calmly, patiently and ready to do some &ldquo;changes&rdquo; would he handle the &ldquo;magic&rdquo; to break such time loop and win his queen&rsquo;s heart.</p>
-
-<p>And so is the story telling us.</p>
-
-<p>In real life, things are so similar that few ones are satisfied with their presents living roughly the same days over and over and over again. Senses of helplessness and so far as abomination towards their own never vanish. Sorrowfully that only fewer ones would like or dare to make a change as to be sluggish, revolted and desperate dying finally.</p>
-
-<p>Staying hungry and foolish, is only for adequate constant advances for the nature of oneself could not be changed but the substance. There would be one and the only way to get rid of such suck life rhythm is to get cultured. Never scared, even if looked like deserted weeds temporarily. Just endeavor, struggle, enrich oneself, waiting patiently for the moment handling that fabulous magic to break one&rsquo;s own &ldquo;time loop&rdquo;.</p>
 ]]></content>
   </entry>
   
