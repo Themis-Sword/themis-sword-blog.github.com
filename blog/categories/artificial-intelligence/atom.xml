@@ -4,7 +4,7 @@
   <title><![CDATA[Category: artificial-intelligence | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/artificial-intelligence/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2015-05-14T11:12:03+08:00</updated>
+  <updated>2015-05-14T11:25:39+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,462 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python Tools for Machine Learning(FW)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/05142015/python-tools-for-machine-learning-fw/"/>
+    <updated>2015-05-14T11:15:31+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/05142015/python-tools-for-machine-learning-fw</id>
+    <content type="html"><![CDATA[<p>Python is one of the best programming languages out there, with an extensive coverage in scientific computing: computer vision, artificial intelligence, mathematics, astronomy to name a few. Unsurprisingly, this holds true for machine learning as well.</p>
+
+<p>Of course, it has some disadvantages too; one of which is that the tools and libraries for Python are scattered. If you are a unix-minded person, this works quite conveniently as every tool does one thing and does it well. However, this also requires you to know different libraries and tools, including their advantages and disadvantages, to be able to make a sound decision for the systems that you are building. Tools by themselves do not make a system or product better, but with the right tools we can work much more efficiently and be more productive. Therefore, knowing the right tools for your work domain is crucially important.<!--more--></p>
+
+<p>This post aims to list and describe the most useful machine learning tools and libraries that are available for Python. To make this list, we did not require the library to be written in Python; it was sufficient for it to have a Python interface. We also have a small section on Deep Learning at the end as it has received a fair amount of attention recently.</p>
+
+<p>We do not aim to list <strong>all</strong> the machine learning libraries available in Python (the Python package index returns 139 results for “machine learning”) but rather the ones that we found useful and well-maintained to the best of our knowledge. Moreover, although some of modules could be used for various machine learning tasks, we included libraries whose main focus is machine learning. For example, although <a href="http://docs.scipy.org/doc/scipy/reference/index.html">Scipy</a> has some <a href="http://docs.scipy.org/doc/scipy/reference/cluster.vq.html#module-scipy.cluster.vq">clustering algorithms</a>, the main focus of this module is not machine learning but rather in being a comprehensive set of tools for scientific computing. Therefore, we excluded libraries like Scipy from our list (though we use it too!).</p>
+
+<p>Another thing worth mentioning is that we also evaluated the library based on how it integrates with other scientific computing libraries because machine learning (either supervised or unsupervised) is part of a data processing system. If the library that you are using does not fit with your rest of data processing system, then you may find yourself spending a tremendous amount of time to creating intermediate layers between different libraries. It is important to have a great library in your toolset but it is also important for that library to integrate well with other libraries.</p>
+
+<p>If you are great in another language but want to use Python packages, we also briefly go into how you could integrate with Python to use the libraries listed in the post.</p>
+
+<h3>Scikit-Learn</h3>
+
+<p><a href="http://scikit-learn.org/stable/">Scikit Learn</a> is our machine learning tool of choice at CB Insights. We use it for classification, feature selection, feature extraction and clustering. What we like most about it is that it has a consistent API which is easy to use while also providing <strong>a lot of</strong> evaluation, diagnostic and cross-validation methods out of the box (sound familiar? Python has batteries-included approach as well). The icing on the cake is that it uses Scipy data structures under the hood and fits quite well with the rest of scientific computing in Python with Scipy, Numpy, Pandas and Matplotlib packages. Therefore, if you want to visualize the performance of your classifiers (say, using a precision-recall graph or Receiver Operating Characteristics (ROC) curve) those could be quickly visualized with help of Matplotlib. Considering how much time is spent on cleaning and structuring the data, this makes it very convenient to use the library as it tightly integrates to other scientific computing packages.</p>
+
+<p>Moreover, it has also limited Natural Language Processing feature extraction capabilities as well such as bag of words, tfidf, preprocessing (stop-words, custom preprocessing, analyzer). Moreover, if you want to quickly perform different benchmarks on toy datasets, it has a datasets module which provides common and useful datasets. You could also build toy datasets from these datasets for your own purposes to see if your model performs well before applying the model to the real-world dataset. For parameter optimization and tuning, it also provides grid search and random search. These features could not be accomplished if it did not have great community support or if it was not well-maintained. We look forward to its first stable release.</p>
+
+<h3>Statsmodels</h3>
+
+<p><a href="http://statsmodels.sourceforge.net/">Statsmodels</a> is another great library which focuses on statistical models and is used mainly for predictive and exploratory analysis. If you want to fit linear models, do statistical analysis, maybe a bit of predictive modeling, then Statsmodels is a great fit. The statistical tests it provides are quite comprehensive and cover validation tasks for most of the cases. If you are R or S user, it also accepts R syntax for some of its statistical models. It also accepts Numpy arrays as well as Pandas data-frames for its models making creating intermediate data structures a thing of the past!</p>
+
+<h3>PyMC</h3>
+
+<p><a href="http://pymc-devs.github.io/pymc/">PyMC</a> is the tool of choice for <strong>Bayesians</strong>. It includes Bayesian models, statistical distributions and diagnostic tools for the convergence of models. It includes some hierarchical models as well. If you want to do Bayesian Analysis, you should check it out.</p>
+
+<h3>Shogun</h3>
+
+<p><a href="http://www.shogun-toolbox.org/page/home/">Shogun</a> is a machine learning toolbox with a focus on Support Vector Machines (SVM) that is written in C++. It is actively developed and maintained, provides a Python interface and the Python interface is mostly documented well. However, we’ve found its API hard to use compared to Scikit-learn. Also, it does not provide many diagnostics or evaluation algorithms out of the box. However, its speed is a great advantage.</p>
+
+<h3>Gensim</h3>
+
+<p><a href="http://radimrehurek.com/gensim/">Gensim</a> is defined as “topic modeling for humans”. As its homepage describes, its main focus is Latent Dirichlet Allocation (LDA) and its variants. Different from other packages, it has support for Natural Language Processing which makes it easier to combine NLP pipeline with other machine learning algorithms. If your domain is in NLP and you want to do clustering and basic classification, you may want to check it out. Recently, they introduced Recurrent Neural Network based text representation called word2vec from Google to their API as well. This library is written purely in Python.</p>
+
+<h3>Orange</h3>
+
+<p><a href="http://orange.biolab.si/">Orange</a> is the only library that has a Graphical User Interface (GUI) among the libraries listed in this post. It is also quite comprehensive in terms of classification, clustering and feature selection methods and has some cross-validation methods. It is better than Scikit-learn in some aspects (classification methods, some preprocessing capabilities) as well, but it does not fit well with the rest of the scientific computing ecosystem (Numpy, Scipy, Matplotlib, Pandas) as nicely as Scikit-learn.</p>
+
+<p>Having a GUI is an important advantage over other libraries however. You could visualize cross-validation results, models and feature selection methods (you need to install Graphviz for some of the capabilities separately). Orange has its own data structures for most of the algorithms so you need to wrap the data into Orange-compatible data structures which makes the learning curve steeper.</p>
+
+<h3>PyMVPA</h3>
+
+<p><a href="http://www.pymvpa.org/index.html">PyMVPA</a> is another statistical learning library which is similar to Scikit-learn in terms of its API. It has cross-validation and diagnostic tools as well, but it is not as comprehensive as Scikit-learn.</p>
+
+<h3>Deep Learning</h3>
+
+<p>Even though deep learning is a subsection Machine Learning, we created a separate section for this field as it has received tremendous attention recently with various acqui-hires by Google and Facebook.</p>
+
+<h4>Theano</h4>
+
+<p><a href="http://deeplearning.net/software/theano/">Theano</a> is the most mature of deep learning library. It provides nice data structures (tensors) to represent layers of neural networks and they are efficient in terms of linear algebra similar to Numpy arrays. One caution is that, its API may not be very intuitive, which increases learning curve for users. There are a lot of libraries which build on top of Theano exploiting its data structures. It has support for GPU programming out of the box as well.</p>
+
+<h4>PyLearn2</h4>
+
+<p>There is another library built on top of Theano, called <a href="http://deeplearning.net/software/pylearn2/">PyLearn2</a> which brings modularity and configurability to Theano where you could create your neural network through different configuration files so that it would be easier to experiment different parameters. Arguably, it provides more modularity by separating the parameters and properties of neural network to the configuration file.</p>
+
+<h4>Decaf</h4>
+
+<p><a href="http://caffe.berkeleyvision.org/">Decaf</a> is a recently released deep learning library from UC Berkeley which has state of art neural network implementations which are tested on the Imagenet classification competition.</p>
+
+<h4>Nolearn</h4>
+
+<p>If you want to use excellent Scikit-learn library api in deep learning as well, <a href="http://packages.python.org/nolearn/">Nolearn</a> wraps Decaf to make the life easier for you. It is a wrapper on top of Decaf and it is compatible(mostly) with Scikit-learn, which makes Decaf even more awesome.</p>
+
+<h4>OverFeat</h4>
+
+<p><a href="https://github.com/sermanet/OverFeat">OverFeat</a> is a recent winner of <a href="https://plus.google.com/+PierreSermanet/posts/GxZHEH9ynoj">Dogs vs Cats (kaggle competition)</a> which is written in C++ but it comes with a Python wrapper as well(along with Matlab and Lua). It uses GPU through Torch library so it is quite fast. It also won the detection and localization competition in ImageNet classification. If your main domain is in computer vision, you may want to check it out.</p>
+
+<h4>Hebel</h4>
+
+<p><a href="https://github.com/hannes-brt/hebel">Hebel</a> is another neural network library comes along with GPU support out of the box. You could determine the properties of your neural networks through YAML files(similar to Pylearn2) which provides a nice way to separate your neural network from the code and quickly run your models. Since it has been recently developed, documentation is lacking in terms of depth and breadth. It is also limited in terms of neural network models as it only has one type of neural network model(feed-forward). However, it is written in pure Python and it will be nice library as it has a lot of utility functions such as schedulers and monitors which we did not see any library provides such functionalities.</p>
+
+<h4>Neurolab</h4>
+
+<p><a href="https://code.google.com/p/neurolab/">NeuroLab</a> is another neural network library which has nice api(similar to Matlab’s api if you are familiar) It has different variants of Recurrent Neural Network(RNN) implementation unlike other libraries. If you want to use RNN, this library might be one of the best choice with its simple API.</p>
+
+<h3>Integration with other languages</h3>
+
+<p>You do not know any Python but great in another language? Do not despair! One of the strengths of Python (among many other) is that it is a perfect glue language that you could use your tool of choice programming language with these libraries through access from Python. Following packages for respective programming languages could be used to combine Python with other programming languages:</p>
+
+<ul>
+<li>R &ndash;> <a href="http://rpython.r-forge.r-project.org/">RPython</a></li>
+<li>Matlab &ndash;> <a href="http://algoholic.eu/matpy/">matpython</a></li>
+<li>Java &ndash;> <a href="http://www.jython.org/jythonbook/en/1.0/JythonAndJavaIntegration.html">Jython</a></li>
+<li>Lua &ndash;> <a href="http://labix.org/lunatic-python">Lunatic Python</a></li>
+<li>Julia &ndash;> <a href="https://github.com/stevengj/PyCall.jl">PyCall.jl</a></li>
+</ul>
+
+
+<h3>Inactive Libraries</h3>
+
+<p>These are the libraries that did not release any updates for more than one year, we are listing them because some may find it useful, but it is unlikely that these libraries will be maintained for bug fixes and especially enhancements in the future:</p>
+
+<ul>
+<li><a href="https://github.com/mdp-toolkit/mdp-toolkit">MDP</a></li>
+<li><a href="http://mlpy.sourceforge.net/docs/3.5/">MlPy</a></li>
+<li><a href="http://ffnet.sourceforge.net/">FFnet</a></li>
+<li><a href="http://pybrain.org/">PyBrain</a></li>
+</ul>
+
+
+<p>If we are missing one of your favorite packages in Python for machine learning, feel free to let us know in the comments. We will gladly add that library to our blog post as well.</p>
+
+<p><a href="https://www.cbinsights.com/blog/python-tools-machine-learning/">Origin</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python數據分析入門(轉)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/05142015/pythonshu-ju-fen-xi-ru-men-zhuan/"/>
+    <updated>2015-05-14T10:46:30+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/05142015/pythonshu-ju-fen-xi-ru-men-zhuan</id>
+    <content type="html"><![CDATA[<p>最近，<a href="http://alstatr.blogspot.com/">Analysis with Programming</a>加入了<a href="http://planetpython.org/">Planet Python</a>。作為該網站的首批特約博客，我這裏來分享一下如何通過Python來開始數據分析。具體內容如下：</p>
+
+<ol>
+<li>數據導入<br/>
+** 導入本地的或者web端的CSV文件；</li>
+<li>數據變換；</li>
+<li>數據統計描述；</li>
+<li>假設檢驗<br/>
+** 單樣本t檢驗；</li>
+<li>可視化；</li>
+<li>創建自定義函數。<!--more--></li>
+</ol>
+
+
+<h3>數據導入</h3>
+
+<p>這是很關鍵的一步，為了後續的分析我們首先需要導入數據。通常來說，數據是CSV格式，就算不是，至少也可以轉換成CSV格式。在Python中，我們的操作如下：</p>
+
+<pre><code>import pandas as pd
+
+# Reading data locally
+df = pd.read_csv('/Users/al-ahmadgaidasaad/Documents/d.csv')
+
+# Reading data from web
+data_url = "https://raw.githubusercontent.com/alstat/Analysis-with-Programming/master/2014/Python/Numerical-Descriptions-of-the-Data/data.csv"
+df = pd.read_csv(data_url)
+</code></pre>
+
+<p>為了讀取本地CSV文件，我們需要pandas這個數據分析庫中的相應模塊。其中的read_csv函數能夠讀取本地和web數據。</p>
+
+<h3>數據變換</h3>
+
+<p>既然在工作空間有了數據，接下來就是數據變換。統計學家和科學家們通常會在這一步移除分析中的非必要數據。我們先看看數據：</p>
+
+<pre><code># Head of the data
+print df.head()
+
+# OUTPUT
+    Abra  Apayao  Benguet  Ifugao  Kalinga
+0   1243    2934      148    3300    10553
+1   4158    9235     4287    8063    35257
+2   1787    1922     1955    1074     4544
+3  17152   14501     3536   19607    31687
+4   1266    2385     2530    3315     8520
+
+# Tail of the data
+print df.tail()
+
+# OUTPUT
+ Abra  Apayao  Benguet  Ifugao  Kalinga
+74   2505   20878     3519   19737    16513
+75  60303   40065     7062   19422    61808
+76   6311    6756     3561   15910    23349
+77  13345   38902     2583   11096    68663
+78   2623   18264     3745   16787    16900
+</code></pre>
+
+<p>對R語言程序員來說，上述操作等價於通過print(head(df))來打印數據的前6行，以及通過print(tail(df))來打印數據的後6行。當然Python中，默認打印是5行，而R則是6行。因此R的代碼head(df, n = 10)，在Python中就是df.head(n = 10)，打印數據尾部也是同樣道理。</p>
+
+<p>在R語言中，數據列和行的名字通過colnames和rownames來分別進行提取。在Python中，我們則使用columns和index屬性來提取，如下：</p>
+
+<pre><code># Extracting column names
+print df.columns
+
+# OUTPUT
+Index([u'Abra', u'Apayao', u'Benguet', u'Ifugao', u'Kalinga'], dtype='object')
+
+# Extracting row names or the index
+print df.index
+
+# OUTPUT
+Int64Index([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78], dtype='int64')
+</code></pre>
+
+<p>數據轉置使用T方法，</p>
+
+<pre><code># Transpose data
+print df.T
+
+# OUTPUT
+            0      1     2      3     4      5     6      7     8      9  
+Abra      1243   4158  1787  17152  1266   5576   927  21540  1039   5424  
+Apayao    2934   9235  1922  14501  2385   7452  1099  17038  1382  10588  
+Benguet    148   4287  1955   3536  2530    771  2796   2463  2592   1064  
+Ifugao    3300   8063  1074  19607  3315  13134  5134  14226  6842  13828  
+Kalinga  10553  35257  4544  31687  8520  28252  3106  36238  4973  40140  
+
+         ...       69     70     71     72     73     74     75     76     77 
+Abra     ...    12763   2470  59094   6209  13316   2505  60303   6311  13345  
+Apayao   ...    37625  19532  35126   6335  38613  20878  40065   6756  38902  
+Benguet  ...     2354   4045   5987   3530   2585   3519   7062   3561   2583  
+Ifugao   ...     9838  17125  18940  15560   7746  19737  19422  15910  11096  
+Kalinga  ...    65782  15279  52437  24385  66148  16513  61808  23349  68663  
+
+            78 
+Abra      2623 
+Apayao   18264 
+Benguet   3745 
+Ifugao   16787 
+Kalinga  16900 
+
+Other transformations such as sort can be done using &lt;code&gt;sort&lt;/code&gt; attribute. Now let's extract a specific column. In Python, we do it using either &lt;code&gt;iloc&lt;/code&gt; or &lt;code&gt;ix&lt;/code&gt; attributes, but &lt;code&gt;ix&lt;/code&gt; is more robust and thus I prefer it. Assuming we want the head of the first column of the data, we have
+</code></pre>
+
+<p>其他變換，例如排序就是用sort屬性。現在我們提取特定的某列數據。Python中，可以使用iloc或者ix屬性。但是我更喜歡用ix，因為它更穩定一些。假設我們需數據第一列的前5行，我們有：</p>
+
+<pre><code>print df.ix[:, 0].head()
+
+# OUTPUT
+0     1243
+1     4158
+2     1787
+3    17152
+4     1266
+Name: Abra, dtype: int64
+</code></pre>
+
+<p>順便提一下，Python的索引是從0開始而非1。為了取出從11到20行的前3列數據，我們有：</p>
+
+<pre><code>print df.ix[10:20, 0:3]
+
+# OUTPUT
+    Abra  Apayao  Benguet
+10    981    1311     2560
+11  27366   15093     3039
+12   1100    1701     2382
+13   7212   11001     1088
+14   1048    1427     2847
+15  25679   15661     2942
+16   1055    2191     2119
+17   5437    6461      734
+18   1029    1183     2302
+19  23710   12222     2598
+20   1091    2343     2654
+</code></pre>
+
+<p>上述命令相當於df.ix[10:20, [&lsquo;Abra&rsquo;, &lsquo;Apayao&rsquo;, &lsquo;Benguet&rsquo;]]。</p>
+
+<p>為了舍棄數據中的列，這裏是列1(Apayao)和列2(Benguet)，我們使用drop屬性，如下：</p>
+
+<pre><code>print df.drop(df.columns[[1, 2]], axis = 1).head()
+
+# OUTPUT
+    Abra  Ifugao  Kalinga
+0   1243    3300    10553
+1   4158    8063    35257
+2   1787    1074     4544
+3  17152   19607    31687
+4   1266    3315     8520
+</code></pre>
+
+<p>axis 參數告訴函數到底舍棄列還是行。如果axis等於0，那麽就舍棄行。</p>
+
+<h3>統計描述</h3>
+
+<p>下一步就是通過describe屬性，對數據的統計特性進行描述：</p>
+
+<pre><code>print df.describe()
+
+# OUTPUT
+               Abra        Apayao      Benguet        Ifugao       Kalinga
+count     79.000000     79.000000    79.000000     79.000000     79.000000
+mean   12874.379747  16860.645570  3237.392405  12414.620253  30446.417722
+std    16746.466945  15448.153794  1588.536429   5034.282019  22245.707692
+min      927.000000    401.000000   148.000000   1074.000000   2346.000000
+25%     1524.000000   3435.500000  2328.000000   8205.000000   8601.500000
+50%     5790.000000  10588.000000  3202.000000  13044.000000  24494.000000
+75%    13330.500000  33289.000000  3918.500000  16099.500000  52510.500000
+max    60303.000000  54625.000000  8813.000000  21031.000000  68663.000000
+</code></pre>
+
+<h3>假設檢驗</h3>
+
+<p>Python有一個很好的統計推斷包。那就是scipy裏面的stats。ttest_1samp實現了單樣本t檢驗。因此，如果我們想檢驗數據Abra列的稻谷產量均值，通過零假設，這裏我們假定總體稻谷產量均值為15000，我們有：</p>
+
+<pre><code>from scipy import stats as ss
+
+# Perform one sample t-test using 1500 as the true mean
+print ss.ttest_1samp(a = df.ix[:, 'Abra'], popmean = 15000)
+
+# OUTPUT
+(-1.1281738488299586, 0.26270472069109496)
+</code></pre>
+
+<p>返回下述值組成的元祖：<br/>
+* t : 浮點或數組類型<br/>
+t統計量<br/>
+* prob : 浮點或數組類型<br/>
+two-tailed p-value 雙側概率值</p>
+
+<p>通過上面的輸出，看到p值是0.267遠大於α等於0.05，因此沒有充分的證據說平均稻谷產量不是150000。將這個檢驗應用到所有的變量，同樣假設均值為15000，我們有：</p>
+
+<pre><code>print ss.ttest_1samp(a = df, popmean = 15000)
+
+# OUTPUT
+(array([ -1.12817385,   1.07053437, -65.81425599,  -4.564575  ,   6.17156198]),
+ array([  2.62704721e-01,   2.87680340e-01,   4.15643528e-70,
+          1.83764399e-05,   2.82461897e-08]))
+</code></pre>
+
+<p>第一個數組是t統計量，第二個數組則是相應的p值。</p>
+
+<h3>可視化</h3>
+
+<p>Python中有許多可視化模塊，最流行的當屬matpalotlib庫。稍加提及，我們也可選擇bokeh和seaborn模塊。之前的博文中，我已經說明了matplotlib庫中的盒須圖模塊功能。<br/>
+<img src="/images/pda/1.jpg"></p>
+
+<pre><code># Import the module for plotting
+import matplotlib.pyplot as plt
+ plt.show(df.plot(kind = 'box'))
+</code></pre>
+
+<p>現在，我們可以用pandas模塊中集成R的ggplot主題來美化圖表。要使用ggplot，我們只需要在上述代碼中多加一行，</p>
+
+<pre><code>import matplotlib.pyplot as plt
+pd.options.display.mpl_style = 'default' # Sets the plotting display theme to ggplot2
+df.plot(kind = 'box')
+</code></pre>
+
+<p>這樣我們就得到如下圖表：
+<img src="/images/pda/2.jpg"></p>
+
+<p>比matplotlib.pyplot主題簡潔太多。但是在本博文中，我更願意引入seaborn模塊，該模塊是一個統計數據可視化庫。因此我們有：<br/>
+<img src="/images/pda/3.jpg"></p>
+
+<pre><code># Import the seaborn library
+import seaborn as sns
+ # Do the boxplot
+plt.show(sns.boxplot(df, widths = 0.5, color = "pastel"))
+</code></pre>
+
+<p>多性感的盒式圖，繼續往下看。<br/>
+<img src="/images/pda/4.jpg"></p>
+
+<pre><code>plt.show(sns.violinplot(df, widths = 0.5, color = "pastel"))
+</code></pre>
+
+<p><img src="/images/pda/5.jpg"></p>
+
+<pre><code>plt.show(sns.distplot(df.ix[:,2], rug = True, bins = 15))
+</code></pre>
+
+<p><img src="/images/pda/6.jpg"></p>
+
+<pre><code>with sns.axes_style("white"):
+    plt.show(sns.jointplot(df.ix[:,1], df.ix[:,2], kind = "kde"))
+</code></pre>
+
+<p><img src="/images/pda/7.jpg"></p>
+
+<pre><code>plt.show(sns.lmplot("Benguet", "Ifugao", df))
+</code></pre>
+
+<h3>創建自定義函數</h3>
+
+<p>在Python中，我們使用def函數來實現一個自定義函數。例如，如果我們要定義一個兩數相加的函數，如下即可：</p>
+
+<pre><code>def add_2int(x, y):
+    return x + y
+
+print add_2int(2, 2)
+
+# OUTPUT
+4
+</code></pre>
+
+<p>順便說一下，Python中的縮進是很重要的。通過縮進來定義函數作用域，就像在R語言中使用大括號{…}一樣。這有一個我們之前博文的例子：</p>
+
+<ol>
+<li>產生10個正態分布樣本，其中u=3和σ<sup>2</sup>=5</li>
+<li>基於95%的置信度，計算x̄和<img src="http://latex.codecogs.com/gif.latex?\bar{x}\mp&space;z_{a/}(2\frac{\sigma&space;}{\sqrt{n}})" title="\bar{x}\mp z_{a/}(2\frac{\sigma }{\sqrt{n}})" />;</li>
+<li>重復100次; 然後</li>
+<li>計算出置信區間包含真實均值的百分比</li>
+</ol>
+
+
+<p>Python中，程序如下：</p>
+
+<pre><code>import numpy as np
+import scipy.stats as ss
+
+def case(n = 10, mu = 3, sigma = np.sqrt(5), p = 0.025, rep = 100):
+    m = np.zeros((rep, 4))
+
+    for i in range(rep):
+        norm = np.random.normal(loc = mu, scale = sigma, size = n)
+        xbar = np.mean(norm)
+        low = xbar - ss.norm.ppf(q = 1 - p) * (sigma / np.sqrt(n))
+        up = xbar + ss.norm.ppf(q = 1 - p) * (sigma / np.sqrt(n))
+
+        if (mu &gt; low) &amp; (mu &lt; up):
+            rem = 1
+        else:
+            rem = 0
+
+        m[i, :] = [xbar, low, up, rem]
+
+    inside = np.sum(m[:, 3])
+    per = inside / rep
+    desc = "There are " + str(inside) + " confidence intervals that contain "
+           "the true mean (" + str(mu) + "), that is " + str(per) + " percent of the total CIs"
+
+    return {"Matrix": m, "Decision": desc}
+</code></pre>
+
+<p>上述代碼讀起來很簡單，但是循環的時候就很慢了。下面針對上述代碼進行了改進，這多虧了 Python專家，看我上篇博文的<a href="http://alstatr.blogspot.com/2014/01/python-and-r-is-python-really-faster.html#disqus_thread">15條意見</a>吧。</p>
+
+<pre><code>import numpy as np
+import scipy.stats as ss
+
+def case2(n = 10, mu = 3, sigma = np.sqrt(5), p = 0.025, rep = 100):
+    scaled_crit = ss.norm.ppf(q = 1 - p) * (sigma / np.sqrt(n))
+    norm = np.random.normal(loc = mu, scale = sigma, size = (rep, n))
+
+    xbar = norm.mean(1)
+    low = xbar - scaled_crit
+    up = xbar + scaled_crit
+
+    rem = (mu &gt; low) &amp; (mu &lt; up)
+    m = np.c_[xbar, low, up, rem]
+
+    inside = np.sum(m[:, 3])
+    per = inside / rep
+    desc = "There are " + str(inside) + " confidence intervals that contain "
+           "the true mean (" + str(mu) + "), that is " + str(per) + " percent of the total CIs"
+    return {"Matrix": m, "Decision": desc}
+</code></pre>
+
+<h3>更新</h3>
+
+<p>那些對於本文ipython notebook版本感興趣的，請點擊<a href="http://nuttenscl.be/Python_Getting_Started_with_Data_Analysis.html">這裏</a>。這篇文章由<a href="https://twitter.com/NuttensC">Nuttens Claude</a>負責轉換成 ipython notebook 。</p>
+
+<p>關於作者: <a href="http://python.jobbole.com/author/dengcy/">Den</a></p>
+
+<p><a href="http://alstatr.blogspot.ca/2015/02/python-getting-started-with-data.html">Origin</a><br/>
+<a href="http://python.jobbole.com/81133/">中文譯文</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Excerpt_Artificial Intelligence: A Modern Approach 3rd Edition(Russell &amp; Norvig)]]></title>
@@ -662,1486 +1118,6 @@ Following the view of induction as the inverse of deduction, some programs searc
 
 <p><a href="https://github.com/justmarkham/DAT4/blob/master/resources.md">Origin</a><br/>
 <a href="http://www.dataschool.io/resources/">Reference</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[機器學習&amp;深度學習資料]]></title>
-    <link href="http://www.aprilzephyr.com/blog/04302015/ji-qi-xue-xi-and-shen-du-xue-xi-zi-liao/"/>
-    <updated>2015-04-30T15:31:50+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/04302015/ji-qi-xue-xi-and-shen-du-xue-xi-zi-liao</id>
-    <content type="html"><![CDATA[<p><strong><a href="http://ml.memect.com">機器學習日報__好東西傳送門</a></strong><!--more--></p>
-
-<p>*<a href="http://www.erogol.com/brief-history-machine-learning/">《Brief History of Machine Learning》</a><br/>
-介紹:這是一篇介紹機器學習歷史的文章，介紹很全面，從感知機、神經網絡、決策樹、SVM、Adaboost到隨機森林、Deep Learning.</p>
-
-<p>*<a href="http://www.idsia.ch/%7Ejuergen/DeepLearning15May2014.pdf">《Deep Learning in Neural Networks: An Overview》</a><br/>
-介紹:這是瑞士人工智能實驗室Jurgen Schmidhuber寫的最新版本《神經網絡與深度學習綜述》本綜述的特點是以時間排序，從1940年開始講起，到60-80年代，80-90年代，一直講到2000年後及最近幾年的進展。涵蓋了deep learning裏各種tricks，引用非常全面.</p>
-
-<p>*<a href="http://machinelearningmastery.com/a-gentle-introduction-to-scikit-learn-a-python-machine-learning-library/">《A Gentle Introduction to Scikit-Learn: A Python Machine Learning Library》</a><br/>
-介紹:這是一份python機器學習庫,如果您是一位python工程師而且想深入的學習機器學習.那麽這篇文章或許能夠幫助到你.</p>
-
-<p>*<a href="http://machinelearningmastery.com/how-to-layout-and-manage-your-machine-learning-project/">《How to Layout and Manage Your Machine Learning Project》</a><br/>
-介紹:這一篇介紹如果設計和管理屬於你自己的機器學習項目的文章，裏面提供了管理模版、數據管理與實踐方法.</p>
-
-<p>*<a href="https://medium.com/code-poet/80ea3ec3c471">《Machine Learning is Fun!》</a><br/>
-介紹:如果你還不知道什麽是機器學習，或則是剛剛學習感覺到很枯燥乏味。那麽推薦一讀。這篇文章已經被翻譯成中文,如果有興趣可以移步<a href="http://blog.jobbole.com/67616/">http://blog.jobbole.com/67616/</a></p>
-
-<p>*<a href="http://cran.r-project.org/doc/contrib/Liu-R-refcard.pdf">《R語言參考卡片》</a><br/>
-介紹:R語言是機器學習的主要語言,有很多的朋友想學習R語言，但是總是忘記一些函數與關鍵字的含義。那麽這篇文章或許能夠幫助到你</p>
-
-<p>*<a href="http://blog.echen.me/2011/04/27/choosing-a-machine-learning-classifier/">《Choosing a Machine Learning Classifier》</a><br/>
-介紹:我該如何選擇機器學習算法，這篇文章比較直觀的比較了Naive Bayes，Logistic Regression，SVM，決策樹等方法的優劣，另外討論了樣本大小、Feature與Model權衡等問題。此外還有<a href="http://www.52ml.net/15063.html">已經翻譯了的版本。</a></p>
-
-<p>*<a href="http://www.toptal.com/machine-learning/an-introduction-to-deep-learning-from-perceptrons-to-deep-networks">《An Introduction to Deep Learning: From Perceptrons to Deep Networks》</a><br/>
-介紹：深度學習概述：從感知機到深度網絡，作者對於例子的選擇、理論的介紹都很到位，由淺入深。<a href="http://www.cnblogs.com/xiaowanyer/p/3701944.html">翻譯版本</a></p>
-
-<p>*<a href="http://vdisk.weibo.com/s/ayG13we2vxyKl">《The LION Way: Machine Learning plus Intelligent Optimization》</a><br/>
-介紹:&lt;機器學習與優化>這是一本機器學習的小冊子, 短短300多頁道盡機器學習的方方面面. 圖文並茂, 生動易懂, 沒有一坨坨公式的煩惱. 適合新手入門打基礎, 也適合老手溫故而知新. 比起MLAPP/PRML等大部頭, 也許這本你更需要!具體內容<a href="http://intelligent-optimization.org/LIONbook/">推薦閱讀</a></p>
-
-<p>*<a href="http://1.guzili.sinaapp.com/?p=174">《深度學習與統計學習理論》</a><br/>
-介紹:作者是來自百度，不過他本人已經在2014年4月份申請離職了。但是這篇文章很不錯如果你不知道深度學習與支持向量機/統計學習理論有什麽聯系？那麽應該立即看看這篇文章.</p>
-
-<p>*<a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-fall-2010/readings/MIT6_042JF10_notes.pdf">《計算機科學中的數學》</a><br/>
-介紹:這本書是由谷歌公司和MIT共同出品的計算機科學中的數學：<a href="https://github.com/ty4z2008/Qix/blob/master/Mathematics%20for%20Computer%20Science">Mathematics for Computer Science</a>，Eric Lehman et al 2013 。分為5大部分：1）證明，歸納。2）結構，數論，圖。3）計數，求和，生成函數。4）概率，隨機行走。5）遞歸。等等</p>
-
-<p>*<a href="http://research.microsoft.com/en-US/people/kannan/book-no-solutions-aug-21-2014.pdf">《信息時代的計算機科學理論(Foundations of Data Science)》</a><br/>
-介紹：信息時代的計算機科學理論,目前國內有紙質書購買，<a href="https://itunes.apple.com/us/book/introduction-to-data-science/id529088127">iTunes購買</a></p>
-
-<p>*<a href="http://vdisk.weibo.com/s/ayG13we2vx5qg">《Data Science with R》</a><br/>
-介紹:這是一本由雪城大學新編的第二版《數據科學入門》教材：偏實用型，淺顯易懂，適合想學習R語言的同學選讀。</p>
-
-<p>*<a href="http://www.informit.com/articles/article.aspx?p=2213858">《Twenty Questions for Donald Knuth》</a><br/>
-介紹:這並不是一篇文檔或書籍。這是篇向圖靈獎得主Donald Knuth提問記錄稿： 近日， Charles Leiserson, Al Aho, Jon Bentley等大神向Knuth提出了20個問題，內容包括TAOCP，P/NP問題，圖靈機，邏輯，以及為什麽大神不用電郵等等。</p>
-
-<p>*<a href="http://arxiv.org/pdf/1402.4304v2.pdf">《Automatic Construction and Natural-Language Description of Nonparametric Regression Models》</a><br/>
-介紹：不會統計怎麽辦？不知道如何選擇合適的統計模型怎麽辦？那這篇文章你的好好讀一讀了麻省理工Joshua B. Tenenbaum和劍橋Zoubin Ghahramani合作，寫了一篇關於automatic statistician的文章。可以自動選擇回歸模型類別，還能自動寫報告&hellip;</p>
-
-<p>*<a href="http://openreview.net/venue/iclr2014">《ICLR 2014論文集》</a><br/>
-介紹:對深度學習和representation learning最新進展有興趣的同學可以了解一下</p>
-
-<p>*<a href="http://www-nlp.stanford.edu/IR-book/">《Introduction to Information Retrieval》</a><br/>
-介紹：這是一本信息檢索相關的書籍，是由斯坦福Manning與谷歌副總裁Raghavan等合著的Introduction to Information Retrieval一直是北美最受歡迎的信息檢索教材之一。最近作者增加了該課程的幻燈片和作業。<a href="http://www-nlp.stanford.edu/IR-book/information-retrieval.html">IR相關資源</a></p>
-
-<p>*<a href="http://www.denizyuret.com/2014/02/machine-learning-in-5-pictures.html">《Machine learning in 10 pictures》</a><br/>
-介紹:Deniz Yuret用10張漂亮的圖來解釋機器學習重要概念：1. Bias/Variance Tradeoff 2. Overfitting 3. Bayesian / Occam&rsquo;s razor 4. Feature combination 5. Irrelevant feature 6. Basis function 7. Discriminative / Generative 8. Loss function 9. Least squares 10. Sparsity.很清晰</p>
-
-<p>*<a href="http://webscope.sandbox.yahoo.com/catalog.php?datatype=l">《雅虎研究院的數據集匯總》</a><br/>
-介紹：雅虎研究院的數據集匯總： 包括語言類數據，圖與社交類數據，評分與分類數據，計算廣告學數據，圖像數據，競賽數據，以及系統類的數據。</p>
-
-<p>*<a href="http://www-bcf.usc.edu/%7Egareth/ISL/">《An Introduction to Statistical Learning with Applications in R》</a><br/>
-介紹：這是一本斯坦福統計學著名教授Trevor Hastie和Robert Tibshirani的新書，並且在2014年一月已經<a href="https://class.stanford.edu/courses/HumanitiesScience/StatLearning/Winter2014/about">開課</a></p>
-
-<p>*<a href="http://machinelearningmastery.com/best-machine-learning-resources-for-getting-started/">Best Machine Learning Resources for Getting Started</a><br/>
-介紹：機器學習最佳入門學習資料匯總是專為機器學習初學者推薦的優質學習資源，幫助初學者快速入門。而且這篇文章的介紹已經被翻譯成<a href="http://article.yeeyan.org/view/22139/410514">中文版</a>。如果你不怎麽熟悉，那麽我建議你先看一看中文的介紹。</p>
-
-<p>*<a href="http://blog.sina.com.cn/s/blog_bda0d2f10101fpp4.html">My deep learning reading list</a><br/>
-介紹:主要是順著Bengio的PAMI review的文章找出來的。包括幾本綜述文章，將近100篇論文，各位山頭們的Presentation。全部都可以在google上找到。</p>
-
-<p>*<a href="http://www.morganclaypool.com/doi/abs/10.2200/S00266ED1V01Y201005HLT008?journalCode=hlt">Cross-Language Information Retrieval</a><br/>
-介紹：這是一本書籍，主要介紹的是跨語言信息檢索方面的知識。理論很多</p>
-
-<p>*<a href="http://www.ibm.com/developerworks/cn/web/1103_zhaoct_recommstudy1/index.html?ca=drs-">探索推薦引擎內部的秘密，第 1 部分: 推薦引擎初探</a><br/>
-<a href="http://www.ibm.com/developerworks/cn/web/1103_zhaoct_recommstudy2/index.html?ca=drs-">探索推薦引擎內部的秘密，第 2 部分: 深度推薦引擎相關算法 &ndash; 協同過濾</a><br/>
-<a href="http://www.ibm.com/developerworks/cn/web/1103_zhaoct_recommstudy3/index.html?ca=drs-">探索推薦引擎內部的秘密，第 3 部分: 深度推薦引擎相關算法 &ndash; 聚類</a><br/>
-介紹:本文共有三個系列，作者是來自IBM的工程師。它主要介紹了推薦引擎相關算法，並幫助讀者高效的實現這些算法。</p>
-
-<p>*<a href="http://mimno.infosci.cornell.edu/b/articles/ml-learn/">《Advice for students of machine learning》</a><br/>
-介紹：康奈爾大學信息科學系助理教授David Mimno寫的《對機器學習初學者的一點建議》， 寫的挺實際，強調實踐與理論結合，最後還引用了馮 • 諾依曼的名言: &ldquo;Young man, in mathematics you don&rsquo;t understand things. You just get used to them.&rdquo;</p>
-
-<p>*<a href="http://web.stanford.edu/group/pdplab/pdphandbook/">分布式並行處理的數據</a><br/>
-介紹：這是一本關於分布式並行處理的數據《Explorations in Parallel Distributed Processing: A Handbook of Models, Programs, and Exercises》,作者是斯坦福的James L. McClelland。著重介紹了各種神級網絡算法的分布式實現,做Distributed Deep Learning 的童鞋可以參考下</p>
-
-<p>*<a href="http://blogs.technet.com/b/machinelearning/archive/2014/07/01/what-is-machine-learning.aspx">《“機器學習”是什麽？》</a><br/>
-介紹:【“機器學習”是什麽？】John Platt是微軟研究院傑出科學家，17年來他一直在機器學習領域耕耘。近年來機器學習變得炙手可熱，Platt和同事們遂決定開設<a href="http://blogs.technet.com/b/machinelearning/">博客</a>，向公眾介紹機器學習的研究進展。機器學習是什麽，被應用在哪裏？來看Platt的<a href="http://blogs.technet.com/b/machinelearning/archive/2014/07/01/what-is-machine-learning.aspx">這篇博文</a></p>
-
-<p>*<a href="http://icml.cc/2014/index/article/15.htm">《2014年國際機器學習大會ICML 2014 論文》</a><br/>
-介紹：2014年國際機器學習大會（ICML）已經於6月21-26日在國家會議中心隆重舉辦。本次大會由微軟亞洲研究院和清華大學聯手主辦，是這個有著30多年歷史並享譽世界的機器學習領域的盛會首次來到中國，已成功吸引海內外1200多位學者的報名參與。幹貨很多，值得深入學習下</p>
-
-<p>*<a href="http://blogs.technet.com/b/machinelearning/archive/2014/07/11/machine-learning-for-industry-a-case-study.aspx">《Machine Learning for Industry: A Case Study》</a><br/>
-介紹：這篇文章主要是以Learning to Rank為例說明企業界機器學習的具體應用，RankNet對NDCG之類不敏感，加入NDCG因素後變成了LambdaRank，同樣的思想從神經網絡改為應用到Boosted Tree模型就成就了LambdaMART。<a href="http://research.microsoft.com/en-us/people/cburges/?WT.mc_id=Blog_MachLearn_General_DI">Chirs Burges</a>，微軟的機器學習大神，Yahoo 2010 Learning to Rank Challenge第一名得主，排序模型方面有RankNet，LambdaRank，LambdaMART，尤其以LambdaMART最為突出，代表論文為： <a href="http://research.microsoft.com/en-us/um/people/cburges/tech_reports/msr-tr-2010-82.pdf">From RankNet to LambdaRank to LambdaMART: An Overview</a> 此外，Burges還有很多有名的代表作，比如：<a href="http://research.microsoft.com/pubs/67119/svmtutorial.pdf">A Tutorial on Support Vector Machines for Pattern Recognition</a>,<a href="http://research.microsoft.com/en-us/um/people/cburges/tech_reports/tr-2004-56.pdf">Some Notes on Applied Mathematics for Machine Learning</a></p>
-
-<p>*<a href="http://meta-guide.com/software-meta-guide/100-best-github-deep-learning/">100 Best GitHub: Deep Learning</a><br/>
-介紹:100 Best GitHub: Deep Learning</p>
-
-<p>*<a href="http://www.52ml.net/12019.html">《UFLDL-斯坦福大學Andrew Ng教授“Deep Learning”教程》</a><br/>
-介紹:本教程將闡述無監督特征學習和深度學習的主要觀點。通過學習，你也將實現多個功能學習/深度學習算法，能看到它們為你工作，並學習如何應用/適應這些想法到新問題上。本教程假定機器學習的基本知識（特別是熟悉的監督學習，邏輯回歸，梯度下降的想法），如果你不熟悉這些想法，我們建議你去這裏<a href="http://openclassroom.stanford.edu/MainFolder/CoursePage.php?course=MachineLearning">機器學習課程</a>，並先完成第II，III，IV章（到邏輯回歸）。此外這關於這套教程的源代碼在github上面已經有python版本了 <a href="https://github.com/jatinshah/ufldl_tutorial">UFLDL Tutorial Code</a></p>
-
-<p>*<a href="http://research.microsoft.com/pubs/217165/ICASSP_DeepTextLearning_v07.pdf">《Deep Learning for Natural Language Processing and Related Applications》</a><br/>
-介紹:這份文檔來自微軟研究院,精髓很多。如果需要完全理解，需要一定的機器學習基礎。不過有些地方會讓人眼前一亮,毛塞頓開。</p>
-
-<p>*<a href="https://colah.github.io/posts/2014-07-Understanding-Convolutions/">Understanding Convolutions</a><br/>
-介紹:這是一篇介紹圖像卷積運算的文章，講的已經算比較詳細的了</p>
-
-<p>*<a href="http://mlss2014.com/">《Machine Learning Summer School》</a><br/>
-介紹：<a href="https://www.youtube.com/user/smolix">每天請一個大牛來講座，主要涉及機器學習，大數據分析，並行計算以及人腦研究</a></p>
-
-<p>*<a href="https://github.com/josephmisiti/awesome-machine-learning">《Awesome Machine Learning》</a><br/>
-介紹：一個超級完整的機器學習開源庫總結，如果你認為這個碉堡了，那後面這個列表會更讓你驚訝：【Awesome Awesomeness】,國內已經有熱心的朋友進行了翻譯<a href="http://blog.jobbole.com/73806/">中文介紹</a>，<a href="https://github.com/josephmisiti/awesome-machine-learning/blob/master/books.md">機器學習數據挖掘免費電子書</a></p>
-
-<p>*<a href="http://see.stanford.edu/see/lecturelist.aspx?coll=63480b48-8819-4efd-8412-263f1a472f5a">斯坦福《自然語言處理》課程視頻</a><br/>
-介紹:ACL候任主席、斯坦福大學計算機系Chris Manning教授的《自然語言處理》課程所有視頻已經可以在斯坦福公開課網站上觀看了（如Chrome不行，可用IE觀看） 作業與測驗也可以下載。</p>
-
-<p>*<a href="http://freemind.pluskid.org/machine-learning/deep-learning-and-shallow-learning/">《Deep Learning and Shallow Learning》</a><br/>
-介紹:對比 Deep Learning 和 Shallow Learning 的好文，來著浙大畢業、MIT 讀博的 Chiyuan Zhang 的博客。</p>
-
-<p>*<a href="http://benanne.github.io/2014/08/05/spotify-cnns.html">《Recommending music on Spotify with deep learning》</a><br/>
-介紹:利用卷積神經網絡做音樂推薦。</p>
-
-<p>*<a href="http://neuralnetworksanddeeplearning.com/index.html">《Neural Networks and Deep Learning》</a><br/>
-介紹：神經網絡的免費在線書，已經寫了三章了，還有<a href="https://github.com/mnielsen/neural-networks-and-deep-learning">對應的開源代碼</a>，愛好者的福音。</p>
-
-<p>*<a href="http://machinelearningmastery.com/java-machine-learning/">《Java Machine Learning》</a><br/>
-介紹：Java機器學習相關平臺和開源的機器學習庫，按照大數據、NLP、計算機視覺和Deep Learning分類進行了整理。看起來挺全的，Java愛好者值得收藏。</p>
-
-<p>*<a href="http://www.oschina.net/translate/6-tips-for-writing-better-code">《Machine Learning Theory: An Introductory Primer》</a><br/>
-介紹：機器學習最基本的入門文章，適合零基礎者</p>
-
-<p>*<a href="http://www.ctocio.com/hotnews/15919.html">《機器學習常見算法分類匯總》</a><br/>
-介紹：機器學習的算法很多。很多時候困惑人們都是，很多算法是一類算法，而有些算法又是從其他算法中延伸出來的。這裏，我們從兩個方面來給大家介紹，第一個方面是學習的方式，第二個方面是算法的類似性。</p>
-
-<p>*<a href="http://suanfazu.com/discussion/68/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87survey%E5%90%88%E9%9B%86">《機器學習經典論文/survey合集》</a><br/>
-介紹：看題目你已經知道了是什麽內容,沒錯。裏面有很多經典的機器學習論文值得仔細與反復的閱讀。</p>
-
-<p>*<a href="http://work.caltech.edu/library/">《機器學習視頻庫》</a><br/>
-介紹：視頻由加州理工學院（Caltech）出品。需要英語底子。</p>
-
-<p>*<a href="http://suanfazu.com/discussion/109/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%BB%8F%E5%85%B8%E4%B9%A6%E7%B1%8D">機器學習經典書籍</a><br/>
-介紹：總結了機器學習的經典書籍，包括數學基礎和算法理論的書籍，可做為入門參考書單。</p>
-
-<p>*<a href="http://efytimes.com/e1/fullnews.asp?edid=121516">16 Free eBooks On Machine Learning</a><br/>
-介紹:16本機器學習的電子書，可以下載下來在pad，手機上面任意時刻去閱讀。不多我建議你看完一本再下載一本。</p>
-
-<p>*<a href="http://www.erogol.com/large-set-machine-learning-resources-beginners-mavens/">《A Large set of Machine Learning Resources for Beginners to Mavens》</a><br/>
-介紹:標題很大，從新手到專家。不過看完上面所有資料。肯定是專家了</p>
-
-<p>*<a href="http://article.yeeyan.org/view/22139/410514">機器學習最佳入門學習資料匯總</a><br/>
-介紹：入門的書真的很多，而且我已經幫你找齊了。</p>
-
-<p>*<a href="http://users.soe.ucsc.edu/%7Eniejiazhong/slides/chandra.pdf">Sibyl</a><br/>
-介紹：Sibyl 是一個監督式機器學習系統，用來解決預測方面的問題，比如 YouTube 的視頻推薦。</p>
-
-<p>*<a href="http://www.iro.umontreal.ca/%7Ebengioy/dlbook/">《Deep Learning》</a><br/>
-介紹：Yoshua Bengio, Ian Goodfellow, Aaron Courville著</p>
-
-<p>*<a href="http://www.slideshare.net/ssuser9cc1bd/piji-li-dltm">《Neural Network &amp; Text Mining》</a><br/>
-介紹:關於(Deep) Neural Networks在 NLP 和 Text Mining 方面一些paper的總結</p>
-
-<p>*<a href="http://www.cnblogs.com/lxy2017/p/3927226.html">《前景目標檢測1（總結）》</a><br/>
-介紹:計算機視覺入門之前景目標檢測1（總結）</p>
-
-<p>*<a href="http://www.52ml.net/17004.html">《行人檢測》</a><br/>
-介紹:計算機視覺入門之行人檢測</p>
-
-<p>*<a href="http://www.kdnuggets.com/2014/08/deep-learning-important-resources-learning-understanding.html">《Deep Learning – important resources for learning and understanding》</a><br/>
-介紹:Important resources for learning and understanding . Is awesome</p>
-
-<p>*<a href="http://www.toptal.com/machine-learning/machine-learning-theory-an-introductory-primer">《Machine Learning Theory: An Introductory Primer》</a><br/>
-介紹:這又是一篇機器學習初學者的入門文章。值得一讀</p>
-
-<p>*<a href="http://neuralnetworksanddeeplearning.com/">《Neural Networks and Deep Learning》</a><br/>
-介紹:在線Neural Networks and Deep Learning電子書</p>
-
-<p>*<a href="http://www.52nlp.cn/python-%E7%BD%91%E9%A1%B5%E7%88%AC%E8%99%AB-%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86-%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98">《Python 網頁爬蟲 &amp; 文本處理 &amp; 科學計算 &amp; 機器學習 &amp; 數據挖掘兵器譜》</a><br/>
-介紹:python的17個關於機器學習的工具</p>
-
-<p>*<a href="http://www.flickering.cn/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/2014/06/%E7%A5%9E%E5%A5%87%E7%9A%84%E4%BC%BD%E7%8E%9B%E5%87%BD%E6%95%B0%E4%B8%8A/">《神奇的伽瑪函數(上)》</a><br/>
-<a href="http://www.flickering.cn/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/2014/06/%E7%A5%9E%E5%A5%87%E7%9A%84%E4%BC%BD%E7%8E%9B%E5%87%BD%E6%95%B0%E4%B8%8A/">神奇的伽瑪函數(下)</a></p>
-
-<p>*<a href="http://cxwangyi.github.io/2014/01/20/distributed-machine-learning/">《分布式機器學習的故事》</a><br/>
-介紹:作者王益目前是騰訊廣告算法總監，王益博士畢業後在google任研究。這篇文章王益博士7年來從谷歌到騰訊對於分布機器學習的所見所聞。值得細讀</p>
-
-<p>*<a href="http://metacademy.org/roadmaps/cjrd/level-up-your-ml">《機器學習提升之道（Level-Up Your Machine Learning）》</a><br/>
-介紹:把機器學習提升的級別分為0~4級，每級需要學習的教材和掌握的知識。這樣，給機器學習者提供一個上進的路線圖，以免走彎路。另外，整個網站都是關於機器學習的，資源很豐富。</p>
-
-<p>*<a href="http://www.mlsurveys.com/">Machine Learning Surveys</a><br/>
-介紹:機器學習各個方向綜述的網站</p>
-
-<p>*<a href="http://deeplearning.net/reading-list/">Deep Learning Reading list</a><br/>
-介紹:深度學習閱資源列表</p>
-
-<p>*<a href="http://research.microsoft.com/pubs/219984/DeepLearningBook_RefsByLastFirstNames.pdf">《Deep Learning: Methods and Applications》</a><br/>
-介紹：這是一本來自微的研究員 li Peng和Dong Yu所著的關於深度學習的方法和應用的電子書</p>
-
-<p>*<a href="http://pan.baidu.com/s/1pJ0ok7T">《Machine Learning Summer School 2014》</a><br/>
-介紹:2014年七月CMU舉辦的機器學習夏季課剛剛結束 有近50小時的視頻、十多個PDF版幻燈片，覆蓋 深度學習，貝葉斯，分布式機器學習，伸縮性 等熱點話題。所有13名講師都是牛人：包括大牛Tom Mitchell （他的［機器學習］是名校的常用教材），還有CMU李沐 .（1080P高清喲）</p>
-
-<p>*<a href="http://users.soe.ucsc.edu/%7Eniejiazhong/slides/chandra.pdf">《Sibyl: 來自Google的大規模機器學習系統》</a><br/>
-介紹:在今年的IEEE/IFIP可靠系統和網絡（DSN）國際會議上，Google軟件工程師Tushar Chandra做了一個關於Sibyl系統的主題演講。 Sibyl是一個監督式機器學習系統，用來解決預測方面的問題，比如YouTube的視頻推薦。詳情請閱讀<a href="http://www.infoq.com/cn/news/2014/07/google-sibyl">google sibyl</a></p>
-
-<p>*<a href="http://googleresearch.blogspot.com/2014/09/building-deeper-understanding-of-images.html">《Building a deeper understanding of images》</a><br/>
-介紹:谷歌研究院的Christian Szegedy在谷歌研究院的博客上簡要地介紹了他們今年參加ImageNet取得好成績的GoogLeNet系統.是關於圖像處理的。</p>
-
-<p>*<a href="https://github.com/memect/hao/blob/master/awesome/bayesian-network-python.md">《Bayesian network 與python概率編程實戰入門》</a><br/>
-介紹:貝葉斯學習。如果不是很清可看看<a href="http://www.infoq.com/cn/news/2014/07/programming-language-bayes">概率編程語言與貝葉斯方法實踐</a></p>
-
-<p>*<a href="http://www.reddit.com/r/MachineLearning/comments/2fxi6v/ama_michael_i_jordan/">《AMA: Michael I Jordan》</a><br/>
-介紹:網友問伯克利機器學習大牛、美國雙料院士Michael I. Jordan："如果你有10億美金，你怎麽花？Jordan: &ldquo;我會用這10億美金建造一個NASA級別的自然語言處理研究項目。&rdquo;</p>
-
-<p>*<a href="http://www.cnblogs.com/tornadomeet/p/3395593.html">《機器學習&amp;數據挖掘筆記_16（常見面試之機器學習算法思想簡單梳理）》</a><br/>
-介紹:常見面試之機器學習算法思想簡單梳理,此外作者還有一些其他的<a href="http://www.cnblogs.com/tornadomeet/tag/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">機器學習與數據挖掘文章</a>和<a href="http://www.cnblogs.com/tornadomeet/tag/Deep%E3%80%80Learning/">深度學習文章</a>,不僅是理論還有源碼。</p>
-
-<p>*<a href="http://www.kdnuggets.com/2014/09/most-viewed-web-mining-lectures-videolectures.html">《文本與數據挖掘視頻匯總》</a><br/>
-介紹：Videolectures上最受歡迎的25個文本與數據挖掘視頻匯總</p>
-
-<p>*<a href="http://timdettmers.wordpress.com/2014/08/14/which-gpu-for-deep-learning/">《怎麽選擇深度學習的GPUs》</a><br/>
-介紹:<a href="http://t.cn/RhpuD1G">在Kaggle上經常取得不錯成績的Tim Dettmers介紹了他自己是怎麽選擇深度學習的GPUs, 以及個人如何構建深度學習的GPU集群:</a></p>
-
-<p>*<a href="http://www.infoq.com/cn/news/2014/09/depth-model">《對話機器學習大神Michael Jordan：深度模型》</a><br/>
-介紹:對話機器學習大神Michael Jordan</p>
-
-<p>*<a href="http://blog.sina.com.cn/s/blog_46d0a3930101fswl.html">《Deep Learning 和 Knowledge Graph 引爆大數據革命》</a><br/>
-介紹:還有<a href="http://blog.sina.com.cn/s/blog_46d0a3930101gs5h.html">２，３部分</a></p>
-
-<p>*<a href="http://blog.sina.com.cn/s/blog_46d0a3930101h6nf.html">《Deep Learning 教程翻譯》</a><br/>
-介紹:是Stanford 教授 Andrew Ng 的 Deep Learning 教程，國內的機器學習愛好者很熱心的把這個教程翻譯成了中文。如果你英語不好，可以看看這個</p>
-
-<p>*<a href="http://markus.com/deep-learning-101/">《Deep Learning 101》</a><br/>
-介紹:因為近兩年來，深度學習在媒體界被炒作很厲害（就像大數據）。其實很多人都還不知道什麽是深度學習。這篇文章由淺入深。告訴你深度學究竟是什麽！</p>
-
-<p>*<a href="http://ufldl.stanford.edu/wiki/index.php/UFLDL_Tutorial">《UFLDL Tutorial》</a><br/>
-介紹:這是斯坦福大學做的一免費課程（很勉強），這個可以給你在深度學習的路上給你一個學習的思路。裏面提到了一些基本的算法。而且告訴你如何去應用到實際環境中。<a href="http://ufldl.stanford.edu/wiki/index.php/UFLDL%E6%95%99%E7%A8%8B">中文版</a></p>
-
-<p>*<a href="http://deeplearning.cs.toronto.edu/">《Toronto Deep Learning Demos》</a><br/>
-介紹:這是多倫多大學做的一個深度學習用來識別圖片標簽／圖轉文字的demo。是一個實際應用案例。有源碼</p>
-
-<p>*<a href="http://metacademy.org/roadmaps/rgrosse/deep_learning">《Deep learning from the bottom up》</a><br/>
-介紹:機器學習模型，閱讀這個內容需要有一定的基礎。</p>
-
-<p>*<a href="http://cran.r-project.org/web/views/">《R工具包的分類匯總》</a><br/>
-介紹: (CRAN Task Views, 34種常見任務,每個任務又各自分類列舉若幹常用相關工具包) 例如: 機器學習，自然語言處理，時間序列分析，空間信息分析，多重變量分析，計量經濟學，心理統計學，社會學統計，化學計量學，環境科學，藥物代謝動力學 等</p>
-
-<p>*<a href="http://www.ctocio.com/hotnews/15919.html">《機器學習常見算法分類匯總》</a><br/>
-介紹: 機器學習無疑是當前數據分析領域的一個熱點內容。很多人在平時的工作中都或多或少會用到機器學習的算法。本文為您總結一下常見的機器學習算法，以供您在工作和學習中參考.</p>
-
-<p>*<a href="http://blog.csdn.net/zouxy09/article/details/8775360">《Deep Learning（深度學習）學習筆記整理系列》</a><br/>
-介紹: 很多幹貨，而且作者還總結了好幾個系列。另外還作者還了一個<a href="http://blog.csdn.net/zouxy09/article/details/14222605">文章導航</a>.非常的感謝作者總結。</p>
-
-<p>*<a href="http://research.microsoft.com/apps/video/default.aspx?id=206976&amp;l=i">《Tutorials Session A &ndash; Deep Learning for Computer Vision》</a><br/>
-介紹:傳送理由：Rob Fergus的用深度學習做計算機是覺的NIPS 2013教程。有mp4, mp3, pdf各種<a href="http://msrvideo.vo.msecnd.net/rmcvideos/206976/dl/206976.pdf">下載</a>他是紐約大學教授，目前也在Facebook工作，他2014年的8篇<a href="http://cs.nyu.edu/%7Efergus/pmwiki/pmwiki.php?n=PmWiki.Publications">論文</a></p>
-
-<p>*<a href="https://github.com/xpqiu/fnlp/">《FudanNLP》</a><br/>
-介紹:FudanNLP，這是一個復旦大學計算機學院開發的開源中文自然語言處理（NLP）工具包 Fudan NLP裏包含中文分詞、關鍵詞抽取、命名實體識別、詞性標註、時間詞抽取、語法分析等功能，對搜索引擎 文本分析等極為有價值。</p>
-
-<p>*<a href="http://engineering.linkedin.com/large-scale-machine-learning/open-sourcing-ml-ease">《Open Sourcing ml-ease》</a><br/>
-介紹:LinkedIn 開源的機器學習工具包,支持單機, Hadoop cluster，和 Spark cluster 重點是 logistic regression 算法</p>
-
-<p>*<a href="http://ztl2004.github.io/MachineLearningWeekly/index.html">《機器學習周刊》</a><br/>
-介紹:對於英語不好，但又很想學習機器學習的朋友。是一個大的福利。機器學習周刊目前主要提供中文版，還是面向廣大國內愛好者，內容涉及機器學習、數據挖掘、並行系統、圖像識別、人工智能、機器人等等。謝謝作者</p>
-
-<p>*<a href="http://v.163.com/special/opencourse/daishu.html">《線性代數》</a><br/>
-介紹：《線性代數》是《機器學習》的重要數學先導課程。其實《線代》這門課講得淺顯易懂特別不容易，如果一上來就講逆序數及羅列行列式性質，很容易讓學生失去學習的興趣。我個人推薦的最佳《線性代數》課程是麻省理工Gilbert Strang教授的課程。 <a href="http://ocw.mit.edu/courses/mathematics/18-06-linear-algebra-spring-2010/">課程主頁</a></p>
-
-<p>*<a href="http://blog.andreamostosi.name/big-data/">《Big-data》</a><br/>
-介紹:大數據數據處理資源、工具不完備列表，從框架、分布式編程、分布式文件系統、鍵值數據模型、圖數據模型、數據可視化、列存儲、機器學習等。很贊的資源匯總。</p>
-
-<p>*<a href="http://yahoolabs.tumblr.com/post/97839313996/machine-learning-for-smart-dummies">《machine learning for smart dummies》</a><br/>
-介紹:雅虎邀請了一名來自本古裏安大學的訪問學者，制作了一套關於機器學習的系列視頻課程。本課程共分為7期，詳細講解了有關SVM, boosting, nearest neighbors, decision trees 等常規機器學習算法的理論基礎知識。</p>
-
-<p>*<a href="http://arxiv.org/abs/1409.7770">《Entanglement-Based Quantum Machine Learning》</a><br/>
-介紹:應對大數據時代，量子機器學習的第一個實驗<a href="http://arxiv-web3.library.cornell.edu/pdf/1409.7770.pdf">paper下載</a></p>
-
-<p>*<a href="http://www.wired.com/2014/01/how-to-hack-okcupid/all/">《How a Math Genius Hacked OkCupid to Find True Love》</a><br/>
-介紹:Wired雜誌報道了UCLA數學博士Chris McKinlay （圖1）通過大數據手段+機器學習方法破解婚戀網站配對算法找到真愛的故事,通過Python腳本控制著12個賬號，下載了婚戀網站2萬女用戶的600萬問題答案，對他們進行了統計抽樣及聚類分析（圖2，3），最後終於收獲了真愛。科技改變命運！</p>
-
-<p>*<a href="https://www.edx.org/course/mitx/mitx-6-832x-underactuated-robotics-3511">《Underactuated Robotics》</a><br/>
-介紹:MIT的Underactuated Robotics於 2014年10月1日開課，該課屬於MIT研究生級別的課程，對機器人和非線性動力系統感興趣的朋友不妨可以挑戰一下這門課程！</p>
-
-<p>*<a href="http://yanbohappy.sinaapp.com/?p=498">《mllib實踐經驗(1)》</a><br/>
-介紹:mllib實踐經驗分享</p>
-
-<p>*<a href="http://www.seobythesea.com/2014/09/google-turns-deep-learning-classification-fight-web-spam/">《Google Turns To Deep Learning Classification To Fight Web Spam》</a><br/>
-介紹:Google用Deep Learning做的antispam(反垃圾郵件)</p>
-
-<p>*<a href="https://github.com/memect/hao/blob/master/awesome/nlp.md">NLP常用信息資源</a><br/>
-介紹:NLP常用信息資源</p>
-
-<p>*<a href="https://github.com/soulmachine/machine-learning-cheat-sheet">《機器學習速查表》</a><br/>
-介紹:機器學習速查表</p>
-
-<p>*<a href="http://arnetminer.org/conferencebestpapers">《Best Papers vs. Top Cited Papers in Computer Science》</a><br/>
-介紹：從1996年開始在計算機科學的論文中被引用次數最多的論文</p>
-
-<p>*<a href="http://mmcheng.net/zh/itam/">《InfiniTAM: 基於深度圖像的體數據集成框架》</a><br/>
-介紹：把今年的一個ACM Trans. on Graphics (TOG)論文中的代碼整理為一個開源的算法框架，共享出來了。歡迎大家使用。可以實時的采集3D數據、重建出三維模型。Online learning，GPU Random forest，GPU CRF也會後續公開。</p>
-
-<p>*<a href="http://karpathy.github.io/neuralnets/">《Hacker&rsquo;s guide to Neural Networks》</a><br/>
-介紹：【神經網絡黑客指南】現在，最火莫過於深度學習（Deep Learning），怎樣更好學習它？可以讓你在瀏覽器中，跑起深度學習效果的超酷開源項目convnetjs作者karpathy告訴你，最佳技巧是，當你開始寫代碼，一切將變得清晰。他剛發布了一本圖書，不斷在線更新</p>
-
-<p>*<a href="http://machinelearningmastery.com/building-a-production-machine-learning-infrastructure/">《Building a Production Machine Learning Infrastructure》</a><br/>
-介紹：前Google廣告系統工程師Josh Wills 講述工業界和學術界機器學習的異同,大實話</p>
-
-<p>*<a href="http://neo4j.com/blog/deep-learning-sentiment-analysis-movie-reviews-using-neo4j/">《Deep Learning Sentiment Analysis for Movie Reviews using Neo4j》</a><br/>
-介紹：使用<a href="http://www.neo4j.org/">Neo4j</a>做電影評論的情感分析。</p>
-
-<p>*<a href="http://memkite.com/deep-learning-bibliography/">《DeepLearning.University – An Annotated Deep Learning Bibliography》</a><br/>
-介紹：不僅是資料，而且還對有些資料做了註釋。</p>
-
-<p>*<a href="http://www.datarobot.com/blog/a-primer-on-deep-learning/">《A primer on deeping learning》</a><br/>
-介紹：深度學習入門的初級讀本</p>
-
-<p>*<a href="https://news.ycombinator.com/item?id=8379571">《Machine learning is teaching us the secret to teaching 》</a><br/>
-介紹：機器學習教會了我們什麽？</p>
-
-<p>*<a href="http://scikit-learn.org/stable/documentation.html">《scikit-learn：用於機器學習的Python模塊</a><br/>
-介紹：scikit-learn是在SciPy基礎上構建的用於機器學習的Python模塊。</p>
-
-<p>*<a href="http://www.infoq.com/cn/news/2014/10/interview-michael-jordan">《對話機器學習大神Michael Jordan：解析領域中各類模型》</a><br/>
-介紹：喬丹教授（Michael I. Jordan）教授是機器學習領域神經網絡的大牛，他對深度學習、神經網絡有著很濃厚的興趣。因此，很多提問的問題中包含了機器學習領域的各類模型，喬丹教授對此一一做了解釋和展望。</p>
-
-<p>*<a href="http://www.redblobgames.com/pathfinding/a-star/introduction.html">《A*搜索算法的可視化短教程》</a><br/>
-介紹：A*搜索是人工智能基本算法，用於高效地搜索圖中兩點的最佳路徑, 核心是 g(n)+h(n): g(n)是從起點到頂點n的實際代價，h(n)是頂點n到目標頂點的估算代價。<a href="https://github.com/memect/hao/issues/256">合集</a></p>
-
-<p>*<a href="http://code.csdn.net/news/2822123">《基於雲的自然語言處理開源項目FudanNLP》</a><br/>
-介紹：本項目利用了Microsoft Azure，可以在幾分種內完成NLP on Azure Website的部署，立即開始對FNLP各種特性的試用，或者以REST API的形式調用FNLP的語言分析功能</p>
-
-<p>*<a href="http://www.youku.com/playlist_show/id_22935176.html">《吳立德《概率主題模型&amp;數據科學基礎》》</a><br/>
-介紹：現任復旦大學首席教授、計算機軟件博士生導師。計算機科學研究所副所長.內部課程</p>
-
-<p>*<a href="http://ml.memect.com/article/machine-learning-guide.html">機器學習入門資源不完全匯總</a><br/>
-介紹：好東西的幹貨真的很多</p>
-
-<p>*<a href="http://memkite.com/deep-learning-bibliography/">收集從2014年開始深度學習文獻</a><br/>
-介紹：從硬件、圖像到健康、生物、大數據、生物信息再到量子計算等，Amund Tveit等維護了一個DeepLearning.University小項目：收集從2014年開始深度學習文獻，相信可以作為深度學習的起點,<a href="https://github.com/memkite/DeepLearningBibliography">github</a></p>
-
-<p>*<a href="http://emnlp2014.org/papers/pdf/EMNLP2014148.pdf">EMNLP上兩篇關於股票趨勢的應用論文</a><br/>
-介紹：EMNLP上兩篇關於<a href="http://emnlp2014.org/papers/pdf/EMNLP2014148.pdf">stock trend</a>用到了deep model組織特征； <a href="http://emnlp2014.org/papers/pdf/EMNLP2014120.pdf">Exploiting Social Relations and Sentiment for Stock Prediction</a>用到了stock network。</p>
-
-<p>*<a href="http://deeplearning.net/tutorial/deeplearning.pdf">《Bengio組（蒙特利爾大學LISA組）深度學習教程》</a><br/>
-介紹：作者是深度學習一線大牛Bengio組寫的教程，算法深入顯出，還有實現代碼，一步步展開。</p>
-
-<p>*<a href="http://arxiv.org/pdf/1410.5401v1.pdf">《學習算法的Neural Turing Machine》</a><br/>
-介紹：許多傳統的機器學習任務都是在學習function，不過谷歌目前有開始學習算法的趨勢。谷歌另外的這篇學習Python程序的<a href="http://arxiv.org/pdf/1410.4615v1.pdf">Learning to Execute</a>也有相似之處</p>
-
-<p>*<a href="http://www.morganclaypool.com/doi/abs/10.2200/S00607ED2V01Y201410HLT026">《Learning to Rank for Information Retrieval and Natural Language Processing》</a><br/>
-介紹：作者是華為技術有限公司，諾亞方舟實驗室，首席科學家的李航博士寫的關於信息檢索與自然語言處理的文章</p>
-
-<p>*<a href="http://www.aclweb.org/anthology/D11-1147">《Rumor has it: Identifying Misinformation in Microblogs》</a><br/>
-介紹：利用機用器學習在謠言的判別上的應用,此外還有兩個。一個是識別垃圾與虛假信息的<a href="http://digital.cs.usu.edu/%7Ekyumin/tutorial/www-tutorial.pdf">paper</a>.還有一個是<a href="http://www.datatang.com/news/details_1319.htm">網絡輿情及其分析技術</a></p>
-
-<p>*R機器學習實踐](<a href="http://study.163.com/course/introduction/854064.htm">http://study.163.com/course/introduction/854064.htm</a>)<br/>
-介紹：該課程是網易公開課的收費課程，不貴，超級便宜。主要適合於對利用R語言進行機器學習，數據挖掘感興趣的人。</p>
-
-<p>*<a href="http://ifeve.com/bigdataanalyticsbeyondhadoop_evolutionofmlrealizaton/">《大數據分析：機器學習算法實現的演化》</a><br/>
-介紹：本章中作者總結了三代機器學習算法實現的演化：第一代非分布式的， 第二代工具如Mahout和Rapidminer實現基於Hadoop的擴展，第三代如Spark和Storm實現了實時和叠代數據處理。<a href="http://ifeve.com/wp-content/uploads/2014/05/big-data-analytics-beyond-hadoop.pdf">BIG DATA ANALYTICS BEYOND HADOOP</a></p>
-
-<p>*<a href="http://book.douban.com/subject/5921462/">《圖像處理，分析與機器視覺》</a><br/>
-介紹：講計算機視覺的四部奇書（應該叫經典吧）之一，另外三本是Hartley的《多圖幾何》、Gonzalez的《數字圖像處理》、Rafael C.Gonzalez / Richard E.Woods的<a href="http://book.douban.com/subject/1106342/">《數字圖像處理》</a></p>
-
-<p>*<a href="http://pan.baidu.com/s/1sjFeLTN">《LinkedIn最新的推薦系統文章Browsemaps》</a><br/>
-介紹：裏面基本沒涉及到具體算法，但作者介紹了CF在LinkedIn的很多應用，以及他們在做推薦過程中獲得的一些經驗。最後一條經驗是應該監控log數據的質量，因為推薦的質量很依賴數據的質量！</p>
-
-<p>*<a href="http://blog.sina.com.cn/s/blog_574a437f01019poo.html">《初學者如何查閱自然語言處理（NLP）領域學術資料》</a><br/>
-介紹：初學者如何查閱自然語言處理（NLP）領域學術資料</p>
-
-<p>*<a href="http://www.open-electronics.org/raspberry-pi-and-the-camera-pi-module-face-recognition-tutorial/">《樹莓派的人臉識別教程》</a><br/>
-介紹：用樹莓派和相機模塊進行人臉識別</p>
-
-<p>*<a href="http://www.hangli-hl.com/uploads/3/1/6/8/3168008/short_text_conversation_mla.pdf">《利用深度學習與大數據構建對話系統》</a><br/>
-介紹：如何利用深度學習與大數據構建對話系統</p>
-
-<p>*<a href="http://lear.inrialpes.fr/people/mairal/resources/pdf/review_sparse_arxiv.pdf">《經典論文Leo Breiman：Statistical Modeling: The Two Cultures》</a><br/>
-介紹：Francis Bach合作的有關稀疏建模的新綜述(書)：Sparse Modeling for Image and Vision Processing，內容涉及Sparsity, Dictionary Learning, PCA, Matrix Factorization等理論，以及在圖像和視覺上的應用，而且第一部分關於Why does the l1-norm induce sparsity的解釋也很不錯。</p>
-
-<p>*<a href="http://www.umiacs.umd.edu/%7Ehal/docs/daume04rkhs.pdf">《Reproducing Kernel Hilbert Space》</a><br/>
-介紹：RKHS是機器學習中重要的概念，其在large margin分類器上的應用也是廣為熟知的。如果沒有較好的數學基礎，直接理解RKHS可能會不易。本文從基本運算空間講到Banach和Hilbert空間，深入淺出，一共才12頁。</p>
-
-<p>*<a href="http://karpathy.github.io/neuralnets/">《Hacker&rsquo;s guide to Neural Networks》</a><br/>
-介紹：許多同學對於機器學習及深度學習的困惑在於，數學方面已經大致理解了，但是動起手來卻不知道如何下手寫代碼。斯坦福深度學習博士Andrej Karpathy寫了一篇實戰版本的深度學習及機器學習教程，手把手教你用Javascript寫神經網絡和SVM.</p>
-
-<p>*<a href="http://blog.csdn.net/pandalibaba/article/details/17409395">《【語料庫】語料庫資源匯總》</a><br/>
-介紹：【語料庫】語料庫資源匯總</p>
-
-<p>*<a href="http://blog.jobbole.com/60809/">《機器學習算法之旅》</a><br/>
-介紹：本文會過一遍最流行的機器學習算法，大致了解哪些方法可用，很有幫助。</p>
-
-<p>*<a href="http://www.csee.wvu.edu/%7Exinl/source.html">《Reproducible Research in Computational Science》</a><br/>
-介紹：這個裏面有很多關於機器學習、信號處理、計算機視覺、深入學習、神經網絡等領域的大量源代碼（或可執行代碼）及相關論文。科研寫論文的好資源</p>
-
-<p>*<a href="http://cilvr.nyu.edu/doku.php?id=deeplearning:slides:start">NYU 2014年的深度學習課程資料</a><br/>
-介紹：NYU 2014年的深度學習課程資料，有視頻</p>
-
-<p>*<a href="https://github.com/memect/hao/blob/master/awesome/computer-vision-dataset.md">《計算機視覺數據集不完全匯總》</a><br/>
-介紹：計算機視覺數據集不完全匯總</p>
-
-<p>*<a href="http://mloss.org/software/">《Machine Learning Open Source Software》</a><br/>
-介紹：機器學習開源軟件</p>
-
-<p>*<a href="http://www.csie.ntu.edu.tw/%7Ecjlin/libsvm/">《LIBSVM》</a><br/>
-介紹：A Library for Support Vector Machines</p>
-
-<p>*<a href="http://www.support-vector-machines.org/index.html">《Support Vector Machines》</a><br/>
-介紹：<a href="https://github.com/ty4z2008/Qix/blob/master/files.cnblogs.com/tekson/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E4%B9%8B%E7%BB%8F%E5%85%B8%E7%AE%97%E6%B3%95.doc">數據挖掘十大經典算法</a>之一</p>
-
-<p>*<a href="http://meta-guide.com/software-meta-guide/100-best-github-deep-learning/">《100 Best GitHub: Deep Learning》</a><br/>
-介紹：github上面100個非常棒的項目</p>
-
-<p>*<a href="http://archive.ics.uci.edu/ml">《加州大學歐文分校(UCI)機器學習數據集倉庫》</a><br/>
-介紹：當前加州大學歐文分校為機器學習社區維護著306個數據集。<a href="http://archive.ics.uci.edu/ml/datasets.html">查詢數據集</a></p>
-
-<p>*<a href="http://cs.stanford.edu/people/karpathy/">Andrej Karpathy個人主頁</a><br/>
-介紹：Andrej Karpathy 是斯坦福大學Li Fei-Fei的博士生，使用機器學習在圖像、視頻語義分析領域取得了科研和工程上的突破，發的文章不多，但每個都很紮實，在每一個問題上都做到了state-of-art.</p>
-
-<p>*<a href="http://cs.stanford.edu/people/karpathy/convnetjs/demo/rldemo.html">《Andrej Karpathy的深度強化學習演示》</a><br/>
-介紹：Andrej Karpathy的深度強化學習演示，<a href="http://arxiv.org/pdf/1312.5602v1.pdf">論文在這裏</a></p>
-
-<p>*<a href="http://www.52nlp.cn/cikm-competition-topdata">《CIKM數據挖掘競賽奪冠算法-陳運文》</a><br/>
-介紹：CIKM Cup(或者稱為CIKM Competition)是ACM CIKM舉辦的國際數據挖掘競賽的名稱。</p>
-
-<p>*<a href="http://www.cs.toronto.edu/%7Ehinton/">Geoffrey E. Hinton</a><br/>
-介紹：傑弗裏·埃弗裏斯特·辛頓 FRS是一位英國出生的計算機學家和心理學家，以其在神經網絡方面的貢獻聞名。辛頓是反向傳播算法和對比散度算法的發明人之一，也是深度學習的積極推動者.</p>
-
-<p>*<a href="http://cikm2014.fudan.edu.cn/cikm2014/Tpl/Public/slides/CIKM14_tutorial_slides_6.pdf">《自然語言處理的深度學習理論與實際》</a><br/>
-介紹：微軟研究院深度學習技術中心在CIKM2014 上關於《自然語言處理的深度學習理論與實際》教學講座的幻燈片</p>
-
-<p>*<a href="http://eugenezhulenev.com/blog/2014/11/14/stock-price-prediction-with-big-data-and-machine-learning/">《用大數據和機器學習做股票價格預測》</a><br/>
-介紹： 本文基於&lt;支持向量機的高頻限價訂單的動態建模>采用了 Apache Spark和Spark MLLib從紐約股票交易所的訂單日誌數據構建價格運動預測模型。(股票有風險，投資謹慎)<a href="https://github.com/ezhulenev/orderbook-dynamics">GitHub源代碼托管地址.</a></p>
-
-<p>*<a href="http://dataunion.org/?p=2011">《關於機器學習的若幹理論問題》</a><br/>
-介紹：徐宗本 院士將於熱愛機器學習的小夥伴一起探討有關於機器學習的幾個理論性問題，並給出一些有意義的結論。最後通過一些實例來說明這些理論問題的物理意義和實際應用價值。</p>
-
-<p>*<a href="http://vdisk.weibo.com/s/D2szyg_bBVM0">《深度學習在自然語言處理的應用》</a><br/>
-介紹：作者還著有《這就是搜索引擎：核心技術詳解》一書，主要是介紹應用層的東西</p>
-
-<p>*<a href="http://www.cs.ubc.ca/%7Enando/340-2012/index.php">《Undergraduate machine learning at UBC》</a><br/>
-介紹：機器學習課程</p>
-
-<p>*<a href="http://blog.sina.com.cn/s/blog_6ae183910101h4jr.html">《人臉識別必讀的N篇文章》</a><br/>
-介紹：人臉識別必讀文章推薦</p>
-
-<p>*<a href="http://semocean.com/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87%E6%96%87%E7%8C%AE%E5%8F%8A%E8%B5%84%E6%96%99/">《推薦系統經典論文文獻及業界應用》</a><br/>
-介紹：推薦系統經典論文文獻</p>
-
-<p>*<a href="http://ocw.sjtu.edu.cn/G2S/OCW/cn/CourseDetails.htm?Id=398">《統計機器學習》</a><br/>
-介紹：統計學習是關於計算機基於數據構建的概率統計模型並運用模型對數據進行預測和分析的一門科學，統計學習也成為統計機器學習。課程來自上海交通大學</p>
-
-<p>*<a href="http://ocw.sjtu.edu.cn/G2S/OCW/cn/CourseDetails.htm?Id=397">《機器學習導論》</a><br/>
-介紹：機器學習的目標是對計算機編程，以便使用樣本數據或以往的經驗來解決給定的問題.</p>
-
-<p>*<a href="http://deeplearning.net/software_links/">人工智能和機器學習領域有趣的開源項目</a><br/>
-介紹：<a href="http://code.csdn.net/news/2822818">部分中文列表</a></p>
-
-<p>*<a href="http://blog.csdn.net/suipingsp/article/details/41645779">《機器學習經典算法詳解及Python實現&mdash;基於SMO的SVM分類器》</a><br/>
-介紹:此外作者還有一篇<a href="http://blog.csdn.net/suipingsp/article/details/41722435">元算法、AdaBoost　python實現文章</a></p>
-
-<p>*<a href="http://aria42.com/blog/2014/12/understanding-lbfgs/">《Numerical Optimization: Understanding L-BFGS》</a><br/>
-介紹:加州伯克利大學博士Aria Haghighi寫了一篇超贊的數值優化博文，從牛頓法講到擬牛頓法，再講到BFGS以及L-BFGS, 圖文並茂，還有偽代碼。強烈推薦。</p>
-
-<p>*<a href="http://www.goldencui.org/2014/12/02/%E7%AE%80%E6%98%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E6%A6%82%E8%BF%B0%EF%BC%88%E4%B8%80%EF%BC%89/">《簡明深度學習方法概述（一）》</a><br/>
-<a href="http://www.goldencui.org/2014/12/06/%E7%AE%80%E6%98%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E6%A6%82%E8%BF%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">《簡明深度學習方法概述（二）》</a></p>
-
-<p>*<a href="http://www.johndcook.com/blog/r_language_for_programmers/">《R language for programmers》</a><br/>
-介紹:Ｒ語言程序員私人定制版</p>
-
-<p>*<a href="http://www.cheyun.com/content/news/4051">《谷歌地圖解密：大數據與機器學習的結合》</a><br/>
-介紹:谷歌地圖解密</p>
-
-<p>*<a href="http://blog.csdn.net/u012690204/article/details/41853731">《空間數據挖掘常用方法》</a><br/>
-介紹:空間數據挖掘常用方法</p>
-
-<p>*<a href="https://www.kaggle.com/c/word2vec-nlp-tutorial">《Use Google&rsquo;s Word2Vec for movie reviews》</a><br/>
-介紹:Kaggle新比賽 ”When bag of words meets bags of popcorn“ aka ”邊學邊用word2vec和deep learning做NLP“ 裏面全套教程教一步一步用python和gensim包的word2vec模型，並在實際比賽裏面比調參數和清數據。 如果已裝過gensim不要忘升級</p>
-
-<p>*<a href="http://pynlpir.readthedocs.org/en/latest/">《PyNLPIR》</a><br/>
-介紹:PyNLPIR提供了NLPIR/ICTCLAS漢語分詞的Python接口,此外<a href="http://zhon.readthedocs.org/en/latest/">Zhon</a>提供了常用漢字常量，如CJK字符和偏旁，中文標點，拼音，和漢字正則表達式（如找到文本中的繁體字）</p>
-
-<p>*<a href="http://www.technologyreview.com/view/533496/why-neural-networks-look-set-to-thrash-the-best-human-go-players-for-the-first-time/">《深度卷積神經網絡下圍棋》</a><br/>
-介紹:這文章說把最近模型識別上的突破應用到圍棋軟件上，打16萬張職業棋譜訓練模型識別功能。想法不錯。訓練後目前能做到不用計算，只看棋盤就給出下一步，大約10級棋力。但這篇文章太過樂觀，說什麽人類的最後一塊堡壘馬上就要跨掉了。話說得太早。不過，如果與別的軟件結合應該還有潛力可挖。@萬精油墨綠</p>
-
-<p>*<a href="http://mrtz.org/blog/the-nips-experiment/">《NIPS審稿實驗》</a><br/>
-介紹:UT Austin教授Eric Price關於今年NIPS審稿實驗的詳細分析,他表示，根據這次實驗的結果，如果今年NIPS重新審稿的話，會有一半的論文被拒。</p>
-
-<p>*<a href="http://www.kdnuggets.com/2014/12/top-kdnuggets-2014-analytics-big-data-science-stories.html">《2014年最佳的大數據，數據科學文章》</a><br/>
-介紹:KDNuggets分別總結了2014年14個閱讀最多以及分享最多的文章。我們從中可以看到多個主題——深度學習，數據科學家職業，教育和薪酬，學習數據科學的工具比如R和Python以及大眾投票的最受歡迎的數據科學和數據挖掘語言</p>
-
-<p>*<a href="http://blog.csdn.net/suipingsp/article/details/42101139">《機器學習經典算法詳解及Python實現&mdash;線性回歸（Linear Regression）算法》</a><br/>
-介紹:Python實現線性回歸,作者還有其他很棒的文章推薦可以看看</p>
-
-<p>*<a href="http://download.csdn.net/album/detail/1367/1/1">《2014中國大數據技術大會33位核心專家演講PDF》</a><br/>
-介紹：2014中國大數據技術大會33位核心專家演講PDF下載</p>
-
-<p>*<a href="http://arxiv.org/abs/1412.5335">《使用RNN和Paragraph Vector做情感分析》</a><br/>
-介紹：這是T. Mikolov &amp; Y. Bengio最新論文Ensemble of Generative and Discriminative Techniques for Sentiment Analysis of Movie Reviews ，使用RNN和PV在情感分析效果不錯，<a href="https://github.com/mesnilgr/iclr15">項目代碼</a>公布在github(目前是空的)。這意味著Paragraph Vector終於揭開面紗了嘛。</p>
-
-<p>*<a href="http://pan.baidu.com/s/1o6I9S18">《NLPIR/ICTCLAS2015分詞系統大會上的技術演講 》</a><br/>
-介紹:NLPIR/ICTCLAS2015分詞系統發布與用戶交流大會上的演講，請更多朋友檢閱新版分詞吧。</p>
-
-<p>*<a href="https://medium.com/code-poet/80ea3ec3c471">《Machine Learning is Fun!》</a><br/>
-介紹:Convex Neural Networks 解決維數災難</p>
-
-<p>*<a href="http://dataunion.org/?p=5395">《CNN的反向求導及練習》</a><br/>
-介紹:介紹CNN參數在使用bp算法時該怎麽訓練，畢竟CNN中有卷積層和下采樣層，雖然和MLP的bp算法本質上相同，但形式上還是有些區別的，很顯然在完成CNN反向傳播前了解bp算法是必須的。此外作者也做了一個<a href="http://www.cnblogs.com/tornadomeet/archive/2012/05/24/2515980.html">資源集:機器學習，深度學習，視覺，數學等</a></p>
-
-<p>*<a href="https://github.com/cloudflare/ahocorasick">《正則表達式優化成Trie樹 》</a><br/>
-介紹:如果要在一篇文章中匹配十萬個關鍵詞怎麽辦？<a href="https://github.com/cloudflare/ahocorasick">Aho-Corasick</a>算法利用添加了返回邊的Trie樹，能夠在線性時間內完成匹配。 但如果匹配十萬個正則表達式呢 ？ 這時候可以用到把多個正則優化成Trie樹的方法，如日本人寫的<a href="http://search.cpan.org/%7Edankogai/Regexp-Trie-0.02/">Regexp::Trie</a></p>
-
-<p>*<a href="http://jmozah.github.io/links/">《Deep learning Reading List》</a><br/>
-介紹:深度學習閱讀清單</p>
-
-<p>*<a href="http://caffe.berkeleyvision.org/">Caffe</a><br/>
-介紹:Caffe是一個開源的深度學習框架，作者目前在google工作，作者主頁<a href="http://daggerfs.com/index.html">Yangqing Jia (賈揚清)</a></p>
-
-<p>*<a href="https://github.com/BVLC/caffe/blob/master/models/bvlc_googlenet/readme.md">《GoogLeNet深度學習模型的Caffe復現》</a><br/>
-介紹:2014 ImageNet冠軍GoogLeNet深度學習模型的Caffe復現模型,<a href="http://arxiv.org/abs/1409.4842">GoogleNet論文</a>.</p>
-
-<p>*<a href="https://github.com/jbarrow/LambdaNet">《LambdaNet，Haskell實現的開源人工神經網絡庫》</a><br/>
-介紹:LambdaNetLambdaNet是由Haskell實現的一個開源的人工神經網絡庫，它抽象了網絡創建、訓練並使用了高階函數。該庫還提供了一組預定義函數，用戶可以采取多種方式組合這些函數來操作現實世界數據。</p>
-
-<p>*<a href="http://wenku.baidu.com/course/view/49e8b8f67c1cfad6195fa705">《百度余凱&amp;張潼機器學習視頻》</a><br/>
-介紹:如果你從事互聯網搜索，在線廣告，用戶行為分析，圖像識別，自然語言理解，或者生物信息學，智能機器人，金融預測，那麽這門核心課程你必須深入了解。</p>
-
-<p>*<a href="http://v.youku.com/v_show/id_XODQzNDM4MDg0.html">楊強在TEDxNanjing談智能的起源</a><br/>
-介紹:&ldquo;人工智能研究分許多流派。其中之一以IBM為代表，認為只要有高性能計算就可得到智能，他們的‘深藍’擊敗了世界象棋冠軍；另一流派認為智能來自動物本能；還有個很強的流派認為只要找來專家，把他們的思維用邏輯一條條寫下，放到計算機裏就行……&rdquo; 楊強在TEDxNanjing談智能的起源</p>
-
-<p>*<a href="http://www.machinelearning.org/proceedings/icml2006/047_Connectionist_Tempor.pdf">《深度RNN/LSTM用於結構化學習 0)序列標註Connectionist Temporal ClassificationICML06》</a><br/>
-介紹:1)機器翻譯<a href="http://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf">Sequence to Sequence NIPS14</a> 2)成分句法<a href="http://arxiv.org/pdf/1412.7449v1.pdf">GRAMMAR AS FOREIGN LANGUAGE</a></p>
-
-<p>*<a href="http://techblog.youdao.com/?p=915">《Deep Learning實戰之word2vec》</a><br/>
-介紹:網易有道的三位工程師寫的word2vec的解析文檔，從基本的詞向量/統計語言模型->NNLM->Log-Linear/Log-Bilinear->層次化Log-Bilinear，到CBOW和Skip-gram模型，再到word2vec的各種tricks，公式推導與代碼，基本上是網上關於word2vec資料的大合集，對word2vec感興趣的朋友可以看看</p>
-
-<p>*<a href="http://mloss.org/software/">《Machine learning open source software》</a><br/>
-介紹:機器學習開源軟件,收錄了各種機器學習的各種編程語言學術與商業的開源軟件．與此類似的還有很多例如:<a href="http://www.dmoz.org/Computers/Artificial_Intelligence/Machine_Learning/Software/">DMOZ &ndash; Computers: Artificial Intelligence: Machine Learning: Software</a>, <a href="http://www.csie.ntu.edu.tw/%7Ecjlin/libsvm/">LIBSVM &mdash; A Library for Support Vector Machines</a>,　<a href="http://www.cs.waikato.ac.nz/ml/weka/">Weka 3: Data Mining Software in Java</a>,　<a href="http://scikit-learn.org/stable/">scikit-learn:Machine Learning in Python</a>,　<a href="https://github.com/ty4z2008/Qix/blob/master/www.nltk.org">Natural Language Toolkit:NLTK</a>,　<a href="http://mallet.cs.umass.edu/">MAchine Learning for LanguagE Toolkit</a>,　<a href="http://orange.biolab.si/">Data Mining &ndash; Fruitful and Fun</a>,　<a href="http://opencv.willowgarage.com/wiki/">Open Source Computer Vision Library</a></p>
-
-<p>*<a href="http://www.guokr.com/post/512037/">《機器學習入門者學習指南》</a><br/>
-介紹:作者是計算機研二(寫文章的時候，現在是2015年了應該快要畢業了)，專業方向自然語言處理．這是一點他的經驗之談．對於入門的朋友或許會有幫助</p>
-
-<p>*<a href="http://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/">《A Tour of Machine Learning Algorithms》</a><br/>
-介紹:這是一篇關於機器學習算法分類的文章，非常好</p>
-
-<p>*<a href="http://ml.memect.com/download/2014.zip">2014年的《機器學習日報》大合集</a><br/>
-介紹:機器學習日報裏面推薦很多內容，在這裏有一部分的優秀內容就是來自機器學習日報．</p>
-
-<p>*<a href="http://blog.csdn.net/abcjennifer/article/details/42493493">《Image classification with deep learning常用模型》</a><br/>
-介紹:這是一篇關於圖像分類在深度學習中的文章</p>
-
-<p>*<a href="http://research.microsoft.com/en-us/people/deng/">《自動語音識別：深度學習方法》</a><br/>
-介紹:作者與Bengio的兄弟Samy 09年合編《自動語音識別：核方法》 3）李開復1989年《自動語音識別》專著，其博導、94年圖靈獎得主Raj Reddy作序</p>
-
-<p>*<a href="http://blog.csdn.net/heiyeshuwu/article/details/42554903">《NLP中的中文分詞技術》</a><br/>
-介紹: 作者是360電商技術組成員,這是一篇NLP在中文分詞中的應用</p>
-
-<p>*<a href="http://danielnouri.org/notes/2014/12/17/using-convolutional-neural-nets-to-detect-facial-keypoints-tutorial/">《Using convolutional neural nets to detect facial keypoints tutorial》</a><br/>
-介紹: 使用deep learning的人臉關鍵點檢測，此外還有一篇<a href="https://www.kaggle.com/c/facial-keypoints-detection/details/deep-learning-tutorial">AWS部署教程</a></p>
-
-<p>*<a href="http://www.amazon.cn/Advanced-Structured-Prediction-Nowozin-Sebastian/dp/0262028379">《書籍推薦:Advanced Structured Prediction》</a><br/>
-介紹: 由Sebastian Nowozin等人編纂MIT出版的新書<a href="http://t.cn/RZxipKG">《Advanced Structured Prediction》</a>，匯集了結構化預測領域諸多牛文，涉及CV、NLP等領域，值得一讀。網上公開的幾章草稿:<a href="http://www2.informatik.hu-berlin.de/%7Ekloftmar/publications/strucBook.pdf">一</a>,<a href="http://mlg.eng.cam.ac.uk/yutian/Publications/ChenGelfandWelling14-HerdingBookChapter.pdf">二</a>,<a href="http://web.engr.oregonstate.edu/%7Esinisa/research/publications/StructPredictionChapter14.pdf">三</a>,<a href="http://ttic.uchicago.edu/%7Emeshi/papers/smoothCD_chapter.pdf">四</a>,<a href="http://www.cs.ox.ac.uk/Stanislav.Zivny/homepage/publications/zwp14mit-draft.pdf">五</a></p>
-
-<p>*<a href="http://arxiv.org/pdf/1501.01571v1.pdf">《An Introduction to Matrix Concentration Inequalities》</a><br/>
-介紹: Tropp把數學家用高深裝逼的數學語言寫的矩陣概率不等式用初等的方法寫出來，是非常好的手冊，領域內的paper各種證明都在用裏面的結果。雖說是初等的，但還是非常的難</p>
-
-<p>*<a href="https://agenda.weforum.org/2014/12/the-free-big-data-sources-you-should-know/">《The free big data sources you should know》</a><br/>
-介紹: 不容錯過的免費大數據集，有些已經是耳熟能詳，有些可能還是第一次聽說，內容跨越文本、數據、多媒體等，讓他們伴你開始數據科學之旅吧，具體包括：Data.gov、US Census Bureau、European Union Open Data Portal、Data.gov.uk等</p>
-
-<p>*<a href="http://yyue.blogspot.com/2015/01/a-brief-overview-of-deep-learning.html">《A Brief Overview of Deep Learning》</a><br/>
-介紹: 谷歌科學家、Hinton親傳弟子Ilya Sutskever的深度學習綜述及實際建議</p>
-
-<p>*<a href="http://nikhilbuduma.com/2015/01/11/a-deep-dive-into-recurrent-neural-networks/">《A Deep Dive into Recurrent Neural Nets》</a><br/>
-介紹: 非常好的討論遞歸神經網絡的文章，覆蓋了RNN的概念、原理、訓練及優化等各個方面內容，強烈推薦！本文作者Nikhil Buduma還有一篇<a href="http://nikhilbuduma.com/2014/12/29/deep-learning-in-a-nutshell/">Deep Learning in a Nutshell</a>值得推薦</p>
-
-<p>*<a href="http://qianjiye.de/2014/11/machine-learning-resources/">機器學習：學習資源</a><br/>
-介紹:裏面融合了很多的資源，例如競賽，在線課程，demo，數據整合等。有分類</p>
-
-<p>*<a href="https://www.otexts.org/book/sfml">《Statistical foundations of machine learning》</a><br/>
-介紹:《機器學習的統計基礎》在線版，該手冊希望在理論與實踐之間找到平衡點，各主要內容都伴有實際例子及數據，書中的例子程序都是用R語言編寫的。</p>
-
-<p>*<a href="http://www.toptal.com/machine-learning/an-introduction-to-deep-learning-from-perceptrons-to-deep-networks">《A Deep Learning Tutorial: From Perceptrons to Deep Networks》</a><br/>
-介紹:IVAN VASILEV寫的深度學習導引：從淺層感知機到深度網絡。高可讀</p>
-
-<p>*<a href="http://futureoflife.org/static/data/documents/research_priorities.pdf">《Research priorities for robust and beneficial artificial intelligence》</a><br/>
-介紹:魯棒及有益的人工智能優先研究計劃：一封公開信,目前已經有Stuart Russell, Tom Dietterich, Eric Horvitz, Yann LeCun, Peter Norvig, Tom Mitchell, Geoffrey Hinton, Elon Musk等人簽署<a href="http://futureoflife.org/misc/open_letter">The Future of Life Institute (FLI)</a>.這封信的背景是最近霍金和Elon Musk提醒人們註意AI的潛在威脅。公開信的內容是AI科學家們站在造福社會的角度，展望人工智能的未來發展方向，提出開發AI系統的Verification，Validity, Security, Control四點要求，以及需要註意的社會問題。畢竟當前AI在經濟領域，法律，以及道德領域相關研究較少。其實還有一部美劇<a href="http://tv.sohu.com/20120925/n353925789.shtml">《疑犯追蹤》</a>,介紹了AI的演進從一開始的自我學習，過濾，圖像識別，語音識別等判斷危險，到第四季的時候出現了機器通過學習成長之後想控制世界的狀態。說到這裏推薦收看。</p>
-
-<p>*<a href="http://metacademy.org/">《Metacademy》</a><br/>
-介紹:裏面根據詞條提供了許多資源，還有相關知識結構，路線圖，用時長短等。號稱是”機器學習“搜索引擎</p>
-
-<p>*<a href="https://research.facebook.com/blog/879898285375829/fair-open-sources-deep-learning-modules-for-torch/">《FAIR open sources deep-learning modules for Torch》</a><br/>
-介紹:Facebook人工智能研究院（FAIR）開源了一系列軟件庫，以幫助開發者建立更大、更快的深度學習模型。開放的軟件庫在 Facebook 被稱作模塊。用它們替代機器學習領域常用的開發環境 Torch 中的默認模塊，可以在更短的時間內訓練更大規模的神經網絡模型。</p>
-
-<p>*<a href="http://www.cnblogs.com/ello/archive/2012/04/28/2475419.html">《淺析人臉檢測之Haar分類器方法》</a><br/>
-介紹:本文雖然是寫於2012年，但是這篇文章完全是作者的經驗之作。</p>
-
-<p>*<a href="http://www.ituring.com.cn/article/55994">《如何成為一位數據科學家》</a><br/>
-介紹:本文是對《機器學習實戰》作者Peter Harrington做的一個訪談。包含了書中部分的疑問解答和一點個人學習建議</p>
-
-<p>*<a href="http://www.metacademy.org/roadmaps/rgrosse/deep_learning">《Deep learning from the bottom up》</a><br/>
-介紹:非常好的深度學習概述，對幾種流行的深度學習模型都進行了介紹和討論</p>
-
-<p>*<a href="http://onepager.togaware.com/TextMiningO.pdf">《Hands-On Data Science with R Text Mining》</a><br/>
-介紹:主要是講述了利用R語言進行數據挖掘</p>
-
-<p>*<a href="http://colah.github.io/posts/2014-07-Understanding-Convolutions/">《Understanding Convolutions》</a><br/>
-介紹:幫你理解卷積神經網絡，講解很清晰，此外還有兩篇<a href="http://colah.github.io/posts/2014-07-Conv-Nets-Modular/">Conv Nets: A Modular Perspective</a>，<a href="http://colah.github.io/posts/2014-12-Groups-Convolution/">Groups &amp; Group Convolutions</a>. 作者的其他的關於神經網絡文章也很棒</p>
-
-<p>*<a href="http://www.iro.umontreal.ca/%7Epift6266/H10/notes/deepintro.html#introduction-to-deep-learning-algorithms">《Introduction to Deep Learning Algorithms》</a><br/>
-介紹:Deep Learning算法介紹，裏面介紹了06年3篇讓deep learning崛起的論文</p>
-
-<p>*<a href="http://www.iro.umontreal.ca/%7Ebengioy/papers/ftml_book.pdf">《Learning Deep Architectures for AI》</a><br/>
-介紹:一本學習人工智能的書籍，作者是Yoshua Bengio，<a href="http://www.infoq.com/cn/articles/ask-yoshua-bengio">相關國內報道</a></p>
-
-<p>*<a href="http://www.cs.toronto.edu/%7Ehinton/">Geoffrey E. Hinton個人主頁</a><br/>
-介紹:Geoffrey Hinton是Deep Learning的大牛，他的主頁放了一些介紹性文章和課件值得學習</p>
-
-<p>*<a href="http://omega.albany.edu:8008/JaynesBook.html">《PROBABILITY THEORY: THE LOGIC OF SCIENCE》</a><br/>
-介紹:概率論：數理邏輯書籍</p>
-
-<p>*<a href="https://github.com/h2oai/h2o">《H2O》</a><br/>
-介紹:一個用來快速的統計，機器學習並且對於數據量大的數學庫</p>
-
-<p>*<a href="http://www.iclr.cc/doku.php?id=iclr2015:main">《ICLR 2015會議的arXiv稿件合集》</a><br/>
-介紹:在這裏你可以看到最近深度學習有什麽新動向。</p>
-
-<p>*<a href="http://www-nlp.stanford.edu/IR-book/">《Introduction to Information Retrieval》</a><br/>
-介紹:此書在信息檢索領域家喻戶曉， 除提供該書的免費電子版外，還提供一個<a href="http://www-nlp.stanford.edu/IR-book/information-retrieval.html">IR資源列表</a>，收錄了信息檢索、網絡信息檢索、搜索引擎實現等方面相關的圖書、研究中心、相關課程、子領域、會議、期刊等等，堪稱全集，值得收藏</p>
-
-<p>*<a href="http://yosinski.com/mlss12/MLSS-2012-Amari-Information-Geometry/">《Information Geometry and its Applications to Machine Learning》</a><br/>
-介紹:信息幾何學及其在機器學習中的應用</p>
-
-<p>*<a href="http://computationallegalstudies.com/2015/01/legal-analytics-introduction-course-professors-daniel-martin-katz-michael-j-bommarito/">《Legal Analytics – Introduction to the Course》</a><br/>
-介紹:課程《法律分析》介紹幻燈片。用機器學習解決法律相關分析和預測問題，相關的法律應用包括預測編碼、早期案例評估、案件整體情況的預測，定價和工作人員預測，司法行為預測等。法律領域大家可能都比較陌生，不妨了解下。</p>
-
-<p>*<a href="https://github.com/yanxionglu/text_pdf">《文本上的算法》</a><br/>
-介紹: 文中提到了最優，模型，最大熵等等理論，此外還有應用篇。推薦系統可以說是一本不錯的閱讀稿，關於模型還推薦一篇<a href="http://blog.sina.com.cn/s/blog_6742eecd0100iqcv.html">Generative Model 與 Discriminative Model</a></p>
-
-<p>*<a href="https://github.com/karpathy/neuraltalk">《NeuralTalk》</a><br/>
-介紹: NeuralTalk is a Python+numpy project for learning Multimodal Recurrent Neural Networks that describe images with sentences.NeuralTalk是一個Python的從圖像生成自然語言描述的工具。它實現了Google (Vinyals等，卷積神經網絡CNN + 長短期記憶LSTM) 和斯坦福 (Karpathy and Fei-Fei， CNN + 遞歸神經網絡RNN)的算法。NeuralTalk自帶了一個訓練好的動物模型，你可以拿獅子大象的照片來試試看</p>
-
-<p>*<a href="https://www.paypal-engineering.com/2015/01/12/deep-learning-on-hadoop-2-0-2/">《Deep Learning on Hadoop 2.0》</a><br/>
-介紹:本文主要介紹了在Hadoop2.0上使用深度學習,文章來自paypal</p>
-
-<p>*<a href="http://arxiv.org/abs/1206.5533">《Practical recommendations for gradient-based training of deep architectures》</a><br/>
-介紹:用基於梯度下降的方法訓練深度框架的實踐推薦指導,作者是<a href="http://www.iro.umontreal.ca/%7Ebengioy/yoshua_en/research.html">Yoshua Bengio</a></p>
-
-<p>*<a href="http://machinelearningmastery.com/machine-learning-statistical-causal-methods/">《Machine Learning With Statistical And Causal Methods》</a><br/>
-介紹: 用統計和因果方法做機器學習（視頻報告）</p>
-
-<p>*<a href="https://www.youtube.com/playlist?list=PLD0F06AA0D2E8FFBA">《Machine Learning Course 160’》</a><br/>
-介紹: 一個講機器學習的Youtube視頻教程。160集。系統程度跟書可比擬。</p>
-
-<p>*<a href="http://www.cnblogs.com/LeftNotEasy/archive/2010/12/05/mathmatic_in_machine_learning_1_regression_and_gradient_descent.html">《回歸(regression)、梯度下降(gradient descent)》</a><br/>
-介紹: 機器學習中的數學，作者的研究方向是機器學習，並行計算如果你還想了解一點其他的可以看看他<a href="http://www.cnblogs.com/LeftNotEasy/archive/2011/05/02/recommended-blogspots.html">博客</a>的其他文章</p>
-
-<p>*<a href="http://tech.meituan.com/mt-recommend-practice.html">《美團推薦算法實踐》</a><br/>
-介紹: 美團推薦算法實踐，從框架，應用，策略，查詢等分析</p>
-
-<p>*<a href="http://arxiv.org/abs/1412.1632">《Deep Learning for Answer Sentence Selection》</a><br/>
-介紹: 深度學習用於問答系統答案句的選取</p>
-
-<p>*<a href="http://www.iro.umontreal.ca/%7Elisa/pointeurs/WWW2014.pdf">《Learning Semantic Representations Using Convolutional Neural Networks for Web Search》</a><br/>
-介紹: CNN用於WEB搜索，深度學習在文本計算中的應用</p>
-
-<p>*<a href="https://github.com/caesar0301/awesome-public-datasets">《Awesome Public Datasets》</a><br/>
-介紹: Awesome系列中的公開數據集</p>
-
-<p>*<a href="http://www.academics.io/">《Search Engine &amp; Community》</a><br/>
-介紹: 一個學術搜索引擎</p>
-
-<p>*<a href="http://honnibal.github.io/spaCy/">《spaCy》</a><br/>
-介紹: 用Python和Cython寫的工業級自然語言處理庫，號稱是速度最快的NLP庫，快的原因一是用Cython寫的，二是用了個很巧妙的hash技術，加速系統的瓶頸，NLP中稀松特征的存取</p>
-
-<p>*<a href="http://fr.slideshare.net/MrChrisJohnson/collaborative-filtering-with-spark">《Collaborative Filtering with Spark》</a><br/>
-介紹: <a href="http://www.fields.utoronto.ca/video-archive/event/323/2014">Fields</a>是個數學研究中心,上面的這份ppt是來自Fields舉辦的活動中Russ Salakhutdinov帶來的《大規模機器學習》分享</p>
-
-<p>*<a href="http://www.7300days.com/index.php/stds/topic/list/id/27/name/Topic%20modeling">《Topic modeling 的經典論文》</a><br/>
-介紹: Topic modeling 的經典論文,標註了關鍵點</p>
-
-<p>*<a href="http://arxiv.org/abs/1412.6564">《Move Evaluation in Go Using Deep Convolutional Neural Networks》</a><br/>
-介紹: 多倫多大學與Google合作的新論文，深度學習也可以用來下圍棋，據說能達到六段水平</p>
-
-<p>*<a href="http://ztl2004.github.io/MachineLearningWeekly/issue2.html">《機器學習周刊第二期》</a>
-介紹: 新聞，paper,課程，book，system,CES,Roboot，此外還推薦一個<a href="http://blog.newitfarmer.com/ai/deep-learning/15302/repost-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E4%B8%8E%E7%BB%BC%E8%BF%B0%E8%B5%84%E6%96%99">深度學習入門與綜述資料</a></p>
-
-<p>*<a href="http://www.bigdata-madesimple.com/learning-more-like-a-human-18-free-ebooks-on-machine-learning/">《Learning more like a human: 18 free eBooks on Machine Learning》</a><br/>
-介紹: 18 free eBooks on Machine Learning</p>
-
-<p>*<a href="http://www.hangli-hl.com/">《Recommend :Hang Li Home》</a><br/>
-介紹:Chief scientist of Noah&rsquo;s Ark Lab of Huawei Technologies.He worked at the Research Laboratories of NEC Corporation during 1990 and 2001 and Microsoft Research Asia during 2001 and 2012. <a href="http://www.hangli-hl.com/recent-publications.html">Paper</a></p>
-
-<p>*<a href="http://memkite.com/deep-learning-bibliography/">《DEEPLEARNING.UNIVERSITY – AN ANNOTATED DEEP LEARNING BIBLIOGRAPHY》</a><br/>
-介紹: DEEPLEARNING.UNIVERSITY的論文庫已經收錄了963篇經過分類的深度學習論文了，很多經典論文都已經收錄</p>
-
-<p>*<a href="https://www.youtube.com/watch?v=wTp3P2UnTfQ&amp;hd=1">《MLMU.cz &ndash; Radim Řehůřek &ndash; Word2vec &amp; friends (7.1.2015)》</a><br/>
-介紹: Radim Řehůřek(Gensim開發者)在一次機器學習聚會上的報告，關於word2vec及其優化、應用和擴展，很實用.<a href="http://pan.baidu.com/s/1c03wd24">國內網盤</a></p>
-
-<p>*<a href="http://databricks.com/blog/2015/01/28/introducing-streaming-k-means-in-spark-1-2.html">《Introducing streaming k-means in Spark 1.2》</a><br/>
-介紹:很多公司都用機器學習來解決問題，提高用戶體驗。那麽怎麽可以讓機器學習更實時和有效呢？Spark MLlib 1.2裏面的Streaming K-means，由斑馬魚腦神經研究的Jeremy Freeman腦神經科學家編寫，最初是為了實時處理他們每半小時1TB的研究數據，現在發布給大家用了。</p>
-
-<p>*<a href="http://www.hankcs.com/nlp/lda-java-introduction-and-implementation.html">《LDA入門與Java實現》</a><br/>
-介紹: 這是一篇面向工程師的LDA入門筆記，並且提供一份開箱即用Java實現。本文只記錄基本概念與原理，並不涉及公式推導。文中的LDA實現核心部分采用了arbylon的LdaGibbsSampler並力所能及地註解了，在搜狗分類語料庫上測試良好，開源在<a href="https://github.com/hankcs/LDA4j">GitHub</a>上。</p>
-
-<p>*<a href="http://aminer.org/">《AMiner &ndash; Open Science Platform》</a><br/>
-介紹: AMiner是一個學術搜索引擎，從學術網絡中挖掘深度知識、面向科技大數據的挖掘。收集近4000萬作者信息、8000萬論文信息、1億多引用關系、鏈接近8百萬知識點；支持專家搜索、機構排名、科研成果評價、會議排名。</p>
-
-<p>*<a href="https://www.quora.com/What-are-some-interesting-Word2Vec-results">《What are some interesting Word2Vec results?》</a><br/>
-介紹: Quora上的主題，討論Word2Vec的有趣應用，Omer Levy提到了他在CoNLL2014最佳論文裏的分析結果和新方法，Daniel Hammack給出了找特異詞的小應用並提供了<a href="https://github.com/dhammack/Word2VecExample">(Python)代碼</a></p>
-
-<p>*<a href="http://blog.coursegraph.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%AC%E5%BC%80%E8%AF%BE%E6%B1%87%E6%80%BB">《機器學習公開課匯總》</a><br/>
-介紹: 機器學習公開課匯總,雖然裏面的有些課程已經歸檔過了，但是還有個別的信息沒有。感謝課程圖譜的小編</p>
-
-<p>*<a href="http://linear.ups.edu/download.html">《A First Course in Linear Algebra》</a><br/>
-介紹: 【A First Course in Linear Algebra】Robert Beezer 有答案 有移動版、打印版 使用GNU自由文檔協議 引用了傑弗遜1813年的信</p>
-
-<p>*<a href="https://github.com/ShiqiYu/libfacedetection">《libfacedetection》</a><br/>
-介紹:libfacedetection是深圳大學開源的一個人臉圖像識別庫。包含正面和多視角人臉檢測兩個算法.優點:速度快(OpenCV haar+adaboost的2-3倍), 準確度高 (FDDB非公開類評測排名第二），能估計人臉角度。</p>
-
-<p>*<a href="http://dl.acm.org/citation.cfm?doid=2684822.2685310">《Inverting a Steady-State》</a><br/>
-介紹:WSDM2015最佳論文 把馬爾可夫鏈理論用在了圖分析上面，比一般的propagation model更加深刻一些。通過全局的平穩分布去求解每個節點影響系數模型。假設合理（轉移受到相鄰的影響系數影響）。可以用來反求每個節點的影響系數</p>
-
-<p>*<a href="http://pan.baidu.com/s/1pJogO7x">《機器學習入門書單》</a><br/>
-介紹:機器學習入門書籍，<a href="http://www.hankcs.com/ml/machine-learning-entry-list.html">具體介紹</a></p>
-
-<p>*<a href="http://v1v3kn.tumblr.com/post/47193952400/the-trouble-with-svms">《The Trouble with SVMs》</a><br/>
-介紹: 非常棒的強調特征選擇對分類器重要性的文章。情感分類中，根據互信息對復雜高維特征降維再使用樸素貝葉斯分類器，取得了比SVM更理想的效果，訓練和分類時間也大大降低——更重要的是，不必花大量時間在學習和優化SVM上——特征也一樣no free lunch</p>
-
-<p>*<a href="http://www.stat.cmu.edu/%7Elarry/Wasserman.pdf">《Rise of the Machines》</a><br/>
-介紹:CMU的統計系和計算機系知名教授Larry Wasserman 在《機器崛起》,對比了統計和機器學習的差異</p>
-
-<p>*<a href="http://tech.meituan.com/mt-mlinaction-how-to-ml.html">《實例詳解機器學習如何解決問題》</a><br/>
-介紹:隨著大數據時代的到來，機器學習成為解決問題的一種重要且關鍵的工具。不管是工業界還是學術界，機器學習都是一個炙手可熱的方向，但是學術界和工業界對機器學習的研究各有側重，學術界側重於對機器學習理論的研究，工業界側重於如何用機器學習來解決實際問題。這篇文章是美團的實際環境中的實戰篇</p>
-
-<p>*<a href="http://www.gaussianprocess.org/gpml/">《Gaussian Processes for Machine Learning》</a><br/>
-介紹:面向機器學習的高斯過程，章節概要：回歸、分類、協方差函數、模型選擇與超參優化、高斯模型與其他模型關系、大數據集的逼近方法等,<a href="http://vdisk.weibo.com/s/ayG13we2vfWuT">微盤下載</a></p>
-
-<p>*<a href="http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/">《FuzzyWuzzy: Fuzzy String Matching in Python》</a><br/>
-介紹:Python下的文本模糊匹配庫，老庫新推，可計算串間ratio(簡單相似系數)、partial_ratio(局部相似系數)、token_sort_ratio(詞排序相似系數)、token_set_ratio(詞集合相似系數)等。<a href="https://github.com/seatgeek/fuzzywuzzy">Github</a></p>
-
-<p>*<a href="http://blocks.readthedocs.org/en/latest/">《Blocks》</a><br/>
-介紹:Blocks是基於Theano的神經網絡搭建框架，集成相關函數、管道和算法，幫你更快地創建和管理NN模塊.</p>
-
-<p>*<a href="http://alex.smola.org/teaching/10-701-15/">《Introduction to Machine Learning》</a><br/>
-介紹:機器學習大神Alex Smola在CMU新一期的機器學習入門課程”Introduction to Machine Learning“近期剛剛開課，課程4K高清視頻同步到Youtube上，目前剛剛更新到 2.4 Exponential Families,課程視頻<a href="https://www.youtube.com/playlist?list=PLZSO_6-bSqHTTV7w9u7grTXBHMH-mw3qn">playlist</a>, 感興趣的同學可以關註，非常適合入門.</p>
-
-<p>*<a href="http://arxiv.org/abs/1502.01423">《Collaborative Feature Learning from Social Media》</a><br/>
-介紹:用社交用戶行為學習圖片的協同特征，可更好地表達圖片內容相似性。由於不依賴於人工標簽(標註)，可用於大規模圖片處理，難在用戶行為數據的獲取和清洗；利用社會化特征的思路值得借鑒.</p>
-
-<p>*<a href="https://blog.twitter.com/2015/introducing-practical-and-robust-anomaly-detection-in-a-time-series">《Introducing practical and robust anomaly detection in a time series》</a><br/>
-介紹:Twitter技術團隊對前段時間開源的時間序列異常檢測算法(S-H-ESD)R包的介紹，其中對異常的定義和分析很值得參考，文中也提到——異常是強針對性的，某個領域開發的異常檢測在其他領域直接用可不行.</p>
-
-<p>*<a href="http://www.destinationcrm.com/Articles/Web-Exclusives/Viewpoints/Empower-Your-Team-to-Deal-with-Data-Quality-Issues-101308.aspx">《Empower Your Team to Deal with Data-Quality Issues》</a><br/>
-介紹:聚焦數據質量問題的應對，數據質量對各種規模企業的性能和效率都至關重要，文中總結出(不限於)22種典型數據質量問題顯現的信號，以及典型的數據質量解決方案(清洗、去重、統一、匹配、權限清理等)</p>
-
-<p>*<a href="http://www.52nlp.cn/%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D%E5%85%A5%E9%97%A8%E4%B9%8B%E8%B5%84%E6%BA%90">《中文分詞入門之資源》</a><br/>
-介紹:中文分詞入門之資源.</p>
-
-<p>*<a href="https://www.youtube.com/playlist?list=PLnDbcXCpYZ8lCKExMs8k4PtIbani9ESX3">《Deep Learning Summit, San Francisco, 2015》</a><br/>
-介紹:15年舊金山深度學習峰會視頻集萃,<a href="http://pan.baidu.com/s/1ntiLMcT">國內雲盤</a></p>
-
-<p>*<a href="http://blog.echen.me/2012/01/03/introduction-to-conditional-random-fields/">《Introduction to Conditional Random Fields》</a><br/>
-介紹:很好的條件隨機場(CRF)介紹文章,作者的學習筆記</p>
-
-<p>*<a href="http://cs.stanford.edu/%7Edanqi/papers/emnlp2014.pdf">《A Fast and Accurate Dependency Parser using Neural Networks》</a><br/>
-介紹: 來自Stanford，用神經網絡實現快速準確的依存關系解析器</p>
-
-<p>*<a href="https://timdettmers.wordpress.com/2014/08/14/which-gpu-for-deep-learning/">《Which GPU(s) to Get for Deep Learning: My Experience and Advice for Using GPUs in Deep Learning》</a><br/>
-介紹:做深度學習如何選擇GPU的建議</p>
-
-<p>*<a href="http://new.livestream.com/accounts/10932136/events/3779068">《Sparse Linear Models》</a><br/>
-介紹: Stanford的Trevor Hastie教授在H2O.ai Meet-Up上的報告，講稀疏線性模型——面向“寬數據”(特征維數超過樣本數)的線性模型,13年同<a href="http://pan.baidu.com/s/1jimPw">主題報告</a>、<a href="http://pan.baidu.com/s/1o6wqW6u">講義</a>.</p>
-
-<p>*<a href="https://github.com/jbhuang0604/awesome-computer-vision">《Awesome Computer Vision》</a><br/>
-介紹: 分類整理的機器視覺相關資源列表，秉承Awesome系列風格，有質有量!作者的更新頻率也很頻繁</p>
-
-<p>*<a href="http://www.personal.ceu.hu/staff/Adam_Szeidl/">《Adam Szeidl》</a><br/>
-介紹: social networks course</p>
-
-<p>*<a href="http://radar.oreilly.com/2015/01/building-and-deploying-large-scale-machine-learning-pipelines.html/">《Building and deploying large-scale machine learning pipelines》</a><br/>
-介紹: 大規模機器學習流程的構建與部署.</p>
-
-<p>*<a href="http://download.csdn.net/detail/lswtzw/8469997">《人臉識別開發包》</a><br/>
-介紹: 人臉識別二次開發包，免費，可商用，有演示、範例、說明書.</p>
-
-<p>*<a href="http://devblogs.nvidia.com/parallelforall/understanding-natural-language-deep-neural-networks-using-torch/">《Understanding Natural Language with Deep Neural Networks Using Torch》</a><br/>
-介紹: 采用Torch用深度學習網絡理解NLP，來自Facebook 人工智能的文章.</p>
-
-<p>*<a href="http://arxiv.org/pdf/1503.00168.pdf">《The NLP Engine: A Universal Turing Machine for NLP》</a><br/>
-介紹: 來自CMU的Ed Hovy和Stanford的Jiwei Li一篇有意思的Arxiv文章,作者用Shannon Entropy來刻畫NLP中各項任務的難度.</p>
-
-<p>*<a href="http://staff.city.ac.uk/%7Esb317/papers/foundations_bm25_review.pdf">《TThe Probabilistic Relevance Framework: BM25 and Beyond》</a><br/>
-介紹: 信息檢索排序模型BM25(Besting Matching)。1）從經典概率模型演變而來 2）捕捉了向量空間模型中三個影響索引項權重的因子：IDF逆文檔頻率；TF索引項頻率；文檔長度歸一化。3）並且含有集成學習的思想：組合了BM11和BM15兩個模型。4）作者是BM25的提出者和Okapi實現者Robertson.</p>
-
-<p>*<a href="http://www.analyticsvidhya.com/blog/2015/03/introduction-auto-regression-moving-average-time-series/">《Introduction to ARMA Time Series Models – simplified》</a><br/>
-介紹: 自回歸滑動平均(ARMA)時間序列的簡單介紹，ARMA是研究時間序列的重要方法，由自回歸模型（AR模型）與滑動平均模型（MA模型）為基礎“混合”構成.</p>
-
-<p>*<a href="http://arxiv.org/pdf/1503.01838v1.pdf">《Encoding Source Language with Convolutional Neural Network for Machine Translation》</a><br/>
-介紹: 把來自target的attention signal加入source encoding CNN的輸入，得到了比BBN的模型好的多neural network joint model</p>
-
-<p>*<a href="http://arxiv.org/abs/1502.03815">《Spices form the basis of food pairing in Indian cuisine》</a><br/>
-介紹: 揭開印度菜的美味秘訣——通過對大量食譜原料關系的挖掘，發現印度菜美味的原因之一是其中的味道互相沖突，很有趣的文本挖掘研究</p>
-
-<p>*<a href="http://www.52nlp.cn/hmm%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0%E7%B4%A2%E5%BC%95">《HMM相關文章索引》</a><br/>
-介紹: HMM相關文章</p>
-
-<p>*<a href="http://www.ccs.neu.edu/home/ekanou/ISU535.09X2/Handouts/Review_Material/zipfslaw.pdf">《Zipf&rsquo;s and Heap&rsquo;s law》</a><br/>
-介紹: 1)詞頻與其降序排序的關系,最著名的是語言學家齊夫(Zipf,1902-1950)1949年提出的Zipf‘s law,即二者成反比關系. 曼德勃羅(Mandelbrot,1924- 2010)引入參數修正了對甚高頻和甚低頻詞的刻畫 2)Heaps' law: 詞匯表與語料規模的平方根(這是一個參數,英語0.4-0.6)成正比</p>
-
-<p>*<a href="http://www.reddit.com/r/MachineLearning/comments/2xcyrl/i_am_j%C3%BCrgen_schmidhuber_ama/">《I am Jürgen Schmidhuber, AMA》</a><br/>
-介紹: Jürgen Schmidhuber在Reddit上的AMA(Ask Me Anything)主題，有不少RNN和AI、ML的幹貨內容，關於開源&amp;思想&amp;方法&amp;建議……耐心閱讀，相信你也會受益匪淺.</p>
-
-<p>*<a href="http://academictorrents.com/">學術種子網站：AcademicTorrents</a><br/>
-介紹: 成G上T的學術數據，HN近期熱議話題,主題涉及機器學習、NLP、SNA等。下載最簡單的方法，通過BT軟件，RSS訂閱各集合即可</p>
-
-<p>*<a href="http://scikit-learn.org/stable/tutorial/machine_learning_map/index.html">《機器學習交互速查表》</a><br/>
-介紹: Scikit-Learn官網提供，在原有的Cheat Sheet基礎上加上了Scikit-Learn相關文檔的鏈接，方便瀏覽</p>
-
-<p>*<a href="https://timdettmers.wordpress.com/2015/03/09/deep-learning-hardware-guide/">《A Full Hardware Guide to Deep Learning》</a><br/>
-介紹: 深度學習的全面硬件指南，從GPU到RAM、CPU、SSD、PCIe</p>
-
-<p>*<a href="http://hi.baidu.com/susongzhi/item/085983081b006311eafe38e7">《行人檢測(Pedestrian Detection)資源》</a><br/>
-介紹:Pedestrian Detection paper &amp; data</p>
-
-<p>*<a href="http://arxiv.org/abs/1502.01241">《A specialized face-processing network consistent with the representational geometry of monkey face patches》</a><br/>
-介紹: 【神經科學碰撞人工智能】在臉部識別上你我都是專家，即使細微的差別也能辨認。研究已證明人類和靈長類動物在面部加工上不同於其他物種，人類使用梭狀回面孔區（FFA）。Khaligh-Razavi等通過計算機模擬出人臉識別的FFA活動，堪稱神經科學與人工智能的完美結合。</p>
-
-<p>*<a href="https://vimeo.com/19569529">《Neural Net in C++ Tutorial》</a><br/>
-介紹: 神經網絡C++教程,本文介紹了用可調節梯度下降和可調節動量法設計和編碼經典BP神經網絡，網絡經過訓練可以做出驚人和美妙的東西出來。此外作者博客的其他文章也很不錯。</p>
-
-<p>*<a href="http://deeplearning4j.org/neuralnetworktable.html">《How to Choose a Neural Network》</a><br/>
-介紹:deeplearning4j官網提供的實際應用場景NN選擇參考表，列舉了一些典型問題建議使用的神經網絡</p>
-
-<p>*<a href="https://github.com/yusugomori/DeepLearning">《Deep Learning (Python, C/C++, Java, Scala, Go)》</a><br/>
-介紹:一個深度學習項目,提供了Python, C/C++, Java, Scala, Go多個版本的代碼</p>
-
-<p>*<a href="http://deeplearning.net/tutorial/">《Deep Learning Tutorials》</a><br/>
-介紹:深度學習教程</p>
-
-<p>*<a href="http://www.ccf.org.cn/resources/1190201776262/2015/03/12/15.pdf">《自然語言處理的發展趨勢——訪卡內基梅隆大學愛德華·霍威教授》</a><br/>
-介紹:自然語言處理的發展趨勢——訪卡內基梅隆大學愛德華·霍威教授.</p>
-
-<p>*<a href="http://arxiv.org/abs/1503.03832">《FaceNet: A Unified Embedding for Face Recognition and Clustering》</a><br/>
-介紹:Google對Facebook DeepFace的有力回擊—— FaceNet，在LFW(Labeled Faces in the Wild)上達到99.63%準確率(新紀錄)，FaceNet embeddings可用於人臉識別、鑒別和聚類.</p>
-
-<p>*<a href="http://databricks.com/blog/2015/01/21/random-forests-and-boosting-in-mllib.html">《MLlib中的Random Forests和Boosting》</a><br/>
-介紹:本文來自Databricks公司網站的一篇博客文章，由Joseph Bradley和Manish Amde撰寫，文章主要介紹了Random Forests和Gradient-Boosted Trees（GBTs）算法和他們在MLlib中的分布式實現，以及展示一些簡單的例子並建議該從何處上手.<a href="http://www.csdn.net/article/2015-03-11/2824178">中文版</a>.</p>
-
-<p>*<a href="http://spn.cs.washington.edu/index.shtml">《Sum-Product Networks(SPN)》</a><br/>
-介紹:華盛頓大學Pedro Domingos團隊的DNN，提供論文和實現代碼.</p>
-
-<p>*<a href="http://nlp.stanford.edu/software/nndep.shtml">《Neural Network Dependency Parser》</a><br/>
-介紹:基於神經網絡的自然語言依存關系解析器(已集成至Stanford CoreNLP)，特點是超快、準確，目前可處理中英文語料，基於<a href="http://cs.stanford.edu/%7Edanqi/papers/emnlp2014.pdf">《A Fast and Accurate Dependency Parser Using Neural Networks》</a>思路實現.</p>
-
-<p>*<a href="http://www.flickering.cn/nlp/2015/03/%E6%88%91%E4%BB%AC%E6%98%AF%E8%BF%99%E6%A0%B7%E7%90%86%E8%A7%A3%E8%AF%AD%E8%A8%80%E7%9A%84-3%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/">《神經網絡語言模型》</a><br/>
-介紹:本文根據神經網絡的發展歷程，詳細講解神經網絡語言模型在各個階段的形式，其中的模型包含NNLM[Bengio,2003]、Hierarchical NNLM[Bengio, 2005], Log-Bilinear[Hinton, 2007],SENNA等重要變形，總結的特別好.</p>
-
-<p>*<a href="http://www.elg.uottawa.ca/%7Enat/Courses/csi5387_Winter2014/paper13.pdf">《Classifying Spam Emails using Text and Readability Features》</a><br/>
-介紹:經典問題的新研究：利用文本和可讀性特征分類垃圾郵件。</p>
-
-<p>*<a href="https://github.com/alexandrebarachant/bci-challenge-ner-2015">《BCI Challenge @ NER 2015》</a><br/>
-介紹:<a href="https://www.kaggle.com/c/inria-bci-challenge">Kaggle腦控計算機交互(BCI)競賽</a>優勝方案源碼及文檔，包括完整的數據處理流程，是學習Python數據處理和Kaggle經典參賽框架的絕佳實例</p>
-
-<p>*<a href="http://www.ipol.im/">《IPOL Journal · Image Processing On Line》</a><br/>
-介紹:IPOL（在線圖像處理）是圖像處理和圖像分析的研究期刊，每篇文章都包含一個算法及相應的代碼、Demo和實驗文檔。文本和源碼是經過了同行評審的。IPOL是開放的科學和可重復的研究期刊。我一直想做點類似的工作，拉近產品和技術之間的距離.</p>
-
-<p>*<a href="http://eprint.iacr.org/2014/331">《Machine learning classification over encrypted data》</a><br/>
-介紹:出自MIT，研究加密數據高效分類問題.</p>
-
-<p>*<a href="https://github.com/purine/purine2">《purine2》</a><br/>
-介紹:新加坡LV實驗室的神經網絡並行框架<a href="http://arxiv.org/abs/1412.6249">Purine: A bi-graph based deep learning framework</a>,支持構建各種並行的架構，在多機多卡，同步更新參數的情況下基本達到線性加速。12塊Titan 20小時可以完成Googlenet的訓練。</p>
-
-<p>*<a href="http://michal.io/machine-learning-resources/">Machine Learning Resources</a><br/>
-介紹:這是一個機器學習資源庫,雖然比較少.但蚊子再小也是肉.有突出部分.此外還有一個由<a href="http://zhengrui.github.io/zerryland/ML-CV-Resource.html">zheng Rui整理的機器學習資源</a>.</p>
-
-<p>*<a href="https://github.com/cjdd3b/nicar2015/tree/master/machine-learning">《Hands-on with machine learning》</a><br/>
-介紹:Chase Davis在NICAR15上的主題報告材料，用Scikit-Learn做監督學習的入門例子.</p>
-
-<p>*<a href="http://www.cse.unsw.edu.au/%7Ebillw/nlpdict.html">《The Natural Language Processing Dictionary》</a><br/>
-介紹:這是一本自然語言處理的詞典,從1998年開始到目前積累了成千上萬的專業詞語解釋,如果你是一位剛入門的朋友.可以借這本詞典讓自己成長更快.</p>
-
-<p>*<a href="http://arxiv.org/abs/1503.01331">《PageRank Approach to Ranking National Football Teams》</a><br/>
-介紹:通過分析1930年至今的比賽數據，用PageRank計算世界杯參賽球隊排行榜.</p>
-
-<p>*<a href="http://cyclismo.org/tutorial/R/">《R Tutorial》</a><br/>
-介紹:R語言教程,此外還推薦一個R語言教程<a href="http://cran.r-project.org/doc/manuals/R-intro.html">An Introduction to R</a>.</p>
-
-<p>*<a href="http://arxiv.org/abs/0803.0476">《Fast unfolding of communities in large networks》</a><br/>
-介紹:經典老文，復雜網絡社區發現的高效算法，Gephi中的<a href="https://github.com/ty4z2008/Qix/blob/master/The%20Louvain%20method%20for%20community%20detection%20in%20large%20networks">Community detection</a>即基於此.</p>
-
-<p>*<a href="http://numl.net/">《NUML》</a><br/>
-介紹: 一個面向 .net 的開源機器學習庫,<a href="https://github.com/sethjuarez/numl">Github</a></p>
-
-<p>*<a href="http://synaptic.juancazala.com/">《synaptic.Js》</a><br/>
-介紹: 支持node.js的JS神經網絡庫，可在客戶端瀏覽器中運行，支持LSTM等。<a href="https://github.com/cazala/synaptic">Github</a></p>
-
-<p>*<a href="http://tjo-en.hatenablog.com/entry/2015/03/20/191614">《Machine learning for package users with R (1): Decision Tree》</a><br/>
-介紹: 決策樹</p>
-
-<p>*<a href="http://www.kdnuggets.com/2015/03/deep-learning-curse-dimensionality-autoencoders.html">《Deep Learning, The Curse of Dimensionality, and Autoencoders》</a><br/>
-介紹: 討論深度學習自動編碼器如何有效應對維數災難,<a href="http://www.36dsj.com/archives/26223">中文翻譯</a></p>
-
-<p>*<a href="http://www.cs.cmu.edu/%7Esuvrit/teach/">《Advanced Optimization and Randomized Methods》</a><br/>
-介紹: CMU的優化與隨機方法課程，由A. Smola和S. Sra主講，優化理論是機器學習的基石，值得深入學習。<a href="http://pan.baidu.com/s/1c0cZtQC">國內雲(視頻)</a></p>
-
-<p>*<a href="http://cs231n.stanford.edu/reports.html">《CS231n: Convolutional Neural Networks for Visual Recognition》</a><br/>
-介紹: &ldquo;面向視覺識別的CNN"課程設計報告集錦.近百篇，內容涉及圖像識別應用的各個方面</p>
-
-<p>*<a href="http://databricks.com/blog/2015/03/25/topic-modeling-with-lda-mllib-meets-graphx.html">《Topic modeling with LDA: MLlib meets GraphX》</a><br/>
-介紹:用Spark的MLlib+GraphX做大規模LDA主題抽取.</p>
-
-<p>*<a href="http://arxiv.org/abs/1502.05988">《Deep Learning for Multi-label Classification》</a><br/>
-介紹: 基於深度學習的多標簽分類,用基於RBM的DBN解決多標簽分類(特征)問題</p>
-
-<p>*<a href="http://deepmind.com/publications.html">《Google DeepMind publications》</a><br/>
-介紹: DeepMind論文集錦</p>
-
-<p>*<a href="http://kaldi-asr.org/">《kaldi》</a><br/>
-介紹: 一個開源語音識別工具包,它目前托管在<a href="http://sourceforge.net/projects/kaldi/">sourceforge</a>上面</p>
-
-<p>*<a href="http://datajournalismhandbook.org/">《Data Journalism Handbook》</a><br/>
-介紹: 免費電子書《數據新聞手冊》, 國內有熱心的朋友翻譯了<a href="http://datajournalismhandbook.org/chinese/index.html">中文版</a>,大家也可以<a href="http://datajournalismhandbook.org/1.0/en/">在線閱讀</a></p>
-
-<p>*<a href="https://highlyscalable.wordpress.com/2015/03/10/data-mining-problems-in-retail/">《Data Mining Problems in Retail》</a><br/>
-介紹: 零售領域的數據挖掘文章.</p>
-
-<p>*<a href="https://timdettmers.wordpress.com/2015/03/26/convolution-deep-learning/">《Understanding Convolution in Deep Learning》</a><br/>
-介紹: 深度學習卷積概念詳解,深入淺出.</p>
-
-<p>*<a href="http://pandas.pydata.org/">《pandas: powerful Python data analysis toolkit》</a><br/>
-介紹: 非常強大的Python的數據分析工具包.</p>
-
-<p>*<a href="http://breakthroughanalysis.com/2015/03/23/text-analytics-2015/">《Text Analytics 2015》</a><br/>
-介紹: 2015文本分析(商業)應用綜述.</p>
-
-<p>*<a href="http://www.slideshare.net/VincenzoLomonaco/deep-learning-libraries-and-rst-experiments-with-theano">《Deep Learning libraries and ﬁrst experiments with Theano》</a><br/>
-介紹: 深度學習框架、庫調研及Theano的初步測試體會報告.</p>
-
-<p>*<a href="http://www.iro.umontreal.ca/%7Ebengioy/dlbook/">《DEEP learning》</a><br/>
-介紹: MIT的Yoshua Bengio等人講深度學習的新書，還未定稿，線上提供Draft chapters收集反饋，超贊！強烈推薦.</p>
-
-<p>*<a href="https://github.com/hickeroar/simplebayes">《simplebayes》</a><br/>
-介紹: Python下開源可持久化樸素貝葉斯分類庫.</p>
-
-<p>*<a href="http://paracel.io/">《Paracel》</a><br/>
-介紹:Paracel is a distributed computational framework designed for machine learning problems, graph algorithms and scientific computing in C++.</p>
-
-<p>*<a href="http://hanlp.linrunsoft.com/">《HanLP:Han Language processing》</a><br/>
-介紹: 開源漢語言處理包.</p>
-
-<p>*<a href="http://www.rubylab.io/2015/03/18/simple-neural-network-implenentation-in-ruby/">《Simple Neural Network implementation in Ruby》</a><br/>
-介紹: 使用Ruby實現簡單的神經網絡例子.</p>
-
-<p>*[《Hacker&rsquo;s guide to Neural Networks》}(<a href="https://karpathy.github.io/neuralnets/">https://karpathy.github.io/neuralnets/</a>)<br/>
-介紹:神經網絡黑客入門.</p>
-
-<p>*<a href="http://datasciencemasters.org/">《The Open-Source Data Science Masters》</a><br/>
-介紹:好多數據科學家名人推薦,還有資料.</p>
-
-<p>*<a href="http://arxiv.org/abs/1502.01710">《Text Understanding from Scratch》</a><br/>
-介紹:實現項目已經開源在github上面<a href="https://github.com/zhangxiangxiao/Crepe">Crepe</a></p>
-
-<p>*<a href="https://levyomer.files.wordpress.com/2015/03/improving-distributional-similarity-tacl-2015.pdf">《Improving Distributional Similarity with Lessons Learned from Word Embeddings》</a><br/>
-介紹:作者發現，經過調參，傳統的方法也能和word2vec取得差不多的效果。另外，無論作者怎麽試，GloVe都比不過word2vec.</p>
-
-<p>*<a href="http://cs224d.stanford.edu/index.html">《CS224d: Deep Learning for Natural Language Processing》</a><br/>
-介紹:Stanford深度學習與自然語言處理課程,Richard Socher主講.</p>
-
-<p>*<a href="http://courses.washington.edu/css490/2012.Winter/lecture_slides/02_math_essentials.pdf">《Math Essentials in Machine Learning》</a><br/>
-介紹:機器學習中的重要數學概念.</p>
-
-<p>*<a href="http://arxiv.org/abs/1503.00007">《Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks》</a><br/>
-介紹:用於改進語義表示的樹型LSTM遞歸神經網絡,句子級相關性判斷和情感分類效果很好.實現代碼.</p>
-
-<p>*<a href="http://www.stat.cmu.edu/%7Elarry/=sml/">《Statistical Machine Learning》</a><br/>
-介紹:卡耐基梅隆Ryan Tibshirani和Larry Wasserman開設的機器學習課程，先修課程為機器學習(10-715)和中級統計學(36-705)，聚焦統計理論和方法在機器學習領域應用.</p>
-
-<p>*<a href="http://am207.org/">《AM207: Monte Carlo Methods, Stochastic Optimization》</a><br/>
-介紹:《哈佛大學蒙特卡洛方法與隨機優化課程》是哈佛應用數學研究生課程，由V Kaynig-Fittkau、P Protopapas主講，Python程序示例，對貝葉斯推理感興趣的朋友一定要看看，提供<a href="http://nbviewer.ipython.org/github/AM207/2015/tree/master/Lectures/">授課視頻及課上IPN講義</a>.</p>
-
-<p>*<a href="http://spark-summit.org/wp-content/uploads/2015/03/SSE15-40-Danford.pdf">《生物醫學的SPARK大數據應用》</a><br/>
-介紹:生物醫學的SPARK大數據應用.並且伯克利開源了他們的big data genomics系統<a href="https://github.com/bigdatagenomics/adam">ADAM</a>，其他的內容可以關註一下<a href="http://spark-summit.org/">官方主頁</a>.</p>
-
-<p>*<a href="http://aclanthology.info/">《ACL Anthology》</a><br/>
-介紹:對自然語言處理技術或者機器翻譯技術感興趣的親們，請在提出自己牛逼到無以倫比的idea（自動歸納翻譯規律、自動理解語境、自動識別語義等等）之前，請通過谷歌學術簡單搜一下，如果谷歌不可用，這個網址有這個領域幾大頂會的論文列表,切不可斷章取義,胡亂假設.</p>
-
-<p>*<a href="http://www.uni-weimar.de/medien/webis/publications/papers/stein_2015b.pdf">《Twitter Sentiment Detection via Ensemble Classification Using Averaged Confidence Scores》</a><br/>
-介紹:論文+代碼:基於集成方法的Twitter情感分類,<a href="https://github.com/webis-de/ECIR-2015-and-SEMEVAL-2015">實現代碼</a>.</p>
-
-<p>*<a href="http://ciml.chalearn.org/schedule">《NIPS 2014 CIML workshop》</a><br/>
-介紹:NIPS CiML 2014的PPT,NIPS是神經信息處理系統進展大會的英文簡稱.</p>
-
-<p>*<a href="http://cs231n.stanford.edu/reports.html">《CS231n: Convolutional Neural Networks for Visual Recognition》</a><br/>
-介紹:斯坦福的深度學習課程的Projects 每個人都要寫一個論文級別的報告 裏面有一些很有意思的應用 大家可以看看 .</p>
-
-<p>*<a href="http://www.sumsar.net/blog/2015/03/a-speed-comparison-between-flexible-linear-regression-alternatives-in-r/">《A Speed Comparison Between Flexible Linear Regression Alternatives in R》</a><br/>
-介紹:R語言線性回歸多方案速度比較具體方案包括lm()、nls()、glm()、bayesglm()、nls()、mle2()、optim()和Stan’s optimizing()等.</p>
-
-<p>*<a href="http://www.allthingsdistributed.com/2015/04/machine-learning.html">《Back-to-Basics Weekend Reading &ndash; Machine Learning》</a><br/>
-介紹:文中提到的三篇論文（機器學習那些事、無監督聚類綜述、監督分類綜述）都很經典，Domnigos的機器學習課也很精彩</p>
-
-<p>*<a href="http://arxiv.org/abs/1504.00641">《A Probabilistic Theory of Deep Learning》</a><br/>
-介紹:萊斯大學（Rice University）的深度學習的概率理論.</p>
-
-<p>*<a href="http://www.gregreda.com/2015/03/30/beer-review-markov-chains/">《Nonsensical beer reviews via Markov chains》</a><br/>
-介紹:基於馬爾可夫鏈自動生成啤酒評論的開源Twitter機器人, <a href="https://github.com/gjreda/beer-snob-says">Github</a>.</p>
-
-<p>*<a href="http://nlp.stanford.edu/courses/NAACL2013/">《Deep Learning for Natural Language Processing (without Magic)》</a>
-介紹:視頻+講義:深度學習用於自然語言處理教程(NAACL13).</p>
-
-<p>*<a href="https://www.youtube.com/watch?v=U4IYsLgNgoY&amp;hd=1">《Introduction to Data Analysis using Machine Learning》</a><br/>
-介紹:用機器學習做數據分析,David Taylor最近在McGill University研討會上的報告，還提供了一系列講機器學習方法的ipn，很有價值。<a href="https://github.com/Prooffreader/intro_machine_learning">GitHub</a>。<a href="http://pan.baidu.com/s/1mgtE9te">國內雲盤</a></p>
-
-<p>*<a href="http://arxiv.org/abs/1503.08909">《Beyond Short Snippets: Deep Networks for Video Classification》</a><br/>
-介紹:基於CNN+LSTM的視頻分類, <a href="http://pan.baidu.com/s/1c0cZS9E">Google演示</a>.</p>
-
-<p>*<a href="http://www.quora.com/How-does-Quora-use-machine-learning-in-2015/answer/Xavier-Amatriain">《How does Quora use machine learning in 2015?》</a><br/>
-介紹:Quora怎麽用機器學習.</p>
-
-<p>*<a href="https://aws.amazon.com/cn/blogs/aws/amazon-machine-learning-make-data-driven-decisions-at-scale/">《Amazon Machine Learning – Make Data-Driven Decisions at Scale》</a><br/>
-介紹:亞馬遜在機器學習上面的一些應用,<a href="https://github.com/awslabs/machine-learning-samples">代碼示例</a>.</p>
-
-<p>*<a href="https://github.com/ogrisel/parallel_ml_tutorial">《Parallel Machine Learning with scikit-learn and IPython》</a><br/>
-介紹:並行機器學習指南(基於scikit-learn和IPython). <a href="http://nbviewer.ipython.org/github/ogrisel/parallel_ml_tutorial/tree/master/notebooks/">Notebook</a></p>
-
-<p>*<a href="http://blog.kaggle.com/2015/04/08/new-video-series-introduction-to-machine-learning-with-scikit-learn/">《Intro to machine learning with scikit-learn》</a><br/>
-介紹:DataSchool的機器學習基本概念教學.</p>
-
-<p>*<a href="https://github.com/hughperkins/DeepCL">《DeepCLn》</a><br/>
-介紹:一個基於OpenGL實現的卷積神經網絡，支持Linux及Windows系.</p>
-
-<p>*<a href="https://www.mapr.com/blog/inside-look-at-components-of-recommendation-engine">《An Inside Look at the Components of a Recommendation Engine》</a><br/>
-介紹:基於Mahout和Elasticsearch的推薦系統.</p>
-
-<p>*<a href="http://www.ssc.upenn.edu/%7Efdiebold/Teaching221/econ221.html">《Forecasting in Economics, Business, Finance and Beyond》</a><br/>
-介紹:Francis X. Diebold的《(經濟|商業|金融等領域)預測方法.</p>
-
-<p>*<a href="http://www.ssc.upenn.edu/%7Efdiebold/Teaching706/econ706Penn.html">《Time Series Econometrics &ndash; A Concise Course》</a><br/>
-介紹:Francis X. Diebold的《時序計量經濟學》.</p>
-
-<p>*<a href="http://fotiad.is/blog/sentiment-analysis-comparison/">《A comparison of open source tools for sentiment analysis》</a><br/>
-介紹:基於Yelp數據集的開源<a href="https://github.com/sfotiadis/yenlp">情感分析工具</a>比較,評測覆蓋Naive Bayes、SentiWordNet、CoreNLP等 .</p>
-
-<p>*<a href="http://vdisk.weibo.com/s/ayG13we2u_sAZ">《Pattern Recognition And Machine Learning》</a><br/>
-介紹:國內Pattern Recognition And Machine Learning讀書會資源匯總,<a href="http://vdisk.weibo.com/u/1841149974">各章pdf講稿</a>,<a href="http://www.cnblogs.com/Nietzsche/">博客</a>.</p>
-
-<p>*<a href="https://highlyscalable.wordpress.com/2012/05/01/probabilistic-structures-web-analytics-data-mining/">《Probabilistic Data Structures for Web Analytics and Data Mining》</a><br/>
-介紹:用於Web分析和數據挖掘的概率數據結構.</p>
-
-<p>*<a href="https://blindmotion.github.io/2015/04/11/ml-in-navigation/">《Machine learning in navigation devices: detect maneuvers using accelerometer and gyroscope》</a><br/>
-介紹:機器學習在導航上面的應用.</p>
-
-<p>*<a href="https://www.youtube.com/user/Taylorns34/videos">《Neural Networks Demystified》</a><br/>
-介紹:Neural Networks Demystified系列視頻，Stephen Welch制作，純手繪風格，淺顯易懂,<a href="http://pan.baidu.com/s/1i3AFURj">國內雲盤</a>.</p>
-
-<p>*<a href="https://www.datacamp.com/swirl-r-tutorial">《swirl + DataCamp》</a><br/>
-介紹:{swirl}數據訓練營:R&amp;數據科學在線交互教程.</p>
-
-<p>*<a href="http://blog.terminal.com/recurrent-neural-networks-deep-net-optimization-lstm/">《Learning to Read with Recurrent Neural Networks》</a><br/>
-介紹:關於深度學習和RNN的討論<a href="http://arxiv.org/abs/1409.3215">Sequence to Sequence Learning with Neural Networks</a>.</p>
-
-<p>*<a href="http://wanghaitao8118.blog.163.com/blog/static/13986977220153811210319/">深度強化學習（Deep Reinforcement Learning）的資源</a><br/>
-介紹:Deep Reinforcement Learning.</p>
-
-<p>*<a href="https://github.com/jakevdp/sklearn_pycon2015">《Machine Learning with Scikit-Learn》</a><br/>
-介紹:(PyCon2015)Scikit-Learn機器學習教程,<a href="https://github.com/ogrisel/parallel_ml_tutorial">Parallel Machine Learning with scikit-learn and IPython</a>.</p>
-
-<p>*<a href="http://www.cs.cmu.edu/%7Eymiao/pdnntk.html">《PDNN》</a><br/>
-介紹:PDNN: A Python Toolkit for Deep Learning.</p>
-
-<p>*<a href="http://alex.smola.org/teaching/10-701-15/index.html">《Introduction to Machine Learning》</a><br/>
-介紹:15年春季學期CMU的機器學習課程，由Alex Smola主講，提供講義及授課視頻，很不錯.<a href="http://pan.baidu.com/s/1pJxBePX">國內雲盤</a>.</p>
-
-<p>*<a href="http://www.st.ewi.tudelft.nl/%7Ehauff/TI2736-B.html">《Big Data Processing》</a><br/>
-介紹:大數據處理課.內容覆蓋流處理、MapReduce、圖算法等.</p>
-
-<p>*<a href="https://www.hakkalabs.co/articles/spark-mllib-making-practical-machine-learning-easy-and-scalable">《Spark MLlib: Making Practical Machine Learning Easy and Scalable》</a><br/>
-介紹:用Spark MLlib實現易用可擴展的機器學習,<a href="http://pan.baidu.com/s/1gdxSOZh">國內雲盤</a>.</p>
-
-<p>*<a href="http://mrkulk.github.io/www_cvpr15/">《Picture: A Probabilistic Programming Language for Scene Perception》</a><br/>
-介紹:以往上千行代碼概率編程(語言)實現只需50行.</p>
-
-<p>*<a href="http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/">《Beautiful plotting in R: A ggplot2 cheatsheet》</a><br/>
-介紹:ggplot2速查小冊子,<a href="http://www.ling.upenn.edu/%7Ejoseff/avml2012/">另外一個</a>,此外還推薦<a href="http://zevross.com/blog/2015/01/13/a-new-data-processing-workflow-for-r-dplyr-magrittr-tidyr-ggplot2/">《A new data processing workflow for R: dplyr, magrittr, tidyr, ggplot2》</a>.</p>
-
-<p>*<a href="http://emnlp2014.org/papers/pdf/EMNLP2014148.pdf">《Using Structured Events to Predict Stock Price Movement: An Empirical Investigation》</a><br/>
-介紹:用結構化模型來預測實時股票行情.</p>
-
-<p>*<a href="http://ijcai-15.org/index.php/accepted-papers">《International Joint Conference on Artificial Intelligence Accepted paper》</a><br/>
-介紹:<a href="http://ijcai.org/">國際人工智能聯合會議</a>錄取論文列表,大部分論文可使用Google找到.</p>
-
-<p>*<a href="http://petewarden.com/2015/04/20/why-gemm-is-at-the-heart-of-deep-learning/">《Why GEMM is at the heart of deep learning》</a><br/>
-介紹:一般矩陣乘法(GEMM)對深度學習的重要性.</p>
-
-<p>*<a href="https://github.com/dmlc">《Distributed (Deep) Machine Learning Common》</a><br/>
-介紹:A Community of awesome Distributed Machine Learning C++ projects.</p>
-
-<p>*<a href="http://webdocs.cs.ualberta.ca/%7Esutton/book/the-book.html">《Reinforcement Learning: An Introduction》</a><br/>
-介紹:免費電子書&lt;強化學習介紹>,<a href="http://pan.baidu.com/s/1jkaMq">第一版(1998)</a>,<a href="http://pan.baidu.com/s/1dDnNEnR">第二版(2015草稿)</a>,相關課程<a href="http://incompleteideas.net/rlai.cs.ualberta.ca/RLAI/RLAIcourse/2010.html">資料</a>, <a href="http://www.inf.ed.ac.uk/teaching/courses/rl/">Reinforcement Learning</a>.</p>
-
-<p>*<a href="http://blogs.msdn.com/b/microsoft_press/archive/2015/04/15/free-ebook-microsoft-azure-essentials-azure-machine-learning.aspx">《Free ebook: Microsoft Azure Essentials: Azure Machine Learning》</a><br/>
-介紹:免費書:Azure ML使用精要.</p>
-
-<p>*<a href="http://www.toptal.com/machine-learning/an-introduction-to-deep-learning-from-perceptrons-to-deep-networks">《A Deep Learning Tutorial: From Perceptrons to Deep Networks》</a><br/>
-介紹:A Deep Learning Tutorial: From Perceptrons to Deep Networks.</p>
-
-<p>*《A Brief Overview of Deep Learning》
-介紹:<a href="http://xhrwang.me/2015/01/16/a-brief-overview-of-deep-learning.html">中文版</a>.</p>
-
-<p>*<a href="https://github.com/dmlc/wormhole">《Wormhole》</a><br/>
-介紹:Portable, scalable and reliable distributed machine learning.</p>
-
-<p>*<a href="https://github.com/soumith/convnet-benchmarks">《convnet-benchmarks》</a><br/>
-介紹:CNN開源實現橫向評測,參評框架包括Caffe 、Torch-7、CuDNN 、cudaconvnet2 、fbfft、Nervana Systems等，NervanaSys表現突出.</p>
-
-<p>*<a href="http://islpc21.is.cs.cmu.edu:3000/lti_catalogue">《This catalogue lists resources developed by faculty and students of the Language Technologies Institute.》</a><br/>
-介紹:卡耐基梅隆大學計算機學院語言技術系的資源大全,包括大量的NLP開源軟件工具包，基礎數據集，論文集，數據挖掘教程，機器學習資源.</p>
-
-<p>*<a href="https://github.com/mayank93/Twitter-Sentiment-Analysis">《Sentiment Analysis on Twitter》</a><br/>
-介紹:Twitter情感分析工具SentiTweet,<a href="http://pan.baidu.com/s/1i3kXPlj">視頻+講義</a>.</p>
-
-<p>*<a href="http://machinelearning.wustl.edu/mlpapers/venues">《Machine Learning Repository @ Wash U》</a><br/>
-介紹:華盛頓大學的Machine Learning Paper Repository.</p>
-
-<p>*<a href="https://github.com/soulmachine/machine-learning-cheat-sheet">《Machine learning cheat sheet》</a><br/>
-介紹:機器學習速查表.</p>
-
-<p>*<a href="http://spark-summit.org/east">《Spark summit east 2015 agenda》</a><br/>
-介紹:最新的Spark summit會議資料.</p>
-
-<p>*<a href="http://pan.baidu.com/s/1eQkybJG">《Learning Spark》</a><br/>
-介紹:Ebook Learning Spark.</p>
-
-<p>*<a href="http://pan.baidu.com/s/1jGot9qe">《Advanced Analytics with Spark, Early Release Edition》</a><br/>
-介紹:Ebook Advanced Analytics with Spark, Early Release Edition.</p>
-
-<p>*<a href="http://keg.cs.tsinghua.edu.cn/jietang/">國內機器學習算法及應用領域人物篇:唐傑</a><br/>
-介紹:清華大學副教授，是圖挖掘方面的專家。他主持設計和實現的Arnetminer是國內領先的圖挖掘系統，該系統也是多個會議的支持商.</p>
-
-<p>*<a href="http://www.cse.ust.hk/%7Eqyang/">國內機器學習算法及應用領域人物篇:楊強</a><br/>
-介紹:遷移學習的國際領軍人物.</p>
-
-<p>*<a href="http://cs.nju.edu.cn/zhouzh/">國內機器學習算法及應用領域人物篇:周誌華</a><br/>
-介紹:在半監督學習，multi-label學習和集成學習方面在國際上有一定的影響力.</p>
-
-<p>*<a href="http://ir.hit.edu.cn/%7Ewanghaifeng/whf_pub.htm">國內機器學習算法及應用領域人物篇:王海峰</a><br/>
-介紹:信息檢索，自然語言處理，機器翻譯方面的專家.</p>
-
-<p>*<a href="http://www.cs.jhu.edu/%7Ejunwu/">國內機器學習算法及應用領域人物篇:吳軍</a><br/>
-介紹:吳軍博士是當前Google中日韓文搜索算法的主要設計者。在Google其間，他領導了許多研發項目，包括許多與中文相關的產品和自然語言處理的項目,他的新個人主頁.</p>
-
-<p>*<a href="http://www.eecs.berkeley.edu/%7Ejunyanz/cat/cat_papers.html">《Cat Paper Collection》</a><br/>
-介紹:喵星人相關論文集.</p>
-
-<p>*<a href="http://blog.dato.com/how-to-evaluate-machine-learning-models-part-1-orientation">《How to Evaluate Machine Learning Models, Part 1: Orientation》</a><br/>
-介紹:如何評價機器學習模型系列文章, <a href="http://blog.dato.com/how-to-evaluate-machine-learning-models-part-2a-classification-metrics">How to Evaluate Machine Learning Models, Part 2a: Classification Metrics</a>, <a href="http://blog.dato.com/how-to-evaluate-machine-learning-models-part-2b-ranking-and-regression-metrics">How to Evaluate Machine Learning Models, Part 2b: Ranking and Regression Metrics</a>.</p>
-
-<p>*<a href="https://blog.twitter.com/2015/building-a-new-trends-experience">《Building a new trends experience》</a><br/>
-介紹:Twitter新trends的基本實現框架.</p>
-
-<p>*<a href="https://www.packtpub.com/big-data-and-business-intelligence/storm-blueprints-patterns-distributed-real-time-computation">《Storm Blueprints: Patterns for Distributed Real-time Computation》</a><br/>
-介紹:Storm手冊，<a href="https://github.com/cjie888/storm-trident">中文翻譯</a>.</p>
-
-<p>*<a href="https://github.com/haifengl/smile">《SmileMiner》</a><br/>
-介紹:Java機器學習算法庫SmileMiner.</p>
-
-<p>*<a href="http://nlp.csai.tsinghua.edu.cn/%7Ely/talks/cwmt14_tut.pdf">《機器翻譯學術論文寫作方法和技巧》</a><br/>
-介紹:機器翻譯學術論文寫作方法和技巧，Simon Peyton Jones的<a href="http://research.microsoft.com/en-us/um/people/simonpj/papers/giving-a-talk/giving-a-talk.htm">How to write a good research paper</a>同類視頻<a href="https://www.youtube.com/watch?v=g3dkRsTqdDA">How to Write a Great Research Paper</a>, <a href="http://vdisk.weibo.com/s/ayG13we2volht">How to paper talk</a>.</p>
-
-<p>*<a href="http://blog.csdn.net/zouxy09/article/details/45288129">《神經網絡訓練中的Tricks之高效BP（反向傳播算法）》</a><br/>
-介紹:神經網絡訓練中的Tricks之高效BP,博主的其他博客也挺精彩的.</p>
-
-<p>*<a href="http://www.52cs.org/?p=499">《我和NLP的故事》</a><br/>
-介紹:作者是NLP方向的碩士，短短幾年內研究成果頗豐,推薦新入門的朋友閱讀.</p>
-
-<p>*<a href="http://www.cs.ucla.edu/%7Epalsberg/h-number.html">《The h Index for Computer Science 》</a><br/>
-介紹:UCLA的Jens Palsberg根據Google Scholar建立了一個計算機領域的H-index牛人列表,我們熟悉的各個領域的大牛絕大多數都在榜上，包括1位諾貝爾獎得主，35位圖靈獎得主，近百位美國工程院/科學院院士，300多位ACM Fellow,在這裏推薦的原因是大家可以在google通過搜索牛人的名字來獲取更多的資源,這份資料很寶貴.</p>
-
-<p>*<a href="http://ttic.uchicago.edu/%7Embansal/papers/acl14_structuredTaxonomy.pdf">《Structured Learning for Taxonomy Induction with Belief Propagation》</a><br/>
-介紹:用大型語料庫學習概念的層次關系，如鳥是鸚鵡的上級，鸚鵡是虎皮鸚鵡的上級。創新性在於模型構造，用因子圖刻畫概念之間依存關系，因引入兄弟關系，圖有環，所以用有環擴散（loopy propagation）叠代計算邊際概率（marginal probability）.</p>
-
-<p>*<a href="http://www.stata.com/stata14/bayesian-analysis/">《Bayesian analysis》</a><br/>
-介紹: 這是一款貝葉斯分析的商業軟件,官方寫的貝葉斯分析的手冊有250多頁,雖然R語言 已經有類似的項目,但畢竟可以增加一個可選項.</p>
-
-<p><a href="https://github.com/ty4z2008/Qix/blob/master/dl.md">Origin</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Machine Learning is Fun!(FW)]]></title>
-    <link href="http://www.aprilzephyr.com/blog/04302015/machine-learning-is-fun/"/>
-    <updated>2015-04-30T14:44:26+08:00</updated>
-    <id>http://www.aprilzephyr.com/blog/04302015/machine-learning-is-fun</id>
-    <content type="html"><![CDATA[<p>在聽到人們談論機器學習的時候，你是不是對它的涵義只有幾個模糊的認識呢？你是不是已經厭倦了在和同事交談時只能一直點頭？讓我們改變一下吧！</p>
-
-<p>本指南的讀者對象是所有對機器學習有求知欲但卻不知道如何開頭的朋友。我猜很多人已經讀過了“機器學習”的<a href="http://en.wikipedia.org/wiki/Machine_learning">維基百科詞條</a>，倍感挫折，以為沒人能給出一個高層次的解釋。本文就是你們想要的東西。</p>
-
-<p>本文目標在於平易近人，這意味著文中有大量的概括。但是誰在乎這些呢？只要能讓讀者對於ML更感興趣，任務也就完成了。<!--more--></p>
-
-<h3>何為機器學習？</h3>
-
-<p>機器學習這個概念認為，對於待解問題，你無需編寫任何專門的程序代碼，遺傳算法（Generic Algorithms）能夠在數據集上為你得出有趣的答案。對於遺傳算法，不用編碼，而是將數據輸入，它將在數據之上建立起它自己的邏輯。</p>
-
-<p>舉個例子，有一類算法稱為分類算法，它可以將數據劃分為不同的組別。一個用來識別手寫數字的分類算法，不用修改一行代碼，就可以用來將電子郵件分為垃圾郵件和普通郵件。算法沒變，但是輸入的訓練數據變了，因此它得出了不同的分類邏輯。<br/>
-<img src="/images/mlf/m1.png"></p>
-
-<h6><em>機器學習算法是個黑盒，可以重用來解決很多不同的分類問題。</em></h6>
-
-<p>“機器學習”是一個涵蓋性術語，覆蓋了大量類似的遺傳算法。</p>
-
-<h3>兩類機器學習算法</h3>
-
-<p>你可以認為機器學習算法分為兩大類：<strong>監督式學習（Supervised Learning）</strong>和<strong>非監督式學習（Unsupervised Learning）</strong>。兩者區別很簡單，但卻非常重要。<em>(還有第三種學習方式——增強學習(<a href="https://class.coursera.org/neuralnets-2012-001/lecture">Reinforcement Learning</a>)：學習選擇行為來最大化效益。輸出是一個行為或一系列行為，唯一的監督信號是偶爾的有監督的獎勵，目標是選擇行為最大化未來的獎勵，通常使用一個折現因子，因此不用考慮太遠的未來。增強學習是困難的，因為獎勵是延時的，所以很難確定我們哪一步做對做錯，而且有監督的獎勵只是時而出現，並不提供太多信息，所以不能學習很多參數。&mdash;Themis_Sword注)</em></p>
-
-<h4>監督式學習</h4>
-
-<p>假設你是一名房產經紀，生意越做越大，因此你雇了一批實習生來幫你。但是問題來了——你可以看一眼房子就知道它到底值多少錢，實習生沒有經驗，不知道如何估價。</p>
-
-<p>為了幫助你的實習生（也許是為了解放你自己去度個假），你決定寫個小軟件，可以根據房屋大小、地段以及類似房屋的成交價等因素來評估你所在地區房屋的價值。</p>
-
-<p>你把3個月來城裏每筆房屋交易都寫了下來，每一單你都記錄了一長串的細節——臥室數量、房屋大小、地段等等。但最重要的是，你寫下了最終的成交價：</p>
-
-<h6><em>這是我們的“訓練數據”。</em></h6>
-
-<p><img src="/images/mlf/m2.png"></p>
-
-<p>我們要利用這些訓練數據來編寫一個程序來估算該地區其他房屋的價值：<br/>
-<img src="/images/mlf/m3.png"></p>
-
-<p>這就稱為<strong>監督式學習</strong>。你已經知道每一棟房屋的售價，換句話說，你知道問題的答案，並可以反向找出解題的邏輯。</p>
-
-<p>為了編寫軟件，你將包含每一套房產的訓練數據輸入你的機器學習算法。算法嘗試找出應該使用何種運算來得出價格數字。</p>
-
-<p>這就像是算術練習題，算式中的運算符號都被擦去了：<br/>
-<img src="/images/mlf/m4.png"></p>
-
-<h6><em>天哪！一個陰險的學生將老師答案上的算術符號全擦去了。</em></h6>
-
-<p>看了這些題，你能明白這些測驗裏面是什麽樣的數學問題嗎？你知道，你應該對算式左邊的數字“做些什麽”以得出算式右邊的答案。</p>
-
-<p>在監督式學習中，你是讓計算機為你算出數字間的關系。而一旦你知道了解決這類特定問題所需要的數學方法後，你就可以解答同類的其它問題了。</p>
-
-<h4>非監督式學習</h4>
-
-<p>讓我們回到開頭那個房地產經紀的例子。要是你不知道每棟房子的售價怎麽辦？即使你所知道的只是房屋的大小、位置等信息，你也可以搞出很酷的花樣。這就是所謂的<strong>非監督式學習</strong>。<br/>
-<img src="/images/mlf/m5.png"></p>
-
-<h6><em>即使你不是想去預測未知的數據（如價格），你也可以運用機器學習完成一些有意思的事。</em></h6>
-
-<p>這就有點像有人給你一張紙，上面列出了很多數字，然後對你說:“我不知道這些數字有什麽意義，也許你能從中找出規律或是能將它們分類，或是其它什麽-祝你好運！”</p>
-
-<p>你該怎麽處理這些數據呢？首先，你可以用個算法自動地從數據中劃分出不同的細分市場。也許你會發現大學附近的買房者喜歡戶型小但臥室多的房子，而郊區的買房者偏好三臥室的大戶型。這些信息可以直接幫助你的營銷。</p>
-
-<p>你還可以作件很酷的事，自動找出房價的離群數據，即與其它數據迥異的值。這些鶴立雞群的房產也許是高樓大廈，而你可以將最優秀的推銷員集中在這些地區，因為他們的傭金更高。</p>
-
-<p>本文余下部分我們主要討論監督式學習，但這並不是因為非監督式學習用處不大或是索然無味。實際上，隨著算法改良，不用將數據和正確答案聯系在一起，因此非監督式學習正變得越來越重要。</p>
-
-<h6>老學究請看:還有很多其它種類的機器學習算法。但初學時這樣理解不錯了。</h6>
-
-<h3>太酷了，但是評估房價真能被看作“學習”嗎？</h3>
-
-<p>作為人類的一員，你的大腦可以應付絕大多數情況，並且沒有任何明確指令也能夠學習如何處理這些情況。如果你做房產經紀時間很長，你對於房產的合適定價、它的最佳營銷方式以及哪些客戶會感興趣等等都會有一種本能般的“感覺”。強人工智能（Strong AI）研究的目標就是要能夠用計算機復制這種能力。</p>
-
-<p>但是目前的機器學習算法還沒有那麽好——它們只能專註於非常特定的、有限的問題。也許在這種情況下，“學習”更貼切的定義是“在少量範例數據的基礎上找出一個等式來解決特定的問題”。</p>
-
-<p>不幸的是，“機器在少量範例數據的基礎上找出一個等式來解決特定的問題”這個名字太爛了。所以最後我們用“機器學習”取而代之。</p>
-
-<p>當然，要是你是在50年之後來讀這篇文章，那時我們已經得出了強人工智能算法，而本文看起來就像個老古董。未來的人類，你還是別讀了，叫你的機器仆人給你做份三明治吧。</p>
-
-<h3>讓我們寫代碼吧!</h3>
-
-<p>前面例子中評估房價的程序，你打算怎麽寫呢？往下看之前，先思考一下吧。</p>
-
-<p>如果你對機器學習一無所知，很有可能你會嘗試寫出一些基本規則來評估房價，如下：</p>
-
-<p>```
-def estimate_house_sales_price(num_of_bedrooms, sqft, neighborhood):
-  price = 0</p>
-
-<p>  # In my area, the average house costs $200 per sqft
-  price_per_sqft = 200</p>
-
-<p>  if neighborhood == &ldquo;hipsterton&rdquo;:</p>
-
-<pre><code># but some areas cost a bit more
-price_per_sqft = 400
-</code></pre>
-
-<p>  elif neighborhood == &ldquo;skid row&rdquo;:</p>
-
-<pre><code># and some areas cost less
-price_per_sqft = 100
-</code></pre>
-
-<p>  # start with a base price estimate based on how big the place is
-  price = price_per_sqft * sqft</p>
-
-<p>  # now adjust our estimate based on the number of bedrooms
-  if num_of_bedrooms == 0:</p>
-
-<pre><code># Studio apartments are cheap
-price = price — 20000
-</code></pre>
-
-<p>  else:</p>
-
-<pre><code># places with more bedrooms are usually
-# more valuable
-price = price + (num_of_bedrooms * 1000)
-</code></pre>
-
-<p> return price
-```</p>
-
-<p>假如你像這樣瞎忙幾個小時，也許會取得一點成效，但是你的程序永不會完美，而且當價格變化時很難維護。</p>
-
-<p>如果能讓計算機找出實現上述函數功能的辦法，這樣豈不更好？只要返回的房價數字正確，誰會在乎函數具體幹了些什麽呢？</p>
-
-<p>```
-def estimate_house_sales_price(num_of_bedrooms, sqft, neighborhood):
-  price = &lt;computer, plz do some math for me></p>
-
-<p>  return price
-```</p>
-
-<p>考慮這個問題的一種角度是將房價看做一碗美味的湯，而湯中成分就是臥室數、面積和地段。如果你能算出每種成分對最終的價格有多大影響，也許就能得到各種成分混合起來形成最終價格的具體比例。</p>
-
-<p>這樣可以將你最初的程序（全是瘋狂的if else語句）簡化成類似如下的樣子：
-```
-def estimate_house_sales_price(num_of_bedrooms, sqft, neighborhood):
- price = 0</p>
-
-<p> # a little pinch of this
- price += num_of_bedrooms * .841231951398213</p>
-
-<p> # and a big pinch of that
- price += sqft * 1231.1231231</p>
-
-<p> # maybe a handful of this
- price += neighborhood * 2.3242341421</p>
-
-<p> # and finally, just a little extra salt for good measure
- price += 201.23432095</p>
-
-<p> return price
-```</p>
-
-<p>請註意那些用粗體標註的神奇數字
-&mdash;&ndash;<strong>.841231951398213, 1231.1231231,2.3242341421</strong>和<strong>201.23432095</strong>。它們稱為<strong>權重</strong>。如果我們能找出對每棟房子都適用的完美權重，我們的函數就能預測所有的房價！</p>
-
-<p>找出最佳權重的一種笨辦法如下所示：</p>
-
-<h4>步驟1：</h4>
-
-<p>首先，將每個權重都設為1.0：
-```
-def estimate_house_sales_price(num_of_bedrooms, sqft, neighborhood):
-  price = 0</p>
-
-<p>  # a little pinch of this
-  price += num_of_bedrooms * 1.0</p>
-
-<p>  # and a big pinch of that
-  price += sqft * 1.0</p>
-
-<p>  # maybe a handful of this
-  price += neighborhood * 1.0</p>
-
-<p>  # and finally, just a little extra salt for good measure
-  price += 1.0</p>
-
-<p>  return price
- ```</p>
-
-<h4>步驟2：</h4>
-
-<p>將每棟房產帶入你的函數運算，檢驗估算值與正確價格的偏離程度：<br/>
-<img src="/images/mlf/m6.png"></p>
-
-<h6><em>運用你的程序預測房屋價格。</em></h6>
-
-<p>例如：上表中第一套房產實際成交價為25萬美元，你的函數估價為17.8萬，這一套房產你就差了7.2萬。</p>
-
-<p>再將你的數據集中的每套房產估價偏離值平方後求和。假設數據集中有500套房產交易，估價偏離值平方求和總計為86,123,373美元。這就反映了你的函數現在的“正確”程度。</p>
-
-<p>現在，將總計值除以500，得到每套房產的估價偏離平均值。將這個平均誤差值稱為你函數的代價。</p>
-
-<p>如果你能調整權重使得這個代價變為0，你的函數就完美了。它意味著，根據輸入的數據，你的程序對每一筆房產交易的估價都是分毫不差。而這就是我們的目標——嘗試不同的權重值以使代價盡可能的低。</p>
-
-<h4>步驟3：</h4>
-
-<p>不斷重復步驟2，嘗試<strong>所有可能的權重值組合</strong>。哪一個組合使得代價最接近於0，它就是你要使用的，你只要找到了這樣的組合，問題就得到了解決!</p>
-
-<h3>思想擾動時間</h3>
-
-<p>這太簡單了，對吧？想一想剛才你做了些什麽。你取得了一些數據，將它們輸入至三個通用的簡單步驟中，最後你得到了一個可以對你所在區域的房屋進行估價的函數。房價網，要當心咯！
-但是下面的事實可能會擾亂你的思想：</p>
-
-<p>1.過去40年來，很多領域（如語言學/翻譯學）的研究表明，這種通用的“攪動數據湯”（我編造的詞）式的學習算法已經勝過了需要利用真人明確規則的方法。機器學習的“笨”辦法最終打敗了人類專家。</p>
-
-<p>2.你最後寫出的函數真是笨，它甚至不知道什麽是“面積”和“臥室數”。它知道的只是攪動，改變數字來得到正確的答案。</p>
-
-<p>3.很可能你都不知道為何一組特殊的權重值能起效。所以你只是寫出了一個你實際上並不理解卻能證明的函數。
-4.試想一下，你的程序裏沒有類似“面積”和“臥室數”這樣的參數，而是接受了一組數字。假設每個數字代表了你車頂安裝的攝像頭捕捉的畫面中的一個像素，再將預測的輸出不稱為“價格”而是叫做“方向盤轉動度數”，<strong>這樣你就得到了一個程序可以自動操縱你的汽車了！</strong></p>
-
-<p>太瘋狂了，對吧？</p>
-
-<h3>步驟3中的“嘗試每個數字”怎麽回事？</h3>
-
-<p>好吧，當然你不可能嘗試所有可能的權重值來找到效果最好的組合。那可真要花很長時間，因為要嘗試的數字可能無窮無盡。
-為避免這種情況，數學家們找到了很多<a href="http://en.wikipedia.org/wiki/Gradient_descent">聰明的辦法</a>來快速找到優秀的權重值，而不需要嘗試過多。下面是其中一種：
-首先，寫出一個簡單的等式表示前述步驟2：</p>
-
-<h6><em>這是你的代價函數。</em></h6>
-
-<p><img src="/images/mlf/m7.png"></p>
-
-<p>接著，讓我們將這同一個等式用機器學習的數學術語（現在你可以忽略它們）進行重寫：</p>
-
-<h6><em>θ表示當前的權重值。 J(θ) 意為“當前權重值對應的代價”。</em></h6>
-
-<p><img src="/images/mlf/m8.png"></p>
-
-<p>這個等式表示我們的估價程序在當前權重值下偏離程度的大小。
-如果將所有賦給臥室數和面積的可能權重值以圖形形式顯示，我們會得到類似下圖的圖表：<br/>
-<img src="/images/mlf/m9.png"></p>
-
-<h6><em>代價函數的圖形像一支碗。縱軸表示代價。</em></h6>
-
-<p>圖中藍色的最低點就是代價最低的地方——即我們的程序偏離最小。最高點意味著偏離最大。所以，如果我們能找到一組權重值帶領我們到達圖中的最低點，我們就找到了答案！</p>
-
-<p><img src="/images/mlf/m10.png"></p>
-
-<p>因此，我們只需要調整權重值使我們在圖上能向著最低點“走下坡路”。如果對於權重的細小調節能一直使我們保持向最低點移動，那麽最終我們不用嘗試太多權重值就能到達那裏。</p>
-
-<p>如果你還記得一點微積分的話，你也許記得如果你對一個函數求導，結果會告訴你函數在任一點的斜率。換句話說，對於圖上給定一點，它告訴我們那條路是下坡路。我們可以利用這一點朝底部進發。</p>
-
-<p>所以，如果我們對代價函數關於每一個權重求偏導，那麽我們就可以從每一個權重中減去該值。這樣可以讓我們更加接近山底。一直這樣做，最終我們將到達底部，得到權重的最優值。（讀不懂？不用擔心，接著往下讀）。</p>
-
-<p>這種找出最佳權重的辦法被稱為<strong>批量梯度下降</strong>，上面是對它的高度概括。如果想搞懂細節，不要害怕，繼續<a href="https://hbfs.wordpress.com/2012/04/24/introduction-to-gradient-descent/">深入下去</a>吧。</p>
-
-<p>當你使用機器學習算法庫來解決實際問題，所有這些都已經為你準備好了。但明白一些具體細節總是有用的。</p>
-
-<h3>還有什麽你隨便就略過了？</h3>
-
-<p>上面我描述的三步算法被稱為<strong>多元線性回歸</strong>。你估算等式是在求一條能夠擬合所有房價數據點的直線。然後，你再根據房價在你的直線上可能出現的位置用這個等式來估算從未見過的房屋的價格。這個想法威力強大，可以用它來解決“實際”問題。</p>
-
-<p>但是，我為你展示的這種方法可能在簡單的情況下有效，它不會在所有情況下都有用。原因之一是因為房價不會一直那麽簡單地跟隨一條連續直線。</p>
-
-<p>但是，幸運的是，有很多辦法來處理這種情況。對於非線性數據，很多其他類型的機器學習算法可以處理（如神經網絡或有核向量機）。還有很多方法運用線性回歸更靈活，想到了用更復雜的線條來擬合。在所有的情況中，尋找最優權重值這一基本思路依然適用。</p>
-
-<p>還有，我忽略了<strong>過擬合</strong>的概念。很容易碰上這樣一組權重值，它們對於你原始數據集中的房價都能完美預測，但對於原始數據集之外的任何新房屋都預測不準。這種情況的解決之道也有不少（如正則化以及使用交叉驗證數據集）。學會如何處理這一問題對於順利應用機器學習至關重要。</p>
-
-<p>換言之，基本概念非常簡單，要想運用機器學習得到有用的結果還需要一些技巧和經驗。但是，這是每個開發者都能學會的技巧。</p>
-
-<h3>機器學習法力無邊嗎？</h3>
-
-<p>一旦你開始明白機器學習技術很容易應用於解決貌似很困難的問題（如手寫識別），你心中會有一種感覺，只要有足夠的數據，你就能夠用機器學習解決任何問題。只需要將數據輸入進去，就能看到計算機變戲法一樣找出擬合數據的等式。</p>
-
-<p>但是很重要的一點你要記住，機器學習只能對用你占有的數據實際可解的問題才適用。</p>
-
-<p>例如，如果你建立了一個模型來根據每套房屋內盆栽數量來預測房價，它就永遠不會成功。房屋內盆栽數量和房價之間沒有任何的關系。所以，無論它怎麽去嘗試，計算機也推導不出兩者之間的關系。<br/>
-<img src="/images/mlf/m11.png"></p>
-
-<h6><em>你只能對實際存在的關系建模。</em></h6>
-
-<h3>怎樣深入學習機器學習</h3>
-
-<p>我認為，當前機器學習的最大問題是它主要活躍於學術界和商業研究組織中。對於圈外想要有個大體了解而不是想成為專家的人們，簡單易懂的學習資料不多。但是這一情況每一天都在改善。</p>
-
-<p>吳恩達教授（Andrew Ng）在Coursera上的<a href="https://www.coursera.org/course/ml">機器學習免費課程</a>非常不錯。我強烈建議由此入門。任何擁有計算機科學學位、還能記住一點點數學的人應該都能理解。</p>
-
-<p>另外，你還可以下載安裝<a href="http://scikit-learn.org/stable/">SciKit-Learn</a>，用它來試驗成千上萬的機器學習算法。它是一個python框架，對於所有的標準算法都有“黑盒”版本。</p>
-
-<ol>
-<li><a href="https://medium.com/@ageitgey/machine-learning-is-fun-80ea3ec3c471">Origin</a></li>
-<li><a href="https://medium.com/@ageitgey/machine-learning-is-fun-80ea3ec3c471">中文翻譯</a></li>
-</ol>
-
 ]]></content>
   </entry>
   
