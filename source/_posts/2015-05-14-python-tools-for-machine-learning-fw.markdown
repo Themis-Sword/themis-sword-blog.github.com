@@ -3,7 +3,7 @@ layout: post
 title: "Python Tools for Machine Learning(FW)"
 date: 2015-05-14 11:15:31 +0800
 comments: true
-categories: python, artificial-intelligence
+categories: python artificial-intelligence
 keywords: python, tools, machine learning
 discription: Python Tools for Machine Learning
 ---

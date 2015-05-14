@@ -3,7 +3,7 @@ layout: post
 title: "Python數據分析入門(轉)"
 date: 2015-05-14 10:46:30 +0800
 comments: true
-categories: python, artificial-intelligence
+categories: python artificial-intelligence
 keywords: python, data analysis
 discription: Python Getting started with data analysis
 ---
