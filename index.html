@@ -125,6 +125,75 @@ $(document).ready(
     <article class="post">
 	<h3 class="title">
 		
+		<a href="/blog/05292015/nifty-python-tricks-fw/">
+		
+			Nifty Python tricks(FW)</a>
+	</h3>
+	<div class="entry-content">
+		<p>Hi there folks. It’s been a long time since I last published a post. I have been busy. However in this post I am going to share some really informative tips and tricks which you might not have known about. So without wasting any time lets get straight to them:</p>
+
+<h4>Enumerate</h4>
+
+<p>Instead of doing:</p>
+
+<pre><code>i = 0 
+for item in iterable: 
+    print i, item 
+    i += 1
+</code></pre>
+
+<p>We can do:</p>
+
+<pre><code>for i, item in enumerate(iterable):
+    print i, item
+</code></pre>
+
+<p>Enumerate can also take a second argument. Here is an example:</p>
+
+<pre><code>&gt;&gt;&gt; list(enumerate('abc')) 
+[(0, 'a'), (1, 'b'), (2, 'c')] 
+
+&gt;&gt;&gt; list(enumerate('abc', 1)) 
+[(1, 'a'), (2, 'b'), (3, 'c')]
+</code></pre>
+
+
+		
+		<a href="/blog/05292015/nifty-python-tricks-fw/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-05-29T10:12:24+08:00" pubdate data-updated="true">May 29<span>th</span>, 2015</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/python/'>python</a>
+
+</div>
+
+
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h3 class="title">
+		
 		<a href="/blog/05142015/python-tools-for-machine-learning-fw/">
 		
 			Python Tools for Machine Learning(FW)</a>
@@ -295,55 +364,6 @@ $(document).ready(
 
 
 <time datetime="2015-05-12T15:08:13+08:00" pubdate data-updated="true">May 12<span>th</span>, 2015</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/artificial-intelligence/'>artificial-intelligence</a>
-
-</div>
-
-
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/05122015/excerpt-machine-learning-tom-mitchell/">
-		
-			Excerpt_Machine Learning(Tom Mitchell)</a>
-	</h3>
-	<div class="entry-content">
-		<h3>1. Introduction</h3>
-
-<ul>
-<li>Machine learning addresses the question of how to build computer programs that improve their performance at some task through experience.</li>
-<li>Machine learning algorithms have proven to be of great value in a variety of application domains. They are especially useful in (a) data mining problems where large databases may contain valuable implicit regularities that can be discovered automatically (e.g., to analyze outcomes of medical treatments from patient databases or to learn general rules for credit worthiness from finalcial databases); (b) poorly understood domains where humans might not have the knowledge needed to develop effective algorithms (e.g., human face recognition from images); and &copy; domains where the program must dynamically adapt to changing conditions (e.g., controlling manufacturing processes under changing supply stocks or adapting to the changing reading interests of individuals).</li>
-<li>Machine learning draws on idea from a diverse set of disciplines, including artifical intelligence, probability and statistics, computational complexity, information theory, psychology and neurobiology, control theory, and philosophy.</li>
-<li>A well-defines learning problem approach involves a number of design choices, including choosing the type of training experience, the target function to be learned, a representation for this target function, and an algorithm for learning the target function from training examples.</li>
-<li>Learning involves search: searching through a space of possible hypotheses to find the hypothesis that best fits the available training examples and other prior constraints or knowledge.
-		
-		<a href="/blog/05122015/excerpt-machine-learning-tom-mitchell/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-05-12T10:40:37+08:00" pubdate data-updated="true">May 12<span>th</span>, 2015</time></div>
 	
 
 <div class="tags">
