@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2015-06-02T16:29:47+08:00</updated>
+  <updated>2015-06-02T16:32:47+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -54,37 +54,37 @@
 <p>2015年英國大選將於5月7日舉行，記者們早就蠢蠢欲動。英國新聞業網站Journalism.co.uk也趁此時機向記者們推薦報道大選可用的數據可視化工具，幾乎所有工具都提供免費版本。他山之石，可以攻玉。看看英國的科技記者們都推薦了哪些工具吧！</p>
 
 <p>1、將投票數據變成互動圖表最佳選擇: <a href="https://venngage.com/">Venngage</a>
-<img src="http://www.aprilzephyr.com/images/dv/2.png"></p>
+<img src="http://www.aprilzephyr.com/images/dv/2.jpg"></p>
 
 <p>可以從Excel或者谷歌電子表格復制粘貼數據，也可以直接粘貼谷歌表哥的鏈接，制作圖表。用戶可選擇用地圖、圖表或圖片展現。</p>
 
 <p>2、設計為重：<a href="http://datavisu.al/">Datavisual</a></p>
 
-<p><img src="http://www.aprilzephyr.com/images/dv/3.png"></p>
+<p><img src="http://www.aprilzephyr.com/images/dv/3.jpg"></p>
 
 <p>用戶在添加數據之前，可以選擇模板或自己設計。</p>
 
 <p>3、獨立記者、小型新聞機構首選：<a href="https://public.tableau.com/s/">Tableau Public</a></p>
 
-<p><img src="http://www.aprilzephyr.com/images/dv/4.png"></p>
+<p><img src="http://www.aprilzephyr.com/images/dv/4.jpg"></p>
 
 <p>Tableau Public是Tableau 桌面的簡化版（免費）。雖然Tableau上手最花時間，但是可供選擇的模板和可視化選擇範圍廣。</p>
 
 <p>4、適合果粉的應用：<a href="https://itunes.apple.com/us/app/perspective/id516098684">Perspective</a></p>
 
-<p><img src="http://www.aprilzephyr.com/images/dv/5.png"></p>
+<p><img src="http://www.aprilzephyr.com/images/dv/5.jpg"></p>
 
 <p>可以以演示文稿模式制作圖表。註意該應用只支持在iPad上制作。可以在iPhone上瀏覽和播放。可以導出放在大屏幕上顯示的文件。</p>
 
 <p>5、多方導入，支持協作：<a href="https://plot.ly/">Potly</a></p>
 
-<p><img src="http://www.aprilzephyr.com/images/dv/6.png"></p>
+<p><img src="http://www.aprilzephyr.com/images/dv/6.jpg"></p>
 
 <p>可以從Dropbox、谷歌雲端硬碟等地方導入數據，然後選擇適合模板。支持線形圖、柱狀圖、散點圖、熱力圖等。你還可以在Potly上和小夥伴協同作業。</p>
 
 <p>6、用多個數據集講故事：<a href="https://www.silk.co/">Silk</a></p>
 
-<p><img src="http://www.aprilzephyr.com/images/dv/7.png"></p>
+<p><img src="http://www.aprilzephyr.com/images/dv/7.jpg"></p>
 
 <p>Silk可以讓你使用多個數據可視化，並配以文字形成一個獨立的故事。每個可視化都可以被分享或嵌入其他文章。</p>
 
@@ -92,7 +92,7 @@
 
 <p>7、Quartz之選：<a href="https://github.com/Quartz/Chartbuilder/">Chartbuilder</a></p>
 
-<p><img src="http://www.aprilzephyr.com/images/dv/8.png"></p>
+<p><img src="http://www.aprilzephyr.com/images/dv/8.jpg"></p>
 
 <p>這是Quartz使用的一款開源工具，可快速制作折線圖、柱狀圖和散點圖。你既可以使用Quartz的版本，輸入數據後，導出圖片並下載或復制html代碼；也可下載GitHub版本，選擇更廣。</p>
 
@@ -114,11 +114,11 @@
 
 <p>這張圖表以華盛頓中午12點為標準，不同地點的時間比較。北京是綠色表盤，八點半方向（12：55分）</p>
 
-<p><img src="http://www.aprilzephyr.com/images/dv/11.png"></p>
+<p><img src="http://www.aprilzephyr.com/images/dv/11.jpg"></p>
 
 <p>這是一張名為“生命延續和地質時間表”繪制了地球初始到人的孕育。一張表搞定地質歷史和人類進化史。</p>
 
-<p><img src="http://www.aprilzephyr.com/images/dv/12.png"></p>
+<p><img src="http://www.aprilzephyr.com/images/dv/12.jpg"></p>
 
 <p>＊本榜單是根據使用話題#ddj#(數據新聞)的推文(Tweet)由社交網絡繪圖程序NodeXL統計完成的。感謝全球深度報道網(GIJN)的好朋友 &ndash; 來自Connected Action的Marc Smith，幫助深度網所做的整理。</p>
 
@@ -303,7 +303,7 @@ small = x if x &lt; y else y
 
 <p>Thats all for today! I hope you enjoyed this article and picked up a trick or two along the way. See you in the next article. Make sure that you follow us on <a href="https://www.facebook.com/freepythontips">Facebook</a> and <a href="https://twitter.com/yasoobkhalid">Twitter</a>!</p>
 
-<p>Do you have any comments or suggestions? You can write a comment or email me on <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#111;&#58;&#x79;&#x61;&#115;&#111;&#111;&#98;&#46;&#107;&#104;&#108;&#x64;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">&#x79;&#97;&#115;&#x6f;&#x6f;&#98;&#46;&#x6b;&#x68;&#x6c;&#100;&#64;&#x67;&#109;&#97;&#x69;&#108;&#46;&#x63;&#111;&#x6d;</a></p>
+<p>Do you have any comments or suggestions? You can write a comment or email me on <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#x79;&#x61;&#x73;&#x6f;&#x6f;&#x62;&#x2e;&#x6b;&#104;&#108;&#x64;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#x6d;">&#x79;&#97;&#x73;&#111;&#x6f;&#98;&#46;&#x6b;&#x68;&#108;&#100;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a></p>
 
 <p><a href="http://pythontips.com/2015/04/19/nifty-python-tricks/">Origin</a></p>
 ]]></content>
