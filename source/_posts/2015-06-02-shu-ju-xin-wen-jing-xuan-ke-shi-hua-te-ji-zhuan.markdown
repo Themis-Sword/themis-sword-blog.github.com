@@ -1,0 +1,110 @@
+---
+layout: post
+title: "數據新聞精選(可視化特輯)轉"
+date: 2015-06-02 16:11:43 +0800
+comments: true
+categories: artificial-intelligence
+keywords: Data, visualization
+description: Data visualization
+---
+本期數據新聞精選帶你踏上可視化之旅：普通人的數據新聞修養要怎麽修煉？英國大選報道有什麽可視化工具可以用？從地中海偷渡的移民，溺亡者有多少？最後，請你暫忘工具，用眼和心，探索100張前人繪制的時間地圖，細細體味可視化的“遠古時代”。
+
+["了解數據可視化"](http://seeingdata.org/understanding-data-visualisations/)：普通人的數據新聞修煉
+
+{% img /images/dv/1.png %}
+<!--more-->  
+
+若你仍在數據可視化的門外霧裏看花，不妨登錄一個名叫“了解數據可視化”(Understanding Data Visualisations)的網站，向它走近一步。
+
+該網站分為七大模塊，通過圖文和視頻講解配合小練習，提高大眾閱讀數據可視化的能力。這對業內人士來說也有一定參考意義，可以了解大眾是如何閱讀可視化的。
+
+模塊一：[什麽是數據可視化？](http://seeingdata.org/understanding-data-visualisations/what-is-data-visualisation/)——短視頻掃盲基本概念：告訴你什麽是可視化？為什麽那麽火？如何更好理解可視化作品？
+
+模塊二：[十大關鍵詞](http://seeingdata.org/understanding-data-visualisations/key-terms-in-visualisation/)——這裏為你介紹了可視化中最常用的十個詞匯。（當然不一定所有可視化作品都擁有這些元素。）
+
+模塊三：[速覽五要素](http://seeingdata.org/understanding-data-visualisations/top-5-things-to-look-for-in-a-visualisation/)——時間緊張的時候，可以參考五大元素助你迅速讀懂作品。（如上所述，不一定所有可視化作品都具備這些元素。）
+
+模塊四：[精讀小訣竅](http://seeingdata.org/sections/intro/)——有些作品需要細細品鑒。這裏會教你一些技巧高效、全面地看可視化作品，並嘗試理解它。還會教你如何閱讀不同類型圖標的技巧。
+
+模塊五：[可視化制作過程](http://seeingdata.org/understanding-data-visualisations/how-a-visualisation-is-made/)——短視頻從制作者角度介紹制作過程中的挑戰和考慮的關鍵因素，讓讀者了解對最終成果起到影響，卻不為一般人所知的一些因素。
+
+模塊六：[數據可視化與讀者](http://seeingdata.org/understanding-data-visualisations/data-visualisation-and-you/)——短視頻講解影響用戶體驗可視化的關鍵人為因素，包括對話題的興趣、心情等。
+
+模塊七：[評評可視化作品](http://seeingdata.org/understanding-data-visualisations/rate-these-visualisations/)——讓你評價對8個可視化作品的主觀感受：讓你歡喜？讓你受益?
+
+該網站是“看見數據”(seeing data)研究計劃的一部分，由英國謝菲爾德大學研究數字媒體的教授Helen Kennedy領導。這項長達15個月的研究會陸續以論文、PPT、播客等方式發布成果。
+
+[報道大選利器：七大可視化工具推薦](https://www.journalism.co.uk/news/data-viz-tools-for-covering-the-uk-general-election/s2/a564781/)
+
+2015年英國大選將於5月7日舉行，記者們早就蠢蠢欲動。英國新聞業網站Journalism.co.uk也趁此時機向記者們推薦報道大選可用的數據可視化工具，幾乎所有工具都提供免費版本。他山之石，可以攻玉。看看英國的科技記者們都推薦了哪些工具吧！
+
+1、將投票數據變成互動圖表最佳選擇: [Venngage](https://venngage.com/)
+{% img /images/dv/2.png %}
+
+可以從Excel或者谷歌電子表格復制粘貼數據，也可以直接粘貼谷歌表哥的鏈接，制作圖表。用戶可選擇用地圖、圖表或圖片展現。
+
+2、設計為重：[Datavisual](http://datavisu.al/)
+
+{% img /images/dv/3.png %}
+
+用戶在添加數據之前，可以選擇模板或自己設計。
+
+3、獨立記者、小型新聞機構首選：[Tableau Public](https://public.tableau.com/s/)
+
+{% img /images/dv/4.png %}
+
+Tableau Public是Tableau 桌面的簡化版（免費）。雖然Tableau上手最花時間，但是可供選擇的模板和可視化選擇範圍廣。
+
+4、適合果粉的應用：[Perspective](https://itunes.apple.com/us/app/perspective/id516098684)
+
+{% img /images/dv/5.png %}
+
+可以以演示文稿模式制作圖表。註意該應用只支持在iPad上制作。可以在iPhone上瀏覽和播放。可以導出放在大屏幕上顯示的文件。
+
+5、多方導入，支持協作：[Potly](https://plot.ly/)
+
+{% img /images/dv/6.png %}
+
+可以從Dropbox、谷歌雲端硬碟等地方導入數據，然後選擇適合模板。支持線形圖、柱狀圖、散點圖、熱力圖等。你還可以在Potly上和小夥伴協同作業。
+
+6、用多個數據集講故事：[Silk](https://www.silk.co/)
+
+{% img /images/dv/7.png %}
+
+Silk可以讓你使用多個數據可視化，並配以文字形成一個獨立的故事。每個可視化都可以被分享或嵌入其他文章。
+
+如果你還不是很清楚silk是什麽，來看看這個分析女性在影視作品中形象的數據故事就會很清楚了：[http://women-in-film.silk.co/page/](http://women-in-film.silk.co/page/1940)
+
+7、Quartz之選：[Chartbuilder](https://github.com/Quartz/Chartbuilder/)
+
+{% img /images/dv/8.png %}
+
+這是Quartz使用的一款開源工具，可快速制作折線圖、柱狀圖和散點圖。你既可以使用Quartz的版本，輸入數據後，導出圖片並下載或復制html代碼；也可下載GitHub版本，選擇更廣。
+
+[偷渡悲歌：地中海的亡魂](http://www.zeit.de/politik/ausland/2015-04/migrants-mediterranean-victims-numbers)
+
+{% img /images/dv/9.png %}
+
+為了躲避戰爭和貧窮，難民們不惜冒險從非洲、敘利亞等國家出逃，試圖乘船從地中海偷渡進入歐洲。頻發船難使不少人葬身大海。2014年12月聯合國難民署發表報告稱2014年全球因船難死亡的非法移民人數為4272人，而在地中海溺亡者就高達3419人，占了絕大多數。
+
+德國時代在線zeit online將2014年以來在地中海偷渡的遇難者數字進行可視化。點擊人像，可以看到發生船難的日期、死亡、失蹤人數、地點、航線、所屬地以及數據來源。根據圖表顯示，大多數船難發生在利比亞海岸附近。讀者可從互動圖中直觀地看到死亡、失蹤人數。2015年至今的死亡人數遠遠超過2014年同期人數。僅4月19日在利比亞海岸附近發生的沈船事件就導致700人喪生。數據來自國際移民組織和新聞報道。文中註明實際死亡人數可能更高，因為並非所有船難都被報道。
+
+[地圖控：100張時間地圖](http://www.davidrumsey.com/blog/2012/3/28/timeline-maps)
+
+將歷史事件以時間軸或圖表的形式呈現出來可以有效展現帝國、宗教歷史、重要的人類、自然發展史的興衰。地圖收藏愛好者David Rumsey創辦的David Rumsey Collection集合了從1770年到1967年的100張時間地圖，地圖控們可以大飽眼福。以下三張供大家欣賞：
+
+Sebastian Adam1881年繪制的“世界史同步發展表”是一張長達23英尺的地圖，繪制了從公元前4004年到1881年的歷史。
+
+{% img /images/dv/10.png %}
+
+這張圖表以華盛頓中午12點為標準，不同地點的時間比較。北京是綠色表盤，八點半方向（12：55分）
+
+{% img /images/dv/11.png %}
+
+這是一張名為“生命延續和地質時間表”繪制了地球初始到人的孕育。一張表搞定地質歷史和人類進化史。
+
+{% img /images/dv/12.png %}
+
+＊本榜單是根據使用話題#ddj#(數據新聞)的推文(Tweet)由社交網絡繪圖程序NodeXL統計完成的。感謝全球深度報道網(GIJN)的好朋友 - 來自Connected Action的Marc Smith，幫助深度網所做的整理。
+
+[Origin](http://cn.gijn.org/2015/05/03/数据新闻精选（可视化特辑）/)
