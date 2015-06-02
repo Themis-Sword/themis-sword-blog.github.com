@@ -39,37 +39,37 @@ description: Data visualization
 2015年英國大選將於5月7日舉行，記者們早就蠢蠢欲動。英國新聞業網站Journalism.co.uk也趁此時機向記者們推薦報道大選可用的數據可視化工具，幾乎所有工具都提供免費版本。他山之石，可以攻玉。看看英國的科技記者們都推薦了哪些工具吧！
 
 1、將投票數據變成互動圖表最佳選擇: [Venngage](https://venngage.com/)
-{% img /images/dv/2.png %}
+{% img /images/dv/2.jpg %}
 
 可以從Excel或者谷歌電子表格復制粘貼數據，也可以直接粘貼谷歌表哥的鏈接，制作圖表。用戶可選擇用地圖、圖表或圖片展現。
 
 2、設計為重：[Datavisual](http://datavisu.al/)
 
-{% img /images/dv/3.png %}
+{% img /images/dv/3.jpg %}
 
 用戶在添加數據之前，可以選擇模板或自己設計。
 
 3、獨立記者、小型新聞機構首選：[Tableau Public](https://public.tableau.com/s/)
 
-{% img /images/dv/4.png %}
+{% img /images/dv/4.jpg %}
 
 Tableau Public是Tableau 桌面的簡化版（免費）。雖然Tableau上手最花時間，但是可供選擇的模板和可視化選擇範圍廣。
 
 4、適合果粉的應用：[Perspective](https://itunes.apple.com/us/app/perspective/id516098684)
 
-{% img /images/dv/5.png %}
+{% img /images/dv/5.jpg %}
 
 可以以演示文稿模式制作圖表。註意該應用只支持在iPad上制作。可以在iPhone上瀏覽和播放。可以導出放在大屏幕上顯示的文件。
 
 5、多方導入，支持協作：[Potly](https://plot.ly/)
 
-{% img /images/dv/6.png %}
+{% img /images/dv/6.jpg %}
 
 可以從Dropbox、谷歌雲端硬碟等地方導入數據，然後選擇適合模板。支持線形圖、柱狀圖、散點圖、熱力圖等。你還可以在Potly上和小夥伴協同作業。
 
 6、用多個數據集講故事：[Silk](https://www.silk.co/)
 
-{% img /images/dv/7.png %}
+{% img /images/dv/7.jpg %}
 
 Silk可以讓你使用多個數據可視化，並配以文字形成一個獨立的故事。每個可視化都可以被分享或嵌入其他文章。
 
@@ -77,7 +77,7 @@ Silk可以讓你使用多個數據可視化，並配以文字形成一個獨立�
 
 7、Quartz之選：[Chartbuilder](https://github.com/Quartz/Chartbuilder/)
 
-{% img /images/dv/8.png %}
+{% img /images/dv/8.jpg %}
 
 這是Quartz使用的一款開源工具，可快速制作折線圖、柱狀圖和散點圖。你既可以使用Quartz的版本，輸入數據後，導出圖片並下載或復制html代碼；也可下載GitHub版本，選擇更廣。
 
@@ -99,11 +99,11 @@ Sebastian Adam1881年繪制的“世界史同步發展表”是一張長達23英
 
 這張圖表以華盛頓中午12點為標準，不同地點的時間比較。北京是綠色表盤，八點半方向（12：55分）
 
-{% img /images/dv/11.png %}
+{% img /images/dv/11.jpg %}
 
 這是一張名為“生命延續和地質時間表”繪制了地球初始到人的孕育。一張表搞定地質歷史和人類進化史。
 
-{% img /images/dv/12.png %}
+{% img /images/dv/12.jpg %}
 
 ＊本榜單是根據使用話題#ddj#(數據新聞)的推文(Tweet)由社交網絡繪圖程序NodeXL統計完成的。感謝全球深度報道網(GIJN)的好朋友 - 來自Connected Action的Marc Smith，幫助深度網所做的整理。
 
