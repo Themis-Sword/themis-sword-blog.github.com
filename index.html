@@ -125,6 +125,58 @@ $(document).ready(
     <article class="post">
 	<h3 class="title">
 		
+		<a href="/blog/06262015/li-yong-amazonde-awsda-jian-zi-ji-de-vpn/">
+		
+			利用Amazon的AWS搭建自己的VPN</a>
+	</h3>
+	<div class="entry-content">
+		<p><img src="/images/aws.jpg"></p>
+
+<h4>預備</h4>
+
+<ol>
+<li>申請Amazon AWS服務</li>
+<li>進入AWS控制台，選擇亞太區東京的數據中心</li>
+<li>根據創建EC2實例，選擇Ubuntu-64位操作系統，下載SSH密鑰文件並保存好</li>
+<li>Security Group下除了默認的SSH的22端口打開，增加一個新的TCP端口1723，以建立PPTP服務</li>
+<li>建立並啟動實例</li>
+<li>在Elastic IP下申請一個固定的靜態IP，並與上述實例綁定(如果停止實例的時候一定要把Elastic IP解除綁定，否則將被計費)
+		
+		<a href="/blog/06262015/li-yong-amazonde-awsda-jian-zi-ji-de-vpn/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-06-26T13:21:35+08:00" pubdate data-updated="true">Jun 26<span>th</span>, 2015</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/web/'>web</a>
+
+</div>
+
+
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h3 class="title">
+		
 		<a href="/blog/06022015/shu-ju-xin-wen-jing-xuan-ke-shi-hua-te-ji-zhuan/">
 		
 			數據新聞精選(可視化特輯)轉</a>
@@ -326,48 +378,6 @@ for item in iterable:
 <div class="tags">
 
 	<a class='category' href='/blog/categories/artificial-intelligence/'>artificial-intelligence</a>, <a class='category' href='/blog/categories/python/'>python</a>
-
-</div>
-
-
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/05142015/potential-pythonic-pitfalls-fw/">
-		
-			Potential Pythonic Pitfalls(FW)</a>
-	</h3>
-	<div class="entry-content">
-		<p>Python is a very expressive language. It provides us with a large standard library and many builtins to get the job done quickly. However, many can get lost in the power that it provides, fail to make full use of the standard library, value one liners over clarity and misunderstand its basic constructs. This is a non-exhaustive list of a few of the pitfalls programmers new to Python fall into.
-		
-		<a href="/blog/05142015/potential-pythonic-pitfalls-fw/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-05-14T09:24:13+08:00" pubdate data-updated="true">May 14<span>th</span>, 2015</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/python/'>python</a>
 
 </div>
 
