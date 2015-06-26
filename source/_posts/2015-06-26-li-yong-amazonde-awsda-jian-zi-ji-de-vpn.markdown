@@ -9,22 +9,26 @@ description: 利用Amazon的AWS搭建自己的VPN
 ---
 {% img /images/aws.jpg %}
 ####預備
-1. 申請Amazon AWS服務
-2. 進入AWS控制台，選擇亞太區東京的數據中心
-3. 根據創建EC2實例，選擇Ubuntu-64位操作系統，下載SSH密鑰文件並保存好
+1. 申請[Amazon AWS服務](https://aws.amazon.com)
+2. 進入[AWS控制台](http://console.aws.amazon.com)，選擇亞太區東京的數據中心
+3. 在Compute下創建EC2實例，選擇Ubuntu-64位操作系統，下載SSH密鑰文件並保存好
 4. Security Group下除了默認的SSH的22端口打開，增加一個新的TCP端口1723，以建立PPTP服務
-5. 建立並啟動實例
-6. 在Elastic IP下申請一個固定的靜態IP，並與上述實例綁定(如果停止實例的時候一定要把Elastic IP解除綁定，否則將被計費)<!--more-->
+5. 啟動實例
+6. 在Elastic IP下申請一個固定的IP地址，並與上述實例綁定(如果停止實例，一定要把Elastic IP解除綁定，否則將被計費)<!--more-->
 
 ####從本地連接實例
-1. Open an SSH client. (find out how to connect using PuTTY)
-2. Locate your private key file (Themis_Sword.pem). The wizard automatically detects the key you used to launch the instance.
+1. Open an SSH client. ([find out how to connect using PuTTY](https://docs.aws.amazon.com/console/ec2/instances/connect/putty))
+2. Locate your private key file (xxxx.pem). The wizard automatically detects the key you used to launch the instance.
 3. Your key must not be publicly viewable for SSH to work. Use this command if needed:
-chmod 400 xxxx.pem
+
+		chmod 400 xxxx.pem
+
 4. Connect to your instance using its Elastic IP:
 127.0.0.1
 Example:
-ssh -i xxxx.pem ubuntu@127.0.0.1  
+
+		ssh -i xxxx.pem ubuntu@127.0.0.1  
+
 Please note that in most cases the username above will be correct, however please ensure that you read your AMI usage instructions to ensure that the AMI owner has not changed the default AMI username.  
 If you need any assistance connecting to your instance, please see our [connection documentation](https://docs.aws.amazon.com/console/ec2/instances/connect/docs).
 
