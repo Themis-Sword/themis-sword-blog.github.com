@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2015-06-26T15:34:27+08:00</updated>
+  <updated>2015-06-26T15:49:39+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -23,30 +23,35 @@
 <h4>預備</h4>
 
 <ol>
-<li>申請Amazon AWS服務</li>
-<li>進入AWS控制台，選擇亞太區東京的數據中心</li>
-<li>根據創建EC2實例，選擇Ubuntu-64位操作系統，下載SSH密鑰文件並保存好</li>
+<li>申請<a href="https://aws.amazon.com">Amazon AWS服務</a></li>
+<li>進入<a href="http://console.aws.amazon.com">AWS控制台</a>，選擇亞太區東京的數據中心</li>
+<li>在Compute下創建EC2實例，選擇Ubuntu-64位操作系統，下載SSH密鑰文件並保存好</li>
 <li>Security Group下除了默認的SSH的22端口打開，增加一個新的TCP端口1723，以建立PPTP服務</li>
-<li>建立並啟動實例</li>
-<li>在Elastic IP下申請一個固定的靜態IP，並與上述實例綁定(如果停止實例的時候一定要把Elastic IP解除綁定，否則將被計費)<!--more--></li>
+<li>啟動實例</li>
+<li>在Elastic IP下申請一個固定的IP地址，並與上述實例綁定(如果停止實例，一定要把Elastic IP解除綁定，否則將被計費)<!--more--></li>
 </ol>
 
 
 <h4>從本地連接實例</h4>
 
 <ol>
-<li>Open an SSH client. (find out how to connect using PuTTY)</li>
-<li>Locate your private key file (Themis_Sword.pem). The wizard automatically detects the key you used to launch the instance.</li>
-<li>Your key must not be publicly viewable for SSH to work. Use this command if needed:
-chmod 400 xxxx.pem</li>
-<li>Connect to your instance using its Elastic IP:
+<li>Open an SSH client. (<a href="https://docs.aws.amazon.com/console/ec2/instances/connect/putty">find out how to connect using PuTTY</a>)</li>
+<li>Locate your private key file (xxxx.pem). The wizard automatically detects the key you used to launch the instance.</li>
+<li><p>Your key must not be publicly viewable for SSH to work. Use this command if needed:</p>
+
+<pre><code> chmod 400 xxxx.pem
+</code></pre></li>
+<li><p>Connect to your instance using its Elastic IP:
 127.0.0.1
-Example:
-ssh -i xxxx.pem ubuntu@127.0.0.1<br/>
-Please note that in most cases the username above will be correct, however please ensure that you read your AMI usage instructions to ensure that the AMI owner has not changed the default AMI username.<br/>
-If you need any assistance connecting to your instance, please see our <a href="https://docs.aws.amazon.com/console/ec2/instances/connect/docs">connection documentation</a>.</li>
+Example:</p>
+
+<pre><code>  ssh -i xxxx.pem ubuntu@127.0.0.1  
+</code></pre></li>
 </ol>
 
+
+<p>Please note that in most cases the username above will be correct, however please ensure that you read your AMI usage instructions to ensure that the AMI owner has not changed the default AMI username.<br/>
+If you need any assistance connecting to your instance, please see our <a href="https://docs.aws.amazon.com/console/ec2/instances/connect/docs">connection documentation</a>.</p>
 
 <h4>EC2實例下安裝PPTP VPN</h4>
 
@@ -401,7 +406,7 @@ small = x if x &lt; y else y
 
 <p>Thats all for today! I hope you enjoyed this article and picked up a trick or two along the way. See you in the next article. Make sure that you follow us on <a href="https://www.facebook.com/freepythontips">Facebook</a> and <a href="https://twitter.com/yasoobkhalid">Twitter</a>!</p>
 
-<p>Do you have any comments or suggestions? You can write a comment or email me on <a href="&#109;&#97;&#x69;&#x6c;&#116;&#111;&#58;&#x79;&#97;&#115;&#111;&#111;&#x62;&#x2e;&#x6b;&#x68;&#x6c;&#x64;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#109;">&#x79;&#x61;&#115;&#x6f;&#x6f;&#98;&#x2e;&#x6b;&#104;&#x6c;&#x64;&#64;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;</a></p>
+<p>Do you have any comments or suggestions? You can write a comment or email me on <a href="&#109;&#97;&#105;&#x6c;&#116;&#x6f;&#x3a;&#121;&#x61;&#x73;&#x6f;&#x6f;&#x62;&#46;&#x6b;&#104;&#108;&#100;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#121;&#97;&#x73;&#111;&#111;&#x62;&#x2e;&#107;&#x68;&#108;&#100;&#64;&#103;&#109;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;</a></p>
 
 <p><a href="http://pythontips.com/2015/04/19/nifty-python-tricks/">Origin</a></p>
 ]]></content>

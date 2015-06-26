@@ -127,30 +127,35 @@ $(document).ready(
 <h4>預備</h4>
 
 <ol>
-<li>申請Amazon AWS服務</li>
-<li>進入AWS控制台，選擇亞太區東京的數據中心</li>
-<li>根據創建EC2實例，選擇Ubuntu-64位操作系統，下載SSH密鑰文件並保存好</li>
+<li>申請<a href="https://aws.amazon.com">Amazon AWS服務</a></li>
+<li>進入<a href="http://console.aws.amazon.com">AWS控制台</a>，選擇亞太區東京的數據中心</li>
+<li>在Compute下創建EC2實例，選擇Ubuntu-64位操作系統，下載SSH密鑰文件並保存好</li>
 <li>Security Group下除了默認的SSH的22端口打開，增加一個新的TCP端口1723，以建立PPTP服務</li>
-<li>建立並啟動實例</li>
-<li>在Elastic IP下申請一個固定的靜態IP，並與上述實例綁定(如果停止實例的時候一定要把Elastic IP解除綁定，否則將被計費)<!--more--></li>
+<li>啟動實例</li>
+<li>在Elastic IP下申請一個固定的IP地址，並與上述實例綁定(如果停止實例，一定要把Elastic IP解除綁定，否則將被計費)<!--more--></li>
 </ol>
 
 
 <h4>從本地連接實例</h4>
 
 <ol>
-<li>Open an SSH client. (find out how to connect using PuTTY)</li>
-<li>Locate your private key file (Themis_Sword.pem). The wizard automatically detects the key you used to launch the instance.</li>
-<li>Your key must not be publicly viewable for SSH to work. Use this command if needed:
-chmod 400 xxxx.pem</li>
-<li>Connect to your instance using its Elastic IP:
+<li>Open an SSH client. (<a href="https://docs.aws.amazon.com/console/ec2/instances/connect/putty">find out how to connect using PuTTY</a>)</li>
+<li>Locate your private key file (xxxx.pem). The wizard automatically detects the key you used to launch the instance.</li>
+<li><p>Your key must not be publicly viewable for SSH to work. Use this command if needed:</p>
+
+<pre><code> chmod 400 xxxx.pem
+</code></pre></li>
+<li><p>Connect to your instance using its Elastic IP:
 127.0.0.1
-Example:
-ssh -i xxxx.pem ubuntu@127.0.0.1<br/>
-Please note that in most cases the username above will be correct, however please ensure that you read your AMI usage instructions to ensure that the AMI owner has not changed the default AMI username.<br/>
-If you need any assistance connecting to your instance, please see our <a href="https://docs.aws.amazon.com/console/ec2/instances/connect/docs">connection documentation</a>.</li>
+Example:</p>
+
+<pre><code>  ssh -i xxxx.pem ubuntu@127.0.0.1  
+</code></pre></li>
 </ol>
 
+
+<p>Please note that in most cases the username above will be correct, however please ensure that you read your AMI usage instructions to ensure that the AMI owner has not changed the default AMI username.<br/>
+If you need any assistance connecting to your instance, please see our <a href="https://docs.aws.amazon.com/console/ec2/instances/connect/docs">connection documentation</a>.</p>
 
 <h4>EC2實例下安裝PPTP VPN</h4>
 

@@ -135,12 +135,12 @@ $(document).ready(
 <h4>預備</h4>
 
 <ol>
-<li>申請Amazon AWS服務</li>
-<li>進入AWS控制台，選擇亞太區東京的數據中心</li>
-<li>根據創建EC2實例，選擇Ubuntu-64位操作系統，下載SSH密鑰文件並保存好</li>
+<li>申請<a href="https://aws.amazon.com">Amazon AWS服務</a></li>
+<li>進入<a href="http://console.aws.amazon.com">AWS控制台</a>，選擇亞太區東京的數據中心</li>
+<li>在Compute下創建EC2實例，選擇Ubuntu-64位操作系統，下載SSH密鑰文件並保存好</li>
 <li>Security Group下除了默認的SSH的22端口打開，增加一個新的TCP端口1723，以建立PPTP服務</li>
-<li>建立並啟動實例</li>
-<li>在Elastic IP下申請一個固定的靜態IP，並與上述實例綁定(如果停止實例的時候一定要把Elastic IP解除綁定，否則將被計費)
+<li>啟動實例</li>
+<li>在Elastic IP下申請一個固定的IP地址，並與上述實例綁定(如果停止實例，一定要把Elastic IP解除綁定，否則將被計費)
 		
 		<a href="/blog/06262015/li-yong-amazonde-awsda-jian-zi-ji-de-vpn/" class="more-link">Read on &rarr;</a>
 	</div>
