@@ -4,7 +4,7 @@
   <title><![CDATA[Category: web | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2015-06-26T15:49:39+08:00</updated>
+  <updated>2015-07-01T09:44:14+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -55,12 +55,17 @@ If you need any assistance connecting to your instance, please see our <a href="
 
 <h4>EC2實例下安裝PPTP VPN</h4>
 
-<h5>安装pptpd</h5>
+<p>設置root密碼</p>
+
+<pre><code>sudo passwd
+</code></pre>
+
+<p>安装pptpd</p>
 
 <pre><code>sudo apt-get install pptpd
 </code></pre>
 
-<p>修改/etc/pptpd.conf文件, 在最下面添加以下2行</p>
+<p>修改/etc/ppp/pptpd-options文件, 在最下面添加以下2行</p>
 
 <pre><code>localip 192.168.9.1 
 remoteip 192.168.9.11-30

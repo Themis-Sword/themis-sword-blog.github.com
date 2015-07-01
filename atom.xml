@@ -4,7 +4,7 @@
   <title><![CDATA[Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2015-06-26T15:49:39+08:00</updated>
+  <updated>2015-07-01T09:44:14+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -55,12 +55,17 @@ If you need any assistance connecting to your instance, please see our <a href="
 
 <h4>EC2實例下安裝PPTP VPN</h4>
 
-<h5>安装pptpd</h5>
+<p>設置root密碼</p>
+
+<pre><code>sudo passwd
+</code></pre>
+
+<p>安装pptpd</p>
 
 <pre><code>sudo apt-get install pptpd
 </code></pre>
 
-<p>修改/etc/pptpd.conf文件, 在最下面添加以下2行</p>
+<p>修改/etc/ppp/pptpd-options文件, 在最下面添加以下2行</p>
 
 <pre><code>localip 192.168.9.1 
 remoteip 192.168.9.11-30
@@ -406,7 +411,7 @@ small = x if x &lt; y else y
 
 <p>Thats all for today! I hope you enjoyed this article and picked up a trick or two along the way. See you in the next article. Make sure that you follow us on <a href="https://www.facebook.com/freepythontips">Facebook</a> and <a href="https://twitter.com/yasoobkhalid">Twitter</a>!</p>
 
-<p>Do you have any comments or suggestions? You can write a comment or email me on <a href="&#109;&#97;&#105;&#x6c;&#116;&#x6f;&#x3a;&#121;&#x61;&#x73;&#x6f;&#x6f;&#x62;&#46;&#x6b;&#104;&#108;&#100;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#121;&#97;&#x73;&#111;&#111;&#x62;&#x2e;&#107;&#x68;&#108;&#100;&#64;&#103;&#109;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;</a></p>
+<p>Do you have any comments or suggestions? You can write a comment or email me on <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#121;&#x61;&#115;&#111;&#x6f;&#98;&#x2e;&#107;&#x68;&#108;&#100;&#x40;&#103;&#109;&#97;&#x69;&#108;&#46;&#x63;&#111;&#x6d;">&#x79;&#97;&#x73;&#x6f;&#111;&#x62;&#x2e;&#107;&#x68;&#x6c;&#x64;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#109;</a></p>
 
 <p><a href="http://pythontips.com/2015/04/19/nifty-python-tricks/">Origin</a></p>
 ]]></content>
