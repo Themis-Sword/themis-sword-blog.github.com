@@ -33,11 +33,15 @@ Please note that in most cases the username above will be correct, however pleas
 If you need any assistance connecting to your instance, please see our [connection documentation](https://docs.aws.amazon.com/console/ec2/instances/connect/docs).
 
 ####EC2實例下安裝PPTP VPN
-#####安装pptpd
+設置root密碼
+
+	sudo passwd
+
+安装pptpd
 
 	sudo apt-get install pptpd
 
-修改/etc/pptpd.conf文件, 在最下面添加以下2行
+修改/etc/ppp/pptpd-options文件, 在最下面添加以下2行
 
 	localip 192.168.9.1 
 	remoteip 192.168.9.11-30
