@@ -1,0 +1,1137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: artificial-intelligence | Themis_Sword's Blog]]></title>
+  <link href="http://www.aprilzephyr.com/blog/categories/artificial-intelligence/atom.xml" rel="self"/>
+  <link href="http://www.aprilzephyr.com/"/>
+  <updated>2015-07-01T09:44:14+08:00</updated>
+  <id>http://www.aprilzephyr.com/</id>
+  <author>
+    <name><![CDATA[Themis_Sword]]></name>
+    <email><![CDATA[licong0419@outlook.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[數據新聞精選(可視化特輯)轉]]></title>
+    <link href="http://www.aprilzephyr.com/blog/06022015/shu-ju-xin-wen-jing-xuan-ke-shi-hua-te-ji-zhuan/"/>
+    <updated>2015-06-02T16:11:43+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/06022015/shu-ju-xin-wen-jing-xuan-ke-shi-hua-te-ji-zhuan</id>
+    <content type="html"><![CDATA[<p>本期數據新聞精選帶你踏上可視化之旅：普通人的數據新聞修養要怎麽修煉？英國大選報道有什麽可視化工具可以用？從地中海偷渡的移民，溺亡者有多少？最後，請你暫忘工具，用眼和心，探索100張前人繪制的時間地圖，細細體味可視化的“遠古時代”。</p>
+
+<p><a href="http://seeingdata.org/understanding-data-visualisations/">&ldquo;了解數據可視化&rdquo;</a>：普通人的數據新聞修煉</p>
+
+<p><img src="/images/dv/1.png"></p>
+
+<!--more-->
+
+
+<p></p>
+
+<p>若你仍在數據可視化的門外霧裏看花，不妨登錄一個名叫“了解數據可視化”(Understanding Data Visualisations)的網站，向它走近一步。</p>
+
+<p>該網站分為七大模塊，通過圖文和視頻講解配合小練習，提高大眾閱讀數據可視化的能力。這對業內人士來說也有一定參考意義，可以了解大眾是如何閱讀可視化的。</p>
+
+<p>模塊一：<a href="http://seeingdata.org/understanding-data-visualisations/what-is-data-visualisation/">什麽是數據可視化？</a>——短視頻掃盲基本概念：告訴你什麽是可視化？為什麽那麽火？如何更好理解可視化作品？</p>
+
+<p>模塊二：<a href="http://seeingdata.org/understanding-data-visualisations/key-terms-in-visualisation/">十大關鍵詞</a>——這裏為你介紹了可視化中最常用的十個詞匯。（當然不一定所有可視化作品都擁有這些元素。）</p>
+
+<p>模塊三：<a href="http://seeingdata.org/understanding-data-visualisations/top-5-things-to-look-for-in-a-visualisation/">速覽五要素</a>——時間緊張的時候，可以參考五大元素助你迅速讀懂作品。（如上所述，不一定所有可視化作品都具備這些元素。）</p>
+
+<p>模塊四：<a href="http://seeingdata.org/sections/intro/">精讀小訣竅</a>——有些作品需要細細品鑒。這裏會教你一些技巧高效、全面地看可視化作品，並嘗試理解它。還會教你如何閱讀不同類型圖標的技巧。</p>
+
+<p>模塊五：<a href="http://seeingdata.org/understanding-data-visualisations/how-a-visualisation-is-made/">可視化制作過程</a>——短視頻從制作者角度介紹制作過程中的挑戰和考慮的關鍵因素，讓讀者了解對最終成果起到影響，卻不為一般人所知的一些因素。</p>
+
+<p>模塊六：<a href="http://seeingdata.org/understanding-data-visualisations/data-visualisation-and-you/">數據可視化與讀者</a>——短視頻講解影響用戶體驗可視化的關鍵人為因素，包括對話題的興趣、心情等。</p>
+
+<p>模塊七：<a href="http://seeingdata.org/understanding-data-visualisations/rate-these-visualisations/">評評可視化作品</a>——讓你評價對8個可視化作品的主觀感受：讓你歡喜？讓你受益?</p>
+
+<p>該網站是“看見數據”(seeing data)研究計劃的一部分，由英國謝菲爾德大學研究數字媒體的教授Helen Kennedy領導。這項長達15個月的研究會陸續以論文、PPT、播客等方式發布成果。</p>
+
+<p><a href="https://www.journalism.co.uk/news/data-viz-tools-for-covering-the-uk-general-election/s2/a564781/">報道大選利器：七大可視化工具推薦</a></p>
+
+<p>2015年英國大選將於5月7日舉行，記者們早就蠢蠢欲動。英國新聞業網站Journalism.co.uk也趁此時機向記者們推薦報道大選可用的數據可視化工具，幾乎所有工具都提供免費版本。他山之石，可以攻玉。看看英國的科技記者們都推薦了哪些工具吧！</p>
+
+<p>1、將投票數據變成互動圖表最佳選擇: <a href="https://venngage.com/">Venngage</a></p>
+
+<p><img src="/images/dv/2.jpg"></p>
+
+<p>可以從Excel或者谷歌電子表格復制粘貼數據，也可以直接粘貼谷歌表哥的鏈接，制作圖表。用戶可選擇用地圖、圖表或圖片展現。</p>
+
+<p>2、設計為重：<a href="http://datavisu.al/">Datavisual</a></p>
+
+<p><img src="/images/dv/3.jpg"></p>
+
+<p>用戶在添加數據之前，可以選擇模板或自己設計。</p>
+
+<p>3、獨立記者、小型新聞機構首選：<a href="https://public.tableau.com/s/">Tableau Public</a></p>
+
+<p><img src="/images/dv/4.jpg"></p>
+
+<p>Tableau Public是Tableau 桌面的簡化版（免費）。雖然Tableau上手最花時間，但是可供選擇的模板和可視化選擇範圍廣。</p>
+
+<p>4、適合果粉的應用：<a href="https://itunes.apple.com/us/app/perspective/id516098684">Perspective</a></p>
+
+<p><img src="/images/dv/5.jpg"></p>
+
+<p>可以以演示文稿模式制作圖表。註意該應用只支持在iPad上制作。可以在iPhone上瀏覽和播放。可以導出放在大屏幕上顯示的文件。</p>
+
+<p>5、多方導入，支持協作：<a href="https://plot.ly/">Potly</a></p>
+
+<p><img src="/images/dv/6.jpg"></p>
+
+<p>可以從Dropbox、谷歌雲端硬碟等地方導入數據，然後選擇適合模板。支持線形圖、柱狀圖、散點圖、熱力圖等。你還可以在Potly上和小夥伴協同作業。</p>
+
+<p>6、用多個數據集講故事：<a href="https://www.silk.co/">Silk</a></p>
+
+<p><img src="/images/dv/7.jpg"></p>
+
+<p>Silk可以讓你使用多個數據可視化，並配以文字形成一個獨立的故事。每個可視化都可以被分享或嵌入其他文章。</p>
+
+<p>如果你還不是很清楚silk是什麽，來看看這個分析女性在影視作品中形象的數據故事就會很清楚了：<a href="http://women-in-film.silk.co/page/1940">http://women-in-film.silk.co/page/</a></p>
+
+<p>7、Quartz之選：<a href="https://github.com/Quartz/Chartbuilder/">Chartbuilder</a></p>
+
+<p><img src="/images/dv/8.jpg"></p>
+
+<p>這是Quartz使用的一款開源工具，可快速制作折線圖、柱狀圖和散點圖。你既可以使用Quartz的版本，輸入數據後，導出圖片並下載或復制html代碼；也可下載GitHub版本，選擇更廣。</p>
+
+<p><a href="http://www.zeit.de/politik/ausland/2015-04/migrants-mediterranean-victims-numbers">偷渡悲歌：地中海的亡魂</a></p>
+
+<p><img src="/images/dv/9.png"></p>
+
+<p>為了躲避戰爭和貧窮，難民們不惜冒險從非洲、敘利亞等國家出逃，試圖乘船從地中海偷渡進入歐洲。頻發船難使不少人葬身大海。2014年12月聯合國難民署發表報告稱2014年全球因船難死亡的非法移民人數為4272人，而在地中海溺亡者就高達3419人，占了絕大多數。</p>
+
+<p>德國時代在線zeit online將2014年以來在地中海偷渡的遇難者數字進行可視化。點擊人像，可以看到發生船難的日期、死亡、失蹤人數、地點、航線、所屬地以及數據來源。根據圖表顯示，大多數船難發生在利比亞海岸附近。讀者可從互動圖中直觀地看到死亡、失蹤人數。2015年至今的死亡人數遠遠超過2014年同期人數。僅4月19日在利比亞海岸附近發生的沈船事件就導致700人喪生。數據來自國際移民組織和新聞報道。文中註明實際死亡人數可能更高，因為並非所有船難都被報道。</p>
+
+<p><a href="http://www.davidrumsey.com/blog/2012/3/28/timeline-maps">地圖控：100張時間地圖</a></p>
+
+<p>將歷史事件以時間軸或圖表的形式呈現出來可以有效展現帝國、宗教歷史、重要的人類、自然發展史的興衰。地圖收藏愛好者David Rumsey創辦的David Rumsey Collection集合了從1770年到1967年的100張時間地圖，地圖控們可以大飽眼福。以下三張供大家欣賞：</p>
+
+<p>Sebastian Adam1881年繪制的“世界史同步發展表”是一張長達23英尺的地圖，繪制了從公元前4004年到1881年的歷史。</p>
+
+<p><img src="/images/dv/10.png"></p>
+
+<p>這張圖表以華盛頓中午12點為標準，不同地點的時間比較。北京是綠色表盤，八點半方向（12：55分）</p>
+
+<p><img src="/images/dv/11.jpg"></p>
+
+<p>這是一張名為“生命延續和地質時間表”繪制了地球初始到人的孕育。一張表搞定地質歷史和人類進化史。</p>
+
+<p><img src="/images/dv/12.jpg"></p>
+
+<p>＊本榜單是根據使用話題#ddj#(數據新聞)的推文(Tweet)由社交網絡繪圖程序NodeXL統計完成的。感謝全球深度報道網(GIJN)的好朋友 &ndash; 來自Connected Action的Marc Smith，幫助深度網所做的整理。</p>
+
+<p><a href="http://cn.gijn.org/2015/05/03/%E6%95%B0%E6%8D%AE%E6%96%B0%E9%97%BB%E7%B2%BE%E9%80%89%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%E7%89%B9%E8%BE%91%EF%BC%89/">Origin</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python Tools for Machine Learning(FW)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/05142015/python-tools-for-machine-learning-fw/"/>
+    <updated>2015-05-14T11:15:31+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/05142015/python-tools-for-machine-learning-fw</id>
+    <content type="html"><![CDATA[<p>Python is one of the best programming languages out there, with an extensive coverage in scientific computing: computer vision, artificial intelligence, mathematics, astronomy to name a few. Unsurprisingly, this holds true for machine learning as well.</p>
+
+<p>Of course, it has some disadvantages too; one of which is that the tools and libraries for Python are scattered. If you are a unix-minded person, this works quite conveniently as every tool does one thing and does it well. However, this also requires you to know different libraries and tools, including their advantages and disadvantages, to be able to make a sound decision for the systems that you are building. Tools by themselves do not make a system or product better, but with the right tools we can work much more efficiently and be more productive. Therefore, knowing the right tools for your work domain is crucially important.<!--more--></p>
+
+<p>This post aims to list and describe the most useful machine learning tools and libraries that are available for Python. To make this list, we did not require the library to be written in Python; it was sufficient for it to have a Python interface. We also have a small section on Deep Learning at the end as it has received a fair amount of attention recently.</p>
+
+<p>We do not aim to list <strong>all</strong> the machine learning libraries available in Python (the Python package index returns 139 results for “machine learning”) but rather the ones that we found useful and well-maintained to the best of our knowledge. Moreover, although some of modules could be used for various machine learning tasks, we included libraries whose main focus is machine learning. For example, although <a href="http://docs.scipy.org/doc/scipy/reference/index.html">Scipy</a> has some <a href="http://docs.scipy.org/doc/scipy/reference/cluster.vq.html#module-scipy.cluster.vq">clustering algorithms</a>, the main focus of this module is not machine learning but rather in being a comprehensive set of tools for scientific computing. Therefore, we excluded libraries like Scipy from our list (though we use it too!).</p>
+
+<p>Another thing worth mentioning is that we also evaluated the library based on how it integrates with other scientific computing libraries because machine learning (either supervised or unsupervised) is part of a data processing system. If the library that you are using does not fit with your rest of data processing system, then you may find yourself spending a tremendous amount of time to creating intermediate layers between different libraries. It is important to have a great library in your toolset but it is also important for that library to integrate well with other libraries.</p>
+
+<p>If you are great in another language but want to use Python packages, we also briefly go into how you could integrate with Python to use the libraries listed in the post.</p>
+
+<h3>Scikit-Learn</h3>
+
+<p><a href="http://scikit-learn.org/stable/">Scikit Learn</a> is our machine learning tool of choice at CB Insights. We use it for classification, feature selection, feature extraction and clustering. What we like most about it is that it has a consistent API which is easy to use while also providing <strong>a lot of</strong> evaluation, diagnostic and cross-validation methods out of the box (sound familiar? Python has batteries-included approach as well). The icing on the cake is that it uses Scipy data structures under the hood and fits quite well with the rest of scientific computing in Python with Scipy, Numpy, Pandas and Matplotlib packages. Therefore, if you want to visualize the performance of your classifiers (say, using a precision-recall graph or Receiver Operating Characteristics (ROC) curve) those could be quickly visualized with help of Matplotlib. Considering how much time is spent on cleaning and structuring the data, this makes it very convenient to use the library as it tightly integrates to other scientific computing packages.</p>
+
+<p>Moreover, it has also limited Natural Language Processing feature extraction capabilities as well such as bag of words, tfidf, preprocessing (stop-words, custom preprocessing, analyzer). Moreover, if you want to quickly perform different benchmarks on toy datasets, it has a datasets module which provides common and useful datasets. You could also build toy datasets from these datasets for your own purposes to see if your model performs well before applying the model to the real-world dataset. For parameter optimization and tuning, it also provides grid search and random search. These features could not be accomplished if it did not have great community support or if it was not well-maintained. We look forward to its first stable release.</p>
+
+<h3>Statsmodels</h3>
+
+<p><a href="http://statsmodels.sourceforge.net/">Statsmodels</a> is another great library which focuses on statistical models and is used mainly for predictive and exploratory analysis. If you want to fit linear models, do statistical analysis, maybe a bit of predictive modeling, then Statsmodels is a great fit. The statistical tests it provides are quite comprehensive and cover validation tasks for most of the cases. If you are R or S user, it also accepts R syntax for some of its statistical models. It also accepts Numpy arrays as well as Pandas data-frames for its models making creating intermediate data structures a thing of the past!</p>
+
+<h3>PyMC</h3>
+
+<p><a href="http://pymc-devs.github.io/pymc/">PyMC</a> is the tool of choice for <strong>Bayesians</strong>. It includes Bayesian models, statistical distributions and diagnostic tools for the convergence of models. It includes some hierarchical models as well. If you want to do Bayesian Analysis, you should check it out.</p>
+
+<h3>Shogun</h3>
+
+<p><a href="http://www.shogun-toolbox.org/page/home/">Shogun</a> is a machine learning toolbox with a focus on Support Vector Machines (SVM) that is written in C++. It is actively developed and maintained, provides a Python interface and the Python interface is mostly documented well. However, we’ve found its API hard to use compared to Scikit-learn. Also, it does not provide many diagnostics or evaluation algorithms out of the box. However, its speed is a great advantage.</p>
+
+<h3>Gensim</h3>
+
+<p><a href="http://radimrehurek.com/gensim/">Gensim</a> is defined as “topic modeling for humans”. As its homepage describes, its main focus is Latent Dirichlet Allocation (LDA) and its variants. Different from other packages, it has support for Natural Language Processing which makes it easier to combine NLP pipeline with other machine learning algorithms. If your domain is in NLP and you want to do clustering and basic classification, you may want to check it out. Recently, they introduced Recurrent Neural Network based text representation called word2vec from Google to their API as well. This library is written purely in Python.</p>
+
+<h3>Orange</h3>
+
+<p><a href="http://orange.biolab.si/">Orange</a> is the only library that has a Graphical User Interface (GUI) among the libraries listed in this post. It is also quite comprehensive in terms of classification, clustering and feature selection methods and has some cross-validation methods. It is better than Scikit-learn in some aspects (classification methods, some preprocessing capabilities) as well, but it does not fit well with the rest of the scientific computing ecosystem (Numpy, Scipy, Matplotlib, Pandas) as nicely as Scikit-learn.</p>
+
+<p>Having a GUI is an important advantage over other libraries however. You could visualize cross-validation results, models and feature selection methods (you need to install Graphviz for some of the capabilities separately). Orange has its own data structures for most of the algorithms so you need to wrap the data into Orange-compatible data structures which makes the learning curve steeper.</p>
+
+<h3>PyMVPA</h3>
+
+<p><a href="http://www.pymvpa.org/index.html">PyMVPA</a> is another statistical learning library which is similar to Scikit-learn in terms of its API. It has cross-validation and diagnostic tools as well, but it is not as comprehensive as Scikit-learn.</p>
+
+<h3>Deep Learning</h3>
+
+<p>Even though deep learning is a subsection Machine Learning, we created a separate section for this field as it has received tremendous attention recently with various acqui-hires by Google and Facebook.</p>
+
+<h4>Theano</h4>
+
+<p><a href="http://deeplearning.net/software/theano/">Theano</a> is the most mature of deep learning library. It provides nice data structures (tensors) to represent layers of neural networks and they are efficient in terms of linear algebra similar to Numpy arrays. One caution is that, its API may not be very intuitive, which increases learning curve for users. There are a lot of libraries which build on top of Theano exploiting its data structures. It has support for GPU programming out of the box as well.</p>
+
+<h4>PyLearn2</h4>
+
+<p>There is another library built on top of Theano, called <a href="http://deeplearning.net/software/pylearn2/">PyLearn2</a> which brings modularity and configurability to Theano where you could create your neural network through different configuration files so that it would be easier to experiment different parameters. Arguably, it provides more modularity by separating the parameters and properties of neural network to the configuration file.</p>
+
+<h4>Decaf</h4>
+
+<p><a href="http://caffe.berkeleyvision.org/">Decaf</a> is a recently released deep learning library from UC Berkeley which has state of art neural network implementations which are tested on the Imagenet classification competition.</p>
+
+<h4>Nolearn</h4>
+
+<p>If you want to use excellent Scikit-learn library api in deep learning as well, <a href="http://packages.python.org/nolearn/">Nolearn</a> wraps Decaf to make the life easier for you. It is a wrapper on top of Decaf and it is compatible(mostly) with Scikit-learn, which makes Decaf even more awesome.</p>
+
+<h4>OverFeat</h4>
+
+<p><a href="https://github.com/sermanet/OverFeat">OverFeat</a> is a recent winner of <a href="https://plus.google.com/+PierreSermanet/posts/GxZHEH9ynoj">Dogs vs Cats (kaggle competition)</a> which is written in C++ but it comes with a Python wrapper as well(along with Matlab and Lua). It uses GPU through Torch library so it is quite fast. It also won the detection and localization competition in ImageNet classification. If your main domain is in computer vision, you may want to check it out.</p>
+
+<h4>Hebel</h4>
+
+<p><a href="https://github.com/hannes-brt/hebel">Hebel</a> is another neural network library comes along with GPU support out of the box. You could determine the properties of your neural networks through YAML files(similar to Pylearn2) which provides a nice way to separate your neural network from the code and quickly run your models. Since it has been recently developed, documentation is lacking in terms of depth and breadth. It is also limited in terms of neural network models as it only has one type of neural network model(feed-forward). However, it is written in pure Python and it will be nice library as it has a lot of utility functions such as schedulers and monitors which we did not see any library provides such functionalities.</p>
+
+<h4>Neurolab</h4>
+
+<p><a href="https://code.google.com/p/neurolab/">NeuroLab</a> is another neural network library which has nice api(similar to Matlab’s api if you are familiar) It has different variants of Recurrent Neural Network(RNN) implementation unlike other libraries. If you want to use RNN, this library might be one of the best choice with its simple API.</p>
+
+<h3>Integration with other languages</h3>
+
+<p>You do not know any Python but great in another language? Do not despair! One of the strengths of Python (among many other) is that it is a perfect glue language that you could use your tool of choice programming language with these libraries through access from Python. Following packages for respective programming languages could be used to combine Python with other programming languages:</p>
+
+<ul>
+<li>R &ndash;> <a href="http://rpython.r-forge.r-project.org/">RPython</a></li>
+<li>Matlab &ndash;> <a href="http://algoholic.eu/matpy/">matpython</a></li>
+<li>Java &ndash;> <a href="http://www.jython.org/jythonbook/en/1.0/JythonAndJavaIntegration.html">Jython</a></li>
+<li>Lua &ndash;> <a href="http://labix.org/lunatic-python">Lunatic Python</a></li>
+<li>Julia &ndash;> <a href="https://github.com/stevengj/PyCall.jl">PyCall.jl</a></li>
+</ul>
+
+
+<h3>Inactive Libraries</h3>
+
+<p>These are the libraries that did not release any updates for more than one year, we are listing them because some may find it useful, but it is unlikely that these libraries will be maintained for bug fixes and especially enhancements in the future:</p>
+
+<ul>
+<li><a href="https://github.com/mdp-toolkit/mdp-toolkit">MDP</a></li>
+<li><a href="http://mlpy.sourceforge.net/docs/3.5/">MlPy</a></li>
+<li><a href="http://ffnet.sourceforge.net/">FFnet</a></li>
+<li><a href="http://pybrain.org/">PyBrain</a></li>
+</ul>
+
+
+<p>If we are missing one of your favorite packages in Python for machine learning, feel free to let us know in the comments. We will gladly add that library to our blog post as well.</p>
+
+<p><a href="https://www.cbinsights.com/blog/python-tools-machine-learning/">Origin</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python數據分析入門(轉)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/05142015/pythonshu-ju-fen-xi-ru-men-zhuan/"/>
+    <updated>2015-05-14T10:46:30+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/05142015/pythonshu-ju-fen-xi-ru-men-zhuan</id>
+    <content type="html"><![CDATA[<p>最近，<a href="http://alstatr.blogspot.com/">Analysis with Programming</a>加入了<a href="http://planetpython.org/">Planet Python</a>。作為該網站的首批特約博客，我這裏來分享一下如何通過Python來開始數據分析。具體內容如下：</p>
+
+<ol>
+<li>數據導入<br/>
+** 導入本地的或者web端的CSV文件；</li>
+<li>數據變換；</li>
+<li>數據統計描述；</li>
+<li>假設檢驗<br/>
+** 單樣本t檢驗；</li>
+<li>可視化；</li>
+<li>創建自定義函數。<!--more--></li>
+</ol>
+
+
+<h3>數據導入</h3>
+
+<p>這是很關鍵的一步，為了後續的分析我們首先需要導入數據。通常來說，數據是CSV格式，就算不是，至少也可以轉換成CSV格式。在Python中，我們的操作如下：</p>
+
+<pre><code>import pandas as pd
+
+# Reading data locally
+df = pd.read_csv('/Users/al-ahmadgaidasaad/Documents/d.csv')
+
+# Reading data from web
+data_url = "https://raw.githubusercontent.com/alstat/Analysis-with-Programming/master/2014/Python/Numerical-Descriptions-of-the-Data/data.csv"
+df = pd.read_csv(data_url)
+</code></pre>
+
+<p>為了讀取本地CSV文件，我們需要pandas這個數據分析庫中的相應模塊。其中的read_csv函數能夠讀取本地和web數據。</p>
+
+<h3>數據變換</h3>
+
+<p>既然在工作空間有了數據，接下來就是數據變換。統計學家和科學家們通常會在這一步移除分析中的非必要數據。我們先看看數據：</p>
+
+<pre><code># Head of the data
+print df.head()
+
+# OUTPUT
+    Abra  Apayao  Benguet  Ifugao  Kalinga
+0   1243    2934      148    3300    10553
+1   4158    9235     4287    8063    35257
+2   1787    1922     1955    1074     4544
+3  17152   14501     3536   19607    31687
+4   1266    2385     2530    3315     8520
+
+# Tail of the data
+print df.tail()
+
+# OUTPUT
+ Abra  Apayao  Benguet  Ifugao  Kalinga
+74   2505   20878     3519   19737    16513
+75  60303   40065     7062   19422    61808
+76   6311    6756     3561   15910    23349
+77  13345   38902     2583   11096    68663
+78   2623   18264     3745   16787    16900
+</code></pre>
+
+<p>對R語言程序員來說，上述操作等價於通過print(head(df))來打印數據的前6行，以及通過print(tail(df))來打印數據的後6行。當然Python中，默認打印是5行，而R則是6行。因此R的代碼head(df, n = 10)，在Python中就是df.head(n = 10)，打印數據尾部也是同樣道理。</p>
+
+<p>在R語言中，數據列和行的名字通過colnames和rownames來分別進行提取。在Python中，我們則使用columns和index屬性來提取，如下：</p>
+
+<pre><code># Extracting column names
+print df.columns
+
+# OUTPUT
+Index([u'Abra', u'Apayao', u'Benguet', u'Ifugao', u'Kalinga'], dtype='object')
+
+# Extracting row names or the index
+print df.index
+
+# OUTPUT
+Int64Index([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78], dtype='int64')
+</code></pre>
+
+<p>數據轉置使用T方法，</p>
+
+<pre><code># Transpose data
+print df.T
+
+# OUTPUT
+            0      1     2      3     4      5     6      7     8      9  
+Abra      1243   4158  1787  17152  1266   5576   927  21540  1039   5424  
+Apayao    2934   9235  1922  14501  2385   7452  1099  17038  1382  10588  
+Benguet    148   4287  1955   3536  2530    771  2796   2463  2592   1064  
+Ifugao    3300   8063  1074  19607  3315  13134  5134  14226  6842  13828  
+Kalinga  10553  35257  4544  31687  8520  28252  3106  36238  4973  40140  
+
+         ...       69     70     71     72     73     74     75     76     77 
+Abra     ...    12763   2470  59094   6209  13316   2505  60303   6311  13345  
+Apayao   ...    37625  19532  35126   6335  38613  20878  40065   6756  38902  
+Benguet  ...     2354   4045   5987   3530   2585   3519   7062   3561   2583  
+Ifugao   ...     9838  17125  18940  15560   7746  19737  19422  15910  11096  
+Kalinga  ...    65782  15279  52437  24385  66148  16513  61808  23349  68663  
+
+            78 
+Abra      2623 
+Apayao   18264 
+Benguet   3745 
+Ifugao   16787 
+Kalinga  16900 
+
+Other transformations such as sort can be done using &lt;code&gt;sort&lt;/code&gt; attribute. Now let's extract a specific column. In Python, we do it using either &lt;code&gt;iloc&lt;/code&gt; or &lt;code&gt;ix&lt;/code&gt; attributes, but &lt;code&gt;ix&lt;/code&gt; is more robust and thus I prefer it. Assuming we want the head of the first column of the data, we have
+</code></pre>
+
+<p>其他變換，例如排序就是用sort屬性。現在我們提取特定的某列數據。Python中，可以使用iloc或者ix屬性。但是我更喜歡用ix，因為它更穩定一些。假設我們需數據第一列的前5行，我們有：</p>
+
+<pre><code>print df.ix[:, 0].head()
+
+# OUTPUT
+0     1243
+1     4158
+2     1787
+3    17152
+4     1266
+Name: Abra, dtype: int64
+</code></pre>
+
+<p>順便提一下，Python的索引是從0開始而非1。為了取出從11到20行的前3列數據，我們有：</p>
+
+<pre><code>print df.ix[10:20, 0:3]
+
+# OUTPUT
+    Abra  Apayao  Benguet
+10    981    1311     2560
+11  27366   15093     3039
+12   1100    1701     2382
+13   7212   11001     1088
+14   1048    1427     2847
+15  25679   15661     2942
+16   1055    2191     2119
+17   5437    6461      734
+18   1029    1183     2302
+19  23710   12222     2598
+20   1091    2343     2654
+</code></pre>
+
+<p>上述命令相當於df.ix[10:20, [&lsquo;Abra&rsquo;, &lsquo;Apayao&rsquo;, &lsquo;Benguet&rsquo;]]。</p>
+
+<p>為了舍棄數據中的列，這裏是列1(Apayao)和列2(Benguet)，我們使用drop屬性，如下：</p>
+
+<pre><code>print df.drop(df.columns[[1, 2]], axis = 1).head()
+
+# OUTPUT
+    Abra  Ifugao  Kalinga
+0   1243    3300    10553
+1   4158    8063    35257
+2   1787    1074     4544
+3  17152   19607    31687
+4   1266    3315     8520
+</code></pre>
+
+<p>axis 參數告訴函數到底舍棄列還是行。如果axis等於0，那麽就舍棄行。</p>
+
+<h3>統計描述</h3>
+
+<p>下一步就是通過describe屬性，對數據的統計特性進行描述：</p>
+
+<pre><code>print df.describe()
+
+# OUTPUT
+               Abra        Apayao      Benguet        Ifugao       Kalinga
+count     79.000000     79.000000    79.000000     79.000000     79.000000
+mean   12874.379747  16860.645570  3237.392405  12414.620253  30446.417722
+std    16746.466945  15448.153794  1588.536429   5034.282019  22245.707692
+min      927.000000    401.000000   148.000000   1074.000000   2346.000000
+25%     1524.000000   3435.500000  2328.000000   8205.000000   8601.500000
+50%     5790.000000  10588.000000  3202.000000  13044.000000  24494.000000
+75%    13330.500000  33289.000000  3918.500000  16099.500000  52510.500000
+max    60303.000000  54625.000000  8813.000000  21031.000000  68663.000000
+</code></pre>
+
+<h3>假設檢驗</h3>
+
+<p>Python有一個很好的統計推斷包。那就是scipy裏面的stats。ttest_1samp實現了單樣本t檢驗。因此，如果我們想檢驗數據Abra列的稻谷產量均值，通過零假設，這裏我們假定總體稻谷產量均值為15000，我們有：</p>
+
+<pre><code>from scipy import stats as ss
+
+# Perform one sample t-test using 1500 as the true mean
+print ss.ttest_1samp(a = df.ix[:, 'Abra'], popmean = 15000)
+
+# OUTPUT
+(-1.1281738488299586, 0.26270472069109496)
+</code></pre>
+
+<p>返回下述值組成的元祖：<br/>
+* t : 浮點或數組類型<br/>
+t統計量<br/>
+* prob : 浮點或數組類型<br/>
+two-tailed p-value 雙側概率值</p>
+
+<p>通過上面的輸出，看到p值是0.267遠大於α等於0.05，因此沒有充分的證據說平均稻谷產量不是150000。將這個檢驗應用到所有的變量，同樣假設均值為15000，我們有：</p>
+
+<pre><code>print ss.ttest_1samp(a = df, popmean = 15000)
+
+# OUTPUT
+(array([ -1.12817385,   1.07053437, -65.81425599,  -4.564575  ,   6.17156198]),
+ array([  2.62704721e-01,   2.87680340e-01,   4.15643528e-70,
+          1.83764399e-05,   2.82461897e-08]))
+</code></pre>
+
+<p>第一個數組是t統計量，第二個數組則是相應的p值。</p>
+
+<h3>可視化</h3>
+
+<p>Python中有許多可視化模塊，最流行的當屬matpalotlib庫。稍加提及，我們也可選擇bokeh和seaborn模塊。之前的博文中，我已經說明了matplotlib庫中的盒須圖模塊功能。<br/>
+<img src="/images/pda/1.jpg"></p>
+
+<pre><code># Import the module for plotting
+import matplotlib.pyplot as plt
+ plt.show(df.plot(kind = 'box'))
+</code></pre>
+
+<p>現在，我們可以用pandas模塊中集成R的ggplot主題來美化圖表。要使用ggplot，我們只需要在上述代碼中多加一行，</p>
+
+<pre><code>import matplotlib.pyplot as plt
+pd.options.display.mpl_style = 'default' # Sets the plotting display theme to ggplot2
+df.plot(kind = 'box')
+</code></pre>
+
+<p>這樣我們就得到如下圖表：
+<img src="/images/pda/2.jpg"></p>
+
+<p>比matplotlib.pyplot主題簡潔太多。但是在本博文中，我更願意引入seaborn模塊，該模塊是一個統計數據可視化庫。因此我們有：<br/>
+<img src="/images/pda/3.jpg"></p>
+
+<pre><code># Import the seaborn library
+import seaborn as sns
+ # Do the boxplot
+plt.show(sns.boxplot(df, widths = 0.5, color = "pastel"))
+</code></pre>
+
+<p>多性感的盒式圖，繼續往下看。<br/>
+<img src="/images/pda/4.jpg"></p>
+
+<pre><code>plt.show(sns.violinplot(df, widths = 0.5, color = "pastel"))
+</code></pre>
+
+<p><img src="/images/pda/5.jpg"></p>
+
+<pre><code>plt.show(sns.distplot(df.ix[:,2], rug = True, bins = 15))
+</code></pre>
+
+<p><img src="/images/pda/6.jpg"></p>
+
+<pre><code>with sns.axes_style("white"):
+    plt.show(sns.jointplot(df.ix[:,1], df.ix[:,2], kind = "kde"))
+</code></pre>
+
+<p><img src="/images/pda/7.jpg"></p>
+
+<pre><code>plt.show(sns.lmplot("Benguet", "Ifugao", df))
+</code></pre>
+
+<h3>創建自定義函數</h3>
+
+<p>在Python中，我們使用def函數來實現一個自定義函數。例如，如果我們要定義一個兩數相加的函數，如下即可：</p>
+
+<pre><code>def add_2int(x, y):
+    return x + y
+
+print add_2int(2, 2)
+
+# OUTPUT
+4
+</code></pre>
+
+<p>順便說一下，Python中的縮進是很重要的。通過縮進來定義函數作用域，就像在R語言中使用大括號{…}一樣。這有一個我們之前博文的例子：</p>
+
+<ol>
+<li>產生10個正態分布樣本，其中u=3和σ<sup>2</sup>=5</li>
+<li>基於95%的置信度，計算x̄和<img src="http://latex.codecogs.com/gif.latex?\bar{x}\mp&space;z_{a/}(2\frac{\sigma&space;}{\sqrt{n}})" title="\bar{x}\mp z_{a/}(2\frac{\sigma }{\sqrt{n}})" />;</li>
+<li>重復100次; 然後</li>
+<li>計算出置信區間包含真實均值的百分比</li>
+</ol>
+
+
+<p>Python中，程序如下：</p>
+
+<pre><code>import numpy as np
+import scipy.stats as ss
+
+def case(n = 10, mu = 3, sigma = np.sqrt(5), p = 0.025, rep = 100):
+    m = np.zeros((rep, 4))
+
+    for i in range(rep):
+        norm = np.random.normal(loc = mu, scale = sigma, size = n)
+        xbar = np.mean(norm)
+        low = xbar - ss.norm.ppf(q = 1 - p) * (sigma / np.sqrt(n))
+        up = xbar + ss.norm.ppf(q = 1 - p) * (sigma / np.sqrt(n))
+
+        if (mu &gt; low) &amp; (mu &lt; up):
+            rem = 1
+        else:
+            rem = 0
+
+        m[i, :] = [xbar, low, up, rem]
+
+    inside = np.sum(m[:, 3])
+    per = inside / rep
+    desc = "There are " + str(inside) + " confidence intervals that contain "
+           "the true mean (" + str(mu) + "), that is " + str(per) + " percent of the total CIs"
+
+    return {"Matrix": m, "Decision": desc}
+</code></pre>
+
+<p>上述代碼讀起來很簡單，但是循環的時候就很慢了。下面針對上述代碼進行了改進，這多虧了 Python專家，看我上篇博文的<a href="http://alstatr.blogspot.com/2014/01/python-and-r-is-python-really-faster.html#disqus_thread">15條意見</a>吧。</p>
+
+<pre><code>import numpy as np
+import scipy.stats as ss
+
+def case2(n = 10, mu = 3, sigma = np.sqrt(5), p = 0.025, rep = 100):
+    scaled_crit = ss.norm.ppf(q = 1 - p) * (sigma / np.sqrt(n))
+    norm = np.random.normal(loc = mu, scale = sigma, size = (rep, n))
+
+    xbar = norm.mean(1)
+    low = xbar - scaled_crit
+    up = xbar + scaled_crit
+
+    rem = (mu &gt; low) &amp; (mu &lt; up)
+    m = np.c_[xbar, low, up, rem]
+
+    inside = np.sum(m[:, 3])
+    per = inside / rep
+    desc = "There are " + str(inside) + " confidence intervals that contain "
+           "the true mean (" + str(mu) + "), that is " + str(per) + " percent of the total CIs"
+    return {"Matrix": m, "Decision": desc}
+</code></pre>
+
+<h3>更新</h3>
+
+<p>那些對於本文ipython notebook版本感興趣的，請點擊<a href="http://nuttenscl.be/Python_Getting_Started_with_Data_Analysis.html">這裏</a>。這篇文章由<a href="https://twitter.com/NuttensC">Nuttens Claude</a>負責轉換成 ipython notebook 。</p>
+
+<p>關於作者: <a href="http://python.jobbole.com/author/dengcy/">Den</a></p>
+
+<p><a href="http://alstatr.blogspot.ca/2015/02/python-getting-started-with-data.html">Origin</a><br/>
+<a href="http://python.jobbole.com/81133/">中文譯文</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Excerpt_Artificial Intelligence: A Modern Approach 3rd Edition(Russell &amp; Norvig)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/05122015/excerpt-artificial-intelligence-a-modern-approach-3rd-edition-russell-and-norvig/"/>
+    <updated>2015-05-12T15:08:13+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/05122015/excerpt-artificial-intelligence-a-modern-approach-3rd-edition-russell-and-norvig</id>
+    <content type="html"><![CDATA[<h3>1. Introduction</h3>
+
+<ul>
+<li>Different people approach Al with different goals in mind, Two important questions to ask are: Are you concerned with thinking or behavior? Do you want to model humans or work from an ideal standard?</br></li>
+<li>In this book, we adopt the view that intelligence is concerned mainly with rational action. Ideally, an intelligent agent takes the best possible action in a situation. We study the problem of building agents that are intelligent in this sense.</br></li>
+<li>Philosophers (going back to 400 B.C.) made AI conceivable by considering the ideas that the mind is in some ways like a machine, that it operates on knowledge encoded in some internal language, and that thought can be used to choose what actions to take.</br></li>
+<li>Mathematicians provided the tools to manipulate statements of logical certainty as well as uncertain, probabilistic statements. They also set the groundwork for understanding computation and reasoning about algorithms.</br></li>
+<li>Economists formalized the problem of making decisions that maximize the expected outcome to the decision maker.<!--more--></br></li>
+<li>Neuroscientists discovered some facts about how the brain works and the ways in which it is similar to and different from computers.</br></li>
+<li>Psychologists adopted the idea that humans and animals can be considered information- processing machines. Linguists showed that language use fits into this model.</br></li>
+<li>Computer engineers provided the ever-more-powerful machines that make AI applications possible.</br></li>
+<li>Control theory deals with designing devices that act optimally on the basis of feedback from the environment. Initially, the mathematical tools of control theory were quite different from AI, but the fields are coming closer together.</br></li>
+<li>The history of Al has had cycles of success, misplaced optimism. and resulting cutbacks in enthusiasm and funding. There have also been cycles of introducing new creative approaches and systematically refining the best ones.</br></li>
+<li>AI has advanced more rapidly in the past decade because of greater use of the scientific method in experimenting with and comparing approaches.</br></li>
+<li>Recent progress in understanding the theoretical basis for intelligence has gone hand in hand with improvements in the capabilities of real systems. The subfields of AI have become more integrated, and AI has found common ground with other disciplines.</br></li>
+</ul>
+
+
+<h3>2. Intelligent Agents</h3>
+
+<ul>
+<li>An agent is something that perceives and acts in an environment. The agent ftmction for an avail. specifics the action taken by the agent in response to any percept sequence.</li>
+<li>The performance measure evaluates the behavior of the agent in an environment A rational agent acts so as to maximize the expected value of the performance measure, given the percept sequence it has seen so far.</li>
+<li>A task environment specification includes the performance measure, the external environment, the actuators. and the sensors. In designing an agent, the first step must always be to specify the task environment as fully as possible.</li>
+<li>Task environments vary along several significant dimensions. They can be fully or partially observable, single-agent or multiagent, deterministic or stochastic, episodic or sequential, static or dynamic, discrete or continuous, and known or unknown.</li>
+<li>The agent program implements the agent function. There exists a variety of basic agent-program designs reflecting the kind of information made explicit and used in the decision process. The designs vary in efficiency, compactness, and flexibility. The appropriate design of the agent program depends on the nature of the environment.</li>
+<li>Simple reflex agents respond directly to percepts, whereas model-based reflex agents maintain internal state to track aspects of the world that are not evident in the current percept. Goal-based agents act to achieve their goals, and utility-based agents try to maximize their own expected &ldquo;happiness.&rdquo;</li>
+<li>All agents can improve their performance through learning.</li>
+</ul>
+
+
+<h3>3. Solving Problems by Searching</h3>
+
+<ul>
+<li>Before an agent can start searching for solutions, a goal must be identified and a well-defined problem must be formulated.</li>
+<li>A problem consists of five parts: the initial state, a set of actions, a transition model describing the results of those actions, a goal test function, and a path cost function. The environment of the problem is represented by a state space. A path through the state space from the initial state to a goal state is asolution.</li>
+<li>Search algorithms treat states and actions as atomic: they do not consider any internal structure they might possess.</li>
+<li>A general TREE-SEARCH algorithm considers all possible paths to find a solution, whereas a GRAPH-SEARCH algorithm avoids consideration of redundant paths.</li>
+<li>Search algorithms are judged on the basis of <strong>completeness, optimality, time complexity</strong>, and space complexity. Complexity depends on h, the branching factor in the state space, and d, the depth of the shallowest solution.</li>
+<li>Uninformed search methods have access only to the problem definition. The basic algorithms are as follows:</br>*<em> <strong>Breadth-first</strong> search expands the shallowest nodes first; it is complete, optimal for unit step costs. but has exponential space complexity.</br>*</em> <strong>Uniform-cost</strong> search expands the node with lowest path cast, g(n), and is optimal for general step costs.</br>*<em> <strong>Depth-first</strong> search expands the deepest unexpanded node first. It is neither complete nor optimal, but has linear space complexity. Depth limited search adds a depth bound.</br>*</em> <strong>Iterative deepening</strong> search calls depth-first search with increasing depth limits until a goal is found. It is complete, optimal for unit step costs, has time complexity comparable to breadth-first search, and has linear space complexity.</br>** <strong>Bidirectional</strong> search can enormously reduce time complexity, but it is not always applicable and may require too much space.</br></li>
+<li>Informed search methods may have access to a <strong>heuristic</strong> function h(n) that estimates the cost of a solution from n.  *<em> The generic <strong>best-first</strong> search algorithm selects a node for expansion according to an evaluation function.</br>*</em> <strong>Greedy best-first</strong> search expands nudes with minimal h(n). It is not optimal but is often efficient.</br>
+*<em> <strong>A*</strong> search expands nodes with minimal f(n) = g(n) + h(n). A</em> is complete and optimal, provided that h(n) is admissible (for TREE-SEARCH) or consistent (for <strong>GRAPH-SEARCH</strong>). The space complexity of A<em> is still prohibitive.</br>*</em> <strong>RBFS</strong> (recursive best-first search) and <strong>SMA*</strong> (simplified memory-bounded A*) are robust, optimal search algorithms that use limited amounts of memory; given enough time, they can solve problems that A* cannot solve because it runs out of memory.</li>
+<li>The performance of heuristic search algorithms depends on the quality of the heuristic function. One can sometimes construct good heuristics by relaxing the problem definition, by storing precomputed solution costs for subproblems in a pattern database, or by learning from experience with the problem class.</li>
+</ul>
+
+
+<h3>4. Beyond Classical Search</h3>
+
+<ul>
+<li>Local search methods such as <strong>hill climbing</strong> operate on complete-state formulations, keeping only a small number of nodes in memory. Several stochastic algorithms have been developed, including <strong>simulated annealing</strong>, which returns optimal solutions when given an appropriate cooling schedule.</li>
+<li>Many local search methods apply also to problems in continuous spaces. <strong>Linear programming</strong> and <strong>convex optimization</strong> problem; obey certain restrictions on the shape of the state space and the nature of the objective function, and admit polynomial-time algorithms that are often extremely efficient in practice.</li>
+<li>A <strong>genetic algorithm</strong> is a stochastic hill-climbing search in which a large population of states is maintained. New states are generated by mutation and by crossover, which combines pairs of states from the population.</li>
+<li>In nondeterministic environments, agents can apply <strong>AND—OR</strong> search to generate Contingent plans that reach the goal regardless of which outcomcs occur during execution.</li>
+<li>When the environment is partially observable, the <strong>belief state</strong> represents the set ofpossible states that the agent might be in.</li>
+<li><strong>Standard search</strong> algorithms can be applied directly to belief-state space to solve <strong>sensorless problems</strong>, and belief-state AND—OR search can solve general partially observable problems. Incremental algorithms that construct solutions state by state within a belief state are often more efficient.</li>
+<li><strong>Exploration problems</strong> arise when the agent has no idea about the states and actions of its environment. For safely explorable environments, <strong>online search</strong> agents can build a map and find a goal if one exists. Updating heuristic estimates from experience provides an effective method to escape from local minima.</li>
+</ul>
+
+
+<h3>5. Adversarial Search</h3>
+
+<ul>
+<li>A game can be defined by the initial state (how the board is set up), the legal actions in each state, the result of each action, a terminal test (which says when the game is over), and a utility function that applies to terminal states.</li>
+<li>In two-player zero-sum games with perfect information, the minimax algorithm can select optimal moves by a depth-first enumeration of the game tree.</li>
+<li>The alpha—beta search algorithm computes the same optimal move as minimax, but achieves much greater efficiency by eliminating subtrees that are provably irrelevant.</li>
+<li>Usually, it is not feasible to consider the whole game tree (even with alpha—beta), so we need to cut the search off at some point and apply a heuristic <strong>evaluation function</strong> that estimates the utility of a state.</li>
+<li>Many game programs precompute tables of best moves in the opening and endgame so that they can look up a move rather than search.</li>
+<li>Games of chance can be handled by an extension to the minimax algorithm that evaluates a <strong>chance node</strong> by taking the average utility of all its children, weighted by the probability of each child.</li>
+<li>Optimal play in games of <strong>imperfect information</strong>, such as Kriegspiel and bridge, requires reasoning about the current and future <strong>belief states</strong> of each player. A simple approximation can be obtained by averaging the value of an action over each possible configuration of missing information.</li>
+<li>Programs have bested even champion human players at games such as chess, checkers, and Othello. Humans retain the edge in several games of imperfect information, such as poker, bridge, and Kriegspiel, and in games with very large branching factors and little good heuristic knowledge, such as Go.</li>
+</ul>
+
+
+<h3>6. Constraint Satisfaction Probllems</h3>
+
+<ul>
+<li><strong>Constraint satisfaction problems (CSPs)</strong> represent a state with a set of variable/value pairs and represent the conditions for a solution by a set of constraints on the variables. Many important real-world problems can be described as CSPs.</li>
+<li>A number of inference techniques use the constraints to infer winch variable/value pairs are consistent and which are not. These include node, arc, path, and k-consistency.</li>
+<li><strong>Backtracking search</strong>, a form of depth-first search, is commonly used for solving CSPs. Inference can be interwoven with search.</li>
+<li>The <strong>minimtun-remaining-values</strong> and <strong>degree</strong> heuristics are domain-independent methods for deciding which variable to choose next in a backtracking search. The <strong>least-constraining-value</strong> heuristic helps in deciding which value to try first for a given variable. Backtracking occurs when no legal assignment can be found for a variable. <strong>Conflict-directed backjumping</strong> backtracks directly to the source of the problem.</li>
+<li>Local search using the <strong>min-conflicts</strong> heuristic has also been applied to constraint satisfaction problems with great success.</li>
+<li>The complexity of solving a CSP is strongly related to the structure of its constraint graph. Tree-structured problems can be solved in linear time. <strong>Cutset conditioning</strong> can reduce a general CSP to a tree-structured one and is quite efficient if a small cutset can be found. <strong>Tree decomposition</strong> techniques transform the CSP into a tree of subproblems and are efficient if the <strong>tree width</strong> of the constraint graph is small.</li>
+</ul>
+
+
+<h3>7. Logical Agents</h3>
+
+<ul>
+<li>Intelligent agents need knowledge about the world in order to reach good decisions.</li>
+<li>Knowledge is contained in agents in the form of sentences in a <strong>knowledge representation language</strong> that are stored in a <strong>knowledge base</strong>.</li>
+<li>A knowledge-based agent is composed of a knowledge base and an inference mechanism. It operates by storing sentences about the world in its knowledge base, using the inference mechanism to infer new sentences, and using these sentences to decide what action to take.</li>
+<li>A representation language is defined by its <strong>syntax</strong>, which specifies the structure of sentences, and its <strong>semantics</strong>, which defines the truth of each sentence in each <strong>possible world</strong> or <strong>model</strong>.</li>
+<li>The relationship of <strong>entailment</strong> between sentences is crucial to our understanding of reasoning. A sentence α entails another sentence β if it is true in all worlds where is is true. Equivalent definitions include the <strong>validity of</strong> the sentence α = β and the <strong>unsatisfiability</strong> of the sentence it α ¬ β.</li>
+<li>Inference is the process of deriving new sentences from old ones. Sound inference algorithms derive only sentences that are entailed; complete algorithms derive all sentences that are entailed.</li>
+<li><strong>Propositional logic</strong> is a simple language consisting of <strong>proposition symbols</strong> and <strong>logical connectives</strong>. It can handle propositions that are known true, known false, or completely unknown.</li>
+<li>The set of possible models, given a fixed propositional vocabulary, is finite, so entailment can be checked by enumerating models. Efficient <strong>model-checking</strong> inference algorithms for propositional logic include backtracking and local search methods and can often solve large problems quickly.</li>
+<li>Inference rules are patterns of sound inference that can be used to find proofs. The resolution rule yields a complete inference algorithm for knowledge bases that arc expressed in <strong>conjunctive normal form</strong>. <strong>Forward chaining</strong> and <strong>backward chaining</strong> are very natural reasoning algorithms for knowledge bases in <strong>Horn form</strong>.</li>
+<li><strong>Local search</strong> methods such as WALKSAT can be used to find solutions. Such algo- rithms are sound but not complete.</li>
+<li>Logical state estimation involves maintaining a logical sentence that describes the set of possible states consistent with the observation history. Each update step requires inference using the transition model of the environment, which is built from <strong>successor-state axioms</strong> that specify how each fluent changes.</li>
+<li>Decisions within a logical agent can be made by SAT solving: finding possible models specifying future action sequences that reach the goal. This approach works only for fully observable or sensorless environments.</li>
+<li>Propositional logic does not scale to environments of unbounded size because it lacks the expressive power to deal concisely with time, space, and universal patterns of relationships among objects.</li>
+</ul>
+
+
+<h3>8. First-Order Logic</h3>
+
+<ul>
+<li>Knowledge representation languages should be declarative, compositional, expressive,context independent, and unambiguous.</li>
+<li>Logics differ in their <strong>ontological commitments</strong> and <strong>epistemological commitments</strong>. While propositional logic commits only to the existence of facts, firsi-order logic commits to the existence of objects and relations and thereby gains expressive power.</li>
+<li>The syntax of first-order logic builds on that of propositional logic. It adds terms to represent objects, and has universal and existential quantifiers to construct assertions about all or some of the possible values of the quantified variables.</li>
+<li>A possible world, or model, for first-order logic includes a set of objects and an <strong>interpretation</strong> that maps constant symbols to objects, predicate symbols to relations among objects, and function symbols to functions on objects.</li>
+<li>An atomic sentence is true just when the relation named by the predicate holds between the objects named by the terms. <strong>Extended interpretations</strong>, which map quantifier variables to objects in the model, define the truth of quantified sentences.</li>
+<li>Developing a knowledge base in first-order logic requires a careful process of analyzing the domain, choosing a vocabulary, and encoding the axioms required to support the desired inferences.</li>
+</ul>
+
+
+<h3>9. Inference in First-Order Logic</h3>
+
+<ul>
+<li>A first approach uses inference rules (universal instantiation and existential instan- tiation) to <strong>propositionalize</strong> the inference problem. Typically, this approach is slow, unless the domain is small.</li>
+<li>The use of unification to identify appropriate substitutions for variables eliminates the instantiation step in first-order proofs, making the process more efficient in many cases.</li>
+<li>A lifted version of Modus Ponens uses unification to provide a natural and powerful inference nile, generalized <strong>Modus Ponens</strong>. The <strong>forward-chaining</strong> and <strong>backward-chaining</strong> algorithms apply this rule to sets of definite clauses.</li>
+<li>Generalized Modus Ponens is complete for definite clauses, although the entailment problem is <strong>semidecidable</strong>. For Datalog knowledge bases consisting of function-free definite clauses, entailment is decidable.</li>
+<li>Forward chaining is used in deductive databases, where it can be combined with relational database operations. It is also used in production systems, which perform efficient updates with very large rule sets Forward chaining is complete for Datalog and runs in polynomial time.</li>
+<li>Backward chaining is used in logic programming systems, which employ sophisticated compiler technology to provide very fast inference. Backward chaining suffers from redundant inferences and infinite loops; these can be alleviated by memoization.</li>
+<li>Prolog, unlike first-order logic, uses a closed world with the unique names assumption and negation as failure. These make Prolog a more practical programming language, but bring it further from pure logic.</li>
+<li>The generalized resolution inference rule provides a complete proof system for first-order logic, using knowledge bases in conjunctive normal form.</li>
+<li>Several strategies exist for reducing the search space of a resolution system without compromising completeness. One of the most important issues is dealing with equality; we showed how <strong>demodulation</strong> and <strong>paramodulation</strong> can be used.</li>
+<li>Efficient resolution-based theorem provers have been used to prove interesting mathematical theorems and to verify and synthesize software and hardware.</li>
+</ul>
+
+
+<h3>10. Classical Planning</h3>
+
+<ul>
+<li>Planning systems are problem-solving algorithms that operate on explicit propositional or relational representations of states and actions. These representations make possible the derivation of effective heuristics and the development of powerful and flexible algorithms for solving problems.</li>
+<li>PDDL, the Planning Domain Definition Language, describes the initial and goal states as conjunctions of literals, and actions in terms of their preconditions and effects.</li>
+<li>State-space search can operate in the forward direction (progression) or the backward direction (regression), Effective heuristics can be derived by subgoal independence assumptions and by various relaxations of the planning problem.</li>
+<li>A planning graph can be constructed incrementally, starting from the initial state, Each layer contains a superset of all the literals or actions that could occur at that time step and encodes mutual exclusion (mutex) relations among literals or actions that cannot cooccur Planning graphs yield useful heuristics for state-space and partial-order planners and can be used directly in the GRAPHPLAN algorithm.</li>
+<li>Other approaches include first-order deduction over situation calculus axioms; encoding a planning problem as a Boolean satisfiability problem or as a constraint satisfaction problem; and explicitly searching through the space of partially ordered plans.</li>
+<li>Each of the major approaches to planning has its adherents, and there is as yet no con- sensus on which is best. Competition and cross-fertilization among the approaches have resulted in significant gains in efficiency for planning systems.</li>
+</ul>
+
+
+<h3>11. Planning and Acting in the Real World</h3>
+
+<ul>
+<li>Many actions consume <strong>resources</strong>, such as money, gas, or raw materials. It is convenient to treat these resources as numeric measures in a pool rather than try to reason about. say, each individual coin and bill in the world. Actions can generate and consume resources, and it is usually cheap and effective to check partial plans for satisfaction of resource constraints before attempting further refinements.</li>
+<li>Time is one of the most important resources. It can be handled by specialized scheduling algorithms, or scheduling can be integrated with planning.</li>
+<li><strong>Hierarchical task network (HTN)</strong> planning allows the agent to take advice from the domain designer in the form of high-level actions (HLAs) that can be implemented in various ways by lower-level action sequences. The effects of HLAs can be defined with <strong>angelic semantics</strong>, allowing provably correct high-level plans to be derived without consideration of lower-level implementations. HTN methods can create the very large plans required by many real-world applications.</li>
+<li>Standard planning algorithms assume complete and correct information and deterministic, fully observable environments. Many domains violate this assumption.</li>
+<li><strong>Contingent plans</strong> allow the agent to sense the world during execution to dccidc what branch of the plan to follow, hi some cases, sensorless or <strong>conformant planning</strong> can be used to construct a plan that works without the need for perception. Both conformant and contingent plans can be constructed by search in the space of <strong>belief states</strong>. Efficient representation or computation of belief states is a key problem.</li>
+<li>An <strong>online planning agent</strong> uses execution monitoring and splices in repairs as needed to recover from unexpected situations, which can be due to nondeterministic actions, exogenous events, or incorrect models of the environment.</li>
+<li><strong>Multiagent planning</strong> is necessary when there are other agents in the environment with which to cooperate or compete. Joint plans can be constructed, but must be augmented with some form of coordination if two agents are to agree on which joint plan to execute.</li>
+<li>This chapter extends classic planning to cover nondeterministic environments (where outcomes of actions are uncertain), but it is not the last word on planning. Chapter 17 describes techniques for stochastic environments (in which outcomes of actions have probabilities associated with them): Markov decision processes, partially observable Markov decision processes, and game theory. In Chapter 21 we show that reinforcement learning allows an agent to learn how to behave from past successes and failures.</li>
+</ul>
+
+
+<h3>12. Knowledge Representation</h3>
+
+<ul>
+<li>Large-scale knowledge representation requites a general-purpose ontology to organize and tie together the various specific domains of knowledge.</li>
+<li>A general-purpose ontology needs to cover a wide variety of knowledge and should be capable, in principle, of handling any domain.</li>
+<li>Building a large, general-purpose ontology is a significant challenge that has yet to befully realized, although current frameworks seem to be quite robust.</li>
+<li>We presented an <strong>upper ontology based on categories and the event calculus</strong>. We covered categories, subcategories, parts, structured objects, measurements, substances, events, time and space, change, and beliefs.</li>
+<li>Natural kinds cannot be defined completely in logic, but properties of natural kinds can be represented.</li>
+<li>Actions, events, and time can be represented either in situation calculus or in more expressive representations such as event calculus. Such representations enable an agentto construct plans by logical inference.</li>
+<li>We presented a detailed analysis of the Internet shopping domain, exercising the generalontology and showing how the domain knowledge can be used by a shopping agent.</li>
+<li>Special-purpose representation systems, such as <strong>semantic networks</strong> and <strong>description logics</strong>, have been devised to help in organizing a hierarchy of categories. <strong>Inheritance</strong> is an important form of inference, allowing the properties of objects to be deduced from their membership in categories.</li>
+<li><strong>The closed-world assumption</strong>, as implemented in logic programs, provides a simple way to avoid having to specify lots of negative information. It is best interpreted as a default that can be overridden by additional information.</li>
+<li><strong>Nonmonotonic logics</strong>, such as <strong>circumscription and default logic, are intended to capture</strong> default reasoning in general.</li>
+<li><strong>Truth maintenance systems handle knowledge updates</strong> and revisions efficiently.</li>
+</ul>
+
+
+<h3>13. Quantifying Uncertainty</h3>
+
+<ul>
+<li>Uncertainty arises because of both laziness and ignorance. It is inescapable in complex,nondeterministic, or partially observable environments.</li>
+<li>Probabilities express the agent&rsquo;s inability to reach a definite decision regarding the truth of a sentence. Probabilities summarize the agent&rsquo;s beliefs relative to the evidence.</li>
+<li>Decision theory combines the agent&rsquo;s beliefs and desires, defining the best action as the one that maximizes expected utility.</li>
+<li>Basic probability statements include prior probabilities and conditional probabilities over simple and complex propositions.</li>
+<li>The axioms of probability constrain the possible assignments of probabilities to propositions. An agent that violates the axioms must behave irrationally in some cases.</li>
+<li>The <strong>full joint probability distribution</strong> specifies the probability of each complete assignment of values to random variables. It is usually too large to create or use in its explicit form, but when it is available it can be used to answer queries simply by adding up entries for the possible worlds corresponding to the query propositions.</li>
+<li><strong>Absolute independence</strong> between subsets of random variables allows the full joint distribution to be factored into smaller joint distributions, greatly reducing its complexity. Absolute independence seldom occurs in practice.</li>
+<li><strong>Bayes' rule</strong> allows unknown probabilities to be computed from known conditional probabilities, usually in the causal direction. Applying Bayes' rule with many pieces of evidence runs into the same scaling problems as does the full joint distribution.</li>
+<li>Conditional independence brought about by direct causal relationships in the domain might allow the full joint distribution to be factored into smaller, conditional distributions. The naive Bayes model assumes the conditional independence of all effect variables, given a single cause variable, and grows linearly with the number of effects.</li>
+<li>A wumpus-world agent can calculate probabilities for unobserved aspects of the world, thereby improving on the decisions of a purely logical agent. Conditional independence makes these calculations tractable.</li>
+</ul>
+
+
+<h3>14. Probabilistic Reasoning</h3>
+
+<ul>
+<li>A Bayesian network is a directed acyclic graph whose nodes correspond to random variables; each node has a conditional distribution for the node, given its parents.</li>
+<li>Bayesian networks provide a concise way to represent <strong>conditional independence relationships in the domain</strong>.</li>
+<li>A Bayesian network specifies a full joint distribution; each joint entry is defined as the product of the corresponding entries in the local conditional distributions. A Bayesian network is often exponentially smaller than an explicitly enumerated joint distribution.</li>
+<li>Many conditional distributions can be represented compactly by canonical families of distributions. <strong>Hybrid Bayesian networks</strong>, which include both discrete and continuous variables, use a variety of canonical distributions.</li>
+<li>Inference in Bayesian networks means computing the probability distribution of a set of query variables, given a set of evidence variables. Exact inference algorithms, such as <strong>variable elimination</strong>, evaluate sums of products of conditional probabilities as efficiently as possible.</li>
+<li>In <strong>polytrees</strong> (singly connected networks), exact inference takes time linear in the size of the network. In the general case, the problem is intractable.</li>
+<li>Stochastic approximation techniques such as <strong>likelihood weighting* and </strong>Markov chainMonte Carlo** can give reasonable estimates of the true posterior probabilities in a network and can cope with much larger networks than can exact algorithms.</li>
+<li>Probability theory can be combined with representational ideas from first-order logic to produce very powerful systems for reasoning under uncertainty, <strong>Relational probability models (RPMs)</strong> include representational restrictions that guarantee a well-defined probability distribution that can be expressed as an equivalent Bayesian network. <strong>Open universe probability models</strong> handle <strong>existence</strong> and <strong>identity uncertainty</strong>, defining probabilty distributions over the infinite space of first-order possible worlds.</li>
+<li>Various alternative systems for reasoning under uncertainty have been suggested. Generally speaking, truth-functional systems are not well suited for such reasoning.</li>
+</ul>
+
+
+<h3>15. Probabilistic Reasoning over Time</h3>
+
+<ul>
+<li>The changing state of the world is handled by using a set of random variables to represent the state at each point in time.</li>
+<li>Representations can be designed to satisfy the Markov property, so that the future is independent of the past given the present. Combined with the assumption that the process is stationary -— that is, the dynamics do not change over time &mdash; this greatly simplifies the representation.</li>
+<li>A temporal probability model can he thought of as containing a transition model describing the state evolution and a sensor model describing the observation process.</li>
+<li>The principal inference tasks in temporal models are filtering, prediction, smoothing, and computing the most likely explanation. Each of these can be achieved using simple, recursive algorithms whose rim time is linear in the length of the sequence.</li>
+<li>Three families of temporal models were studied in more depth: hidden <strong>Markov models</strong>, Kalman filters, and dynamic Bayesian networks (which include the other two as special cases).</li>
+<li>Unless special assumptions are made, as in Kalman filters, exact inference with many stare variables is intractahle. In practice, the particle filtering algorithm seems to he an effective approximation algorithm.</li>
+<li>When trying to keep track of many objects, uncertainty arises as to which observations belong to which objects &mdash; the data association problem. The number of association hypotheses is typically intractably large, but MCMC and particle filtering algorithms for data association work well in practice.</li>
+</ul>
+
+
+<h3>16. Making Simple Decisions</h3>
+
+<ul>
+<li>Probability theory describes what an agent should believe on the basis of evidence, utility theory describes what an agent wants, and decision theory puts the two together to describe what an agent should do.</li>
+<li>We can use decision theory to build a system that makes decisions by considering all possible actions and choosing the one that leads to the best expected outcome. Such a system is known as a rational agent.</li>
+<li>Utility theory shows that an agent whose preferences between lotteries are consistent with a set of simple axioms can be described as possessing a utility function; further-more, the agent selects actions as if maximizing its expected utility.</li>
+<li><strong>Multiattribute</strong> utility theory deals with utilities that depend on several distinct attributes of states. <strong>Stochastic dominance</strong> is a particularly useful technique for making unambiguous decisions, even without precise utility values for attributes.</li>
+<li><strong>Decision networks</strong> provide a simple formalism for expressing and solving decision problems. They are a natural extension of Bayesian networks, containing decision and utility nodes in addition to chance nodes.</li>
+<li>Sometimes, salving a problem involves finding more information before making a decision. The <strong>value of information</strong> is defined as the expected improvement in utility compared with making a decision without the information.</li>
+<li>Expert systems that incorporate utility information have additional capabilities compared with pure inference systems. In addition to being able to make decisions, they can use the value of information to decide which questions to ask, if any; they can recommend contingency plans; and they can calculate the sensitivity of their decisions to small changes in probability and utility assessments.</li>
+</ul>
+
+
+<h3>17. Making Complex Decisions</h3>
+
+<ul>
+<li>Sequential decision problems in uncertain environments, also called <strong>Markov decision</strong> processes, or <strong>MDPs</strong>, are defined by a <strong>transition model</strong> specifying the probabilistic outcomes of actions and a <strong>reward function</strong> specifying the reward in each state.</li>
+<li>The utility of a state sequence is the sum of all the rewards over the sequence, possibly discounted over time. The solution of an MDP is a policy that associates a decision with every stale that the agent might reach. An optimal policy maximizes the utility of the state sequences encountered when it is executed.</li>
+<li>The utility of a state is the expected utility of the state sequences encountered when an optimal policy is executed, starting in that state. <strong>The value iteration</strong> algorithm for solving MDPs works by iteratively solving the equations relating the utility of each state to those of its neighbors.</li>
+<li><strong>Policy iteration</strong> alternates between calculating the utilities of states under the current policy and improving the current policy with respect to the current utilities.</li>
+<li>Partially observable MDPs, or POMDPs, are much more difficult to solve than are MDPs. They can be solved by conversion to an <strong>MOP</strong> in the continuous space of belief states; both value iteration and policy iteration algorithms have been devised. Optimal behavior in POMDPs includes information gathering to reduce uncertainty and therefore make better decisions in the future.</li>
+<li>A decision-theoretic agent can be constructed for <strong>POMDP</strong> environments. The agent uses a <strong>dynamic decision network</strong> to represent the transition and sensor models, to update its belief state, and to project forward possible action sequences.</li>
+<li><strong>Game theory</strong> describes rational behavior for agents in situations in which multiple agents interact simultaneously. Solutions of games are Nash equilibria &mdash; strategy profiles in which no agent has an incentive to deviate from the specified strategy.</li>
+<li><strong>Mechanism design</strong> can be used to set the rules by which agents will interact, in order to maximize some global utility through the operation of individually rational agents. Sometimes, mechanisms exist that achieve this goal without requiring each agent to consider the choices made by other agents.</li>
+</ul>
+
+
+<h3>18. Learning From Examples</h3>
+
+<ul>
+<li>Learning takes many forms, depending on the nature of the agent, the component to be improved, and the available feedback.</li>
+<li>If the available feedback provides the correct answer for example inputs, then the learning problem is called supervised learning. The task is to learn a function y = h(x). Learning a discrete-valued function is called classification; learning a continuous function is called regression.</li>
+<li>Inductive learning involves finding a hypothesis that agrees well with the examples. <strong>Ockham&rsquo;s razor</strong> suggests choosing the simplest consistent hypothesis. The difficulty of this task depends on the chosen representation.</li>
+<li>Decision trees can represent all Boolean fractions. The information-gain heuristic provides an efficient method for finding a simple, consistent decision tree.</li>
+<li>The performance of at learning algorithm is measured by the learning curve, which shows the prediction accuracy on the test set as a function of the <strong>training-set</strong> size.</li>
+<li>When there are multiple models to choose from, <strong>cross-validation</strong> can be used to select a model that will generalize well.</li>
+<li>Sometimes not all errors are equal. A <strong>loss function</strong> tells us how bad each error is; the goal is then to minimize loss over a validation set.</li>
+<li><strong>Computational learning theory</strong> analyzes the sample complexity and computational complexity of inductive learning. There is a tradeoff between the expressiveness of the hypothesis language and the ease of learning.</li>
+<li><strong>Linear regression</strong> is a widely used model. The optimal parameters of a linear regression model can he found by gradient descent search, or computed exactly.</li>
+<li>A linear classifier with a hard threshold &mdash; also known as a <strong>perceptron</strong> &mdash; can be trained by a simple weight update rule to fit data that are <strong>linearly separable</strong>. In other cases, the rule fails to converge.</li>
+</ul>
+
+
+<h3>19. Knowledge in Learning</h3>
+
+<ul>
+<li>The use of prior knowledge in learning leads to a picture of <strong>cumulative learning</strong>, in which learning agents improve their learning ability as they acquire more knowledge.</li>
+<li>Prior knowledge helps learning by eliminating otherwise consistent hypotheses and by &ldquo;filling in&rdquo; the explanation of examples, thereby allowing for shorter hypotheses. These contributions often result in faster teaming from fewer examples.</li>
+<li>Understanding the different logical roles played by prior knowledge, as expressed by entailment constraints, helps to define a variety of learning techniques.</li>
+<li>Explanation-based learning (EBL) extracts general rules from single examples by explaining the examples and generalizing the explanation. It provides a deductive method for turning first-principles knowledge into useful, efficient, special purpose expertise.</li>
+<li>Relevance-based learning (RBL) uses prior knowledge in the form of determinations to identify the relevant attributes, thereby generating a reduced hypothesis space and speeding up learning. RBL also allows deductive generalizations from single examples.</li>
+<li>Knowledge-based inductive learning (KBIL) finds inductive hypotheses that explain sets of observations with the help of background knowledge.</li>
+<li>Inductive logic programming (ILP) techniques perform KBIL on knowledge that is expressed in first-order logic. ILP methods can learn relational knowledge that is not expressible in attribute-based systems,</li>
+<li>1LP can be done with a top-down approach of refining a very general rule or through a bottom-up approach of inverting the deductive process.</li>
+<li>1LP methods naturally generate new predicates with which concise new theories can be expressed and show promise as general-purpose scientific theory formation systems.</li>
+</ul>
+
+
+<h3>20. Learning Probabilistic Models</h3>
+
+<ul>
+<li><strong>Bayesian learning</strong> methods formulate learning as a form of probabilistic inference, using the observations to update a prior distribution over hypotheses. This approach provides a good way to implement Ockham&rsquo;s razor, but quickly becomes intractable for complex hypothesis spaces.</li>
+<li><strong>Maximum a posteriori (MAP)</strong> learning selects a single most likely hypothesis given the data. The hypothesis prior is still used and the method is often more tractable than full Bayesian learning.</li>
+<li><strong>Maximum-likelihood learning</strong> simply selects the hypothesis that maximizes the likelihood of the data; it is equivalent to MAP learning with a uniform prior. In simple cases such as linear regression and fully observable Bayesian networks, maximum-likelihood solutions can be found easily in closed form. <strong>Naive Bayes learning</strong> is a particularly effective technique that scales well.</li>
+<li>When some variables are hidden, local maximum likelihood solutions can be found using the EM algorithm. Applications include clustering using mixtures of Gaussians, learning Bayesian networks, and learning hidden Markov models.</li>
+<li>Learning the structure of Bayesian networks is an example of <strong>model selection</strong>. This usually involves a discrete search in the space of structures. Some method is required for trading off model complexity against degree of fit.</li>
+<li><strong>Nonparametric models</strong> represent a distribution using the collection of data points. Thus, the number of parameters grows with the training set. Nearest-neighbors methods look at the examples nearest to the point in question, whereas <strong>kernel methods</strong> form a distance-weighted combination of all the examples.</li>
+</ul>
+
+
+<h3>21. Reinforcement Learning</h3>
+
+<ul>
+<li>The overall agent design dictates the kind of information that must be learned. The three main designs we covered were the <strong>model-based</strong> design, using a model P and a utility function U; the model-free design, using an action-utility function Q; and the reflex design, using a policy r.</li>
+<li>Utilities can be learned using three approaches:</br>*<em> <strong>Direct utility estimation</strong> uses the total observed reward-to-go for a given state as direct evidence for learning its utility.</br>
+*</em> <strong>Adaptive dynamic programming (ADP)</strong> learns a model and a reward function from observations and then uses value or policy iteration to obtain the utilities or an optimal policy. ADP makes optimal use of the local constraints on utilities of states imposed through the neighborhood structure of the environment.</br>
+** Temporal-difference (TD) methods update utility estimates to match those of successor states. They can be viewed as simple approximations to the ADP approach that can learn without requiring a transition model. Using a learned model to generate pseudoexperiences can, however, result in faster learning.</li>
+<li>Action-utility functions, or Q-functions, can be learned by an ADP approach or a TD approach. With TD, Q-learning requires no model in either the learning or action-selection phase. This simplifies the learning problem but potentially restricts the ability to learn in complex environments, because the agent cannot simulate the results of possible courses of action.</li>
+<li>When the learning agent is responsible for selecting actions while it learns, it must trade off the estimated value of those actions against the potential for learning useful new information. An exact solution of the exploration problem is infeasible, but some simple heuristics do a reasonable job.</li>
+<li>In large state spaces, reinforcement learning algorithms must use an approximate functional representation in order to generalize over states. The temporal-difference signal can be used directly to update parameters in representations such as neural networks.</li>
+<li>Policy-search methods operate directly on a representation of the policy, attempting to improve it based on observed performance. The variation in the performance in a stochastic domain is a serious problem; for simulated domains this can be overcome by fixing the randomness in advance.</li>
+</ul>
+
+
+<h3>22. Natural Language Processing</h3>
+
+<ul>
+<li>Probabilistic language models based on n-grams recover a surprising amount of information about as language. They can perform well on such diverse tasks as language identification, spelling correction, genre classification, and named-entity recognition.</li>
+<li>These language models can have millions of features, so feature selection and preprocessing of the data to reduce noise is important.</li>
+<li><strong>Text classification</strong> can be done with naive Bayes n-gram models or with any of the classification algorithms we have previously discussed. Classification can also be seen as a problem in data compression.</li>
+<li><strong>Information retrieval</strong> systems use a very simple language model based on bags of words, yct still manage to perform well in tcrms of <strong>recall</strong> and precision on very large corpora of text. On Web corpora, link-analysis algorithms improve performance.</li>
+<li><strong>Question answering</strong> can be handled by an approach based on information retrieval, for questions that have multiple answers in the corpus. When more answers are available in the corpus, we can use techniques that emphasize precision rather than recall.</li>
+<li><strong>Information-extraction</strong> systems use a more complex model that includes limited notions of syntax and semantics in the form of templates. They can be built from finite-state automata, HMMs, or conditional random fields, and can be learned from examples.</li>
+<li>In building a statistical language system, it is best to devise a model that can make good use of available <strong>data</strong>, even if the model seems overly simplistic.</li>
+</ul>
+
+
+<h3>23. Natural Language for Communication</h3>
+
+<ul>
+<li>Formal language theory and <strong>phrase structure</strong> grammars (and in particular, context. free grammar) are useful tools for dealing with some aspects of natural language. The probabilistic context-free grammar (PCFG) formalism is widely used.</li>
+<li>Sentences in a context-free language can be parsed in O(n<sup>3</sup>) time by a <strong>chart parser</strong> such as the CYK algorithm, which requires grammar rules to be in <strong>Chomsky Normal Form</strong>.</li>
+<li>A treebank can be used to learn a grammar. It is also possible to learn a grammar from an unparsed corpus of sentences, but this is less successful.</li>
+<li>A <strong>lexicalized PCFG</strong> allows us to represent that some relationships between words are mare common than others.</li>
+<li>It is convenient to augment a grammar to handle such problems as subject–verb agreement and pronoun case. Definite clause grammar (DCG) is a formalism that allows for augmentations. With DCG, parsing and semantic interpretation (and even generation) can be done using logical inference.</li>
+<li>Semantic interpretation can also be handled by an augmented grammar.</li>
+<li><strong>Ambiguity</strong> is a very important problem in natural language understanding; most sentences have many possible interpretations, but usually only one is appropriate. Disam-biguation relies on knowledge about the world, about the current situation, and aboutlanguage use.</li>
+<li><strong>Machine translation</strong> systems have been implemented using a range of techniques, from full syntactic and semantic analysis to statistical techniques based on phrase frequencies. Currently the statistical models are most popular and most successful.</li>
+<li><strong>Speech recognition</strong> systems are also primarily based on statistical principles. Speechsystems are popular and useful, albeit imperfect.
+Together, machine translation and speech recognition are two of the big successes of natural language technology. One reason that the models perform well is that large corpora are available—both translation and speech are tasks that are performed in the wild" by people every day. In contrast, tasks like parsing sentences have been less successful, in part because no large corpora of parsed sentences are available in the wild" and in part because parsing is not useful in and of itself.</li>
+</ul>
+
+
+<h3>24. Perception</h3>
+
+<ul>
+<li>The process of image formation is well understood in its geometric and physical aspects. Given a description of a three-dimensional scene, we can easily produce a picture of it from some arbitrary camera position (the graphics problem). Inverting the process by going from an image to a description of the scene is more difficult.</li>
+<li>To extract the visual information necessary for the tasks of manipulation ; navigation, and recognition, intermediate representations have to be constructed. Early vision image-processing algorithms extract primitive features from the image, such as edges and regions.</li>
+<li>There are various cues in the image that enable one to obtain three-dimensional in- formation about the scene: motion, stereopsis, texture, shading, and contour analysis. Each of these cues relies en background assumptions about physical scenes to provide nearly unambiguous interpretations.</li>
+<li>Object recognition in its full generality is a very hard problem. We discussed brightness-based and feature-based approaches. We also presented a simple algorithm for pose estimation. Other possibilities exist.</li>
+</ul>
+
+
+<h3>25. Robotics</h3>
+
+<ul>
+<li>Robots are equipped with sensors fur perceiving their environment and effectors with which they can assert physical forces on their environment. Most robots are either manipulators anchored at fixed locations or mobile robots that can move.</li>
+<li>Robotic perception concerns itself with estimating decision-relevant quantities from sensor data. To do so, we need an internal representation and a method for updating this intemal representation over time. Common examples of hard perceptual problems include <strong>localization, mapping, and object recognition</strong>.</li>
+<li><strong>Probabilistic filtering algorithms</strong> such as Kalman filters and particle filters arc useful for robot perception. These techniques maintain the belief state, a posterior distribution over state variables.</li>
+<li>The planning of robot motion is usually done in <strong>configuration space</strong>, where each point specifies the location and orientation of the robot and its joint angles.</li>
+<li>Configuration space search algorithms include <strong>cell decomposition</strong> techniques, which decompose the space of all configurations into finitely many cells, and <strong>skeletonization</strong> techniques, which project configuration spaces into lower-dimensional manifolds. The motion planning problem is then solved using search in these simpler structures.</li>
+<li>A path found by a search algorithm can be executed by using the path as the reference trajectory for a <strong>PID controller</strong>. Controllers are necessary in robotics to accommodate small perturbations; path planning alone is usually insufficient.</li>
+<li><strong>Potential field</strong> techniques navigate robots by potential functions, defined over the distance to obstacles and the goal location. Potential field techniques may get stuck in local minima but they can generate motion directly without the need for path planning.</li>
+<li>Sometimes it is easier to specify a robot controller directly, rather than deriving a path from an explicit model of the environment. Such controllers can often be written as simple <strong>finite state machines</strong>.</li>
+</ul>
+
+
+<h3>26. Philosophical Foundations</h3>
+
+<ul>
+<li>Philosophers use the term weak AI for the hypothesis that machines could possibly behave intelligently. and strong AI for the hypothesis that such machines would count as having actual minds (as opposed to simulated minds).</li>
+<li>Alan Turing rejected the question &ldquo;Can machines think&rdquo; and replaced it with a behavioral test. He anticipated many objections to the possibility of thinking machines. Few AI researchers pay attention to the Turing Test, preferring to concentrate on their systems' performance on practical tasks, rather than the ability to imitate humans.</li>
+<li>There is general agreement in modem times that mental states are brain states.</li>
+<li>Arguments for and against strong AI are inconclusive. Few mainstream AI researchers believe that anything significant hinges on the outcome of the debate.</li>
+<li>Consciousness remains a mystery.</li>
+<li>We identified six potential threats to society posed by AI and related technology. We concluded that some of the threats are either unlikely or differ little from threats posed by &ldquo;unintelligent&rdquo; technologies. One threat in particular is worthy of further consideration: that ultraintelligent machines might lead to a future that is very different from today &mdash; we may not like it, and at that paint we may not have a choice. Such considerations lead inevitably to the conclusion that we must weigh carefully, and soon, the possible consequences of AI research.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Excerpt_Machine Learning(Tom Mitchell)]]></title>
+    <link href="http://www.aprilzephyr.com/blog/05122015/excerpt-machine-learning-tom-mitchell/"/>
+    <updated>2015-05-12T10:40:37+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/05122015/excerpt-machine-learning-tom-mitchell</id>
+    <content type="html"><![CDATA[<h3>1. Introduction</h3>
+
+<ul>
+<li>Machine learning addresses the question of how to build computer programs that improve their performance at some task through experience.</li>
+<li>Machine learning algorithms have proven to be of great value in a variety of application domains. They are especially useful in (a) data mining problems where large databases may contain valuable implicit regularities that can be discovered automatically (e.g., to analyze outcomes of medical treatments from patient databases or to learn general rules for credit worthiness from finalcial databases); (b) poorly understood domains where humans might not have the knowledge needed to develop effective algorithms (e.g., human face recognition from images); and &copy; domains where the program must dynamically adapt to changing conditions (e.g., controlling manufacturing processes under changing supply stocks or adapting to the changing reading interests of individuals).</li>
+<li>Machine learning draws on idea from a diverse set of disciplines, including artifical intelligence, probability and statistics, computational complexity, information theory, psychology and neurobiology, control theory, and philosophy.</li>
+<li>A well-defines learning problem approach involves a number of design choices, including choosing the type of training experience, the target function to be learned, a representation for this target function, and an algorithm for learning the target function from training examples.</li>
+<li>Learning involves search: searching through a space of possible hypotheses to find the hypothesis that best fits the available training examples and other prior constraints or knowledge.<!--more--></li>
+</ul>
+
+
+<h3>2. Concept Learning and the General-to-Specific Ordering</h3>
+
+<ul>
+<li>Concept learning can be cast as a problem of searching through a large predefined space or potential hypotheses.</li>
+<li>The general-to-specific partial ordering of hypotheses, which can be defined for any concept learning problem, provides a useful structure for organizing the search through the hypothesis space.</li>
+<li>The Find-S algorithm utilizes this general-to-specific ordering, performing a specific-to-general search through the hypothesis space along one branch of the partial ordering, to find the most specific hypothesis consistent whith the training examples.</li>
+<li>The Candidate-Elimination algorithm utilizes this general-to-specific ordering to compute the version space (the set of all hypotheses consistent with training data) by incrementally computing the sets of maximally specific (S) and maximally general (G) hypotheses.</li>
+<li>Because the S and G sets delimit the entire set of hypotheses consistent with the data, they provide the learner with a description of its uncertainty regardin the exact identity of the target concept. This version space of alternative hypotheses can be examined to determine whether the learner has converged to the target concept, to determine when the training data are inconsistent, to generate informative quaries to further refine the version space, and to determine which unseen instances can be unambiguously classified based on the partially learned concept.</li>
+<li>Version spaces and the Candidate-Elimination algorithm provide a useful conceptual framework for studying concept learning. However, this learning algorithm is not robust to noisy data or to situations in which the unknown target concept is not expressible in the provided hypothesis space.</li>
+<li>Inductive learning algorithms are able to classify unseen examples only because of their mplicit inductive bias for selecting one cinsistent hypothesis over another. The bias concept can be found in the provided hypothesis space (c ∈ H). The output hypotheses and classifications of subsequent instances follow deductively from this assumption together with the observed training data.</li>
+<li>If the hypothesis space is enriched to the point where there is a hypothesis corresponding to every possible subset of instances (the power set of the instances), this will remove any in ductive bias from the Candidate-Elimination algorithm, Unfortunately, this also removes the ability to classfy any instance beyond the observed training examples. An unbiased learner cannot make inductive leaps to classify unseen examples.</li>
+</ul>
+
+
+<h3>3. Decision Tree Learning</h3>
+
+<ul>
+<li>Decision tree learning provides a practical method for concept learning and for learning other discrete-valued functions. The ID3 family of algorithms infers decision trees by growing them from the root downward, greedily selecting the next best attribute for each new decision branch added to the tree.</li>
+<li>ID3 searches a complete hypothesis space (i.e., the space of decision trees can represent any discrete-valued function defined over discrete-valued instances). It thereby avoids the major difficulty associated with approaches that consider only restricted sets of hypotheses: that the target function might not be present in the hypothesis space.</li>
+<li>The inductiove bias implicit in ID3 includes a preference for smaller trees; that is, its search through the hypothesis space grows the tree only as large as needed in order to clasiy the available training examples.</li>
+<li>Overfitting the training data is an important issue in decision tree learning. Because the training examples are only a sample of all possible instances, it is possible to add branches to the tree that improve performance on the training examples while decreasing performance on other instances outside this set. Methods for post-pruning the decision tree are therefore important to avoid overfitting in decision tree learning (and other inductive inference methods that employ a preference bias).</li>
+<li>A large variety of extensions to the basic ID3 algorithm has been developed by different researchers. These include methods for post-pruning trees, handling real-valued attributes, accommodating training examples with missing attribute values, incrementally refining decision trees as new training examples become available, using attribute selection measures other than information gain, and considering costs associated with instance attibutes.</li>
+</ul>
+
+
+<h3>4. Artificial Neural Networks</h3>
+
+<ul>
+<li>Artificial neural network learning provides a practical method for learning real-valued and vector-valued functions over continuous and discrete-valued attributes, in a way that is robust to noise in the training data. The Backpropagation algorithm is the most common network learning method and has been successfully applied to a variety of learning tasks, such as handwriting recognition and robot control.</li>
+<li>The hypothesis space considered by the Backpropagation algorithm is the space of all functions that can be represented by assigning weights to the given, fixed network of interconnected units. Feedforward networks containing three layers of units are able to approximate any function to arbitrary accuracy, given a sufficient (potentially very large) number of units in each layer. Even networks of practical size are capable of represening a rich choice for learning discrete and continuous functions whose general form is unknown in advance.</li>
+<li>Backpropagation searches the space of possible hypotheses using gradient descent to iteratively reduce the error in the network fit to the training examples. Gradient descent converges to a local minimum in the training error with respect to the network weights. more generally, gradient descent is a potentially useful method for searching many contiously parameterized hypothesis spaces where the training error is a differentiable function of hypothesis paremeters.</li>
+<li>One of the most intriguing properties of Backpropagation is its ability to invent new features that are not explicit in the input to the network. In particular, the internal (hidden) layers of multilayer networks learn to represent intermediate features that are useful for learning the target function and that are only implicit in the network inputs.</li>
+<li>Overfitting the training data is an important issue in ANN learning. Overfitting results in networks that generalize poorly to new data despite excellent performance over the training data. Cross-validation methods can be used to estimate an approprite stopping point gradient descent search and thus to minimize the risk of overfitting.</li>
+<li>Although Backpropagation is the most common ANN learning algorithm, many others have been proposed, including algorithms for more specialized tasks. For example, recurrent neural network methods train networks containing directed cycles, and algorithms such as Cascade Correlation alter the network structure as well as the network weights.</li>
+</ul>
+
+
+<h3>5. Evaluating Hypotheses</h3>
+
+<ul>
+<li>Statistical theory provides a basis for estimating the true error (error<sub>D</sub>(h)) of a hypothesis h, based on its observed error (error<sub>S</sub>(h)) over a sample S of data. For example, if h is a discrete-valued hypothesis and the data sample S contains n >= 30 examples drawn independently of h and of one another, then the N% confidence interval for (error<sub>D</sub>(h)) is approximately</br>
+<img src="http://latex.codecogs.com/gif.latex?error_{s}(h)\pm&space;z_{N}\sqrt{\frac{error_{s}(h)(1-error_{s}(h))}{n}}" title="error_{s}(h)\pm z_{N}\sqrt{\frac{error_{s}(h)(1-error_{s}(h))}{n}}" /></li>
+<li>In general, the problem of estimating confidence intervals is approached by identifying the parameter to be estimated (e.g., error<sub>D</sub>(h)) and an estimator (e.g., error<sub>S</sub>(h)) for this quantity. Because the estimator is a random variable (e.g., error<sub>S</sub>(h) depends on the random sample S), it can be characterrized by the probability distribution that governs its value. Confidence intervals can then be calculated by determining the interval that contains the desired probability mass under this distribution.</li>
+<li>One possible cause of errors in estimating hypothesis accuracy is estimation bias. If Y is an estimator for some oarameter p, the estimation bias of Y is the difference between p and the expected value of Y. For example, if S is the training data used to formulate hypothesis h, then error<sub>S</sub>(h) gives an optimistically biased estimate of the error error<sub>D</sub>(h).</li>
+<li>A second cause of estimation error is variance in the estimate. Even with an unbiased estimator, the observed value of the estimator is likely to vary from one experiment to another. The variance σ<sup>2</sup> of the distribution governing the estimator characterizes how widely this estimate is likely to vary from the correct value. This variance decreases as the size of the data sample is increased.</li>
+<li>Comparing the effectiveness of two learning algorithms is an estimation problem that is relatively easy when data and time are unlimited, but more difficult when these resourses are limited. One possible approach described in this chapter is to run the learning algorithms on different subsets of the available data, testing the learned hypotheses on the remaining data, then averaging the results of these experiments.</li>
+<li>In most cases considered here, deriving confidence intervals invloves making a number of assumptions and approximations. For example, the above confidence interval for error<sub>D</sub>(h)involved approximating a Binominal distribution by a Normal distribution, approximating the variance of this distribution, and assuming instances are generated by a fixed, unchanging probability distribution. While intervals based on such approximations are oonly approximate confidence intevals, they nevertheless provide useful guidance for disigning and interpreting experimental results in machine learning.</li>
+</ul>
+
+
+<h3>6. Bayesian Learning</h3>
+
+<ul>
+<li>Bayesian methods providethe basis for probabilistic learning methods that accommodate (and require) knowledge about the prior probabilities of alternative hypotheses and about the probability of observing various data given the hypothesis. Bayesian methods allow assigning a posterior probability to each candidate hypothesis, based on these assumed priors and the observed data.</li>
+<li>Bayesian methods can be used to determine the most probable hypothesis given the data &mdash; the maximum a posteriori (MAP) hypothesis. This is the optimal hypothesis in the sense that no other hypothesis is more likely.</li>
+<li>The Bayes optimal classifier co,bines the predictions of all alternative hypotheses, weighted by their posterior probabilities, to calculate the most probable classification of each new instance.</li>
+<li>The naive Bayes classifier is a Bayesian learning method that has been found to be useful in many practical applications. It is called &ldquo;naive&rdquo; because it incorporates the simplifying assumption that attibute values are conditionally independent, given the classification of the instance. When this assumption is met, the naive Bayes classifier outputs the MAP classification. Even when this asuumption is not met, as in the case of learning to clssify text, the naive Bayes classifier is often quite effective. Bayesian belief networks provide a more expressive representation for sets of conditional independence assumptions among subsets of the attributes.</li>
+<li>The framework of Bayesian reasoning can provide a useful basis for analyzing certain learning methods that do not directly apply Bayes theorem. For example, under certain conditions it can be shown that minimizing the squared error when learning a real-world target function corresponds to computing the maxmum likelihood hypothesis.</li>
+<li>The Minimum Description Length principle recommends choosing the hypothesis that minimizes the description length of the hypothesis plus the description length of the data given the hypothesis. Bayes theorem and baysic results from information theory can be used to provide a rationale for this principle.</li>
+<li>In many practical learning tasks, some of the relevant instance variables may be unobservable. The EM algorithm provides a quite general approach to learning in the presence of unobservable variables. This algorithm begins with an arbitrary initial hypothesis. It then repeatedly calculates the expected values of the hidden variables (assuming the current hypothesis is correct), and then recalculates the maximum likelihood hypothesis (assuming the hidden variables have he expected values caldulated by the first step). This procedure converges to a local maximum likelihood hypothesis, along with estimated values for the hidden variables.</li>
+</ul>
+
+
+<h3>7. Computational Learning Theory</h3>
+
+<ul>
+<li>The probably approximately correct (PAC) model considers algorithms that learn target concepts from some concept class C, using examples drawn at random according to an unknown, but fixed, probability distribution. it requires that the learner probably (with probability at least [1 &ndash; δ]) learn a hypothesis that is approximately (within error ε) correct, given computational effort and training examples that frow only polynomially with 1/ε, 1/δ, the size of the instances, and the size of the target concept.</li>
+<li>Within the setting of the PAC learning modelm any consistent learner using a finite hypothesis space H where C ⊆ H will, with probability (1 &ndash; δ), output a hypothesis within error ε of the target concept, after observing m randomly drawn training example, as long as</br>
+<img src="http://latex.codecogs.com/gif.latex?m&space;\geq&space;\frac{1}{\varepsilon&space;}(ln(1/\delta&space;)&plus;ln|H|)" title="m \geq \frac{1}{\varepsilon }(ln(1/\delta )+ln|H|)" /><br/>
+This gives a bound on the number of training examples sufficient for successful learning under the PAC model.</li>
+<li>One constraining assumption of the PAC learning model is that the learner knows in advance some restricted concept class C that contains the target concept to be learned. In contrast, the agnostic learning omdel considers the more general setting in which the learner makes no assumption about the class from which the target concept is drawn. Instead, the learner outputs the hypothesis from H that has the least error (possibly nonzero) over the training data. Under this less restrictive agnostic learning model, the learner is assured with probability (1 &ndash; δ)to output a hypothesis within error ε of the best possible hypothesis in H, fter observing m randomly drawn training examples, provided</br>
+<img src="http://latex.codecogs.com/gif.latex?m&space;\geq&space;\frac{1}{2\varepsilon^{2}&space;}(ln(1/\delta&space;)&plus;ln|H|)" title="m \geq \frac{1}{2\varepsilon^{2} }(ln(1/\delta )+ln|H|)" /></li>
+<li>The number of training examples required for successful learning is strongly influenced by the complexity of the hypothesis space considered by the learner. One useful measure of the complexity of a hypothesis space H is its Vapnik-Chervonenkis dimension, VC(H). VC(H) is the size of the largest subset of instances that can be shattered (split in all possible ways by H.</li>
+<li>An alternative upper bound on the number of training examples sufficient for successful learning under the PAC model, stated in terms of VC(H) is</br>
+<img src="http://latex.codecogs.com/gif.latex?m&space;\geq&space;\frac{1}{\varepsilon}(4log_{2}(2/\delta&space;)&plus;8VC(H)log_{2}(13/\varepsilon&space;))" title="m \geq \frac{1}{\varepsilon}(4log_{2}(2/\delta )+8VC(H)log_{2}(13/\varepsilon )))" /><br/>
+A lower bound is</br>
+<img src="http://latex.codecogs.com/gif.latex?m&space;\geq&space;max[\frac{1}{\varepsilon&space;}log(1/\delta&space;),&space;\frac{VC(C)-1)}{32\varepsilon&space;}]" title="m \geq max[\frac{1}{\varepsilon }log(1/\delta ), \frac{VC(C)-1)}{32\varepsilon }]" /></li>
+<li>An alternative learning model, called the mistake bound model, is used to analyze the number of training examples a learner will misclassify before is exactly learns the target concept. For rxample, the Halving algorithm will make at most [log<sub>2</sub>H] mistakes before exactly learning any target concept drawn from H. For an arbitrary concept class C, the best worst-case algorithm will make Opt &copy; mistakeIs, where<br/>
+VC&copy; &lt;= Opt&copy; &lt;= log<sub>2</sub>(|C|)</li>
+<li>The Weighted-Majority algorithm combines the weighted votes of multiple prediction algorithms to classify new instances. It learns weights for each of these prediction algorithms based on errors made over a sequence of examples. Interestingly, the number of mistakes made by Weighted-Majority be bounded in terms of the number of mistakes made by the best prediction algorithm in the pool.</li>
+</ul>
+
+
+<h3>8. Instance-Based Learning</h3>
+
+<ul>
+<li>Instance-based learning methods differ from other approaches to function ap- proximation because they delay processing of training examples until they must label a new query instance. As a result, they need not form an explicit hypothesis of the entire target function over the entire instance space, independent of the query instance. Instead, they may form a different local approximation to the target function for each query instance.</li>
+<li>Advantages of instance-based methods include the ability to model complex target functions by a collection of less complex local approximations and the fact that information present in the training examples is never lost (because the examples themselves are stored explicitly). The main practical difficulties include efficiency of labeling new instances (all processing is done at query time rather than in advance), difficulties in determining an appropriate distance metric for retrieving &ldquo;related&rdquo; instances (especially when examples are represented by complex symbolic descriptions), and the negative impact of irrelevant features on the distance metric.</li>
+<li>K-Nearest Neighbor an instance-based algorithm for approximating real-valued or discrete-valued target functions, assuming instances correspond to points in an N-dimensional Euclidean space. The target function value for a new query is estimated from the known values of the K nearest training examples.</li>
+<li>Locally weighted regression methods are a generalization of K-Nearest Neighbor which an explicit local approximation to the target functionis constructed for each query instance. The local approximation to the target function may be based on a variety of functional forms such as constant, linear, or quadratic functions or on spatially localized kernel functions.</li>
+<li>Radial basis function (RBF) networks are a type of artificial neural network constructed from spatially localized kernel functions. These can be seen as a blend of instance-based approaches (spatially localized influence of each kernel function) and neural network approaches (a global approximation to the target function is formed at training time rather than a local approximation at query time). Radial basis function networks have been used successfully in applications such as interpreting visual scenes, in which the assumption of spatially local influences is well-justified.</li>
+<li>Case-based reasoning is an instance-based approach in which instances are represented by complex logical descriptions rather than points in a Euclidean space. Given these complex symbolic descriptions of instances, a rich variety of methods have been proposed for mapping from the training examples to target function values for new instances. Case-based reasoning methods have been used in applications such as modeling legal reasoning and for guiding searches in complex manufacturing and transportation planning problems.</li>
+</ul>
+
+
+<h3>9. Genetic Algorithm</h3>
+
+<ul>
+<li>Genetic algorithms (GAS) conduct a randomized, parallel, hill-climbing search for hypotheses that optimize a predefined fitness function.</li>
+<li>The search performed by GAS is based on an analogy to biological evolution. A diverse population of competing hypotheses is maintained. At each iteration, the most fit members of the population are selected to produce new offspring that replace the least fit members of the population. Hypotheses are often encoded by strings that are combined by crossover operations, and subjected to random mutations.</li>
+<li>GAs illustrate how learning can be viewed as a special case of optimization. In particular, the learning task is to find the optimal hypothesis, according to the predefined fitness function. This suggests that other optimization tech- niques such as simulated annealing can also be applied to machine learning problems.</li>
+<li>GAs have most commonly been applied to optimization problems outside machine learning, such as design optimization problems. When applied to learning tasks, GAS are especially suited to tasks in which hypotheses are complex (e.g., sets of rules for robot control, or computer programs), and in which the objective to be optimized may be an indirect function of the hypothesis (e.g., that the set of acquired rules successfully controls a robot).</li>
+<li>Genetic programming is a variant of genetic algorithms in which the hypotheses being manipulated are computer programs rather than bit strings. Operations such as crossover and mutation are generalized to apply to programs rather than bit strings. Genetic programming has been demonstrated to learn programs for tasks such as simulated robot control (Koza 1992) and recognizing objects in visual scenes (Teller and Veloso 1994).</li>
+</ul>
+
+
+<h3>10. Learning Sets of Rules</h3>
+
+<ul>
+<li>The sequential covering algorithm learns a disjunctive set of rules by first learning a single accurate rule, then removing the positive examples covered by this rule and iterating the process over the remaining training examples. It provides an efficient, greedy algorithm for learning rule sets, and an al- ternative to top-down decision tree learning algorithms such as ID3, which can be viewed as simultaneous, rather than sequential covering algorithms.</li>
+<li>In the context of sequential covering algorithms, a variety of methods have been explored for learning a single rule. These methods vary in the search strategy they use for examining the space of possible rule preconditions. One popular approach, exemplifiedby the CN2 program, is to conduct a general-to-specific beam search, generating and testing progressively more specific rules until a sufficiently accurate rule is found. Alternative approaches search from specific to general hypotheses, use an example-driven search rather than generate and test, and employ different statistical measures of rule accuracy to guide the search.</li>
+<li>Sets of first-order rules (i.e., rules containing variables) provide a highly expressive representation. For example, the programming language PROLOG represents general programs using collections of first-order Horn clauses. The problem of learning first-order Horn clauses is therefore often referred to as the problem of inductive logic programming.</li>
+<li>One approach to learning sets of first-order rules is to extend the sequential covering algorithm of CN2 from propositional to first-order representations. This approach is exemplified by the FOIL program, which can learn sets of first-order rules, including simple recursive rule sets.</li>
+<li>A second approach to learning first-order rules is based on the observation that induction is the inverse of deduction. In other words, the problem of induction is to find a hypothesis h that satisfies the constraint</br>
+<img src="http://latex.codecogs.com/gif.latex?(\veebar&space;\left&space;\langle&space;x_{i},f(x_{i})&space;\right&space;\rangle&space;\subseteq&space;D)&space;(B\wedge&space;h&space;\wedge&space;x_{i})\vdash&space;f(x_{i})" title="(\veebar \left \langle x_{i},f(x_{i}) \right \rangle \subseteq D) (B\wedge h \wedge x_{i})\vdash f(x_{i})" /><br/>
+WhereB is general background information, x<sub>1</sub> &hellip; x<sub>n</sub> are descriptions of the instances in the training data D, and f(x<sub>1</sub>) &hellip; f(x<sub>n</sub>) are the target values of the training instances.
+Following the view of induction as the inverse of deduction, some programs search for hypotheses by using operators that invert the well-known operators for deductive reasoning. For example, Cigol uses inverse resolution, an operation that is the inverse of the deductive resolution operator commonly used for mechanical theorem proving. Progol combines an inverse entailment strategy with a general-to-specific strategy for searching the hypothesis space.</li>
+</ul>
+
+
+<h3>11. Analytical Learning</h3>
+
+<ul>
+<li>In contrast to purely inductive learning methods that seek a hypothesis to fit the training data, purely analytical learning methods seek a hypothesis that fits the learner&rsquo;s prior knowledge and covers the training examples. Humans often make use of prior knowledge to guide the formation of new hypotheses. This chapter examines purely analytical learning methods. The next chapter examines combined inductive-analytical learning.</li>
+<li>Explanation-based learning is a form of analytical learning in which the learner processes each novel training example by (1) explaining the observed target value for this example in terms of the domain theory, (2) analyzing this explanation to determine the general conditions under which the explanation holds, and (3) refining its hypothesis to incorporate these general conditions.</li>
+<li>Prolog-Ebg isanexplanation-based learning algorithm that uses first-order Horn clauses to represent both its domain theory and its learned hypotheses. In Prolog-Ebg an explanation is a Prolog proof, and the hypothesis extracted from the explanation is the weakest preimage of this proof. As a result, the hypotheses output by Prolog-Ebg follow deductively from its domain theory.</li>
+<li>Analytical learning methods such as Prolog-Ebg construct useful intermediate features as a side effect of analyzing individual training examples. This analytical approach to feature generation complements the statistically based generation of intermediate features (e.g., hidden unit features) in inductive methods such as Backpropagation.</li>
+<li>Although Prolog-Ebg does not produce hypotheses that extend the deductive closure of its domain theory, other deductive learning procedures can. For example, a domain theory containing determination assertions (e.g., &ldquo;nationality determines language&rdquo;) can be used together with observed data to deductively infer hypotheses that go beyond the deductive closure of the domain theory.</li>
+<li>One important class of problems for which a correct and complete domain theory can be found is the class of large state-space search problems. Systems such as Prodigy and Soar have demonstrated the utility of explanation-based learning methods for automatically acquiring effective search control knowledge that speeds up problem solving in subsequent cases.</li>
+<li>Despite the apparent usefulness of explanation-based learning methods in humans, purely deductive implementations such as Prolog-Ebg suffer the disadvantage that the output hypothesis is only as correct as the domain theory. In the next chapter we examine approaches that combine inductive and analytical learning methods in order to learn effectively from imperfect domain theories and limited training data.</li>
+</ul>
+
+
+<h3>12. Combining Inductive and Analytical Learning</h3>
+
+<ul>
+<li>Approximate prior knowledge, or domain theories, are available in many practical learning problems. Purely inductive methods such as decision tree induction and neural network Backpropagation fail to utilize such domain theories, and therefore perform poorly when data is scarce. Purely analytical learning methods such as Prolog-Ebg utilize such domain theories, but produce incorrect hypotheses when given imperfect prior knowledge. Methods that blend inductive and analytical learning can gain the benefits of both approaches: reduced sample complexity and the ability to overrule incorrect prior knowledge.</li>
+<li>One way to view algorithms for combining inductive and analytical learning is to consider how the domain theory affects the hypothesis space search. In this chapter we examined methods that use imperfect domain theories to (1) create the initial hypothesis in the search, (2) expand the set of search operators that generate revisions to the current hypothesis, and (3) alter the objective of the search.</li>
+<li>A system that uses the domain theory to initialize the hypothesis is KBANN. This algorithm uses a domain theory encoded as propositional rules to analytically construct an artificial neural network that is equivalent to the domain theory. This network is then inductivelyrefined using the Backpropagation algorithm, to improve its performance over the training data. The result is a network biased by the original domain theory, whose weights are refined inductively based on the training data.</li>
+<li>Tangentprop uses prior knowledge represented by desired derivatives of the target function. In some domains, such as image processing, this is a natural way to express prior knowledge. Tangentprop incorporates this knowledge by altering the objective function minimized by gradient descent search through the space of possible hypotheses.</li>
+<li>EBNN uses the domain theory to alter the objective in searching the hypothesis space of possible weights for an artificial neural network. It uses a domain theory consisting of previously learned neural networks to perform a neural network analog to symbolic explanation-basedlearning. As in symbolic explanation-based learning, the domain theory is used to explain individual examples, yielding information about the relevance of different example features. With this neural network representation, however, information about relevance is expressed in the form of derivatives of the target function value with respect to instance features. The network hypothesis is trained using a variant of the Tangentprop algorithm, in which the error to be minimized includes both the error in network output values and the error in network derivatives obtained from explanations.</li>
+<li>Focl uses the domain theory to expand the set of candidates considered at each step in the search. It uses an approximate domain theory represented by first order Horn clauses to learn a set of Horn clauses that approximate the target function. Focl employs a sequential covering algorithm, learning each Horn clause by a general-to-specific search. The domain theory is used to augment the set of next more specific candidate hypotheses considered at each step of this search. Candidate hypotheses are then evaluated based on their performance over the training data. In this way, Focl combines the greedy, general-to-specific inductive search strategy of Foil with the rule-chaining, analytical reasoning of analytical methods.</li>
+<li>The question of how to best blend prior knowledge with new observations remains one of the key open questions in machine learning.</li>
+</ul>
+
+
+<h3>13. Reinforcement Learning</h3>
+
+<ul>
+<li>Reinforcement learning addresses the problem of learning control strategies for autonomous agents. It assumes that training information is available in the form of a real-valued reward signal given for each state-action transition. The goal of the agent is to learn an action policy that maximizes the total reward it will receive from any starting state.</li>
+<li>The reinforcement learning algorithms addressed in this chapter fit a problem setting known as a Markov decision process. In Markov decision processes, the outcome of applying any action to any state depends only on this action and state (and not on preceding actions:or states). Markov decision processes cover a wide range of problems including many robot control, factory automation, and scheduling problems.</li>
+<li>Q learning is one form of reinforcement learning in which the agent learns an evaluation function over states and actions. In particular, the evaluation function Q(s, a) is defined as the maximum expected, discounted, cumulative reward the agent can achieve by applying action a to state s. The Q learning algorithm has the advantage that it can be employed even when the learner has no prior knowledge of how its actions affect its environment.</li>
+<li>Q learning can be proven to converge to the correct Q function under certain assumptions, when the learner&rsquo;s hypothesis Q<sup>s, a</sup>, is represented by a lookup table with a distinct entry for each &lt;s,a> pair. It can be shown to converge in both deterministic and nondeterministic MDPs. In practice, Q learning can require many thousands of training iterations to converge in even modest-sized problems.</li>
+<li>Q learning is a member of a more general class of algorithms, called temporal difference algorithms. In general, temporal difference algorithms learn by iteratively reducing the discrepancies between the estimates produced by the agent at different times.</li>
+<li>Reinforcement learning is closely related to dynamic programming approaches to Markov decision processes. The key difference is that historically these dynamic programming approaches have assumed that the agent possesses knowledge of the state transition function δ(s, a) and reward function r(s, a). In contrast, reinforcement learning algorithms such as Q learning typically assume the learner lacks such knowledge.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

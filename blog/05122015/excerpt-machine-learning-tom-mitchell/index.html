@@ -1,0 +1,392 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
+	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<meta charset="utf-8">
+	<title>Excerpt_Machine Learning(Tom Mitchell)  | Themis_Sword's Blog</title>
+
+
+<meta name="author" content="Themis_Sword"> 
+
+<meta name="description" content="Excerpt_Machine Learning(Tom Mitchell)"> <meta name="keywords" content="Machine Learning">
+
+
+<meta name="msvalidate.01" content="3084BF25D05B2AD0D58CBE0DEA3D888E" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Themis_Sword's Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery.fancybox.pack.js"></script>
+
+<script language="Javascript" type="text/javascript">
+$(document).ready(
+  function() {
+    (function($) {
+      $(".fancybox[data-content-id]").each(function() {
+        this.href = $(this).data('content-id');
+      });
+      $(".fancybox").fancybox({
+        beforeLoad: function() {
+          var el, 
+              id = $(this.element).data('title-id');
+
+          if (id) {
+            el = $('#' + id);
+
+            if (el.length) {
+              this.title = el.html();
+            }
+          }
+          if ($(this).data('content')) {
+            this.content = $(this).data('content');
+          }
+        },
+        helpers: {
+          title: {
+            type: 'inside'
+          }
+        }
+      });
+    })(jQuery);
+  }
+);
+</script>
+
+	
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48083272-1', 'aprilzephyr.com');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Themis_Sword's Blog</a></h1>
+<h4>Never Scared Endeavoring.</h4>
+<nav id="main-nav"><ul>
+	<li><a href="/">Home</a></li>
+	<li><a href="/blog/categories">Categories</a></li>
+    <li><a href="/portfolio">Portfolio</a>
+    <li><a href="/gallery">Gallery</a><li>
+	<li><a href="/author">Author</a></li>
+</ul>
+
+
+
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul>
+	<li><a href="/">Home</a></li>
+	<li><a href="/blog/categories">Categories</a></li>
+    <li><a href="/portfolio">Portfolio</a>
+    <li><a href="/gallery">Gallery</a><li>
+	<li><a href="/author">Author</a></li>
+</ul>
+
+
+
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:www.aprilzephyr.com">
+			</form>
+		</div>
+	</div>
+</nav>
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	<h3 class="title">Excerpt_Machine Learning(Tom Mitchell)
+</h3>
+	<div class="entry-content"><h3>1. Introduction</h3>
+
+<ul>
+<li>Machine learning addresses the question of how to build computer programs that improve their performance at some task through experience.</li>
+<li>Machine learning algorithms have proven to be of great value in a variety of application domains. They are especially useful in (a) data mining problems where large databases may contain valuable implicit regularities that can be discovered automatically (e.g., to analyze outcomes of medical treatments from patient databases or to learn general rules for credit worthiness from finalcial databases); (b) poorly understood domains where humans might not have the knowledge needed to develop effective algorithms (e.g., human face recognition from images); and &copy; domains where the program must dynamically adapt to changing conditions (e.g., controlling manufacturing processes under changing supply stocks or adapting to the changing reading interests of individuals).</li>
+<li>Machine learning draws on idea from a diverse set of disciplines, including artifical intelligence, probability and statistics, computational complexity, information theory, psychology and neurobiology, control theory, and philosophy.</li>
+<li>A well-defines learning problem approach involves a number of design choices, including choosing the type of training experience, the target function to be learned, a representation for this target function, and an algorithm for learning the target function from training examples.</li>
+<li>Learning involves search: searching through a space of possible hypotheses to find the hypothesis that best fits the available training examples and other prior constraints or knowledge.<!--more--></li>
+</ul>
+
+
+<h3>2. Concept Learning and the General-to-Specific Ordering</h3>
+
+<ul>
+<li>Concept learning can be cast as a problem of searching through a large predefined space or potential hypotheses.</li>
+<li>The general-to-specific partial ordering of hypotheses, which can be defined for any concept learning problem, provides a useful structure for organizing the search through the hypothesis space.</li>
+<li>The Find-S algorithm utilizes this general-to-specific ordering, performing a specific-to-general search through the hypothesis space along one branch of the partial ordering, to find the most specific hypothesis consistent whith the training examples.</li>
+<li>The Candidate-Elimination algorithm utilizes this general-to-specific ordering to compute the version space (the set of all hypotheses consistent with training data) by incrementally computing the sets of maximally specific (S) and maximally general (G) hypotheses.</li>
+<li>Because the S and G sets delimit the entire set of hypotheses consistent with the data, they provide the learner with a description of its uncertainty regardin the exact identity of the target concept. This version space of alternative hypotheses can be examined to determine whether the learner has converged to the target concept, to determine when the training data are inconsistent, to generate informative quaries to further refine the version space, and to determine which unseen instances can be unambiguously classified based on the partially learned concept.</li>
+<li>Version spaces and the Candidate-Elimination algorithm provide a useful conceptual framework for studying concept learning. However, this learning algorithm is not robust to noisy data or to situations in which the unknown target concept is not expressible in the provided hypothesis space.</li>
+<li>Inductive learning algorithms are able to classify unseen examples only because of their mplicit inductive bias for selecting one cinsistent hypothesis over another. The bias concept can be found in the provided hypothesis space (c ∈ H). The output hypotheses and classifications of subsequent instances follow deductively from this assumption together with the observed training data.</li>
+<li>If the hypothesis space is enriched to the point where there is a hypothesis corresponding to every possible subset of instances (the power set of the instances), this will remove any in ductive bias from the Candidate-Elimination algorithm, Unfortunately, this also removes the ability to classfy any instance beyond the observed training examples. An unbiased learner cannot make inductive leaps to classify unseen examples.</li>
+</ul>
+
+
+<h3>3. Decision Tree Learning</h3>
+
+<ul>
+<li>Decision tree learning provides a practical method for concept learning and for learning other discrete-valued functions. The ID3 family of algorithms infers decision trees by growing them from the root downward, greedily selecting the next best attribute for each new decision branch added to the tree.</li>
+<li>ID3 searches a complete hypothesis space (i.e., the space of decision trees can represent any discrete-valued function defined over discrete-valued instances). It thereby avoids the major difficulty associated with approaches that consider only restricted sets of hypotheses: that the target function might not be present in the hypothesis space.</li>
+<li>The inductiove bias implicit in ID3 includes a preference for smaller trees; that is, its search through the hypothesis space grows the tree only as large as needed in order to clasiy the available training examples.</li>
+<li>Overfitting the training data is an important issue in decision tree learning. Because the training examples are only a sample of all possible instances, it is possible to add branches to the tree that improve performance on the training examples while decreasing performance on other instances outside this set. Methods for post-pruning the decision tree are therefore important to avoid overfitting in decision tree learning (and other inductive inference methods that employ a preference bias).</li>
+<li>A large variety of extensions to the basic ID3 algorithm has been developed by different researchers. These include methods for post-pruning trees, handling real-valued attributes, accommodating training examples with missing attribute values, incrementally refining decision trees as new training examples become available, using attribute selection measures other than information gain, and considering costs associated with instance attibutes.</li>
+</ul>
+
+
+<h3>4. Artificial Neural Networks</h3>
+
+<ul>
+<li>Artificial neural network learning provides a practical method for learning real-valued and vector-valued functions over continuous and discrete-valued attributes, in a way that is robust to noise in the training data. The Backpropagation algorithm is the most common network learning method and has been successfully applied to a variety of learning tasks, such as handwriting recognition and robot control.</li>
+<li>The hypothesis space considered by the Backpropagation algorithm is the space of all functions that can be represented by assigning weights to the given, fixed network of interconnected units. Feedforward networks containing three layers of units are able to approximate any function to arbitrary accuracy, given a sufficient (potentially very large) number of units in each layer. Even networks of practical size are capable of represening a rich choice for learning discrete and continuous functions whose general form is unknown in advance.</li>
+<li>Backpropagation searches the space of possible hypotheses using gradient descent to iteratively reduce the error in the network fit to the training examples. Gradient descent converges to a local minimum in the training error with respect to the network weights. more generally, gradient descent is a potentially useful method for searching many contiously parameterized hypothesis spaces where the training error is a differentiable function of hypothesis paremeters.</li>
+<li>One of the most intriguing properties of Backpropagation is its ability to invent new features that are not explicit in the input to the network. In particular, the internal (hidden) layers of multilayer networks learn to represent intermediate features that are useful for learning the target function and that are only implicit in the network inputs.</li>
+<li>Overfitting the training data is an important issue in ANN learning. Overfitting results in networks that generalize poorly to new data despite excellent performance over the training data. Cross-validation methods can be used to estimate an approprite stopping point gradient descent search and thus to minimize the risk of overfitting.</li>
+<li>Although Backpropagation is the most common ANN learning algorithm, many others have been proposed, including algorithms for more specialized tasks. For example, recurrent neural network methods train networks containing directed cycles, and algorithms such as Cascade Correlation alter the network structure as well as the network weights.</li>
+</ul>
+
+
+<h3>5. Evaluating Hypotheses</h3>
+
+<ul>
+<li>Statistical theory provides a basis for estimating the true error (error<sub>D</sub>(h)) of a hypothesis h, based on its observed error (error<sub>S</sub>(h)) over a sample S of data. For example, if h is a discrete-valued hypothesis and the data sample S contains n >= 30 examples drawn independently of h and of one another, then the N% confidence interval for (error<sub>D</sub>(h)) is approximately</br>
+<img src="http://latex.codecogs.com/gif.latex?error_{s}(h)\pm&space;z_{N}\sqrt{\frac{error_{s}(h)(1-error_{s}(h))}{n}}" title="error_{s}(h)\pm z_{N}\sqrt{\frac{error_{s}(h)(1-error_{s}(h))}{n}}" /></li>
+<li>In general, the problem of estimating confidence intervals is approached by identifying the parameter to be estimated (e.g., error<sub>D</sub>(h)) and an estimator (e.g., error<sub>S</sub>(h)) for this quantity. Because the estimator is a random variable (e.g., error<sub>S</sub>(h) depends on the random sample S), it can be characterrized by the probability distribution that governs its value. Confidence intervals can then be calculated by determining the interval that contains the desired probability mass under this distribution.</li>
+<li>One possible cause of errors in estimating hypothesis accuracy is estimation bias. If Y is an estimator for some oarameter p, the estimation bias of Y is the difference between p and the expected value of Y. For example, if S is the training data used to formulate hypothesis h, then error<sub>S</sub>(h) gives an optimistically biased estimate of the error error<sub>D</sub>(h).</li>
+<li>A second cause of estimation error is variance in the estimate. Even with an unbiased estimator, the observed value of the estimator is likely to vary from one experiment to another. The variance σ<sup>2</sup> of the distribution governing the estimator characterizes how widely this estimate is likely to vary from the correct value. This variance decreases as the size of the data sample is increased.</li>
+<li>Comparing the effectiveness of two learning algorithms is an estimation problem that is relatively easy when data and time are unlimited, but more difficult when these resourses are limited. One possible approach described in this chapter is to run the learning algorithms on different subsets of the available data, testing the learned hypotheses on the remaining data, then averaging the results of these experiments.</li>
+<li>In most cases considered here, deriving confidence intervals invloves making a number of assumptions and approximations. For example, the above confidence interval for error<sub>D</sub>(h)involved approximating a Binominal distribution by a Normal distribution, approximating the variance of this distribution, and assuming instances are generated by a fixed, unchanging probability distribution. While intervals based on such approximations are oonly approximate confidence intevals, they nevertheless provide useful guidance for disigning and interpreting experimental results in machine learning.</li>
+</ul>
+
+
+<h3>6. Bayesian Learning</h3>
+
+<ul>
+<li>Bayesian methods providethe basis for probabilistic learning methods that accommodate (and require) knowledge about the prior probabilities of alternative hypotheses and about the probability of observing various data given the hypothesis. Bayesian methods allow assigning a posterior probability to each candidate hypothesis, based on these assumed priors and the observed data.</li>
+<li>Bayesian methods can be used to determine the most probable hypothesis given the data &mdash; the maximum a posteriori (MAP) hypothesis. This is the optimal hypothesis in the sense that no other hypothesis is more likely.</li>
+<li>The Bayes optimal classifier co,bines the predictions of all alternative hypotheses, weighted by their posterior probabilities, to calculate the most probable classification of each new instance.</li>
+<li>The naive Bayes classifier is a Bayesian learning method that has been found to be useful in many practical applications. It is called &ldquo;naive&rdquo; because it incorporates the simplifying assumption that attibute values are conditionally independent, given the classification of the instance. When this assumption is met, the naive Bayes classifier outputs the MAP classification. Even when this asuumption is not met, as in the case of learning to clssify text, the naive Bayes classifier is often quite effective. Bayesian belief networks provide a more expressive representation for sets of conditional independence assumptions among subsets of the attributes.</li>
+<li>The framework of Bayesian reasoning can provide a useful basis for analyzing certain learning methods that do not directly apply Bayes theorem. For example, under certain conditions it can be shown that minimizing the squared error when learning a real-world target function corresponds to computing the maxmum likelihood hypothesis.</li>
+<li>The Minimum Description Length principle recommends choosing the hypothesis that minimizes the description length of the hypothesis plus the description length of the data given the hypothesis. Bayes theorem and baysic results from information theory can be used to provide a rationale for this principle.</li>
+<li>In many practical learning tasks, some of the relevant instance variables may be unobservable. The EM algorithm provides a quite general approach to learning in the presence of unobservable variables. This algorithm begins with an arbitrary initial hypothesis. It then repeatedly calculates the expected values of the hidden variables (assuming the current hypothesis is correct), and then recalculates the maximum likelihood hypothesis (assuming the hidden variables have he expected values caldulated by the first step). This procedure converges to a local maximum likelihood hypothesis, along with estimated values for the hidden variables.</li>
+</ul>
+
+
+<h3>7. Computational Learning Theory</h3>
+
+<ul>
+<li>The probably approximately correct (PAC) model considers algorithms that learn target concepts from some concept class C, using examples drawn at random according to an unknown, but fixed, probability distribution. it requires that the learner probably (with probability at least [1 &ndash; δ]) learn a hypothesis that is approximately (within error ε) correct, given computational effort and training examples that frow only polynomially with 1/ε, 1/δ, the size of the instances, and the size of the target concept.</li>
+<li>Within the setting of the PAC learning modelm any consistent learner using a finite hypothesis space H where C ⊆ H will, with probability (1 &ndash; δ), output a hypothesis within error ε of the target concept, after observing m randomly drawn training example, as long as</br>
+<img src="http://latex.codecogs.com/gif.latex?m&space;\geq&space;\frac{1}{\varepsilon&space;}(ln(1/\delta&space;)&plus;ln|H|)" title="m \geq \frac{1}{\varepsilon }(ln(1/\delta )+ln|H|)" /><br/>
+This gives a bound on the number of training examples sufficient for successful learning under the PAC model.</li>
+<li>One constraining assumption of the PAC learning model is that the learner knows in advance some restricted concept class C that contains the target concept to be learned. In contrast, the agnostic learning omdel considers the more general setting in which the learner makes no assumption about the class from which the target concept is drawn. Instead, the learner outputs the hypothesis from H that has the least error (possibly nonzero) over the training data. Under this less restrictive agnostic learning model, the learner is assured with probability (1 &ndash; δ)to output a hypothesis within error ε of the best possible hypothesis in H, fter observing m randomly drawn training examples, provided</br>
+<img src="http://latex.codecogs.com/gif.latex?m&space;\geq&space;\frac{1}{2\varepsilon^{2}&space;}(ln(1/\delta&space;)&plus;ln|H|)" title="m \geq \frac{1}{2\varepsilon^{2} }(ln(1/\delta )+ln|H|)" /></li>
+<li>The number of training examples required for successful learning is strongly influenced by the complexity of the hypothesis space considered by the learner. One useful measure of the complexity of a hypothesis space H is its Vapnik-Chervonenkis dimension, VC(H). VC(H) is the size of the largest subset of instances that can be shattered (split in all possible ways by H.</li>
+<li>An alternative upper bound on the number of training examples sufficient for successful learning under the PAC model, stated in terms of VC(H) is</br>
+<img src="http://latex.codecogs.com/gif.latex?m&space;\geq&space;\frac{1}{\varepsilon}(4log_{2}(2/\delta&space;)&plus;8VC(H)log_{2}(13/\varepsilon&space;))" title="m \geq \frac{1}{\varepsilon}(4log_{2}(2/\delta )+8VC(H)log_{2}(13/\varepsilon )))" /><br/>
+A lower bound is</br>
+<img src="http://latex.codecogs.com/gif.latex?m&space;\geq&space;max[\frac{1}{\varepsilon&space;}log(1/\delta&space;),&space;\frac{VC(C)-1)}{32\varepsilon&space;}]" title="m \geq max[\frac{1}{\varepsilon }log(1/\delta ), \frac{VC(C)-1)}{32\varepsilon }]" /></li>
+<li>An alternative learning model, called the mistake bound model, is used to analyze the number of training examples a learner will misclassify before is exactly learns the target concept. For rxample, the Halving algorithm will make at most [log<sub>2</sub>H] mistakes before exactly learning any target concept drawn from H. For an arbitrary concept class C, the best worst-case algorithm will make Opt &copy; mistakeIs, where<br/>
+VC&copy; &lt;= Opt&copy; &lt;= log<sub>2</sub>(|C|)</li>
+<li>The Weighted-Majority algorithm combines the weighted votes of multiple prediction algorithms to classify new instances. It learns weights for each of these prediction algorithms based on errors made over a sequence of examples. Interestingly, the number of mistakes made by Weighted-Majority be bounded in terms of the number of mistakes made by the best prediction algorithm in the pool.</li>
+</ul>
+
+
+<h3>8. Instance-Based Learning</h3>
+
+<ul>
+<li>Instance-based learning methods differ from other approaches to function ap- proximation because they delay processing of training examples until they must label a new query instance. As a result, they need not form an explicit hypothesis of the entire target function over the entire instance space, independent of the query instance. Instead, they may form a different local approximation to the target function for each query instance.</li>
+<li>Advantages of instance-based methods include the ability to model complex target functions by a collection of less complex local approximations and the fact that information present in the training examples is never lost (because the examples themselves are stored explicitly). The main practical difficulties include efficiency of labeling new instances (all processing is done at query time rather than in advance), difficulties in determining an appropriate distance metric for retrieving &ldquo;related&rdquo; instances (especially when examples are represented by complex symbolic descriptions), and the negative impact of irrelevant features on the distance metric.</li>
+<li>K-Nearest Neighbor an instance-based algorithm for approximating real-valued or discrete-valued target functions, assuming instances correspond to points in an N-dimensional Euclidean space. The target function value for a new query is estimated from the known values of the K nearest training examples.</li>
+<li>Locally weighted regression methods are a generalization of K-Nearest Neighbor which an explicit local approximation to the target functionis constructed for each query instance. The local approximation to the target function may be based on a variety of functional forms such as constant, linear, or quadratic functions or on spatially localized kernel functions.</li>
+<li>Radial basis function (RBF) networks are a type of artificial neural network constructed from spatially localized kernel functions. These can be seen as a blend of instance-based approaches (spatially localized influence of each kernel function) and neural network approaches (a global approximation to the target function is formed at training time rather than a local approximation at query time). Radial basis function networks have been used successfully in applications such as interpreting visual scenes, in which the assumption of spatially local influences is well-justified.</li>
+<li>Case-based reasoning is an instance-based approach in which instances are represented by complex logical descriptions rather than points in a Euclidean space. Given these complex symbolic descriptions of instances, a rich variety of methods have been proposed for mapping from the training examples to target function values for new instances. Case-based reasoning methods have been used in applications such as modeling legal reasoning and for guiding searches in complex manufacturing and transportation planning problems.</li>
+</ul>
+
+
+<h3>9. Genetic Algorithm</h3>
+
+<ul>
+<li>Genetic algorithms (GAS) conduct a randomized, parallel, hill-climbing search for hypotheses that optimize a predefined fitness function.</li>
+<li>The search performed by GAS is based on an analogy to biological evolution. A diverse population of competing hypotheses is maintained. At each iteration, the most fit members of the population are selected to produce new offspring that replace the least fit members of the population. Hypotheses are often encoded by strings that are combined by crossover operations, and subjected to random mutations.</li>
+<li>GAs illustrate how learning can be viewed as a special case of optimization. In particular, the learning task is to find the optimal hypothesis, according to the predefined fitness function. This suggests that other optimization tech- niques such as simulated annealing can also be applied to machine learning problems.</li>
+<li>GAs have most commonly been applied to optimization problems outside machine learning, such as design optimization problems. When applied to learning tasks, GAS are especially suited to tasks in which hypotheses are complex (e.g., sets of rules for robot control, or computer programs), and in which the objective to be optimized may be an indirect function of the hypothesis (e.g., that the set of acquired rules successfully controls a robot).</li>
+<li>Genetic programming is a variant of genetic algorithms in which the hypotheses being manipulated are computer programs rather than bit strings. Operations such as crossover and mutation are generalized to apply to programs rather than bit strings. Genetic programming has been demonstrated to learn programs for tasks such as simulated robot control (Koza 1992) and recognizing objects in visual scenes (Teller and Veloso 1994).</li>
+</ul>
+
+
+<h3>10. Learning Sets of Rules</h3>
+
+<ul>
+<li>The sequential covering algorithm learns a disjunctive set of rules by first learning a single accurate rule, then removing the positive examples covered by this rule and iterating the process over the remaining training examples. It provides an efficient, greedy algorithm for learning rule sets, and an al- ternative to top-down decision tree learning algorithms such as ID3, which can be viewed as simultaneous, rather than sequential covering algorithms.</li>
+<li>In the context of sequential covering algorithms, a variety of methods have been explored for learning a single rule. These methods vary in the search strategy they use for examining the space of possible rule preconditions. One popular approach, exemplifiedby the CN2 program, is to conduct a general-to-specific beam search, generating and testing progressively more specific rules until a sufficiently accurate rule is found. Alternative approaches search from specific to general hypotheses, use an example-driven search rather than generate and test, and employ different statistical measures of rule accuracy to guide the search.</li>
+<li>Sets of first-order rules (i.e., rules containing variables) provide a highly expressive representation. For example, the programming language PROLOG represents general programs using collections of first-order Horn clauses. The problem of learning first-order Horn clauses is therefore often referred to as the problem of inductive logic programming.</li>
+<li>One approach to learning sets of first-order rules is to extend the sequential covering algorithm of CN2 from propositional to first-order representations. This approach is exemplified by the FOIL program, which can learn sets of first-order rules, including simple recursive rule sets.</li>
+<li>A second approach to learning first-order rules is based on the observation that induction is the inverse of deduction. In other words, the problem of induction is to find a hypothesis h that satisfies the constraint</br>
+<img src="http://latex.codecogs.com/gif.latex?(\veebar&space;\left&space;\langle&space;x_{i},f(x_{i})&space;\right&space;\rangle&space;\subseteq&space;D)&space;(B\wedge&space;h&space;\wedge&space;x_{i})\vdash&space;f(x_{i})" title="(\veebar \left \langle x_{i},f(x_{i}) \right \rangle \subseteq D) (B\wedge h \wedge x_{i})\vdash f(x_{i})" /><br/>
+WhereB is general background information, x<sub>1</sub> &hellip; x<sub>n</sub> are descriptions of the instances in the training data D, and f(x<sub>1</sub>) &hellip; f(x<sub>n</sub>) are the target values of the training instances.
+Following the view of induction as the inverse of deduction, some programs search for hypotheses by using operators that invert the well-known operators for deductive reasoning. For example, Cigol uses inverse resolution, an operation that is the inverse of the deductive resolution operator commonly used for mechanical theorem proving. Progol combines an inverse entailment strategy with a general-to-specific strategy for searching the hypothesis space.</li>
+</ul>
+
+
+<h3>11. Analytical Learning</h3>
+
+<ul>
+<li>In contrast to purely inductive learning methods that seek a hypothesis to fit the training data, purely analytical learning methods seek a hypothesis that fits the learner&rsquo;s prior knowledge and covers the training examples. Humans often make use of prior knowledge to guide the formation of new hypotheses. This chapter examines purely analytical learning methods. The next chapter examines combined inductive-analytical learning.</li>
+<li>Explanation-based learning is a form of analytical learning in which the learner processes each novel training example by (1) explaining the observed target value for this example in terms of the domain theory, (2) analyzing this explanation to determine the general conditions under which the explanation holds, and (3) refining its hypothesis to incorporate these general conditions.</li>
+<li>Prolog-Ebg isanexplanation-based learning algorithm that uses first-order Horn clauses to represent both its domain theory and its learned hypotheses. In Prolog-Ebg an explanation is a Prolog proof, and the hypothesis extracted from the explanation is the weakest preimage of this proof. As a result, the hypotheses output by Prolog-Ebg follow deductively from its domain theory.</li>
+<li>Analytical learning methods such as Prolog-Ebg construct useful intermediate features as a side effect of analyzing individual training examples. This analytical approach to feature generation complements the statistically based generation of intermediate features (e.g., hidden unit features) in inductive methods such as Backpropagation.</li>
+<li>Although Prolog-Ebg does not produce hypotheses that extend the deductive closure of its domain theory, other deductive learning procedures can. For example, a domain theory containing determination assertions (e.g., &ldquo;nationality determines language&rdquo;) can be used together with observed data to deductively infer hypotheses that go beyond the deductive closure of the domain theory.</li>
+<li>One important class of problems for which a correct and complete domain theory can be found is the class of large state-space search problems. Systems such as Prodigy and Soar have demonstrated the utility of explanation-based learning methods for automatically acquiring effective search control knowledge that speeds up problem solving in subsequent cases.</li>
+<li>Despite the apparent usefulness of explanation-based learning methods in humans, purely deductive implementations such as Prolog-Ebg suffer the disadvantage that the output hypothesis is only as correct as the domain theory. In the next chapter we examine approaches that combine inductive and analytical learning methods in order to learn effectively from imperfect domain theories and limited training data.</li>
+</ul>
+
+
+<h3>12. Combining Inductive and Analytical Learning</h3>
+
+<ul>
+<li>Approximate prior knowledge, or domain theories, are available in many practical learning problems. Purely inductive methods such as decision tree induction and neural network Backpropagation fail to utilize such domain theories, and therefore perform poorly when data is scarce. Purely analytical learning methods such as Prolog-Ebg utilize such domain theories, but produce incorrect hypotheses when given imperfect prior knowledge. Methods that blend inductive and analytical learning can gain the benefits of both approaches: reduced sample complexity and the ability to overrule incorrect prior knowledge.</li>
+<li>One way to view algorithms for combining inductive and analytical learning is to consider how the domain theory affects the hypothesis space search. In this chapter we examined methods that use imperfect domain theories to (1) create the initial hypothesis in the search, (2) expand the set of search operators that generate revisions to the current hypothesis, and (3) alter the objective of the search.</li>
+<li>A system that uses the domain theory to initialize the hypothesis is KBANN. This algorithm uses a domain theory encoded as propositional rules to analytically construct an artificial neural network that is equivalent to the domain theory. This network is then inductivelyrefined using the Backpropagation algorithm, to improve its performance over the training data. The result is a network biased by the original domain theory, whose weights are refined inductively based on the training data.</li>
+<li>Tangentprop uses prior knowledge represented by desired derivatives of the target function. In some domains, such as image processing, this is a natural way to express prior knowledge. Tangentprop incorporates this knowledge by altering the objective function minimized by gradient descent search through the space of possible hypotheses.</li>
+<li>EBNN uses the domain theory to alter the objective in searching the hypothesis space of possible weights for an artificial neural network. It uses a domain theory consisting of previously learned neural networks to perform a neural network analog to symbolic explanation-basedlearning. As in symbolic explanation-based learning, the domain theory is used to explain individual examples, yielding information about the relevance of different example features. With this neural network representation, however, information about relevance is expressed in the form of derivatives of the target function value with respect to instance features. The network hypothesis is trained using a variant of the Tangentprop algorithm, in which the error to be minimized includes both the error in network output values and the error in network derivatives obtained from explanations.</li>
+<li>Focl uses the domain theory to expand the set of candidates considered at each step in the search. It uses an approximate domain theory represented by first order Horn clauses to learn a set of Horn clauses that approximate the target function. Focl employs a sequential covering algorithm, learning each Horn clause by a general-to-specific search. The domain theory is used to augment the set of next more specific candidate hypotheses considered at each step of this search. Candidate hypotheses are then evaluated based on their performance over the training data. In this way, Focl combines the greedy, general-to-specific inductive search strategy of Foil with the rule-chaining, analytical reasoning of analytical methods.</li>
+<li>The question of how to best blend prior knowledge with new observations remains one of the key open questions in machine learning.</li>
+</ul>
+
+
+<h3>13. Reinforcement Learning</h3>
+
+<ul>
+<li>Reinforcement learning addresses the problem of learning control strategies for autonomous agents. It assumes that training information is available in the form of a real-valued reward signal given for each state-action transition. The goal of the agent is to learn an action policy that maximizes the total reward it will receive from any starting state.</li>
+<li>The reinforcement learning algorithms addressed in this chapter fit a problem setting known as a Markov decision process. In Markov decision processes, the outcome of applying any action to any state depends only on this action and state (and not on preceding actions:or states). Markov decision processes cover a wide range of problems including many robot control, factory automation, and scheduling problems.</li>
+<li>Q learning is one form of reinforcement learning in which the agent learns an evaluation function over states and actions. In particular, the evaluation function Q(s, a) is defined as the maximum expected, discounted, cumulative reward the agent can achieve by applying action a to state s. The Q learning algorithm has the advantage that it can be employed even when the learner has no prior knowledge of how its actions affect its environment.</li>
+<li>Q learning can be proven to converge to the correct Q function under certain assumptions, when the learner&rsquo;s hypothesis Q<sup>s, a</sup>, is represented by a lookup table with a distinct entry for each &lt;s,a> pair. It can be shown to converge in both deterministic and nondeterministic MDPs. In practice, Q learning can require many thousands of training iterations to converge in even modest-sized problems.</li>
+<li>Q learning is a member of a more general class of algorithms, called temporal difference algorithms. In general, temporal difference algorithms learn by iteratively reducing the discrepancies between the estimates produced by the agent at different times.</li>
+<li>Reinforcement learning is closely related to dynamic programming approaches to Markov decision processes. The key difference is that historically these dynamic programming approaches have assumed that the agent possesses knowledge of the state transition function δ(s, a) and reward function r(s, a). In contrast, reinforcement learning algorithms such as Q learning typically assume the learner lacks such knowledge.</li>
+</ul>
+
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-05-12T10:40:37+08:00" pubdate data-updated="true">May 12<span>th</span>, 2015</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/artificial-intelligence/'>artificial-intelligence</a>
+
+</div>
+
+
+	
+</div>
+</article>
+<!-- Copyright Info BEGIN -->
+
+
+<b>
+   <div class="entry-content"> <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" ></a>版權聲明：保持署名-非商用-非衍生
+<br />
+Attribution-NonCommercial-NoDerivs
+<br />
+ <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" >Creative Commons BY-NC-ND 3.0 </a>
+</div>
+</b>
+
+<!-- Copyright Info END -->
+
+
+	<span class='st_facebook_large' displayText='Facebook'></span>
+<span class='st_twitter_large' displayText='Tweet'></span>
+<span class='st_sina_large' displayText='Sina'></span>
+<span class='st_evernote_large' displayText='Evernote'></span>
+<span class='st_email_large' displayText='Email'></span>
+<span class='st_sharethis_large' displayText='ShareThis'></span>
+
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "546620ac-cd31-4320-baca-f6d07850d74b", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+
+
+</div>
+
+    
+
+<div align='center'>
+    <form class="navbar-form" action="/search/">
+        <input type="text" class="form-control" placeholder="Google Search" name="q">
+    </form>
+ </div>
+
+	<footer id="footer" class="inner">Copyright &copy; 2015
+
+    Themis_Sword
+
+<br>
+Powered by Octopress.
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-48083272-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

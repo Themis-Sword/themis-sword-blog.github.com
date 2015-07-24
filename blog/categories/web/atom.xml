@@ -4,7 +4,7 @@
   <title><![CDATA[Category: web | Themis_Sword's Blog]]></title>
   <link href="http://www.aprilzephyr.com/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://www.aprilzephyr.com/"/>
-  <updated>2015-04-14T13:28:38+08:00</updated>
+  <updated>2015-07-01T09:44:14+08:00</updated>
   <id>http://www.aprilzephyr.com/</id>
   <author>
     <name><![CDATA[Themis_Sword]]></name>
@@ -12,6 +12,113 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[利用Amazon的AWS搭建自己的VPN]]></title>
+    <link href="http://www.aprilzephyr.com/blog/06262015/li-yong-amazonde-awsda-jian-zi-ji-de-vpn/"/>
+    <updated>2015-06-26T13:21:35+08:00</updated>
+    <id>http://www.aprilzephyr.com/blog/06262015/li-yong-amazonde-awsda-jian-zi-ji-de-vpn</id>
+    <content type="html"><![CDATA[<p><img src="/images/aws.jpg"></p>
+
+<h4>預備</h4>
+
+<ol>
+<li>申請<a href="https://aws.amazon.com">Amazon AWS服務</a></li>
+<li>進入<a href="http://console.aws.amazon.com">AWS控制台</a>，選擇亞太區東京的數據中心</li>
+<li>在Compute下創建EC2實例，選擇Ubuntu-64位操作系統，下載SSH密鑰文件並保存好</li>
+<li>Security Group下除了默認的SSH的22端口打開，增加一個新的TCP端口1723，以建立PPTP服務</li>
+<li>啟動實例</li>
+<li>在Elastic IP下申請一個固定的IP地址，並與上述實例綁定(如果停止實例，一定要把Elastic IP解除綁定，否則將被計費)<!--more--></li>
+</ol>
+
+
+<h4>從本地連接實例</h4>
+
+<ol>
+<li>Open an SSH client. (<a href="https://docs.aws.amazon.com/console/ec2/instances/connect/putty">find out how to connect using PuTTY</a>)</li>
+<li>Locate your private key file (xxxx.pem). The wizard automatically detects the key you used to launch the instance.</li>
+<li><p>Your key must not be publicly viewable for SSH to work. Use this command if needed:</p>
+
+<pre><code> chmod 400 xxxx.pem
+</code></pre></li>
+<li><p>Connect to your instance using its Elastic IP:
+127.0.0.1
+Example:</p>
+
+<pre><code>  ssh -i xxxx.pem ubuntu@127.0.0.1  
+</code></pre></li>
+</ol>
+
+
+<p>Please note that in most cases the username above will be correct, however please ensure that you read your AMI usage instructions to ensure that the AMI owner has not changed the default AMI username.<br/>
+If you need any assistance connecting to your instance, please see our <a href="https://docs.aws.amazon.com/console/ec2/instances/connect/docs">connection documentation</a>.</p>
+
+<h4>EC2實例下安裝PPTP VPN</h4>
+
+<p>設置root密碼</p>
+
+<pre><code>sudo passwd
+</code></pre>
+
+<p>安装pptpd</p>
+
+<pre><code>sudo apt-get install pptpd
+</code></pre>
+
+<p>修改/etc/ppp/pptpd-options文件, 在最下面添加以下2行</p>
+
+<pre><code>localip 192.168.9.1 
+remoteip 192.168.9.11-30
+</code></pre>
+
+<p>之後修改/etc/ppp/options.pptpd文件, 加上Google的DNS</p>
+
+<pre><code>ms-dns 8.8.8.8 
+ms-dns 8.8.4.4
+</code></pre>
+
+<p>接下来修改/etc/ppp/chap-secrets文件, 配置自己VPN的用户名/密码, 格式如下:</p>
+
+<pre><code>&lt;username&gt; pptpd &lt;passwd&gt; *
+</code></pre>
+
+<p>例如</p>
+
+<pre><code>name pptpd passwd *
+</code></pre>
+
+<p>修改/etc/sysctl.conf文件, 添加以下内容</p>
+
+<pre><code>net.ipv4.ip_forward=1
+</code></pre>
+
+<p>執行</p>
+
+<pre><code>sudo /sbin/sysctl -p
+</code></pre>
+
+<p>重新加载配置</p>
+
+<p>啟用iptables的NAT configuration</p>
+
+<pre><code>sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+</code></pre>
+
+<p>為了保證每次EC2實例重啟後NAT configuration能啟動, 還要修改/etc/rc.local文件, 在exit 0這行上面加上</p>
+
+<pre><code>iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+</code></pre>
+
+<p>最後重啟pptpd服務</p>
+
+<pre><code>sudo /etc/init.d/pptpd restart
+</code></pre>
+
+<h4>連接VPN</h4>
+
+<p>注意AWS免費賬戶每月只有15GB免費流量，用超了要從<strong>信用卡扣費</strong></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[網頁重定向的方法(轉)]]></title>
@@ -246,23 +353,7 @@ Hi username! You&rsquo;ve successfully authenticated, but GitHub does not provid
 Connection to github.com closed.<br/>
 代表成功。</p>
 
-<h3>5. 在本機創建ssh</h3>
-
-<p><code>$ cd ~/.ssh</code><br/>
-<code>$ ssh-keygen -t rsa -C 你註冊github時的email</code><br/>
-彈出Enter file in which to save the key (/Users/twer/.ssh/id_rsa): 直接按空格<br/>
-彈出Enter passphrase(empty for no passphrase):輸入你GitHub帳號的密碼。Enter same passphrase again: 再次輸入你的密碼。<br/>
-打開~/.ssh下的id_rsa.pub文件複製裡面的所有內容。<br/>
-登錄GitHub，選擇Account Settings—>SSH Public Keys添加ssh，把剪貼板的內容複製到key輸入框內直接保存。<br/>
-測試ssh：<br/>
-<code>$ ssh git@github.com</code><br/>
-輸出：<br/>
-PTY allocation request failed on channel 0<br/>
-Hi username! You’ve successfully authenticated, but GitHub does not provide shell access.<br/>
-Connection to github.com closed.<br/>
-代表成功。</p>
-
-<h3>6. 將Blog部署到GitHub上</h3>
+<h3>5. 將Blog部署到GitHub上</h3>
 
 <p>在GitHub上創建一個倉庫，命名為username.github.com。等全部配置完後，可以通過在瀏覽器中輸入<a href="http://username.github.com">http://username.github.com</a>來訪問。一般來說，將Blog的源碼放在source分支，把生成的內容提交到master分支。<br/>
 創建好倉庫之後，需要利用octopress的一個配置rake任務來自動配置上面創建的倉庫：<br/>
@@ -274,7 +365,7 @@ Connection to github.com closed.<br/>
 上面的命令首先生成Blog文件，並將生成的Blog文件拷貝到_deploy 目錄下，然後將這些內容添加到git中，並commit和push到倉庫的master分支。<br/>
 現在可以訪問<a href="http://username.github.com">http://username.github.com</a>了。注意，由於會發生延時，要等大約10分鐘才能打開。至此，我們已經基本完成對Blog的部署，不過Blog的source要單獨提交。</p>
 
-<h3>7. 開始寫Blog</h3>
+<h3>6. 開始寫Blog</h3>
 
 <p>Octopress為我們提供了一些task來創建Blog和頁面。博文必須存儲在source/_posts 目錄下，並且需要按照Jekyll的命名規範對文章進行命名：YYYY-MM-DD-post-title.markdown。文章的名字會被當作url的一部分，而其中的日期用於對博文的區分和排序。創建博文命令爲：<br/>
 <code>$ rake new_post["title"]</code><br/>
@@ -287,19 +378,19 @@ Connection to github.com closed.<br/>
 <code>$ git push origin source</code><br/>
 <code>$ rake deploy</code></p>
 
-<h3>8. 添加頁面(pages)</h3>
+<h3>7. 添加頁面(pages)</h3>
 
 <p>在Octopress中，有兩個默認的頁面，即blog/archives，可以參考它來完成自己的頁面。首先在source中創建一個目錄，例如author，然後在這個目錄中新建一個名為index.html的文件，根據需要進行編輯這個文件。<br/>
 重要的是，我們需要在首頁將這個頁面的鏈接顯示出來，此時需要編輯source/_includes/custom/navigation.html，仿照已有的內容添加一個新行，指向新創建的目錄即可。<br/>
 當rake generate正常之後，就可以rake deploy到GitHub上了。</p>
 
-<h3>9. 獨立域名</h3>
+<h3>8. 獨立域名</h3>
 
 <p>在域名管理中，建立一個CNAME指向，將你的域名指向username.github.com<br/>
 建一個名為CNAME的文件在source目錄下，然後將自己的域名輸入進去。<br/>
 將內容push到GitHub後，第一次生效大概需要一個小時，之後就可以用自己的域名進行訪問了。</p>
 
-<h3>10. 安裝模板並加入版權聲明</h3>
+<h3>9. 安裝模板並加入版權聲明</h3>
 
 <p>常用第三方模板有：<br/>
 <a href="http://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a><br/>
@@ -329,7 +420,7 @@ Connection to github.com closed.<br/>
 <p>
 ```</p>
 
-<h3>11. Octopress添加Google Analytics統計與SEO</h3>
+<h3>10. Octopress添加Google Analytics統計與SEO</h3>
 
 <h4>1) 在各搜索引擎中提交本博客的地址：</h4>
 
@@ -348,7 +439,7 @@ content="{\{ page.keywords }\}"&gt;{ % endif % }
 <p>註冊<a href="http://www.google.com/analytics/">Google Analytics</a>獲得一個google_analytics_tracking_id，添加到_config.yml中對應位置，並對網站進行驗證即可。然後通過Google Analytics分析網站流量。而且可以通過<a href="https://www.google.com/webmasters/tools/home?hl=zh-CN">Google站長工具</a>，對網站進行更全面的分析和SEO。<br/>
 對自己的網站進行驗證，只需將Google Analytics提供的用於驗證的代碼添加到source/_includes/head.html的<head>標簽之間，網站部署到網上之後，過幾分鐘即可驗證通過，其他需要驗證的也同樣操作。</p>
 
-<h3>12. 實現站內搜索</h3>
+<h3>11. 實現站內搜索</h3>
 
 <p>1) 在頁面合適的位置上創建一個搜索框：<br/>
 ``` html</p>
@@ -377,7 +468,7 @@ simple_search: \search
 
 <p>```</p>
 
-<h3>13. 參考</h3>
+<h3>12. 參考</h3>
 
 <p><a href="http://octopress.org/help/">Octopress Help</a><br/>
 <a href="http://justcoding.iteye.com/blog/1954645">利用Octopress搭建一個GitHub博客</a><br/>

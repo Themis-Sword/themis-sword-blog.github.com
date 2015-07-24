@@ -10,7 +10,7 @@
 
 <meta name="author" content="Themis_Sword"> 
 
-<meta name="description" content="Independent, introspective, critical and technical viewpoints."> <meta name="keywords" content="Themis_Sword, Blog, Justice, Technology, Mood, English, Life, Python, Business">
+<meta name="description" content="Independent, introspective, critical and technical viewpoints."> <meta name="keywords" content="Themis_Sword, Blog, Justice, Technology, Mood, English, Life, Python, Business, Inspiring,">
 
 
 <meta name="msvalidate.01" content="3084BF25D05B2AD0D58CBE0DEA3D888E" />
@@ -82,7 +82,8 @@ $(document).ready(
 <nav id="main-nav"><ul>
 	<li><a href="/">Home</a></li>
 	<li><a href="/blog/categories">Categories</a></li>
-        <li><a href="/portfolio">Portfolio</a><li>
+    <li><a href="/portfolio">Portfolio</a>
+    <li><a href="/gallery">Gallery</a><li>
 	<li><a href="/author">Author</a></li>
 </ul>
 
@@ -95,7 +96,8 @@ $(document).ready(
 		<div class="container"><ul>
 	<li><a href="/">Home</a></li>
 	<li><a href="/blog/categories">Categories</a></li>
-        <li><a href="/portfolio">Portfolio</a><li>
+    <li><a href="/portfolio">Portfolio</a>
+    <li><a href="/gallery">Gallery</a><li>
 	<li><a href="/author">Author</a></li>
 </ul>
 
@@ -123,16 +125,24 @@ $(document).ready(
     <article class="post">
 	<h3 class="title">
 		
-		<a href="/blog/08302014/pieces/">
+		<a href="/blog/06262015/li-yong-amazonde-awsda-jian-zi-ji-de-vpn/">
 		
-			Pieces</a>
+			利用Amazon的AWS搭建自己的VPN</a>
 	</h3>
 	<div class="entry-content">
-		<p><img src="/images/owlcoffee.jpg"></p>
+		<p><img src="/images/aws.jpg"></p>
 
-<p>A friend said I am a traditional person intrinsically somehow with an attempt to break the invisible shackles, the boundary of the traditional and the nontraditional. I know it&rsquo;s true for I am raised and influenced since my juvenile in such family and society.
+<h4>預備</h4>
+
+<ol>
+<li>申請<a href="https://aws.amazon.com">Amazon AWS服務</a></li>
+<li>進入<a href="http://console.aws.amazon.com">AWS控制台</a>，選擇亞太區東京的數據中心</li>
+<li>在Compute下創建EC2實例，選擇Ubuntu-64位操作系統，下載SSH密鑰文件並保存好</li>
+<li>Security Group下除了默認的SSH的22端口打開，增加一個新的TCP端口1723，以建立PPTP服務</li>
+<li>啟動實例</li>
+<li>在Elastic IP下申請一個固定的IP地址，並與上述實例綁定(如果停止實例，一定要把Elastic IP解除綁定，否則將被計費)
 		
-		<a href="/blog/08302014/pieces/" class="more-link">Read on &rarr;</a>
+		<a href="/blog/06262015/li-yong-amazonde-awsda-jian-zi-ji-de-vpn/" class="more-link">Read on &rarr;</a>
 	</div>
 
 
@@ -149,12 +159,12 @@ $(document).ready(
   
 
 
-<time datetime="2014-08-30T22:15:03+08:00" pubdate data-updated="true">Aug 30<span>th</span>, 2014</time></div>
+<time datetime="2015-06-26T13:21:35+08:00" pubdate data-updated="true">Jun 26<span>th</span>, 2015</time></div>
 	
 
 <div class="tags">
 
-	<a class='category' href='/blog/categories/mood/'>mood</a>
+	<a class='category' href='/blog/categories/web/'>web</a>
 
 </div>
 
@@ -167,18 +177,20 @@ $(document).ready(
     <article class="post">
 	<h3 class="title">
 		
-		<a href="/blog/07102014/hurt/">
+		<a href="/blog/06022015/shu-ju-xin-wen-jing-xuan-ke-shi-hua-te-ji-zhuan/">
 		
-			Hurt</a>
+			數據新聞精選(可視化特輯)轉</a>
 	</h3>
 	<div class="entry-content">
-		<iframe width="640" height="360" src="//www.youtube.com/embed/clq01TXQR0s?rel=0" frameborder="0" allowfullscreen></iframe>
+		<p>本期數據新聞精選帶你踏上可視化之旅：普通人的數據新聞修養要怎麽修煉？英國大選報道有什麽可視化工具可以用？從地中海偷渡的移民，溺亡者有多少？最後，請你暫忘工具，用眼和心，探索100張前人繪制的時間地圖，細細體味可視化的“遠古時代”。</p>
+
+<p><a href="http://seeingdata.org/understanding-data-visualisations/">&ldquo;了解數據可視化&rdquo;</a>：普通人的數據新聞修煉</p>
+
+<p><img src="/images/dv/1.png"></p>
 
 
-<p>I hurt myself today<br/>
-To see if I still feel  
 		
-		<a href="/blog/07102014/hurt/" class="more-link">Read on &rarr;</a>
+		<a href="/blog/06022015/shu-ju-xin-wen-jing-xuan-ke-shi-hua-te-ji-zhuan/" class="more-link">Read on &rarr;</a>
 	</div>
 
 
@@ -195,12 +207,12 @@ To see if I still feel
   
 
 
-<time datetime="2014-07-10T16:52:28+08:00" pubdate data-updated="true">Jul 10<span>th</span>, 2014</time></div>
+<time datetime="2015-06-02T16:11:43+08:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2015</time></div>
 	
 
 <div class="tags">
 
-	<a class='category' href='/blog/categories/mood/'>mood</a>
+	<a class='category' href='/blog/categories/artificial-intelligence/'>artificial-intelligence</a>
 
 </div>
 
@@ -213,16 +225,41 @@ To see if I still feel
     <article class="post">
 	<h3 class="title">
 		
-		<a href="/blog/06142014/new-job/">
+		<a href="/blog/05292015/nifty-python-tricks-fw/">
 		
-			New Job, New Way</a>
+			Nifty Python tricks(FW)</a>
 	</h3>
 	<div class="entry-content">
-		<p><img src="/images/bigdata.jpg"></p>
+		<p>Hi there folks. It’s been a long time since I last published a post. I have been busy. However in this post I am going to share some really informative tips and tricks which you might not have known about. So without wasting any time lets get straight to them:</p>
 
-<p>It&rsquo;s been a whole month working in a new company, which is a venture company with the area of distributed storage focused.
+<h4>Enumerate</h4>
+
+<p>Instead of doing:</p>
+
+<pre><code>i = 0 
+for item in iterable: 
+    print i, item 
+    i += 1
+</code></pre>
+
+<p>We can do:</p>
+
+<pre><code>for i, item in enumerate(iterable):
+    print i, item
+</code></pre>
+
+<p>Enumerate can also take a second argument. Here is an example:</p>
+
+<pre><code>&gt;&gt;&gt; list(enumerate('abc')) 
+[(0, 'a'), (1, 'b'), (2, 'c')] 
+
+&gt;&gt;&gt; list(enumerate('abc', 1)) 
+[(1, 'a'), (2, 'b'), (3, 'c')]
+</code></pre>
+
+
 		
-		<a href="/blog/06142014/new-job/" class="more-link">Read on &rarr;</a>
+		<a href="/blog/05292015/nifty-python-tricks-fw/" class="more-link">Read on &rarr;</a>
 	</div>
 
 
@@ -239,100 +276,7 @@ To see if I still feel
   
 
 
-<time datetime="2014-06-14T10:04:25+08:00" pubdate data-updated="true">Jun 14<span>th</span>, 2014</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/mood/'>mood</a>
-
-</div>
-
-
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/05042014/you-are-alive/">
-		
-			You Are Alive</a>
-	</h3>
-	<div class="entry-content">
-		<p><img src="/images/alive.jpg"></p>
-
-<p>如果你的內心有不安<br/>
-If you&rsquo;re carrying your restlessness in your heart,
-		
-		<a href="/blog/05042014/you-are-alive/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-04T20:21:19+08:00" pubdate data-updated="true">May 4<span>th</span>, 2014</time></div>
-	
-
-<div class="tags">
-
-	<a class='category' href='/blog/categories/mood/'>mood</a>
-
-</div>
-
-
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h3 class="title">
-		
-		<a href="/blog/05042014/python-zheng-ze-biao-da-shi-zhi-nan-zhuan/">
-		
-			Python 正則表達式指南(轉)</a>
-	</h3>
-	<div class="entry-content">
-		<h4>1. 正則表達式基礎</h4>
-
-<h5>1.1 簡單介紹</h5>
-
-<p>正則表達式並不是Python的一部分。正則表達式是用於處理字符串的強大工具，擁有自己獨特的語法以及一個獨立的處理引擎，效率上可能不如str自帶的方法，但功能十分強大。得益於這一點，在提供了正則表達式的語言裏，正則表達式的語法都是一樣的，區別只在於不同的編程語言實現支持的語法數量不同；但不用擔心，不被支持的語法通常是不常用的部分。如果已經在其他語言裏使用過正則表達式，只需要簡單看一看就可以上手了。</p>
-
-<p>下圖展示了使用正則表達式進行匹配的流程：
-		
-		<a href="/blog/05042014/python-zheng-ze-biao-da-shi-zhi-nan-zhuan/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-04T14:49:04+08:00" pubdate data-updated="true">May 4<span>th</span>, 2014</time></div>
+<time datetime="2015-05-29T10:12:24+08:00" pubdate data-updated="true">May 29<span>th</span>, 2015</time></div>
 	
 
 <div class="tags">
@@ -346,12 +290,108 @@ If you&rsquo;re carrying your restlessness in your heart,
 </div>
 </article>
 
+
+    <article class="post">
+	<h3 class="title">
+		
+		<a href="/blog/05142015/python-tools-for-machine-learning-fw/">
+		
+			Python Tools for Machine Learning(FW)</a>
+	</h3>
+	<div class="entry-content">
+		<p>Python is one of the best programming languages out there, with an extensive coverage in scientific computing: computer vision, artificial intelligence, mathematics, astronomy to name a few. Unsurprisingly, this holds true for machine learning as well.</p>
+
+<p>Of course, it has some disadvantages too; one of which is that the tools and libraries for Python are scattered. If you are a unix-minded person, this works quite conveniently as every tool does one thing and does it well. However, this also requires you to know different libraries and tools, including their advantages and disadvantages, to be able to make a sound decision for the systems that you are building. Tools by themselves do not make a system or product better, but with the right tools we can work much more efficiently and be more productive. Therefore, knowing the right tools for your work domain is crucially important.
+		
+		<a href="/blog/05142015/python-tools-for-machine-learning-fw/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-05-14T11:15:31+08:00" pubdate data-updated="true">May 14<span>th</span>, 2015</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/artificial-intelligence/'>artificial-intelligence</a>, <a class='category' href='/blog/categories/python/'>python</a>
+
+</div>
+
+
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h3 class="title">
+		
+		<a href="/blog/05142015/pythonshu-ju-fen-xi-ru-men-zhuan/">
+		
+			Python數據分析入門(轉)</a>
+	</h3>
+	<div class="entry-content">
+		<p>最近，<a href="http://alstatr.blogspot.com/">Analysis with Programming</a>加入了<a href="http://planetpython.org/">Planet Python</a>。作為該網站的首批特約博客，我這裏來分享一下如何通過Python來開始數據分析。具體內容如下：</p>
+
+<ol>
+<li>數據導入<br/>
+** 導入本地的或者web端的CSV文件；</li>
+<li>數據變換；</li>
+<li>數據統計描述；</li>
+<li>假設檢驗<br/>
+** 單樣本t檢驗；</li>
+<li>可視化；</li>
+<li>創建自定義函數。
+		
+		<a href="/blog/05142015/pythonshu-ju-fen-xi-ru-men-zhuan/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-05-14T10:46:30+08:00" pubdate data-updated="true">May 14<span>th</span>, 2015</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/artificial-intelligence/'>artificial-intelligence</a>, <a class='category' href='/blog/categories/python/'>python</a>
+
+</div>
+
+
+	
+</div>
+</article>
+
 <nav id="pagenavi">
     
     
         <a href="/blog/page/2/" class="next">Next</a>
     
-    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+    <div class="center"><a href="/blog/timeline">Timeline</a></div>
 </nav></div>
 
     
